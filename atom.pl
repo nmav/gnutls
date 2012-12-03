@@ -1,1 +1,0 @@
-scripts/atom.pl
