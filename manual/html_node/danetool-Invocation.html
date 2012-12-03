@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is last updated 17 November 2012 for version
+3.1.5 of GnuTLS.
+
+Copyright (C) 2001-2012 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License". -->
+<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GnuTLS 3.1.5: danetool Invocation</title>
+
+<meta name="description" content="GnuTLS 3.1.5: danetool Invocation">
+<meta name="keywords" content="GnuTLS 3.1.5: danetool Invocation">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Function-and-Data-Index.html#Function-and-Data-Index" rel="index" title="Function and Data Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="More-on-certificate-authentication.html#More-on-certificate-authentication" rel="up" title="More on certificate authentication">
+<link href="Hardware-security-modules-and-abstract-key-types.html#Hardware-security-modules-and-abstract-key-types" rel="next" title="Hardware security modules and abstract key types">
+<link href="ocsptool-Invocation.html#ocsptool-Invocation" rel="previous" title="ocsptool Invocation">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+body { 
+	margin: 2%;
+	padding: 0 5%;
+	background: #ffffff;
+}
+h1,h2,h3,h4,h5 {
+    font-weight: bold;
+    padding: 5px 5px 5px 5px;
+    background-color: #c2e0ff;
+    color: #336699;
+}
+h1 {
+    padding: 2em 2em 2em 5%;
+    color: white;
+    background: #336699;
+    text-align: center;
+    letter-spacing: 3px;
+}
+h2 { text-decoration: underline; }
+pre {
+  margin: 0 5%;
+  padding: 0.5em;
+}
+pre.example,pre.verbatim {
+  padding-bottom: 1em;
+
+  border: solid #c2e0ff;
+  background: #f0faff;
+  border-width: 1px 1px 1px 5px;
+  margin: 1em auto;
+  width: 90%;
+}
+
+div.node {
+  margin: 0 -5% 0 -2%;
+  padding: 0.5em 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+dd, li {
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+}
+div.float {
+
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+table {
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+}
+
+th {
+  padding: 0;
+  color: #336699;
+  background-color: #c2e0ff;
+  border: solid #000000;
+  border-width: 0px;
+  margin: 1em auto;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+td {
+  padding: 0;
+  border: solid #000000;
+  background-color: #f0faff;
+  border-width: 0px;
+  margin: 1em auto;
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left: 1em;
+}
+
+dl {
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+
+  padding-left: 1em;
+  border: solid #c2e0ff;
+  background: #f0faff;
+  border-width: 5px 1px 1px 1px;
+  margin: 1em auto;
+}
+
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="danetool-Invocation"></a>
+<div class="header">
+<p>
+Previous: <a href="ocsptool-Invocation.html#ocsptool-Invocation" accesskey="p" rel="previous">ocsptool Invocation</a>, Up: <a href="More-on-certificate-authentication.html#More-on-certificate-authentication" accesskey="u" rel="up">More on certificate authentication</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Invoking-danetool"></a>
+<h3 class="section">6.7 Invoking danetool</h3>
+<a name="index-danetool"></a>
+
+
+<p>Tool to generate DNS resource records for the DANE protocol.
+</p>
+<p>This section was generated by <strong>AutoGen</strong>,
+using the <code>agtexi-cmd</code> template and the option descriptions for the <code>danetool</code> program.
+This software is released under the GNU General Public License, version 3 or later.
+</p>
+
+<a name="danetool-usage"></a><a name="danetool-help_002fusage-_0028_002dh_0029"></a>
+<h4 class="subheading">danetool help/usage (-h)</h4>
+<a name="index-danetool-help"></a>
+
+<p>This is the automatically generated usage text for danetool.
+The text printed is the same whether for the <code>help</code> option (-h) or the <code>more-help</code> option (-!).  <code>more-help</code> will print
+the usage text by passing it through a pager program.
+<code>more-help</code> is disabled on platforms without a working
+<code>fork(2)</code> function.  The <code>PAGER</code> environment variable is
+used to select the program, defaulting to <samp>more</samp>.  Both will exit
+with a status code of 0.
+</p>
+<div class="example">
+<pre class="example">danetool - GnuTLS DANE tool - Ver. 3.1.5
+USAGE:  danetool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+
+   -d, --debug=num            Enable debugging.
+                                - It must be in the range:
+                                  0 to 9999
+   -V, --verbose              More verbose output
+                                - may appear multiple times
+       --infile=file          Input file
+                                - file must pre-exist
+       --outfile=str          Output file
+       --load-pubkey=str      Loads a public key file
+       --load-certificate=str Loads a certificate file
+       --hash=str             Hash algorithm to use for signing.
+       --check=str            Check DANE TLSA entry.
+       --local-dns            Use the local DNS server for DNSSEC resolving.
+                                - disabled as --no-local-dns
+       --inder                Use DER format for input certificates and private keys.
+                                - disabled as --no-inder
+       --inraw                This is an alias for 'inder'
+       --tlsa-rr              Print the DANE RR data on a certificate or public key
+                                - requires these options:
+                                host
+       --host=str             Specify the hostname to be used in the DANE RR
+       --proto=str            The protocol set for DANE data (tcp, udp etc.)
+       --port=num             Specify the port number for the DANE data.
+       --ca                   Whether the provided certificate or public key is a Certificate
+Authority.
+       --x509                 Use the hash of the X.509 certificate, rather than the public key.
+       --local                The provided certificate or public key is a local entity.
+   -v, --version[=arg]        Output version information and exit
+   -h, --help                 Display extended usage information and exit
+   -!, --more-help            Extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+
+
+
+Tool to generate DNS resource records for the DANE protocol.
+
+please send bug reports to:  bug-gnutls@gnu.org
+</pre></div>
+
+<a name="danetool-debug"></a><a name="debug-option-_0028_002dd_0029-4"></a>
+<h4 class="subheading">debug option (-d)</h4>
+
+<p>This is the &ldquo;enable debugging.&rdquo; option.
+This option takes an argument number.
+Specifies the debug level.
+<a name="danetool-load_002dpubkey"></a></p><a name="load_002dpubkey-option-1"></a>
+<h4 class="subheading">load-pubkey option</h4>
+
+<p>This is the &ldquo;loads a public key file&rdquo; option.
+This option takes an argument string.
+This can be either a file or a PKCS #11 URL
+<a name="danetool-load_002dcertificate"></a></p><a name="load_002dcertificate-option-1"></a>
+<h4 class="subheading">load-certificate option</h4>
+
+<p>This is the &ldquo;loads a certificate file&rdquo; option.
+This option takes an argument string.
+This can be either a file or a PKCS #11 URL
+<a name="danetool-hash"></a></p><a name="hash-option-1"></a>
+<h4 class="subheading">hash option</h4>
+
+<p>This is the &ldquo;hash algorithm to use for signing.&rdquo; option.
+This option takes an argument string.
+Available hash functions are SHA1, RMD160, SHA256, SHA384, SHA512.
+<a name="danetool-check"></a></p><a name="check-option"></a>
+<h4 class="subheading">check option</h4>
+
+<p>This is the &ldquo;check a host&rsquo;s dane tlsa entry.&rdquo; option.
+This option takes an argument string.
+Obtains the DANE TLSA entry from the given hostname and prints information.
+<a name="danetool-local_002ddns"></a></p><a name="local_002ddns-option"></a>
+<h4 class="subheading">local-dns option</h4>
+
+<p>This is the &ldquo;use the local dns server for dnssec resolving.&rdquo; option.
+This option will use the local DNS server for DNSSEC.
+This is disabled by default due to many servers not allowing DNSSEC.
+<a name="danetool-inder"></a></p><a name="inder-option-1"></a>
+<h4 class="subheading">inder option</h4>
+
+<p>This is the &ldquo;use der format for input certificates and private keys.&rdquo; option.
+The input files will be assumed to be in DER or RAW format. 
+Unlike options that in PEM input would allow multiple input data (e.g. multiple 
+certificates), when reading in DER format a single data structure is read.
+<a name="danetool-inraw"></a></p><a name="inraw-option-1"></a>
+<h4 class="subheading">inraw option</h4>
+
+<p>This is an alias for the inder option,
+see <a href="#danetool-inder">the inder option documentation</a>.
+</p>
+<a name="danetool-tlsa_002drr"></a><a name="tlsa_002drr-option"></a>
+<h4 class="subheading">tlsa-rr option</h4>
+
+<p>This is the &ldquo;print the dane rr data on a certificate or public key&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> must appear in combination with the following options:
+host.
+</li></ul>
+
+<p>This command prints the DANE RR data needed to enable DANE on a DNS server.
+<a name="danetool-host"></a></p><a name="host-option"></a>
+<h4 class="subheading">host option</h4>
+
+<p>This is the &ldquo;specify the hostname to be used in the dane rr&rdquo; option.
+This option takes an argument string <samp>Hostname</samp>.
+This command sets the hostname for the DANE RR.
+<a name="danetool-proto"></a></p><a name="proto-option"></a>
+<h4 class="subheading">proto option</h4>
+
+<p>This is the &ldquo;the protocol set for dane data (tcp, udp etc.)&rdquo; option.
+This option takes an argument string <samp>Protocol</samp>.
+This command specifies the protocol for the service set in the DANE data.
+<a name="danetool-ca"></a></p><a name="ca-option"></a>
+<h4 class="subheading">ca option</h4>
+
+<p>This is the &ldquo;whether the provided certificate or public key is a certificate authority.&rdquo; option.
+Marks the DANE RR as a CA certificate if specified.
+<a name="danetool-x509"></a></p><a name="x509-option"></a>
+<h4 class="subheading">x509 option</h4>
+
+<p>This is the &ldquo;use the hash of the x.509 certificate, rather than the public key.&rdquo; option.
+This option forces the generated record to contain the hash of the full X.509 certificate. By default only the hash of the public key is used.
+<a name="danetool-local"></a></p><a name="local-option"></a>
+<h4 class="subheading">local option</h4>
+
+<p>This is the &ldquo;the provided certificate or public key is a local entity.&rdquo; option.
+DANE distinguishes certificates and public keys offered via the DNSSEC to trusted and local entities. Use this flag if this is a local (and possibly unsigned) entity.
+<a name="danetool-exit-status"></a></p><a name="danetool-exit-status-1"></a>
+<h4 class="subheading">danetool exit status</h4>
+
+<p>One of the following exit values will be returned:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>0 (EXIT_SUCCESS)</samp>&rsquo;</dt>
+<dd><p>Successful program execution.
+</p></dd>
+<dt>&lsquo;<samp>1 (EXIT_FAILURE)</samp>&rsquo;</dt>
+<dd><p>The operation failed or the command syntax was not valid.
+</p></dd>
+</dl>
+<a name="danetool-See-Also"></a><a name="danetool-See-Also-1"></a>
+<h4 class="subheading">danetool See Also</h4>
+<p>certtool (1)
+</p>
+<a name="danetool-Examples"></a><a name="danetool-Examples-1"></a>
+<h4 class="subheading">danetool Examples</h4>
+<a name="DANE-TLSA-RR-generation"></a>
+<h4 class="subheading">DANE TLSA RR generation</h4>
+
+<p>To create a DANE TLSA resource record for a CA signed certificate use the following commands.
+</p>
+<div class="example">
+<pre class="example">$ danetool --tlsa-rr --host www.example.com --load-certificate cert.pem
+</pre></div>
+
+<p>For a self signed certificate use:
+</p><div class="example">
+<pre class="example">$ danetool --tlsa-rr --host www.example.com --load-certificate cert.pem \
+  --local
+</pre></div>
+
+<p>The latter is useful to add in your DNS entry even if your certificate is signed 
+by a CA. That way even users who do not trust your CA will be able to verify your
+certificate using DANE.
+</p>
+<p>In order to create a record for the signer of your certificate use:
+</p><div class="example">
+<pre class="example">$ danetool --tlsa-rr --host www.example.com --load-certificate cert.pem \
+  --ca
+</pre></div>
+
+<p>To read a server&rsquo;s DANE TLSA entry, use:
+</p><div class="example">
+<pre class="example">$ danetool --check www.example.com --proto tcp --port 443
+</pre></div>
+
+<p>To verify a server&rsquo;s DANE TLSA entry, use:
+</p><div class="example">
+<pre class="example">$ danetool --check www.example.com --proto tcp --port 443 --load-certificate chain.pem
+</pre></div>
+
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="ocsptool-Invocation.html#ocsptool-Invocation" accesskey="p" rel="previous">ocsptool Invocation</a>, Up: <a href="More-on-certificate-authentication.html#More-on-certificate-authentication" accesskey="u" rel="up">More on certificate authentication</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

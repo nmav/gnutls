@@ -1,0 +1,82 @@
+#include 'common.wml' page="Commercial support"
+
+<ul>
+  <li><a name="about"><b>About Commercial Support</b></a>
+
+    <p>The GnuTLS project is community developed, and everyone is
+      welcome to contribute under certain conditions.  There
+      is <a href="lists.html">free support</a> available.
+
+    <p>Some companies are offering paid services to meet specific
+      needs.  This page contain links to companies that wishes to
+      announce their interest in working with GnuTLS and related
+      software.</p>
+
+    <p>The information comes from the people who asked to be listed;
+      we do not include any information we know to be false, but we
+      cannot check out any of the information; we are transmitting it
+      to you as it was given to us and do not promise it is correct.
+      Also, this is not an endorsement of the people listed here.  We
+      have no opinions and usually no information about the abilities
+      of any specific person. We provide this list to enable you to
+      contact service providers and decide for yourself whether to
+      hire one.</p>
+
+  <li><a name="list"><b>Companies offering GnuTLS support</b></a>
+
+    <p><center>
+	 <table class="news" border="0" cellspacing="1" width="80%">
+	 <tr>
+	   <th>Company</th>
+	   <th>Location</th>
+	   <th>Information</th>
+	 </tr>
+
+	 <tr>
+	   <td>Simon Josefsson Datakonsult AB</td>
+	   <td>Stockholm, Sweden</td>
+	   <td>Offers customized development of new features (e.g.,
+	     TLS extensions, new cipher suites), porting GnuTLS to new
+	     platforms, help with integrating GnuTLS in your own
+	     project, security audits, and more.<br>
+	     <br>
+	     <b>Web:</b>
+	     <a href="http://josefsson.org/">
+	       http://josefsson.org/</a><br>
+	     <b>E-mail:</b>
+	     <a href="mailto:simon@josefsson.org">
+	       simon@josefsson.org</a>
+	   </td>
+	 </tr>
+       </table>
+     </center></p>
+
+   <li><a name="add"><b>List yourself</b></a>
+
+    <p>Before we will list your name, we ask that you agree informally
+      to the following terms:</p>
+
+    <ol>
+      <li>You will not restrict (except by copyleft) the use or
+	distribution of any software, documentation, or other
+	technical information you supply anyone in the course of
+	modifying, extending, or supporting free software.  This
+	includes any information specifically designed to ameliorate
+	the use of free software.
+
+      <li>You will not take advantage of contact made through the this
+	page to advertise an unrelated business (e.g., sales of
+	proprietary information).  You may spontaneously mention your
+	availability for general consulting, but you should not
+	promote a specific unrelated business unless the client asks.
+    </ol>
+
+    <p>If you want to be listed here,
+      please <a href="mailto:$(EMAIL)">contact us</a>.  The
+      information is listed in the order we receive requests.  We
+      might eventually divide the list up by geographic location or
+      type of service.</p>
+
+</ul>
+
+#include 'bottom.wml'

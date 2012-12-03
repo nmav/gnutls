@@ -1,0 +1,761 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is last updated 17 November 2012 for version
+3.1.5 of GnuTLS.
+
+Copyright (C) 2001-2012 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License". -->
+<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GnuTLS 3.1.5: certtool Invocation</title>
+
+<meta name="description" content="GnuTLS 3.1.5: certtool Invocation">
+<meta name="keywords" content="GnuTLS 3.1.5: certtool Invocation">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Function-and-Data-Index.html#Function-and-Data-Index" rel="index" title="Function and Data Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="More-on-certificate-authentication.html#More-on-certificate-authentication" rel="up" title="More on certificate authentication">
+<link href="ocsptool-Invocation.html#ocsptool-Invocation" rel="next" title="ocsptool Invocation">
+<link href="Managing-encrypted-keys.html#Managing-encrypted-keys" rel="previous" title="Managing encrypted keys">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+body { 
+	margin: 2%;
+	padding: 0 5%;
+	background: #ffffff;
+}
+h1,h2,h3,h4,h5 {
+    font-weight: bold;
+    padding: 5px 5px 5px 5px;
+    background-color: #c2e0ff;
+    color: #336699;
+}
+h1 {
+    padding: 2em 2em 2em 5%;
+    color: white;
+    background: #336699;
+    text-align: center;
+    letter-spacing: 3px;
+}
+h2 { text-decoration: underline; }
+pre {
+  margin: 0 5%;
+  padding: 0.5em;
+}
+pre.example,pre.verbatim {
+  padding-bottom: 1em;
+
+  border: solid #c2e0ff;
+  background: #f0faff;
+  border-width: 1px 1px 1px 5px;
+  margin: 1em auto;
+  width: 90%;
+}
+
+div.node {
+  margin: 0 -5% 0 -2%;
+  padding: 0.5em 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+dd, li {
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+}
+div.float {
+
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+table {
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+}
+
+th {
+  padding: 0;
+  color: #336699;
+  background-color: #c2e0ff;
+  border: solid #000000;
+  border-width: 0px;
+  margin: 1em auto;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+td {
+  padding: 0;
+  border: solid #000000;
+  background-color: #f0faff;
+  border-width: 0px;
+  margin: 1em auto;
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left: 1em;
+}
+
+dl {
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+
+  padding-left: 1em;
+  border: solid #c2e0ff;
+  background: #f0faff;
+  border-width: 5px 1px 1px 1px;
+  margin: 1em auto;
+}
+
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="certtool-Invocation"></a>
+<div class="header">
+<p>
+Next: <a href="ocsptool-Invocation.html#ocsptool-Invocation" accesskey="n" rel="next">ocsptool Invocation</a>, Previous: <a href="Managing-encrypted-keys.html#Managing-encrypted-keys" accesskey="p" rel="previous">Managing encrypted keys</a>, Up: <a href="More-on-certificate-authentication.html#More-on-certificate-authentication" accesskey="u" rel="up">More on certificate authentication</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Invoking-certtool"></a>
+<h3 class="section">6.5 Invoking certtool</h3>
+<a name="index-certtool"></a>
+
+
+<p>Tool to parse and generate X.509 certificates, requests and private keys.
+It can be used interactively or non interactively by
+specifying the template command line option.
+</p>
+<p>This section was generated by <strong>AutoGen</strong>,
+using the <code>agtexi-cmd</code> template and the option descriptions for the <code>certtool</code> program.
+This software is released under the GNU General Public License, version 3 or later.
+</p>
+
+<a name="certtool-usage"></a><a name="certtool-help_002fusage-_0028_002dh_0029"></a>
+<h4 class="subheading">certtool help/usage (-h)</h4>
+<a name="index-certtool-help"></a>
+
+<p>This is the automatically generated usage text for certtool.
+The text printed is the same whether for the <code>help</code> option (-h) or the <code>more-help</code> option (-!).  <code>more-help</code> will print
+the usage text by passing it through a pager program.
+<code>more-help</code> is disabled on platforms without a working
+<code>fork(2)</code> function.  The <code>PAGER</code> environment variable is
+used to select the program, defaulting to <samp>more</samp>.  Both will exit
+with a status code of 0.
+</p>
+<div class="example">
+<pre class="example">certtool - GnuTLS certificate tool - Ver. 3.1.5
+USAGE:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+
+   -d, --debug=num            Enable debugging.
+                                - It must be in the range:
+                                  0 to 9999
+   -V, --verbose              More verbose output
+                                - may appear multiple times
+       --infile=file          Input file
+                                - file must pre-exist
+       --outfile=str          Output file
+   -s, --generate-self-signed  Generate a self-signed certificate
+   -c, --generate-certificate  Generate a signed certificate
+       --generate-proxy       Generates a proxy certificate
+       --generate-crl         Generate a CRL
+   -u, --update-certificate   Update a signed certificate
+   -p, --generate-privkey     Generate a private key
+   -q, --generate-request     Generate a PKCS #10 certificate request
+   -e, --verify-chain         Verify a PEM encoded certificate chain.
+       --verify               Verify a PEM encoded certificate chain using a trusted list.
+                                - requires these options:
+                                load-ca-certificate
+       --verify-crl           Verify a CRL using a trusted list.
+                                - requires these options:
+                                load-ca-certificate
+       --generate-dh-params   Generate PKCS #3 encoded Diffie-Hellman parameters.
+       --get-dh-params        Get the included PKCS #3 encoded Diffie-Hellman parameters.
+       --dh-info              Print information PKCS #3 encoded Diffie-Hellman parameters
+       --load-privkey=str     Loads a private key file
+       --load-pubkey=str      Loads a public key file
+       --load-request=file    Loads a certificate request file
+                                - file must pre-exist
+       --load-certificate=str Loads a certificate file
+       --load-ca-privkey=str  Loads the certificate authority's private key file
+       --load-ca-certificate=str Loads the certificate authority's certificate file
+       --password=str         Password to use
+       --hex-numbers          Print big number in an easier format to parse
+       --null-password        Enforce a NULL password
+   -i, --certificate-info     Print information on the given certificate
+       --certificate-pubkey   Print certificate's public key
+       --pgp-certificate-info  Print information on the given OpenPGP certificate
+       --pgp-ring-info        Print information on the given OpenPGP keyring structure
+   -l, --crl-info             Print information on the given CRL structure
+       --crq-info             Print information on the given certificate request
+       --no-crq-extensions    Do not use extensions in certificate requests
+       --p12-info             Print information on a PKCS #12 structure
+       --p7-info              Print information on a PKCS #7 structure
+       --smime-to-p7          Convert S/MIME to PKCS #7 structure
+   -k, --key-info             Print information on a private key
+       --pgp-key-info         Print information on an OpenPGP private key
+       --pubkey-info          Print information on a public key
+       --v1                   Generate an X.509 version 1 certificate (with no extensions)
+       --to-p12               Generate a PKCS #12 structure
+                                - requires these options:
+                                load-certificate
+       --to-p8                Generate a PKCS #8 structure
+   -8, --pkcs8                Use PKCS #8 format for private keys
+       --rsa                  Generate RSA key
+       --dsa                  Generate DSA key
+       --ecc                  Generate ECC (ECDSA) key
+       --ecdsa                This is an alias for 'ecc'
+       --hash=str             Hash algorithm to use for signing.
+       --inder                Use DER format for input certificates and private keys.
+                                - disabled as --no-inder
+       --inraw                This is an alias for 'inder'
+       --outder               Use DER format for output certificates and private keys
+                                - disabled as --no-outder
+       --outraw               This is an alias for 'outder'
+       --bits=num             Specify the number of bits for key generate
+       --sec-param=str        Specify the security level [low, legacy, normal, high, ultra].
+       --disable-quick-random  No effect
+       --template=file        Template file to use for non-interactive operation
+                                - file must pre-exist
+       --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
+   -v, --version[=arg]        Output version information and exit
+   -h, --help                 Display extended usage information and exit
+   -!, --more-help            Extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+
+
+
+Tool to parse and generate X.509 certificates, requests and private keys.
+It can be used interactively or non interactively by specifying the
+template command line option.
+
+please send bug reports to:  bug-gnutls@gnu.org
+</pre></div>
+
+<a name="certtool-debug"></a><a name="debug-option-_0028_002dd_0029-2"></a>
+<h4 class="subheading">debug option (-d)</h4>
+
+<p>This is the &ldquo;enable debugging.&rdquo; option.
+This option takes an argument number.
+Specifies the debug level.
+<a name="certtool-verify_002dchain"></a></p><a name="verify_002dchain-option-_0028_002de_0029"></a>
+<h4 class="subheading">verify-chain option (-e)</h4>
+
+<p>This is the &ldquo;verify a pem encoded certificate chain.&rdquo; option.
+The last certificate in the chain must be a self signed one.
+<a name="certtool-verify"></a></p><a name="verify-option-1"></a>
+<h4 class="subheading">verify option</h4>
+
+<p>This is the &ldquo;verify a pem encoded certificate chain using a trusted list.&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> must appear in combination with the following options:
+load-ca-certificate.
+</li></ul>
+
+<p>The trusted certificate list must be loaded with &ndash;load-ca-certificate.
+<a name="certtool-verify_002dcrl"></a></p><a name="verify_002dcrl-option"></a>
+<h4 class="subheading">verify-crl option</h4>
+
+<p>This is the &ldquo;verify a crl using a trusted list.&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> must appear in combination with the following options:
+load-ca-certificate.
+</li></ul>
+
+<p>The trusted certificate list must be loaded with &ndash;load-ca-certificate.
+<a name="certtool-get_002ddh_002dparams"></a></p><a name="get_002ddh_002dparams-option"></a>
+<h4 class="subheading">get-dh-params option</h4>
+
+<p>This is the &ldquo;get the included pkcs #3 encoded diffie-hellman parameters.&rdquo; option.
+Returns stored DH parameters in GnuTLS. Those parameters are used in the SRP protocol. The parameters returned by fresh generation
+are more efficient since GnuTLS 3.0.9.
+<a name="certtool-load_002dprivkey"></a></p><a name="load_002dprivkey-option"></a>
+<h4 class="subheading">load-privkey option</h4>
+
+<p>This is the &ldquo;loads a private key file&rdquo; option.
+This option takes an argument string.
+This can be either a file or a PKCS #11 URL
+<a name="certtool-load_002dpubkey"></a></p><a name="load_002dpubkey-option"></a>
+<h4 class="subheading">load-pubkey option</h4>
+
+<p>This is the &ldquo;loads a public key file&rdquo; option.
+This option takes an argument string.
+This can be either a file or a PKCS #11 URL
+<a name="certtool-load_002dcertificate"></a></p><a name="load_002dcertificate-option"></a>
+<h4 class="subheading">load-certificate option</h4>
+
+<p>This is the &ldquo;loads a certificate file&rdquo; option.
+This option takes an argument string.
+This can be either a file or a PKCS #11 URL
+<a name="certtool-load_002dca_002dprivkey"></a></p><a name="load_002dca_002dprivkey-option"></a>
+<h4 class="subheading">load-ca-privkey option</h4>
+
+<p>This is the &ldquo;loads the certificate authority&rsquo;s private key file&rdquo; option.
+This option takes an argument string.
+This can be either a file or a PKCS #11 URL
+<a name="certtool-load_002dca_002dcertificate"></a></p><a name="load_002dca_002dcertificate-option"></a>
+<h4 class="subheading">load-ca-certificate option</h4>
+
+<p>This is the &ldquo;loads the certificate authority&rsquo;s certificate file&rdquo; option.
+This option takes an argument string.
+This can be either a file or a PKCS #11 URL
+<a name="certtool-null_002dpassword"></a></p><a name="null_002dpassword-option"></a>
+<h4 class="subheading">null-password option</h4>
+
+<p>This is the &ldquo;enforce a null password&rdquo; option.
+This option enforces a NULL password. This may be different than the empty password in some schemas.
+<a name="certtool-pubkey_002dinfo"></a></p><a name="pubkey_002dinfo-option"></a>
+<h4 class="subheading">pubkey-info option</h4>
+
+<p>This is the &ldquo;print information on a public key&rdquo; option.
+The option combined with &ndash;load-request, &ndash;load-pubkey, &ndash;load-privkey and &ndash;load-certificate will extract the public key of the object in question.
+<a name="certtool-to_002dp12"></a></p><a name="to_002dp12-option"></a>
+<h4 class="subheading">to-p12 option</h4>
+
+<p>This is the &ldquo;generate a pkcs #12 structure&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> must appear in combination with the following options:
+load-certificate.
+</li></ul>
+
+<p>It requires a certificate, a private key and possibly a CA certificate to be specified.
+<a name="certtool-rsa"></a></p><a name="rsa-option"></a>
+<h4 class="subheading">rsa option</h4>
+
+<p>This is the &ldquo;generate rsa key&rdquo; option.
+When combined with &ndash;generate-privkey generates an RSA private key.
+<a name="certtool-dsa"></a></p><a name="dsa-option"></a>
+<h4 class="subheading">dsa option</h4>
+
+<p>This is the &ldquo;generate dsa key&rdquo; option.
+When combined with &ndash;generate-privkey generates a DSA private key.
+<a name="certtool-ecc"></a></p><a name="ecc-option"></a>
+<h4 class="subheading">ecc option</h4>
+
+<p>This is the &ldquo;generate ecc (ecdsa) key&rdquo; option.
+When combined with &ndash;generate-privkey generates an elliptic curve private key to be used with ECDSA.
+<a name="certtool-ecdsa"></a></p><a name="ecdsa-option"></a>
+<h4 class="subheading">ecdsa option</h4>
+
+<p>This is an alias for the ecc option,
+see <a href="#certtool-ecc">the ecc option documentation</a>.
+</p>
+<a name="certtool-hash"></a><a name="hash-option"></a>
+<h4 class="subheading">hash option</h4>
+
+<p>This is the &ldquo;hash algorithm to use for signing.&rdquo; option.
+This option takes an argument string.
+Available hash functions are SHA1, RMD160, SHA256, SHA384, SHA512.
+<a name="certtool-inder"></a></p><a name="inder-option"></a>
+<h4 class="subheading">inder option</h4>
+
+<p>This is the &ldquo;use der format for input certificates and private keys.&rdquo; option.
+The input files will be assumed to be in DER or RAW format. 
+Unlike options that in PEM input would allow multiple input data (e.g. multiple 
+certificates), when reading in DER format a single data structure is read.
+<a name="certtool-inraw"></a></p><a name="inraw-option"></a>
+<h4 class="subheading">inraw option</h4>
+
+<p>This is an alias for the inder option,
+see <a href="#certtool-inder">the inder option documentation</a>.
+</p>
+<a name="certtool-outder"></a><a name="outder-option"></a>
+<h4 class="subheading">outder option</h4>
+
+<p>This is the &ldquo;use der format for output certificates and private keys&rdquo; option.
+The output will be in DER or RAW format.
+<a name="certtool-outraw"></a></p><a name="outraw-option"></a>
+<h4 class="subheading">outraw option</h4>
+
+<p>This is an alias for the outder option,
+see <a href="#certtool-outder">the outder option documentation</a>.
+</p>
+<a name="certtool-sec_002dparam"></a><a name="sec_002dparam-option"></a>
+<h4 class="subheading">sec-param option</h4>
+
+<p>This is the &ldquo;specify the security level [low, legacy, normal, high, ultra].&rdquo; option.
+This option takes an argument string <samp>Security parameter</samp>.
+This is alternative to the bits option.
+<a name="certtool-pkcs_002dcipher"></a></p><a name="pkcs_002dcipher-option"></a>
+<h4 class="subheading">pkcs-cipher option</h4>
+
+<p>This is the &ldquo;cipher to use for pkcs #8 and #12 operations&rdquo; option.
+This option takes an argument string <samp>Cipher</samp>.
+Cipher may be one of 3des, 3des-pkcs12, aes-128, aes-192, aes-256, rc2-40, arcfour.
+<a name="certtool-exit-status"></a></p><a name="certtool-exit-status-1"></a>
+<h4 class="subheading">certtool exit status</h4>
+
+<p>One of the following exit values will be returned:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>0 (EXIT_SUCCESS)</samp>&rsquo;</dt>
+<dd><p>Successful program execution.
+</p></dd>
+<dt>&lsquo;<samp>1 (EXIT_FAILURE)</samp>&rsquo;</dt>
+<dd><p>The operation failed or the command syntax was not valid.
+</p></dd>
+</dl>
+<a name="certtool-See-Also"></a><a name="certtool-See-Also-1"></a>
+<h4 class="subheading">certtool See Also</h4>
+<p>p11tool (1)
+</p>
+<a name="certtool-Examples"></a><a name="certtool-Examples-1"></a>
+<h4 class="subheading">certtool Examples</h4>
+<a name="Generating-private-keys"></a>
+<h4 class="subheading">Generating private keys</h4>
+<p>To create an RSA private key, run:
+</p><div class="example">
+<pre class="example">$ certtool --generate-privkey --outfile key.pem --rsa
+</pre></div>
+
+<p>To create a DSA or elliptic curves (ECDSA) private key use the
+above command combined with &rsquo;dsa&rsquo; or &rsquo;ecc&rsquo; options.
+</p>
+<a name="Generating-certificate-requests"></a>
+<h4 class="subheading">Generating certificate requests</h4>
+<p>To create a certificate request (needed when the certificate is  issued  by
+another party), run:
+</p><div class="example">
+<pre class="example">certtool --generate-request --load-privkey key.pem \
+   --outfile request.pem
+</pre></div>
+
+<p>If the private key is stored in a smart card you can generate
+a request by specifying the private key object URL.
+</p><div class="example">
+<pre class="example">$ ./certtool --generate-request --load-privkey &quot;pkcs11:...&quot; \
+  --load-pubkey &quot;pkcs11:...&quot; --outfile request.pem
+</pre></div>
+
+
+<a name="Generating-a-self_002dsigned-certificate"></a>
+<h4 class="subheading">Generating a self-signed certificate</h4>
+<p>To create a self signed certificate, use the command:
+</p><div class="example">
+<pre class="example">$ certtool --generate-privkey --outfile ca-key.pem
+$ certtool --generate-self-signed --load-privkey ca-key.pem \
+   --outfile ca-cert.pem
+</pre></div>
+
+<p>Note that a self-signed certificate usually belongs to a certificate
+authority, that signs other certificates.
+</p>
+<a name="Generating-a-certificate"></a>
+<h4 class="subheading">Generating a certificate</h4>
+<p>To generate a certificate using the previous request, use the command:
+</p><div class="example">
+<pre class="example">$ certtool --generate-certificate --load-request request.pem \
+   --outfile cert.pem --load-ca-certificate ca-cert.pem \
+   --load-ca-privkey ca-key.pem
+</pre></div>
+
+<p>To generate a certificate using the private key only, use the command:
+</p><div class="example">
+<pre class="example">$ certtool --generate-certificate --load-privkey key.pem \
+   --outfile cert.pem --load-ca-certificate ca-cert.pem \
+   --load-ca-privkey ca-key.pem
+</pre></div>
+
+<a name="Certificate-information"></a>
+<h4 class="subheading">Certificate information</h4>
+<p>To view the certificate information, use:
+</p><div class="example">
+<pre class="example">$ certtool --certificate-info --infile cert.pem
+</pre></div>
+
+<a name="PKCS-_002312-structure-generation"></a>
+<h4 class="subheading">PKCS #12 structure generation</h4>
+<p>To generate a PKCS #12 structure using the previous key and certificate,
+use the command:
+</p><div class="example">
+<pre class="example">$ certtool --load-certificate cert.pem --load-privkey key.pem \
+   --to-p12 --outder --outfile key.p12
+</pre></div>
+
+<p>Some tools (reportedly web browsers) have problems with that file
+because it does not contain the CA certificate for the certificate.
+To work around that problem in the tool, you can use the
+&ndash;load-ca-certificate parameter as follows:
+</p>
+<div class="example">
+<pre class="example">$ certtool --load-ca-certificate ca.pem \
+  --load-certificate cert.pem --load-privkey key.pem \
+  --to-p12 --outder --outfile key.p12
+</pre></div>
+
+<a name="Diffie_002dHellman-parameter-generation"></a>
+<h4 class="subheading">Diffie-Hellman parameter generation</h4>
+<p>To generate parameters for Diffie-Hellman key exchange, use the command:
+</p><div class="example">
+<pre class="example">$ certtool --generate-dh-params --outfile dh.pem --sec-param normal
+</pre></div>
+
+<a name="Proxy-certificate-generation"></a>
+<h4 class="subheading">Proxy certificate generation</h4>
+<p>Proxy certificate can be used to delegate your credential to a
+temporary, typically short-lived, certificate.  To create one from the
+previously created certificate, first create a temporary key and then
+generate a proxy certificate for it, using the commands:
+</p>
+<div class="example">
+<pre class="example">$ certtool --generate-privkey &gt; proxy-key.pem
+$ certtool --generate-proxy --load-ca-privkey key.pem \
+  --load-privkey proxy-key.pem --load-certificate cert.pem \
+  --outfile proxy-cert.pem
+</pre></div>
+
+<a name="Certificate-revocation-list-generation"></a>
+<h4 class="subheading">Certificate revocation list generation</h4>
+<p>To create an empty Certificate Revocation List (CRL) do:
+</p>
+<div class="example">
+<pre class="example">$ certtool --generate-crl --load-ca-privkey x509-ca-key.pem \
+           --load-ca-certificate x509-ca.pem
+</pre></div>
+
+<p>To create a CRL that contains some revoked certificates, place the
+certificates in a file and use <code>--load-certificate</code> as follows:
+</p>
+<div class="example">
+<pre class="example">$ certtool --generate-crl --load-ca-privkey x509-ca-key.pem \
+  --load-ca-certificate x509-ca.pem --load-certificate revoked-certs.pem
+</pre></div>
+
+<p>To verify a Certificate Revocation List (CRL) do:
+</p>
+<div class="example">
+<pre class="example">$ certtool --verify-crl --load-ca-certificate x509-ca.pem &lt; crl.pem
+</pre></div>
+
+<a name="certtool-Files"></a><a name="certtool-Files-1"></a>
+<h4 class="subheading">certtool Files</h4>
+<a name="Certtool_0027s-template-file-format"></a>
+<h4 class="subheading">Certtool&rsquo;s template file format</h4>
+<p>A template file can be used to avoid the interactive questions of
+certtool. Initially create a file named &rsquo;cert.cfg&rsquo; that contains the information
+about the certificate. The template can be used as below:
+</p>
+<div class="example">
+<pre class="example">$ certtool --generate-certificate cert.pem --load-privkey key.pem  \
+   --template cert.cfg \
+   --load-ca-certificate ca-cert.pem --load-ca-privkey ca-key.pem
+</pre></div>
+
+<p>An example certtool template file that can be used to generate a certificate
+request or a self signed certificate follows.
+</p>
+<div class="example">
+<pre class="example"># X.509 Certificate options
+#
+# DN options
+
+# The organization of the subject.
+organization = &quot;Koko inc.&quot;
+
+# The organizational unit of the subject.
+unit = &quot;sleeping dept.&quot;
+
+# The locality of the subject.
+# locality =
+
+# The state of the certificate owner.
+state = &quot;Attiki&quot;
+
+# The country of the subject. Two letter code.
+country = GR
+
+# The common name of the certificate owner.
+cn = &quot;Cindy Lauper&quot;
+
+# A user id of the certificate owner.
+#uid = &quot;clauper&quot;
+
+# Set domain components
+#dc = &quot;name&quot;
+#dc = &quot;domain&quot;
+
+# If the supported DN OIDs are not adequate you can set
+# any OID here.
+# For example set the X.520 Title and the X.520 Pseudonym
+# by using OID and string pairs.
+#dn_oid = 2.5.4.12 Dr. 
+#dn_oid = 2.5.4.65 jackal
+
+# This is deprecated and should not be used in new
+# certificates.
+# pkcs9_email = &quot;none@none.org&quot;
+
+# The serial number of the certificate
+serial = 007
+
+# In how many days, counting from today, this certificate will expire.
+expiration_days = 700
+
+# X.509 v3 extensions
+
+# A dnsname in case of a WWW server.
+#dns_name = &quot;www.none.org&quot;
+#dns_name = &quot;www.morethanone.org&quot;
+
+# A subject alternative name URI
+#uri = &quot;http://www.example.com&quot;
+
+# An IP address in case of a server.
+#ip_address = &quot;192.168.1.1&quot;
+
+# An email in case of a person
+email = &quot;none@none.org&quot;
+
+# Challenge password used in certificate requests
+challenge_passwd = 123456
+
+# An URL that has CRLs (certificate revocation lists)
+# available. Needed in CA certificates.
+#crl_dist_points = &quot;http://www.getcrl.crl/getcrl/&quot;
+
+# Whether this is a CA certificate or not
+#ca
+
+# for microsoft smart card logon
+# key_purpose_oid = 1.3.6.1.4.1.311.20.2.2
+
+### Other predefined key purpose OIDs
+
+# Whether this certificate will be used for a TLS client
+#tls_www_client
+
+# Whether this certificate will be used for a TLS server
+#tls_www_server
+
+# Whether this certificate will be used to sign data (needed
+# in TLS DHE ciphersuites).
+signing_key
+
+# Whether this certificate will be used to encrypt data (needed
+# in TLS RSA ciphersuites). Note that it is preferred to use different
+# keys for encryption and signing.
+#encryption_key
+
+# Whether this key will be used to sign other certificates.
+#cert_signing_key
+
+# Whether this key will be used to sign CRLs.
+#crl_signing_key
+
+# Whether this key will be used to sign code.
+#code_signing_key
+
+# Whether this key will be used to sign OCSP data.
+#ocsp_signing_key
+
+# Whether this key will be used for time stamping.
+#time_stamping_key
+
+# Whether this key will be used for IPsec IKE operations.
+#ipsec_ike_key
+
+### end of key purpose OIDs
+
+# When generating a certificate from a certificate
+# request, then honor the extensions stored in the request
+# and store them in the real certificate.
+#honor_crq_extensions
+
+# Path length contraint. Sets the maximum number of
+# certificates that can be used to certify this certificate.
+# (i.e. the certificate chain length)
+#path_len = -1
+#path_len = 2
+
+# OCSP URI
+# ocsp_uri = http://my.ocsp.server/ocsp
+
+# CA issuers URI
+# ca_issuers_uri = http://my.ca.issuer
+
+# Certificate policies
+# policy1 = 1.3.6.1.4.1.5484.1.10.99.1.0
+# policy1_txt = &quot;This is a long policy to summarize&quot;
+# policy1_url = http://www.example.com/a-policy-to-read
+
+# policy2 = 1.3.6.1.4.1.5484.1.10.99.1.1
+# policy2_txt = &quot;This is a short policy&quot;
+# policy2_url = http://www.example.com/another-policy-to-read
+
+
+# Options for proxy certificates
+# proxy_policy_language = 1.3.6.1.5.5.7.21.1
+
+
+# Options for generating a CRL
+
+# next CRL update will be in 43 days (wow)
+#crl_next_update = 43
+
+# this is the 5th CRL by this CA
+#crl_number = 5
+
+</pre></div>
+
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="ocsptool-Invocation.html#ocsptool-Invocation" accesskey="n" rel="next">ocsptool Invocation</a>, Previous: <a href="Managing-encrypted-keys.html#Managing-encrypted-keys" accesskey="p" rel="previous">Managing encrypted keys</a>, Up: <a href="More-on-certificate-authentication.html#More-on-certificate-authentication" accesskey="u" rel="up">More on certificate authentication</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

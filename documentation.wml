@@ -1,0 +1,25 @@
+#include 'common.wml' page="Documentation"
+
+<p>The GnuTLS manual for the latest stable version is available in many formats. 
+If you find this manual valuable, please consider contributing to its continued maintenance by buying a 
+<a href="http://www.lulu.com/product/paperback/the-gnutls-manual/16364798">paperback copy of the manual at lulu.com</a>.
+
+<!-- Here are quick links to popular formats:-->
+</p>
+<ul>
+  <li><a href="manual/gnutls.html">HTML</a> - entirely on one web page.</li>
+  <li><a href="manual/html_node/index.html">HTML</a> - with one web page per
+      node.</li>
+  <li><a href="manual/gnutls.pdf">PDF file</a>.</li>
+  <li><a href="manual/gnutls.epub">EPUB file</a>.</li>
+</ul>
+
+<p>A reference manual is also available.</p>
+<ul>
+  <li><a href="reference/">GTK-DOC HTML</a>.</li>
+  <li><a href="reference/gnutls.devhelp">GNOME Devhelp</a>.</li>
+</ul>
+
+<a href="http://www.lulu.com/commerce/index.php?fBuyContent=10847678"><img src="http://static.lulu.com/images/services/buy_now_buttons/us/book.gif?20110726123424" border="0" alt="Support independent publishing: Buy this book on Lulu."></a>
+
+#include 'bottom.wml'

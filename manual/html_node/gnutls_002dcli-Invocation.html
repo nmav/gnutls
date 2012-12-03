@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is last updated 17 November 2012 for version
+3.1.5 of GnuTLS.
+
+Copyright (C) 2001-2012 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License". -->
+<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GnuTLS 3.1.5: gnutls-cli Invocation</title>
+
+<meta name="description" content="GnuTLS 3.1.5: gnutls-cli Invocation">
+<meta name="keywords" content="GnuTLS 3.1.5: gnutls-cli Invocation">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Function-and-Data-Index.html#Function-and-Data-Index" rel="index" title="Function and Data Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Other-included-programs.html#Other-included-programs" rel="up" title="Other included programs">
+<link href="gnutls_002dserv-Invocation.html#gnutls_002dserv-Invocation" rel="next" title="gnutls-serv Invocation">
+<link href="Other-included-programs.html#Other-included-programs" rel="previous" title="Other included programs">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+body { 
+	margin: 2%;
+	padding: 0 5%;
+	background: #ffffff;
+}
+h1,h2,h3,h4,h5 {
+    font-weight: bold;
+    padding: 5px 5px 5px 5px;
+    background-color: #c2e0ff;
+    color: #336699;
+}
+h1 {
+    padding: 2em 2em 2em 5%;
+    color: white;
+    background: #336699;
+    text-align: center;
+    letter-spacing: 3px;
+}
+h2 { text-decoration: underline; }
+pre {
+  margin: 0 5%;
+  padding: 0.5em;
+}
+pre.example,pre.verbatim {
+  padding-bottom: 1em;
+
+  border: solid #c2e0ff;
+  background: #f0faff;
+  border-width: 1px 1px 1px 5px;
+  margin: 1em auto;
+  width: 90%;
+}
+
+div.node {
+  margin: 0 -5% 0 -2%;
+  padding: 0.5em 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+dd, li {
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+}
+div.float {
+
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+table {
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+}
+
+th {
+  padding: 0;
+  color: #336699;
+  background-color: #c2e0ff;
+  border: solid #000000;
+  border-width: 0px;
+  margin: 1em auto;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+td {
+  padding: 0;
+  border: solid #000000;
+  background-color: #f0faff;
+  border-width: 0px;
+  margin: 1em auto;
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left: 1em;
+}
+
+dl {
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+
+  padding-left: 1em;
+  border: solid #c2e0ff;
+  background: #f0faff;
+  border-width: 5px 1px 1px 1px;
+  margin: 1em auto;
+}
+
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="gnutls_002dcli-Invocation"></a>
+<div class="header">
+<p>
+Next: <a href="gnutls_002dserv-Invocation.html#gnutls_002dserv-Invocation" accesskey="n" rel="next">gnutls-serv Invocation</a>, Up: <a href="Other-included-programs.html#Other-included-programs" accesskey="u" rel="up">Other included programs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Invoking-gnutls_002dcli"></a>
+<h3 class="section">11.1 Invoking gnutls-cli</h3>
+<a name="index-gnutls_002dcli"></a>
+
+
+<p>Simple client program to set up a TLS connection to some other computer. 
+It sets up a TLS connection and forwards data from the standard input to the secured socket and vice versa.
+</p>
+<p>This section was generated by <strong>AutoGen</strong>,
+using the <code>agtexi-cmd</code> template and the option descriptions for the <code>gnutls-cli</code> program.
+This software is released under the GNU General Public License, version 3 or later.
+</p>
+
+<a name="gnutls_002dcli-usage"></a><a name="gnutls_002dcli-help_002fusage-_0028_002dh_0029"></a>
+<h4 class="subheading">gnutls-cli help/usage (-h)</h4>
+<a name="index-gnutls_002dcli-help"></a>
+
+<p>This is the automatically generated usage text for gnutls-cli.
+The text printed is the same whether for the <code>help</code> option (-h) or the <code>more-help</code> option (-!).  <code>more-help</code> will print
+the usage text by passing it through a pager program.
+<code>more-help</code> is disabled on platforms without a working
+<code>fork(2)</code> function.  The <code>PAGER</code> environment variable is
+used to select the program, defaulting to <samp>more</samp>.  Both will exit
+with a status code of 0.
+</p>
+<div class="example">
+<pre class="example">gnutls-cli - GnuTLS client - Ver. 3.1.5
+USAGE:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [hostname]
+
+   -d, --debug=num            Enable debugging.
+                                - It must be in the range:
+                                  0 to 9999
+   -V, --verbose              More verbose output
+                                - may appear multiple times
+       --tofu                 Enable trust on first use authentication
+                                - disabled as --no-tofu
+       --dane                 Enable DANE certificate verification (DNSSEC)
+                                - disabled as --no-dane
+       --local-dns            Use the local DNS server for DNSSEC resolving.
+                                - disabled as --no-local-dns
+       --ca-verification      Disable CA certificate verification
+                                - disabled as --no-ca-verification
+                                - enabled by default
+       --ocsp                 Enable OCSP certificate verification
+                                - disabled as --no-ocsp
+   -r, --resume               Establish a session and resume
+   -b, --heartbeat            Activate heartbeat support
+   -e, --rehandshake          Establish a session and rehandshake
+       --noticket             Don't accept session tickets
+   -s, --starttls             Connect, establish a plain session and start TLS.
+   -u, --udp                  Use DTLS (datagram TLS) over UDP
+       --mtu=num              Set MTU for datagram TLS
+                                - It must be in the range:
+                                  0 to 17000
+       --srtp-profiles=str    Offer SRTP profiles
+       --crlf                 Send CR LF instead of LF
+       --x509fmtder           Use DER format for certificates to read from
+   -f, --fingerprint          Send the openpgp fingerprint, instead of the key
+       --disable-extensions   Disable all the TLS extensions
+       --print-cert           Print peer's certificate in PEM format
+       --recordsize=num       The maximum record size to advertize
+                                - It must be in the range:
+                                  0 to 4096
+       --dh-bits=num          The minimum number of bits allowed for DH
+       --priority=str         Priorities string
+       --x509cafile=str       Certificate file or PKCS #11 URL to use
+       --x509crlfile=file     CRL file to use
+                                - file must pre-exist
+       --pgpkeyfile=file      PGP Key file to use
+                                - file must pre-exist
+       --pgpkeyring=file      PGP Key ring file to use
+                                - file must pre-exist
+       --pgpcertfile=file     PGP Public Key (certificate) file to use
+                                - file must pre-exist
+       --x509keyfile=str      X.509 key file or PKCS #11 URL to use
+       --x509certfile=str     X.509 Certificate file or PKCS #11 URL to use
+       --pgpsubkey=str        PGP subkey to use (hex or auto)
+       --srpusername=str      SRP username to use
+       --srppasswd=str        SRP password to use
+       --pskusername=str      PSK username to use
+       --pskkey=str           PSK key (in hex) to use
+   -p, --port=str             The port or service to connect to
+       --insecure             Don't abort program if server certificate can't be validated
+       --benchmark-ciphers    Benchmark individual ciphers
+       --benchmark-soft-ciphers  Benchmark individual software ciphers (no hw acceleration)
+       --benchmark-tls-kx     Benchmark TLS key exchange methods
+       --benchmark-tls-ciphers  Benchmark TLS ciphers
+   -l, --list                 Print a list of the supported algorithms and modes
+   -v, --version[=arg]        Output version information and exit
+   -h, --help                 Display extended usage information and exit
+   -!, --more-help            Extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+Operands and options may be intermixed.  They will be reordered.
+
+
+
+Simple client program to set up a TLS connection to some other computer.  It
+sets up a TLS connection and forwards data from the standard input to the
+secured socket and vice versa.
+
+please send bug reports to:  bug-gnutls@gnu.org
+</pre></div>
+
+<a name="gnutls_002dcli-debug"></a><a name="debug-option-_0028_002dd_0029-7"></a>
+<h4 class="subheading">debug option (-d)</h4>
+
+<p>This is the &ldquo;enable debugging.&rdquo; option.
+This option takes an argument number.
+Specifies the debug level.
+<a name="gnutls_002dcli-tofu"></a></p><a name="tofu-option"></a>
+<h4 class="subheading">tofu option</h4>
+
+<p>This is the &ldquo;enable trust on first use authentication&rdquo; option.
+This option will, in addition to certificate authentication, perform authentication based on previously seen public keys, a model similar to SSH authentication.
+<a name="gnutls_002dcli-dane"></a></p><a name="dane-option"></a>
+<h4 class="subheading">dane option</h4>
+
+<p>This is the &ldquo;enable dane certificate verification (dnssec)&rdquo; option.
+This option will, in addition to certificate authentication using 
+the trusted CAs, verify the server certificates using on the DANE information
+available via DNSSEC.
+<a name="gnutls_002dcli-local_002ddns"></a></p><a name="local_002ddns-option-1"></a>
+<h4 class="subheading">local-dns option</h4>
+
+<p>This is the &ldquo;use the local dns server for dnssec resolving.&rdquo; option.
+This option will use the local DNS server for DNSSEC.
+This is disabled by default due to many servers not allowing DNSSEC.
+<a name="gnutls_002dcli-ca_002dverification"></a></p><a name="ca_002dverification-option"></a>
+<h4 class="subheading">ca-verification option</h4>
+
+<p>This is the &ldquo;disable ca certificate verification&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> is enabled by default.
+</li></ul>
+
+<p>This option will disable CA certificate verification. It is to be used with the &ndash;dane or &ndash;tofu options.
+<a name="gnutls_002dcli-ocsp"></a></p><a name="ocsp-option"></a>
+<h4 class="subheading">ocsp option</h4>
+
+<p>This is the &ldquo;enable ocsp certificate verification&rdquo; option.
+This option will enable verification of the peer&rsquo;s certificate using ocsp
+<a name="gnutls_002dcli-resume"></a></p><a name="resume-option-_0028_002dr_0029"></a>
+<h4 class="subheading">resume option (-r)</h4>
+
+<p>This is the &ldquo;establish a session and resume&rdquo; option.
+Connect, establish a session, reconnect and resume.
+<a name="gnutls_002dcli-rehandshake"></a></p><a name="rehandshake-option-_0028_002de_0029"></a>
+<h4 class="subheading">rehandshake option (-e)</h4>
+
+<p>This is the &ldquo;establish a session and rehandshake&rdquo; option.
+Connect, establish a session and rehandshake immediately.
+<a name="gnutls_002dcli-starttls"></a></p><a name="starttls-option-_0028_002ds_0029"></a>
+<h4 class="subheading">starttls option (-s)</h4>
+
+<p>This is the &ldquo;connect, establish a plain session and start tls.&rdquo; option.
+The TLS session will be initiated when EOF or a SIGALRM is received.
+<a name="gnutls_002dcli-disable_002dextensions"></a></p><a name="disable_002dextensions-option"></a>
+<h4 class="subheading">disable-extensions option</h4>
+
+<p>This is the &ldquo;disable all the tls extensions&rdquo; option.
+This option disables all TLS extensions. Deprecated option. Use the priority string.
+<a name="gnutls_002dcli-dh_002dbits"></a></p><a name="dh_002dbits-option"></a>
+<h4 class="subheading">dh-bits option</h4>
+
+<p>This is the &ldquo;the minimum number of bits allowed for dh&rdquo; option.
+This option takes an argument number.
+This option sets the minimum number of bits allowed for a Diffie-Hellman key exchange. You may want to lower the default value if the peer sends a weak prime and you get an connection error with unacceptable prime.
+<a name="gnutls_002dcli-priority"></a></p><a name="priority-option"></a>
+<h4 class="subheading">priority option</h4>
+
+<p>This is the &ldquo;priorities string&rdquo; option.
+This option takes an argument string.
+TLS algorithms and protocols to enable. You can
+use predefined sets of ciphersuites such as PERFORMANCE,
+NORMAL, SECURE128, SECURE256.
+</p>
+<p>Check  the  GnuTLS  manual  on  section  &ldquo;Priority strings&rdquo; for more
+information on allowed keywords
+<a name="gnutls_002dcli-list"></a></p><a name="list-option-_0028_002dl_0029"></a>
+<h4 class="subheading">list option (-l)</h4>
+
+<p>This is the &ldquo;print a list of the supported algorithms and modes&rdquo; option.
+Print a list of the supported algorithms and modes. If a priority string is given then only the enabled ciphersuites are shown.
+<a name="gnutls_002dcli-exit-status"></a></p><a name="gnutls_002dcli-exit-status-1"></a>
+<h4 class="subheading">gnutls-cli exit status</h4>
+
+<p>One of the following exit values will be returned:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>0 (EXIT_SUCCESS)</samp>&rsquo;</dt>
+<dd><p>Successful program execution.
+</p></dd>
+<dt>&lsquo;<samp>1 (EXIT_FAILURE)</samp>&rsquo;</dt>
+<dd><p>The operation failed or the command syntax was not valid.
+</p></dd>
+</dl>
+<a name="gnutls_002dcli-See-Also"></a><a name="gnutls_002dcli-See-Also-1"></a>
+<h4 class="subheading">gnutls-cli See Also</h4>
+<p>gnutls-cli-debug(1), gnutls-serv(1)
+</p>
+<a name="gnutls_002dcli-Examples"></a><a name="gnutls_002dcli-Examples-1"></a>
+<h4 class="subheading">gnutls-cli Examples</h4>
+<a name="Connecting-using-PSK-authentication"></a>
+<h4 class="subheading">Connecting using PSK authentication</h4>
+<p>To connect to a server using PSK authentication, you need to enable the choice of PSK by using a cipher priority parameter such as in the example below. 
+</p><div class="example">
+<pre class="example">$ ./gnutls-cli -p 5556 localhost --pskusername psk_identity \
+    --pskkey 88f3824b3e5659f52d00e959bacab954b6540344 \
+    --priority NORMAL:-KX-ALL:+ECDHE-PSK:+DHE-PSK:+PSK
+Resolving 'localhost'...
+Connecting to '127.0.0.1:5556'...
+- PSK authentication.
+- Version: TLS1.1
+- Key Exchange: PSK
+- Cipher: AES-128-CBC
+- MAC: SHA1
+- Compression: NULL
+- Handshake was completed
+    
+- Simple Client Mode:
+</pre></div>
+<p>By keeping the &ndash;pskusername parameter and removing the &ndash;pskkey parameter, it will query only for the password during the handshake. 
+</p>
+<a name="Listing-ciphersuites-in-a-priority-string"></a>
+<h4 class="subheading">Listing ciphersuites in a priority string</h4>
+<p>To list the ciphersuites in a priority string:
+</p><div class="example">
+<pre class="example">$ ./gnutls-cli --priority SECURE192 -l
+Cipher suites for SECURE192
+TLS_ECDHE_ECDSA_AES_256_CBC_SHA384         0xc0, 0x24	TLS1.2
+TLS_ECDHE_ECDSA_AES_256_GCM_SHA384         0xc0, 0x2e	TLS1.2
+TLS_ECDHE_RSA_AES_256_GCM_SHA384           0xc0, 0x30	TLS1.2
+TLS_DHE_RSA_AES_256_CBC_SHA256             0x00, 0x6b	TLS1.2
+TLS_DHE_DSS_AES_256_CBC_SHA256             0x00, 0x6a	TLS1.2
+TLS_RSA_AES_256_CBC_SHA256                 0x00, 0x3d	TLS1.2
+
+Certificate types: CTYPE-X.509
+Protocols: VERS-TLS1.2, VERS-TLS1.1, VERS-TLS1.0, VERS-SSL3.0, VERS-DTLS1.0
+Compression: COMP-NULL
+Elliptic curves: CURVE-SECP384R1, CURVE-SECP521R1
+PK-signatures: SIGN-RSA-SHA384, SIGN-ECDSA-SHA384, SIGN-RSA-SHA512, SIGN-ECDSA-SHA512
+</pre></div>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="gnutls_002dserv-Invocation.html#gnutls_002dserv-Invocation" accesskey="n" rel="next">gnutls-serv Invocation</a>, Up: <a href="Other-included-programs.html#Other-included-programs" accesskey="u" rel="up">Other included programs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

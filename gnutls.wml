@@ -1,0 +1,67 @@
+#include 'common.wml' page="Overview"
+
+<table class="transparent" border="0" cellspacing="1" width="100%">
+<tr><td>
+  <p>
+    Welcome to <i>GnuTLS</i> project pages
+  </p>
+<ul>
+  <li><a name="overview"><b>Overview</b></a>
+    <p> GnuTLS is a secure communications library implementing the <a href="http://datatracker.ietf.org/wg/tls/charter/">SSL, TLS and DTLS protocols</a>
+        and technologies around them. It provides a simple C language application programming interface (API) 
+        to access the secure communications protocols as well as APIs to parse and
+        write X.509, PKCS #12, OpenPGP and other required structures. It is
+        aimed to be portable and efficient with focus on security and interoperability.
+	</p></li>
+
+  <li><a name="features"><b>Features</b></a>
+    <ul>
+      <li>Support for TLS 1.2, TLS 1.1, TLS 1.0, SSL 3.0 and <a href="http://tools.ietf.org/html/rfc4347">Datagram TLS</a> protocols</li>
+      <li>Support for certificate path validation, as well as <a href="http://www.gnutls.org/manual/html_node/Verifying-a-certificate-using-DANE-_0028DNSSEC_0029.html">DANE</a> and <a href="http://www.gnutls.org/manual/html_node/Verifying-a-certificate-using-trust-on-first-use-authentication.html#Verifying-a-certificate-using-trust-on-first-use-authentication">trust on first use</a>.</li>
+      <li>Support for the <a href="http://www.gnutls.org/manual/html_node/OCSP-certificate-status-checking.html">Online Certificate Status Protocol (OCSP)</a>.</li>
+      <li>Support for multiple certificate types including X.509 and <a href="openpgp.html">OpenPGP</a> certificates.</li>
+      <li>Support for public key methods, including RSA and Elliptic curves, as well as password and key authentication methods such as <a href="http://www.gnutls.org/manual/html_node/Authentication-using-SRP.html#Authentication-using-SRP">SRP</a> and <a href="http://www.gnutls.org/manual/html_node/Authentication-using-PSK.html#Authentication-using-PSK">PSK</a> protocols.</li>
+      <li>Support for all the strong encryption algorithms, including AES and Camellia.
+      <li>Support for CPU-assisted cryptography with VIA padlock and AES-NI instruction sets.
+      <li>Support for cryptographic accelerator drivers via <a href="http://home.gna.org/cryptodev-linux/">/dev/crypto</a>.
+      <li>Supports natively <a href="http://www.gnutls.org/manual/html_node/Smart-cards-and-HSMs.html#Smart-cards-and-HSMs">cryptographic tokens</a> such as smart-cards, via PKCS #11 and the <a href="http://www.gnutls.org/manual/html_node/Trusted-platform-module.html#Trusted-platform-module">Trusted Platform Module (TPM)</a>.</li>
+      <li>Runs on most Unix platforms and Windows.</li>
+    </ul>
+  </li>
+
+  <li><a name="license"><b>License</b></a>
+    <p>The core library licensed under
+      the <a href="http://www.gnu.org/licenses/lgpl.html">GNU
+      Lesser General Public License version 3</a> (LGPLv3+).  The
+      LGPL license is compatible with a wide range of free licenses,
+      and even permit you to use GnuTLS in non-free proprietary
+      programs.  </p> </li>
+</ul>
+
+<ul>
+  <li><a name="documentation"><b>Documentation:</b></a>
+    <p>
+    You can obtain <a href="http://www.lulu.com/shop/nikos-mavrogiannopoulos-and-simon-josefsson/the-gnutls-manual/paperback/product-18963264.html">
+    GnuTLS' manual at lulu.com</a> or download
+    <a href="$(path)documentation.html">any of the electronic formats</a>.
+    </p>
+</ul>
+
+  <p>
+  For more information on GnuTLS features, see the <a
+  href="https://en.wikipedia.org/wiki/Comparison_of_TLS_Implementations">
+  wikipedia article comparing different TLS implementations</a>.
+</p>
+
+</td>
+<td>
+
+<div class="emph-box">
+#include 'rawnews.wml' MAX_NEWS=4 TABLE_CLASS=news-transparent
+</div>
+
+</td>
+</tr>
+</table>
+
+#include 'bottom.wml'

@@ -1,0 +1,5 @@
+<title>GnuTLS 3.1.4</title>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6420">
+GnuTLS 3.1.4</a> was released.  This release includes support
+for the DTLS-SRTP, updates on the DANE library, and several 
+simplifications on the existing API.

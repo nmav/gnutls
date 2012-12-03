@@ -1,0 +1,58 @@
+#include 'head.wml'
+#use wml::std::tags
+
+<perl>
+sub print_li_header {
+my $page = $_[0];
+my $path = $_[1];
+my $name = $_[2];
+my $_name;
+
+if ($page ne $name) {
+  $_name =~ s/\s/_/g;
+  print "<li id=\"tab$_name\"><a href=\"$path\">$name</a></li>\n";
+} else {
+  print "<li id=\"joinfsftab\"><a href=\"$path\">$name</a></li>\n";
+}
+
+return;
+}
+</perl>
+
+
+<div id="null-wrapper"> 
+ 
+<!-- begin of body-include-2 --> 
+      <div id="header"> 
+        <div class="inner" style="position: relative;"> 
+ 
+		<a href="$(path)gnutls-logo.html">
+		<img alt="Gnutls Logo" src="$(path)graphics/gnutls-logo.png" align="Left" border="0" />
+		</a>
+        
+<h1>The GnuTLS transport layer security library</h1> 
+ 
+	</div> 
+      </div> 
+
+<div id="navigation"> 
+ <div class="inner"> 
+
+
+  <ul> 
+   <:= &print_li_header("$(page)","$(path)index.html","Overview") :>
+   <:= &print_li_header("$(page)","$(path)news.html","News") :>
+<!--   <:= &print_li_header("$(page)","$(path)soc.html","Summer of code") :> -->
+   <:= &print_li_header("$(page)","$(path)download.html","Download") :>
+   <:= &print_li_header("$(page)","$(path)lists.html","Mailing lists") :>
+   <:= &print_li_header("$(page)","$(path)devel.html","Development") :>
+   <:= &print_li_header("$(page)","$(path)documentation.html","Documentation") :>
+   <:= &print_li_header("$(page)","$(path)security.html","Security advisories") :>
+   <:= &print_li_header("$(page)","$(path)commercial.html","Commercial support") :>
+   <:= &print_li_header("$(page)","$(path)contrib.html","Authors") :>
+</ul>
+ 
+ </div><!-- /inner --> 
+</div><!--  /navigation --> 
+
+<div id="content" class="inner">

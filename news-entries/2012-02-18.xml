@@ -1,0 +1,5 @@
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/5843">
+GnuTLS 3.0.13</a> was released. This release adds support for a new helper interface
+to support trust on first use (SSH-like authentication), on-line OCSP verification
+in included programs and several updates in the Datagram TLS layer.
+

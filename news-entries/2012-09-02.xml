@@ -1,0 +1,9 @@
+<p>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6281">
+GnuTLS 3.1.1</a> was released, a bug fix release in the new stable branch
+with several optimizations in the elliptic curve subsystem.
+</p>
+<p>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6280">
+GnuTLS 3.0.23</a> was released, a bug fix release in the old stable branch.
+</p>

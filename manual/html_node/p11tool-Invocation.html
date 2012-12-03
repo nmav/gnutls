@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is last updated 17 November 2012 for version
+3.1.5 of GnuTLS.
+
+Copyright (C) 2001-2012 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License". -->
+<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GnuTLS 3.1.5: p11tool Invocation</title>
+
+<meta name="description" content="GnuTLS 3.1.5: p11tool Invocation">
+<meta name="keywords" content="GnuTLS 3.1.5: p11tool Invocation">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Function-and-Data-Index.html#Function-and-Data-Index" rel="index" title="Function and Data Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" rel="up" title="Smart cards and HSMs">
+<link href="Trusted-Platform-Module.html#Trusted-Platform-Module" rel="next" title="Trusted Platform Module">
+<link href="Using-a-PKCS11-token-with-TLS.html#Using-a-PKCS11-token-with-TLS" rel="previous" title="Using a PKCS11 token with TLS">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+body { 
+	margin: 2%;
+	padding: 0 5%;
+	background: #ffffff;
+}
+h1,h2,h3,h4,h5 {
+    font-weight: bold;
+    padding: 5px 5px 5px 5px;
+    background-color: #c2e0ff;
+    color: #336699;
+}
+h1 {
+    padding: 2em 2em 2em 5%;
+    color: white;
+    background: #336699;
+    text-align: center;
+    letter-spacing: 3px;
+}
+h2 { text-decoration: underline; }
+pre {
+  margin: 0 5%;
+  padding: 0.5em;
+}
+pre.example,pre.verbatim {
+  padding-bottom: 1em;
+
+  border: solid #c2e0ff;
+  background: #f0faff;
+  border-width: 1px 1px 1px 5px;
+  margin: 1em auto;
+  width: 90%;
+}
+
+div.node {
+  margin: 0 -5% 0 -2%;
+  padding: 0.5em 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+dd, li {
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+}
+div.float {
+
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+table {
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+}
+
+th {
+  padding: 0;
+  color: #336699;
+  background-color: #c2e0ff;
+  border: solid #000000;
+  border-width: 0px;
+  margin: 1em auto;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+td {
+  padding: 0;
+  border: solid #000000;
+  background-color: #f0faff;
+  border-width: 0px;
+  margin: 1em auto;
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left: 1em;
+}
+
+dl {
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+
+  padding-left: 1em;
+  border: solid #c2e0ff;
+  background: #f0faff;
+  border-width: 5px 1px 1px 1px;
+  margin: 1em auto;
+}
+
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="p11tool-Invocation"></a>
+<div class="header">
+<p>
+Previous: <a href="Using-a-PKCS11-token-with-TLS.html#Using-a-PKCS11-token-with-TLS" accesskey="p" rel="previous">Using a PKCS11 token with TLS</a>, Up: <a href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" accesskey="u" rel="up">Smart cards and HSMs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Invoking-p11tool"></a>
+<h4 class="subsection">7.2.6 Invoking p11tool</h4>
+<a name="index-p11tool"></a>
+
+
+<p>Program that allows handling data from PKCS #11 smart cards
+and security modules. 
+</p>
+<p>To use PKCS #11 tokens with gnutls the configuration file 
+/etc/gnutls/pkcs11.conf has to exist and contain a number of lines of the form &rsquo;load=/usr/lib/opensc-pkcs11.so&rsquo;.
+</p>
+
+<p>This section was generated by <strong>AutoGen</strong>,
+using the <code>agtexi-cmd</code> template and the option descriptions for the <code>p11tool</code> program.
+This software is released under the GNU General Public License, version 3 or later.
+</p>
+
+<a name="p11tool-usage"></a><a name="p11tool-help_002fusage-_0028_002dh_0029"></a>
+<h4 class="subsubheading">p11tool help/usage (-h)</h4>
+<a name="index-p11tool-help"></a>
+
+<p>This is the automatically generated usage text for p11tool.
+The text printed is the same whether for the <code>help</code> option (-h) or the <code>more-help</code> option (-!).  <code>more-help</code> will print
+the usage text by passing it through a pager program.
+<code>more-help</code> is disabled on platforms without a working
+<code>fork(2)</code> function.  The <code>PAGER</code> environment variable is
+used to select the program, defaulting to <samp>more</samp>.  Both will exit
+with a status code of 0.
+</p>
+<div class="example">
+<pre class="example">p11tool - GnuTLS PKCS #11 tool - Ver. 3.1.5
+USAGE:  p11tool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [url]
+
+   -d, --debug=num            Enable debugging.
+                                - It must be in the range:
+                                  0 to 9999
+       --outfile=str          Output file
+       --list-tokens          List all available tokens
+       --export               Export the object specified by the URL
+       --list-mechanisms      List all available mechanisms in a token
+       --list-all             List all available objects in a token
+       --list-all-certs       List all available certificates in a token
+       --list-certs           List all certificates that have an associated private key
+       --list-all-privkeys    List all available private keys in a token
+       --list-all-trusted     List all available certificates marked as trusted
+       --initialize           Initializes a PKCS #11 token
+       --write                Writes the loaded objects to a PKCS #11 token
+       --delete               Deletes the objects matching the PKCS #11 URL
+       --generate-rsa         Generate an RSA private-public key pair
+       --generate-dsa         Generate an RSA private-public key pair
+       --generate-ecc         Generate an RSA private-public key pair
+       --label=str            Sets a label for the write operation
+       --trusted              Marks the object to be written as trusted
+                                - disabled as --no-trusted
+       --private              Marks the object to be written as private
+                                - disabled as --no-private
+                                - enabled by default
+       --login                Force login to token
+                                - disabled as --no-login
+       --detailed-url         Print detailed URLs
+                                - disabled as --no-detailed-url
+       --secret-key=str       Provide a hex encoded secret key
+       --load-privkey=file    Private key file to use
+                                - file must pre-exist
+       --load-pubkey=file     Public key file to use
+                                - file must pre-exist
+       --load-certificate=file Certificate file to use
+                                - file must pre-exist
+   -8, --pkcs8                Use PKCS #8 format for private keys
+       --bits=num             Specify the number of bits for key generate
+       --sec-param=str        Specify the security level
+       --inder                Use DER/RAW format for input
+                                - disabled as --no-inder
+       --inraw                This is an alias for 'inder'
+       --provider=file        Specify the PKCS #11 provider library
+                                - file must pre-exist
+   -v, --version[=arg]        Output version information and exit
+   -h, --help                 Display extended usage information and exit
+   -!, --more-help            Extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+Operands and options may be intermixed.  They will be reordered.
+
+
+
+Program that allows handling data from PKCS #11 smart cards and security
+modules.
+
+To use PKCS #11 tokens with gnutls the configuration file
+/etc/gnutls/pkcs11.conf has to exist and contain a number of lines of the
+form 'load=/usr/lib/opensc-pkcs11.so'.
+
+please send bug reports to:  bug-gnutls@gnu.org
+</pre></div>
+
+<a name="p11tool-debug"></a><a name="debug-option-_0028_002dd_0029-5"></a>
+<h4 class="subsubheading">debug option (-d)</h4>
+
+<p>This is the &ldquo;enable debugging.&rdquo; option.
+This option takes an argument number.
+Specifies the debug level.
+<a name="p11tool-write"></a></p><a name="write-option"></a>
+<h4 class="subsubheading">write option</h4>
+
+<p>This is the &ldquo;writes the loaded objects to a pkcs #11 token&rdquo; option.
+It can be used to write private keys, certificates or secret keys to a token.
+<a name="p11tool-generate_002drsa"></a></p><a name="generate_002drsa-option"></a>
+<h4 class="subsubheading">generate-rsa option</h4>
+
+<p>This is the &ldquo;generate an rsa private-public key pair&rdquo; option.
+Generates an RSA private-public key pair on the specified token.
+<a name="p11tool-generate_002ddsa"></a></p><a name="generate_002ddsa-option"></a>
+<h4 class="subsubheading">generate-dsa option</h4>
+
+<p>This is the &ldquo;generate an rsa private-public key pair&rdquo; option.
+Generates an RSA private-public key pair on the specified token.
+<a name="p11tool-generate_002decc"></a></p><a name="generate_002decc-option"></a>
+<h4 class="subsubheading">generate-ecc option</h4>
+
+<p>This is the &ldquo;generate an rsa private-public key pair&rdquo; option.
+Generates an RSA private-public key pair on the specified token.
+<a name="p11tool-private"></a></p><a name="private-option"></a>
+<h4 class="subsubheading">private option</h4>
+
+<p>This is the &ldquo;marks the object to be written as private&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> is enabled by default.
+</li></ul>
+
+<p>The written object will require a PIN to be used.
+<a name="p11tool-sec_002dparam"></a></p><a name="sec_002dparam-option-1"></a>
+<h4 class="subsubheading">sec-param option</h4>
+
+<p>This is the &ldquo;specify the security level&rdquo; option.
+This option takes an argument string <samp>Security parameter</samp>.
+This is alternative to the bits option. Available options are [low, legacy, normal, high, ultra].
+<a name="p11tool-inder"></a></p><a name="inder-option-2"></a>
+<h4 class="subsubheading">inder option</h4>
+
+<p>This is the &ldquo;use der/raw format for input&rdquo; option.
+Use DER/RAW format for input certificates and private keys.
+<a name="p11tool-inraw"></a></p><a name="inraw-option-2"></a>
+<h4 class="subsubheading">inraw option</h4>
+
+<p>This is an alias for the inder option,
+see <a href="#p11tool-inder">the inder option documentation</a>.
+</p>
+<a name="p11tool-provider"></a><a name="provider-option"></a>
+<h4 class="subsubheading">provider option</h4>
+
+<p>This is the &ldquo;specify the pkcs #11 provider library&rdquo; option.
+This option takes an argument file.
+This will override the default options in /etc/gnutls/pkcs11.conf
+<a name="p11tool-exit-status"></a></p><a name="p11tool-exit-status-1"></a>
+<h4 class="subsubheading">p11tool exit status</h4>
+
+<p>One of the following exit values will be returned:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>0 (EXIT_SUCCESS)</samp>&rsquo;</dt>
+<dd><p>Successful program execution.
+</p></dd>
+<dt>&lsquo;<samp>1 (EXIT_FAILURE)</samp>&rsquo;</dt>
+<dd><p>The operation failed or the command syntax was not valid.
+</p></dd>
+</dl>
+<a name="p11tool-See-Also"></a><a name="p11tool-See-Also-1"></a>
+<h4 class="subsubheading">p11tool See Also</h4>
+<p>certtool (1)
+</p>
+<a name="p11tool-Examples"></a><a name="p11tool-Examples-1"></a>
+<h4 class="subsubheading">p11tool Examples</h4>
+<p>To view all tokens in your system use:
+</p><div class="example">
+<pre class="example">$ p11tool --list-tokens
+</pre></div>
+
+<p>To view all objects in a token use:
+</p><div class="example">
+<pre class="example">$ p11tool --login --list-all &quot;pkcs11:TOKEN-URL&quot;
+</pre></div>
+
+<p>To store a private key and a certificate in a token run:
+</p><div class="example">
+<pre class="example">$ p11tool --login --write &quot;pkcs11:URL&quot; --load-privkey key.pem \
+          --label &quot;Mykey&quot;
+$ p11tool --login --write &quot;pkcs11:URL&quot; --load-certificate cert.pem \
+          --label &quot;Mykey&quot;
+</pre></div>
+<p>Note that some tokens require the same label to be used for the certificate
+and its corresponding private key.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Using-a-PKCS11-token-with-TLS.html#Using-a-PKCS11-token-with-TLS" accesskey="p" rel="previous">Using a PKCS11 token with TLS</a>, Up: <a href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" accesskey="u" rel="up">Smart cards and HSMs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

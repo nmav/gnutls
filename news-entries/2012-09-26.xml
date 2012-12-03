@@ -1,0 +1,11 @@
+<title>GnuTLS 3.0.24 and 3.1.2</title>
+<p>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6334">
+GnuTLS 3.1.2</a> was released.  This release includes feature
+updates, notably support for the DTLS heartbeat message, and bug fixes
+in the current stable branch.
+</p>
+<p>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6333">
+GnuTLS 3.0.24</a> was released, a bug fix release in the old stable branch.
+</p>

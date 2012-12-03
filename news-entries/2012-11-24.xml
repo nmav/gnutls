@@ -1,0 +1,4 @@
+<title>GnuTLS 3.1.5</title>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6438">
+GnuTLS 3.1.5</a> was released.  This release adds support for UCS-2
+encoded DNs, improvements in smart card key generation and few bug-fixes.

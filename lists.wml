@@ -1,0 +1,44 @@
+#include 'common.wml' page="Mailing lists"
+
+ <center>
+  <table class="news" border=0 cellspacing=1 width=80%>
+    <tbody>
+
+      <tr>
+	<th>List</th>
+	<th>Description</th>
+	<th>Archives</th>
+      </tr>
+
+      <tr>
+	<td><a href="http://lists.gnu.org/mailman/listinfo/help-gnutls">help-gnutls</a></td>
+	<td>General mailing list to discuss and ask questions related to GnuTLS.</td>
+	<td><ul>
+	    <li><a href="http://lists.gnu.org/archive/html/help-gnutls/">Official archives</a></li>
+	    <li><a href="http://news.gmane.org/gmane.network.gnutls.general">Gmane archive (web)</a></li>
+	    <li><a href="news://gmane.org/gmane.network.gnutls.general">Gmane archive (news)</a></li>
+	</ul></td>
+      </tr>
+      <tr>
+<!--
+	<td><a href="http://lists.gnupg.org/mailman/listinfo/gnutls-dev">gnutls-dev</a></td>
+-->
+	<td><a href="http://lists.gnu.org/mailman/listinfo/gnutls-devel">gnutls-devel</a></td>
+	<td>Mailing list for discussions related to improving GnuTLS.</td>
+	<td><ul>
+	    <!-- <li><a href="http://lists.gnu.org/archive/html/gnutls-devel/">Official archives</a></li> -->
+	    <li><a href="http://news.gmane.org/gmane.comp.encryption.gpg.gnutls.devel">Gmane archive (web)</a></li>
+	    <li><a href="news://gmane.org/gmane.comp.encryption.gpg.gnutls.devel">Gmane archive (news)</a></li>
+	    <li><a href="http://marc.theaimsgroup.com/?l=gnutls-dev&r=1&w=2">MARC archives</a></li>
+	</ul></td>
+      </tr>
+
+    </tbody>
+  </table>
+ </center>
+
+  <p><b>Bug reports should be addressed to <a
+      href="mailto:$(EMAIL)">$(EMAIL)</a>, which
+      is forwarded to the gnutls-devel list.</b> </p>
+
+#include 'bottom.wml'

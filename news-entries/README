@@ -1,0 +1,10 @@
+Format should be as below. Note that for twitter submission to be successful
+only one URL must exist in the notes, and the notes should be less than 160
+chars.
+
+<title>XXX</title>
+<p>
+<a href="http://link.example.com">GnuTLS X.Y.Z was released.</a>
+My release notes in multiple
+lines
+</p>

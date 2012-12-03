@@ -1,0 +1,46 @@
+#use wml::std::tags
+
+<perl>
+sub read_news {
+my $max = $_[0];
+my $key, $date;
+
+require 'scripts/lib-news.pl';
+
+my %title_hash = ();
+my %summary_hash = ();
+
+parse_news(\%title_hash, \%summary_hash);
+
+foreach $key (sort {$b cmp $a} keys %summary_hash) {
+	print "<tr>\n<td><a name=\"$key\">$key</a></td>\n<td>$summary_hash{$key}</td>\n</tr>\n";
+	$max--;
+
+	last if ($max <= 0);
+}
+
+return;
+}
+
+sub print_table_header {
+my $type = $_[0];
+
+if ($type eq 'news') {
+  print "<table class=\"$type\" width=\"90%\">\n";
+  print "<tr><th>Date</th><th>Comment</th></tr>\n";
+} else {
+  print "News flashes &nbsp;\n";
+  print '<a href="https://twitter.com/GnuTLS" class="twitter-follow-button" data-show-count="false">Follow @GnuTLS</a>
+         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+  print "\n<table class=\"$type\" width=\"95%\">\n";
+}
+return;
+}
+</perl>
+
+<center>
+  <:= &print_table_header("$(TABLE_CLASS)") :>
+
+  <:= &read_news($(MAX_NEWS)) :>
+
+</table>

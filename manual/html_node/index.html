@@ -1,0 +1,515 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is last updated 17 November 2012 for version
+3.1.5 of GnuTLS.
+
+Copyright (C) 2001-2012 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License". -->
+<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GnuTLS 3.1.5: Top</title>
+
+<meta name="description" content="GnuTLS 3.1.5: Top">
+<meta name="keywords" content="GnuTLS 3.1.5: Top">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<link href="Function-and-Data-Index.html#Function-and-Data-Index" rel="index" title="Function and Data Index">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="../dir/index.html" rel="up" title="(dir)">
+<link href="Preface.html#Preface" rel="next" title="Preface">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+body { 
+	margin: 2%;
+	padding: 0 5%;
+	background: #ffffff;
+}
+h1,h2,h3,h4,h5 {
+    font-weight: bold;
+    padding: 5px 5px 5px 5px;
+    background-color: #c2e0ff;
+    color: #336699;
+}
+h1 {
+    padding: 2em 2em 2em 5%;
+    color: white;
+    background: #336699;
+    text-align: center;
+    letter-spacing: 3px;
+}
+h2 { text-decoration: underline; }
+pre {
+  margin: 0 5%;
+  padding: 0.5em;
+}
+pre.example,pre.verbatim {
+  padding-bottom: 1em;
+
+  border: solid #c2e0ff;
+  background: #f0faff;
+  border-width: 1px 1px 1px 5px;
+  margin: 1em auto;
+  width: 90%;
+}
+
+div.node {
+  margin: 0 -5% 0 -2%;
+  padding: 0.5em 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+dd, li {
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+}
+div.float {
+
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+table {
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+}
+
+th {
+  padding: 0;
+  color: #336699;
+  background-color: #c2e0ff;
+  border: solid #000000;
+  border-width: 0px;
+  margin: 1em auto;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+td {
+  padding: 0;
+  border: solid #000000;
+  background-color: #f0faff;
+  border-width: 0px;
+  margin: 1em auto;
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left: 1em;
+}
+
+dl {
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+
+  padding-left: 1em;
+  border: solid #c2e0ff;
+  background: #f0faff;
+  border-width: 5px 1px 1px 1px;
+  margin: 1em auto;
+}
+
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<h1 class="settitle" align="center">GnuTLS 3.1.5</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="SEC_Contents"></a>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a name="toc-Preface-1" href="Preface.html#Preface">1 Preface</a></li>
+  <li><a name="toc-Introduction-to-GnuTLS-1" href="Introduction-to-GnuTLS.html#Introduction-to-GnuTLS">2 Introduction to GnuTLS</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Downloading-and-installing-1" href="Downloading-and-installing.html#Downloading-and-installing">2.1 Downloading and installing</a></li>
+    <li><a name="toc-Overview" href="Document-overview.html#Document-overview">2.2 Overview</a></li>
+  </ul></li>
+  <li><a name="toc-Introduction-to-TLS-and-DTLS" href="Introduction-to-TLS.html#Introduction-to-TLS">3 Introduction to <acronym>TLS</acronym> and <acronym>DTLS</acronym></a>
+  <ul class="no-bullet">
+    <li><a name="toc-TLS-layers-1" href="TLS-layers.html#TLS-layers">3.1 TLS layers</a></li>
+    <li><a name="toc-The-transport-layer-1" href="The-transport-layer.html#The-transport-layer">3.2 The transport layer</a></li>
+    <li><a name="toc-The-TLS-record-protocol-1" href="The-TLS-record-protocol.html#The-TLS-record-protocol">3.3 The TLS record protocol</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Encryption-algorithms-used-in-the-record-layer-1" href="Encryption-algorithms-used-in-the-record-layer.html#Encryption-algorithms-used-in-the-record-layer">3.3.1 Encryption algorithms used in the record layer</a></li>
+      <li><a name="toc-Compression-algorithms-used-in-the-record-layer-1" href="Compression-algorithms-used-in-the-record-layer.html#Compression-algorithms-used-in-the-record-layer">3.3.2 Compression algorithms used in the record layer</a></li>
+      <li><a name="toc-Weaknesses-and-countermeasures-1" href="Weaknesses-and-countermeasures.html#Weaknesses-and-countermeasures">3.3.3 Weaknesses and countermeasures</a></li>
+      <li><a name="toc-On-record-padding" href="On-Record-Padding.html#On-Record-Padding">3.3.4 On record padding</a></li>
+    </ul></li>
+    <li><a name="toc-The-TLS-alert-protocol" href="The-TLS-Alert-Protocol.html#The-TLS-Alert-Protocol">3.4 The TLS alert protocol</a></li>
+    <li><a name="toc-The-TLS-handshake-protocol" href="The-TLS-Handshake-Protocol.html#The-TLS-Handshake-Protocol">3.5 The TLS handshake protocol</a>
+    <ul class="no-bullet">
+      <li><a name="toc-TLS-ciphersuites" href="TLS-Cipher-Suites.html#TLS-Cipher-Suites">3.5.1 TLS ciphersuites</a></li>
+      <li><a name="toc-Authentication-1" href="Authentication.html#Authentication">3.5.2 Authentication</a></li>
+      <li><a name="toc-Client-authentication" href="Client-Authentication.html#Client-Authentication">3.5.3 Client authentication</a></li>
+      <li><a name="toc-Resuming-sessions" href="Resuming-Sessions.html#Resuming-Sessions">3.5.4 Resuming sessions</a></li>
+    </ul></li>
+    <li><a name="toc-TLS-extensions" href="TLS-Extensions.html#TLS-Extensions">3.6 TLS extensions</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Maximum-fragment-length-negotiation-1" href="Maximum-fragment-length-negotiation.html#Maximum-fragment-length-negotiation">3.6.1 Maximum fragment length negotiation</a></li>
+      <li><a name="toc-Server-name-indication-1" href="Server-name-indication.html#Server-name-indication">3.6.2 Server name indication</a></li>
+      <li><a name="toc-Session-tickets-1" href="Session-tickets.html#Session-tickets">3.6.3 Session tickets</a></li>
+      <li><a name="toc-HeartBeat-1" href="HeartBeat.html#HeartBeat">3.6.4 HeartBeat</a></li>
+      <li><a name="toc-Safe-renegotiation-1" href="Safe-renegotiation.html#Safe-renegotiation">3.6.5 Safe renegotiation</a></li>
+      <li><a name="toc-OCSP-status-request-1" href="OCSP-status-request.html#OCSP-status-request">3.6.6 OCSP status request</a></li>
+      <li><a name="toc-SRTP-1" href="SRTP.html#SRTP">3.6.7 SRTP</a></li>
+    </ul></li>
+    <li><a name="toc-How-to-use-TLS-in-application-protocols-1" href="How-to-use-TLS-in-application-protocols.html#How-to-use-TLS-in-application-protocols">3.7 How to use <acronym>TLS</acronym> in application protocols</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Separate-ports-1" href="Separate-ports.html#Separate-ports">3.7.1 Separate ports</a></li>
+      <li><a name="toc-Upward-negotiation-1" href="Upward-negotiation.html#Upward-negotiation">3.7.2 Upward negotiation</a></li>
+    </ul></li>
+    <li><a name="toc-On-SSL-2-and-older-protocols-1" href="On-SSL-2-and-older-protocols.html#On-SSL-2-and-older-protocols">3.8 On SSL 2 and older protocols</a></li>
+  </ul></li>
+  <li><a name="toc-Certificate-authentication-1" href="Certificate-authentication.html#Certificate-authentication">4 Certificate authentication</a>
+  <ul class="no-bullet">
+    <li><a name="toc-X_002e509-certificates-1" href="X_002e509-certificates.html#X_002e509-certificates">4.1 <acronym>X.509</acronym> certificates</a>
+    <ul class="no-bullet">
+      <li><a name="toc-X_002e509-certificate-structure-1" href="X_002e509-certificate-structure.html#X_002e509-certificate-structure">4.1.1 <acronym>X.509</acronym> certificate structure</a></li>
+      <li><a name="toc-Importing-an-X_002e509-certificate-1" href="Importing-an-X_002e509-certificate.html#Importing-an-X_002e509-certificate">4.1.2 Importing an X.509 certificate</a></li>
+      <li><a name="toc-X_002e509-distinguished-names-1" href="X_002e509-distinguished-names.html#X_002e509-distinguished-names">4.1.3 X.509 distinguished names</a></li>
+      <li><a name="toc-Accessing-public-and-private-keys" href="X_002e509-public-and-private-keys.html#X_002e509-public-and-private-keys">4.1.4 Accessing public and private keys</a></li>
+      <li><a name="toc-Verifying-X_002e509-certificate-paths-1" href="Verifying-X_002e509-certificate-paths.html#Verifying-X_002e509-certificate-paths">4.1.5 Verifying <acronym>X.509</acronym> certificate paths</a></li>
+      <li><a name="toc-Verifying-a-certificate-in-the-context-of-TLS-session-1" href="Verifying-a-certificate-in-the-context-of-TLS-session.html#Verifying-a-certificate-in-the-context-of-TLS-session">4.1.6 Verifying a certificate in the context of TLS session</a></li>
+    </ul></li>
+    <li><a name="toc-OpenPGP-certificates-1" href="OpenPGP-certificates.html#OpenPGP-certificates">4.2 <acronym>OpenPGP</acronym> certificates</a>
+    <ul class="no-bullet">
+      <li><a name="toc-OpenPGP-certificate-structure" href="OpenPGP-certificates.html#OpenPGP-certificate-structure">4.2.1 <acronym>OpenPGP</acronym> certificate structure</a></li>
+      <li><a name="toc-Verifying-an-OpenPGP-certificate" href="OpenPGP-certificates.html#Verifying-an-OpenPGP-certificate">4.2.2 Verifying an <acronym>OpenPGP</acronym> certificate</a></li>
+      <li><a name="toc-Verifying-a-certificate-in-the-context-of-a-TLS-session" href="OpenPGP-certificates.html#Verifying-a-certificate-in-the-context-of-a-TLS-session">4.2.3 Verifying a certificate in the context of a TLS session</a></li>
+    </ul></li>
+    <li><a name="toc-Advanced-certificate-verification-1" href="Advanced-certificate-verification.html#Advanced-certificate-verification">4.3 Advanced certificate verification</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Verifying-a-certificate-using-trust-on-first-use-authentication-1" href="Verifying-a-certificate-using-trust-on-first-use-authentication.html#Verifying-a-certificate-using-trust-on-first-use-authentication">4.3.1 Verifying a certificate using trust on first use authentication</a></li>
+      <li><a name="toc-Verifying-a-certificate-using-DANE-_0028DNSSEC_0029-1" href="Verifying-a-certificate-using-DANE-_0028DNSSEC_0029.html#Verifying-a-certificate-using-DANE-_0028DNSSEC_0029">4.3.2 Verifying a certificate using DANE (DNSSEC)</a></li>
+    </ul></li>
+    <li><a name="toc-Digital-signatures-1" href="Digital-signatures.html#Digital-signatures">4.4 Digital signatures</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Trading-security-for-interoperability" href="Digital-signatures.html#Trading-security-for-interoperability">4.4.1 Trading security for interoperability</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a name="toc-Shared_002dkey-and-anonymous-authentication-1" href="Shared_002dkey-and-anonymous-authentication.html#Shared_002dkey-and-anonymous-authentication">5 Shared-key and anonymous authentication</a>
+  <ul class="no-bullet">
+    <li><a name="toc-SRP-authentication-1" href="SRP-authentication.html#SRP-authentication">5.1 SRP authentication</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Authentication-using-SRP-1" href="Authentication-using-SRP.html#Authentication-using-SRP">5.1.1 Authentication using <acronym>SRP</acronym></a></li>
+      <li><a name="toc-Invoking-srptool" href="srptool-Invocation.html#srptool-Invocation">5.1.2 Invoking srptool</a></li>
+    </ul></li>
+    <li><a name="toc-PSK-authentication-1" href="PSK-authentication.html#PSK-authentication">5.2 PSK authentication</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Authentication-using-PSK-1" href="Authentication-using-PSK.html#Authentication-using-PSK">5.2.1 Authentication using <acronym>PSK</acronym></a></li>
+      <li><a name="toc-Invoking-psktool" href="psktool-Invocation.html#psktool-Invocation">5.2.2 Invoking psktool</a></li>
+    </ul></li>
+    <li><a name="toc-Anonymous-authentication-1" href="Anonymous-authentication.html#Anonymous-authentication">5.3 Anonymous authentication</a></li>
+  </ul></li>
+  <li><a name="toc-More-on-certificate-authentication-1" href="More-on-certificate-authentication.html#More-on-certificate-authentication">6 More on certificate authentication</a>
+  <ul class="no-bullet">
+    <li><a name="toc-PKCS-_002310-certificate-requests" href="PKCS-10-certificate-requests.html#PKCS-10-certificate-requests">6.1 <acronym>PKCS</acronym> #10 certificate requests</a></li>
+    <li><a name="toc-PKIX-certificate-revocation-lists-1" href="PKIX-certificate-revocation-lists.html#PKIX-certificate-revocation-lists">6.2 PKIX certificate revocation lists</a></li>
+    <li><a name="toc-OCSP-certificate-status-checking-1" href="OCSP-certificate-status-checking.html#OCSP-certificate-status-checking">6.3 <acronym>OCSP</acronym> certificate status checking</a></li>
+    <li><a name="toc-Managing-encrypted-keys-1" href="Managing-encrypted-keys.html#Managing-encrypted-keys">6.4 Managing encrypted keys</a></li>
+    <li><a name="toc-Invoking-certtool" href="certtool-Invocation.html#certtool-Invocation">6.5 Invoking certtool</a></li>
+    <li><a name="toc-Invoking-ocsptool" href="ocsptool-Invocation.html#ocsptool-Invocation">6.6 Invoking ocsptool</a></li>
+    <li><a name="toc-Invoking-danetool" href="danetool-Invocation.html#danetool-Invocation">6.7 Invoking danetool</a></li>
+  </ul></li>
+  <li><a name="toc-Hardware-security-modules-and-abstract-key-types-1" href="Hardware-security-modules-and-abstract-key-types.html#Hardware-security-modules-and-abstract-key-types">7 Hardware security modules and abstract key types</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Abstract-key-types-1" href="Abstract-key-types.html#Abstract-key-types">7.1 Abstract key types</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Public-keys" href="Abstract-public-keys.html#Abstract-public-keys">7.1.1 Public keys</a></li>
+      <li><a name="toc-Private-keys" href="Abstract-private-keys.html#Abstract-private-keys">7.1.2 Private keys</a></li>
+      <li><a name="toc-Operations-1" href="Operations.html#Operations">7.1.3 Operations</a></li>
+    </ul></li>
+    <li><a name="toc-Smart-cards-and-HSMs-1" href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs">7.2 Smart cards and HSMs</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Initialization-1" href="PKCS11-Initialization.html#PKCS11-Initialization">7.2.1 Initialization</a></li>
+      <li><a name="toc-Accessing-objects-that-require-a-PIN-1" href="Accessing-objects-that-require-a-PIN.html#Accessing-objects-that-require-a-PIN">7.2.2 Accessing objects that require a PIN</a></li>
+      <li><a name="toc-Reading-objects-1" href="Reading-objects.html#Reading-objects">7.2.3 Reading objects</a></li>
+      <li><a name="toc-Writing-objects-1" href="Writing-objects.html#Writing-objects">7.2.4 Writing objects</a></li>
+      <li><a name="toc-Using-a-PKCS-_002311-token-with-TLS" href="Using-a-PKCS11-token-with-TLS.html#Using-a-PKCS11-token-with-TLS">7.2.5 Using a <acronym>PKCS</acronym> #11 token with TLS</a></li>
+      <li><a name="toc-Invoking-p11tool" href="p11tool-Invocation.html#p11tool-Invocation">7.2.6 Invoking p11tool</a></li>
+    </ul></li>
+    <li><a name="toc-Trusted-Platform-Module-_0028TPM_0029" href="Trusted-Platform-Module.html#Trusted-Platform-Module">7.3 Trusted Platform Module (TPM)</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Keys-in-TPM-1" href="Keys-in-TPM.html#Keys-in-TPM">7.3.1 Keys in TPM</a></li>
+      <li><a name="toc-Key-generation-1" href="Key-generation.html#Key-generation">7.3.2 Key generation</a></li>
+      <li><a name="toc-Using-keys-1" href="Using-keys.html#Using-keys">7.3.3 Using keys</a></li>
+      <li><a name="toc-Invoking-tpmtool" href="tpmtool-Invocation.html#tpmtool-Invocation">7.3.4 Invoking tpmtool</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a name="toc-How-to-use-GnuTLS-in-applications-1" href="How-to-use-GnuTLS-in-applications.html#How-to-use-GnuTLS-in-applications">8 How to use <acronym>GnuTLS</acronym> in applications</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Introduction" href="Introduction-to-the-library.html#Introduction-to-the-library">8.1 Introduction</a>
+    <ul class="no-bullet">
+      <li><a name="toc-General-idea-1" href="General-idea.html#General-idea">8.1.1 General idea</a></li>
+      <li><a name="toc-Error-handling-1" href="Error-handling.html#Error-handling">8.1.2 Error handling</a></li>
+      <li><a name="toc-Common-types-1" href="Common-types.html#Common-types">8.1.3 Common types</a></li>
+      <li><a name="toc-Debugging-and-auditing-1" href="Debugging-and-auditing.html#Debugging-and-auditing">8.1.4 Debugging and auditing</a></li>
+      <li><a name="toc-Thread-safety-1" href="Thread-safety.html#Thread-safety">8.1.5 Thread safety</a></li>
+      <li><a name="toc-Callback-functions-1" href="Callback-functions.html#Callback-functions">8.1.6 Callback functions</a></li>
+    </ul></li>
+    <li><a name="toc-Preparation-1" href="Preparation.html#Preparation">8.2 Preparation</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Headers-1" href="Headers.html#Headers">8.2.1 Headers</a></li>
+      <li><a name="toc-Initialization-2" href="Initialization.html#Initialization">8.2.2 Initialization</a></li>
+      <li><a name="toc-Version-check-1" href="Version-check.html#Version-check">8.2.3 Version check</a></li>
+      <li><a name="toc-Building-the-source-1" href="Building-the-source.html#Building-the-source">8.2.4 Building the source</a></li>
+    </ul></li>
+    <li><a name="toc-Session-initialization-1" href="Session-initialization.html#Session-initialization">8.3 Session initialization</a></li>
+    <li><a name="toc-Associating-the-credentials-1" href="Associating-the-credentials.html#Associating-the-credentials">8.4 Associating the credentials</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Certificates" href="Certificate-credentials.html#Certificate-credentials">8.4.1 Certificates</a></li>
+      <li><a name="toc-SRP" href="SRP-credentials.html#SRP-credentials">8.4.2 SRP</a></li>
+      <li><a name="toc-PSK" href="PSK-credentials.html#PSK-credentials">8.4.3 PSK</a></li>
+      <li><a name="toc-Anonymous" href="Anonymous-credentials.html#Anonymous-credentials">8.4.4 Anonymous</a></li>
+    </ul></li>
+    <li><a name="toc-Setting-up-the-transport-layer-1" href="Setting-up-the-transport-layer.html#Setting-up-the-transport-layer">8.5 Setting up the transport layer</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Asynchronous-operation-1" href="Asynchronous-operation.html#Asynchronous-operation">8.5.1 Asynchronous operation</a></li>
+      <li><a name="toc-DTLS-sessions-1" href="DTLS-sessions.html#DTLS-sessions">8.5.2 DTLS sessions</a></li>
+    </ul></li>
+    <li><a name="toc-TLS-handshake-1" href="TLS-handshake.html#TLS-handshake">8.6 TLS handshake</a></li>
+    <li><a name="toc-Data-transfer-and-termination-1" href="Data-transfer-and-termination.html#Data-transfer-and-termination">8.7 Data transfer and termination</a></li>
+    <li><a name="toc-Handling-alerts-1" href="Handling-alerts.html#Handling-alerts">8.8 Handling alerts</a></li>
+    <li><a name="toc-Priority-strings" href="Priority-Strings.html#Priority-Strings">8.9 Priority strings</a></li>
+    <li><a name="toc-Selecting-cryptographic-key-sizes-1" href="Selecting-cryptographic-key-sizes.html#Selecting-cryptographic-key-sizes">8.10 Selecting cryptographic key sizes</a></li>
+    <li><a name="toc-Advanced-topics-1" href="Advanced-topics.html#Advanced-topics">8.11 Advanced topics</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Session-resumption-1" href="Session-resumption.html#Session-resumption">8.11.1 Session resumption</a></li>
+      <li><a name="toc-Certificate-verification-1" href="Certificate-verification.html#Certificate-verification">8.11.2 Certificate verification</a>
+      <ul class="no-bullet">
+        <li><a name="toc-Trust-on-first-use" href="Certificate-verification.html#Trust-on-first-use">8.11.2.1 Trust on first use</a></li>
+        <li><a name="toc-DANE-verification" href="Certificate-verification.html#DANE-verification">8.11.2.2 DANE verification</a></li>
+      </ul></li>
+      <li><a name="toc-Parameter-generation-1" href="Parameter-generation.html#Parameter-generation">8.11.3 Parameter generation</a></li>
+      <li><a name="toc-Keying-material-exporters" href="Keying-Material-Exporters.html#Keying-Material-Exporters">8.11.4 Keying material exporters</a></li>
+      <li><a name="toc-Channel-bindings" href="Channel-Bindings.html#Channel-Bindings">8.11.5 Channel bindings</a></li>
+      <li><a name="toc-Interoperability-1" href="Interoperability.html#Interoperability">8.11.6 Interoperability</a></li>
+      <li><a name="toc-Compatibility-with-the-OpenSSL-library-1" href="Compatibility-with-the-OpenSSL-library.html#Compatibility-with-the-OpenSSL-library">8.11.7 Compatibility with the OpenSSL library</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a name="toc-GnuTLS-application-examples-1" href="GnuTLS-application-examples.html#GnuTLS-application-examples">9 GnuTLS application examples</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Client-examples-1" href="Client-examples.html#Client-examples">9.1 Client examples</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Simple-client-example-with-X_002e509-certificate-support-1" href="Simple-client-example-with-X_002e509-certificate-support.html#Simple-client-example-with-X_002e509-certificate-support">9.1.1 Simple client example with <acronym>X.509</acronym> certificate support</a></li>
+      <li><a name="toc-Simple-client-example-with-SSH_002dstyle-certificate-verification-1" href="Simple-client-example-with-SSH_002dstyle-certificate-verification.html#Simple-client-example-with-SSH_002dstyle-certificate-verification">9.1.2 Simple client example with SSH-style certificate verification</a></li>
+      <li><a name="toc-Simple-client-example-with-anonymous-authentication-1" href="Simple-client-example-with-anonymous-authentication.html#Simple-client-example-with-anonymous-authentication">9.1.3 Simple client example with anonymous authentication</a></li>
+      <li><a name="toc-Simple-datagram-TLS-client-example" href="Simple-Datagram-TLS-client-example.html#Simple-Datagram-TLS-client-example">9.1.4 Simple datagram <acronym>TLS</acronym> client example</a></li>
+      <li><a name="toc-Obtaining-session-information-1" href="Obtaining-session-information.html#Obtaining-session-information">9.1.5 Obtaining session information</a></li>
+      <li><a name="toc-Using-a-callback-to-select-the-certificate-to-use-1" href="Using-a-callback-to-select-the-certificate-to-use.html#Using-a-callback-to-select-the-certificate-to-use">9.1.6 Using a callback to select the certificate to use</a></li>
+      <li><a name="toc-Verifying-a-certificate-1" href="Verifying-a-certificate.html#Verifying-a-certificate">9.1.7 Verifying a certificate</a></li>
+      <li><a name="toc-Using-a-smart-card-with-TLS" href="Client-using-a-smart-card-with-TLS.html#Client-using-a-smart-card-with-TLS">9.1.8 Using a smart card with TLS</a></li>
+      <li><a name="toc-Client-with-resume-capability-example" href="Client-with-Resume-capability-example.html#Client-with-Resume-capability-example">9.1.9 Client with resume capability example</a></li>
+      <li><a name="toc-Simple-client-example-with-SRP-authentication-1" href="Simple-client-example-with-SRP-authentication.html#Simple-client-example-with-SRP-authentication">9.1.10 Simple client example with <acronym>SRP</acronym> authentication</a></li>
+      <li><a name="toc-Simple-client-example-using-the-C_002b_002b-API" href="Simple-client-example-in-C_002b_002b.html#Simple-client-example-in-C_002b_002b">9.1.11 Simple client example using the C++ API</a></li>
+      <li><a name="toc-Helper-functions-for-TCP-connections-1" href="Helper-functions-for-TCP-connections.html#Helper-functions-for-TCP-connections">9.1.12 Helper functions for TCP connections</a></li>
+      <li><a name="toc-Helper-functions-for-UDP-connections-1" href="Helper-functions-for-UDP-connections.html#Helper-functions-for-UDP-connections">9.1.13 Helper functions for UDP connections</a></li>
+    </ul></li>
+    <li><a name="toc-Server-examples-1" href="Server-examples.html#Server-examples">9.2 Server examples</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Echo-server-with-X_002e509-authentication-1" href="Echo-server-with-X_002e509-authentication.html#Echo-server-with-X_002e509-authentication">9.2.1 Echo server with <acronym>X.509</acronym> authentication</a></li>
+      <li><a name="toc-Echo-server-with-OpenPGP-authentication-1" href="Echo-server-with-OpenPGP-authentication.html#Echo-server-with-OpenPGP-authentication">9.2.2 Echo server with <acronym>OpenPGP</acronym> authentication</a></li>
+      <li><a name="toc-Echo-server-with-SRP-authentication-1" href="Echo-server-with-SRP-authentication.html#Echo-server-with-SRP-authentication">9.2.3 Echo server with <acronym>SRP</acronym> authentication</a></li>
+      <li><a name="toc-Echo-server-with-anonymous-authentication-1" href="Echo-server-with-anonymous-authentication.html#Echo-server-with-anonymous-authentication">9.2.4 Echo server with anonymous authentication</a></li>
+      <li><a name="toc-DTLS-echo-server-with-X_002e509-authentication-1" href="DTLS-echo-server-with-X_002e509-authentication.html#DTLS-echo-server-with-X_002e509-authentication">9.2.5 DTLS echo server with <acronym>X.509</acronym> authentication</a></li>
+    </ul></li>
+    <li><a name="toc-OCSP-example-1" href="OCSP-example.html#OCSP-example">9.3 OCSP example</a></li>
+    <li><a name="toc-Miscellaneous-examples-1" href="Miscellaneous-examples.html#Miscellaneous-examples">9.4 Miscellaneous examples</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Checking-for-an-alert-1" href="Checking-for-an-alert.html#Checking-for-an-alert">9.4.1 Checking for an alert</a></li>
+      <li><a name="toc-X_002e509-certificate-parsing-example-1" href="X_002e509-certificate-parsing-example.html#X_002e509-certificate-parsing-example">9.4.2 <acronym>X.509</acronym> certificate parsing example</a></li>
+      <li><a name="toc-Listing-the-ciphersuites-in-a-priority-string-1" href="Listing-the-ciphersuites-in-a-priority-string.html#Listing-the-ciphersuites-in-a-priority-string">9.4.3 Listing the ciphersuites in a priority string</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a name="toc-Using-GnuTLS-as-a-cryptographic-library-1" href="Using-GnuTLS-as-a-cryptographic-library.html#Using-GnuTLS-as-a-cryptographic-library">10 Using GnuTLS as a cryptographic library</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Encryption-algorithms-1" href="Encryption-algorithms.html#Encryption-algorithms">10.1 Encryption algorithms</a></li>
+    <li><a name="toc-Hash-and-HMAC-functions-1" href="Hash-and-HMAC-functions.html#Hash-and-HMAC-functions">10.2 Hash and HMAC functions</a></li>
+    <li><a name="toc-Random-number-generation-1" href="Random-number-generation.html#Random-number-generation">10.3 Random number generation</a></li>
+  </ul></li>
+  <li><a name="toc-Other-included-programs-1" href="Other-included-programs.html#Other-included-programs">11 Other included programs</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Invoking-gnutls_002dcli" href="gnutls_002dcli-Invocation.html#gnutls_002dcli-Invocation">11.1 Invoking gnutls-cli</a></li>
+    <li><a name="toc-Invoking-gnutls_002dserv" href="gnutls_002dserv-Invocation.html#gnutls_002dserv-Invocation">11.2 Invoking gnutls-serv</a></li>
+    <li><a name="toc-Invoking-gnutls_002dcli_002ddebug" href="gnutls_002dcli_002ddebug-Invocation.html#gnutls_002dcli_002ddebug-Invocation">11.3 Invoking gnutls-cli-debug</a></li>
+  </ul></li>
+  <li><a name="toc-Internal-Architecture-of-GnuTLS" href="Internal-architecture-of-GnuTLS.html#Internal-architecture-of-GnuTLS">12 Internal Architecture of GnuTLS</a>
+  <ul class="no-bullet">
+    <li><a name="toc-The-TLS-Protocol-1" href="The-TLS-Protocol.html#The-TLS-Protocol">12.1 The TLS Protocol</a></li>
+    <li><a name="toc-TLS-Handshake-Protocol-1" href="TLS-Handshake-Protocol.html#TLS-Handshake-Protocol">12.2 TLS Handshake Protocol</a></li>
+    <li><a name="toc-TLS-Authentication-Methods-1" href="TLS-Authentication-Methods.html#TLS-Authentication-Methods">12.3 TLS Authentication Methods</a></li>
+    <li><a name="toc-TLS-Extension-Handling-1" href="TLS-Extension-Handling.html#TLS-Extension-Handling">12.4 TLS Extension Handling</a></li>
+    <li><a name="toc-Cryptographic-Backend-1" href="Cryptographic-Backend.html#Cryptographic-Backend">12.5 Cryptographic Backend</a></li>
+  </ul></li>
+  <li><a name="toc-Upgrading-from-previous-versions-1" href="Upgrading-from-previous-versions.html#Upgrading-from-previous-versions">Appendix A Upgrading from previous versions</a></li>
+  <li><a name="toc-Support-1" href="Support.html#Support">Appendix B Support</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Getting-Help" href="Getting-help.html#Getting-help">B.1 Getting Help</a></li>
+    <li><a name="toc-Commercial-Support-1" href="Commercial-Support.html#Commercial-Support">B.2 Commercial Support</a></li>
+    <li><a name="toc-Bug-Reports-1" href="Bug-Reports.html#Bug-Reports">B.3 Bug Reports</a></li>
+    <li><a name="toc-Contributing-1" href="Contributing.html#Contributing">B.4 Contributing</a></li>
+  </ul></li>
+  <li><a name="toc-Error-Codes-and-Descriptions" href="Error-codes.html#Error-codes">Appendix C Error Codes and Descriptions</a></li>
+  <li><a name="toc-Supported-Ciphersuites" href="Supported-ciphersuites.html#Supported-ciphersuites">Appendix D Supported Ciphersuites</a></li>
+  <li><a name="toc-API-reference-1" href="API-reference.html#API-reference">Appendix E API reference</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Core-TLS-API-1" href="Core-TLS-API.html#Core-TLS-API">E.1 Core TLS API</a></li>
+    <li><a name="toc-Datagram-TLS-API-1" href="Datagram-TLS-API.html#Datagram-TLS-API">E.2 Datagram TLS API</a></li>
+    <li><a name="toc-X_002e509-certificate-API" href="X509-certificate-API.html#X509-certificate-API">E.3 <acronym>X.509</acronym> certificate API</a></li>
+    <li><a name="toc-OCSP-API-1" href="OCSP-API.html#OCSP-API">E.4 <acronym>OCSP</acronym> API</a></li>
+    <li><a name="toc-OpenPGP-API-1" href="OpenPGP-API.html#OpenPGP-API">E.5 <acronym>OpenPGP</acronym> API</a></li>
+    <li><a name="toc-PKCS-12-API-1" href="PKCS-12-API.html#PKCS-12-API">E.6 PKCS 12 API</a></li>
+    <li><a name="toc-Hardware-token-via-PKCS-11-API" href="PKCS-11-API.html#PKCS-11-API">E.7 Hardware token via PKCS 11 API</a></li>
+    <li><a name="toc-TPM-API-1" href="TPM-API.html#TPM-API">E.8 TPM API</a></li>
+    <li><a name="toc-Abstract-key-API-1" href="Abstract-key-API.html#Abstract-key-API">E.9 Abstract key API</a></li>
+    <li><a name="toc-DANE-API-1" href="DANE-API.html#DANE-API">E.10 DANE API</a></li>
+    <li><a name="toc-Cryptographic-API-1" href="Cryptographic-API.html#Cryptographic-API">E.11 Cryptographic API</a></li>
+    <li><a name="toc-Compatibility-API-1" href="Compatibility-API.html#Compatibility-API">E.12 Compatibility API</a></li>
+  </ul></li>
+  <li><a name="toc-Copying-Information-1" href="Copying-Information.html#Copying-Information">Appendix F Copying Information</a></li>
+  <li><a name="toc-Bibliography-1" href="Bibliography.html#Bibliography">Bibliography</a></li>
+  <li><a name="toc-Function-and-Data-Index-1" href="Function-and-Data-Index.html#Function-and-Data-Index">Function and Data Index</a></li>
+  <li><a name="toc-Concept-Index-1" href="Concept-Index.html#Concept-Index">Concept Index</a></li>
+</ul>
+</div>
+
+
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="Preface.html#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="GnuTLS"></a>
+<h1 class="top">GnuTLS</h1>
+
+<p>This manual is last updated 17 November 2012 for version
+3.1.5 of GnuTLS.
+</p>
+<p>Copyright &copy; 2001-2012 Free Software Foundation, Inc.
+</p>
+<blockquote>
+<p>Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled &ldquo;GNU Free
+Documentation License&rdquo;.
+</p></blockquote>
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Preface.html#Preface" accesskey="1">Preface</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Introduction-to-GnuTLS.html#Introduction-to-GnuTLS" accesskey="2">Introduction to GnuTLS</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Introduction-to-TLS.html#Introduction-to-TLS" accesskey="3">Introduction to TLS</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Certificate-authentication.html#Certificate-authentication" accesskey="4">Certificate authentication</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Shared_002dkey-and-anonymous-authentication.html#Shared_002dkey-and-anonymous-authentication" accesskey="5">Shared-key and anonymous authentication</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="More-on-certificate-authentication.html#More-on-certificate-authentication" accesskey="6">More on certificate authentication</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Hardware-security-modules-and-abstract-key-types.html#Hardware-security-modules-and-abstract-key-types" accesskey="7">Hardware security modules and abstract key types</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="How-to-use-GnuTLS-in-applications.html#How-to-use-GnuTLS-in-applications" accesskey="8">How to use GnuTLS in applications</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="GnuTLS-application-examples.html#GnuTLS-application-examples" accesskey="9">GnuTLS application examples</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Using-GnuTLS-as-a-cryptographic-library.html#Using-GnuTLS-as-a-cryptographic-library">Using GnuTLS as a cryptographic library</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Other-included-programs.html#Other-included-programs">Other included programs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Internal-architecture-of-GnuTLS.html#Internal-architecture-of-GnuTLS">Internal architecture of GnuTLS</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Upgrading-from-previous-versions.html#Upgrading-from-previous-versions">Upgrading from previous versions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Support.html#Support">Support</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Error-codes.html#Error-codes">Error codes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Supported-ciphersuites.html#Supported-ciphersuites">Supported ciphersuites</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="API-reference.html#API-reference">API reference</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Copying-Information.html#Copying-Information">Copying Information</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Bibliography.html#Bibliography">Bibliography</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Function-and-Data-Index.html#Function-and-Data-Index">Function and Data Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Concept-Index.html#Concept-Index">Concept Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Preface.html#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

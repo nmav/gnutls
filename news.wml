@@ -1,0 +1,30 @@
+#include 'common.wml' page="News"
+
+<p>
+<center>
+  <table class="transparent" border=0 width=80%>
+    <tr><td>
+The project news are also available via a <b>new</b> <a href="http://www.gnutls.org/news.atom">atom feed</a>.
+    </td>
+<td>
+<a href="https://twitter.com/GnuTLS" class="twitter-follow-button" data-show-count="false">Follow @GnuTLS</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</td>
+</tr>
+  </table>
+
+</center>
+
+</p>
+
+#include 'rawnews.wml' MAX_NEWS=15 TABLE_CLASS=news
+
+<p>See also the 
+the <a href="http://repo.or.cz/w/gnutls.git/blob/HEAD:/NEWS">live NEWS file</a>
+or the <a href="http://repo.or.cz/w/gnutls.git">live git shortlog</a>.
+</p>
+
+</center>
+
+#include 'bottom.wml'
+

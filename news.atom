@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<id>http://www.gnu.org/software/gnutls/news.atom</id>
+<link href="http://www.gnu.org/software/gnutls/news.atom" rel="self"/> 
+<title>GnuTLS - News</title>
+<updated>2012-11-25T13:05:40+00:00</updated>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-11-25</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-11-25'/>
+    <title>GnuTLS manual for 3.1.5</title>
+    <updated>2012-11-25T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-11-25.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+The <a href="http://www.lulu.com/shop/nikos-mavrogiannopoulos-and-simon-josefsson/the-gnutls-manual/paperback/product-20532307.html">
+GnuTLS paperback manual</a> for was updated for version 3.1.5.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-11-24</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-11-24'/>
+    <title>GnuTLS 3.1.5</title>
+    <updated>2012-11-24T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-11-24.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6438">
+GnuTLS 3.1.5</a> was released.  This release adds support for UCS-2
+encoded DNs, improvements in smart card key generation and few bug-fixes.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-11-10</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-11-10'/>
+    <title>GnuTLS 3.1.4</title>
+    <updated>2012-11-10T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-11-10.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6420">
+GnuTLS 3.1.4</a> was released.  This release includes support
+for the DTLS-SRTP, updates on the DANE library, and several 
+simplifications on the existing API.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-11-09</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-11-09'/>
+    <title>GnuTLS 2.12.21 and 3.0.26</title>
+    <updated>2012-11-09T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-11-09.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6418">
+GnuTLS 2.12.21</a> and <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6419">
+GnuTLS 3.0.26</a> were released, bug-fix releases on the previous
+stable branches.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-10-12</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-10-12'/>
+    <title>GnuTLS 3.0.25 and 3.1.3</title>
+    <updated>2012-10-12T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-10-12.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6360">
+GnuTLS 3.1.3</a> was released.  This release includes support for the DANE
+protocol and the OCSP status request extension.
+</p>
+<p>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6359">
+GnuTLS 3.0.25</a> was released, a bug fix release in the old stable branch.
+</p>
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-09-26</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-09-26'/>
+    <title>GnuTLS 3.0.24 and 3.1.2</title>
+    <updated>2012-09-26T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-09-26.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6334">
+GnuTLS 3.1.2</a> was released.  This release includes feature
+updates, notably support for the DTLS heartbeat message, and bug fixes
+in the current stable branch.
+</p>
+<p>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6333">
+GnuTLS 3.0.24</a> was released, a bug fix release in the old stable branch.
+</p>
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-09-13</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-09-13'/>
+    <title>News 2012-09-13</title>
+    <updated>2012-09-13T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-09-13.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<a href="security.html">Added a security advisory</a> on the "CRIME" attack
+on TLS.
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-09-02</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-09-02'/>
+    <title>News 2012-09-02</title>
+    <updated>2012-09-02T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-09-02.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6281">
+GnuTLS 3.1.1</a> was released, a bug fix release in the new stable branch
+with several optimizations in the elliptic curve subsystem.
+</p>
+<p>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6280">
+GnuTLS 3.0.23</a> was released, a bug fix release in the old stable branch.
+</p>
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-08-15</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-08-15'/>
+    <title>News 2012-08-15</title>
+    <updated>2012-08-15T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-08-15.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6248">
+GnuTLS 3.1.0</a> was released, a major feature update release, introducing
+a new stable branch.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-08-04</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-08-04'/>
+    <title>News 2012-08-04</title>
+    <updated>2012-08-04T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-08-04.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6226">
+GnuTLS 3.0.22</a> was released, a bug-fix release on the current
+stable branch.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-07-02</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-07-02'/>
+    <title>News 2012-07-02</title>
+    <updated>2012-07-02T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-07-02.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6180">
+GnuTLS 3.0.21</a> was released, a minor feature update and bug-fix release on the current
+stable branch.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-06-10</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-06-10'/>
+    <title>News 2012-06-10</title>
+    <updated>2012-06-10T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-06-10.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6169">
+GnuTLS 2.12.20</a> was released, a bug-fix release on the previous
+stable branch.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-06-05</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-06-05'/>
+    <title>News 2012-06-05</title>
+    <updated>2012-06-05T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-06-05.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6162">
+GnuTLS 3.0.20</a> was released, a minor feature update and bug-fix release on the current
+stable branch.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-05-05</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-05-05'/>
+    <title>News 2012-05-05</title>
+    <updated>2012-05-05T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-05-05.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6115">
+	GnuTLS 2.12.19</a> was released, a bug-fix release on the previous
+	stable branch.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-04-22</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-04-22'/>
+    <title>News 2012-04-22</title>
+    <updated>2012-04-22T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-04-22.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6095">
+GnuTLS 3.0.19</a> was released, a bug-fix release on the current
+stable branch.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-04-02</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-04-02'/>
+    <title>News 2012-04-02</title>
+    <updated>2012-04-02T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-04-02.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6018">
+GnuTLS 3.0.18</a> was released, a bug-fix release on the current
+stable branch.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-03-21</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-03-21'/>
+    <title>News 2012-03-21</title>
+    <updated>2012-03-21T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-03-21.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<a href="security.html">Added security advisories</a> on the TLS record handling and libtasn1 issues.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-03-19</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-03-19'/>
+    <title>News 2012-03-19</title>
+    <updated>2012-03-19T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-03-19.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<a href="http://lists.gnu.org/archive/html/help-libtasn1/2012-03/msg00000.html">
+Libtasn1 2.12</a> was released, which includes an important security fix.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-03-18</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-03-18'/>
+    <title>News 2012-03-18</title>
+    <updated>2012-03-18T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-03-18.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+GnuTLS participates in the <a href="http://code.google.com/soc/">Google summer of
+code</a>. Feel free to apply or forward our <a href="soc.html">our ideas for projects</a>
+to interested students.
+
+    </div>
+    </content>
+  </entry>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-03-17</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-03-17'/>
+    <title>News 2012-03-17</title>
+    <updated>2012-03-17T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-03-17.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/5945">
+GnuTLS 3.0.17</a> was released, a bug-fix release on the current
+stable branch.
+
+    </div>
+    </content>
+  </entry>
+</feed>
