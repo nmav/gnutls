@@ -36,6 +36,14 @@
   </tr>
 
   <tr>
+    <td><a href="ftp://ftp.gnutls.org/gcrypt/gnutls/">
+	ftp://ftp.gnutls.org/gcrypt/gnutls/</a></td>
+    <td>primary FTP server</td>
+    <td>Germany</td>
+    <td><a href="http://www.gnupg.org/">GNUPG</a></td>
+  </tr>
+
+  <tr>
     <td>
       <a href="ftp://ftp.gnu.org/gnu/gnutls/">ftp://ftp.gnu.org/gnu/gnutls/</a>
       <br>
@@ -47,13 +55,6 @@
     <td><a href="http://www.fsf.org">FSF</a></td>
   </tr>
 
-  <tr>
-    <td><a href="ftp://ftp.gnutls.org/gcrypt/gnutls/">
-	ftp://ftp.gnutls.org/gcrypt/gnutls/</a></td>
-    <td>primary FTP server</td>
-    <td>Germany</td>
-    <td><a href="http://www.gnupg.org/">GNUPG</a></td>
-  </tr>
 
 <!--  <tr>
     <td><a href="ftp://ftp.gnutls.org/pub/gnutls/">
@@ -84,6 +85,15 @@
 
   <tr>
     <td>
+        <a href="ftp://ftp.gnutls.org/gcrypt/gnutls/w32/">ftp://ftp.gnutls.org/gcrypt/gnutls/w32/</a>
+    </td>
+    <td>primary FTP server</td>
+    <td>Germany</td>
+    <td><a href="http://www.gnupg.org/">GNUPG</a></td>
+  </tr>
+
+  <tr>
+    <td>
         <a href="ftp://ftp.gnu.org/gnu/gnutls/w32/">ftp://ftp.gnu.org/gnu/gnutls/w32/</a>
     </td>
     <td>gnu.org FTP server, see <a href="http://www.gnu.org/prep/ftp.html">
@@ -91,6 +101,7 @@
     <td>USA</td>
     <td><a href="http://www.fsf.org">FSF</a></td>
   </tr>
+
 
 </table>
 </center>
