@@ -18,7 +18,16 @@ all: $(OUTPUT) news.atom
 	@for i in news-entries/*.xml;do X=0; if ! test -e $$i.tweet;then X=1;fi;done;if test "$$X" = "1";then echo "There are unsubmitted news. Use 'make tweet'.";fi
 #	cvs commit -m "Generated." .
 
-.PHONY: clean manual/index.html tweet
+.PHONY: clean manual/index.html tweet stats
+
+logs/all.log:
+	mkdir -p logs && cd logs && rsync -av trithemius.gnupg.org:/var/log/boa/www.gnutls.org-access* .
+	cd logs && for i in *access*;do zcat -f $$i >all.log;done
+
+stats: logs/all.log
+	mkdir -p stats
+	cut -f '2-' -d ' ' --output-delimiter=" " <logs/all.log >logs/new.log
+	webalizer -c stats/webalizer.conf logs/new.log -o stats/ -Dcache.db
 
 manual/index.html: manual/index.html.bak
 	@cp -f manual/index.html.bak $@
