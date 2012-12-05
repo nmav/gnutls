@@ -224,7 +224,7 @@ table#gpl-compat-matrix td.nok { background-color: #dddddd; }
 #print-this-article p{ text-align: center; }
 
 
-#content ul, #fsf-campaigns ul{ list-style: square; margin-left: 1.4em; list-style-image:url(/graphics/bullet.gif);  }
+#content ul, #fsf-campaigns ul{ list-style: square; margin-left: 1.4em; }
 
 #content ol{ list-style: decimal; margin-left: 1.9em; }
 
