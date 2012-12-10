@@ -3,7 +3,25 @@
 <id>http://www.gnu.org/software/gnutls/news.atom</id>
 <link href="http://www.gnu.org/software/gnutls/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2012-12-04T09:10:22+00:00</updated>
+<updated>2012-12-10T14:01:02+00:00</updated>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2012-12-10</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-12-10'/>
+    <title>GnuTLS has moved</title>
+    <updated>2012-12-10T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-12-10.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+The GnuTLS project <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6459">
+has moved its infrastructure</a>.
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnu.org/software/gnutls/news.html#2012-11-25</id>
@@ -363,24 +381,6 @@ Libtasn1 2.12</a> was released, which includes an important security fix.
 GnuTLS participates in the <a href="http://code.google.com/soc/">Google summer of
 code</a>. Feel free to apply or forward our <a href="soc.html">our ideas for projects</a>
 to interested students.
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnu.org/software/gnutls/news.html#2012-03-17</id>
-    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-03-17'/>
-    <title>News 2012-03-17</title>
-    <updated>2012-03-17T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-03-17.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/5945">
-GnuTLS 3.0.17</a> was released, a bug-fix release on the current
-stable branch.
 
     </div>
     </content>
