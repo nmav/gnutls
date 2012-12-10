@@ -11,20 +11,20 @@
       </tr>
 
       <tr>
-	<td><a href="http://lists.gnupg.org/mailman/listinfo/gnutls-help">help-gnutls</a></td>
+	<td><a href="http://lists.gnutls.org/mailman/listinfo/gnutls-help">help-gnutls</a></td>
 	<td>General mailing list to discuss and ask questions related to GnuTLS.</td>
 	<td><ul>
-	    <li><a href="http://lists.gnupg.org/pipermail/gnutls-help/">Official archives</a></li>
+	    <li><a href="http://lists.gnutls.org/pipermail/gnutls-help/">Official archives</a></li>
 	    <li><a href="http://news.gmane.org/gmane.network.gnutls.general">Gmane archive (web)</a></li>
 	    <li><a href="news://gmane.org/gmane.network.gnutls.general">Gmane archive (news)</a></li>
 	</ul></td>
       </tr>
 
       <tr>
-	<td><a href="http://lists.gnupg.org/mailman/listinfo/gnutls-devel">gnutls-devel</a></td>
+	<td><a href="http://lists.gnutls.org/mailman/listinfo/gnutls-devel">gnutls-devel</a></td>
 	<td>Mailing list for discussions related to improving GnuTLS.</td>
 	<td><ul>
-	    <li><a href="http://lists.gnupg.org/pipermail/gnutls-devel/">Official archives</a></li>
+	    <li><a href="http://lists.gnutls.org/pipermail/gnutls-devel/">Official archives</a></li>
 	    <li><a href="http://news.gmane.org/gmane.comp.encryption.gpg.gnutls.devel">Gmane archive (web)</a></li>
 	    <li><a href="news://gmane.org/gmane.comp.encryption.gpg.gnutls.devel">Gmane archive (news)</a></li>
 	    <li><a href="http://marc.theaimsgroup.com/?l=gnutls-dev&r=1&w=2">MARC archives</a></li>
@@ -32,10 +32,10 @@
       </tr>
 
       <tr>
-	<td><a href="http://lists.gnupg.org/mailman/listinfo/gnutls-commits">gnutls-commit</a></td>
+	<td><a href="http://lists.gnutls.org/mailman/listinfo/gnutls-commits">gnutls-commit</a></td>
 	<td>Track development by watching commit messages.</td>
 	<td><ul>
-	    <li><a href="http://lists.gnupg.org/mailman/private/gnutls-commits/">Official archives</a></li>
+	    <li><a href="http://lists.gnutls.org/mailman/private/gnutls-commits/">Official archives</a></li>
 	    <li><a href="http://news.gmane.org/gmane.comp.encryption.gpg.gnutls.cvs">Gmane archive (web)</a></li>
 	    <li><a href="news://gmane.org/gmane.comp.encryption.gpg.gnutls.cvs">Gmane archive (news)</a></li>
 	</ul></td>
