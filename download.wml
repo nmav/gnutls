@@ -43,6 +43,7 @@
     <td><a href="http://www.gnupg.org/">GNUPG</a></td>
   </tr>
 
+<!--
   <tr>
     <td>
       <a href="ftp://ftp.gnu.org/gnu/gnutls/">ftp://ftp.gnu.org/gnu/gnutls/</a>
@@ -54,7 +55,7 @@
     <td>USA</td>
     <td><a href="http://www.fsf.org">FSF</a></td>
   </tr>
-
+-->
 
 <!--  <tr>
     <td><a href="ftp://ftp.gnutls.org/pub/gnutls/">
@@ -92,6 +93,7 @@
     <td><a href="http://www.gnupg.org/">GNUPG</a></td>
   </tr>
 
+<!--
   <tr>
     <td>
         <a href="ftp://ftp.gnu.org/gnu/gnutls/w32/">ftp://ftp.gnu.org/gnu/gnutls/w32/</a>
@@ -101,7 +103,7 @@
     <td>USA</td>
     <td><a href="http://www.fsf.org">FSF</a></td>
   </tr>
-
+-->
 
 </table>
 </center>

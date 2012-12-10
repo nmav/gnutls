@@ -23,7 +23,7 @@ all: $(OUTPUT) news.atom
 all-logs:
 	mkdir -p logs && cd logs && rsync -av trithemius.gnupg.org:/var/log/boa/www.gnutls.org-access* .
 	rm -f logs/all.log
-	cd logs && for i in *access*gz;do zcat $$i >>all.log;done
+	cd logs && for i in `ls www.gnutls.org-access*gz|sort -r`;do zcat $$i >>all.log;done
 	cd logs && cat www.gnutls.org-access >>all.log;done
 
 stats: all-logs
