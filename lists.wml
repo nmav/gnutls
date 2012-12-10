@@ -11,7 +11,7 @@
       </tr>
 
       <tr>
-	<td><a href="http://lists.gnutls.org/mailman/listinfo/gnutls-help">help-gnutls</a></td>
+	<td><a href="http://lists.gnutls.org/mailman/listinfo/gnutls-help">gnutls-help@lists.gnutls.org</a></td>
 	<td>General mailing list to discuss and ask questions related to GnuTLS.</td>
 	<td><ul>
 	    <li><a href="http://lists.gnutls.org/pipermail/gnutls-help/">Official archives</a></li>
@@ -21,7 +21,7 @@
       </tr>
 
       <tr>
-	<td><a href="http://lists.gnutls.org/mailman/listinfo/gnutls-devel">gnutls-devel</a></td>
+	<td><a href="http://lists.gnutls.org/mailman/listinfo/gnutls-devel">gnutls-devel@lists.gnutls.org</a></td>
 	<td>Mailing list for discussions related to improving GnuTLS.</td>
 	<td><ul>
 	    <li><a href="http://lists.gnutls.org/pipermail/gnutls-devel/">Official archives</a></li>
@@ -32,7 +32,7 @@
       </tr>
 
       <tr>
-	<td><a href="http://lists.gnutls.org/mailman/listinfo/gnutls-commits">gnutls-commit</a></td>
+	<td><a href="http://lists.gnutls.org/mailman/listinfo/gnutls-commits">gnutls-commits@lists.gnutls.org</a></td>
 	<td>Track development by watching commit messages.</td>
 	<td><ul>
 	    <li><a href="http://lists.gnutls.org/mailman/private/gnutls-commits/">Official archives</a></li>
