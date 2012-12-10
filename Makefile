@@ -29,6 +29,9 @@ stats: logs/all.log
 	cut -f '2-' -d ' ' --output-delimiter=" " <logs/all.log >logs/new.log
 	webalizer -c stats/webalizer.conf logs/new.log -o stats/ -Dcache.db
 
+stats-clean:
+	rm -f logs/all.log
+
 manual/index.html: manual/index.html.bak
 	@cp -f manual/index.html.bak $@
 
