@@ -6,7 +6,7 @@
 
 WML=wml
 WMLFLAGS=-DTABLE_BGCOLOR="\#e5e5e5" -DTABLE_HDCOLOR="\#ccbcbc" \
-	-DTABLE_BGCOLOR2="\#e0d7d7" -DWHITE="\#ffffff" -DEMAIL=\"bug-gnutls@gnu.org\"
+	-DTABLE_BGCOLOR2="\#e0d7d7" -DWHITE="\#ffffff" -DEMAIL=\"bugs@gnutls.org\"
 COMMON=common.wml bottom.wml head.wml rawnews.wml
 OUTPUT=index.html contrib.html devel.html lists.html	\
  download.html gnutls-logo.html news.html future.html	\
@@ -20,11 +20,13 @@ all: $(OUTPUT) news.atom
 
 .PHONY: clean manual/index.html tweet stats
 
-logs/all.log:
+all-logs:
 	mkdir -p logs && cd logs && rsync -av trithemius.gnupg.org:/var/log/boa/www.gnutls.org-access* .
-	cd logs && for i in *access*;do zcat -f $$i >all.log;done
+	rm -f logs/all.log
+	cd logs && for i in *access*gz;do zcat $$i >>all.log;done
+	cd logs && cat www.gnutls.org-access >>all.log;done
 
-stats: logs/all.log
+stats: all-logs
 	mkdir -p stats
 	cut -f '2-' -d ' ' --output-delimiter=" " <logs/all.log >logs/new.log
 	webalizer -c stats/webalizer.conf logs/new.log -o stats/ -Dcache.db
