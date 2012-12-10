@@ -54,11 +54,9 @@ foreach my $key (sort {$b cmp $a} keys %tt1) {
           $message = $t . "... $url";
 
           print "Updating status to: $message\n";
-          sleep 5;
           $result = $nt->update("$message");
         } else {
-          print "Updating status to: $message\n";
-          sleep 5;
+          print "Updating status to: $message (" . length($message).")\n";
           $result = $nt->update("$message");
         }
 

@@ -152,7 +152,7 @@ sub fetch_non_tweeted
         $p->parse_file("$directory/$file") || die $!;
         
         system("touch $directory/$file.tweet");
-        system("cvs add $directory/$file.tweet");
+        system("git add $directory/$file.tweet");
   }
 
   closedir DIR;
