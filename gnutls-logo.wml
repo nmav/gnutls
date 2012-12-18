@@ -1,12 +1,4 @@
-#include 'head.wml'
-
-<H1>The GnuTLS Logo</H1>
-
-<p>
-<A HREF="graphics/gnutls-logo.png"><IMG SRC="graphics/gnutls-logo.png"
-   ALT=" [image of the gnutls logo] "></A>
-
-</p>
+#include 'common.wml' page="Logo"
 
 <p>
 This logo consists of two well known symbols, a lock transported on a truck.
@@ -16,8 +8,7 @@ The truck symbolizes the "Transport Layer" and the lock stands for "Security".
 
 
 <p>
-We would like to thank <a href="mailto:claus@gnutls.org">Claus Schrammel</a> for
-the design of this GnuTLS logo.
+We would like to thank Claus Schrammel for the design of this GnuTLS logo.
 </p>
 <p>
 
@@ -34,18 +25,6 @@ This picture is available in the following formats:
 	<LI>SVG <A HREF="graphics/gnutls-logo.svg">scalable (contributed by Daniel Kahn Gillmor)</A></li>
 </UL>
 
-<P>
-<A HREF="/graphics/graphics.html">Other art</A>
-in the GNU Art Gallery.
-<P>
-
-<H3><A HREF="/philosophy/gif.html">No gifs due to patent problems.</A></H3>
-<P>
-
-<HR>
-
-<p>
-Return to <A HREF="/software/gnutls/">GnuTLS' home page</A>.
-</p>
+</P>
 
 #include 'bottom.wml'
