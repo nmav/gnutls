@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 17 November 2012 for version
-3.1.5 of GnuTLS.
+<!-- This manual is last updated 31 December 2012 for version
+3.1.6 of GnuTLS.
 
 Copyright (C) 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -13,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.5: certtool Invocation</title>
+<title>GnuTLS 3.1.6: certtool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.1.5: certtool Invocation">
-<meta name="keywords" content="GnuTLS 3.1.5: certtool Invocation">
+<meta name="description" content="GnuTLS 3.1.6: certtool Invocation">
+<meta name="keywords" content="GnuTLS 3.1.6: certtool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -161,7 +162,7 @@ Next: <a href="ocsptool-Invocation.html#ocsptool-Invocation" accesskey="n" rel="
 </div>
 <hr>
 <a name="Invoking-certtool"></a>
-<h3 class="section">6.5 Invoking certtool</h3>
+<h4 class="subsection">4.2.5 Invoking certtool</h4>
 <a name="index-certtool"></a>
 
 
@@ -175,7 +176,7 @@ This software is released under the GNU General Public License, version 3 or lat
 </p>
 
 <a name="certtool-usage"></a><a name="certtool-help_002fusage-_0028_002dh_0029"></a>
-<h4 class="subheading">certtool help/usage (-h)</h4>
+<h4 class="subsubheading">certtool help/usage (-h)</h4>
 <a name="index-certtool-help"></a>
 
 <p>This is the automatically generated usage text for certtool.
@@ -187,7 +188,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">certtool - GnuTLS certificate tool - Ver. 3.1.5
+<pre class="example">certtool - GnuTLS certificate tool - Ver. 3.1.6
 USAGE:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -205,6 +206,8 @@ USAGE:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
    -u, --update-certificate   Update a signed certificate
    -p, --generate-privkey     Generate a private key
    -q, --generate-request     Generate a PKCS #10 certificate request
+                                - prohibits these options:
+                                infile
    -e, --verify-chain         Verify a PEM encoded certificate chain.
        --verify               Verify a PEM encoded certificate chain using a trusted list.
                                 - requires these options:
@@ -277,19 +280,31 @@ template command line option.
 please send bug reports to:  bug-gnutls@gnu.org
 </pre></div>
 
-<a name="certtool-debug"></a><a name="debug-option-_0028_002dd_0029-2"></a>
-<h4 class="subheading">debug option (-d)</h4>
+<a name="certtool-debug"></a><a name="debug-option-_0028_002dd_0029"></a>
+<h4 class="subsubheading">debug option (-d)</h4>
 
 <p>This is the &ldquo;enable debugging.&rdquo; option.
 This option takes an argument number.
 Specifies the debug level.
+<a name="certtool-generate_002drequest"></a></p><a name="generate_002drequest-option-_0028_002dq_0029"></a>
+<h4 class="subsubheading">generate-request option (-q)</h4>
+
+<p>This is the &ldquo;generate a pkcs #10 certificate request&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> must not appear in combination with any of the following options:
+infile.
+</li></ul>
+
+<p>Will generate a PKCS #10 certificate request. To specify a private key use &ndash;load-privkey.
 <a name="certtool-verify_002dchain"></a></p><a name="verify_002dchain-option-_0028_002de_0029"></a>
-<h4 class="subheading">verify-chain option (-e)</h4>
+<h4 class="subsubheading">verify-chain option (-e)</h4>
 
 <p>This is the &ldquo;verify a pem encoded certificate chain.&rdquo; option.
 The last certificate in the chain must be a self signed one.
-<a name="certtool-verify"></a></p><a name="verify-option-1"></a>
-<h4 class="subheading">verify option</h4>
+<a name="certtool-verify"></a></p><a name="verify-option"></a>
+<h4 class="subsubheading">verify option</h4>
 
 <p>This is the &ldquo;verify a pem encoded certificate chain using a trusted list.&rdquo; option.
 </p>
@@ -301,7 +316,7 @@ load-ca-certificate.
 
 <p>The trusted certificate list must be loaded with &ndash;load-ca-certificate.
 <a name="certtool-verify_002dcrl"></a></p><a name="verify_002dcrl-option"></a>
-<h4 class="subheading">verify-crl option</h4>
+<h4 class="subsubheading">verify-crl option</h4>
 
 <p>This is the &ldquo;verify a crl using a trusted list.&rdquo; option.
 </p>
@@ -313,53 +328,53 @@ load-ca-certificate.
 
 <p>The trusted certificate list must be loaded with &ndash;load-ca-certificate.
 <a name="certtool-get_002ddh_002dparams"></a></p><a name="get_002ddh_002dparams-option"></a>
-<h4 class="subheading">get-dh-params option</h4>
+<h4 class="subsubheading">get-dh-params option</h4>
 
 <p>This is the &ldquo;get the included pkcs #3 encoded diffie-hellman parameters.&rdquo; option.
 Returns stored DH parameters in GnuTLS. Those parameters are used in the SRP protocol. The parameters returned by fresh generation
 are more efficient since GnuTLS 3.0.9.
 <a name="certtool-load_002dprivkey"></a></p><a name="load_002dprivkey-option"></a>
-<h4 class="subheading">load-privkey option</h4>
+<h4 class="subsubheading">load-privkey option</h4>
 
 <p>This is the &ldquo;loads a private key file&rdquo; option.
 This option takes an argument string.
 This can be either a file or a PKCS #11 URL
 <a name="certtool-load_002dpubkey"></a></p><a name="load_002dpubkey-option"></a>
-<h4 class="subheading">load-pubkey option</h4>
+<h4 class="subsubheading">load-pubkey option</h4>
 
 <p>This is the &ldquo;loads a public key file&rdquo; option.
 This option takes an argument string.
 This can be either a file or a PKCS #11 URL
 <a name="certtool-load_002dcertificate"></a></p><a name="load_002dcertificate-option"></a>
-<h4 class="subheading">load-certificate option</h4>
+<h4 class="subsubheading">load-certificate option</h4>
 
 <p>This is the &ldquo;loads a certificate file&rdquo; option.
 This option takes an argument string.
 This can be either a file or a PKCS #11 URL
 <a name="certtool-load_002dca_002dprivkey"></a></p><a name="load_002dca_002dprivkey-option"></a>
-<h4 class="subheading">load-ca-privkey option</h4>
+<h4 class="subsubheading">load-ca-privkey option</h4>
 
 <p>This is the &ldquo;loads the certificate authority&rsquo;s private key file&rdquo; option.
 This option takes an argument string.
 This can be either a file or a PKCS #11 URL
 <a name="certtool-load_002dca_002dcertificate"></a></p><a name="load_002dca_002dcertificate-option"></a>
-<h4 class="subheading">load-ca-certificate option</h4>
+<h4 class="subsubheading">load-ca-certificate option</h4>
 
 <p>This is the &ldquo;loads the certificate authority&rsquo;s certificate file&rdquo; option.
 This option takes an argument string.
 This can be either a file or a PKCS #11 URL
 <a name="certtool-null_002dpassword"></a></p><a name="null_002dpassword-option"></a>
-<h4 class="subheading">null-password option</h4>
+<h4 class="subsubheading">null-password option</h4>
 
 <p>This is the &ldquo;enforce a null password&rdquo; option.
 This option enforces a NULL password. This may be different than the empty password in some schemas.
 <a name="certtool-pubkey_002dinfo"></a></p><a name="pubkey_002dinfo-option"></a>
-<h4 class="subheading">pubkey-info option</h4>
+<h4 class="subsubheading">pubkey-info option</h4>
 
 <p>This is the &ldquo;print information on a public key&rdquo; option.
 The option combined with &ndash;load-request, &ndash;load-pubkey, &ndash;load-privkey and &ndash;load-certificate will extract the public key of the object in question.
 <a name="certtool-to_002dp12"></a></p><a name="to_002dp12-option"></a>
-<h4 class="subheading">to-p12 option</h4>
+<h4 class="subsubheading">to-p12 option</h4>
 
 <p>This is the &ldquo;generate a pkcs #12 structure&rdquo; option.
 </p>
@@ -371,70 +386,70 @@ load-certificate.
 
 <p>It requires a certificate, a private key and possibly a CA certificate to be specified.
 <a name="certtool-rsa"></a></p><a name="rsa-option"></a>
-<h4 class="subheading">rsa option</h4>
+<h4 class="subsubheading">rsa option</h4>
 
 <p>This is the &ldquo;generate rsa key&rdquo; option.
 When combined with &ndash;generate-privkey generates an RSA private key.
 <a name="certtool-dsa"></a></p><a name="dsa-option"></a>
-<h4 class="subheading">dsa option</h4>
+<h4 class="subsubheading">dsa option</h4>
 
 <p>This is the &ldquo;generate dsa key&rdquo; option.
 When combined with &ndash;generate-privkey generates a DSA private key.
 <a name="certtool-ecc"></a></p><a name="ecc-option"></a>
-<h4 class="subheading">ecc option</h4>
+<h4 class="subsubheading">ecc option</h4>
 
 <p>This is the &ldquo;generate ecc (ecdsa) key&rdquo; option.
 When combined with &ndash;generate-privkey generates an elliptic curve private key to be used with ECDSA.
 <a name="certtool-ecdsa"></a></p><a name="ecdsa-option"></a>
-<h4 class="subheading">ecdsa option</h4>
+<h4 class="subsubheading">ecdsa option</h4>
 
 <p>This is an alias for the ecc option,
 see <a href="#certtool-ecc">the ecc option documentation</a>.
 </p>
 <a name="certtool-hash"></a><a name="hash-option"></a>
-<h4 class="subheading">hash option</h4>
+<h4 class="subsubheading">hash option</h4>
 
 <p>This is the &ldquo;hash algorithm to use for signing.&rdquo; option.
 This option takes an argument string.
 Available hash functions are SHA1, RMD160, SHA256, SHA384, SHA512.
 <a name="certtool-inder"></a></p><a name="inder-option"></a>
-<h4 class="subheading">inder option</h4>
+<h4 class="subsubheading">inder option</h4>
 
 <p>This is the &ldquo;use der format for input certificates and private keys.&rdquo; option.
 The input files will be assumed to be in DER or RAW format. 
 Unlike options that in PEM input would allow multiple input data (e.g. multiple 
 certificates), when reading in DER format a single data structure is read.
 <a name="certtool-inraw"></a></p><a name="inraw-option"></a>
-<h4 class="subheading">inraw option</h4>
+<h4 class="subsubheading">inraw option</h4>
 
 <p>This is an alias for the inder option,
 see <a href="#certtool-inder">the inder option documentation</a>.
 </p>
 <a name="certtool-outder"></a><a name="outder-option"></a>
-<h4 class="subheading">outder option</h4>
+<h4 class="subsubheading">outder option</h4>
 
 <p>This is the &ldquo;use der format for output certificates and private keys&rdquo; option.
 The output will be in DER or RAW format.
 <a name="certtool-outraw"></a></p><a name="outraw-option"></a>
-<h4 class="subheading">outraw option</h4>
+<h4 class="subsubheading">outraw option</h4>
 
 <p>This is an alias for the outder option,
 see <a href="#certtool-outder">the outder option documentation</a>.
 </p>
 <a name="certtool-sec_002dparam"></a><a name="sec_002dparam-option"></a>
-<h4 class="subheading">sec-param option</h4>
+<h4 class="subsubheading">sec-param option</h4>
 
 <p>This is the &ldquo;specify the security level [low, legacy, normal, high, ultra].&rdquo; option.
 This option takes an argument string <samp>Security parameter</samp>.
 This is alternative to the bits option.
 <a name="certtool-pkcs_002dcipher"></a></p><a name="pkcs_002dcipher-option"></a>
-<h4 class="subheading">pkcs-cipher option</h4>
+<h4 class="subsubheading">pkcs-cipher option</h4>
 
 <p>This is the &ldquo;cipher to use for pkcs #8 and #12 operations&rdquo; option.
 This option takes an argument string <samp>Cipher</samp>.
 Cipher may be one of 3des, 3des-pkcs12, aes-128, aes-192, aes-256, rc2-40, arcfour.
 <a name="certtool-exit-status"></a></p><a name="certtool-exit-status-1"></a>
-<h4 class="subheading">certtool exit status</h4>
+<h4 class="subsubheading">certtool exit status</h4>
 
 <p>One of the following exit values will be returned:
 </p><dl compact="compact">
@@ -446,13 +461,13 @@ Cipher may be one of 3des, 3des-pkcs12, aes-128, aes-192, aes-256, rc2-40, arcfo
 </p></dd>
 </dl>
 <a name="certtool-See-Also"></a><a name="certtool-See-Also-1"></a>
-<h4 class="subheading">certtool See Also</h4>
+<h4 class="subsubheading">certtool See Also</h4>
 <p>p11tool (1)
 </p>
 <a name="certtool-Examples"></a><a name="certtool-Examples-1"></a>
-<h4 class="subheading">certtool Examples</h4>
+<h4 class="subsubheading">certtool Examples</h4>
 <a name="Generating-private-keys"></a>
-<h4 class="subheading">Generating private keys</h4>
+<h4 class="subsubheading">Generating private keys</h4>
 <p>To create an RSA private key, run:
 </p><div class="example">
 <pre class="example">$ certtool --generate-privkey --outfile key.pem --rsa
@@ -462,7 +477,7 @@ Cipher may be one of 3des, 3des-pkcs12, aes-128, aes-192, aes-256, rc2-40, arcfo
 above command combined with &rsquo;dsa&rsquo; or &rsquo;ecc&rsquo; options.
 </p>
 <a name="Generating-certificate-requests"></a>
-<h4 class="subheading">Generating certificate requests</h4>
+<h4 class="subsubheading">Generating certificate requests</h4>
 <p>To create a certificate request (needed when the certificate is  issued  by
 another party), run:
 </p><div class="example">
@@ -479,7 +494,7 @@ a request by specifying the private key object URL.
 
 
 <a name="Generating-a-self_002dsigned-certificate"></a>
-<h4 class="subheading">Generating a self-signed certificate</h4>
+<h4 class="subsubheading">Generating a self-signed certificate</h4>
 <p>To create a self signed certificate, use the command:
 </p><div class="example">
 <pre class="example">$ certtool --generate-privkey --outfile ca-key.pem
@@ -491,7 +506,7 @@ $ certtool --generate-self-signed --load-privkey ca-key.pem \
 authority, that signs other certificates.
 </p>
 <a name="Generating-a-certificate"></a>
-<h4 class="subheading">Generating a certificate</h4>
+<h4 class="subsubheading">Generating a certificate</h4>
 <p>To generate a certificate using the previous request, use the command:
 </p><div class="example">
 <pre class="example">$ certtool --generate-certificate --load-request request.pem \
@@ -507,14 +522,14 @@ authority, that signs other certificates.
 </pre></div>
 
 <a name="Certificate-information"></a>
-<h4 class="subheading">Certificate information</h4>
+<h4 class="subsubheading">Certificate information</h4>
 <p>To view the certificate information, use:
 </p><div class="example">
 <pre class="example">$ certtool --certificate-info --infile cert.pem
 </pre></div>
 
 <a name="PKCS-_002312-structure-generation"></a>
-<h4 class="subheading">PKCS #12 structure generation</h4>
+<h4 class="subsubheading">PKCS #12 structure generation</h4>
 <p>To generate a PKCS #12 structure using the previous key and certificate,
 use the command:
 </p><div class="example">
@@ -534,14 +549,14 @@ To work around that problem in the tool, you can use the
 </pre></div>
 
 <a name="Diffie_002dHellman-parameter-generation"></a>
-<h4 class="subheading">Diffie-Hellman parameter generation</h4>
+<h4 class="subsubheading">Diffie-Hellman parameter generation</h4>
 <p>To generate parameters for Diffie-Hellman key exchange, use the command:
 </p><div class="example">
 <pre class="example">$ certtool --generate-dh-params --outfile dh.pem --sec-param normal
 </pre></div>
 
 <a name="Proxy-certificate-generation"></a>
-<h4 class="subheading">Proxy certificate generation</h4>
+<h4 class="subsubheading">Proxy certificate generation</h4>
 <p>Proxy certificate can be used to delegate your credential to a
 temporary, typically short-lived, certificate.  To create one from the
 previously created certificate, first create a temporary key and then
@@ -555,7 +570,7 @@ $ certtool --generate-proxy --load-ca-privkey key.pem \
 </pre></div>
 
 <a name="Certificate-revocation-list-generation"></a>
-<h4 class="subheading">Certificate revocation list generation</h4>
+<h4 class="subsubheading">Certificate revocation list generation</h4>
 <p>To create an empty Certificate Revocation List (CRL) do:
 </p>
 <div class="example">
@@ -578,9 +593,9 @@ certificates in a file and use <code>--load-certificate</code> as follows:
 </pre></div>
 
 <a name="certtool-Files"></a><a name="certtool-Files-1"></a>
-<h4 class="subheading">certtool Files</h4>
+<h4 class="subsubheading">certtool Files</h4>
 <a name="Certtool_0027s-template-file-format"></a>
-<h4 class="subheading">Certtool&rsquo;s template file format</h4>
+<h4 class="subsubheading">Certtool&rsquo;s template file format</h4>
 <p>A template file can be used to avoid the interactive questions of
 certtool. Initially create a file named &rsquo;cert.cfg&rsquo; that contains the information
 about the certificate. The template can be used as below:
@@ -657,7 +672,10 @@ expiration_days = 700
 email = &quot;none@none.org&quot;
 
 # Challenge password used in certificate requests
-challenge_passwd = 123456
+challenge_password = 123456
+
+# Password when encrypting a private key
+#password = secret
 
 # An URL that has CRLs (certificate revocation lists)
 # available. Needed in CA certificates.

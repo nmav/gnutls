@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 17 November 2012 for version
-3.1.5 of GnuTLS.
+<!-- This manual is last updated 31 December 2012 for version
+3.1.6 of GnuTLS.
 
 Copyright (C) 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -13,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.5: Digital signatures</title>
+<title>GnuTLS 3.1.6: Digital signatures</title>
 
-<meta name="description" content="GnuTLS 3.1.5: Digital signatures">
-<meta name="keywords" content="GnuTLS 3.1.5: Digital signatures">
+<meta name="description" content="GnuTLS 3.1.6: Digital signatures">
+<meta name="keywords" content="GnuTLS 3.1.6: Digital signatures">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -25,8 +26,8 @@ Documentation License". -->
 <link href="Function-and-Data-Index.html#Function-and-Data-Index" rel="index" title="Function and Data Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Certificate-authentication.html#Certificate-authentication" rel="up" title="Certificate authentication">
-<link href="Shared_002dkey-and-anonymous-authentication.html#Shared_002dkey-and-anonymous-authentication" rel="next" title="Shared-key and anonymous authentication">
-<link href="Verifying-a-certificate-using-DANE-_0028DNSSEC_0029.html#Verifying-a-certificate-using-DANE-_0028DNSSEC_0029" rel="previous" title="Verifying a certificate using DANE (DNSSEC)">
+<link href="More-on-certificate-authentication.html#More-on-certificate-authentication" rel="next" title="More on certificate authentication">
+<link href="Verifying-a-certificate-using-DANE.html#Verifying-a-certificate-using-DANE" rel="previous" title="Verifying a certificate using DANE">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -161,7 +162,7 @@ Previous: <a href="Advanced-certificate-verification.html#Advanced-certificate-v
 </div>
 <hr>
 <a name="Digital-signatures-1"></a>
-<h3 class="section">4.4 Digital signatures</h3>
+<h4 class="subsection">4.1.4 Digital signatures</h4>
 <a name="index-digital-signatures"></a>
 
 <p>In this section we will provide some information about digital
@@ -221,7 +222,7 @@ attacks on SHA-1 may also get better, given the new interest in tools
 for creating them.
 </p>
 <a name="Trading-security-for-interoperability"></a>
-<h4 class="subsection">4.4.1 Trading security for interoperability</h4>
+<h4 class="subsubsection">4.1.4.1 Trading security for interoperability</h4>
 
 <p>If you connect to a server and use GnuTLS&rsquo; functions to verify the
 certificate chain, and get a <code>GNUTLS_CERT_INSECURE_ALGORITHM</code>

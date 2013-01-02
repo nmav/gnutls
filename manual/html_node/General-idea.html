@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 17 November 2012 for version
-3.1.5 of GnuTLS.
+<!-- This manual is last updated 31 December 2012 for version
+3.1.6 of GnuTLS.
 
 Copyright (C) 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -13,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.5: General idea</title>
+<title>GnuTLS 3.1.6: General idea</title>
 
-<meta name="description" content="GnuTLS 3.1.5: General idea">
-<meta name="keywords" content="GnuTLS 3.1.5: General idea">
+<meta name="description" content="GnuTLS 3.1.6: General idea">
+<meta name="keywords" content="GnuTLS 3.1.6: General idea">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -161,10 +162,10 @@ Next: <a href="Error-handling.html#Error-handling" accesskey="n" rel="next">Erro
 </div>
 <hr>
 <a name="General-idea-1"></a>
-<h4 class="subsection">8.1.1 General idea</h4>
+<h4 class="subsection">6.1.1 General idea</h4>
 
 <p>A brief description of how <acronym>GnuTLS</acronym> sessions operate is shown
-at <a href="#fig_003agnutls_002ddesign">Figure 8.1</a>. This section will become more clear when it
+at <a href="#fig_003agnutls_002ddesign">Figure 6.1</a>. This section will become more clear when it
 is completely read.
 As shown in the figure, there is a read-only global state that is
 initialized once by the global initialization function.  This global
@@ -179,7 +180,7 @@ finished using <acronym>GnuTLS</acronym>.
 <div class="float"><a name="fig_003agnutls_002ddesign"></a>
 <img src="gnutls-internals.png" alt="gnutls-internals">
 
-<div class="float-caption"><p><strong>Figure 8.1: </strong>High level design of GnuTLS.</p></div></div>
+<div class="float-caption"><p><strong>Figure 6.1: </strong>High level design of GnuTLS.</p></div></div>
 <p>The credentials structures are used by the authentication methods, such
 as certificate authentication. They store certificates, privates keys,
 and other information that is needed to prove the identity to the peer,

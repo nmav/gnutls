@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 17 November 2012 for version
-3.1.5 of GnuTLS.
+<!-- This manual is last updated 31 December 2012 for version
+3.1.6 of GnuTLS.
 
 Copyright (C) 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -13,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.5: DTLS echo server with X.509 authentication</title>
+<title>GnuTLS 3.1.6: DTLS echo server with X.509 authentication</title>
 
-<meta name="description" content="GnuTLS 3.1.5: DTLS echo server with X.509 authentication">
-<meta name="keywords" content="GnuTLS 3.1.5: DTLS echo server with X.509 authentication">
+<meta name="description" content="GnuTLS 3.1.6: DTLS echo server with X.509 authentication">
+<meta name="keywords" content="GnuTLS 3.1.6: DTLS echo server with X.509 authentication">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -161,7 +162,7 @@ Previous: <a href="Echo-server-with-anonymous-authentication.html#Echo-server-wi
 </div>
 <hr>
 <a name="DTLS-echo-server-with-X_002e509-authentication-1"></a>
-<h4 class="subsection">9.2.5 DTLS echo server with <acronym>X.509</acronym> authentication</h4>
+<h4 class="subsection">7.2.5 DTLS echo server with <acronym>X.509</acronym> authentication</h4>
 
 <p>This example is a very simple echo server using Datagram TLS and 
 <acronym>X.509</acronym> authentication.
@@ -213,7 +214,6 @@ static ssize_t pull_func (gnutls_transport_ptr_t p, void *data, size_t size);
 static const char *human_addr (const struct sockaddr *sa, socklen_t salen,
                                char *buf, size_t buflen);
 static int wait_for_connection (int fd);
-static gnutls_session_t initialize_tls_session (void);
 static int generate_dh_params (void);
 
 /* Use global credentials and parameters to simplify
@@ -341,7 +341,10 @@ main (void)
       else
         continue;
 
-      session = initialize_tls_session ();
+      gnutls_init (&amp;session, GNUTLS_SERVER | GNUTLS_DATAGRAM);
+      gnutls_priority_set (session, priority_cache);
+      gnutls_credentials_set (session, GNUTLS_CRD_CERTIFICATE, x509_cred);
+
       gnutls_dtls_prestate_set (session, &amp;prestate);
       gnutls_dtls_set_mtu (session, mtu);
 
@@ -380,17 +383,24 @@ main (void)
             }
           while (ret == GNUTLS_E_AGAIN || ret == GNUTLS_E_INTERRUPTED);
 
-          if (ret &lt; 0)
+          if (ret &lt; 0 &amp;&amp; gnutls_error_is_fatal (ret) == 0)
+            {
+              fprintf (stderr, &quot;*** Warning: %s\n&quot;, gnutls_strerror (ret));
+              continue;
+            }
+          else if (ret &lt; 0)
             {
               fprintf (stderr, &quot;Error in recv(): %s\n&quot;,
                        gnutls_strerror (ret));
               break;
             }
+
           if (ret == 0)
             {
               printf (&quot;EOF\n\n&quot;);
               break;
             }
+
           buffer[ret] = 0;
           printf (&quot;received[%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x]: %s\n&quot;,
                   sequence[0], sequence[1], sequence[2], sequence[3],
@@ -577,24 +587,11 @@ human_addr (const struct sockaddr *sa, socklen_t salen,
   return save_buf;
 }
 
-static gnutls_session_t
-initialize_tls_session (void)
-{
-  gnutls_session_t session;
-
-  gnutls_init (&amp;session, GNUTLS_SERVER | GNUTLS_DATAGRAM);
-
-  gnutls_priority_set (session, priority_cache);
-
-  gnutls_credentials_set (session, GNUTLS_CRD_CERTIFICATE, x509_cred);
-
-  return session;
-}
-
 static int
 generate_dh_params (void)
 {
-  int bits = gnutls_sec_param_to_pk_bits (GNUTLS_PK_DH, GNUTLS_SEC_PARAM_LOW);
+  int bits = 
+    gnutls_sec_param_to_pk_bits (GNUTLS_PK_DH, GNUTLS_SEC_PARAM_LEGACY);
 
   /* Generate Diffie-Hellman parameters - for use with DHE
    * kx algorithms. When short bit length is used, it might

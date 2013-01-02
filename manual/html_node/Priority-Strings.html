@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 17 November 2012 for version
-3.1.5 of GnuTLS.
+<!-- This manual is last updated 31 December 2012 for version
+3.1.6 of GnuTLS.
 
 Copyright (C) 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -13,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.5: Priority Strings</title>
+<title>GnuTLS 3.1.6: Priority Strings</title>
 
-<meta name="description" content="GnuTLS 3.1.5: Priority Strings">
-<meta name="keywords" content="GnuTLS 3.1.5: Priority Strings">
+<meta name="description" content="GnuTLS 3.1.6: Priority Strings">
+<meta name="keywords" content="GnuTLS 3.1.6: Priority Strings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -161,14 +162,14 @@ Next: <a href="Selecting-cryptographic-key-sizes.html#Selecting-cryptographic-ke
 </div>
 <hr>
 <a name="Priority-strings"></a>
-<h3 class="section">8.9 Priority strings</h3>
+<h3 class="section">6.9 Priority strings</h3>
 <a name="index-Priority-strings"></a>
 
 <p>In order to specify cipher suite preferences on a TLS session
 there are priority functions that accept a string
 specifying the enabled for the handshake algorithms.
 That string may contain a single initial keyword such as
-in <a href="#tab_003aprio_002dkeywords">Table 8.2</a> and may be followed by
+in <a href="#tab_003aprio_002dkeywords">Table 6.2</a> and may be followed by
 additional algorithm or special keywords.
 </p>
 <dl compact="compact">
@@ -203,7 +204,7 @@ compression methods. It should be followed by the
 algorithms to be enabled.</td></tr>
 </table>
 
-<div class="float-caption"><p><strong>Table 8.2: </strong>Supported initial keywords.</p></div></div>
+<div class="float-caption"><p><strong>Table 6.2: </strong>Supported initial keywords.</p></div></div>
 <p>Unless the initial keyword is &quot;NONE&quot; the defaults (in preference
 order) are for TLS protocols TLS 1.2, TLS1.1, TLS1.0, SSL3.0; for
 compression NULL; for certificate types X.509.
@@ -228,7 +229,7 @@ allowed.
 <p>The order with which every algorithm or protocol
 is specified is significant. Algorithms specified before others
 will take precedence. The supported algorithms and protocols
-are shown in <a href="#tab_003aprio_002dalgorithms">Table 8.3</a>. 
+are shown in <a href="#tab_003aprio_002dalgorithms">Table 6.3</a>. 
 To avoid collisions in order to specify a compression algorithm in
 the priority string you have to prefix it with &quot;COMP-&quot;, protocol versions
 with &quot;VERS-&quot;, signature algorithms with &quot;SIGN-&quot; and certificate types with &quot;CTYPE-&quot;. 
@@ -267,15 +268,15 @@ is SIGN-ALL. This is only valid for TLS 1.2 and later.</td></tr>
 <tr><td width="20%">Elliptic curves</td><td width="70%">CURVE-SECP192R1, CURVE-SECP224R1, CURVE-SECP256R1, CURVE-SECP384R1, CURVE-SECP521R1. Catch all is CURVE-ALL.</td></tr>
 </table>
 
-<div class="float-caption"><p><strong>Table 8.3: </strong>The supported algorithm keywords in priority strings.</p></div></div>
+<div class="float-caption"><p><strong>Table 6.3: </strong>The supported algorithm keywords in priority strings.</p></div></div>
 <p>Note that the DHE key exchange methods are generally
 slower<a name="DOCF14" href="#FOOT14"><sup>14</sup></a> than their elliptic curves counterpart
 (ECDHE). Moreover the plain Diffie-Hellman key exchange
 requires parameters to be generated and associated with a credentials
 structure by the server (see <a href="Parameter-generation.html#Parameter-generation">Parameter generation</a>). 
 </p>
-<p>The available special keywords are shown in <a href="#tab_003aprio_002dspecial1">Table 8.4</a>
-and <a href="#tab_003aprio_002dspecial2">Table 8.5</a>. 
+<p>The available special keywords are shown in <a href="#tab_003aprio_002dspecial1">Table 6.4</a>
+and <a href="#tab_003aprio_002dspecial2">Table 6.5</a>. 
 </p>
 <div class="float"><a name="tab_003aprio_002dspecial1"></a>
 <table>
@@ -295,7 +296,7 @@ This is the default.</td></tr>
 <tr><td width="45%">%LATEST_RECORD_VERSION</td><td width="45%">will use the latest TLS version record version in client hello.</td></tr>
 </table>
 
-<div class="float-caption"><p><strong>Table 8.4: </strong>Special priority string keywords.</p></div></div>
+<div class="float-caption"><p><strong>Table 6.4: </strong>Special priority string keywords.</p></div></div>
 <div class="float"><a name="tab_003aprio_002dspecial2"></a>
 <table>
 <thead><tr><th width="45%">Keyword</th><th width="45%">Description</th></tr></thead>
@@ -325,7 +326,7 @@ causes interoperability problems, but is required for full protection.</td></tr>
 <tr><td width="45%">%VERIFY_ALLOW_X509_V1_CA_CRT</td><td width="45%">will allow V1 CAs in chains.</td></tr>
 </table>
 
-<div class="float-caption"><p><strong>Table 8.5: </strong>More priority string keywords.</p></div></div>
+<div class="float-caption"><p><strong>Table 6.5: </strong>More priority string keywords.</p></div></div>
 <p>Finally the ciphersuites enabled by any priority string can be
 listed using the <code>gnutls-cli</code> application (see <a href="gnutls_002dcli-Invocation.html#gnutls_002dcli-Invocation">gnutls-cli Invocation</a>), 
 or by using the priority functions as in <a href="Listing-the-ciphersuites-in-a-priority-string.html#Listing-the-ciphersuites-in-a-priority-string">Listing the ciphersuites in a priority string</a>.

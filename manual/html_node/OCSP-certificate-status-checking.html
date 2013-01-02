@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 17 November 2012 for version
-3.1.5 of GnuTLS.
+<!-- This manual is last updated 31 December 2012 for version
+3.1.6 of GnuTLS.
 
 Copyright (C) 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -13,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.5: OCSP certificate status checking</title>
+<title>GnuTLS 3.1.6: OCSP certificate status checking</title>
 
-<meta name="description" content="GnuTLS 3.1.5: OCSP certificate status checking">
-<meta name="keywords" content="GnuTLS 3.1.5: OCSP certificate status checking">
+<meta name="description" content="GnuTLS 3.1.6: OCSP certificate status checking">
+<meta name="keywords" content="GnuTLS 3.1.6: OCSP certificate status checking">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -161,7 +162,7 @@ Next: <a href="Managing-encrypted-keys.html#Managing-encrypted-keys" accesskey="
 </div>
 <hr>
 <a name="OCSP-certificate-status-checking-1"></a>
-<h3 class="section">6.3 <acronym>OCSP</acronym> certificate status checking</h3>
+<h4 class="subsection">4.2.3 <acronym>OCSP</acronym> certificate status checking</h4>
 <a name="index-certificate-status"></a>
 <a name="index-Online-Certificate-Status-Protocol"></a>
 <a name="index-OCSP"></a>
@@ -286,7 +287,7 @@ attacker will not be able to give a stale response for the same nonce.
 </dl>
 
 <p>The OCSP response structures is a complex structure. A simplified overview
-of it is in <a href="#tab_003aocsp_002dresponse">Table 6.2</a>. Note that a response may contain 
+of it is in <a href="#tab_003aocsp_002dresponse">Table 4.7</a>. Note that a response may contain 
 information on multiple certificates.
 </p>
 <div class="float"><a name="tab_003aocsp_002dresponse"></a>
@@ -304,7 +305,7 @@ information on multiple certificates.
 <tr><td width="20%">revocationReason</td><td width="70%">The reason the certificate was revoked.</td></tr>
 </table>
 
-<div class="float-caption"><p><strong>Table 6.2: </strong>The most important OCSP response fields.</p></div></div>
+<div class="float-caption"><p><strong>Table 4.7: </strong>The most important OCSP response fields.</p></div></div>
 
 <p>We provide basic functions for initialization, importing, exporting
 and deallocating OCSP responses.  
@@ -401,7 +402,7 @@ below.
 </p></dd>
 </dl>
 
-<div class="float-caption"><p><strong>Figure 6.1: </strong>The revocation reasons</p></div></div>
+<div class="float-caption"><p><strong>Figure 4.5: </strong>The revocation reasons</p></div></div>
 <p>Note, that the OCSP response needs to be verified against some set of trust
 anchors before it can be relied upon. It is also important to check
 whether the received OCSP response corresponds to the certificate being checked.

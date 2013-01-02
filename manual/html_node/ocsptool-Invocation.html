@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 17 November 2012 for version
-3.1.5 of GnuTLS.
+<!-- This manual is last updated 31 December 2012 for version
+3.1.6 of GnuTLS.
 
 Copyright (C) 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -13,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.5: ocsptool Invocation</title>
+<title>GnuTLS 3.1.6: ocsptool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.1.5: ocsptool Invocation">
-<meta name="keywords" content="GnuTLS 3.1.5: ocsptool Invocation">
+<meta name="description" content="GnuTLS 3.1.6: ocsptool Invocation">
+<meta name="keywords" content="GnuTLS 3.1.6: ocsptool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -161,7 +162,7 @@ Next: <a href="danetool-Invocation.html#danetool-Invocation" accesskey="n" rel="
 </div>
 <hr>
 <a name="Invoking-ocsptool"></a>
-<h3 class="section">6.6 Invoking ocsptool</h3>
+<h4 class="subsection">4.2.6 Invoking ocsptool</h4>
 <a name="index-ocsptool"></a>
 
 
@@ -175,7 +176,7 @@ This software is released under the GNU General Public License, version 3 or lat
 </p>
 
 <a name="ocsptool-usage"></a><a name="ocsptool-help_002fusage-_0028_002dh_0029"></a>
-<h4 class="subheading">ocsptool help/usage (-h)</h4>
+<h4 class="subsubheading">ocsptool help/usage (-h)</h4>
 <a name="index-ocsptool-help"></a>
 
 <p>This is the automatically generated usage text for ocsptool.
@@ -187,7 +188,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">ocsptool - GnuTLS OCSP tool - Ver. 3.1.5
+<pre class="example">ocsptool - GnuTLS OCSP tool - Ver. 3.1.6
 USAGE:  ocsptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -241,14 +242,14 @@ requests/responses, generate requests and verify responses.
 please send bug reports to:  bug-gnutls@gnu.org
 </pre></div>
 
-<a name="ocsptool-debug"></a><a name="debug-option-_0028_002dd_0029-3"></a>
-<h4 class="subheading">debug option (-d)</h4>
+<a name="ocsptool-debug"></a><a name="debug-option-_0028_002dd_0029-1"></a>
+<h4 class="subsubheading">debug option (-d)</h4>
 
 <p>This is the &ldquo;enable debugging.&rdquo; option.
 This option takes an argument number.
 Specifies the debug level.
 <a name="ocsptool-ask"></a></p><a name="ask-option"></a>
-<h4 class="subheading">ask option</h4>
+<h4 class="subsubheading">ask option</h4>
 
 <p>This is the &ldquo;ask an ocsp/http server on a certificate validity&rdquo; option.
 This option takes an optional argument string <samp>server name|url</samp>.
@@ -261,7 +262,7 @@ load-cert, load-issuer.
 
 <p>Connects to the specified HTTP OCSP server and queries on the validity of the loaded certificate.
 <a name="ocsptool-exit-status"></a></p><a name="ocsptool-exit-status-1"></a>
-<h4 class="subheading">ocsptool exit status</h4>
+<h4 class="subsubheading">ocsptool exit status</h4>
 
 <p>One of the following exit values will be returned:
 </p><dl compact="compact">
@@ -273,13 +274,13 @@ load-cert, load-issuer.
 </p></dd>
 </dl>
 <a name="ocsptool-See-Also"></a><a name="ocsptool-See-Also-1"></a>
-<h4 class="subheading">ocsptool See Also</h4>
+<h4 class="subsubheading">ocsptool See Also</h4>
 <p>certtool (1)
 </p>
 <a name="ocsptool-Examples"></a><a name="ocsptool-Examples-1"></a>
-<h4 class="subheading">ocsptool Examples</h4>
+<h4 class="subsubheading">ocsptool Examples</h4>
 <a name="Print-information-about-an-OCSP-request"></a>
-<h4 class="subheading">Print information about an OCSP request</h4>
+<h4 class="subsubheading">Print information about an OCSP request</h4>
 
 <p>To parse an OCSP request and print information about the content, the
 <code>-i</code> or <code>--request-info</code> parameter may be used as follows.
@@ -298,7 +299,7 @@ format.
 </pre></div>
 
 <a name="Print-information-about-an-OCSP-response"></a>
-<h4 class="subheading">Print information about an OCSP response</h4>
+<h4 class="subsubheading">Print information about an OCSP response</h4>
 
 <p>Similar to parsing OCSP requests, OCSP responses can be parsed using
 the <code>-j</code> or <code>--response-info</code> as follows.
@@ -309,7 +310,7 @@ $ cat ocsp-response.der | ocsptool --response-info
 </pre></div>
 
 <a name="Generate-an-OCSP-request"></a>
-<h4 class="subheading">Generate an OCSP request</h4>
+<h4 class="subsubheading">Generate an OCSP request</h4>
 
 <p>The <code>-q</code> or <code>--generate-request</code> parameters are used to
 generate an OCSP request.  By default the OCSP request is written to
@@ -330,7 +331,7 @@ containing a nonce.  This behaviour can be disabled by specifying
 <code>--no-nonce</code>.
 </p>
 <a name="Verify-signature-in-OCSP-response"></a>
-<h4 class="subheading">Verify signature in OCSP response</h4>
+<h4 class="subsubheading">Verify signature in OCSP response</h4>
 
 <p>To verify the signature in an OCSP response the <code>-e</code> or
 <code>--verify-response</code> parameter is used.  The tool will read an
@@ -351,7 +352,7 @@ Extended Key Usage bit has to be asserted in the signer certificate.
 <p>The tool will print status of verification.
 </p>
 <a name="Verify-signature-in-OCSP-response-against-given-certificate"></a>
-<h4 class="subheading">Verify signature in OCSP response against given certificate</h4>
+<h4 class="subsubheading">Verify signature in OCSP response against given certificate</h4>
 
 <p>It is possible to override the normal trust logic if you know that a
 certain certificate is supposed to have signed the OCSP response, and
@@ -372,7 +373,7 @@ is if you want to avoid the indirect mode where the OCSP response
 signer certificate is signed by a trust anchor.
 </p>
 <a name="Real_002dworld-example"></a>
-<h4 class="subheading">Real-world example</h4>
+<h4 class="subsubheading">Real-world example</h4>
 
 <p>Here is an example of how to generate an OCSP request for a
 certificate and to verify the response.  For illustration we&rsquo;ll use

@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 17 November 2012 for version
-3.1.5 of GnuTLS.
+<!-- This manual is last updated 31 December 2012 for version
+3.1.6 of GnuTLS.
 
 Copyright (C) 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -13,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.5: Cryptographic Backend</title>
+<title>GnuTLS 3.1.6: Cryptographic Backend</title>
 
-<meta name="description" content="GnuTLS 3.1.5: Cryptographic Backend">
-<meta name="keywords" content="GnuTLS 3.1.5: Cryptographic Backend">
+<meta name="description" content="GnuTLS 3.1.6: Cryptographic Backend">
+<meta name="keywords" content="GnuTLS 3.1.6: Cryptographic Backend">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -161,7 +162,7 @@ Previous: <a href="TLS-Extension-Handling.html#TLS-Extension-Handling" accesskey
 </div>
 <hr>
 <a name="Cryptographic-Backend-1"></a>
-<h3 class="section">12.5 Cryptographic Backend</h3>
+<h3 class="section">10.5 Cryptographic Backend</h3>
 <p>Today most new processors, either for embedded or desktop systems
 include either instructions  intended to speed up cryptographic operations,
 or a co-processor with cryptographic capabilities. Taking advantage of 
@@ -169,12 +170,12 @@ those is a challenging task for every cryptographic  application or
 library. Unfortunately the cryptographic library that GnuTLS is based 
 on takes no advantage of these capabilities. For this reason GnuTLS handles 
 this internally by following a layered approach to accessing
-cryptographic operations as in <a href="#fig_003acrypto_002dlayers">Figure 12.4</a>.
+cryptographic operations as in <a href="#fig_003acrypto_002dlayers">Figure 10.4</a>.
 </p>
 <div class="float"><a name="fig_003acrypto_002dlayers"></a>
 <img src="gnutls-crypto-layers.png" alt="gnutls-crypto-layers">
 
-<div class="float-caption"><p><strong>Figure 12.4: </strong>GnuTLS cryptographic back-end design.</p></div></div>
+<div class="float-caption"><p><strong>Figure 10.4: </strong>GnuTLS cryptographic back-end design.</p></div></div>
 <p>The TLS layer uses a cryptographic provider layer, that will in turn either 
 use the default crypto provider &ndash; a software crypto library, or use an external
 crypto provider, if available in the local system. The reason of handling

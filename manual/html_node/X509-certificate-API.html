@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 17 November 2012 for version
-3.1.5 of GnuTLS.
+<!-- This manual is last updated 31 December 2012 for version
+3.1.6 of GnuTLS.
 
 Copyright (C) 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -13,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.5: X509 certificate API</title>
+<title>GnuTLS 3.1.6: X509 certificate API</title>
 
-<meta name="description" content="GnuTLS 3.1.5: X509 certificate API">
-<meta name="keywords" content="GnuTLS 3.1.5: X509 certificate API">
+<meta name="description" content="GnuTLS 3.1.6: X509 certificate API">
+<meta name="keywords" content="GnuTLS 3.1.6: X509 certificate API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -1189,10 +1190,10 @@ negative error value.
 <dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fattribute_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_attribute_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
-<p><var>oid</var>: holds an Object Identified in (0)-terminated string
+<p><var>oid</var>: holds an Object Identifier in null-terminated string
 </p>
 <p><var>indx</var>: In case multiple same OIDs exist in the attribute list, this
-specifies which to send, use (0) to get the first one
+specifies which to get, use (0) to get the first one
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the attribute data (may be <code>NULL</code> )
 </p>
@@ -1201,6 +1202,9 @@ specifies which to send, use (0) to get the first one
 <p>This function will return the attribute in the certificate request
 specified by the given Object ID.  The attribute will be DER
 encoded.
+</p>
+<p>Attributes in a certificate request is an optional set of data
+appended to the request. Their interpretation depends on the CA policy.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -1212,7 +1216,7 @@ negative error value.
 <dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fattribute_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_attribute_data</strong> <em>(gnutls_x509_crq_t <var>crq</var>, int <var>indx</var>, void * <var>data</var>, size_t * <var>sizeof_data</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
-<p><var>indx</var>: Specifies which attribute OID to send. Use (0) to get the first one.
+<p><var>indx</var>: Specifies which attribute number to get. Use (0) to get the first one.
 </p>
 <p><var>data</var>: a pointer to a structure to hold the data (may be null)
 </p>
@@ -1241,7 +1245,7 @@ will be returned.
 <dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fattribute_005finfo"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_attribute_info</strong> <em>(gnutls_x509_crq_t <var>crq</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
-<p><var>indx</var>: Specifies which attribute OID to send. Use (0) to get the first one.
+<p><var>indx</var>: Specifies which attribute number to get. Use (0) to get the first one.
 </p>
 <p><var>oid</var>: a pointer to a structure to hold the OID
 </p>
@@ -1296,12 +1300,12 @@ certificate does not contain the basicConstraints extension
 <a name="gnutls_005fx509_005fcrq_005fget_005fchallenge_005fpassword-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_challenge_password</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fchallenge_005fpassword"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fchallenge_005fpassword"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_challenge_password</strong> <em>(gnutls_x509_crq_t <var>crq</var>, char * <var>pass</var>, size_t * <var>sizeof_pass</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fchallenge_005fpassword"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_challenge_password</strong> <em>(gnutls_x509_crq_t <var>crq</var>, char * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
-<p><var>pass</var>: will hold a (0)-terminated password string
+<p><var>buf</var>: will hold a (0)-terminated password string
 </p>
-<p><var>sizeof_pass</var>: Initially holds the size of  <code>pass</code> .
+<p><var>sizeof_buf</var>: Initially holds the size of  <code>pass</code> .
 </p>
 <p>This function will return the challenge password in the request.
 The challenge password is intended to be used for requesting a
@@ -1338,10 +1342,10 @@ the required size.  On success 0 is returned.
 <dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a gnutls_x509_crq_t structure
 </p>
-<p><var>oid</var>: holds an Object Identified in null terminated string
+<p><var>oid</var>: holds an Object Identifier in a null terminated string
 </p>
 <p><var>indx</var>: In case multiple same OIDs exist in the RDN, this specifies
-which to send. Use (0) to get the first one.
+which to get. Use (0) to get the first one.
 </p>
 <p><var>raw_flag</var>: If non-zero returns the raw DER data of the DN part.
 </p>
@@ -1371,7 +1375,7 @@ updated with the required size.  On success 0 is returned.
 <dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a gnutls_x509_crq_t structure
 </p>
-<p><var>indx</var>: Specifies which DN OID to send. Use (0) to get the first one.
+<p><var>indx</var>: Specifies which DN OID to get. Use (0) to get the first one.
 </p>
 <p><var>oid</var>: a pointer to a structure to hold the name (may be <code>NULL</code> )
 </p>
@@ -1391,10 +1395,10 @@ updated with the required size.  On success 0 is returned.
 <dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>sizeof_buf</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
-<p><var>oid</var>: holds an Object Identified in null terminated string
+<p><var>oid</var>: holds an Object Identifier in a null terminated string
 </p>
 <p><var>indx</var>: In case multiple same OIDs exist in the extensions, this
-specifies which to send. Use (0) to get the first one.
+specifies which to get. Use (0) to get the first one.
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the name (may be null)
 </p>
@@ -1420,7 +1424,7 @@ contain the specified extension
 <dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_data</strong> <em>(gnutls_x509_crq_t <var>crq</var>, int <var>indx</var>, void * <var>data</var>, size_t * <var>sizeof_data</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
-<p><var>indx</var>: Specifies which extension OID to send. Use (0) to get the first one.
+<p><var>indx</var>: Specifies which extension number to get. Use (0) to get the first one.
 </p>
 <p><var>data</var>: a pointer to a structure to hold the data (may be null)
 </p>
@@ -1449,7 +1453,7 @@ will be returned.
 <dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005finfo"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_info</strong> <em>(gnutls_x509_crq_t <var>crq</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
-<p><var>indx</var>: Specifies which extension OID to send. Use (0) to get the first one.
+<p><var>indx</var>: Specifies which extension number to get. Use (0) to get the first one.
 </p>
 <p><var>oid</var>: a pointer to a structure to hold the OID
 </p>
@@ -1757,15 +1761,18 @@ negative error value.
 <dt><a name="index-gnutls_005fx509_005fcrq_005fset_005fattribute_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_set_attribute_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, void * <var>buf</var>, size_t <var>sizeof_buf</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
-<p><var>oid</var>: holds an Object Identified in (0)-terminated string
+<p><var>oid</var>: holds an Object Identifier in a null-terminated string
 </p>
 <p><var>buf</var>: a pointer to a structure that holds the attribute data
 </p>
 <p><var>sizeof_buf</var>: holds the size of  <code>buf</code> 
 </p>
 <p>This function will set the attribute in the certificate request
-specified by the given Object ID.  The attribute must be be DER
+specified by the given Object ID. The provided attribute must be be DER
 encoded.
+</p>
+<p>Attributes in a certificate request is an optional set of data
+appended to the request. Their interpretation depends on the CA policy.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -3841,9 +3848,11 @@ negative error value.
 <p><var>serial_size</var>: Holds the size of the serial field.
 </p>
 <p>This function will set the X.509 certificate&rsquo;s serial number.
-Serial is not always a 32 or 64bit number.  Some CAs use large
-serial numbers, thus it may be wise to handle it as something
-uint8_t.
+While the serial number is an integer, it is often handled
+as an opaque field by several CAs. For this reason this function
+accepts any kind of data as a serial number. To be consistent
+with the X.509/PKIX specifications the provided  <code>serial</code> should be 
+a big-endian positive number (i.e. it&rsquo;s leftmost bit should be zero).
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -4055,8 +4064,8 @@ negative error value.
 <a name="gnutls_005fx509_005fdn_005fget_005frdn_005fava-1"></a>
 <h4 class="subheading">gnutls_x509_dn_get_rdn_ava</h4>
 <a name="gnutls_005fx509_005fdn_005fget_005frdn_005fava"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fdn_005fget_005frdn_005fava"></a>Function: <em>int</em> <strong>gnutls_x509_dn_get_rdn_ava</strong> <em>(gnutls_x509_dn_t <var>dn</var>, int <var>irdn</var>, int <var>iava</var>, gnutls_x509_ava_st * <var>ava</var>)</em></dt>
-<dd><p><var>dn</var>: input variable with uint8_t DN pointer
+<dt><a name="index-gnutls_005fx509_005fdn_005fget_005frdn_005fava-1"></a>Function: <em>int</em> <strong>gnutls_x509_dn_get_rdn_ava</strong> <em>(gnutls_x509_dn_t <var>dn</var>, int <var>irdn</var>, int <var>iava</var>, gnutls_x509_ava_st * <var>ava</var>)</em></dt>
+<dd><p><var>dn</var>: a pointer to DN
 </p>
 <p><var>irdn</var>: index of RDN
 </p>
@@ -4073,10 +4082,15 @@ gnutls_datum_t value;
 unsigned long value_tag;
 };
 </p>
-<p>Note that  <code>ava</code> will contain pointers into the  <code>dn</code> structure, so you
-should not modify any data or deallocate it.  Note also that the DN
-in turn points into the original certificate structure, and thus
-you may not deallocate the certificate and continue to access  <code>dn</code> .
+<p>The X.509 distinguished name is a sequence of sequences of strings
+and this is what the  <code>irdn</code> and  <code>iava</code> indexes model.
+</p>
+<p>Note that  <code>ava</code> will contain pointers into the  <code>dn</code> structure which
+in turns points to the original certificate. Thus you should not
+modify any data or deallocate any of those.
+</p>
+<p>This is a low-level function that requires the caller to do the
+value conversions when necessary (e.g. from UCS-2).
 </p>
 <p><strong>Returns:</strong> Returns 0 on success, or an error code.
 </p></dd></dl>
@@ -4546,8 +4560,8 @@ negative error value.
 the native <code>gnutls_x509_privkey_t</code>  format, irrespective of the
 input format. The input format is auto-detected.
 </p>
-<p>The supported formats are typical X.509, PKCS <code>8</code>  and the openssl
-format.
+<p>The supported formats are basic unencrypted key, PKCS <code>8</code> , PKCS <code>12</code> ,
+and the openssl format.
 </p>
 <p>If the provided key is encrypted but no password was given, then
 <code>GNUTLS_E_DECRYPTION_FAILED</code>  is returned.

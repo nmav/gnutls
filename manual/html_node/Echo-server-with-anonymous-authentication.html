@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 17 November 2012 for version
-3.1.5 of GnuTLS.
+<!-- This manual is last updated 31 December 2012 for version
+3.1.6 of GnuTLS.
 
 Copyright (C) 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -13,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.5: Echo server with anonymous authentication</title>
+<title>GnuTLS 3.1.6: Echo server with anonymous authentication</title>
 
-<meta name="description" content="GnuTLS 3.1.5: Echo server with anonymous authentication">
-<meta name="keywords" content="GnuTLS 3.1.5: Echo server with anonymous authentication">
+<meta name="description" content="GnuTLS 3.1.6: Echo server with anonymous authentication">
+<meta name="keywords" content="GnuTLS 3.1.6: Echo server with anonymous authentication">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -161,7 +162,7 @@ Next: <a href="DTLS-echo-server-with-X_002e509-authentication.html#DTLS-echo-ser
 </div>
 <hr>
 <a name="Echo-server-with-anonymous-authentication-1"></a>
-<h4 class="subsection">9.2.4 Echo server with anonymous authentication</h4>
+<h4 class="subsection">7.2.4 Echo server with anonymous authentication</h4>
 
 <p>This example server supports anonymous authentication, and could be
 used to serve the example client for anonymous authentication.
@@ -190,40 +191,22 @@ used to serve the example client for anonymous authentication.
 #define SOCKET_ERR(err,s) if(err==-1) {perror(s);return(1);}
 #define MAX_BUF 1024
 #define PORT 5556               /* listen to 5556 port */
-#define DH_BITS 1024
 
 /* These are global */
-gnutls_anon_server_credentials_t anoncred;
-
-static gnutls_session_t
-initialize_tls_session (void)
-{
-  gnutls_session_t session;
-
-  gnutls_init (&amp;session, GNUTLS_SERVER);
-
-  gnutls_priority_set_direct (session, &quot;NORMAL:+ANON-ECDH:+ANON-DH&quot;, NULL);
-
-  gnutls_credentials_set (session, GNUTLS_CRD_ANON, anoncred);
-
-  gnutls_dh_set_prime_bits (session, DH_BITS);
-
-  return session;
-}
-
 static gnutls_dh_params_t dh_params;
 
 static int
 generate_dh_params (void)
 {
-
+  unsigned int bits = 
+    gnutls_sec_param_to_pk_bits (GNUTLS_PK_DH, GNUTLS_SEC_PARAM_LEGACY);
   /* Generate Diffie-Hellman parameters - for use with DHE
    * kx algorithms. These should be discarded and regenerated
    * once a day, once a week or once a month. Depending on the
    * security requirements.
    */
   gnutls_dh_params_init (&amp;dh_params);
-  gnutls_dh_params_generate2 (dh_params, DH_BITS);
+  gnutls_dh_params_generate2 (dh_params, bits);
 
   return 0;
 }
@@ -238,6 +221,7 @@ main (void)
   socklen_t client_len;
   char topbuf[512];
   gnutls_session_t session;
+  gnutls_anon_server_credentials_t anoncred;
   char buffer[MAX_BUF + 1];
   int optval = 1;
 
@@ -274,7 +258,9 @@ main (void)
   client_len = sizeof (sa_cli);
   for (;;)
     {
-      session = initialize_tls_session ();
+      gnutls_init (&amp;session, GNUTLS_SERVER);
+      gnutls_priority_set_direct (session, &quot;NORMAL:+ANON-ECDH:+ANON-DH&quot;, NULL);
+      gnutls_credentials_set (session, GNUTLS_CRD_ANON, anoncred);
 
       sd = accept (listen_sd, (struct sockaddr *) &amp; sa_cli, &amp;client_len);
 
@@ -305,13 +291,16 @@ main (void)
 
       for (;;)
         {
-          memset (buffer, 0, MAX_BUF + 1);
           ret = gnutls_record_recv (session, buffer, MAX_BUF);
 
           if (ret == 0)
             {
               printf (&quot;\n- Peer has closed the GnuTLS connection\n&quot;);
               break;
+            }
+          else if (ret &lt; 0 &amp;&amp; gnutls_error_is_fatal (ret) == 0)
+            {
+              fprintf (stderr, &quot;*** Warning: %s\n&quot;, gnutls_strerror (ret));
             }
           else if (ret &lt; 0)
             {
@@ -323,7 +312,7 @@ main (void)
             {
               /* echo data back to the client
                */
-              gnutls_record_send (session, buffer, strlen (buffer));
+              gnutls_record_send (session, buffer, ret);
             }
         }
       printf (&quot;\n&quot;);
