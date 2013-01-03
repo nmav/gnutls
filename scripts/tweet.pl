@@ -10,6 +10,7 @@ if (!-e 'scripts/passwords.pl') {
 }
 
 require 'scripts/lib-news.pl';
+
 require 'scripts/passwords.pl';
 
 my $nt = Net::Twitter->new(
@@ -18,6 +19,7 @@ my $nt = Net::Twitter->new(
           consumer_secret     => $consumer_secret,
           access_token        => $token,
           access_token_secret => $token_secret,
+          ssl => 1,
 );
 
 my %tt1 = (); #contents
