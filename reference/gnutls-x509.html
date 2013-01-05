@@ -1636,6 +1636,7 @@ negative error value.</td>
 </tr>
 </tbody>
 </table></div>
+<p class="since">Since 3.1.3</p>
 </div>
 <hr>
 <div class="refsect2">
@@ -3561,11 +3562,6 @@ specifies which to get, use (0) to get the first one</td>
 <td>a pointer to a structure to hold the attribute data (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>)</td>
 </tr>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>sizeof_buf</code></em> :</span></p></td>
-<td>initially holds the size of <em class="parameter"><code>buf</code></em>
-</td>
-</tr>
-<tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
@@ -3738,6 +3734,10 @@ revocation of the certificate.
 <td>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</td>
 </tr>
 <tr>
+<td><p><span class="term"><em class="parameter"><code>pass</code></em> :</span></p></td>
+<td>will hold a (0)-terminated password string</td>
+</tr>
+<tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
@@ -3770,15 +3770,10 @@ data.
 <td>a pointer to a structure to hold the name (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>)</td>
 </tr>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>sizeof_buf</code></em> :</span></p></td>
-<td>initially holds the size of <em class="parameter"><code>buf</code></em>
-</td>
-</tr>
-<tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
 <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SHORT-MEMORY-BUFFER:CAPS" title="GNUTLS_E_SHORT_MEMORY_BUFFER"><code class="literal">GNUTLS_E_SHORT_MEMORY_BUFFER</code></a> if the provided buffer is not
-long enough, and in that case the *<em class="parameter"><code>sizeof_buf</code></em> will be updated with
+long enough, and in that case the *<em class="parameter"><code>buf_size</code></em> will be updated with
 the required size.  On success 0 is returned.</td>
 </tr>
 </tbody>
@@ -3831,15 +3826,10 @@ which to get. Use (0) to get the first one.</td>
 <td>a pointer to a structure to hold the name (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>)</td>
 </tr>
 <tr>
-<td><p><span class="term"><em class="parameter"><code>sizeof_buf</code></em> :</span></p></td>
-<td>initially holds the size of <em class="parameter"><code>buf</code></em>
-</td>
-</tr>
-<tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
 <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SHORT-MEMORY-BUFFER:CAPS" title="GNUTLS_E_SHORT_MEMORY_BUFFER"><code class="literal">GNUTLS_E_SHORT_MEMORY_BUFFER</code></a> if the provided buffer is
-not long enough, and in that case the *<em class="parameter"><code>sizeof_buf</code></em> will be
+not long enough, and in that case the *<em class="parameter"><code>buf_size</code></em> will be
 updated with the required size.  On success 0 is returned.</td>
 </tr>
 </tbody>
@@ -3920,11 +3910,6 @@ specifies which to get. Use (0) to get the first one.</td>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>buf</code></em> :</span></p></td>
 <td>a pointer to a structure to hold the name (may be null)</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>sizeof_buf</code></em> :</span></p></td>
-<td>initially holds the size of <em class="parameter"><code>buf</code></em>
-</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>critical</code></em> :</span></p></td>
@@ -4556,11 +4541,6 @@ appended to the request. Their interpretation depends on the CA policy.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>buf</code></em> :</span></p></td>
 <td>a pointer to a structure that holds the attribute data</td>
-</tr>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>sizeof_buf</code></em> :</span></p></td>
-<td>holds the size of <em class="parameter"><code>buf</code></em>
-</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
@@ -5240,7 +5220,7 @@ returned, and 0 on success.</td>
 </tr>
 </tbody>
 </table></div>
-<p class="since">Since 3.1</p>
+<p class="since">Since 3.1.3</p>
 </div>
 <hr>
 <div class="refsect2">
@@ -5279,29 +5259,15 @@ extension, see RFC 5280 section 4.2.2.1 for more information.  The
 AIA extension holds a sequence of AccessDescription (AD) data:
 </p>
 <p>
+&lt;informalexample&gt;&lt;programlisting&gt;
+AuthorityInfoAccessSyntax  ::=
+        SEQUENCE SIZE (1..MAX) OF AccessDescription
 </p>
-<div class="informalexample">
-  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
-    <tbody>
-      <tr>
-        <td class="listing_lines" align="right"><pre>1
-2
-3
-4
-5
-6</pre></td>
-        <td class="listing_code"><pre class="programlisting">AuthorityInfoAccessSyntax  <span class="gtkdoc opt">::=</span>
-        SEQUENCE <span class="function">SIZE</span> <span class="gtkdoc opt">(</span><span class="number">1</span><span class="gtkdoc opt">..</span>MAX<span class="gtkdoc opt">)</span> OF AccessDescription
-
-AccessDescription  <span class="gtkdoc opt">::=</span>  SEQUENCE <span class="gtkdoc opt">{</span>
-        accessMethod          OBJECT IDENTIFIER<span class="gtkdoc opt">,</span>
-        accessLocation        GeneralName  <span class="gtkdoc opt">}</span></pre></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
 <p>
+AccessDescription  ::=  SEQUENCE {
+        accessMethod          OBJECT IDENTIFIER,
+        accessLocation        GeneralName  }
+&lt;/programlisting&gt;&lt;/informalexample&gt;
 </p>
 <p>
 The <em class="parameter"><code>seq</code></em> input parameter is used to indicate which member of the
@@ -8809,6 +8775,7 @@ negative error value.</td>
 </tr>
 </tbody>
 </table></div>
+<p class="since">Since 3.1.3</p>
 </div>
 <hr>
 <div class="refsect2">

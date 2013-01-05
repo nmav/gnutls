@@ -114,7 +114,7 @@
                                                          <em class="parameter"><code>const <span class="type">char</span> *url</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-abstract.html#gnutls-privkey-import-tpm-raw" title="gnutls_privkey_import_tpm_raw ()">gnutls_privkey_import_tpm_raw</a>       (<em class="parameter"><code><a class="link" href="gnutls-abstract.html#gnutls-privkey-t" title="gnutls_privkey_t"><span class="type">gnutls_privkey_t</span></a> pkey</code></em>,
                                                          <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *fdata</code></em>,
-                                                         <em class="parameter"><code><span class="type">gnutls_tpmkey_fmt_t</span> format</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpmkey-fmt-t" title="enum gnutls_tpmkey_fmt_t"><span class="type">gnutls_tpmkey_fmt_t</span></a> format</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *srk_password</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *key_password</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
@@ -239,7 +239,7 @@ typedef             <a class="link" href="gnutls-abstract.html#gnutls-privkey-t"
                                                          <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *e</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-abstract.html#gnutls-pubkey-import-tpm-raw" title="gnutls_pubkey_import_tpm_raw ()">gnutls_pubkey_import_tpm_raw</a>        (<em class="parameter"><code><a class="link" href="gnutls-abstract.html#gnutls-pubkey-t" title="gnutls_pubkey_t"><span class="type">gnutls_pubkey_t</span></a> pkey</code></em>,
                                                          <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *fdata</code></em>,
-                                                         <em class="parameter"><code><span class="type">gnutls_tpmkey_fmt_t</span> format</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpmkey-fmt-t" title="enum gnutls_tpmkey_fmt_t"><span class="type">gnutls_tpmkey_fmt_t</span></a> format</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *srk_password</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-abstract.html#gnutls-pubkey-import-tpm-url" title="gnutls_pubkey_import_tpm_url ()">gnutls_pubkey_import_tpm_url</a>        (<em class="parameter"><code><a class="link" href="gnutls-abstract.html#gnutls-pubkey-t" title="gnutls_pubkey_t"><span class="type">gnutls_pubkey_t</span></a> pkey</code></em>,
@@ -1067,7 +1067,7 @@ negative error value.</td>
 <a name="gnutls-privkey-import-tpm-raw"></a><h3>gnutls_privkey_import_tpm_raw ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_privkey_import_tpm_raw       (<em class="parameter"><code><a class="link" href="gnutls-abstract.html#gnutls-privkey-t" title="gnutls_privkey_t"><span class="type">gnutls_privkey_t</span></a> pkey</code></em>,
                                                          <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *fdata</code></em>,
-                                                         <em class="parameter"><code><span class="type">gnutls_tpmkey_fmt_t</span> format</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpmkey-fmt-t" title="enum gnutls_tpmkey_fmt_t"><span class="type">gnutls_tpmkey_fmt_t</span></a> format</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *srk_password</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *key_password</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
@@ -2388,7 +2388,7 @@ gnutls_datum.
 <a name="gnutls-pubkey-import-tpm-raw"></a><h3>gnutls_pubkey_import_tpm_raw ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pubkey_import_tpm_raw        (<em class="parameter"><code><a class="link" href="gnutls-abstract.html#gnutls-pubkey-t" title="gnutls_pubkey_t"><span class="type">gnutls_pubkey_t</span></a> pkey</code></em>,
                                                          <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *fdata</code></em>,
-                                                         <em class="parameter"><code><span class="type">gnutls_tpmkey_fmt_t</span> format</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpmkey-fmt-t" title="enum gnutls_tpmkey_fmt_t"><span class="type">gnutls_tpmkey_fmt_t</span></a> format</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *srk_password</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
 <p>
