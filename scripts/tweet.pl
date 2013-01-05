@@ -51,7 +51,7 @@ foreach my $key (sort {$b cmp $a} keys %tt1) {
           next;
         }
 
-        if (length($message) >= 160) {
+        if (length($message) >= 140) {
           my $t = substr($contents, 0, 140-$url_length-4);
           $message = $t . "... $url";
 

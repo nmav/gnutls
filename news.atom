@@ -3,7 +3,26 @@
 <id>http://www.gnu.org/software/gnutls/news.atom</id>
 <link href="http://www.gnu.org/software/gnutls/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2013-01-03T19:19:15+00:00</updated>
+<updated>2013-01-06T00:27:30+00:00</updated>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2013-01-05</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2013-01-05'/>
+    <title>GnuTLS 2.12.22</title>
+    <updated>2013-01-05T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2013-01-05.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6518">
+GnuTLS 2.12.22</a> was released.  This is a bug-fix release on the previous
+stable branch.
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnu.org/software/gnutls/news.html#2013-01-03</id>
@@ -368,22 +387,6 @@ stable branch.
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6018">
 GnuTLS 3.0.18</a> was released, a bug-fix release on the current
 stable branch.
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnu.org/software/gnutls/news.html#2012-03-21</id>
-    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-03-21'/>
-    <title>News 2012-03-21</title>
-    <updated>2012-03-21T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-03-21.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-<a href="security.html">Added security advisories</a> on the TLS record handling and libtasn1 issues.
 
     </div>
     </content>
