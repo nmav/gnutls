@@ -123,7 +123,7 @@
   <tr>
     <td>C++</td>
     <td><a href="http://www.libcxx.org">LibCXX</a><br>
-         A very limited C++ interface is also included in the GnuTLS distribution.
+         The GnuTLS distribution also includes a (limited) C++ interface.
     </td>
   </tr>
   <tr>
