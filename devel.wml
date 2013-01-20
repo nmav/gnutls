@@ -17,10 +17,16 @@ $ make check
 </code></td></tr>
 </table>
 
-<p>You will need several developer tools,
-see <a href="http://gitorious.org/gnutls/gnutls/blobs/master/README-alpha">
-README-alpha</a> for more information.
+<p>You will also need several developer tools, which are listed in
+<a href="http://gitorious.org/gnutls/gnutls/blobs/master/README-alpha">
+README-alpha</a>.
 </p>
+
+<p>If you wish to contribute, you may read more about our coding style in
+<a href="http://gitorious.org/gnutls/gnutls/blobs/master/doc/README.CODING_STYLE">
+README.CODING_STYLE</a>.
+</p>
+
 
 <p>Some additional resources:
 <ul>
