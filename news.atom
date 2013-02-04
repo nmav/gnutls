@@ -3,7 +3,7 @@
 <id>http://www.gnu.org/software/gnutls/news.atom</id>
 <link href="http://www.gnu.org/software/gnutls/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2013-02-04T11:34:49+00:00</updated>
+<updated>2013-02-04T13:07:56+00:00</updated>
 
   <entry>
     <id>http://www.gnu.org/software/gnutls/news.html#2013-02-04</id>
@@ -16,9 +16,14 @@
     </author>
     <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2013-02-04.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
 
+<p>
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6580">GnuTLS 3.1.7</a>,
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6578">GnuTLS 3.0.28</a> and 
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6579">GnuTLS 2.12.23</a> were released.
+</p>
+<p>
+<a href="security.html#GNUTLS-SA-2013-1">Security advisory GNUTLS-SA-2013-1</a> is issued.
+</p>
 
     </div>
     </content>
