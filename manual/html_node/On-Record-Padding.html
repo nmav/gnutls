@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 31 December 2012 for version
-3.1.6 of GnuTLS.
+<!-- This manual is last updated 29 January 2013 for version
+3.1.7 of GnuTLS.
 
-Copyright (C) 2001-2012 Free Software Foundation, Inc.
-Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.6: On Record Padding</title>
+<title>GnuTLS 3.1.7: On Record Padding</title>
 
-<meta name="description" content="GnuTLS 3.1.6: On Record Padding">
-<meta name="keywords" content="GnuTLS 3.1.6: On Record Padding">
+<meta name="description" content="GnuTLS 3.1.7: On Record Padding">
+<meta name="keywords" content="GnuTLS 3.1.7: On Record Padding">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -166,10 +166,16 @@ Previous: <a href="Weaknesses-and-countermeasures.html#Weaknesses-and-countermea
 <a name="index-record-padding"></a>
 <a name="index-bad_005frecord_005fmac"></a>
 
-<p>The TLS protocol allows for random padding of records in CBC ciphers, to prevent
+<p>The TLS protocol allows for extra padding of records in CBC ciphers, to prevent
 statistical analysis based on the length of exchanged messages (see [<em>RFC5246</em>] section 6.2.3.2).  
-GnuTLS appears to be one of few implementation that take advantage of this text, 
-and pad records by a random length.
+GnuTLS appears to be one of few implementations that take advantage of this feature: 
+the user can provide some plaintext data with a range of lengths she wishes to hide,
+and GnuTLS adds extra padding to make sure the attacker cannot tell the real plaintext
+length is in a range smaller than the user-provided one.
+Use <a href="Core-TLS-API.html#gnutls_005frecord_005fsend_005frange">gnutls_record_send_range</a> to send length-hidden messages and
+<a href="Core-TLS-API.html#gnutls_005frecord_005fcan_005fuse_005flength_005fhiding">gnutls_record_can_use_length_hiding</a> to check whether the current
+session supports length hiding. Using the standard <a href="Core-TLS-API.html#gnutls_005frecord_005fsend">gnutls_record_send</a>
+will only add minimal padding.
 </p>
 <p>The TLS implementation in the Symbian operating system, frequently
 used by Nokia and Sony-Ericsson mobile phones, cannot handle
@@ -180,10 +186,8 @@ the correct MAC for the record.  The client sends a TLS alert
 in error messages such as &rsquo;A TLS fatal alert has been received&rsquo;, &rsquo;Bad
 record MAC&rsquo;, or both, on the GnuTLS server side.
 </p>
-<p>GnuTLS implements a work around for this problem.  However, it has to
-be enabled specifically.  It can be enabled by using
-<a href="Core-TLS-API.html#gnutls_005frecord_005fdisable_005fpadding">gnutls_record_disable_padding</a>, or <a href="Core-TLS-API.html#gnutls_005fpriority_005fset">gnutls_priority_set</a> with
-the <code>%COMPAT</code> priority string (see <a href="Priority-Strings.html#Priority-Strings">Priority Strings</a>).
+<p>If compatibility with such devices is a concern, not sending length-hidden messages
+solves the problem by using minimal padding.
 </p>
 <p>If you implement an application that have a configuration file, we
 recommend that you make it possible for users or administrators to
@@ -193,6 +197,11 @@ flexibility, make it possible to have a different priority string for
 different incoming IP addresses.
 </p>
 
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Weaknesses-and-countermeasures.html#Weaknesses-and-countermeasures" accesskey="p" rel="previous">Weaknesses and countermeasures</a>, Up: <a href="The-TLS-record-protocol.html#The-TLS-record-protocol" accesskey="u" rel="up">The TLS record protocol</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

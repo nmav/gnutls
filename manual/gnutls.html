@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 31 December 2012 for version
-3.1.6 of GnuTLS.
+<!-- This manual is last updated 29 January 2013 for version
+3.1.7 of GnuTLS.
 
-Copyright (C) 2001-2012 Free Software Foundation, Inc.
-Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.6</title>
+<title>GnuTLS 3.1.7</title>
 
-<meta name="description" content="GnuTLS 3.1.6">
-<meta name="keywords" content="GnuTLS 3.1.6">
+<meta name="description" content="GnuTLS 3.1.7">
+<meta name="keywords" content="GnuTLS 3.1.7">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.1.6</h1>
+<h1 class="settitle" align="center">GnuTLS 3.1.7</h1>
 
 
 
@@ -338,22 +338,23 @@ dl {
     </ul></li>
     <li><a name="toc-TLS-handshake-1" href="#TLS-handshake">6.6 TLS handshake</a></li>
     <li><a name="toc-Data-transfer-and-termination-1" href="#Data-transfer-and-termination">6.7 Data transfer and termination</a></li>
-    <li><a name="toc-Handling-alerts-1" href="#Handling-alerts">6.8 Handling alerts</a></li>
-    <li><a name="toc-Priority-strings" href="#Priority-Strings">6.9 Priority strings</a></li>
-    <li><a name="toc-Selecting-cryptographic-key-sizes-1" href="#Selecting-cryptographic-key-sizes">6.10 Selecting cryptographic key sizes</a></li>
-    <li><a name="toc-Advanced-topics-1" href="#Advanced-topics">6.11 Advanced topics</a>
+    <li><a name="toc-Buffered-data-transfer-1" href="#Buffered-data-transfer">6.8 Buffered data transfer</a></li>
+    <li><a name="toc-Handling-alerts-1" href="#Handling-alerts">6.9 Handling alerts</a></li>
+    <li><a name="toc-Priority-strings" href="#Priority-Strings">6.10 Priority strings</a></li>
+    <li><a name="toc-Selecting-cryptographic-key-sizes-1" href="#Selecting-cryptographic-key-sizes">6.11 Selecting cryptographic key sizes</a></li>
+    <li><a name="toc-Advanced-topics-1" href="#Advanced-topics">6.12 Advanced topics</a>
     <ul class="no-bullet">
-      <li><a name="toc-Session-resumption-1" href="#Session-resumption">6.11.1 Session resumption</a></li>
-      <li><a name="toc-Certificate-verification-1" href="#Certificate-verification">6.11.2 Certificate verification</a>
+      <li><a name="toc-Session-resumption-1" href="#Session-resumption">6.12.1 Session resumption</a></li>
+      <li><a name="toc-Certificate-verification-1" href="#Certificate-verification">6.12.2 Certificate verification</a>
       <ul class="no-bullet">
-        <li><a name="toc-Trust-on-first-use" href="#Trust-on-first-use">6.11.2.1 Trust on first use</a></li>
-        <li><a name="toc-DANE-verification" href="#DANE-verification">6.11.2.2 DANE verification</a></li>
+        <li><a name="toc-Trust-on-first-use" href="#Trust-on-first-use">6.12.2.1 Trust on first use</a></li>
+        <li><a name="toc-DANE-verification" href="#DANE-verification">6.12.2.2 DANE verification</a></li>
       </ul></li>
-      <li><a name="toc-Parameter-generation-1" href="#Parameter-generation">6.11.3 Parameter generation</a></li>
-      <li><a name="toc-Keying-material-exporters" href="#Keying-Material-Exporters">6.11.4 Keying material exporters</a></li>
-      <li><a name="toc-Channel-bindings" href="#Channel-Bindings">6.11.5 Channel bindings</a></li>
-      <li><a name="toc-Interoperability-1" href="#Interoperability">6.11.6 Interoperability</a></li>
-      <li><a name="toc-Compatibility-with-the-OpenSSL-library-1" href="#Compatibility-with-the-OpenSSL-library">6.11.7 Compatibility with the OpenSSL library</a></li>
+      <li><a name="toc-Parameter-generation-1" href="#Parameter-generation">6.12.3 Parameter generation</a></li>
+      <li><a name="toc-Keying-material-exporters" href="#Keying-Material-Exporters">6.12.4 Keying material exporters</a></li>
+      <li><a name="toc-Channel-bindings" href="#Channel-Bindings">6.12.5 Channel bindings</a></li>
+      <li><a name="toc-Interoperability-1" href="#Interoperability">6.12.6 Interoperability</a></li>
+      <li><a name="toc-Compatibility-with-the-OpenSSL-library-1" href="#Compatibility-with-the-OpenSSL-library">6.12.7 Compatibility with the OpenSSL library</a></li>
     </ul></li>
   </ul></li>
   <li><a name="toc-GnuTLS-application-examples-1" href="#GnuTLS-application-examples">7 GnuTLS application examples</a>
@@ -389,6 +390,11 @@ dl {
       <li><a name="toc-X_002e509-certificate-parsing-example-1" href="#X_002e509-certificate-parsing-example">7.4.2 <acronym>X.509</acronym> certificate parsing example</a></li>
       <li><a name="toc-Listing-the-ciphersuites-in-a-priority-string-1" href="#Listing-the-ciphersuites-in-a-priority-string">7.4.3 Listing the ciphersuites in a priority string</a></li>
     </ul></li>
+    <li><a name="toc-XSSL-examples-1" href="#XSSL-examples">7.5 XSSL examples</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Example-client-with-X_002e509-certificate-authentication-1" href="#Example-client-with-X_002e509-certificate-authentication">7.5.1 Example client with X.509 certificate authentication</a></li>
+      <li><a name="toc-Example-client-with-X_002e509-certificate-authentication-and-TOFU-1" href="#Example-client-with-X_002e509-certificate-authentication-and-TOFU">7.5.2 Example client with X.509 certificate authentication and TOFU</a></li>
+    </ul></li>
   </ul></li>
   <li><a name="toc-Using-GnuTLS-as-a-cryptographic-library-1" href="#Using-GnuTLS-as-a-cryptographic-library">8 Using GnuTLS as a cryptographic library</a>
   <ul class="no-bullet">
@@ -423,17 +429,18 @@ dl {
   <li><a name="toc-API-reference-1" href="#API-reference">Appendix E API reference</a>
   <ul class="no-bullet">
     <li><a name="toc-Core-TLS-API-1" href="#Core-TLS-API">E.1 Core TLS API</a></li>
-    <li><a name="toc-Datagram-TLS-API-1" href="#Datagram-TLS-API">E.2 Datagram TLS API</a></li>
-    <li><a name="toc-X_002e509-certificate-API" href="#X509-certificate-API">E.3 <acronym>X.509</acronym> certificate API</a></li>
-    <li><a name="toc-OCSP-API-1" href="#OCSP-API">E.4 <acronym>OCSP</acronym> API</a></li>
-    <li><a name="toc-OpenPGP-API-1" href="#OpenPGP-API">E.5 <acronym>OpenPGP</acronym> API</a></li>
-    <li><a name="toc-PKCS-12-API-1" href="#PKCS-12-API">E.6 PKCS 12 API</a></li>
-    <li><a name="toc-Hardware-token-via-PKCS-11-API" href="#PKCS-11-API">E.7 Hardware token via PKCS 11 API</a></li>
-    <li><a name="toc-TPM-API-1" href="#TPM-API">E.8 TPM API</a></li>
-    <li><a name="toc-Abstract-key-API-1" href="#Abstract-key-API">E.9 Abstract key API</a></li>
-    <li><a name="toc-DANE-API-1" href="#DANE-API">E.10 DANE API</a></li>
-    <li><a name="toc-Cryptographic-API-1" href="#Cryptographic-API">E.11 Cryptographic API</a></li>
-    <li><a name="toc-Compatibility-API-1" href="#Compatibility-API">E.12 Compatibility API</a></li>
+    <li><a name="toc-High-level-TLS-API-1" href="#High-level-TLS-API">E.2 High level TLS API</a></li>
+    <li><a name="toc-Datagram-TLS-API-1" href="#Datagram-TLS-API">E.3 Datagram TLS API</a></li>
+    <li><a name="toc-X_002e509-certificate-API" href="#X509-certificate-API">E.4 <acronym>X.509</acronym> certificate API</a></li>
+    <li><a name="toc-OCSP-API-1" href="#OCSP-API">E.5 <acronym>OCSP</acronym> API</a></li>
+    <li><a name="toc-OpenPGP-API-1" href="#OpenPGP-API">E.6 <acronym>OpenPGP</acronym> API</a></li>
+    <li><a name="toc-PKCS-12-API-1" href="#PKCS-12-API">E.7 PKCS 12 API</a></li>
+    <li><a name="toc-Hardware-token-via-PKCS-11-API" href="#PKCS-11-API">E.8 Hardware token via PKCS 11 API</a></li>
+    <li><a name="toc-TPM-API-1" href="#TPM-API">E.9 TPM API</a></li>
+    <li><a name="toc-Abstract-key-API-1" href="#Abstract-key-API">E.10 Abstract key API</a></li>
+    <li><a name="toc-DANE-API-1" href="#DANE-API">E.11 DANE API</a></li>
+    <li><a name="toc-Cryptographic-API-1" href="#Cryptographic-API">E.12 Cryptographic API</a></li>
+    <li><a name="toc-Compatibility-API-1" href="#Compatibility-API">E.13 Compatibility API</a></li>
   </ul></li>
   <li><a name="toc-Copying-Information-1" href="#Copying-Information">Appendix F Copying Information</a></li>
   <li><a name="toc-Bibliography-1" href="#Bibliography">Bibliography</a></li>
@@ -451,11 +458,11 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <a name="GnuTLS"></a>
 <h1 class="top">GnuTLS</h1>
 
-<p>This manual is last updated 31 December 2012 for version
-3.1.6 of GnuTLS.
+<p>This manual is last updated 29 January 2013 for version
+3.1.7 of GnuTLS.
 </p>
-<p>Copyright &copy; 2001-2012 Free Software Foundation, Inc.
-Copyright &copy; 2001-2012 Nikos Mavrogiannopoulos
+<p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
+Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
 </p>
 <blockquote>
 <p>Permission is granted to copy, distribute and/or modify this document
@@ -955,10 +962,16 @@ Previous: <a href="#Weaknesses-and-countermeasures" accesskey="p" rel="previous"
 <a name="index-record-padding"></a>
 <a name="index-bad_005frecord_005fmac"></a>
 
-<p>The TLS protocol allows for random padding of records in CBC ciphers, to prevent
+<p>The TLS protocol allows for extra padding of records in CBC ciphers, to prevent
 statistical analysis based on the length of exchanged messages (see [<em>RFC5246</em>] section 6.2.3.2).  
-GnuTLS appears to be one of few implementation that take advantage of this text, 
-and pad records by a random length.
+GnuTLS appears to be one of few implementations that take advantage of this feature: 
+the user can provide some plaintext data with a range of lengths she wishes to hide,
+and GnuTLS adds extra padding to make sure the attacker cannot tell the real plaintext
+length is in a range smaller than the user-provided one.
+Use <a href="#gnutls_005frecord_005fsend_005frange">gnutls_record_send_range</a> to send length-hidden messages and
+<a href="#gnutls_005frecord_005fcan_005fuse_005flength_005fhiding">gnutls_record_can_use_length_hiding</a> to check whether the current
+session supports length hiding. Using the standard <a href="#gnutls_005frecord_005fsend">gnutls_record_send</a>
+will only add minimal padding.
 </p>
 <p>The TLS implementation in the Symbian operating system, frequently
 used by Nokia and Sony-Ericsson mobile phones, cannot handle
@@ -969,10 +982,8 @@ the correct MAC for the record.  The client sends a TLS alert
 in error messages such as &rsquo;A TLS fatal alert has been received&rsquo;, &rsquo;Bad
 record MAC&rsquo;, or both, on the GnuTLS server side.
 </p>
-<p>GnuTLS implements a work around for this problem.  However, it has to
-be enabled specifically.  It can be enabled by using
-<a href="#gnutls_005frecord_005fdisable_005fpadding">gnutls_record_disable_padding</a>, or <a href="#gnutls_005fpriority_005fset">gnutls_priority_set</a> with
-the <code>%COMPAT</code> priority string (see <a href="#Priority-Strings">Priority Strings</a>).
+<p>If compatibility with such devices is a concern, not sending length-hidden messages
+solves the problem by using minimal padding.
 </p>
 <p>If you implement an application that have a configuration file, we
 recommend that you make it possible for users or administrators to
@@ -2470,6 +2481,9 @@ should not be trusted.
 <dd><p>The certificate&rsquo;s signer constraints were
 violated.
 </p></dd>
+<dt><code>GNUTLS_CERT_MISMATCH</code></dt>
+<dd><p>The certificate presented isn&rsquo;t the expected one (TOFU)
+</p></dd>
 </dl>
 
 <div class="float-caption"><p><strong>Figure 4.2: </strong>The <code>gnutls_certificate_status_t</code> enumeration.</p></div></div>
@@ -2520,10 +2534,10 @@ a certificate authority. This flag should normaly be disabled,
 unless you know what this means.
 </p></dd>
 <dt><code>GNUTLS_VERIFY_ALLOW_X509_V1_CA_CRT</code></dt>
-<dd><p>Allow trusted CA certiï¬cates
+<dd><p>Allow trusted CA certificates
 with version 1. This is safer than <code>GNUTLS_VERIFY_ALLOW_ANY_X509_V1_CA_CRT</code> ,
 and should be used instead. That way only signers in your trusted list
-will be allowed to have certiï¬cates of version 1. This is the default.
+will be allowed to have certificates of version 1. This is the default.
 </p></dd>
 <dt><code>GNUTLS_VERIFY_DO_NOT_ALLOW_SAME</code></dt>
 <dd><p>If a certificate is not signed by
@@ -3011,6 +3025,7 @@ possession of the private key.
 </p>
 <dl compact="compact">
 <dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrq_005fset_005fversion">gnutls_x509_crq_set_version</a> (gnutls_x509_crq_t <var>crq</var>, unsigned int <var>version</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrq_005fset_005fdn">gnutls_x509_crq_set_dn</a> (gnutls_x509_crq_t <var>crq</var>, const char * <var>dn</var>, const char** <var>err</var>)</code></dt>
 <dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrq_005fset_005fdn_005fby_005foid">gnutls_x509_crq_set_dn_by_oid</a> (gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, unsigned int <var>raw_flag</var>, const void * <var>data</var>, unsigned int <var>sizeof_data</var>)</code></dt>
 <dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrq_005fset_005fkey_005fusage">gnutls_x509_crq_set_key_usage</a> (gnutls_x509_crq_t <var>crq</var>, unsigned int <var>usage</var>)</code></dt>
 <dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrq_005fset_005fkey_005fpurpose_005foid">gnutls_x509_crq_set_key_purpose_oid</a> (gnutls_x509_crq_t <var>crq</var>, const void * <var>oid</var>, unsigned int <var>critical</var>)</code></dt>
@@ -3774,21 +3789,21 @@ certs (may be <code>NULL</code> ).
 private key, the corresponding certificate chain, and any additional
 certificates and a CRL.
 </p>
-<p>The  <code>extra_certs_ret</code> and  <code>extra_certs_ret_len</code> parameters are optional
+<p>The  <code>extra_certs_ret</code> and  <code>extra_certs_len</code> parameters are optional
 and both may be set to <code>NULL</code> . If either is non-<code>NULL</code> , then both must
-be.
+be set.
 </p>
 <p>Encrypted PKCS<code>12</code>  bags and PKCS<code>8</code>  private keys are supported.  However,
 only password based security, and the same password for all
 operations, are supported.
 </p>
-<p>PKCS<code>12</code>  file may contain many keys and/or certificates, and there
+<p>A PKCS<code>12</code>  file may contain many keys and/or certificates, and there
 is no way to identify which key/certificate pair you want.  You
 should make sure the PKCS<code>12</code>  file only contain one key/certificate
 pair and/or one CRL.
 </p>
-<p>It is believed that the limitations of this function is acceptable
-for most usage, and that any more flexibility would introduce
+<p>It is believed that the limitations of this function are acceptable
+for common usage, and that any more flexibility would introduce
 complexity that would make it harder to use this functionality at
 all.
 </p>
@@ -4029,7 +4044,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">certtool - GnuTLS certificate tool - Ver. 3.1.6
+<pre class="example">certtool - GnuTLS certificate tool - Ver. 3.1.7
 USAGE:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -4068,6 +4083,7 @@ USAGE:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --load-ca-certificate=str Loads the certificate authority's certificate file
        --password=str         Password to use
        --hex-numbers          Print big number in an easier format to parse
+       --cprint               In certain operations it prints the information is C-friendly format
        --null-password        Enforce a NULL password
    -i, --certificate-info     Print information on the given certificate
        --certificate-pubkey   Print certificate's public key
@@ -4204,6 +4220,11 @@ This can be either a file or a PKCS #11 URL
 <p>This is the &ldquo;loads the certificate authority&rsquo;s certificate file&rdquo; option.
 This option takes an argument string.
 This can be either a file or a PKCS #11 URL
+<a name="certtool-cprint"></a></p><a name="cprint-option"></a>
+<h4 class="subsubheading">cprint option</h4>
+
+<p>This is the &ldquo;in certain operations it prints the information is c-friendly format&rdquo; option.
+In certain operations it prints the information is C-friendly format, suitable for including into C programs.
 <a name="certtool-null_002dpassword"></a></p><a name="null_002dpassword-option"></a>
 <h4 class="subsubheading">null-password option</h4>
 
@@ -4491,6 +4512,18 @@ cn = &quot;Cindy Lauper&quot;
 # certificates.
 # pkcs9_email = &quot;none@none.org&quot;
 
+# An alternative way to set the certificate's distinguished name directly
+# is with the &quot;dn&quot; option. The attribute names allowed are:
+# C (country), street, O (organization), OU (unit), title, CN (common name),
+# L (locality), ST (state), placeOfBirth, gender, countryOfCitizenship, 
+# countryOfResidence, serialNumber, telephoneNumber, surName, initials, 
+# generationQualifier, givenName, pseudonym, dnQualifier, postalCode, name, 
+# businessCategory, DC, UID, jurisdictionOfIncorporationLocalityName, 
+# jurisdictionOfIncorporationStateOrProvinceName,
+# jurisdictionOfIncorporationCountryName, XmppAddr, and numeric OIDs.
+
+#dn = &quot;cn=Nik,st=Attiki,C=GR,surName=Mavrogiannopoulos,2.5.4.9=Arkadias&quot;
+
 # The serial number of the certificate
 serial = 007
 
@@ -4641,7 +4674,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">ocsptool - GnuTLS OCSP tool - Ver. 3.1.6
+<pre class="example">ocsptool - GnuTLS OCSP tool - Ver. 3.1.7
 USAGE:  ocsptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -4880,7 +4913,7 @@ Previous: <a href="#ocsptool-Invocation" accesskey="p" rel="previous">ocsptool I
 <a name="index-danetool"></a>
 
 
-<p>Tool to generate DNS resource records for the DANE protocol.
+<p>Tool to generate and check DNS resource records for the DANE protocol.
 </p>
 <p>This section was generated by <strong>AutoGen</strong>,
 using the <code>agtexi-cmd</code> template and the option descriptions for the <code>danetool</code> program.
@@ -4900,7 +4933,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">danetool - GnuTLS DANE tool - Ver. 3.1.6
+<pre class="example">danetool - GnuTLS DANE tool - Ver. 3.1.7
 USAGE:  danetool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -4913,8 +4946,10 @@ USAGE:  danetool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --outfile=str          Output file
        --load-pubkey=str      Loads a public key file
        --load-certificate=str Loads a certificate file
+       --dlv=str              Sets a DLV file
        --hash=str             Hash algorithm to use for signing.
        --check=str            Check a host's DANE TLSA entry.
+       --insecure             Do not verify any DNSSEC signature.
        --local-dns            Use the local DNS server for DNSSEC resolving.
                                 - disabled as --no-local-dns
        --inder                Use DER format for input certificates and private keys.
@@ -4939,7 +4974,7 @@ hyphen and the flag character.
 
 
 
-Tool to generate DNS resource records for the DANE protocol.
+Tool to generate and check DNS resource records for the DANE protocol.
 
 please send bug reports to:  bug-gnutls@gnu.org
 </pre></div>
@@ -4962,6 +4997,12 @@ This can be either a file or a PKCS #11 URL
 <p>This is the &ldquo;loads a certificate file&rdquo; option.
 This option takes an argument string.
 This can be either a file or a PKCS #11 URL
+<a name="danetool-dlv"></a></p><a name="dlv-option"></a>
+<h4 class="subsubheading">dlv option</h4>
+
+<p>This is the &ldquo;sets a dlv file&rdquo; option.
+This option takes an argument string.
+This sets a DLV file to be used for DNSSEC verification.
 <a name="danetool-hash"></a></p><a name="hash-option-1"></a>
 <h4 class="subsubheading">hash option</h4>
 
@@ -4974,6 +5015,11 @@ Available hash functions are SHA1, RMD160, SHA256, SHA384, SHA512.
 <p>This is the &ldquo;check a host&rsquo;s dane tlsa entry.&rdquo; option.
 This option takes an argument string.
 Obtains the DANE TLSA entry from the given hostname and prints information.
+<a name="danetool-insecure"></a></p><a name="insecure-option"></a>
+<h4 class="subsubheading">insecure option</h4>
+
+<p>This is the &ldquo;do not verify any dnssec signature.&rdquo; option.
+Ignores any DNSSEC signature verification results.
 <a name="danetool-local_002ddns"></a></p><a name="local_002ddns-option"></a>
 <h4 class="subsubheading">local-dns option</h4>
 
@@ -5251,7 +5297,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">srptool - GnuTLS SRP tool - Ver. 3.1.6
+<pre class="example">srptool - GnuTLS SRP tool - Ver. 3.1.7
 USAGE:  srptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -5440,7 +5486,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">psktool - GnuTLS PSK tool - Ver. 3.1.6
+<pre class="example">psktool - GnuTLS PSK tool - Ver. 3.1.7
 USAGE:  psktool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -6639,7 +6685,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">p11tool - GnuTLS PKCS #11 tool - Ver. 3.1.6
+<pre class="example">p11tool - GnuTLS PKCS #11 tool - Ver. 3.1.7
 USAGE:  p11tool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [url]
 
    -d, --debug=num            Enable debugging.
@@ -7114,7 +7160,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">tpmtool - GnuTLS TPM tool - Ver. 3.1.6
+<pre class="example">tpmtool - GnuTLS TPM tool - Ver. 3.1.7
 USAGE:  tpmtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -7300,9 +7346,11 @@ Next: <a href="#GnuTLS-application-examples" accesskey="n" rel="next">GnuTLS app
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Data-transfer-and-termination" accesskey="7">Data transfer and termination</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Handling-alerts" accesskey="8">Handling alerts</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Buffered-data-transfer" accesskey="8">Buffered data transfer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Priority-Strings" accesskey="9">Priority Strings</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Handling-alerts" accesskey="9">Handling alerts</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Priority-Strings">Priority Strings</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Selecting-cryptographic-key-sizes">Selecting cryptographic key sizes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -8782,7 +8830,8 @@ to the provided value. Use an  <code>ms</code> value of zero to disable
 timeout.
 </p>
 <p>Note that in order for the timeout to be enforced
-<code>gnutls_transport_set_pull_timeout_function()</code>  must be set.
+<code>gnutls_transport_set_pull_timeout_function()</code>  must be set
+(it is set by default in most systems).
 </p></dd></dl>
 
 <p>The handshake process doesn&rsquo;t ensure the verification
@@ -8801,7 +8850,7 @@ for more information).
 <a name="Data-transfer-and-termination"></a>
 <div class="header">
 <p>
-Next: <a href="#Handling-alerts" accesskey="n" rel="next">Handling alerts</a>, Previous: <a href="#TLS-handshake" accesskey="p" rel="previous">TLS handshake</a>, Up: <a href="#How-to-use-GnuTLS-in-applications" accesskey="u" rel="up">How to use GnuTLS in applications</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Buffered-data-transfer" accesskey="n" rel="next">Buffered data transfer</a>, Previous: <a href="#TLS-handshake" accesskey="p" rel="previous">TLS handshake</a>, Up: <a href="#How-to-use-GnuTLS-in-applications" accesskey="u" rel="up">How to use GnuTLS in applications</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Data-transfer-and-termination-1"></a>
 <h3 class="section">6.7 Data transfer and termination</h3>
@@ -9021,13 +9070,66 @@ database if the session was terminated abnormally.
 </p></dd></dl>
 
 <hr>
+<a name="Buffered-data-transfer"></a>
+<div class="header">
+<p>
+Next: <a href="#Handling-alerts" accesskey="n" rel="next">Handling alerts</a>, Previous: <a href="#Data-transfer-and-termination" accesskey="p" rel="previous">Data transfer and termination</a>, Up: <a href="#How-to-use-GnuTLS-in-applications" accesskey="u" rel="up">How to use GnuTLS in applications</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Buffered-data-transfer-1"></a>
+<h3 class="section">6.8 Buffered data transfer</h3>
+
+<p>Although <a href="#gnutls_005frecord_005fsend">gnutls_record_send</a> is sufficient to transmit data
+to the peer, when many small chunks of data are to be transmitted
+it is inefficient and wastes bandwidth due to the TLS record
+overhead. In that case it is preferrable to combine the small chunks
+before transmission. The following functions provide that functionality.
+</p>
+
+
+
+
+<dl>
+<dt><a name="index-gnutls_005frecord_005fcork"></a>Function: <em>void</em> <strong>gnutls_record_cork</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p>If called <code>gnutls_record_send()</code>  will no longer send partial records.
+All queued records will be sent when <code>gnutls_uncork()</code>  is called, or
+when the maximum record size is reached.
+</p>
+<p><strong>Since:</strong> 3.1.7
+</p></dd></dl>
+
+
+
+
+
+<dl>
+<dt><a name="index-gnutls_005frecord_005funcork"></a>Function: <em>int</em> <strong>gnutls_record_uncork</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>flags</var>: Could be zero or <code>GNUTLS_RECORD_WAIT</code> 
+</p>
+<p>This resets the effect of <code>gnutls_cork()</code> , and flushes any pending
+data. If the <code>GNUTLS_RECORD_WAIT</code>  flag is specified then this
+function will block until the data is sent or a fatal error
+occurs (i.e., the function will retry on <code>GNUTLS_E_AGAIN</code>  and
+<code>GNUTLS_E_INTERRUPTED</code> ).
+</p>
+<p><strong>Returns:</strong> On success the number of transmitted data is returned, or 
+otherwise a negative error code. 
+</p>
+<p><strong>Since:</strong> 3.1.7
+</p></dd></dl>
+
+
+<hr>
 <a name="Handling-alerts"></a>
 <div class="header">
 <p>
-Next: <a href="#Priority-Strings" accesskey="n" rel="next">Priority Strings</a>, Previous: <a href="#Data-transfer-and-termination" accesskey="p" rel="previous">Data transfer and termination</a>, Up: <a href="#How-to-use-GnuTLS-in-applications" accesskey="u" rel="up">How to use GnuTLS in applications</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Priority-Strings" accesskey="n" rel="next">Priority Strings</a>, Previous: <a href="#Buffered-data-transfer" accesskey="p" rel="previous">Buffered data transfer</a>, Up: <a href="#How-to-use-GnuTLS-in-applications" accesskey="u" rel="up">How to use GnuTLS in applications</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Handling-alerts-1"></a>
-<h3 class="section">6.8 Handling alerts</h3>
+<h3 class="section">6.9 Handling alerts</h3>
 <p>During a TLS connection alert messages may be exchanged by the
 two peers. Those messages may be fatal, meaning the connection
 must be terminated afterwards, or warning when something needs
@@ -9128,7 +9230,7 @@ internal error is returned.
 Next: <a href="#Selecting-cryptographic-key-sizes" accesskey="n" rel="next">Selecting cryptographic key sizes</a>, Previous: <a href="#Handling-alerts" accesskey="p" rel="previous">Handling alerts</a>, Up: <a href="#How-to-use-GnuTLS-in-applications" accesskey="u" rel="up">How to use GnuTLS in applications</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Priority-strings"></a>
-<h3 class="section">6.9 Priority strings</h3>
+<h3 class="section">6.10 Priority strings</h3>
 <a name="index-Priority-strings"></a>
 
 <p>In order to specify cipher suite preferences on a TLS session
@@ -9323,7 +9425,7 @@ except TLS 1.2:
 Next: <a href="#Advanced-topics" accesskey="n" rel="next">Advanced topics</a>, Previous: <a href="#Priority-Strings" accesskey="p" rel="previous">Priority Strings</a>, Up: <a href="#How-to-use-GnuTLS-in-applications" accesskey="u" rel="up">How to use GnuTLS in applications</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Selecting-cryptographic-key-sizes-1"></a>
-<h3 class="section">6.10 Selecting cryptographic key sizes</h3>
+<h3 class="section">6.11 Selecting cryptographic key sizes</h3>
 <a name="index-key-sizes"></a>
 
 <p>Because many algorithms are involved in TLS, it is not easy to set
@@ -9435,7 +9537,7 @@ and SRP authentication.
 Previous: <a href="#Selecting-cryptographic-key-sizes" accesskey="p" rel="previous">Selecting cryptographic key sizes</a>, Up: <a href="#How-to-use-GnuTLS-in-applications" accesskey="u" rel="up">How to use GnuTLS in applications</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Advanced-topics-1"></a>
-<h3 class="section">6.11 Advanced topics</h3>
+<h3 class="section">6.12 Advanced topics</h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Session-resumption" accesskey="1">Session resumption</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -9461,7 +9563,7 @@ Previous: <a href="#Selecting-cryptographic-key-sizes" accesskey="p" rel="previo
 Next: <a href="#Certificate-verification" accesskey="n" rel="next">Certificate verification</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Session-resumption-1"></a>
-<h4 class="subsection">6.11.1 Session resumption</h4>
+<h4 class="subsection">6.12.1 Session resumption</h4>
 <a name="index-resuming-sessions-1"></a>
 <a name="index-session-resumption-1"></a>
 
@@ -9589,7 +9691,7 @@ would use session tickets when clients support it and the storage otherwise.
 Next: <a href="#Parameter-generation" accesskey="n" rel="next">Parameter generation</a>, Previous: <a href="#Session-resumption" accesskey="p" rel="previous">Session resumption</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Certificate-verification-1"></a>
-<h4 class="subsection">6.11.2 Certificate verification</h4>
+<h4 class="subsection">6.12.2 Certificate verification</h4>
 <a name="index-DANE-1"></a>
 <a name="index-DNSSEC-1"></a>
 <a name="index-SSH_002dstyle-authentication-1"></a>
@@ -9602,7 +9704,7 @@ These methods are intended to be used in addition to normal PKI verification, in
 the risk of a compromised CA being undetected.
 </p>
 <a name="Trust-on-first-use"></a>
-<h4 class="subsubsection">6.11.2.1 Trust on first use</h4>
+<h4 class="subsubsection">6.12.2.1 Trust on first use</h4>
 
 <p>The GnuTLS library includes functionlity to use an SSH-like trust on first use authentication.
 The available functions to store and verify public keys are listed below.
@@ -9743,7 +9845,7 @@ should contain storage and retrieval functions and specified as below.
 </dl>
 
 <a name="DANE-verification"></a>
-<h4 class="subsubsection">6.11.2.2 DANE verification</h4>
+<h4 class="subsubsection">6.12.2.2 DANE verification</h4>
 <p>Since the DANE library is not included in GnuTLS it requires programs
 to be linked against it. This can be achieved with the following commands.
 </p>
@@ -9845,7 +9947,7 @@ you may use danetool (see <a href="#danetool-Invocation">danetool Invocation</a>
 Next: <a href="#Keying-Material-Exporters" accesskey="n" rel="next">Keying Material Exporters</a>, Previous: <a href="#Certificate-verification" accesskey="p" rel="previous">Certificate verification</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Parameter-generation-1"></a>
-<h4 class="subsection">6.11.3 Parameter generation</h4>
+<h4 class="subsection">6.12.3 Parameter generation</h4>
 <a name="index-parameter-generation"></a>
 <a name="index-generating-parameters"></a>
 
@@ -9923,7 +10025,7 @@ authentication.  The callback should return <code>GNUTLS_E_SUCCESS</code>  (0) o
 Next: <a href="#Channel-Bindings" accesskey="n" rel="next">Channel Bindings</a>, Previous: <a href="#Parameter-generation" accesskey="p" rel="previous">Parameter generation</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Keying-material-exporters"></a>
-<h4 class="subsection">6.11.4 Keying material exporters</h4>
+<h4 class="subsection">6.12.4 Keying material exporters</h4>
 <a name="index-keying-material-exporters"></a>
 <a name="index-exporting-keying-material"></a>
 
@@ -9956,7 +10058,7 @@ low-level TLS PRF interface called <a href="#gnutls_005fprf_005fraw">gnutls_prf_
 Next: <a href="#Interoperability" accesskey="n" rel="next">Interoperability</a>, Previous: <a href="#Keying-Material-Exporters" accesskey="p" rel="previous">Keying Material Exporters</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Channel-bindings"></a>
-<h4 class="subsection">6.11.5 Channel bindings</h4>
+<h4 class="subsection">6.12.5 Channel bindings</h4>
 <a name="index-channel-bindings"></a>
 
 <p>In user authentication protocols (e.g., EAP or SASL mechanisms) it is
@@ -10004,7 +10106,7 @@ Note that it must be run after a successful TLS handshake.
 Next: <a href="#Compatibility-with-the-OpenSSL-library" accesskey="n" rel="next">Compatibility with the OpenSSL library</a>, Previous: <a href="#Channel-Bindings" accesskey="p" rel="previous">Channel Bindings</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Interoperability-1"></a>
-<h4 class="subsection">6.11.6 Interoperability</h4>
+<h4 class="subsection">6.12.6 Interoperability</h4>
 
 <p>The <acronym>TLS</acronym> protocols support many ciphersuites, extensions and version
 numbers. As a result, few implementations are 
@@ -10041,7 +10143,7 @@ that only allows the stream cipher ARCFOUR is below.
 Previous: <a href="#Interoperability" accesskey="p" rel="previous">Interoperability</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Compatibility-with-the-OpenSSL-library-1"></a>
-<h4 class="subsection">6.11.7 Compatibility with the OpenSSL library</h4>
+<h4 class="subsection">6.12.7 Compatibility with the OpenSSL library</h4>
 <a name="index-OpenSSL"></a>
 
 <p>To ease <acronym>GnuTLS</acronym>&rsquo; integration with existing applications, a
@@ -10084,6 +10186,8 @@ no error checking.
 <tr><td align="left" valign="top">&bull; <a href="#OCSP-example" accesskey="3">OCSP example</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Miscellaneous-examples" accesskey="4">Miscellaneous examples</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#XSSL-examples" accesskey="5">XSSL examples</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -10159,7 +10263,7 @@ resumption.
 #include &quot;examples.h&quot;
 
 /* A very basic TLS client, with X.509 authentication and server certificate
- * verification. Note that error checking for missing files etc. is missing
+ * verification. Note that error checking for missing files etc. is omitted
  * for simplicity.
  */
 
@@ -13638,7 +13742,7 @@ get_data (void *buffer, size_t size, size_t nmemb, void *userp)
 <a name="Miscellaneous-examples"></a>
 <div class="header">
 <p>
-Previous: <a href="#OCSP-example" accesskey="p" rel="previous">OCSP example</a>, Up: <a href="#GnuTLS-application-examples" accesskey="u" rel="up">GnuTLS application examples</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#XSSL-examples" accesskey="n" rel="next">XSSL examples</a>, Previous: <a href="#OCSP-example" accesskey="p" rel="previous">OCSP example</a>, Up: <a href="#GnuTLS-application-examples" accesskey="u" rel="up">GnuTLS application examples</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Miscellaneous-examples-1"></a>
 <h3 class="section">7.4 Miscellaneous examples</h3>
@@ -13907,6 +14011,234 @@ int main(int argc, char** argv)
 }
 </pre>
 <hr>
+<a name="XSSL-examples"></a>
+<div class="header">
+<p>
+Previous: <a href="#Miscellaneous-examples" accesskey="p" rel="previous">Miscellaneous examples</a>, Up: <a href="#GnuTLS-application-examples" accesskey="u" rel="up">GnuTLS application examples</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="XSSL-examples-1"></a>
+<h3 class="section">7.5 XSSL examples</h3>
+
+<p>XSSL is an experimental API available in the <code>gnutls-xssl</code> library
+and in <code>gnutls/xssl.h</code> header. It is intended to be a very simple
+to use API avoid the GnuTLS API. The API however has the following limitations
+</p><ul>
+<li> It is applicable to blocking sockets only.
+</li><li> The server verification is based on its DNS name.
+</li></ul>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Example-client-with-X_002e509-certificate-authentication" accesskey="1">Example client with X.509 certificate authentication</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Example-client-with-X_002e509-certificate-authentication-and-TOFU" accesskey="2">Example client with X.509 certificate authentication and TOFU</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Example-client-with-X_002e509-certificate-authentication"></a>
+<div class="header">
+<p>
+Next: <a href="#Example-client-with-X_002e509-certificate-authentication-and-TOFU" accesskey="n" rel="next">Example client with X.509 certificate authentication and TOFU</a>, Up: <a href="#XSSL-examples" accesskey="u" rel="up">XSSL examples</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Example-client-with-X_002e509-certificate-authentication-1"></a>
+<h4 class="subsection">7.5.1 Example client with X.509 certificate authentication</h4>
+
+<pre class="verbatim">/* This example code is placed in the public domain. */
+
+#ifdef HAVE_CONFIG_H
+#include &lt;config.h&gt;
+#endif
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;gnutls/gnutls.h&gt;
+#include &lt;gnutls/xssl.h&gt;
+#include &quot;examples.h&quot;
+
+/* A simple TLS client, with X.509 authentication. Certificate verification
+ * is explicit.
+ */
+
+extern int tcp_connect (void);
+extern void tcp_close (int sd);
+
+int main (void)
+{
+  int ret;
+  char *line = NULL;
+  size_t line_len;
+  xssl_cred_t cred;
+  xssl_t sb;
+  unsigned int status;
+  int fd;
+
+  gnutls_global_init ();
+  
+  fd = tcp_connect ();
+
+  ret = xssl_cred_init(&amp;cred, GNUTLS_VMETHOD_SYSTEM_CAS, NULL, 0);
+  if (ret &lt; 0)
+    exit(1);
+
+  /* Initialize TLS session
+   */
+  ret = xssl_client_init(&amp;sb, &quot;www.example.com&quot;, NULL, 
+                         (gnutls_transport_ptr_t)fd,
+			 NULL, cred, &amp;status, 0);
+  if (ret &lt; 0)
+    {
+      if (ret == GNUTLS_E_AUTH_ERROR)
+        {
+          gnutls_datum_t txt;
+          
+          gnutls_certificate_verification_status_print(status, GNUTLS_CRT_X509,
+            &amp;txt, 0);
+          
+          fprintf(stderr, &quot;Verification error (%x): %s\n&quot;, status, txt.data);
+          gnutls_free(txt.data);
+        }
+      exit(1);
+    }
+
+#define REQ &quot;GET / HTTP/1.0\r\n&quot;
+  ret = xssl_write(sb, REQ, sizeof(REQ)-1);
+  if (ret &lt; 0)
+    exit(1);
+
+  do
+    {
+      ret = xssl_getline(sb, &amp;line, &amp;line_len);
+      if (ret &lt; 0)
+        exit(1);
+      
+      fprintf(stderr, &quot;received: %s\n&quot;, line);
+    }
+  while (ret &gt;= 0);
+
+  gnutls_free(line);
+
+  xssl_deinit(sb);
+
+  tcp_close (fd);
+
+  xssl_cred_deinit (cred);
+
+  gnutls_global_deinit ();
+}
+
+
+</pre>
+<hr>
+<a name="Example-client-with-X_002e509-certificate-authentication-and-TOFU"></a>
+<div class="header">
+<p>
+Previous: <a href="#Example-client-with-X_002e509-certificate-authentication" accesskey="p" rel="previous">Example client with X.509 certificate authentication</a>, Up: <a href="#XSSL-examples" accesskey="u" rel="up">XSSL examples</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Example-client-with-X_002e509-certificate-authentication-and-TOFU-1"></a>
+<h4 class="subsection">7.5.2 Example client with X.509 certificate authentication and TOFU</h4>
+
+<pre class="verbatim">/* This example code is placed in the public domain. */
+
+#ifdef HAVE_CONFIG_H
+#include &lt;config.h&gt;
+#endif
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;gnutls/gnutls.h&gt;
+#include &lt;gnutls/xssl.h&gt;
+#include &quot;examples.h&quot;
+
+/* A simple TLS client, with X.509 authentication. Certificate verification
+ * with a fixed CA, and trust on first use. 
+ */
+
+extern int tcp_connect (void);
+extern void tcp_close (int sd);
+
+int main (void)
+{
+  int ret;
+  char *line = NULL;
+  size_t line_len;
+  xssl_cred_t cred;
+  xssl_t sb;
+  gnutls_cinput_st aux[2];
+  unsigned aux_size = 0;
+  unsigned int status;
+  int fd;
+
+  gnutls_global_init ();
+  
+  fd = tcp_connect ();
+
+  aux[aux_size].type = GNUTLS_CINPUT_TYPE_FILE;
+  aux[aux_size].contents = GNUTLS_CINPUT_CAS;
+  aux[aux_size].fmt = GNUTLS_X509_FMT_PEM;
+  aux[aux_size].i1.file = &quot;/path/to/ca/file&quot;;
+  aux_size++;
+
+  /* This may be skipped to use the default DB file */
+  aux[aux_size].type = GNUTLS_CINPUT_TYPE_FILE;
+  aux[aux_size].contents = GNUTLS_CINPUT_TOFU_DB;
+  aux[aux_size].i1.file = &quot;/path/to/trust/db/file&quot;;
+  aux_size++;
+
+  ret = xssl_cred_init(&amp;cred, GNUTLS_VMETHOD_GIVEN_CAS|GNUTLS_VMETHOD_TOFU, 
+                       aux, aux_size);
+  if (ret &lt; 0)
+    exit(1);
+
+  /* Initialize TLS session
+   */
+  ret = xssl_client_init(&amp;sb, &quot;www.example.com&quot;, NULL, 
+                         (gnutls_transport_ptr_t)fd,
+			 NULL, cred, &amp;status, 0);
+  if (ret &lt; 0)
+    {
+      if (ret == GNUTLS_E_AUTH_ERROR)
+        {
+          gnutls_datum_t txt;
+          
+          gnutls_certificate_verification_status_print(status, GNUTLS_CRT_X509,
+            &amp;txt, 0);
+          
+          fprintf(stderr, &quot;Verification error (%x): %s\n&quot;, status, txt.data);
+          gnutls_free(txt.data);
+        }
+      exit(1);
+    }
+
+#define REQ &quot;GET / HTTP/1.0\r\n&quot;
+  ret = xssl_write(sb, REQ, sizeof(REQ)-1);
+  if (ret &lt; 0)
+    exit(1);
+
+  do
+    {
+      ret = xssl_getline(sb, &amp;line, &amp;line_len);
+      if (ret &lt; 0)
+        exit(1);
+      
+      fprintf(stderr, &quot;received: %s\n&quot;, line);
+    }
+  while (ret &gt;= 0);
+
+  gnutls_free(line);
+
+  xssl_deinit(sb);
+
+  tcp_close (fd);
+
+  xssl_cred_deinit (cred);
+
+  gnutls_global_deinit ();
+}
+</pre>
+
+<hr>
 <a name="Using-GnuTLS-as-a-cryptographic-library"></a>
 <div class="header">
 <p>
@@ -14103,7 +14435,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-cli - GnuTLS client - Ver. 3.1.6
+<pre class="example">gnutls-cli - GnuTLS client - Ver. 3.1.7
 USAGE:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [hostname]
 
    -d, --debug=num            Enable debugging.
@@ -14160,11 +14492,13 @@ USAGE:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&g
        --pskkey=str           PSK key (in hex) to use
    -p, --port=str             The port or service to connect to
        --insecure             Don't abort program if server certificate can't be validated
+       --ranges               Use length-hiding padding to prevent traffic analysis
        --benchmark-ciphers    Benchmark individual ciphers
        --benchmark-soft-ciphers  Benchmark individual software ciphers (no hw acceleration)
        --benchmark-tls-kx     Benchmark TLS key exchange methods
        --benchmark-tls-ciphers  Benchmark TLS ciphers
    -l, --list                 Print a list of the supported algorithms and modes
+       --disable-sni          Do not send a Server Name Indication (SNI)
    -v, --version[=arg]        Output version information and exit
    -h, --help                 Display extended usage information and exit
    -!, --more-help            Extended usage information passed thru pager
@@ -14259,6 +14593,11 @@ NORMAL, SECURE128, SECURE256.
 </p>
 <p>Check  the  GnuTLS  manual  on  section  &ldquo;Priority strings&rdquo; for more
 information on allowed keywords
+<a name="gnutls_002dcli-ranges"></a></p><a name="ranges-option"></a>
+<h4 class="subheading">ranges option</h4>
+
+<p>This is the &ldquo;use length-hiding padding to prevent traffic analysis&rdquo; option.
+When possible (e.g., when %NEW_PADDING is specified), use length-hiding padding to prevent traffic analysis.
 <a name="gnutls_002dcli-list"></a></p><a name="list-option-_0028_002dl_0029"></a>
 <h4 class="subheading">list option (-l)</h4>
 
@@ -14354,7 +14693,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-serv - GnuTLS server - Ver. 3.1.6
+<pre class="example">gnutls-serv - GnuTLS server - Ver. 3.1.7
 USAGE:  gnutls-serv [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -14671,7 +15010,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-cli-debug - GnuTLS debug client - Ver. 3.1.6
+<pre class="example">gnutls-cli-debug - GnuTLS debug client - Ver. 3.1.7
 USAGE:  gnutls-cli-debug [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... 
 
    -d, --debug=num            Enable debugging.
@@ -15784,6 +16123,8 @@ expressions.
 <tr><td width="15%">-334</td><td width="40%">GNUTLS_E_TPM_UNINITIALIZED</td><td width="37%">TPM is not initialized.</td></tr>
 <tr><td width="15%">-340</td><td width="40%">GNUTLS_E_NO_CERTIFICATE_STATUS</td><td width="37%">There is no certificate status (OCSP).</td></tr>
 <tr><td width="15%">-341</td><td width="40%">GNUTLS_E_OCSP_RESPONSE_ERROR</td><td width="37%">The OCSP response is invalid</td></tr>
+<tr><td width="15%">-342</td><td width="40%">GNUTLS_E_RANDOM_DEVICE_ERROR</td><td width="37%">Error in the system&rsquo;s randomness device.</td></tr>
+<tr><td width="15%">-343</td><td width="40%">GNUTLS_E_AUTH_ERROR</td><td width="37%">Could not authenticate peer.</td></tr>
 </table>
 
 
@@ -16022,21 +16363,23 @@ Next: <a href="#Copying-Information" accesskey="n" rel="next">Copying Informatio
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Core-TLS-API" accesskey="1">Core TLS API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Datagram-TLS-API" accesskey="2">Datagram TLS API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#High-level-TLS-API" accesskey="2">High level TLS API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#X509-certificate-API" accesskey="3">X509 certificate API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Datagram-TLS-API" accesskey="3">Datagram TLS API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#OCSP-API" accesskey="4">OCSP API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#X509-certificate-API" accesskey="4">X509 certificate API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#OpenPGP-API" accesskey="5">OpenPGP API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#OCSP-API" accesskey="5">OCSP API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#PKCS-12-API" accesskey="6">PKCS 12 API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#OpenPGP-API" accesskey="6">OpenPGP API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#PKCS-11-API" accesskey="7">PKCS 11 API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#PKCS-12-API" accesskey="7">PKCS 12 API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#TPM-API" accesskey="8">TPM API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#PKCS-11-API" accesskey="8">PKCS 11 API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Abstract-key-API" accesskey="9">Abstract key API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#TPM-API" accesskey="9">TPM API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Abstract-key-API">Abstract key API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#DANE-API">DANE API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -16050,7 +16393,7 @@ Next: <a href="#Copying-Information" accesskey="n" rel="next">Copying Informatio
 <a name="Core-TLS-API"></a>
 <div class="header">
 <p>
-Next: <a href="#Datagram-TLS-API" accesskey="n" rel="next">Datagram TLS API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#High-level-TLS-API" accesskey="n" rel="next">High level TLS API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Core-TLS-API-1"></a>
 <h3 class="section">E.1 Core TLS API</h3>
@@ -16496,6 +16839,8 @@ used. The returned  <code>id</code> should be treated as constant.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fsend_005fx509_005frdn_005fsequence-1"></a>
@@ -16566,6 +16911,8 @@ file accesses.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffunction-1"></a>
@@ -16596,6 +16943,8 @@ deinitialized when needed.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fset_005fparams_005ffunction-1"></a>
@@ -17387,12 +17736,20 @@ otherwise a negative error code is returned.
 </p>
 <p><var>session_entry</var>: is the session data (not key)
 </p>
-<p>Check if database entry has expired.  This function is to be used
-when you want to clear unnecessary sessions which occupy space in
-your backend.
+<p>This function has no effect. 
 </p>
 <p><strong>Returns:</strong> Returns <code>GNUTLS_E_EXPIRED</code> , if the database entry has
 expired or 0 otherwise.
+</p></dd></dl>
+
+<a name="gnutls_005fdb_005fcheck_005fentry_005ftime-1"></a>
+<h4 class="subheading">gnutls_db_check_entry_time</h4>
+<a name="gnutls_005fdb_005fcheck_005fentry_005ftime"></a><dl>
+<dt><a name="index-gnutls_005fdb_005fcheck_005fentry_005ftime"></a>Function: <em>time_t</em> <strong>gnutls_db_check_entry_time</strong> <em>(gnutls_datum_t * <var>entry</var>)</em></dt>
+<dd><p><var>entry</var>: is a pointer to a <code>gnutls_datum_t</code>  structure.
+</p>
+<p>This function returns the time that this entry was active.
+It can be used for database entry expiration.
 </p></dd></dl>
 
 <a name="gnutls_005fdb_005fget_005fptr-1"></a>
@@ -17631,6 +17988,8 @@ of &quot;BEGIN DH PARAMETERS&quot;.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fdh_005fparams_005fexport_005fpkcs3-1"></a>
@@ -17771,7 +18130,12 @@ a server sends a prime with less bits than that
 <p>Note that values lower than 512 bits may allow decryption of the
 exchanged data.
 </p>
-<p>This function has no effect in server side.
+<p>The function has no effect in server side.
+</p>
+<p>Note that since 3.1.7 this function is deprecated. The minimum
+number of bits is set by the priority string level.
+Also this function must be called after <code>gnutls_priority_set_direct()</code> 
+or the set value may be overriden by the selected priority options.
 </p></dd></dl>
 
 <a name="gnutls_005fecc_005fcurve_005fget-1"></a>
@@ -18182,7 +18546,8 @@ to the provided value. Use an  <code>ms</code> value of zero to disable
 timeout.
 </p>
 <p>Note that in order for the timeout to be enforced
-<code>gnutls_transport_set_pull_timeout_function()</code>  must be set.
+<code>gnutls_transport_set_pull_timeout_function()</code>  must be set
+(it is set by default in most systems).
 </p></dd></dl>
 
 <a name="gnutls_005fheartbeat_005fallowed-1"></a>
@@ -18547,6 +18912,8 @@ OCSP response cached, so  <code>responder_id</code> and  <code>extensions</code>
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005focsp_005fstatus_005frequest_005fget-1"></a>
@@ -18564,6 +18931,8 @@ constant. If no OCSP response is available then
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005focsp_005fstatus_005frequest_005fis_005fchecked-1"></a>
@@ -19365,6 +19734,47 @@ image. The returned image is allocated using <code>gnutls_malloc()</code>
 an error code is returned.
 </p></dd></dl>
 
+<a name="gnutls_005frange_005fsplit-1"></a>
+<h4 class="subheading">gnutls_range_split</h4>
+<a name="gnutls_005frange_005fsplit"></a><dl>
+<dt><a name="index-gnutls_005frange_005fsplit"></a>Function: <em>int</em> <strong>gnutls_range_split</strong> <em>(gnutls_session_t <var>session</var>, const gnutls_range_st * <var>orig</var>, gnutls_range_st * <var>next</var>, gnutls_range_st * <var>remainder</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure
+</p>
+<p><var>orig</var>: is the original range provided by the user
+</p>
+<p><var>next</var>: is the returned range that can be conveyed in a TLS record
+</p>
+<p><var>remainder</var>: is the returned remaining range
+</p>
+<p>This function should be used when it is required to hide the length
+of very long data that cannot be directly provided to <code>gnutls_record_send_range()</code> .
+In that case this function should be called with the desired length
+hiding range in  <code>orig</code> . The returned  <code>next</code> value should then be used in
+the next call to <code>gnutls_record_send_range()</code>  with the partial data.
+That process should be repeated until  <code>remainder</code> is (0,0).
+</p>
+<p><strong>Returns:</strong> 0 in case splitting succeeds, non zero in case of error.
+Note that  <code>orig</code> is not changed, while the values of  <code>next</code> and  <code>remainder</code> are modified to store the resulting values.
+</p></dd></dl>
+
+<a name="gnutls_005frecord_005fcan_005fuse_005flength_005fhiding-1"></a>
+<h4 class="subheading">gnutls_record_can_use_length_hiding</h4>
+<a name="gnutls_005frecord_005fcan_005fuse_005flength_005fhiding"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fcan_005fuse_005flength_005fhiding"></a>Function: <em>int</em> <strong>gnutls_record_can_use_length_hiding</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p>Returns true (1) if the current session supports length-hiding
+padding, false (0) if the current session does not. Returns
+a negative value in case of error.
+If the session supports length-hiding padding, you can
+invoke <code>gnutls_range_send_message()</code>  to send a message whose
+length is hidden in the given range. If the session does not
+support length hiding padding, you can use the standard
+<code>gnutls_record_send()</code>  function, or <code>gnutls_range_send_message()</code> 
+making sure that the range is the same as the length of the
+message you are trying to send.
+</p></dd></dl>
+
 <a name="gnutls_005frecord_005fcheck_005fpending-1"></a>
 <h4 class="subheading">gnutls_record_check_pending</h4>
 <a name="gnutls_005frecord_005fcheck_005fpending"></a><dl>
@@ -19379,6 +19789,19 @@ is guarranteed not to block.
 <p><strong>Returns:</strong> Returns the size of the data or zero.
 </p></dd></dl>
 
+<a name="gnutls_005frecord_005fcork-1"></a>
+<h4 class="subheading">gnutls_record_cork</h4>
+<a name="gnutls_005frecord_005fcork"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fcork-1"></a>Function: <em>void</em> <strong>gnutls_record_cork</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p>If called <code>gnutls_record_send()</code>  will no longer send partial records.
+All queued records will be sent when <code>gnutls_uncork()</code>  is called, or
+when the maximum record size is reached.
+</p>
+<p><strong>Since:</strong> 3.1.7
+</p></dd></dl>
+
 <a name="gnutls_005frecord_005fdisable_005fpadding-1"></a>
 <h4 class="subheading">gnutls_record_disable_padding</h4>
 <a name="gnutls_005frecord_005fdisable_005fpadding"></a><dl>
@@ -19390,8 +19813,8 @@ need to use this function, but there are buggy clients that
 complain if a server pads the encrypted data.  This of course will
 disable protection against statistical attacks on the data.
 </p>
-<p>Normally only servers that require maximum compatibility with everything
-out there, need to call this function.
+<p>This functions is defunt since 3.1.7. Random padding is disabled
+by default unless requested using <code>gnutls_range_send_message()</code> .
 </p></dd></dl>
 
 <a name="gnutls_005frecord_005fget_005fdirection-1"></a>
@@ -19516,6 +19939,50 @@ number of bytes this function can send in a single call depends
 on the negotiated maximum record size.
 </p></dd></dl>
 
+<a name="gnutls_005frecord_005fsend_005frange-1"></a>
+<h4 class="subheading">gnutls_record_send_range</h4>
+<a name="gnutls_005frecord_005fsend_005frange"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fsend_005frange"></a>Function: <em>ssize_t</em> <strong>gnutls_record_send_range</strong> <em>(gnutls_session_t <var>session</var>, const void * <var>data</var>, size_t <var>data_size</var>, const gnutls_range_st * <var>range</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>data</var>: contains the data to send.
+</p>
+<p><var>data_size</var>: is the length of the data.
+</p>
+<p><var>range</var>: is the range of lengths in which the real data length must be hidden.
+</p>
+<p>This function operates like <code>gnutls_record_send()</code>  but, while
+<code>gnutls_record_send()</code>  adds minimal padding to each TLS record,
+this function uses the TLS extra-padding feature to conceal the real
+data size within the range of lengths provided.
+Some TLS sessions do not support extra padding (e.g. stream ciphers in standard
+TLS or SSL3 sessions). To know whether the current session supports extra
+padding, and hence length hiding, use the <code>gnutls_record_can_use_length_hiding()</code> 
+function.
+</p>
+<p><strong>Note:</strong> This function currently is only limited to blocking sockets.
+</p>
+<p><strong>Returns:</strong> The number of bytes sent (that is data_size in a successful invocation),
+or a negative error code.
+</p></dd></dl>
+
+<a name="gnutls_005frecord_005fset_005fmax_005fempty_005frecords-1"></a>
+<h4 class="subheading">gnutls_record_set_max_empty_records</h4>
+<a name="gnutls_005frecord_005fset_005fmax_005fempty_005frecords"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fset_005fmax_005fempty_005frecords"></a>Function: <em>void</em> <strong>gnutls_record_set_max_empty_records</strong> <em>(gnutls_session_t <var>session</var>, const unsigned int <var>i</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>i</var>: is the desired value of maximum empty records that can be accepted in a row.
+</p>
+<p>Used to set the maximum number of empty fragments that can be accepted
+in a row. Accepting many empty fragments is useful for receiving length-hidden
+content, where empty fragments filled with pad are sent to hide the real
+length of a message. However, a malicious peer could send empty fragments to
+mount a DoS attack, so as a safety measure, a maximum number of empty fragments
+is accepted by default. If you know your application must accept a given number
+of empty fragments in a row, you can use this function to set the desired value.
+</p></dd></dl>
+
 <a name="gnutls_005frecord_005fset_005fmax_005fsize-1"></a>
 <h4 class="subheading">gnutls_record_set_max_size</h4>
 <a name="gnutls_005frecord_005fset_005fmax_005fsize"></a><dl>
@@ -19538,6 +20005,45 @@ all TLS implementations use or even understand this extension.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p></dd></dl>
+
+<a name="gnutls_005frecord_005fset_005ftimeout-1"></a>
+<h4 class="subheading">gnutls_record_set_timeout</h4>
+<a name="gnutls_005frecord_005fset_005ftimeout"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fset_005ftimeout"></a>Function: <em>void</em> <strong>gnutls_record_set_timeout</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>ms</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>ms</var>: is a timeout value in milliseconds
+</p>
+<p>This function sets the receive timeout for the record layer
+to the provided value. Use an  <code>ms</code> value of zero to disable
+timeout (the default).
+</p>
+<p>Note that in order for the timeout to be enforced
+<code>gnutls_transport_set_pull_timeout_function()</code>  must be set
+(it is set by default in most systems).
+</p>
+<p><strong>Since:</strong> 3.1.7
+</p></dd></dl>
+
+<a name="gnutls_005frecord_005funcork-1"></a>
+<h4 class="subheading">gnutls_record_uncork</h4>
+<a name="gnutls_005frecord_005funcork"></a><dl>
+<dt><a name="index-gnutls_005frecord_005funcork-1"></a>Function: <em>int</em> <strong>gnutls_record_uncork</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>flags</var>: Could be zero or <code>GNUTLS_RECORD_WAIT</code> 
+</p>
+<p>This resets the effect of <code>gnutls_cork()</code> , and flushes any pending
+data. If the <code>GNUTLS_RECORD_WAIT</code>  flag is specified then this
+function will block until the data is sent or a fatal error
+occurs (i.e., the function will retry on <code>GNUTLS_E_AGAIN</code>  and
+<code>GNUTLS_E_INTERRUPTED</code> ).
+</p>
+<p><strong>Returns:</strong> On success the number of transmitted data is returned, or 
+otherwise a negative error code. 
+</p>
+<p><strong>Since:</strong> 3.1.7
 </p></dd></dl>
 
 <a name="gnutls_005frehandshake-1"></a>
@@ -19715,6 +20221,19 @@ if required they will be reported through the audit subsystem.
 </p>
 <p>Normally only servers that require maximum compatibility with
 everything out there, need to call this function.
+</p></dd></dl>
+
+<a name="gnutls_005fsession_005fforce_005fvalid-1"></a>
+<h4 class="subheading">gnutls_session_force_valid</h4>
+<a name="gnutls_005fsession_005fforce_005fvalid"></a><dl>
+<dt><a name="index-gnutls_005fsession_005fforce_005fvalid"></a>Function: <em>void</em> <strong>gnutls_session_force_valid</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p>Clears the invalid flag in a session. That means
+that sessions were corrupt or invalid data were received 
+can be re-used. Use only when debugging or experimenting
+with the TLS protocol. Should not be used in typical
+applications.
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fget_005fdata-1"></a>
@@ -20958,13 +21477,27 @@ or a negative error value on other errors.
 
 
 <hr>
+<a name="High-level-TLS-API"></a>
+<div class="header">
+<p>
+Next: <a href="#Datagram-TLS-API" accesskey="n" rel="next">Datagram TLS API</a>, Previous: <a href="#Core-TLS-API" accesskey="p" rel="previous">Core TLS API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="High-level-TLS-API-1"></a>
+<h3 class="section">E.2 High level TLS API</h3>
+
+<p>The prototypes for the following functions lie in
+<samp>gnutls/xssl.h</samp>.
+</p>
+
+
+<hr>
 <a name="Datagram-TLS-API"></a>
 <div class="header">
 <p>
-Next: <a href="#X509-certificate-API" accesskey="n" rel="next">X509 certificate API</a>, Previous: <a href="#Core-TLS-API" accesskey="p" rel="previous">Core TLS API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#X509-certificate-API" accesskey="n" rel="next">X509 certificate API</a>, Previous: <a href="#High-level-TLS-API" accesskey="p" rel="previous">High level TLS API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Datagram-TLS-API-1"></a>
-<h3 class="section">E.2 Datagram TLS API</h3>
+<h3 class="section">E.3 Datagram TLS API</h3>
 
 <p>The prototypes for the following functions lie in
 <samp>gnutls/dtls.h</samp>.
@@ -21172,7 +21705,7 @@ DTLS connection.
 Next: <a href="#OCSP-API" accesskey="n" rel="next">OCSP API</a>, Previous: <a href="#Datagram-TLS-API" accesskey="p" rel="previous">Datagram TLS API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="X_002e509-certificate-API"></a>
-<h3 class="section">E.3 <acronym>X.509</acronym> certificate API</h3>
+<h3 class="section">E.4 <acronym>X.509</acronym> certificate API</h3>
 <a name="index-X_002e509-Functions"></a>
 
 <p>The following functions are to be used for <acronym>X.509</acronym> certificate handling.
@@ -21263,6 +21796,8 @@ of &quot;BEGIN PKCS7&quot;.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fpkcs7_005fget_005fcrl_005fcount-1"></a>
@@ -22197,7 +22732,7 @@ negative error value.
 <a name="gnutls_005fx509_005fcrq_005fget_005fattribute_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_attribute_by_oid</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fattribute_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fattribute_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_attribute_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fattribute_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_attribute_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
 <p><var>oid</var>: holds an Object Identifier in null-terminated string
@@ -22207,7 +22742,7 @@ specifies which to get, use (0) to get the first one
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the attribute data (may be <code>NULL</code> )
 </p>
-<p><var>sizeof_buf</var>: initially holds the size of  <code>buf</code> 
+<p><var>buf_size</var>: initially holds the size of  <code>buf</code> 
 </p>
 <p>This function will return the attribute in the certificate request
 specified by the given Object ID.  The attribute will be DER
@@ -22310,12 +22845,12 @@ certificate does not contain the basicConstraints extension
 <a name="gnutls_005fx509_005fcrq_005fget_005fchallenge_005fpassword-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_challenge_password</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fchallenge_005fpassword"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fchallenge_005fpassword"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_challenge_password</strong> <em>(gnutls_x509_crq_t <var>crq</var>, char * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fchallenge_005fpassword"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_challenge_password</strong> <em>(gnutls_x509_crq_t <var>crq</var>, char * <var>pass</var>, size_t * <var>pass_size</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
-<p><var>buf</var>: will hold a (0)-terminated password string
+<p><var>pass</var>: will hold a (0)-terminated password string
 </p>
-<p><var>sizeof_buf</var>: Initially holds the size of  <code>pass</code> .
+<p><var>pass_size</var>: Initially holds the size of  <code>pass</code> .
 </p>
 <p>This function will return the challenge password in the request.
 The challenge password is intended to be used for requesting a
@@ -22328,12 +22863,12 @@ negative error value.
 <a name="gnutls_005fx509_005fcrq_005fget_005fdn-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_dn</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fdn"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn</strong> <em>(gnutls_x509_crq_t <var>crq</var>, char * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn</strong> <em>(gnutls_x509_crq_t <var>crq</var>, char * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the name (may be <code>NULL</code> )
 </p>
-<p><var>sizeof_buf</var>: initially holds the size of  <code>buf</code> 
+<p><var>buf_size</var>: initially holds the size of  <code>buf</code> 
 </p>
 <p>This function will copy the name of the Certificate request subject
 to the provided buffer.  The name will be in the form
@@ -22342,14 +22877,14 @@ to the provided buffer.  The name will be in the form
 data.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the provided buffer is not
-long enough, and in that case the * <code>sizeof_buf</code> will be updated with
+long enough, and in that case the * <code>buf_size</code> will be updated with
 the required size.  On success 0 is returned.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_dn_by_oid</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a gnutls_x509_crq_t structure
 </p>
 <p><var>oid</var>: holds an Object Identifier in a null terminated string
@@ -22361,7 +22896,7 @@ which to get. Use (0) to get the first one.
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the name (may be <code>NULL</code> )
 </p>
-<p><var>sizeof_buf</var>: initially holds the size of  <code>buf</code> 
+<p><var>buf_size</var>: initially holds the size of  <code>buf</code> 
 </p>
 <p>This function will extract the part of the name of the Certificate
 request subject, specified by the given OID. The output will be
@@ -22375,7 +22910,7 @@ in hex format with a &rsquo;\#&rsquo; prefix.  You can check about known OIDs
 using <code>gnutls_x509_dn_oid_known()</code> .
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the provided buffer is
-not long enough, and in that case the * <code>sizeof_buf</code> will be
+not long enough, and in that case the * <code>buf_size</code> will be
 updated with the required size.  On success 0 is returned.
 </p></dd></dl>
 
@@ -22402,7 +22937,7 @@ updated with the required size.  On success 0 is returned.
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_extension_by_oid</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>sizeof_buf</var>, unsigned int * <var>critical</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>buf_size</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
 <p><var>oid</var>: holds an Object Identifier in a null terminated string
@@ -22412,7 +22947,7 @@ specifies which to get. Use (0) to get the first one.
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the name (may be null)
 </p>
-<p><var>sizeof_buf</var>: initially holds the size of  <code>buf</code> 
+<p><var>buf_size</var>: initially holds the size of  <code>buf</code> 
 </p>
 <p><var>critical</var>: will be non-zero if the extension is marked as critical
 </p>
@@ -22768,14 +23303,14 @@ negative error value.
 <a name="gnutls_005fx509_005fcrq_005fset_005fattribute_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crq_set_attribute_by_oid</h4>
 <a name="gnutls_005fx509_005fcrq_005fset_005fattribute_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fset_005fattribute_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_set_attribute_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, void * <var>buf</var>, size_t <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fset_005fattribute_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_set_attribute_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, void * <var>buf</var>, size_t <var>buf_size</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
 <p><var>oid</var>: holds an Object Identifier in a null-terminated string
 </p>
 <p><var>buf</var>: a pointer to a structure that holds the attribute data
 </p>
-<p><var>sizeof_buf</var>: holds the size of  <code>buf</code> 
+<p><var>buf_size</var>: holds the size of  <code>buf</code> 
 </p>
 <p>This function will set the attribute in the certificate request
 specified by the given Object ID. The provided attribute must be be DER
@@ -22818,6 +23353,23 @@ negative error value.
 </p>
 <p>This function will set a challenge password to be used when
 revoking the request.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrq_005fset_005fdn-1"></a>
+<h4 class="subheading">gnutls_x509_crq_set_dn</h4>
+<a name="gnutls_005fx509_005fcrq_005fset_005fdn"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fset_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crq_set_dn</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>dn</var>, const char** <var>err</var>)</em></dt>
+<dd><p><var>crq</var>: a certificate of type <code>gnutls_x509_crq_t</code> 
+</p>
+<p><var>dn</var>: a comma separated DN string (RFC4514)
+</p>
+<p><var>err</var>: indicates the error position (if any)
+</p>
+<p>This function will set the DN on the provided certificate.
+The input string should be plain ASCII or UTF-8 encoded.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -23141,7 +23693,7 @@ of &quot;BEGIN CERTIFICATE&quot;.
 <p><strong>Returns:</strong> In case of failure a negative error code will be
 returned, and 0 on success.
 </p>
-<p><strong>Since:</strong> 3.1
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fget_005factivation_005ftime-1"></a>
@@ -24597,6 +25149,23 @@ negative error value.
 <p><strong>Since:</strong> 2.8.0
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrt_005fset_005fdn-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_dn</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fdn"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_dn</strong> <em>(gnutls_x509_crt_t <var>crt</var>, const char * <var>dn</var>, const char** <var>err</var>)</em></dt>
+<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>dn</var>: a comma separated DN string (RFC4514)
+</p>
+<p><var>err</var>: indicates the error position (if any)
+</p>
+<p>This function will set the DN on the provided certificate.
+The input string should be plain ASCII or UTF-8 encoded.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrt_005fset_005fdn_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crt_set_dn_by_oid</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fdn_005fby_005foid"></a><dl>
@@ -24656,6 +25225,23 @@ negative error value.
 <p>This function will set an the extension, by the specified OID, in
 the certificate.  The extension data should be binary data DER
 encoded.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrt_005fset_005fissuer_005fdn-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_issuer_dn</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fissuer_005fdn"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fissuer_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_issuer_dn</strong> <em>(gnutls_x509_crt_t <var>crt</var>, const char * <var>dn</var>, const char** <var>err</var>)</em></dt>
+<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>dn</var>: a comma separated DN string (RFC4514)
+</p>
+<p><var>err</var>: indicates the error position (if any)
+</p>
+<p>This function will set the DN on the provided certificate.
+The input string should be plain ASCII or UTF-8 encoded.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -24868,27 +25454,6 @@ a big-endian positive number (i.e. it&rsquo;s leftmost bit should be zero).
 negative error value.
 </p></dd></dl>
 
-<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname-1"></a>
-<h4 class="subheading">gnutls_x509_crt_set_subject_alternative_name</h4>
-<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_alternative_name</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_subject_alt_name_t                                               <var>type</var>, const char * <var>data_string</var>)</em></dt>
-<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
-</p>
-<p><var>type</var>: is one of the gnutls_x509_subject_alt_name_t enumerations
-</p>
-<p><var>data_string</var>: The data to be set, a (0) terminated string
-</p>
-<p>This function will set the subject alternative name certificate
-extension. This function assumes that data can be expressed as a null
-terminated string.
-</p>
-<p>The name of the function is unfortunate since it is incosistent with
-<code>gnutls_x509_crt_get_subject_alt_name()</code> .
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname-1"></a>
 <h4 class="subheading">gnutls_x509_crt_set_subject_alt_name</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname"></a><dl>
@@ -24910,6 +25475,27 @@ extension. It can set the following types:
 negative error value.
 </p>
 <p><strong>Since:</strong> 2.6.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_subject_alternative_name</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_alternative_name</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_subject_alt_name_t                                               <var>type</var>, const char * <var>data_string</var>)</em></dt>
+<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>type</var>: is one of the gnutls_x509_subject_alt_name_t enumerations
+</p>
+<p><var>data_string</var>: The data to be set, a (0) terminated string
+</p>
+<p>This function will set the subject alternative name certificate
+extension. This function assumes that data can be expressed as a null
+terminated string.
+</p>
+<p>The name of the function is unfortunate since it is incosistent with
+<code>gnutls_x509_crt_get_subject_alt_name()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005fkey_005fid-1"></a>
@@ -25069,6 +25655,8 @@ of &quot;BEGIN NAME&quot;.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fdn_005fget_005frdn_005fava-1"></a>
@@ -26114,7 +26702,7 @@ negative error value.
 Next: <a href="#OpenPGP-API" accesskey="n" rel="next">OpenPGP API</a>, Previous: <a href="#X509-certificate-API" accesskey="p" rel="previous">X509 certificate API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="OCSP-API-1"></a>
-<h3 class="section">E.4 <acronym>OCSP</acronym> API</h3>
+<h3 class="section">E.5 <acronym>OCSP</acronym> API</h3>
 <a name="index-OCSP-Functions"></a>
 
 <p>The following functions are for <acronym>OCSP</acronym> certificate status
@@ -26788,7 +27376,7 @@ negative error value.
 Next: <a href="#PKCS-12-API" accesskey="n" rel="next">PKCS 12 API</a>, Previous: <a href="#OCSP-API" accesskey="p" rel="previous">OCSP API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="OpenPGP-API-1"></a>
-<h3 class="section">E.5 <acronym>OpenPGP</acronym> API</h3>
+<h3 class="section">E.6 <acronym>OpenPGP</acronym> API</h3>
 <a name="index-OpenPGP-API"></a>
 
 <p>The following functions are to be used for <acronym>OpenPGP</acronym>
@@ -27009,6 +27597,8 @@ If the buffer provided is not long enough to hold the output, then
 The output buffer is allocated using <code>gnutls_malloc()</code> .
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fopenpgp_005fcrt_005fget_005fauth_005fsubkey-1"></a>
@@ -27666,7 +28256,7 @@ The output buffer is allocated using <code>gnutls_malloc()</code> .
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
 </p>
-<p><strong>Since:</strong> 3.1
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fopenpgp_005fprivkey_005fexport_005fdsa_005fraw-1"></a>
@@ -28065,7 +28655,7 @@ sent a key fingerprint instead of a full key.
 Next: <a href="#PKCS-11-API" accesskey="n" rel="next">PKCS 11 API</a>, Previous: <a href="#OpenPGP-API" accesskey="p" rel="previous">OpenPGP API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="PKCS-12-API-1"></a>
-<h3 class="section">E.6 PKCS 12 API</h3>
+<h3 class="section">E.7 PKCS 12 API</h3>
 
 <p>The following functions are to be used for PKCS 12 handling.
 Their prototypes lie in <samp>gnutls/pkcs12.h</samp>.
@@ -28344,7 +28934,7 @@ of &quot;BEGIN PKCS12&quot;.
 <p><strong>Returns:</strong> In case of failure a negative error code will be
 returned, and 0 on success.
 </p>
-<p><strong>Since:</strong> 3.1
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fpkcs12_005fgenerate_005fmac-1"></a>
@@ -28457,21 +29047,21 @@ certs (may be <code>NULL</code> ).
 private key, the corresponding certificate chain, and any additional
 certificates and a CRL.
 </p>
-<p>The  <code>extra_certs_ret</code> and  <code>extra_certs_ret_len</code> parameters are optional
+<p>The  <code>extra_certs_ret</code> and  <code>extra_certs_len</code> parameters are optional
 and both may be set to <code>NULL</code> . If either is non-<code>NULL</code> , then both must
-be.
+be set.
 </p>
 <p>Encrypted PKCS<code>12</code>  bags and PKCS<code>8</code>  private keys are supported.  However,
 only password based security, and the same password for all
 operations, are supported.
 </p>
-<p>PKCS<code>12</code>  file may contain many keys and/or certificates, and there
+<p>A PKCS<code>12</code>  file may contain many keys and/or certificates, and there
 is no way to identify which key/certificate pair you want.  You
 should make sure the PKCS<code>12</code>  file only contain one key/certificate
 pair and/or one CRL.
 </p>
-<p>It is believed that the limitations of this function is acceptable
-for most usage, and that any more flexibility would introduce
+<p>It is believed that the limitations of this function are acceptable
+for common usage, and that any more flexibility would introduce
 complexity that would make it harder to use this functionality at
 all.
 </p>
@@ -28511,7 +29101,7 @@ negative error value.
 Next: <a href="#TPM-API" accesskey="n" rel="next">TPM API</a>, Previous: <a href="#PKCS-12-API" accesskey="p" rel="previous">PKCS 12 API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Hardware-token-via-PKCS-11-API"></a>
-<h3 class="section">E.7 Hardware token via PKCS 11 API</h3>
+<h3 class="section">E.8 Hardware token via PKCS 11 API</h3>
 
 <p>The following functions are to be used for PKCS 11 handling.
 Their prototypes lie in <samp>gnutls/pkcs11.h</samp>.
@@ -28727,7 +29317,7 @@ of &quot;BEGIN CERTIFICATE&quot;.
 <p><strong>Returns:</strong> In case of failure a negative error code will be
 returned, and <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 </p>
-<p><strong>Since:</strong> 3.1
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fpkcs11_005fobj_005fexport_005furl-1"></a>
@@ -29285,7 +29875,7 @@ negative error value.
 Next: <a href="#Abstract-key-API" accesskey="n" rel="next">Abstract key API</a>, Previous: <a href="#PKCS-11-API" accesskey="p" rel="previous">PKCS 11 API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="TPM-API-1"></a>
-<h3 class="section">E.8 TPM API</h3>
+<h3 class="section">E.9 TPM API</h3>
 
 <p>The following functions are to be used for TPM handling.
 Their prototypes lie in <samp>gnutls/tpm.h</samp>.
@@ -29405,7 +29995,7 @@ negative error value.
 Next: <a href="#DANE-API" accesskey="n" rel="next">DANE API</a>, Previous: <a href="#TPM-API" accesskey="p" rel="previous">TPM API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Abstract-key-API-1"></a>
-<h3 class="section">E.9 Abstract key API</h3>
+<h3 class="section">E.10 Abstract key API</h3>
 
 <p>The following functions are to be used for abstract key handling.
 Their prototypes lie in <samp>gnutls/abstract.h</samp>.
@@ -30964,7 +31554,7 @@ negative error value.
 Next: <a href="#Cryptographic-API" accesskey="n" rel="next">Cryptographic API</a>, Previous: <a href="#Abstract-key-API" accesskey="p" rel="previous">Abstract key API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="DANE-API-1"></a>
-<h3 class="section">E.10 DANE API</h3>
+<h3 class="section">E.11 DANE API</h3>
 
 <p>The following functions are to be used for DANE certificate verification.
 Their prototypes lie in <samp>gnutls/dane.h</samp>. Note that you need to link
@@ -31106,6 +31696,18 @@ negative error value.
 negative error value.
 </p></dd></dl>
 
+<a name="dane_005fstate_005fset_005fdlv_005ffile-1"></a>
+<h4 class="subheading">dane_state_set_dlv_file</h4>
+<a name="dane_005fstate_005fset_005fdlv_005ffile"></a><dl>
+<dt><a name="index-dane_005fstate_005fset_005fdlv_005ffile"></a>Function: <em>int</em> <strong>dane_state_set_dlv_file</strong> <em>(dane_state_t <var>s</var>, const char* <var>file</var>)</em></dt>
+<dd><p><var>s</var>: The structure to be deinitialized
+</p>
+<p><var>file</var>: The file holding the DLV keys.
+</p>
+<p>This function will set a file with trusted keys 
+for DLV  (DNSSEC  Lookaside  Validation).
+</p></dd></dl>
+
 <a name="dane_005fstrerror-1"></a>
 <h4 class="subheading">dane_strerror</h4>
 <a name="dane_005fstrerror"></a><dl>
@@ -31217,7 +31819,7 @@ negative error value.
 Next: <a href="#Compatibility-API" accesskey="n" rel="next">Compatibility API</a>, Previous: <a href="#DANE-API" accesskey="p" rel="previous">DANE API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Cryptographic-API-1"></a>
-<h3 class="section">E.11 Cryptographic API</h3>
+<h3 class="section">E.12 Cryptographic API</h3>
 
 <p>The following functions are to be used for low-level cryptographic operations.
 Their prototypes lie in <samp>gnutls/crypto.h</samp>.
@@ -31625,6 +32227,20 @@ buffer.
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
 
+<a name="gnutls_005frnd_005frefresh-1"></a>
+<h4 class="subheading">gnutls_rnd_refresh</h4>
+<a name="gnutls_005frnd_005frefresh"></a><dl>
+<dt><a name="index-gnutls_005frnd_005frefresh"></a>Function: <em>void</em> <strong>gnutls_rnd_refresh</strong> <em>()</em></dt>
+<dd>
+<p>This function refreshes the random generator state.
+That is the current precise time, CPU usage, and
+other values are input into its state.
+</p>
+<p>On a slower rate input from /dev/urandom is mixed too.
+</p>
+<p><strong>Since:</strong> 3.1.7
+</p></dd></dl>
+
 
 <hr>
 <a name="Compatibility-API"></a>
@@ -31633,7 +32249,7 @@ buffer.
 Previous: <a href="#Cryptographic-API" accesskey="p" rel="previous">Cryptographic API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Compatibility-API-1"></a>
-<h3 class="section">E.12 Compatibility API</h3>
+<h3 class="section">E.13 Compatibility API</h3>
 
 <p>The following functions are carried over from old GnuTLS released. They might be removed at a later version.
 Their prototypes lie in <samp>gnutls/compat.h</samp>.
@@ -32972,6 +33588,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-dane_005fquery_005ftlsa"><code>dane_query_tlsa</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dane_005fstate_005fdeinit"><code>dane_state_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dane_005fstate_005finit"><code>dane_state_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-dane_005fstate_005fset_005fdlv_005ffile"><code>dane_state_set_dlv_file</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dane_005fstrerror"><code>dane_strerror</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dane_005fverification_005fstatus_005fprint"><code>dane_verification_status_print</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dane_005fverify_005fcrt"><code>dane_verify_crt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Certificate-verification">Certificate verification</a></td></tr>
@@ -33092,6 +33709,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcredentials_005fset"><code>gnutls_credentials_set</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Session-initialization">Session initialization</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcredentials_005fset-1"><code>gnutls_credentials_set</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fdb_005fcheck_005fentry"><code>gnutls_db_check_entry</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fdb_005fcheck_005fentry_005ftime"><code>gnutls_db_check_entry_time</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fdb_005fget_005fptr"><code>gnutls_db_get_ptr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fdb_005fremove_005fsession"><code>gnutls_db_remove_session</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fdb_005fset_005fcache_005fexpiration"><code>gnutls_db_set_cache_expiration</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -33500,8 +34118,12 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpubkey_005fverify_005fhash2"><code>gnutls_pubkey_verify_hash2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Operations">Operations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpubkey_005fverify_005fhash2-1"><code>gnutls_pubkey_verify_hash2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Abstract-key-API">Abstract key API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frandom_005fart"><code>gnutls_random_art</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frange_005fsplit"><code>gnutls_range_split</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fcan_005fuse_005flength_005fhiding"><code>gnutls_record_can_use_length_hiding</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fcheck_005fpending"><code>gnutls_record_check_pending</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Data-transfer-and-termination">Data transfer and termination</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fcheck_005fpending-1"><code>gnutls_record_check_pending</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fcork"><code>gnutls_record_cork</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Buffered-data-transfer">Buffered data transfer</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fcork-1"><code>gnutls_record_cork</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fdisable_005fpadding"><code>gnutls_record_disable_padding</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fget_005fdirection"><code>gnutls_record_get_direction</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Asynchronous-operation">Asynchronous operation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fget_005fdirection-1"><code>gnutls_record_get_direction</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -33513,10 +34135,16 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005frecv_005fseq-1"><code>gnutls_record_recv_seq</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fsend"><code>gnutls_record_send</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Data-transfer-and-termination">Data transfer and termination</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fsend-1"><code>gnutls_record_send</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fsend_005frange"><code>gnutls_record_send_range</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fset_005fmax_005fempty_005frecords"><code>gnutls_record_set_max_empty_records</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fset_005fmax_005fsize"><code>gnutls_record_set_max_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fset_005ftimeout"><code>gnutls_record_set_timeout</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005funcork"><code>gnutls_record_uncork</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Buffered-data-transfer">Buffered data transfer</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005funcork-1"><code>gnutls_record_uncork</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frehandshake"><code>gnutls_rehandshake</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frnd"><code>gnutls_rnd</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Random-number-generation">Random number generation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frnd-1"><code>gnutls_rnd</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frnd_005frefresh"><code>gnutls_rnd_refresh</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frsa_005fexport_005fget_005fmodulus_005fbits"><code>gnutls_rsa_export_get_modulus_bits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compatibility-API">Compatibility API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frsa_005fexport_005fget_005fpubkey"><code>gnutls_rsa_export_get_pubkey</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compatibility-API">Compatibility API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frsa_005fparams_005fcpy"><code>gnutls_rsa_params_cpy</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compatibility-API">Compatibility API</a></td></tr>
@@ -33535,6 +34163,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fserver_005fname_005fset"><code>gnutls_server_name_set</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fchannel_005fbinding"><code>gnutls_session_channel_binding</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fenable_005fcompatibility_005fmode"><code>gnutls_session_enable_compatibility_mode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fforce_005fvalid"><code>gnutls_session_force_valid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fget_005fdata"><code>gnutls_session_get_data</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fget_005fdata2"><code>gnutls_session_get_data2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fget_005fid"><code>gnutls_session_get_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -33703,6 +34332,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fattribute_005fby_005foid"><code>gnutls_x509_crq_set_attribute_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fbasic_005fconstraints"><code>gnutls_x509_crq_set_basic_constraints</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fchallenge_005fpassword"><code>gnutls_x509_crq_set_challenge_password</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fdn"><code>gnutls_x509_crq_set_dn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fdn_005fby_005foid"><code>gnutls_x509_crq_set_dn_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fkey"><code>gnutls_x509_crq_set_key</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-10-certificate-requests">PKCS 10 certificate requests</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fkey-1"><code>gnutls_x509_crq_set_key</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
@@ -33795,9 +34425,11 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fcrl_005fdist_005fpoints2"><code>gnutls_x509_crt_set_crl_dist_points2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fcrq"><code>gnutls_x509_crt_set_crq</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fcrq_005fextensions"><code>gnutls_x509_crt_set_crq_extensions</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fdn"><code>gnutls_x509_crt_set_dn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fdn_005fby_005foid"><code>gnutls_x509_crt_set_dn_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fexpiration_005ftime"><code>gnutls_x509_crt_set_expiration_time</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fextension_005fby_005foid"><code>gnutls_x509_crt_set_extension_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fissuer_005fdn"><code>gnutls_x509_crt_set_issuer_dn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fissuer_005fdn_005fby_005foid"><code>gnutls_x509_crt_set_issuer_dn_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fkey"><code>gnutls_x509_crt_set_key</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fkey_005fpurpose_005foid"><code>gnutls_x509_crt_set_key_purpose_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>

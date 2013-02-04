@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 31 December 2012 for version
-3.1.6 of GnuTLS.
+<!-- This manual is last updated 29 January 2013 for version
+3.1.7 of GnuTLS.
 
-Copyright (C) 2001-2012 Free Software Foundation, Inc.
-Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.6: X509 certificate API</title>
+<title>GnuTLS 3.1.7: X509 certificate API</title>
 
-<meta name="description" content="GnuTLS 3.1.6: X509 certificate API">
-<meta name="keywords" content="GnuTLS 3.1.6: X509 certificate API">
+<meta name="description" content="GnuTLS 3.1.7: X509 certificate API">
+<meta name="keywords" content="GnuTLS 3.1.7: X509 certificate API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -162,7 +162,7 @@ Next: <a href="OCSP-API.html#OCSP-API" accesskey="n" rel="next">OCSP API</a>, Pr
 </div>
 <hr>
 <a name="X_002e509-certificate-API"></a>
-<h3 class="section">E.3 <acronym>X.509</acronym> certificate API</h3>
+<h3 class="section">E.4 <acronym>X.509</acronym> certificate API</h3>
 <a name="index-X_002e509-Functions"></a>
 
 <p>The following functions are to be used for <acronym>X.509</acronym> certificate handling.
@@ -253,6 +253,8 @@ of &quot;BEGIN PKCS7&quot;.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fpkcs7_005fget_005fcrl_005fcount-1"></a>
@@ -1187,7 +1189,7 @@ negative error value.
 <a name="gnutls_005fx509_005fcrq_005fget_005fattribute_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_attribute_by_oid</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fattribute_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fattribute_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_attribute_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fattribute_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_attribute_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
 <p><var>oid</var>: holds an Object Identifier in null-terminated string
@@ -1197,7 +1199,7 @@ specifies which to get, use (0) to get the first one
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the attribute data (may be <code>NULL</code> )
 </p>
-<p><var>sizeof_buf</var>: initially holds the size of  <code>buf</code> 
+<p><var>buf_size</var>: initially holds the size of  <code>buf</code> 
 </p>
 <p>This function will return the attribute in the certificate request
 specified by the given Object ID.  The attribute will be DER
@@ -1300,12 +1302,12 @@ certificate does not contain the basicConstraints extension
 <a name="gnutls_005fx509_005fcrq_005fget_005fchallenge_005fpassword-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_challenge_password</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fchallenge_005fpassword"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fchallenge_005fpassword"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_challenge_password</strong> <em>(gnutls_x509_crq_t <var>crq</var>, char * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fchallenge_005fpassword"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_challenge_password</strong> <em>(gnutls_x509_crq_t <var>crq</var>, char * <var>pass</var>, size_t * <var>pass_size</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
-<p><var>buf</var>: will hold a (0)-terminated password string
+<p><var>pass</var>: will hold a (0)-terminated password string
 </p>
-<p><var>sizeof_buf</var>: Initially holds the size of  <code>pass</code> .
+<p><var>pass_size</var>: Initially holds the size of  <code>pass</code> .
 </p>
 <p>This function will return the challenge password in the request.
 The challenge password is intended to be used for requesting a
@@ -1318,12 +1320,12 @@ negative error value.
 <a name="gnutls_005fx509_005fcrq_005fget_005fdn-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_dn</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fdn"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn</strong> <em>(gnutls_x509_crq_t <var>crq</var>, char * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn</strong> <em>(gnutls_x509_crq_t <var>crq</var>, char * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the name (may be <code>NULL</code> )
 </p>
-<p><var>sizeof_buf</var>: initially holds the size of  <code>buf</code> 
+<p><var>buf_size</var>: initially holds the size of  <code>buf</code> 
 </p>
 <p>This function will copy the name of the Certificate request subject
 to the provided buffer.  The name will be in the form
@@ -1332,14 +1334,14 @@ to the provided buffer.  The name will be in the form
 data.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the provided buffer is not
-long enough, and in that case the * <code>sizeof_buf</code> will be updated with
+long enough, and in that case the * <code>buf_size</code> will be updated with
 the required size.  On success 0 is returned.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_dn_by_oid</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a gnutls_x509_crq_t structure
 </p>
 <p><var>oid</var>: holds an Object Identifier in a null terminated string
@@ -1351,7 +1353,7 @@ which to get. Use (0) to get the first one.
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the name (may be <code>NULL</code> )
 </p>
-<p><var>sizeof_buf</var>: initially holds the size of  <code>buf</code> 
+<p><var>buf_size</var>: initially holds the size of  <code>buf</code> 
 </p>
 <p>This function will extract the part of the name of the Certificate
 request subject, specified by the given OID. The output will be
@@ -1365,7 +1367,7 @@ in hex format with a &rsquo;\#&rsquo; prefix.  You can check about known OIDs
 using <code>gnutls_x509_dn_oid_known()</code> .
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the provided buffer is
-not long enough, and in that case the * <code>sizeof_buf</code> will be
+not long enough, and in that case the * <code>buf_size</code> will be
 updated with the required size.  On success 0 is returned.
 </p></dd></dl>
 
@@ -1392,7 +1394,7 @@ updated with the required size.  On success 0 is returned.
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_extension_by_oid</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>sizeof_buf</var>, unsigned int * <var>critical</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>buf_size</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
 <p><var>oid</var>: holds an Object Identifier in a null terminated string
@@ -1402,7 +1404,7 @@ specifies which to get. Use (0) to get the first one.
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the name (may be null)
 </p>
-<p><var>sizeof_buf</var>: initially holds the size of  <code>buf</code> 
+<p><var>buf_size</var>: initially holds the size of  <code>buf</code> 
 </p>
 <p><var>critical</var>: will be non-zero if the extension is marked as critical
 </p>
@@ -1758,14 +1760,14 @@ negative error value.
 <a name="gnutls_005fx509_005fcrq_005fset_005fattribute_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crq_set_attribute_by_oid</h4>
 <a name="gnutls_005fx509_005fcrq_005fset_005fattribute_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fset_005fattribute_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_set_attribute_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, void * <var>buf</var>, size_t <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fset_005fattribute_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_set_attribute_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, void * <var>buf</var>, size_t <var>buf_size</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
 </p>
 <p><var>oid</var>: holds an Object Identifier in a null-terminated string
 </p>
 <p><var>buf</var>: a pointer to a structure that holds the attribute data
 </p>
-<p><var>sizeof_buf</var>: holds the size of  <code>buf</code> 
+<p><var>buf_size</var>: holds the size of  <code>buf</code> 
 </p>
 <p>This function will set the attribute in the certificate request
 specified by the given Object ID. The provided attribute must be be DER
@@ -1808,6 +1810,23 @@ negative error value.
 </p>
 <p>This function will set a challenge password to be used when
 revoking the request.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrq_005fset_005fdn-1"></a>
+<h4 class="subheading">gnutls_x509_crq_set_dn</h4>
+<a name="gnutls_005fx509_005fcrq_005fset_005fdn"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fset_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crq_set_dn</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>dn</var>, const char** <var>err</var>)</em></dt>
+<dd><p><var>crq</var>: a certificate of type <code>gnutls_x509_crq_t</code> 
+</p>
+<p><var>dn</var>: a comma separated DN string (RFC4514)
+</p>
+<p><var>err</var>: indicates the error position (if any)
+</p>
+<p>This function will set the DN on the provided certificate.
+The input string should be plain ASCII or UTF-8 encoded.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -2131,7 +2150,7 @@ of &quot;BEGIN CERTIFICATE&quot;.
 <p><strong>Returns:</strong> In case of failure a negative error code will be
 returned, and 0 on success.
 </p>
-<p><strong>Since:</strong> 3.1
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fget_005factivation_005ftime-1"></a>
@@ -3587,6 +3606,23 @@ negative error value.
 <p><strong>Since:</strong> 2.8.0
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrt_005fset_005fdn-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_dn</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fdn"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_dn</strong> <em>(gnutls_x509_crt_t <var>crt</var>, const char * <var>dn</var>, const char** <var>err</var>)</em></dt>
+<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>dn</var>: a comma separated DN string (RFC4514)
+</p>
+<p><var>err</var>: indicates the error position (if any)
+</p>
+<p>This function will set the DN on the provided certificate.
+The input string should be plain ASCII or UTF-8 encoded.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrt_005fset_005fdn_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crt_set_dn_by_oid</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fdn_005fby_005foid"></a><dl>
@@ -3646,6 +3682,23 @@ negative error value.
 <p>This function will set an the extension, by the specified OID, in
 the certificate.  The extension data should be binary data DER
 encoded.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrt_005fset_005fissuer_005fdn-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_issuer_dn</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fissuer_005fdn"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fissuer_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_issuer_dn</strong> <em>(gnutls_x509_crt_t <var>crt</var>, const char * <var>dn</var>, const char** <var>err</var>)</em></dt>
+<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>dn</var>: a comma separated DN string (RFC4514)
+</p>
+<p><var>err</var>: indicates the error position (if any)
+</p>
+<p>This function will set the DN on the provided certificate.
+The input string should be plain ASCII or UTF-8 encoded.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -3858,27 +3911,6 @@ a big-endian positive number (i.e. it&rsquo;s leftmost bit should be zero).
 negative error value.
 </p></dd></dl>
 
-<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname-1"></a>
-<h4 class="subheading">gnutls_x509_crt_set_subject_alternative_name</h4>
-<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_alternative_name</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_subject_alt_name_t                                               <var>type</var>, const char * <var>data_string</var>)</em></dt>
-<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
-</p>
-<p><var>type</var>: is one of the gnutls_x509_subject_alt_name_t enumerations
-</p>
-<p><var>data_string</var>: The data to be set, a (0) terminated string
-</p>
-<p>This function will set the subject alternative name certificate
-extension. This function assumes that data can be expressed as a null
-terminated string.
-</p>
-<p>The name of the function is unfortunate since it is incosistent with
-<code>gnutls_x509_crt_get_subject_alt_name()</code> .
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname-1"></a>
 <h4 class="subheading">gnutls_x509_crt_set_subject_alt_name</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname"></a><dl>
@@ -3900,6 +3932,27 @@ extension. It can set the following types:
 negative error value.
 </p>
 <p><strong>Since:</strong> 2.6.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_subject_alternative_name</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_alternative_name</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_subject_alt_name_t                                               <var>type</var>, const char * <var>data_string</var>)</em></dt>
+<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>type</var>: is one of the gnutls_x509_subject_alt_name_t enumerations
+</p>
+<p><var>data_string</var>: The data to be set, a (0) terminated string
+</p>
+<p>This function will set the subject alternative name certificate
+extension. This function assumes that data can be expressed as a null
+terminated string.
+</p>
+<p>The name of the function is unfortunate since it is incosistent with
+<code>gnutls_x509_crt_get_subject_alt_name()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005fkey_005fid-1"></a>
@@ -4059,6 +4112,8 @@ of &quot;BEGIN NAME&quot;.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fdn_005fget_005frdn_005fava-1"></a>

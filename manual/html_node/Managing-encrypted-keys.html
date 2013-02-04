@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 31 December 2012 for version
-3.1.6 of GnuTLS.
+<!-- This manual is last updated 29 January 2013 for version
+3.1.7 of GnuTLS.
 
-Copyright (C) 2001-2012 Free Software Foundation, Inc.
-Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.6: Managing encrypted keys</title>
+<title>GnuTLS 3.1.7: Managing encrypted keys</title>
 
-<meta name="description" content="GnuTLS 3.1.6: Managing encrypted keys">
-<meta name="keywords" content="GnuTLS 3.1.6: Managing encrypted keys">
+<meta name="description" content="GnuTLS 3.1.7: Managing encrypted keys">
+<meta name="keywords" content="GnuTLS 3.1.7: Managing encrypted keys">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -350,21 +350,21 @@ certs (may be <code>NULL</code> ).
 private key, the corresponding certificate chain, and any additional
 certificates and a CRL.
 </p>
-<p>The  <code>extra_certs_ret</code> and  <code>extra_certs_ret_len</code> parameters are optional
+<p>The  <code>extra_certs_ret</code> and  <code>extra_certs_len</code> parameters are optional
 and both may be set to <code>NULL</code> . If either is non-<code>NULL</code> , then both must
-be.
+be set.
 </p>
 <p>Encrypted PKCS<code>12</code>  bags and PKCS<code>8</code>  private keys are supported.  However,
 only password based security, and the same password for all
 operations, are supported.
 </p>
-<p>PKCS<code>12</code>  file may contain many keys and/or certificates, and there
+<p>A PKCS<code>12</code>  file may contain many keys and/or certificates, and there
 is no way to identify which key/certificate pair you want.  You
 should make sure the PKCS<code>12</code>  file only contain one key/certificate
 pair and/or one CRL.
 </p>
-<p>It is believed that the limitations of this function is acceptable
-for most usage, and that any more flexibility would introduce
+<p>It is believed that the limitations of this function are acceptable
+for common usage, and that any more flexibility would introduce
 complexity that would make it harder to use this functionality at
 all.
 </p>

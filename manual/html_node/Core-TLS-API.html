@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 31 December 2012 for version
-3.1.6 of GnuTLS.
+<!-- This manual is last updated 29 January 2013 for version
+3.1.7 of GnuTLS.
 
-Copyright (C) 2001-2012 Free Software Foundation, Inc.
-Copyright (C) 2001-2012 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.6: Core TLS API</title>
+<title>GnuTLS 3.1.7: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.1.6: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.1.6: Core TLS API">
+<meta name="description" content="GnuTLS 3.1.7: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.1.7: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -26,7 +26,7 @@ Documentation License". -->
 <link href="Function-and-Data-Index.html#Function-and-Data-Index" rel="index" title="Function and Data Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="API-reference.html#API-reference" rel="up" title="API reference">
-<link href="Datagram-TLS-API.html#Datagram-TLS-API" rel="next" title="Datagram TLS API">
+<link href="High-level-TLS-API.html#High-level-TLS-API" rel="next" title="High level TLS API">
 <link href="API-reference.html#API-reference" rel="previous" title="API reference">
 <style type="text/css">
 <!--
@@ -158,7 +158,7 @@ dl {
 <a name="Core-TLS-API"></a>
 <div class="header">
 <p>
-Next: <a href="Datagram-TLS-API.html#Datagram-TLS-API" accesskey="n" rel="next">Datagram TLS API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="High-level-TLS-API.html#High-level-TLS-API" accesskey="n" rel="next">High level TLS API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Core-TLS-API-1"></a>
@@ -605,6 +605,8 @@ used. The returned  <code>id</code> should be treated as constant.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fsend_005fx509_005frdn_005fsequence-1"></a>
@@ -675,6 +677,8 @@ file accesses.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffunction-1"></a>
@@ -705,6 +709,8 @@ deinitialized when needed.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fset_005fparams_005ffunction-1"></a>
@@ -1496,12 +1502,20 @@ otherwise a negative error code is returned.
 </p>
 <p><var>session_entry</var>: is the session data (not key)
 </p>
-<p>Check if database entry has expired.  This function is to be used
-when you want to clear unnecessary sessions which occupy space in
-your backend.
+<p>This function has no effect. 
 </p>
 <p><strong>Returns:</strong> Returns <code>GNUTLS_E_EXPIRED</code> , if the database entry has
 expired or 0 otherwise.
+</p></dd></dl>
+
+<a name="gnutls_005fdb_005fcheck_005fentry_005ftime-1"></a>
+<h4 class="subheading">gnutls_db_check_entry_time</h4>
+<a name="gnutls_005fdb_005fcheck_005fentry_005ftime"></a><dl>
+<dt><a name="index-gnutls_005fdb_005fcheck_005fentry_005ftime"></a>Function: <em>time_t</em> <strong>gnutls_db_check_entry_time</strong> <em>(gnutls_datum_t * <var>entry</var>)</em></dt>
+<dd><p><var>entry</var>: is a pointer to a <code>gnutls_datum_t</code>  structure.
+</p>
+<p>This function returns the time that this entry was active.
+It can be used for database entry expiration.
 </p></dd></dl>
 
 <a name="gnutls_005fdb_005fget_005fptr-1"></a>
@@ -1740,6 +1754,8 @@ of &quot;BEGIN DH PARAMETERS&quot;.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005fdh_005fparams_005fexport_005fpkcs3-1"></a>
@@ -1880,7 +1896,12 @@ a server sends a prime with less bits than that
 <p>Note that values lower than 512 bits may allow decryption of the
 exchanged data.
 </p>
-<p>This function has no effect in server side.
+<p>The function has no effect in server side.
+</p>
+<p>Note that since 3.1.7 this function is deprecated. The minimum
+number of bits is set by the priority string level.
+Also this function must be called after <code>gnutls_priority_set_direct()</code> 
+or the set value may be overriden by the selected priority options.
 </p></dd></dl>
 
 <a name="gnutls_005fecc_005fcurve_005fget-1"></a>
@@ -2291,7 +2312,8 @@ to the provided value. Use an  <code>ms</code> value of zero to disable
 timeout.
 </p>
 <p>Note that in order for the timeout to be enforced
-<code>gnutls_transport_set_pull_timeout_function()</code>  must be set.
+<code>gnutls_transport_set_pull_timeout_function()</code>  must be set
+(it is set by default in most systems).
 </p></dd></dl>
 
 <a name="gnutls_005fheartbeat_005fallowed-1"></a>
@@ -2656,6 +2678,8 @@ OCSP response cached, so  <code>responder_id</code> and  <code>extensions</code>
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005focsp_005fstatus_005frequest_005fget-1"></a>
@@ -2673,6 +2697,8 @@ constant. If no OCSP response is available then
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005focsp_005fstatus_005frequest_005fis_005fchecked-1"></a>
@@ -3474,6 +3500,47 @@ image. The returned image is allocated using <code>gnutls_malloc()</code>
 an error code is returned.
 </p></dd></dl>
 
+<a name="gnutls_005frange_005fsplit-1"></a>
+<h4 class="subheading">gnutls_range_split</h4>
+<a name="gnutls_005frange_005fsplit"></a><dl>
+<dt><a name="index-gnutls_005frange_005fsplit"></a>Function: <em>int</em> <strong>gnutls_range_split</strong> <em>(gnutls_session_t <var>session</var>, const gnutls_range_st * <var>orig</var>, gnutls_range_st * <var>next</var>, gnutls_range_st * <var>remainder</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure
+</p>
+<p><var>orig</var>: is the original range provided by the user
+</p>
+<p><var>next</var>: is the returned range that can be conveyed in a TLS record
+</p>
+<p><var>remainder</var>: is the returned remaining range
+</p>
+<p>This function should be used when it is required to hide the length
+of very long data that cannot be directly provided to <code>gnutls_record_send_range()</code> .
+In that case this function should be called with the desired length
+hiding range in  <code>orig</code> . The returned  <code>next</code> value should then be used in
+the next call to <code>gnutls_record_send_range()</code>  with the partial data.
+That process should be repeated until  <code>remainder</code> is (0,0).
+</p>
+<p><strong>Returns:</strong> 0 in case splitting succeeds, non zero in case of error.
+Note that  <code>orig</code> is not changed, while the values of  <code>next</code> and  <code>remainder</code> are modified to store the resulting values.
+</p></dd></dl>
+
+<a name="gnutls_005frecord_005fcan_005fuse_005flength_005fhiding-1"></a>
+<h4 class="subheading">gnutls_record_can_use_length_hiding</h4>
+<a name="gnutls_005frecord_005fcan_005fuse_005flength_005fhiding"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fcan_005fuse_005flength_005fhiding"></a>Function: <em>int</em> <strong>gnutls_record_can_use_length_hiding</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p>Returns true (1) if the current session supports length-hiding
+padding, false (0) if the current session does not. Returns
+a negative value in case of error.
+If the session supports length-hiding padding, you can
+invoke <code>gnutls_range_send_message()</code>  to send a message whose
+length is hidden in the given range. If the session does not
+support length hiding padding, you can use the standard
+<code>gnutls_record_send()</code>  function, or <code>gnutls_range_send_message()</code> 
+making sure that the range is the same as the length of the
+message you are trying to send.
+</p></dd></dl>
+
 <a name="gnutls_005frecord_005fcheck_005fpending-1"></a>
 <h4 class="subheading">gnutls_record_check_pending</h4>
 <a name="gnutls_005frecord_005fcheck_005fpending"></a><dl>
@@ -3488,6 +3555,19 @@ is guarranteed not to block.
 <p><strong>Returns:</strong> Returns the size of the data or zero.
 </p></dd></dl>
 
+<a name="gnutls_005frecord_005fcork-1"></a>
+<h4 class="subheading">gnutls_record_cork</h4>
+<a name="gnutls_005frecord_005fcork"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fcork-1"></a>Function: <em>void</em> <strong>gnutls_record_cork</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p>If called <code>gnutls_record_send()</code>  will no longer send partial records.
+All queued records will be sent when <code>gnutls_uncork()</code>  is called, or
+when the maximum record size is reached.
+</p>
+<p><strong>Since:</strong> 3.1.7
+</p></dd></dl>
+
 <a name="gnutls_005frecord_005fdisable_005fpadding-1"></a>
 <h4 class="subheading">gnutls_record_disable_padding</h4>
 <a name="gnutls_005frecord_005fdisable_005fpadding"></a><dl>
@@ -3499,8 +3579,8 @@ need to use this function, but there are buggy clients that
 complain if a server pads the encrypted data.  This of course will
 disable protection against statistical attacks on the data.
 </p>
-<p>Normally only servers that require maximum compatibility with everything
-out there, need to call this function.
+<p>This functions is defunt since 3.1.7. Random padding is disabled
+by default unless requested using <code>gnutls_range_send_message()</code> .
 </p></dd></dl>
 
 <a name="gnutls_005frecord_005fget_005fdirection-1"></a>
@@ -3625,6 +3705,50 @@ number of bytes this function can send in a single call depends
 on the negotiated maximum record size.
 </p></dd></dl>
 
+<a name="gnutls_005frecord_005fsend_005frange-1"></a>
+<h4 class="subheading">gnutls_record_send_range</h4>
+<a name="gnutls_005frecord_005fsend_005frange"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fsend_005frange"></a>Function: <em>ssize_t</em> <strong>gnutls_record_send_range</strong> <em>(gnutls_session_t <var>session</var>, const void * <var>data</var>, size_t <var>data_size</var>, const gnutls_range_st * <var>range</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>data</var>: contains the data to send.
+</p>
+<p><var>data_size</var>: is the length of the data.
+</p>
+<p><var>range</var>: is the range of lengths in which the real data length must be hidden.
+</p>
+<p>This function operates like <code>gnutls_record_send()</code>  but, while
+<code>gnutls_record_send()</code>  adds minimal padding to each TLS record,
+this function uses the TLS extra-padding feature to conceal the real
+data size within the range of lengths provided.
+Some TLS sessions do not support extra padding (e.g. stream ciphers in standard
+TLS or SSL3 sessions). To know whether the current session supports extra
+padding, and hence length hiding, use the <code>gnutls_record_can_use_length_hiding()</code> 
+function.
+</p>
+<p><strong>Note:</strong> This function currently is only limited to blocking sockets.
+</p>
+<p><strong>Returns:</strong> The number of bytes sent (that is data_size in a successful invocation),
+or a negative error code.
+</p></dd></dl>
+
+<a name="gnutls_005frecord_005fset_005fmax_005fempty_005frecords-1"></a>
+<h4 class="subheading">gnutls_record_set_max_empty_records</h4>
+<a name="gnutls_005frecord_005fset_005fmax_005fempty_005frecords"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fset_005fmax_005fempty_005frecords"></a>Function: <em>void</em> <strong>gnutls_record_set_max_empty_records</strong> <em>(gnutls_session_t <var>session</var>, const unsigned int <var>i</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>i</var>: is the desired value of maximum empty records that can be accepted in a row.
+</p>
+<p>Used to set the maximum number of empty fragments that can be accepted
+in a row. Accepting many empty fragments is useful for receiving length-hidden
+content, where empty fragments filled with pad are sent to hide the real
+length of a message. However, a malicious peer could send empty fragments to
+mount a DoS attack, so as a safety measure, a maximum number of empty fragments
+is accepted by default. If you know your application must accept a given number
+of empty fragments in a row, you can use this function to set the desired value.
+</p></dd></dl>
+
 <a name="gnutls_005frecord_005fset_005fmax_005fsize-1"></a>
 <h4 class="subheading">gnutls_record_set_max_size</h4>
 <a name="gnutls_005frecord_005fset_005fmax_005fsize"></a><dl>
@@ -3647,6 +3771,45 @@ all TLS implementations use or even understand this extension.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p></dd></dl>
+
+<a name="gnutls_005frecord_005fset_005ftimeout-1"></a>
+<h4 class="subheading">gnutls_record_set_timeout</h4>
+<a name="gnutls_005frecord_005fset_005ftimeout"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fset_005ftimeout"></a>Function: <em>void</em> <strong>gnutls_record_set_timeout</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>ms</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>ms</var>: is a timeout value in milliseconds
+</p>
+<p>This function sets the receive timeout for the record layer
+to the provided value. Use an  <code>ms</code> value of zero to disable
+timeout (the default).
+</p>
+<p>Note that in order for the timeout to be enforced
+<code>gnutls_transport_set_pull_timeout_function()</code>  must be set
+(it is set by default in most systems).
+</p>
+<p><strong>Since:</strong> 3.1.7
+</p></dd></dl>
+
+<a name="gnutls_005frecord_005funcork-1"></a>
+<h4 class="subheading">gnutls_record_uncork</h4>
+<a name="gnutls_005frecord_005funcork"></a><dl>
+<dt><a name="index-gnutls_005frecord_005funcork-1"></a>Function: <em>int</em> <strong>gnutls_record_uncork</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>flags</var>: Could be zero or <code>GNUTLS_RECORD_WAIT</code> 
+</p>
+<p>This resets the effect of <code>gnutls_cork()</code> , and flushes any pending
+data. If the <code>GNUTLS_RECORD_WAIT</code>  flag is specified then this
+function will block until the data is sent or a fatal error
+occurs (i.e., the function will retry on <code>GNUTLS_E_AGAIN</code>  and
+<code>GNUTLS_E_INTERRUPTED</code> ).
+</p>
+<p><strong>Returns:</strong> On success the number of transmitted data is returned, or 
+otherwise a negative error code. 
+</p>
+<p><strong>Since:</strong> 3.1.7
 </p></dd></dl>
 
 <a name="gnutls_005frehandshake-1"></a>
@@ -3824,6 +3987,19 @@ if required they will be reported through the audit subsystem.
 </p>
 <p>Normally only servers that require maximum compatibility with
 everything out there, need to call this function.
+</p></dd></dl>
+
+<a name="gnutls_005fsession_005fforce_005fvalid-1"></a>
+<h4 class="subheading">gnutls_session_force_valid</h4>
+<a name="gnutls_005fsession_005fforce_005fvalid"></a><dl>
+<dt><a name="index-gnutls_005fsession_005fforce_005fvalid"></a>Function: <em>void</em> <strong>gnutls_session_force_valid</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p>Clears the invalid flag in a session. That means
+that sessions were corrupt or invalid data were received 
+can be re-used. Use only when debugging or experimenting
+with the TLS protocol. Should not be used in typical
+applications.
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fget_005fdata-1"></a>
@@ -5069,7 +5245,7 @@ or a negative error value on other errors.
 <hr>
 <div class="header">
 <p>
-Next: <a href="Datagram-TLS-API.html#Datagram-TLS-API" accesskey="n" rel="next">Datagram TLS API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="High-level-TLS-API.html#High-level-TLS-API" accesskey="n" rel="next">High level TLS API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

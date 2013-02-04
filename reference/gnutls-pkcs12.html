@@ -57,9 +57,9 @@
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-init" title="gnutls_pkcs12_bag_init ()">gnutls_pkcs12_bag_init</a>              (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> *bag</code></em>);
 struct              <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-int" title="struct gnutls_pkcs12_bag_int">gnutls_pkcs12_bag_int</a>;
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-crl" title="gnutls_pkcs12_bag_set_crl ()">gnutls_pkcs12_bag_set_crl</a>           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> crl</code></em>);
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crl-t"><span class="type">gnutls_x509_crl_t</span></a> crl</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-crt" title="gnutls_pkcs12_bag_set_crt ()">gnutls_pkcs12_bag_set_crt</a>           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>);
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-data" title="gnutls_pkcs12_bag_set_data ()">gnutls_pkcs12_bag_set_data</a>          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-type-t" title="enum gnutls_pkcs12_bag_type_t"><span class="type">gnutls_pkcs12_bag_type_t</span></a> type</code></em>,
                                                          <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *data</code></em>);
@@ -94,12 +94,12 @@ struct              <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-int" 
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-simple-parse" title="gnutls_pkcs12_simple_parse ()">gnutls_pkcs12_simple_parse</a>          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> p12</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *password</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey-t" title="gnutls_x509_privkey_t"><span class="type">gnutls_x509_privkey_t</span></a> *key</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> **chain</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-privkey-t"><span class="type">gnutls_x509_privkey_t</span></a> *key</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> **chain</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> *chain_len</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> **extra_certs</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> **extra_certs</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> *extra_certs_len</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> *crl</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crl-t"><span class="type">gnutls_x509_crl_t</span></a> *crl</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
 typedef             <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t">gnutls_pkcs12_t</a>;
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-verify-mac" title="gnutls_pkcs12_verify_mac ()">gnutls_pkcs12_verify_mac</a>            (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
@@ -142,7 +142,7 @@ success.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned,
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned,
 otherwise a negative error code is returned.</td>
 </tr>
 </tbody>
@@ -189,7 +189,7 @@ This function will encrypt the given bag.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned,
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned,
 otherwise a negative error code is returned.</td>
 </tr>
 </tbody>
@@ -245,7 +245,7 @@ is deleted.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -279,7 +279,7 @@ private key and the certificate pair.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value. or a negative error code on error.</td>
 </tr>
 </tbody>
@@ -313,7 +313,7 @@ the certificate pair.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value. or a negative error code on error.</td>
 </tr>
 </tbody>
@@ -337,7 +337,7 @@ Certificate revocation lists.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -354,7 +354,7 @@ negative error value.</td>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-set-crl"></a><h3>gnutls_pkcs12_bag_set_crl ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_set_crl           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> crl</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crl-t"><span class="type">gnutls_x509_crl_t</span></a> crl</code></em>);</pre>
 <p>
 This function will insert the given CRL into the
 bag. This is just a wrapper over <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-data" title="gnutls_pkcs12_bag_set_data ()"><code class="function">gnutls_pkcs12_bag_set_data()</code></a>.
@@ -382,7 +382,7 @@ on failure.</td>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-set-crt"></a><h3>gnutls_pkcs12_bag_set_crt ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_set_crt           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>);</pre>
 <p>
 This function will insert the given certificate into the
 bag. This is just a wrapper over <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-data" title="gnutls_pkcs12_bag_set_data ()"><code class="function">gnutls_pkcs12_bag_set_data()</code></a>.
@@ -468,7 +468,7 @@ user name to the local private key and the certificate pair.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value. or a negative error code on error.</td>
 </tr>
 </tbody>
@@ -503,7 +503,7 @@ the local private key and the certificate pair.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value. or a negative error code on error.</td>
 </tr>
 </tbody>
@@ -656,7 +656,7 @@ returned, and 0 on success.</td>
 This function will export the pkcs12 structure to DER or PEM format.
 </p>
 <p>
-The output buffer is allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.
+The output buffer is allocated using <a href="gnutls-gnutls.html#gnutls-malloc"><code class="function">gnutls_malloc()</code></a>.
 </p>
 <p>
 If the structure is PEM encoded, it will have a header
@@ -707,7 +707,7 @@ This function will generate a MAC for the PKCS12 structure.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -724,7 +724,7 @@ This function will return a Bag from the PKCS12 structure.
 </p>
 <p>
 After the last Bag has been read
-<a class="link" href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS" title="GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a> will be returned.
+<a href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a> will be returned.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -743,7 +743,7 @@ After the last Bag has been read
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -784,7 +784,7 @@ If the PKCS12 is PEM encoded it should have a header of "PKCS12".
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -808,7 +808,7 @@ revocation lists.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -842,7 +842,7 @@ This function will insert a Bag into the PKCS12 structure.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -853,12 +853,12 @@ negative error value.</td>
 <a name="gnutls-pkcs12-simple-parse"></a><h3>gnutls_pkcs12_simple_parse ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_simple_parse          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> p12</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *password</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey-t" title="gnutls_x509_privkey_t"><span class="type">gnutls_x509_privkey_t</span></a> *key</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> **chain</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-privkey-t"><span class="type">gnutls_x509_privkey_t</span></a> *key</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> **chain</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> *chain_len</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> **extra_certs</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> **extra_certs</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> *extra_certs_len</code></em>,
-                                                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> *crl</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crl-t"><span class="type">gnutls_x509_crl_t</span></a> *crl</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
 <p>
 This function parses a PKCS<span class="type">12</span> blob in <em class="parameter"><code>p12blob</code></em> and extracts the
@@ -866,9 +866,9 @@ private key, the corresponding certificate chain, and any additional
 certificates and a CRL.
 </p>
 <p>
-The <em class="parameter"><code>extra_certs_ret</code></em> and <em class="parameter"><code>extra_certs_ret_len</code></em> parameters are optional
+The <em class="parameter"><code>extra_certs_ret</code></em> and <em class="parameter"><code>extra_certs_len</code></em> parameters are optional
 and both may be set to <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. If either is non-<a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>, then both must
-be.
+be set.
 </p>
 <p>
 Encrypted PKCS<span class="type">12</span> bags and PKCS#8 private keys are supported.  However,
@@ -876,20 +876,20 @@ only password based security, and the same password for all
 operations, are supported.
 </p>
 <p>
-PKCS<span class="type">12</span> file may contain many keys and/or certificates, and there
+A PKCS<span class="type">12</span> file may contain many keys and/or certificates, and there
 is no way to identify which key/certificate pair you want.  You
 should make sure the PKCS<span class="type">12</span> file only contain one key/certificate
 pair and/or one CRL.
 </p>
 <p>
-It is believed that the limitations of this function is acceptable
-for most usage, and that any more flexibility would introduce
+It is believed that the limitations of this function are acceptable
+for common usage, and that any more flexibility would introduce
 complexity that would make it harder to use this functionality at
 all.
 </p>
 <p>
 If the provided structure has encrypted fields but no password
-is provided then this function returns <a class="link" href="gnutls-gnutls.html#GNUTLS-E-DECRYPTION-FAILED:CAPS" title="GNUTLS_E_DECRYPTION_FAILED"><code class="literal">GNUTLS_E_DECRYPTION_FAILED</code></a>.
+is provided then this function returns <a href="gnutls-gnutls.html#GNUTLS-E-DECRYPTION-FAILED:CAPS"><code class="literal">GNUTLS_E_DECRYPTION_FAILED</code></a>.
 </p>
 <p>
 Note that normally the chain constructed does not include self signed
@@ -940,7 +940,7 @@ certs (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NU
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -976,7 +976,7 @@ This function will verify the MAC for the PKCS12 structure.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
