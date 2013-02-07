@@ -39,7 +39,9 @@
   <tr>
     <td><a name="GNUTLS-SA-2013-1">GNUTLS-SA-2013-1</a><br>
       <a href="http://www.isg.rhul.ac.uk/tls/">
-	TLS CBC padding timing attack</a>
+	TLS CBC padding timing attack</a><br>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1619">
+	CVE-2013-1619</a>
       </td>
     <td>Possible plaintext recovery</td>
     <td><p>
