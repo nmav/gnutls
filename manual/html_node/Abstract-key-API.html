@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 29 January 2013 for version
-3.1.7 of GnuTLS.
+<!-- This manual is last updated 10 February 2013 for version
+3.1.9 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.7: Abstract key API</title>
+<title>GnuTLS 3.1.9: Abstract key API</title>
 
-<meta name="description" content="GnuTLS 3.1.7: Abstract key API">
-<meta name="keywords" content="GnuTLS 3.1.7: Abstract key API">
+<meta name="description" content="GnuTLS 3.1.9: Abstract key API">
+<meta name="keywords" content="GnuTLS 3.1.9: Abstract key API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -1069,6 +1069,9 @@ the given structure.  The new parameters will be allocated using
 algorithm to use for signing with this certificate. Some certificates (i.e.
 DSA might not be able to sign without the preferred algorithm).
 </p>
+<p>To get the signature algorithm instead of just the hash use <code>gnutls_pk_to_sign()</code> 
+with the algorithm of the certificate/key and the provided  <code>hash</code> .
+</p>
 <p><strong>Returns:</strong> the 0 if the hash algorithm is found. A negative error code is
 returned on error.
 </p>
@@ -1524,10 +1527,11 @@ to have effect.
 <p>This function will verify the given signed data, using the
 parameters from the certificate.
 </p>
+<p>Deprecated. This function cannot be easily used securely. 
+Use <code>gnutls_pubkey_verify_data2()</code>  instead.
+</p>
 <p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
 is returned, and zero or positive code on success. 
-</p>
-<p>Deprecated. Use <code>gnutls_pubkey_verify_data2()</code>  instead of this function.
 </p>
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
@@ -1570,7 +1574,8 @@ is returned, and zero or positive code on success.
 <p>This function will verify the given signed digest, using the
 parameters from the public key. 
 </p>
-<p>Deprecated. Use <code>gnutls_pubkey_verify_hash2()</code>  instead of this function.
+<p>Deprecated. This function cannot be easily used securely. 
+Use <code>gnutls_pubkey_verify_hash2()</code>  instead.
 </p>
 <p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
 is returned, and zero or positive code on success.

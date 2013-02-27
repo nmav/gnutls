@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 29 January 2013 for version
-3.1.7 of GnuTLS.
+<!-- This manual is last updated 10 February 2013 for version
+3.1.9 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.7</title>
+<title>GnuTLS 3.1.9</title>
 
-<meta name="description" content="GnuTLS 3.1.7">
-<meta name="keywords" content="GnuTLS 3.1.7">
+<meta name="description" content="GnuTLS 3.1.9">
+<meta name="keywords" content="GnuTLS 3.1.9">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.1.7</h1>
+<h1 class="settitle" align="center">GnuTLS 3.1.9</h1>
 
 
 
@@ -458,8 +458,8 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <a name="GnuTLS"></a>
 <h1 class="top">GnuTLS</h1>
 
-<p>This manual is last updated 29 January 2013 for version
-3.1.7 of GnuTLS.
+<p>This manual is last updated 10 February 2013 for version
+3.1.9 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -2848,6 +2848,13 @@ method rather than the only one.
 with GnuTLS and the function prototypes are in <code>gnutls/dane.h</code>. 
 See <a href="#Certificate-verification">Certificate verification</a> for information on how to use the library.
 </p>
+<p>Note however, that the DANE RFC mandates the verification methods
+one should use in addition to the validation via DNSSEC TLSA entries.
+GnuTLS doesn&rsquo;t follow that RFC requirement, and the term DANE verification
+in this manual refers to the TLSA entry verification. In GnuTLS any 
+other verification methods can be used (e.g., PKIX or TOFU) on top of
+DANE.
+</p>
 <hr>
 <a name="Digital-signatures"></a>
 <div class="header">
@@ -4044,7 +4051,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">certtool - GnuTLS certificate tool - Ver. 3.1.7
+<pre class="example">certtool - GnuTLS certificate tool - Ver. 3.1.9
 USAGE:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -4674,7 +4681,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">ocsptool - GnuTLS OCSP tool - Ver. 3.1.7
+<pre class="example">ocsptool - GnuTLS OCSP tool - Ver. 3.1.9
 USAGE:  ocsptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -4933,7 +4940,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">danetool - GnuTLS DANE tool - Ver. 3.1.7
+<pre class="example">danetool - GnuTLS DANE tool - Ver. 3.1.9
 USAGE:  danetool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -5297,7 +5304,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">srptool - GnuTLS SRP tool - Ver. 3.1.7
+<pre class="example">srptool - GnuTLS SRP tool - Ver. 3.1.9
 USAGE:  srptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -5486,7 +5493,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">psktool - GnuTLS PSK tool - Ver. 3.1.7
+<pre class="example">psktool - GnuTLS PSK tool - Ver. 3.1.9
 USAGE:  psktool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -6242,8 +6249,13 @@ For example a file that will load the <acronym>OpenSC</acronym> module, could be
 
 <p>If you use this file, then there is no need for other initialization in
 <acronym>GnuTLS</acronym>, except for the PIN and token functions (see next section).  
-However, you may manually initialize the PKCS #11 subsystem if the default
-settings are not desirable.
+In several cases, however, it is desirable to limit badly behaving modules 
+(e.g., modules that add an unacceptable delay on initialization)
+to single applications. That can be done using the &ldquo;enable-in:&rdquo; option
+followed by the base name of applications that this module should be used.
+</p>
+<p>In all cases, you may also manually initialize the PKCS #11 subsystem if the 
+default settings are not desirable.
 </p>
 
 
@@ -6685,7 +6697,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">p11tool - GnuTLS PKCS #11 tool - Ver. 3.1.7
+<pre class="example">p11tool - GnuTLS PKCS #11 tool - Ver. 3.1.9
 USAGE:  p11tool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [url]
 
    -d, --debug=num            Enable debugging.
@@ -6916,7 +6928,7 @@ Next: <a href="#Key-generation" accesskey="n" rel="next">Key generation</a>, Up:
 <p>The RSA keys in the TPM module may either be stored in a flash memory
 within TPM or stored in a file in disk. In the former case the key can
 provide operations as with <acronym>PKCS</acronym> #11 and is identified by
-a URL. The URL is of the following form.
+a URL. The URL is described in [<em>TPMURI</em>] and are of the following form.
 </p><pre class="verbatim">tpmkey:uuid=42309df8-d101-11e1-a89a-97bb33c23ad1;storage=user
 </pre>
 <p>It consists from a unique identifier of the key as well as the part of the
@@ -6932,7 +6944,10 @@ identified by a URL of the form:
 </p><pre class="verbatim">tpmkey:file=/path/to/file
 </pre>
 <p>When objects require a PIN to be accessed the same callbacks as with PKCS #11
-objects are expected (see <a href="#Accessing-objects-that-require-a-PIN">Accessing objects that require a PIN</a>).
+objects are expected (see <a href="#Accessing-objects-that-require-a-PIN">Accessing objects that require a PIN</a>). Note
+that the PIN function may be called multiple times to unlock the SRK and
+the specific key in use. The label in the key function will then be set to
+&lsquo;SRK&rsquo; when unlocking the SRK key, or to &lsquo;TPM&rsquo; when unlocking any other key.
 </p>
 <hr>
 <a name="Key-generation"></a>
@@ -7160,7 +7175,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">tpmtool - GnuTLS TPM tool - Ver. 3.1.7
+<pre class="example">tpmtool - GnuTLS TPM tool - Ver. 3.1.9
 USAGE:  tpmtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -8465,33 +8480,25 @@ Next: <a href="#TLS-handshake" accesskey="n" rel="next">TLS handshake</a>, Previ
 
 <p>The next step is to setup the underlying transport layer details. The
 Berkeley sockets are implicitly used by GnuTLS, thus a
-call to <a href="#gnutls_005ftransport_005fset_005fptr2">gnutls_transport_set_ptr2</a> would be sufficient to
-specify the socket descriptor.
+call to <a href="#gnutls_005ftransport_005fset_005fint">gnutls_transport_set_int</a> would be sufficient to
+specify the socket descriptor. 
 </p>
-
-
-
-
-<dl>
-<dt><a name="index-gnutls_005ftransport_005fset_005fptr2"></a>Function: <em>void</em> <strong>gnutls_transport_set_ptr2</strong> <em>(gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>recv_ptr</var>, gnutls_transport_ptr_t <var>send_ptr</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
-</p>
-<p><var>recv_ptr</var>: is the value for the pull function
-</p>
-<p><var>send_ptr</var>: is the value for the push function
-</p>
-<p>Used to set the first argument of the transport function (for push
-and pull callbacks). In berkeley style sockets this function will set the
-connection descriptor.  With this function you can use two different
-pointers for receiving and sending.
-</p></dd></dl>
-
 <dl compact="compact">
-<dt><code><var>void</var> <a href="#gnutls_005ftransport_005fset_005fptr">gnutls_transport_set_ptr</a> (gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>ptr</var>)</code></dt>
+<dt><code><var>void</var> <a href="#gnutls_005ftransport_005fset_005fint">gnutls_transport_set_int</a> (gnutls_session_t <var>session</var>, int <var>i</var>)</code></dt>
+<dt><code><var>void</var> <a href="#gnutls_005ftransport_005fset_005fint2">gnutls_transport_set_int2</a> (gnutls_session_t <var>session</var>, int <var>recv_int</var>, int <var>send_int</var>)</code></dt>
 </dl>
 
 <p>If however another transport layer than TCP is selected, then
-the following functions have to be specified.
+a pointer should be used instead to express the parameter to be
+passed to custom functions. In that case the following functions should
+be used instead.
+</p>
+<dl compact="compact">
+<dt><code><var>void</var> <a href="#gnutls_005ftransport_005fset_005fptr">gnutls_transport_set_ptr</a> (gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>ptr</var>)</code></dt>
+<dt><code><var>void</var> <a href="#gnutls_005ftransport_005fset_005fptr2">gnutls_transport_set_ptr2</a> (gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>recv_ptr</var>, gnutls_transport_ptr_t <var>send_ptr</var>)</code></dt>
+</dl>
+
+<p>Moreover all of the following push and pull callbacks should be set.
 </p>
 
 
@@ -8554,6 +8561,30 @@ number indicating the number of bytes received, and -1 on error.
 ssize_t (*gnutls_pull_func)(gnutls_transport_ptr_t, void*, size_t);
 </p></dd></dl>
 
+
+
+
+<dl>
+<dt><a name="index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction"></a>Function: <em>void</em> <strong>gnutls_transport_set_pull_timeout_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_pull_timeout_func <var>func</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>func</var>: a callback function
+</p>
+<p>This is the function where you set a function for gnutls to know
+whether data are ready to be received. It should wait for data a
+given time frame in milliseconds. The callback should return 0 on 
+timeout, a positive number if data can be received, and -1 on error.
+You&rsquo;ll need to override this function if <code>select()</code>  is not suitable
+for the provided transport calls. 
+The callback function is used in DTLS only.
+</p>
+<p><code>gnutls_pull_timeout_func</code> is of the form,
+int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);
+</p>
+<p><strong>Since:</strong> 3.0
+</p></dd></dl>
+
+
 <p>The functions above accept a callback function which
 should return the number of bytes written, or -1 on
 error and should set <code>errno</code> appropriately.
@@ -8611,7 +8642,7 @@ remaining until the next retransmission, or better the time until
 
 
 <dl>
-<dt><a name="index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction"></a>Function: <em>void</em> <strong>gnutls_transport_set_pull_timeout_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_pull_timeout_func <var>func</var>)</em></dt>
+<dt><a name="index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_transport_set_pull_timeout_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_pull_timeout_func <var>func</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
 </p>
 <p><var>func</var>: a callback function
@@ -9096,7 +9127,7 @@ before transmission. The following functions provide that functionality.
 All queued records will be sent when <code>gnutls_uncork()</code>  is called, or
 when the maximum record size is reached.
 </p>
-<p><strong>Since:</strong> 3.1.7
+<p><strong>Since:</strong> 3.1.9
 </p></dd></dl>
 
 
@@ -9118,7 +9149,7 @@ occurs (i.e., the function will retry on <code>GNUTLS_E_AGAIN</code>  and
 <p><strong>Returns:</strong> On success the number of transmitted data is returned, or 
 otherwise a negative error code. 
 </p>
-<p><strong>Since:</strong> 3.1.7
+<p><strong>Since:</strong> 3.1.9
 </p></dd></dl>
 
 
@@ -9897,6 +9928,9 @@ If no information via DANE can be obtained the flag <code>DANE_VERIFY_NO_DANE_IN
 is set. If a DNSSEC signature is not available for the DANE 
 record then the verify flag <code>DANE_VERIFY_NO_DNSSEC_DATA</code>  is set.
 </p>
+<p>Note that the CA constraint only applies for the directly certifying CA
+and does not account for long CA chains.
+</p>
 <p>Due to the many possible options of DANE, there is no single threat
 model countered. When notifying the user about DANE verification results
 it may be better to mention: DANE verification did not reject the certificate,
@@ -10328,7 +10362,7 @@ int main (void)
    */
   sd = tcp_connect ();
 
-  gnutls_transport_set_ptr (session, (gnutls_transport_ptr_t) sd);
+  gnutls_transport_set_int (session, sd);
   gnutls_handshake_set_timeout (session, GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT);
 
   /* Perform the TLS handshake
@@ -10638,7 +10672,7 @@ main (void)
    */
   sd = tcp_connect ();
 
-  gnutls_transport_set_ptr (session, (gnutls_transport_ptr_t) sd);
+  gnutls_transport_set_int (session, sd);
   gnutls_handshake_set_timeout (session, GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT);
 
   /* Perform the TLS handshake
@@ -10784,7 +10818,7 @@ main (void)
   /* connect to the peer */
   sd = udp_connect ();
 
-  gnutls_transport_set_ptr (session, (gnutls_transport_ptr_t) sd);
+  gnutls_transport_set_int (session, sd);
 
   /* set the connection MTU */
   gnutls_dtls_set_mtu (session, 1000);
@@ -10795,7 +10829,8 @@ main (void)
     {
       ret = gnutls_handshake (session);
     }
-  while (ret &lt; 0 &amp;&amp; gnutls_error_is_fatal (ret) == 0);
+  while (ret == GNUTLS_E_INTERRUPTED || ret == GNUTLS_E_AGAIN);
+  /* Note that DTLS may also receive GNUTLS_E_LARGE_PACKET */
 
   if (ret &lt; 0)
     {
@@ -11147,7 +11182,7 @@ main (void)
    */
   sd = tcp_connect ();
 
-  gnutls_transport_set_ptr (session, (gnutls_transport_ptr_t) sd);
+  gnutls_transport_set_int (session, sd);
 
   /* Perform the TLS handshake
    */
@@ -11549,7 +11584,7 @@ main (void)
    */
   sd = tcp_connect ();
 
-  gnutls_transport_set_ptr (session, (gnutls_transport_ptr_t) sd);
+  gnutls_transport_set_int (session, sd);
 
   /* Perform the TLS handshake
    */
@@ -11679,7 +11714,7 @@ main (void)
           free (session_data);
         }
 
-      gnutls_transport_set_ptr (session, (gnutls_transport_ptr_t) sd);
+      gnutls_transport_set_int (session, sd);
       gnutls_handshake_set_timeout (session, GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT);
 
       /* Perform the TLS handshake
@@ -11849,7 +11884,7 @@ main (void)
   gnutls_credentials_set (session, GNUTLS_CRD_SRP, srp_cred);
   gnutls_credentials_set (session, GNUTLS_CRD_CERTIFICATE, cert_cred);
 
-  gnutls_transport_set_ptr (session, (gnutls_transport_ptr_t) sd);
+  gnutls_transport_set_int (session, sd);
   gnutls_handshake_set_timeout (session, GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT);
 
   /* Perform the TLS handshake
@@ -12335,7 +12370,7 @@ main (void)
               inet_ntop (AF_INET, &amp;sa_cli.sin_addr, topbuf,
                          sizeof (topbuf)), ntohs (sa_cli.sin_port));
 
-      gnutls_transport_set_ptr (session, (gnutls_transport_ptr_t) sd);
+      gnutls_transport_set_int (session, sd);
 
       do
         {
@@ -12536,7 +12571,7 @@ main (void)
               inet_ntop (AF_INET, &amp;sa_cli.sin_addr, topbuf,
                          sizeof (topbuf)), ntohs (sa_cli.sin_port));
 
-      gnutls_transport_set_ptr (session, (gnutls_transport_ptr_t) sd);
+      gnutls_transport_set_int (session, sd);
       ret = gnutls_handshake (session);
       if (ret &lt; 0)
         {
@@ -12713,7 +12748,7 @@ main (void)
               inet_ntop (AF_INET, &amp;sa_cli.sin_addr, topbuf,
                          sizeof (topbuf)), ntohs (sa_cli.sin_port));
 
-      gnutls_transport_set_ptr (session, (gnutls_transport_ptr_t) sd);
+      gnutls_transport_set_int (session, sd);
 
       do
         {
@@ -12892,7 +12927,7 @@ main (void)
               inet_ntop (AF_INET, &amp;sa_cli.sin_addr, topbuf,
                          sizeof (topbuf)), ntohs (sa_cli.sin_port));
 
-      gnutls_transport_set_ptr (session, (gnutls_transport_ptr_t) ((ptrdiff_t) sd));
+      gnutls_transport_set_int (session, sd);
 
       do
         {
@@ -13165,7 +13200,10 @@ main (void)
         {
           ret = gnutls_handshake (session);
         }
-      while (ret &lt; 0 &amp;&amp; gnutls_error_is_fatal (ret) == 0);
+      while (ret == GNUTLS_E_INTERRUPTED || ret == GNUTLS_E_AGAIN);
+      /* Note that DTLS may also receive GNUTLS_E_LARGE_PACKET.
+       * In that case the MTU should be adjusted.
+       */
 
       if (ret &lt; 0)
         {
@@ -14435,7 +14473,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-cli - GnuTLS client - Ver. 3.1.7
+<pre class="example">gnutls-cli - GnuTLS client - Ver. 3.1.9
 USAGE:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [hostname]
 
    -d, --debug=num            Enable debugging.
@@ -14693,7 +14731,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-serv - GnuTLS server - Ver. 3.1.7
+<pre class="example">gnutls-serv - GnuTLS server - Ver. 3.1.9
 USAGE:  gnutls-serv [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -15010,7 +15048,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-cli-debug - GnuTLS debug client - Ver. 3.1.7
+<pre class="example">gnutls-cli-debug - GnuTLS debug client - Ver. 3.1.9
 USAGE:  gnutls-cli-debug [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... 
 
    -d, --debug=num            Enable debugging.
@@ -17750,6 +17788,8 @@ expired or 0 otherwise.
 </p>
 <p>This function returns the time that this entry was active.
 It can be used for database entry expiration.
+</p>
+<p><strong>Returns:</strong> The time this entry was created, or zero on error.
 </p></dd></dl>
 
 <a name="gnutls_005fdb_005fget_005fptr-1"></a>
@@ -18531,6 +18571,28 @@ compression algorithms.
 </p>
 <p>Enabling the private ciphersuites when talking to other than
 gnutls servers and clients may cause interoperability problems.
+</p></dd></dl>
+
+<a name="gnutls_005fhandshake_005fset_005frandom-1"></a>
+<h4 class="subheading">gnutls_handshake_set_random</h4>
+<a name="gnutls_005fhandshake_005fset_005frandom"></a><dl>
+<dt><a name="index-gnutls_005fhandshake_005fset_005frandom"></a>Function: <em>int</em> <strong>gnutls_handshake_set_random</strong> <em>(gnutls_session_t <var>session</var>, const gnutls_datum_t* <var>random</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>random</var>: a random value of 32-bytes
+</p>
+<p>This function will explicitly set the server or client hello 
+random value in the subsequent TLS handshake. The random value 
+should be a 32-byte value.
+</p>
+<p>Note that this function should not normally be used as gnutls
+will select automatically a random value for the handshake.
+</p>
+<p>This function should not be used when resuming a session.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
+</p>
+<p>Since 3.1.9
 </p></dd></dl>
 
 <a name="gnutls_005fhandshake_005fset_005ftimeout-1"></a>
@@ -19799,7 +19861,7 @@ is guarranteed not to block.
 All queued records will be sent when <code>gnutls_uncork()</code>  is called, or
 when the maximum record size is reached.
 </p>
-<p><strong>Since:</strong> 3.1.7
+<p><strong>Since:</strong> 3.1.9
 </p></dd></dl>
 
 <a name="gnutls_005frecord_005fdisable_005fpadding-1"></a>
@@ -20043,7 +20105,7 @@ occurs (i.e., the function will retry on <code>GNUTLS_E_AGAIN</code>  and
 <p><strong>Returns:</strong> On success the number of transmitted data is returned, or 
 otherwise a negative error code. 
 </p>
-<p><strong>Since:</strong> 3.1.7
+<p><strong>Since:</strong> 3.1.9
 </p></dd></dl>
 
 <a name="gnutls_005frehandshake-1"></a>
@@ -21244,6 +21306,38 @@ trust storage structure. The function is of the following form.
 const char* service, const gnutls_datum_t* pubkey);
 </p></dd></dl>
 
+<a name="gnutls_005ftransport_005fget_005fint-1"></a>
+<h4 class="subheading">gnutls_transport_get_int</h4>
+<a name="gnutls_005ftransport_005fget_005fint"></a><dl>
+<dt><a name="index-gnutls_005ftransport_005fget_005fint"></a>Function: <em>int</em> <strong>gnutls_transport_get_int</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p>Used to get the first argument of the transport function (like
+PUSH and PULL).  This must have been set using
+<code>gnutls_transport_set_int()</code> .
+</p>
+<p><strong>Returns:</strong> The first argument of the transport function.
+</p>
+<p><strong>Since:</strong> 3.1.9
+</p></dd></dl>
+
+<a name="gnutls_005ftransport_005fget_005fint2-1"></a>
+<h4 class="subheading">gnutls_transport_get_int2</h4>
+<a name="gnutls_005ftransport_005fget_005fint2"></a><dl>
+<dt><a name="index-gnutls_005ftransport_005fget_005fint2"></a>Function: <em>void</em> <strong>gnutls_transport_get_int2</strong> <em>(gnutls_session_t <var>session</var>, int * <var>recv_int</var>, int * <var>send_int</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>recv_int</var>: will hold the value for the pull function
+</p>
+<p><var>send_int</var>: will hold the value for the push function
+</p>
+<p>Used to get the arguments of the transport functions (like PUSH
+and PULL).  These should have been set using
+<code>gnutls_transport_set_int2()</code> .
+</p>
+<p><strong>Since:</strong> 3.1.9
+</p></dd></dl>
+
 <a name="gnutls_005ftransport_005fget_005fptr-1"></a>
 <h4 class="subheading">gnutls_transport_get_ptr</h4>
 <a name="gnutls_005ftransport_005fget_005fptr"></a><dl>
@@ -21309,6 +21403,38 @@ and should return the errno.
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
 
+<a name="gnutls_005ftransport_005fset_005fint-1"></a>
+<h4 class="subheading">gnutls_transport_set_int</h4>
+<a name="gnutls_005ftransport_005fset_005fint"></a><dl>
+<dt><a name="index-gnutls_005ftransport_005fset_005fint"></a>Function: <em>void</em> <strong>gnutls_transport_set_int</strong> <em>(gnutls_session_t <var>session</var>, int <var>i</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>i</var>: is the value.
+</p>
+<p>Used to set the first argument of the transport function (for push
+and pull callbacks) for berkeley style sockets.
+</p>
+<p><strong>Since:</strong> 3.1.9
+</p></dd></dl>
+
+<a name="gnutls_005ftransport_005fset_005fint2-1"></a>
+<h4 class="subheading">gnutls_transport_set_int2</h4>
+<a name="gnutls_005ftransport_005fset_005fint2"></a><dl>
+<dt><a name="index-gnutls_005ftransport_005fset_005fint2"></a>Function: <em>void</em> <strong>gnutls_transport_set_int2</strong> <em>(gnutls_session_t <var>session</var>, int <var>recv_int</var>, int <var>send_int</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>recv_int</var>: is the value for the pull function
+</p>
+<p><var>send_int</var>: is the value for the push function
+</p>
+<p>Used to set the first argument of the transport function (for push
+and pull callbacks), when using the berkeley style sockets. 
+With this function you can set two different
+pointers for receiving and sending.
+</p>
+<p><strong>Since:</strong> 3.1.9
+</p></dd></dl>
+
 <a name="gnutls_005ftransport_005fset_005fptr-1"></a>
 <h4 class="subheading">gnutls_transport_set_ptr</h4>
 <a name="gnutls_005ftransport_005fset_005fptr"></a><dl>
@@ -21325,7 +21451,7 @@ connection descriptor.
 <a name="gnutls_005ftransport_005fset_005fptr2-1"></a>
 <h4 class="subheading">gnutls_transport_set_ptr2</h4>
 <a name="gnutls_005ftransport_005fset_005fptr2"></a><dl>
-<dt><a name="index-gnutls_005ftransport_005fset_005fptr2-1"></a>Function: <em>void</em> <strong>gnutls_transport_set_ptr2</strong> <em>(gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>recv_ptr</var>, gnutls_transport_ptr_t <var>send_ptr</var>)</em></dt>
+<dt><a name="index-gnutls_005ftransport_005fset_005fptr2"></a>Function: <em>void</em> <strong>gnutls_transport_set_ptr2</strong> <em>(gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>recv_ptr</var>, gnutls_transport_ptr_t <var>send_ptr</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
 </p>
 <p><var>recv_ptr</var>: is the value for the pull function
@@ -21359,7 +21485,7 @@ ssize_t (*gnutls_pull_func)(gnutls_transport_ptr_t, void*, size_t);
 <a name="gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction-1"></a>
 <h4 class="subheading">gnutls_transport_set_pull_timeout_function</h4>
 <a name="gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_transport_set_pull_timeout_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_pull_timeout_func <var>func</var>)</em></dt>
+<dt><a name="index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction-2"></a>Function: <em>void</em> <strong>gnutls_transport_set_pull_timeout_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_pull_timeout_func <var>func</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
 </p>
 <p><var>func</var>: a callback function
@@ -25454,6 +25580,27 @@ a big-endian positive number (i.e. it&rsquo;s leftmost bit should be zero).
 negative error value.
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_subject_alternative_name</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_alternative_name</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_subject_alt_name_t                                               <var>type</var>, const char * <var>data_string</var>)</em></dt>
+<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>type</var>: is one of the gnutls_x509_subject_alt_name_t enumerations
+</p>
+<p><var>data_string</var>: The data to be set, a (0) terminated string
+</p>
+<p>This function will set the subject alternative name certificate
+extension. This function assumes that data can be expressed as a null
+terminated string.
+</p>
+<p>The name of the function is unfortunate since it is incosistent with
+<code>gnutls_x509_crt_get_subject_alt_name()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname-1"></a>
 <h4 class="subheading">gnutls_x509_crt_set_subject_alt_name</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname"></a><dl>
@@ -25475,27 +25622,6 @@ extension. It can set the following types:
 negative error value.
 </p>
 <p><strong>Since:</strong> 2.6.0
-</p></dd></dl>
-
-<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname-1"></a>
-<h4 class="subheading">gnutls_x509_crt_set_subject_alternative_name</h4>
-<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_alternative_name</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_subject_alt_name_t                                               <var>type</var>, const char * <var>data_string</var>)</em></dt>
-<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
-</p>
-<p><var>type</var>: is one of the gnutls_x509_subject_alt_name_t enumerations
-</p>
-<p><var>data_string</var>: The data to be set, a (0) terminated string
-</p>
-<p>This function will set the subject alternative name certificate
-extension. This function assumes that data can be expressed as a null
-terminated string.
-</p>
-<p>The name of the function is unfortunate since it is incosistent with
-<code>gnutls_x509_crt_get_subject_alt_name()</code> .
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005fkey_005fid-1"></a>
@@ -27001,6 +27127,8 @@ is about the provided certificate.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error code is returned.  
+</p>
+<p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
 <a name="gnutls_005focsp_005fresp_005fdeinit-1"></a>
@@ -29635,6 +29763,20 @@ set using <code>gnutls_pkcs11_set_pin_function()</code> .
 <p><strong>Since:</strong> 3.1.0
 </p></dd></dl>
 
+<a name="gnutls_005fpkcs11_005fprivkey_005fstatus-1"></a>
+<h4 class="subheading">gnutls_pkcs11_privkey_status</h4>
+<a name="gnutls_005fpkcs11_005fprivkey_005fstatus"></a><dl>
+<dt><a name="index-gnutls_005fpkcs11_005fprivkey_005fstatus"></a>Function: <em>int</em> <strong>gnutls_pkcs11_privkey_status</strong> <em>(gnutls_pkcs11_privkey_t <var>key</var>)</em></dt>
+<dd><p><var>key</var>: Holds the key
+</p>
+<p>Checks the status of the private key token.
+</p>
+<p><strong>Returns:</strong> this function will return non-zero if the token 
+holding the private key is still available (inserted), and zero otherwise.
+</p>
+<p><strong>Since:</strong> 3.1.9
+</p></dd></dl>
+
 <a name="gnutls_005fpkcs11_005freinit-1"></a>
 <h4 class="subheading">gnutls_pkcs11_reinit</h4>
 <a name="gnutls_005fpkcs11_005freinit"></a><dl>
@@ -30902,6 +31044,9 @@ the given structure.  The new parameters will be allocated using
 algorithm to use for signing with this certificate. Some certificates (i.e.
 DSA might not be able to sign without the preferred algorithm).
 </p>
+<p>To get the signature algorithm instead of just the hash use <code>gnutls_pk_to_sign()</code> 
+with the algorithm of the certificate/key and the provided  <code>hash</code> .
+</p>
 <p><strong>Returns:</strong> the 0 if the hash algorithm is found. A negative error code is
 returned on error.
 </p>
@@ -31357,10 +31502,11 @@ to have effect.
 <p>This function will verify the given signed data, using the
 parameters from the certificate.
 </p>
+<p>Deprecated. This function cannot be easily used securely. 
+Use <code>gnutls_pubkey_verify_data2()</code>  instead.
+</p>
 <p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
 is returned, and zero or positive code on success. 
-</p>
-<p>Deprecated. Use <code>gnutls_pubkey_verify_data2()</code>  instead of this function.
 </p>
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
@@ -31403,7 +31549,8 @@ is returned, and zero or positive code on success.
 <p>This function will verify the given signed digest, using the
 parameters from the public key. 
 </p>
-<p>Deprecated. Use <code>gnutls_pubkey_verify_hash2()</code>  instead of this function.
+<p>Deprecated. This function cannot be easily used securely. 
+Use <code>gnutls_pubkey_verify_hash2()</code>  instead.
 </p>
 <p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
 is returned, and zero or positive code on success.
@@ -31771,6 +31918,9 @@ CA constrains and/or the certificate available via DANE.
 If no information via DANE can be obtained the flag <code>DANE_VERIFY_NO_DANE_INFO</code> 
 is set. If a DNSSEC signature is not available for the DANE 
 record then the verify flag <code>DANE_VERIFY_NO_DNSSEC_DATA</code>  is set.
+</p>
+<p>Note that the CA constraint only applies for the directly certifying CA
+and does not account for long CA chains.
 </p>
 <p>Due to the many possible options of DANE, there is no single threat
 model countered. When notifying the user about DANE verification results
@@ -32731,7 +32881,8 @@ returned on error.
 <p>This function will verify the given signed data, using the
 parameters from the certificate.
 </p>
-<p>Deprecated. Please use <code>gnutls_pubkey_verify_data()</code> .
+<p>Deprecated. This function cannot be easily used securely. 
+Use <code>gnutls_pubkey_verify_data2()</code>  instead.
 </p>
 <p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
 is returned, and zero or positive code on success.
@@ -32752,7 +32903,8 @@ is returned, and zero or positive code on success.
 <p>This function will verify the given signed digest, using the
 parameters from the certificate.
 </p>
-<p>Deprecated. Please use <code>gnutls_pubkey_verify_data2()</code>  or <code>gnutls_pubkey_verify_hash2()</code> .
+<p>Deprecated. This function cannot be easily used securely. 
+Use <code>gnutls_pubkey_verify_hash2()</code>  instead.
 </p>
 <p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
 is returned, and zero or positive code on success.
@@ -33530,8 +33682,13 @@ available from <a href="http://www.ietf.org/rfc/rfc5929">http://www.ietf.org/rfc
 </p>
 </dd>
 <dt><a name="PKCS11URI"></a>[PKCS11URI]</dt>
-<dd><p>J. Pechanec, D. Moffat, &quot;The PKCS#11 URI Scheme&quot;, August 2011,
-Work in progress, available from <a href="http://tools.ietf.org/html/draft-pechanec-pkcs11uri-05">http://tools.ietf.org/html/draft-pechanec-pkcs11uri-05</a>.
+<dd><p>J. Pechanec, D. Moffat, &quot;The PKCS#11 URI Scheme&quot;, January 2013,
+Work in progress, available from <a href="http://tools.ietf.org/html/draft-pechanec-pkcs11uri-08">http://tools.ietf.org/html/draft-pechanec-pkcs11uri-08</a>.
+</p>
+</dd>
+<dt><a name="TPMURI"></a>[TPMURI]</dt>
+<dd><p>C. Latze, N. Mavrogiannopoulos, &quot;The TPMKEY URI Scheme&quot;, January 2013,
+Work in progress, available from <a href="http://tools.ietf.org/html/draft-mavrogiannopoulos-tpmuri-01">http://tools.ietf.org/html/draft-mavrogiannopoulos-tpmuri-01</a>.
 </p>
 </dd>
 <dt><a name="ANDERSON"></a>[ANDERSON]</dt>
@@ -33770,6 +33927,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake_005fset_005fmax_005fpacket_005flength"><code>gnutls_handshake_set_max_packet_length</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake_005fset_005fpost_005fclient_005fhello_005ffunction"><code>gnutls_handshake_set_post_client_hello_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake_005fset_005fprivate_005fextensions"><code>gnutls_handshake_set_private_extensions</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake_005fset_005frandom"><code>gnutls_handshake_set_random</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake_005fset_005ftimeout"><code>gnutls_handshake_set_timeout</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#TLS-handshake">TLS handshake</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake_005fset_005ftimeout-1"><code>gnutls_handshake_set_timeout</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fhash"><code>gnutls_hash</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
@@ -33957,6 +34115,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fprivkey_005fimport_005furl"><code>gnutls_pkcs11_privkey_import_url</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fprivkey_005finit"><code>gnutls_pkcs11_privkey_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fprivkey_005fset_005fpin_005ffunction"><code>gnutls_pkcs11_privkey_set_pin_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fprivkey_005fstatus"><code>gnutls_pkcs11_privkey_status</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005freinit"><code>gnutls_pkcs11_reinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS11-Initialization">PKCS11 Initialization</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005freinit-1"><code>gnutls_pkcs11_reinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fset_005fpin_005ffunction"><code>gnutls_pkcs11_set_pin_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
@@ -34242,18 +34401,22 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftpm_005fprivkey_005fdelete-2"><code>gnutls_tpm_privkey_delete</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#TPM-API">TPM API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftpm_005fprivkey_005fgenerate"><code>gnutls_tpm_privkey_generate</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Key-generation">Key generation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftpm_005fprivkey_005fgenerate-1"><code>gnutls_tpm_privkey_generate</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#TPM-API">TPM API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fget_005fint"><code>gnutls_transport_get_int</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fget_005fint2"><code>gnutls_transport_get_int2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fget_005fptr"><code>gnutls_transport_get_ptr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fget_005fptr2"><code>gnutls_transport_get_ptr2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005ferrno"><code>gnutls_transport_set_errno</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Setting-up-the-transport-layer">Setting up the transport layer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005ferrno-1"><code>gnutls_transport_set_errno</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005ferrno_005ffunction"><code>gnutls_transport_set_errno_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fint"><code>gnutls_transport_set_int</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fint2"><code>gnutls_transport_set_int2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fptr"><code>gnutls_transport_set_ptr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fptr2"><code>gnutls_transport_set_ptr2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Setting-up-the-transport-layer">Setting up the transport layer</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fptr2-1"><code>gnutls_transport_set_ptr2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fptr2"><code>gnutls_transport_set_ptr2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fpull_005ffunction"><code>gnutls_transport_set_pull_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Setting-up-the-transport-layer">Setting up the transport layer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fpull_005ffunction-1"><code>gnutls_transport_set_pull_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction"><code>gnutls_transport_set_pull_timeout_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Setting-up-the-transport-layer">Setting up the transport layer</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction-1"><code>gnutls_transport_set_pull_timeout_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction-1"><code>gnutls_transport_set_pull_timeout_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Setting-up-the-transport-layer">Setting up the transport layer</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction-2"><code>gnutls_transport_set_pull_timeout_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fpush_005ffunction"><code>gnutls_transport_set_push_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Setting-up-the-transport-layer">Setting up the transport layer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fpush_005ffunction-1"><code>gnutls_transport_set_push_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fvec_005fpush_005ffunction"><code>gnutls_transport_set_vec_push_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Setting-up-the-transport-layer">Setting up the transport layer</a></td></tr>

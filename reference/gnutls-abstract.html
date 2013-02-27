@@ -1947,6 +1947,10 @@ This function will read the certifcate and return the appropriate digest
 algorithm to use for signing with this certificate. Some certificates (i.e.
 DSA might not be able to sign without the preferred algorithm).
 </p>
+<p>
+To get the signature algorithm instead of just the hash use <a class="link" href="gnutls-gnutls.html#gnutls-pk-to-sign" title="gnutls_pk_to_sign ()"><code class="function">gnutls_pk_to_sign()</code></a>
+with the algorithm of the certificate/key and the provided <em class="parameter"><code>hash</code></em>.
+</p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
@@ -2733,6 +2737,10 @@ to have effect.
 This function will verify the given signed data, using the
 parameters from the certificate.
 </p>
+<p>
+Deprecated. This function cannot be easily used securely. 
+Use <a class="link" href="gnutls-abstract.html#gnutls-pubkey-verify-data2" title="gnutls_pubkey_verify_data2 ()"><code class="function">gnutls_pubkey_verify_data2()</code></a> instead.
+</p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
@@ -2751,8 +2759,7 @@ parameters from the certificate.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>In case of a verification failure <a href="gnutls-gnutls.html#GNUTLS-E-PK-SIG-VERIFY-FAILED:CAPS"><code class="literal">GNUTLS_E_PK_SIG_VERIFY_FAILED</code></a>
-is returned, and zero or positive code on success.
-Deprecated. Use <a class="link" href="gnutls-abstract.html#gnutls-pubkey-verify-data2" title="gnutls_pubkey_verify_data2 ()"><code class="function">gnutls_pubkey_verify_data2()</code></a> instead of this function.</td>
+is returned, and zero or positive code on success.</td>
 </tr>
 </tbody>
 </table></div>

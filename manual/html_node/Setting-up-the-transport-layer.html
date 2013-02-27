@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 29 January 2013 for version
-3.1.7 of GnuTLS.
+<!-- This manual is last updated 10 February 2013 for version
+3.1.9 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.7: Setting up the transport layer</title>
+<title>GnuTLS 3.1.9: Setting up the transport layer</title>
 
-<meta name="description" content="GnuTLS 3.1.7: Setting up the transport layer">
-<meta name="keywords" content="GnuTLS 3.1.7: Setting up the transport layer">
+<meta name="description" content="GnuTLS 3.1.9: Setting up the transport layer">
+<meta name="keywords" content="GnuTLS 3.1.9: Setting up the transport layer">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -166,33 +166,25 @@ Next: <a href="TLS-handshake.html#TLS-handshake" accesskey="n" rel="next">TLS ha
 
 <p>The next step is to setup the underlying transport layer details. The
 Berkeley sockets are implicitly used by GnuTLS, thus a
-call to <a href="Core-TLS-API.html#gnutls_005ftransport_005fset_005fptr2">gnutls_transport_set_ptr2</a> would be sufficient to
-specify the socket descriptor.
+call to <a href="Core-TLS-API.html#gnutls_005ftransport_005fset_005fint">gnutls_transport_set_int</a> would be sufficient to
+specify the socket descriptor. 
 </p>
-
-
-
-
-<dl>
-<dt><a name="index-gnutls_005ftransport_005fset_005fptr2"></a>Function: <em>void</em> <strong>gnutls_transport_set_ptr2</strong> <em>(gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>recv_ptr</var>, gnutls_transport_ptr_t <var>send_ptr</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
-</p>
-<p><var>recv_ptr</var>: is the value for the pull function
-</p>
-<p><var>send_ptr</var>: is the value for the push function
-</p>
-<p>Used to set the first argument of the transport function (for push
-and pull callbacks). In berkeley style sockets this function will set the
-connection descriptor.  With this function you can use two different
-pointers for receiving and sending.
-</p></dd></dl>
-
 <dl compact="compact">
-<dt><code><var>void</var> <a href="Core-TLS-API.html#gnutls_005ftransport_005fset_005fptr">gnutls_transport_set_ptr</a> (gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>ptr</var>)</code></dt>
+<dt><code><var>void</var> <a href="Core-TLS-API.html#gnutls_005ftransport_005fset_005fint">gnutls_transport_set_int</a> (gnutls_session_t <var>session</var>, int <var>i</var>)</code></dt>
+<dt><code><var>void</var> <a href="Core-TLS-API.html#gnutls_005ftransport_005fset_005fint2">gnutls_transport_set_int2</a> (gnutls_session_t <var>session</var>, int <var>recv_int</var>, int <var>send_int</var>)</code></dt>
 </dl>
 
 <p>If however another transport layer than TCP is selected, then
-the following functions have to be specified.
+a pointer should be used instead to express the parameter to be
+passed to custom functions. In that case the following functions should
+be used instead.
+</p>
+<dl compact="compact">
+<dt><code><var>void</var> <a href="Core-TLS-API.html#gnutls_005ftransport_005fset_005fptr">gnutls_transport_set_ptr</a> (gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>ptr</var>)</code></dt>
+<dt><code><var>void</var> <a href="Core-TLS-API.html#gnutls_005ftransport_005fset_005fptr2">gnutls_transport_set_ptr2</a> (gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>recv_ptr</var>, gnutls_transport_ptr_t <var>send_ptr</var>)</code></dt>
+</dl>
+
+<p>Moreover all of the following push and pull callbacks should be set.
 </p>
 
 
@@ -255,6 +247,30 @@ number indicating the number of bytes received, and -1 on error.
 ssize_t (*gnutls_pull_func)(gnutls_transport_ptr_t, void*, size_t);
 </p></dd></dl>
 
+
+
+
+<dl>
+<dt><a name="index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction"></a>Function: <em>void</em> <strong>gnutls_transport_set_pull_timeout_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_pull_timeout_func <var>func</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>func</var>: a callback function
+</p>
+<p>This is the function where you set a function for gnutls to know
+whether data are ready to be received. It should wait for data a
+given time frame in milliseconds. The callback should return 0 on 
+timeout, a positive number if data can be received, and -1 on error.
+You&rsquo;ll need to override this function if <code>select()</code>  is not suitable
+for the provided transport calls. 
+The callback function is used in DTLS only.
+</p>
+<p><code>gnutls_pull_timeout_func</code> is of the form,
+int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);
+</p>
+<p><strong>Since:</strong> 3.0
+</p></dd></dl>
+
+
 <p>The functions above accept a callback function which
 should return the number of bytes written, or -1 on
 error and should set <code>errno</code> appropriately.
@@ -312,7 +328,7 @@ remaining until the next retransmission, or better the time until
 
 
 <dl>
-<dt><a name="index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction"></a>Function: <em>void</em> <strong>gnutls_transport_set_pull_timeout_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_pull_timeout_func <var>func</var>)</em></dt>
+<dt><a name="index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_transport_set_pull_timeout_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_pull_timeout_func <var>func</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
 </p>
 <p><var>func</var>: a callback function

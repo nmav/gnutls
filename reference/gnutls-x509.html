@@ -8654,7 +8654,8 @@ negative error value.</td>
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> *verify</code></em>);</pre>
 <p>
 This function will try to verify the given certificate and return
-its status.
+its status. Note that a verification error does not imply a negative
+return status. In that case the <em class="parameter"><code>verify</code></em> status is set.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">

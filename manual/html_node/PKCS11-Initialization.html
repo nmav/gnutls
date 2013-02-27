@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 29 January 2013 for version
-3.1.7 of GnuTLS.
+<!-- This manual is last updated 10 February 2013 for version
+3.1.9 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.7: PKCS11 Initialization</title>
+<title>GnuTLS 3.1.9: PKCS11 Initialization</title>
 
-<meta name="description" content="GnuTLS 3.1.7: PKCS11 Initialization">
-<meta name="keywords" content="GnuTLS 3.1.7: PKCS11 Initialization">
+<meta name="description" content="GnuTLS 3.1.9: PKCS11 Initialization">
+<meta name="keywords" content="GnuTLS 3.1.9: PKCS11 Initialization">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -175,8 +175,13 @@ For example a file that will load the <acronym>OpenSC</acronym> module, could be
 
 <p>If you use this file, then there is no need for other initialization in
 <acronym>GnuTLS</acronym>, except for the PIN and token functions (see next section).  
-However, you may manually initialize the PKCS #11 subsystem if the default
-settings are not desirable.
+In several cases, however, it is desirable to limit badly behaving modules 
+(e.g., modules that add an unacceptable delay on initialization)
+to single applications. That can be done using the &ldquo;enable-in:&rdquo; option
+followed by the base name of applications that this module should be used.
+</p>
+<p>In all cases, you may also manually initialize the PKCS #11 subsystem if the 
+default settings are not desirable.
 </p>
 
 

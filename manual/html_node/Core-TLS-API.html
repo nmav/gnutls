@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 29 January 2013 for version
-3.1.7 of GnuTLS.
+<!-- This manual is last updated 10 February 2013 for version
+3.1.9 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.7: Core TLS API</title>
+<title>GnuTLS 3.1.9: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.1.7: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.1.7: Core TLS API">
+<meta name="description" content="GnuTLS 3.1.9: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.1.9: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -1516,6 +1516,8 @@ expired or 0 otherwise.
 </p>
 <p>This function returns the time that this entry was active.
 It can be used for database entry expiration.
+</p>
+<p><strong>Returns:</strong> The time this entry was created, or zero on error.
 </p></dd></dl>
 
 <a name="gnutls_005fdb_005fget_005fptr-1"></a>
@@ -2297,6 +2299,28 @@ compression algorithms.
 </p>
 <p>Enabling the private ciphersuites when talking to other than
 gnutls servers and clients may cause interoperability problems.
+</p></dd></dl>
+
+<a name="gnutls_005fhandshake_005fset_005frandom-1"></a>
+<h4 class="subheading">gnutls_handshake_set_random</h4>
+<a name="gnutls_005fhandshake_005fset_005frandom"></a><dl>
+<dt><a name="index-gnutls_005fhandshake_005fset_005frandom"></a>Function: <em>int</em> <strong>gnutls_handshake_set_random</strong> <em>(gnutls_session_t <var>session</var>, const gnutls_datum_t* <var>random</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>random</var>: a random value of 32-bytes
+</p>
+<p>This function will explicitly set the server or client hello 
+random value in the subsequent TLS handshake. The random value 
+should be a 32-byte value.
+</p>
+<p>Note that this function should not normally be used as gnutls
+will select automatically a random value for the handshake.
+</p>
+<p>This function should not be used when resuming a session.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
+</p>
+<p>Since 3.1.9
 </p></dd></dl>
 
 <a name="gnutls_005fhandshake_005fset_005ftimeout-1"></a>
@@ -3565,7 +3589,7 @@ is guarranteed not to block.
 All queued records will be sent when <code>gnutls_uncork()</code>  is called, or
 when the maximum record size is reached.
 </p>
-<p><strong>Since:</strong> 3.1.7
+<p><strong>Since:</strong> 3.1.9
 </p></dd></dl>
 
 <a name="gnutls_005frecord_005fdisable_005fpadding-1"></a>
@@ -3809,7 +3833,7 @@ occurs (i.e., the function will retry on <code>GNUTLS_E_AGAIN</code>  and
 <p><strong>Returns:</strong> On success the number of transmitted data is returned, or 
 otherwise a negative error code. 
 </p>
-<p><strong>Since:</strong> 3.1.7
+<p><strong>Since:</strong> 3.1.9
 </p></dd></dl>
 
 <a name="gnutls_005frehandshake-1"></a>
@@ -5010,6 +5034,38 @@ trust storage structure. The function is of the following form.
 const char* service, const gnutls_datum_t* pubkey);
 </p></dd></dl>
 
+<a name="gnutls_005ftransport_005fget_005fint-1"></a>
+<h4 class="subheading">gnutls_transport_get_int</h4>
+<a name="gnutls_005ftransport_005fget_005fint"></a><dl>
+<dt><a name="index-gnutls_005ftransport_005fget_005fint"></a>Function: <em>int</em> <strong>gnutls_transport_get_int</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p>Used to get the first argument of the transport function (like
+PUSH and PULL).  This must have been set using
+<code>gnutls_transport_set_int()</code> .
+</p>
+<p><strong>Returns:</strong> The first argument of the transport function.
+</p>
+<p><strong>Since:</strong> 3.1.9
+</p></dd></dl>
+
+<a name="gnutls_005ftransport_005fget_005fint2-1"></a>
+<h4 class="subheading">gnutls_transport_get_int2</h4>
+<a name="gnutls_005ftransport_005fget_005fint2"></a><dl>
+<dt><a name="index-gnutls_005ftransport_005fget_005fint2"></a>Function: <em>void</em> <strong>gnutls_transport_get_int2</strong> <em>(gnutls_session_t <var>session</var>, int * <var>recv_int</var>, int * <var>send_int</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>recv_int</var>: will hold the value for the pull function
+</p>
+<p><var>send_int</var>: will hold the value for the push function
+</p>
+<p>Used to get the arguments of the transport functions (like PUSH
+and PULL).  These should have been set using
+<code>gnutls_transport_set_int2()</code> .
+</p>
+<p><strong>Since:</strong> 3.1.9
+</p></dd></dl>
+
 <a name="gnutls_005ftransport_005fget_005fptr-1"></a>
 <h4 class="subheading">gnutls_transport_get_ptr</h4>
 <a name="gnutls_005ftransport_005fget_005fptr"></a><dl>
@@ -5075,6 +5131,38 @@ and should return the errno.
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
 
+<a name="gnutls_005ftransport_005fset_005fint-1"></a>
+<h4 class="subheading">gnutls_transport_set_int</h4>
+<a name="gnutls_005ftransport_005fset_005fint"></a><dl>
+<dt><a name="index-gnutls_005ftransport_005fset_005fint"></a>Function: <em>void</em> <strong>gnutls_transport_set_int</strong> <em>(gnutls_session_t <var>session</var>, int <var>i</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>i</var>: is the value.
+</p>
+<p>Used to set the first argument of the transport function (for push
+and pull callbacks) for berkeley style sockets.
+</p>
+<p><strong>Since:</strong> 3.1.9
+</p></dd></dl>
+
+<a name="gnutls_005ftransport_005fset_005fint2-1"></a>
+<h4 class="subheading">gnutls_transport_set_int2</h4>
+<a name="gnutls_005ftransport_005fset_005fint2"></a><dl>
+<dt><a name="index-gnutls_005ftransport_005fset_005fint2"></a>Function: <em>void</em> <strong>gnutls_transport_set_int2</strong> <em>(gnutls_session_t <var>session</var>, int <var>recv_int</var>, int <var>send_int</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>recv_int</var>: is the value for the pull function
+</p>
+<p><var>send_int</var>: is the value for the push function
+</p>
+<p>Used to set the first argument of the transport function (for push
+and pull callbacks), when using the berkeley style sockets. 
+With this function you can set two different
+pointers for receiving and sending.
+</p>
+<p><strong>Since:</strong> 3.1.9
+</p></dd></dl>
+
 <a name="gnutls_005ftransport_005fset_005fptr-1"></a>
 <h4 class="subheading">gnutls_transport_set_ptr</h4>
 <a name="gnutls_005ftransport_005fset_005fptr"></a><dl>
@@ -5091,7 +5179,7 @@ connection descriptor.
 <a name="gnutls_005ftransport_005fset_005fptr2-1"></a>
 <h4 class="subheading">gnutls_transport_set_ptr2</h4>
 <a name="gnutls_005ftransport_005fset_005fptr2"></a><dl>
-<dt><a name="index-gnutls_005ftransport_005fset_005fptr2-1"></a>Function: <em>void</em> <strong>gnutls_transport_set_ptr2</strong> <em>(gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>recv_ptr</var>, gnutls_transport_ptr_t <var>send_ptr</var>)</em></dt>
+<dt><a name="index-gnutls_005ftransport_005fset_005fptr2"></a>Function: <em>void</em> <strong>gnutls_transport_set_ptr2</strong> <em>(gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>recv_ptr</var>, gnutls_transport_ptr_t <var>send_ptr</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
 </p>
 <p><var>recv_ptr</var>: is the value for the pull function
@@ -5125,7 +5213,7 @@ ssize_t (*gnutls_pull_func)(gnutls_transport_ptr_t, void*, size_t);
 <a name="gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction-1"></a>
 <h4 class="subheading">gnutls_transport_set_pull_timeout_function</h4>
 <a name="gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_transport_set_pull_timeout_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_pull_timeout_func <var>func</var>)</em></dt>
+<dt><a name="index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction-2"></a>Function: <em>void</em> <strong>gnutls_transport_set_pull_timeout_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_pull_timeout_func <var>func</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
 </p>
 <p><var>func</var>: a callback function
