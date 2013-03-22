@@ -3,7 +3,28 @@
 <id>http://www.gnu.org/software/gnutls/news.atom</id>
 <link href="http://www.gnu.org/software/gnutls/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2013-02-27T20:20:25+00:00</updated>
+<updated>2013-03-22T19:49:03+00:00</updated>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2013-03-22</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2013-03-22'/>
+    <title>GnuTLS 3.0.29 and 3.1.10</title>
+    <updated>2013-03-22T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2013-03-22.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6693">GnuTLS 3.0.29</a> 
+and <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6694">GnuTLS
+3.1.10</a> were released. 
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnu.org/software/gnutls/news.html#2013-02-27</id>
@@ -380,24 +401,6 @@ stable branch.
     <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-06-10.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6169">
 GnuTLS 2.12.20</a> was released, a bug-fix release on the previous
-stable branch.
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnu.org/software/gnutls/news.html#2012-06-05</id>
-    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-06-05'/>
-    <title>News 2012-06-05</title>
-    <updated>2012-06-05T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-06-05.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6162">
-GnuTLS 3.0.20</a> was released, a minor feature update and bug-fix release on the current
 stable branch.
 
     </div>
