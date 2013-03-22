@@ -32,7 +32,7 @@
   <li><a name="license"><b>License</b></a>
     <p>The core library licensed under
       the <a href="http://www.gnu.org/licenses/lgpl.html">GNU
-      Lesser General Public License version 3</a> (LGPLv3+).  The
+      Lesser General Public License version 2.1</a> (LGPLv2.1+).  The
       LGPL license is compatible with a wide range of free licenses,
       and even permit you to use GnuTLS in non-free proprietary
       programs.  </p> </li>
