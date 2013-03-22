@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.1.9 of GnuTLS.
+<!-- This manual is last updated 21 March 2013 for version
+3.1.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.9: Abstract public keys</title>
+<title>GnuTLS 3.1.10: Abstract public keys</title>
 
-<meta name="description" content="GnuTLS 3.1.9: Abstract public keys">
-<meta name="keywords" content="GnuTLS 3.1.9: Abstract public keys">
+<meta name="description" content="GnuTLS 3.1.10: Abstract public keys">
+<meta name="keywords" content="GnuTLS 3.1.10: Abstract public keys">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -239,8 +239,14 @@ it is not known.
 </p></dd></dl>
 
 <p>Additional functions are available that will return
-information over a public key, as well as a function that given a public
-key fingerprint would provide a memorable sketch.
+information over a public key, such as a unique key ID, as well as a function 
+that given a public key fingerprint would provide a memorable sketch.
+</p>
+<p>Note that <a href="Abstract-key-API.html#gnutls_005fpubkey_005fget_005fkey_005fid">gnutls_pubkey_get_key_id</a> calculates a SHA1 digest of the 
+public key as a DER-formatted, subjectPublicKeyInfo object.  Other implementations 
+use different approaches, e.g., some use the &ldquo;common method&rdquo; described in
+section 4.2.1.2 of [<em>RFC5280</em>] which calculates a digest on a part of the
+subjectPublicKeyInfo object.
 </p>
 <dl compact="compact">
 <dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fpubkey_005fget_005fpk_005falgorithm">gnutls_pubkey_get_pk_algorithm</a> (gnutls_pubkey_t <var>key</var>, unsigned int * <var>bits</var>)</code></dt>

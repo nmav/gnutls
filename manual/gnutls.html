@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.1.9 of GnuTLS.
+<!-- This manual is last updated 21 March 2013 for version
+3.1.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.9</title>
+<title>GnuTLS 3.1.10</title>
 
-<meta name="description" content="GnuTLS 3.1.9">
-<meta name="keywords" content="GnuTLS 3.1.9">
+<meta name="description" content="GnuTLS 3.1.10">
+<meta name="keywords" content="GnuTLS 3.1.10">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.1.9</h1>
+<h1 class="settitle" align="center">GnuTLS 3.1.10</h1>
 
 
 
@@ -458,8 +458,8 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <a name="GnuTLS"></a>
 <h1 class="top">GnuTLS</h1>
 
-<p>This manual is last updated 10 February 2013 for version
-3.1.9 of GnuTLS.
+<p>This manual is last updated 21 March 2013 for version
+3.1.10 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -593,9 +593,9 @@ implementation, and is entirely implemented within the
 <acronym>GnuTLS</acronym> library.  The &ldquo;Certificate part&rdquo; consists of the
 certificate parsing, and verification functions and it uses
 functionality from the
-libtasn1<a name="DOCF1" href="#FOOT1"><sup>1</sup></a> library.
-The &ldquo;Cryptographic back-end&rdquo; is provided by the nettle<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>
-library. 
+libtasn1 library.
+The &ldquo;Cryptographic back-end&rdquo; is provided by the nettle
+and gmplib libraries.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Downloading-and-installing" accesskey="1">Downloading and installing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -624,9 +624,10 @@ development release.  For example, GnuTLS 1.6.3 denote a stable
 release since 6 is even, and GnuTLS 1.7.11 denote a development
 release since 7 is odd.
 </p>
-<p>GnuTLS depends on Libnettle, and you will need to install it
-before installing GnuTLS.  Libnettle is available from
-<a href="http://www.lysator.liu.se/~nisse/nettle/">http://www.lysator.liu.se/~nisse/nettle/</a>.  
+<p>GnuTLS depends on <code>nettle</code> and <code>gmplib</code>, and you will need to install it
+before installing GnuTLS.  The <code>nettle</code> library is available from
+<a href="http://www.lysator.liu.se/~nisse/nettle/">http://www.lysator.liu.se/~nisse/nettle/</a>, while <code>gmplib</code> is available
+from <a href="http://www.gmplib.org/">http://www.gmplib.org/</a>.
 Don&rsquo;t forget to verify the cryptographic signature after downloading
 source code packages.
 </p>
@@ -637,14 +638,17 @@ distribution archive.  Typically you invoke <code>./configure</code> and
 then <code>make check install</code>.  There are a number of compile-time
 parameters, as discussed below.
 </p>
-<p>The compression library, libz, as well as p11-kit are a optional dependencies.
-You can get libz from <a href="http://www.zlib.net/">http://www.zlib.net/</a> and p11-kit from <a href="http://p11-glue.freedesktop.org/">http://p11-glue.freedesktop.org/</a>.
-</p>
-<p>The X.509 part of GnuTLS needs ASN.1 functionality, from a library
-called libtasn1.  A copy of libtasn1 is included in GnuTLS.  If you
+<p>Several parts of GnuTLS require ASN.1 functionality, which is provided by 
+a library called libtasn1.  A copy of libtasn1 is included in GnuTLS.  If you
 want to install it separately (e.g., to make it possibly to use
 libtasn1 in other programs), you can get it from
-<a href="http://www.gnu.org/software/gnutls/download.html">http://www.gnu.org/software/gnutls/download.html</a>.
+<a href="http://www.gnu.org/software/libtasn1/">http://www.gnu.org/software/libtasn1/</a>.
+</p>
+<p>The compression library, <code>libz</code>, the PKCS #11 helper library <code>p11-kit</code>, as well
+as the TPM library <code>trousers</code>, are 
+optional dependencies. You may get libz from <a href="http://www.zlib.net/">http://www.zlib.net/</a>, 
+p11-kit from <a href="http://p11-glue.freedesktop.org/">http://p11-glue.freedesktop.org/</a> and trousers from
+<a href="http://trousers.sourceforge.net/">http://trousers.sourceforge.net/</a>.
 </p>
 <p>A few <code>configure</code> options may be relevant, summarized below.
 They disable or enable particular features,
@@ -656,6 +660,9 @@ options are given.
 <pre class="verbatim">--disable-srp-authentication
 --disable-psk-authentication
 --disable-anon-authentication
+--disable-dhe
+--disable-ecdhe
+--disable-rsa-export
 --disable-extra-pki
 --disable-openpgp-authentication
 --disable-openssl-compatibility
@@ -696,7 +703,7 @@ Next: <a href="#Authentication-methods" accesskey="n" rel="next">Authentication 
 <p><acronym>TLS</acronym> stands for &ldquo;Transport Layer Security&rdquo; and is the
 successor of SSL, the Secure Sockets Layer protocol [<em>SSL3</em>]
 designed by Netscape.  <acronym>TLS</acronym> is an Internet protocol, defined
-by <acronym>IETF</acronym><a name="DOCF3" href="#FOOT3"><sup>3</sup></a>, described in [<em>RFC5246</em>].  
+by <acronym>IETF</acronym><a name="DOCF1" href="#FOOT1"><sup>1</sup></a>, described in [<em>RFC5246</em>].  
 The protocol provides
 confidentiality, and authentication layers over any reliable transport
 layer.  The description, above, refers to <acronym>TLS</acronym> 1.0 but applies
@@ -947,7 +954,7 @@ encrypted packet.
 <p>Those weaknesses were solved in <acronym>TLS</acronym> 1.1 [<em>RFC4346</em>]
 which is implemented in <acronym>GnuTLS</acronym>. For this reason we suggest
 to always negotiate the highest supported TLS version with the 
-peer<a name="DOCF4" href="#FOOT4"><sup>4</sup></a>.
+peer<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>.
 For a detailed discussion of the issues see the archives of the TLS 
 Working Group mailing list and [<em>CBCATT</em>].
 </p>
@@ -1102,7 +1109,7 @@ suite contains these parameters:
 </li><li> The Symmetric encryption algorithm and mode
 <code>3DES_CBC</code> in this example.
 
-</li><li> The MAC<a name="DOCF5" href="#FOOT5"><sup>5</sup></a> algorithm used for authentication.
+</li><li> The MAC<a name="DOCF3" href="#FOOT3"><sup>3</sup></a> algorithm used for authentication.
 <code>MAC_SHA</code> is used in the above example.
 
 </li></ul>
@@ -1592,7 +1599,7 @@ approach starts the <acronym>TLS</acronym> Handshake procedure just after the
 client connects on the &mdash;so called&mdash; secure port.  That way the
 <acronym>TLS</acronym> protocol does not know anything about the client, and
 popular methods like the host advertising in HTTP do not
-work<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>.  There is no way for the client to say &ldquo;I
+work<a name="DOCF4" href="#FOOT4"><sup>4</sup></a>.  There is no way for the client to say &ldquo;I
 connected to YYY server&rdquo; before the Handshake starts, so the server
 cannot possibly know which certificate to use.
 </p>
@@ -1610,7 +1617,7 @@ Previous: <a href="#Separate-ports" accesskey="p" rel="previous">Separate ports<
 <a name="Upward-negotiation-1"></a>
 <h4 class="subsection">3.7.2 Upward negotiation</h4>
 
-<p>Other application protocols<a name="DOCF7" href="#FOOT7"><sup>7</sup></a>  use a
+<p>Other application protocols<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>  use a
 different approach to enable the secure layer.  They use something
 often called as the &ldquo;TLS upgrade&rdquo; method. This method is quite tricky but it
 is more flexible. The idea is to extend the application protocol to
@@ -1999,7 +2006,7 @@ Next: <a href="#X_002e509-public-and-private-keys" accesskey="n" rel="next">X.50
 <p>The &ldquo;subject&rdquo; of an X.509 certificate is not described by
 a single name, but rather with a distinguished name. This in
 X.509 terminology is a list of strings each associated an object
-identifier. To make things simple GnuTLS provides <a href="#gnutls_005fx509_005fcrt_005fget_005fdn">gnutls_x509_crt_get_dn</a>
+identifier. To make things simple GnuTLS provides <a href="#gnutls_005fx509_005fcrt_005fget_005fdn2">gnutls_x509_crt_get_dn2</a>
 which follows the rules in [<em>RFC4514</em>] and returns a single
 string. Access to each string by individual object identifiers
 can be accessed using <a href="#gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid">gnutls_x509_crt_get_dn_by_oid</a>.
@@ -2009,92 +2016,33 @@ can be accessed using <a href="#gnutls_005fx509_005fcrt_005fget_005fdn_005fby_00
 
 
 <dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn</strong> <em>(gnutls_x509_crt_t <var>cert</var>, char * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn2"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn2</strong> <em>(gnutls_x509_crt_t <var>cert</var>, gnutls_datum_t * <var>dn</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
 </p>
-<p><var>buf</var>: a pointer to a structure to hold the name (may be null)
+<p><var>dn</var>: a pointer to a structure to hold the name
 </p>
-<p><var>buf_size</var>: initially holds the size of  <code>buf</code> 
-</p>
-<p>This function will copy the name of the Certificate in the provided
-buffer. The name will be in the form &quot;C=xxxx,O=yyyy,CN=zzzz&quot; as
+<p>This function will allocate buffer and copy the name of the Certificate.
+The name will be in the form &quot;C=xxxx,O=yyyy,CN=zzzz&quot; as
 described in RFC4514. The output string will be ASCII or UTF-8
 encoded, depending on the certificate data.
 </p>
-<p>If  <code>buf</code> is null then only the size will be filled. 
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value. and a negative error code on error.
 </p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the provided buffer is not
-long enough, and in that case the  <code>buf_size</code> will be updated
-with the required size.  On success 0 is returned.
+<p><strong>Since:</strong> 3.1.10
 </p></dd></dl>
-
-
-
-
-<dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn_by_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
-<dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
-</p>
-<p><var>oid</var>: holds an Object Identified in null terminated string
-</p>
-<p><var>indx</var>: In case multiple same OIDs exist in the RDN, this specifies which to send. Use (0) to get the first one.
-</p>
-<p><var>raw_flag</var>: If non-zero returns the raw DER data of the DN part.
-</p>
-<p><var>buf</var>: a pointer where the DN part will be copied (may be null).
-</p>
-<p><var>buf_size</var>: initially holds the size of  <code>buf</code> 
-</p>
-<p>This function will extract the part of the name of the Certificate
-subject specified by the given OID. The output, if the raw flag is
-not used, will be encoded as described in RFC4514. Thus a string
-that is ASCII or UTF-8 encoded, depending on the certificate data.
-</p>
-<p>Some helper macros with popular OIDs can be found in gnutls/x509.h
-If raw flag is (0), this function will only return known OIDs as
-text. Other OIDs will be DER encoded, as described in RFC4514 &ndash;
-in hex format with a &rsquo;#&rsquo; prefix.  You can check about known OIDs
-using <code>gnutls_x509_dn_oid_known()</code> .
-</p>
-<p>If  <code>buf</code> is null then only the size will be filled. If the  <code>raw_flag</code> is not specified the output is always null terminated, although the
- <code>buf_size</code> will not include the null character.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the provided buffer is not
-long enough, and in that case the  <code>buf_size</code> will be updated with
-the required size. <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  if there 
-are no data in the current index. On success 0 is returned.
-</p></dd></dl>
-
-
-
-
-<dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
-<dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
-</p>
-<p><var>indx</var>: This specifies which OID to return. Use (0) to get the first one.
-</p>
-<p><var>oid</var>: a pointer to a buffer to hold the OID (may be null)
-</p>
-<p><var>oid_size</var>: initially holds the size of  <code>oid</code> 
-</p>
-<p>This function will extract the OIDs of the name of the Certificate
-subject specified by the given index.
-</p>
-<p>If  <code>oid</code> is null then only the size will be filled. The  <code>oid</code> returned will be null terminated, although  <code>oid_size</code> will not
-account for the trailing null.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the provided buffer is not
-long enough, and in that case the  <code>buf_size</code> will be updated with
-the required size. <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  if there 
-are no data in the current index. On success 0 is returned.
-</p></dd></dl>
+<dl compact="compact">
+<dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrt_005fget_005fdn">gnutls_x509_crt_get_dn</a> (gnutls_x509_crt_t <var>cert</var>, char * <var>buf</var>, size_t * <var>buf_size</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid">gnutls_x509_crt_get_dn_by_oid</a> (gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrt_005fget_005fdn_005foid">gnutls_x509_crt_get_dn_oid</a> (gnutls_x509_crt_t <var>cert</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>)</code></dt>
+</dl>
 
 <p>Similar functions exist to access the distinguished name
 of the issuer of the certificate.
 </p>
 <dl compact="compact">
 <dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn">gnutls_x509_crt_get_issuer_dn</a> (gnutls_x509_crt_t <var>cert</var>, char * <var>buf</var>, size_t * <var>buf_size</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn2">gnutls_x509_crt_get_issuer_dn2</a> (gnutls_x509_crt_t <var>cert</var>, gnutls_datum_t * <var>dn</var>)</code></dt>
 <dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005fby_005foid">gnutls_x509_crt_get_issuer_dn_by_oid</a> (gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</code></dt>
 <dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005foid">gnutls_x509_crt_get_issuer_dn_oid</a> (gnutls_x509_crt_t <var>cert</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>)</code></dt>
 <dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrt_005fget_005fissuer">gnutls_x509_crt_get_issuer</a> (gnutls_x509_crt_t <var>cert</var>, gnutls_x509_dn_t * <var>dn</var>)</code></dt>
@@ -2681,7 +2629,7 @@ handling functions can be found in <samp>gnutls/openpgp.h</samp>.
 <acronym>GnuTLS</acronym>, are simple ones, and do not use the features of the
 &ldquo;web of trust&rdquo;.  For that reason, if the verification needs are
 complex, the assistance of external tools like <acronym>GnuPG</acronym> and
-GPGME<a name="DOCF8" href="#FOOT8"><sup>8</sup></a> is
+GPGME<a name="DOCF6" href="#FOOT6"><sup>6</sup></a> is
 recommended.
 </p>
 <p>In GnuTLS there is a verification function for OpenPGP certificates,
@@ -3257,11 +3205,11 @@ negative error value. and a negative error code on error.
 <dl compact="compact">
 <dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrl_005fget_005fversion">gnutls_x509_crl_get_version</a> (gnutls_x509_crl_t <var>crl</var>)</code></dt>
 <dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn">gnutls_x509_crl_get_issuer_dn</a> (const gnutls_x509_crl_t <var>crl</var>, char * <var>buf</var>, size_t * <var>sizeof_buf</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn2">gnutls_x509_crl_get_issuer_dn2</a> (gnutls_x509_crl_t <var>crl</var>, gnutls_datum_t * <var>dn</var>)</code></dt>
 <dt><code><var>time_t</var> <a href="#gnutls_005fx509_005fcrl_005fget_005fthis_005fupdate">gnutls_x509_crl_get_this_update</a> (gnutls_x509_crl_t <var>crl</var>)</code></dt>
 <dt><code><var>time_t</var> <a href="#gnutls_005fx509_005fcrl_005fget_005fnext_005fupdate">gnutls_x509_crl_get_next_update</a> (gnutls_x509_crl_t <var>crl</var>)</code></dt>
 <dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrl_005fget_005fcrt_005fcount">gnutls_x509_crl_get_crt_count</a> (gnutls_x509_crl_t <var>crl</var>)</code></dt>
 </dl>
-
 
 <a name="Generation-of-a-CRL"></a>
 <h4 class="subsubheading">Generation of a CRL</h4>
@@ -4051,7 +3999,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">certtool - GnuTLS certificate tool - Ver. 3.1.9
+<pre class="example">certtool - GnuTLS certificate tool - Ver. 3.1.10
 USAGE:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -4583,7 +4531,7 @@ signing_key
 # Whether this certificate will be used to encrypt data (needed
 # in TLS RSA ciphersuites). Note that it is preferred to use different
 # keys for encryption and signing.
-#encryption_key
+encryption_key
 
 # Whether this key will be used to sign other certificates.
 #cert_signing_key
@@ -4681,7 +4629,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">ocsptool - GnuTLS OCSP tool - Ver. 3.1.9
+<pre class="example">ocsptool - GnuTLS OCSP tool - Ver. 3.1.10
 USAGE:  ocsptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -4940,7 +4888,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">danetool - GnuTLS DANE tool - Ver. 3.1.9
+<pre class="example">danetool - GnuTLS DANE tool - Ver. 3.1.10
 USAGE:  danetool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -4956,6 +4904,8 @@ USAGE:  danetool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --dlv=str              Sets a DLV file
        --hash=str             Hash algorithm to use for signing.
        --check=str            Check a host's DANE TLSA entry.
+       --check-ee             Check only the end-entity's certificate.
+       --check-ca             Check only the CA's certificate.
        --insecure             Do not verify any DNSSEC signature.
        --local-dns            Use the local DNS server for DNSSEC resolving.
                                 - disabled as --no-local-dns
@@ -4971,7 +4921,11 @@ USAGE:  danetool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --ca                   Whether the provided certificate or public key is a Certificate
 Authority.
        --x509                 Use the hash of the X.509 certificate, rather than the public key.
-       --local                The provided certificate or public key is a local entity.
+       --local                This is an alias for 'domain'
+                                - enabled by default
+       --domain               The provided certificate or public key is issued by the local domain.
+                                - disabled as --no-domain
+                                - enabled by default
    -v, --version[=arg]        Output version information and exit
    -h, --help                 Display extended usage information and exit
    -!, --more-help            Extended usage information passed thru pager
@@ -5021,7 +4975,17 @@ Available hash functions are SHA1, RMD160, SHA256, SHA384, SHA512.
 
 <p>This is the &ldquo;check a host&rsquo;s dane tlsa entry.&rdquo; option.
 This option takes an argument string.
-Obtains the DANE TLSA entry from the given hostname and prints information.
+Obtains the DANE TLSA entry from the given hostname and prints information. Note that the actual certificate of the host has to be provided using &ndash;load-certificate.
+<a name="danetool-check_002dee"></a></p><a name="check_002dee-option"></a>
+<h4 class="subsubheading">check-ee option</h4>
+
+<p>This is the &ldquo;check only the end-entity&rsquo;s certificate.&rdquo; option.
+Checks the end-entity&rsquo;s certificate only. Trust anchors or CAs are not considered.
+<a name="danetool-check_002dca"></a></p><a name="check_002dca-option"></a>
+<h4 class="subsubheading">check-ca option</h4>
+
+<p>This is the &ldquo;check only the ca&rsquo;s certificate.&rdquo; option.
+Checks the trust anchor&rsquo;s and CA&rsquo;s certificate only. End-entities are not considered.
 <a name="danetool-insecure"></a></p><a name="insecure-option"></a>
 <h4 class="subsubheading">insecure option</h4>
 
@@ -5083,8 +5047,20 @@ This option forces the generated record to contain the hash of the full X.509 ce
 <a name="danetool-local"></a></p><a name="local-option"></a>
 <h4 class="subsubheading">local option</h4>
 
-<p>This is the &ldquo;the provided certificate or public key is a local entity.&rdquo; option.
-DANE distinguishes certificates and public keys offered via the DNSSEC to trusted and local entities. Use this flag if this is a local (and possibly unsigned) entity.
+<p>This is an alias for the domain option,
+see <a href="#danetool-domain">the domain option documentation</a>.
+</p>
+<a name="danetool-domain"></a><a name="domain-option"></a>
+<h4 class="subsubheading">domain option</h4>
+
+<p>This is the &ldquo;the provided certificate or public key is issued by the local domain.&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> is enabled by default.
+</li></ul>
+
+<p>DANE distinguishes certificates and public keys offered via the DNSSEC to trusted and local entities. This flag indicates that this is a domain-issued certificate, meaning that there could be no CA involved.
 <a name="danetool-exit-status"></a></p><a name="danetool-exit-status-1"></a>
 <h4 class="subsubheading">danetool exit status</h4>
 
@@ -5106,26 +5082,27 @@ DANE distinguishes certificates and public keys offered via the DNSSEC to truste
 <a name="DANE-TLSA-RR-generation"></a>
 <h4 class="subsubheading">DANE TLSA RR generation</h4>
 
-<p>To create a DANE TLSA resource record for a CA signed certificate use the following commands.
-</p>
-<div class="example">
+<p>To create a DANE TLSA resource record for a certificate (or public key) 
+that was issued localy and may or may not be signed by a CA use the following command.
+</p><div class="example">
 <pre class="example">$ danetool --tlsa-rr --host www.example.com --load-certificate cert.pem
 </pre></div>
 
-<p>For a self signed certificate use:
+<p>To create a DANE TLSA resource record for a CA signed certificate, which will
+be marked as such use the following command.
 </p><div class="example">
 <pre class="example">$ danetool --tlsa-rr --host www.example.com --load-certificate cert.pem \
-  --local
+  --no-domain
 </pre></div>
 
-<p>The latter is useful to add in your DNS entry even if your certificate is signed 
+<p>The former is useful to add in your DNS entry even if your certificate is signed 
 by a CA. That way even users who do not trust your CA will be able to verify your
 certificate using DANE.
 </p>
-<p>In order to create a record for the signer of your certificate use:
+<p>In order to create a record for the CA signer of your certificate use the following.
 </p><div class="example">
 <pre class="example">$ danetool --tlsa-rr --host www.example.com --load-certificate cert.pem \
-  --ca
+  --ca --no-domain
 </pre></div>
 
 <p>To read a server&rsquo;s DANE TLSA entry, use:
@@ -5304,7 +5281,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">srptool - GnuTLS SRP tool - Ver. 3.1.9
+<pre class="example">srptool - GnuTLS SRP tool - Ver. 3.1.10
 USAGE:  srptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -5493,7 +5470,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">psktool - GnuTLS PSK tool - Ver. 3.1.9
+<pre class="example">psktool - GnuTLS PSK tool - Ver. 3.1.10
 USAGE:  psktool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -5848,8 +5825,14 @@ it is not known.
 </p></dd></dl>
 
 <p>Additional functions are available that will return
-information over a public key, as well as a function that given a public
-key fingerprint would provide a memorable sketch.
+information over a public key, such as a unique key ID, as well as a function 
+that given a public key fingerprint would provide a memorable sketch.
+</p>
+<p>Note that <a href="#gnutls_005fpubkey_005fget_005fkey_005fid">gnutls_pubkey_get_key_id</a> calculates a SHA1 digest of the 
+public key as a DER-formatted, subjectPublicKeyInfo object.  Other implementations 
+use different approaches, e.g., some use the &ldquo;common method&rdquo; described in
+section 4.2.1.2 of [<em>RFC5280</em>] which calculates a digest on a part of the
+subjectPublicKeyInfo object.
 </p>
 <dl compact="compact">
 <dt><code><var>int</var> <a href="#gnutls_005fpubkey_005fget_005fpk_005falgorithm">gnutls_pubkey_get_pk_algorithm</a> (gnutls_pubkey_t <var>key</var>, unsigned int * <var>bits</var>)</code></dt>
@@ -5922,6 +5905,7 @@ negative error value.
 <dl compact="compact">
 <dt><code><var>int</var> <a href="#gnutls_005fprivkey_005fget_005fpk_005falgorithm">gnutls_privkey_get_pk_algorithm</a> (gnutls_privkey_t <var>key</var>, unsigned int * <var>bits</var>)</code></dt>
 <dt><code><var>gnutls_privkey_type_t</var> <a href="#gnutls_005fprivkey_005fget_005ftype">gnutls_privkey_get_type</a> (gnutls_privkey_t <var>key</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fprivkey_005fstatus">gnutls_privkey_status</a> (gnutls_privkey_t <var>key</var>)</code></dt>
 </dl>
 
 <p>In order to support cryptographic operations using 
@@ -5953,6 +5937,9 @@ resorting to <acronym>PKCS</acronym> #11.
 <code>gnutls_privkey_t</code>  structure. At least one of the two callbacks
 must be non-null. If a deinitialization function is provided
 then flags is assumed to contain <code>GNUTLS_PRIVKEY_IMPORT_AUTO_RELEASE</code> .
+</p>
+<p>Note that the signing function is supposed to &quot;raw&quot; sign data, i.e.,
+without any hashing or preprocessing.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -6195,7 +6182,7 @@ separation subsystem.
 </p>
 <p><acronym>PKCS</acronym> #11 is plugin API allowing applications to access cryptographic
 operations on a security module, as well as to objects residing on it. PKCS
-#11 modules exist for hardware tokens such as smart cards<a name="DOCF9" href="#FOOT9"><sup>9</sup></a>,
+#11 modules exist for hardware tokens such as smart cards<a name="DOCF7" href="#FOOT7"><sup>7</sup></a>,
 cryptographic tokens, as well as for software modules like <acronym>Gnome Keyring</acronym>. 
 The objects residing on a security module may be certificates, public keys, 
 private keys or secret keys. Of those certificates and public/private key 
@@ -6239,7 +6226,7 @@ Next: <a href="#Accessing-objects-that-require-a-PIN" accesskey="n" rel="next">A
 <h4 class="subsection">5.2.1 Initialization</h4>
 <p>To allow all the  <acronym>GnuTLS</acronym> applications to access <acronym>PKCS</acronym> #11 tokens
 you can use a configuration per module, stored in <code>/etc/pkcs11/modules/</code>. 
-These are the configuration files of <acronym>p11-kit</acronym><a name="DOCF10" href="#FOOT10"><sup>10</sup></a>.
+These are the configuration files of <acronym>p11-kit</acronym><a name="DOCF8" href="#FOOT8"><sup>8</sup></a>.
 For example a file that will load the <acronym>OpenSC</acronym> module, could be named
 <code>/etc/pkcs11/modules/opensc</code> and contain the following:
 </p>
@@ -6697,7 +6684,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">p11tool - GnuTLS PKCS #11 tool - Ver. 3.1.9
+<pre class="example">p11tool - GnuTLS PKCS #11 tool - Ver. 3.1.10
 USAGE:  p11tool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [url]
 
    -d, --debug=num            Enable debugging.
@@ -7175,7 +7162,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">tpmtool - GnuTLS TPM tool - Ver. 3.1.9
+<pre class="example">tpmtool - GnuTLS TPM tool - Ver. 3.1.10
 USAGE:  tpmtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -7446,7 +7433,7 @@ database back-end to hold the session&rsquo;s parameters.  Every
 appropriate back-end function (see <a href="#resume">resume</a>)
 to store the newly negotiated session. The session
 database is examined by the server just after having received the
-client hello<a name="DOCF11" href="#FOOT11"><sup>11</sup></a>,
+client hello<a name="DOCF9" href="#FOOT9"><sup>9</sup></a>,
 and if the session ID sent by the client, matches a stored session,
 the stored session will be retrieved, and the new session will be a
 resumed one, and will share the same session ID with the previous one.
@@ -8767,7 +8754,7 @@ Previous: <a href="#Asynchronous-operation" accesskey="p" rel="previous">Asynchr
 <p>Because datagram TLS can operate over connections where the peer
 of a server cannot be reliably verified, functionality is available to prevent
 denial of service attacks. <acronym>GnuTLS</acronym> requires a server
-to generate a secret key that is used to sign a cookie<a name="DOCF12" href="#FOOT12"><sup>12</sup></a>. 
+to generate a secret key that is used to sign a cookie<a name="DOCF10" href="#FOOT10"><sup>10</sup></a>. 
 That cookie is sent to the client using <a href="#gnutls_005fdtls_005fcookie_005fsend">gnutls_dtls_cookie_send</a>, and 
 the client must reply using the correct cookie. The server side
 should verify the initial message sent by client using <a href="#gnutls_005fdtls_005fcookie_005fverify">gnutls_dtls_cookie_verify</a>.
@@ -9310,7 +9297,7 @@ compression NULL; for certificate types X.509.
 In key exchange algorithms when in NORMAL or SECURE levels the
 perfect forward secrecy algorithms take precedence of the other
 protocols.  In all cases all the supported key exchange algorithms
-are enabled<a name="DOCF13" href="#FOOT13"><sup>13</sup></a>.
+are enabled<a name="DOCF11" href="#FOOT11"><sup>11</sup></a>.
 </p>
 <p>Note that the SECURE levels distinguish between overall security level and
 message authenticity security level. That is because the message
@@ -9369,7 +9356,7 @@ is SIGN-ALL. This is only valid for TLS 1.2 and later.</td></tr>
 
 <div class="float-caption"><p><strong>Table 6.3: </strong>The supported algorithm keywords in priority strings.</p></div></div>
 <p>Note that the DHE key exchange methods are generally
-slower<a name="DOCF14" href="#FOOT14"><sup>14</sup></a> than their elliptic curves counterpart
+slower<a name="DOCF12" href="#FOOT12"><sup>12</sup></a> than their elliptic curves counterpart
 (ECDHE). Moreover the plain Diffie-Hellman key exchange
 requires parameters to be generated and associated with a credentials
 structure by the server (see <a href="#Parameter-generation">Parameter generation</a>). 
@@ -9918,7 +9905,7 @@ AC_SUBST([LIBDANE_LIBS])
 </p>
 <p><var>sflags</var>: Flags for the the initialization of  <code>s</code> (if NULL)
 </p>
-<p><var>vflags</var>: Verification flags; should be zero
+<p><var>vflags</var>: Verification flags; an OR&rsquo;ed list of <code>dane_verify_flags_t</code> .
 </p>
 <p><var>verify</var>: An OR&rsquo;ed list of <code>dane_verify_status_t</code> .
 </p>
@@ -10381,7 +10368,11 @@ int main (void)
     }
   else
     {
-      printf (&quot;- Handshake was completed\n&quot;);
+      char* desc;
+      
+      desc = gnutls_session_get_desc(session);
+      printf (&quot;- Session info: %s\n&quot;, desc);
+      gnutls_free(desc);
     }
 
   gnutls_record_send (session, MSG, strlen (MSG));
@@ -10691,7 +10682,11 @@ main (void)
     }
   else
     {
-      printf (&quot;- Handshake was completed\n&quot;);
+      char* desc;
+      
+      desc = gnutls_session_get_desc(session);
+      printf (&quot;- Session info: %s\n&quot;, desc);
+      gnutls_free(desc);
     }
 
   gnutls_record_send (session, MSG, strlen (MSG));
@@ -10840,7 +10835,11 @@ main (void)
     }
   else
     {
-      printf (&quot;- Handshake was completed\n&quot;);
+      char* desc;
+      
+      desc = gnutls_session_get_desc(session);
+      printf (&quot;- Session info: %s\n&quot;, desc);
+      gnutls_free(desc);
     }
 
   gnutls_record_send (session, MSG, strlen (MSG));
@@ -11196,7 +11195,11 @@ main (void)
     }
   else
     {
-      printf (&quot;- Handshake was completed\n&quot;);
+      char* desc;
+      
+      desc = gnutls_session_get_desc(session);
+      printf (&quot;- Session info: %s\n&quot;, desc);
+      gnutls_free(desc);
     }
 
   gnutls_record_send (session, MSG, strlen (MSG));
@@ -11598,7 +11601,11 @@ main (void)
     }
   else
     {
-      printf (&quot;- Handshake was completed\n&quot;);
+      char* desc;
+      
+      desc = gnutls_session_get_desc(session);
+      printf (&quot;- Session info: %s\n&quot;, desc);
+      gnutls_free(desc);
     }
 
   gnutls_record_send (session, MSG, strlen (MSG));
@@ -11903,7 +11910,11 @@ main (void)
     }
   else
     {
-      printf (&quot;- Handshake was completed\n&quot;);
+      char* desc;
+      
+      desc = gnutls_session_get_desc(session);
+      printf (&quot;- Session info: %s\n&quot;, desc);
+      gnutls_free(desc);
     }
 
   gnutls_record_send (session, MSG, strlen (MSG));
@@ -14473,7 +14484,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-cli - GnuTLS client - Ver. 3.1.9
+<pre class="example">gnutls-cli - GnuTLS client - Ver. 3.1.10
 USAGE:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [hostname]
 
    -d, --debug=num            Enable debugging.
@@ -14731,7 +14742,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-serv - GnuTLS server - Ver. 3.1.9
+<pre class="example">gnutls-serv - GnuTLS server - Ver. 3.1.10
 USAGE:  gnutls-serv [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
@@ -15048,7 +15059,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-cli-debug - GnuTLS debug client - Ver. 3.1.9
+<pre class="example">gnutls-cli-debug - GnuTLS debug client - Ver. 3.1.10
 USAGE:  gnutls-cli-debug [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... 
 
    -d, --debug=num            Enable debugging.
@@ -15262,7 +15273,7 @@ authentication method needs to implement the functions shown below.
 <p>Those functions are responsible for the
 interpretation of the handshake protocol messages. It is common for such
 functions to read data from one or more <code>credentials_t</code>
-structures<a name="DOCF15" href="#FOOT15"><sup>15</sup></a> and write data,
+structures<a name="DOCF13" href="#FOOT13"><sup>13</sup></a> and write data,
 such as certificates, usernames etc. to <code>auth_info_t</code> structures.
 </p>
 
@@ -15334,7 +15345,7 @@ fi
 AM_CONDITIONAL(ENABLE_FOOBAR, test &quot;$ac_enable_foobar&quot; != &quot;no&quot;)
 </pre></div>
 
-<p>These lines should go in <code>lib/m4/hooks.m4</code>.
+<p>These lines should go in <code>m4/hooks.m4</code>.
 </p>
 <a name="Add-IANA-extension-value-to-extensions_005ft-in-gnutls_005fint_002eh_002e"></a>
 <h4 class="subsubheading">Add IANA extension value to <code>extensions_t</code> in <code>gnutls_int.h</code>.</h4>
@@ -15668,7 +15679,7 @@ an efficient way.
 <h4 class="subheading">Cryptographic library layer</h4>
 <p>The Cryptographic library layer, currently supports only
 libnettle. Older versions of GnuTLS used to support libgcrypt,
-but it was switched with nettle mainly for performance reasons<a name="DOCF16" href="#FOOT16"><sup>16</sup></a>
+but it was switched with nettle mainly for performance reasons<a name="DOCF14" href="#FOOT14"><sup>14</sup></a>
 and secondary because it is a simpler library to use.
 In the future other cryptographic libraries might be supported as well.
 </p>
@@ -15678,7 +15689,7 @@ In the future other cryptographic libraries might be supported as well.
 kernel drivers to utilize the operations from software. For this reason 
 GnuTLS provides a layer where each individual algorithm used can be replaced
 by another implementation, i.e., the one provided by the driver. The
-FreeBSD, OpenBSD and Linux kernels<a name="DOCF17" href="#FOOT17"><sup>17</sup></a> include already 
+FreeBSD, OpenBSD and Linux kernels<a name="DOCF15" href="#FOOT15"><sup>15</sup></a> include already 
 a number of hardware assisted implementations, and also provide an interface 
 to access them, called <code>/dev/crypto</code>.
 GnuTLS will take advantage of this interface if compiled with special
@@ -16180,37 +16191,19 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <h3 class="heading">Ciphersuites</h3>
 <table>
 <thead><tr><th width="60%">Ciphersuite name</th><th width="20%">TLS ID</th><th width="20%">Since</th></tr></thead>
-<tr><td width="60%">TLS_DH_ANON_ARCFOUR_MD5</td><td width="20%">0x00 0x18</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_DH_ANON_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x1B</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_DH_ANON_AES_128_CBC_SHA1</td><td width="20%">0x00 0x34</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_DH_ANON_AES_256_CBC_SHA1</td><td width="20%">0x00 0x3A</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_DH_ANON_CAMELLIA_128_CBC_SHA1</td><td width="20%">0x00 0x46</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_DH_ANON_CAMELLIA_256_CBC_SHA1</td><td width="20%">0x00 0x89</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_DH_ANON_AES_128_CBC_SHA256</td><td width="20%">0x00 0x6C</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_DH_ANON_AES_256_CBC_SHA256</td><td width="20%">0x00 0x6D</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_PSK_SHA_ARCFOUR_SHA1</td><td width="20%">0x00 0x8A</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_PSK_SHA_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x8B</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_PSK_SHA_AES_128_CBC_SHA1</td><td width="20%">0x00 0x8C</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_PSK_SHA_AES_256_CBC_SHA1</td><td width="20%">0x00 0x8D</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_PSK_AES_128_CBC_SHA256</td><td width="20%">0x00 0xAE</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_PSK_AES_128_GCM_SHA256</td><td width="20%">0x00 0xA8</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_PSK_NULL_SHA256</td><td width="20%">0x00 0xB0</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_DHE_PSK_SHA_ARCFOUR_SHA1</td><td width="20%">0x00 0x8E</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_DHE_PSK_SHA_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x8F</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_DHE_PSK_SHA_AES_128_CBC_SHA1</td><td width="20%">0x00 0x90</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_DHE_PSK_SHA_AES_256_CBC_SHA1</td><td width="20%">0x00 0x91</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_DHE_PSK_AES_128_CBC_SHA256</td><td width="20%">0x00 0xB2</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_DHE_PSK_AES_128_GCM_SHA256</td><td width="20%">0x00 0xAA</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_DHE_PSK_NULL_SHA256</td><td width="20%">0x00 0xB4</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_SRP_SHA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x1A</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_SRP_SHA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x1D</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_SRP_SHA_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x20</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_SRP_SHA_DSS_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x1C</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_SRP_SHA_RSA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x1B</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_SRP_SHA_DSS_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x1F</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_SRP_SHA_RSA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x1E</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_SRP_SHA_DSS_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x22</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_SRP_SHA_RSA_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x21</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_RSA_NULL_MD5</td><td width="20%">0x00 0x01</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_NULL_SHA1</td><td width="20%">0x00 0x02</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_NULL_SHA256</td><td width="20%">0x00 0x3B</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_ARCFOUR_SHA1</td><td width="20%">0x00 0x05</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_ARCFOUR_MD5</td><td width="20%">0x00 0x04</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x0A</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_AES_128_CBC_SHA1</td><td width="20%">0x00 0x2F</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_AES_256_CBC_SHA1</td><td width="20%">0x00 0x35</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_CAMELLIA_128_CBC_SHA1</td><td width="20%">0x00 0x41</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_RSA_CAMELLIA_256_CBC_SHA1</td><td width="20%">0x00 0x84</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_RSA_AES_128_CBC_SHA256</td><td width="20%">0x00 0x3C</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_AES_256_CBC_SHA256</td><td width="20%">0x00 0x3D</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_AES_128_GCM_SHA256</td><td width="20%">0x00 0x9C</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_ARCFOUR_SHA1</td><td width="20%">0x00 0x66</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x13</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_AES_128_CBC_SHA1</td><td width="20%">0x00 0x32</td><td width="20%">SSL3.0</td></tr>
@@ -16226,27 +16219,8 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <tr><td width="60%">TLS_DHE_RSA_CAMELLIA_256_CBC_SHA1</td><td width="20%">0x00 0x88</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_AES_128_CBC_SHA256</td><td width="20%">0x00 0x67</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_AES_256_CBC_SHA256</td><td width="20%">0x00 0x6B</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_RSA_NULL_MD5</td><td width="20%">0x00 0x01</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_NULL_SHA1</td><td width="20%">0x00 0x02</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_NULL_SHA256</td><td width="20%">0x00 0x3B</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_RSA_EXPORT_ARCFOUR_40_MD5</td><td width="20%">0x00 0x03</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_ARCFOUR_SHA1</td><td width="20%">0x00 0x05</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_ARCFOUR_MD5</td><td width="20%">0x00 0x04</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x0A</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_AES_128_CBC_SHA1</td><td width="20%">0x00 0x2F</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_AES_256_CBC_SHA1</td><td width="20%">0x00 0x35</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_CAMELLIA_128_CBC_SHA1</td><td width="20%">0x00 0x41</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_RSA_CAMELLIA_256_CBC_SHA1</td><td width="20%">0x00 0x84</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_RSA_AES_128_CBC_SHA256</td><td width="20%">0x00 0x3C</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_RSA_AES_256_CBC_SHA256</td><td width="20%">0x00 0x3D</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_RSA_AES_128_GCM_SHA256</td><td width="20%">0x00 0x9C</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_AES_128_GCM_SHA256</td><td width="20%">0x00 0x9E</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_AES_128_GCM_SHA256</td><td width="20%">0x00 0xA2</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_DH_ANON_AES_128_GCM_SHA256</td><td width="20%">0x00 0xA6</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_ECDH_ANON_NULL_SHA1</td><td width="20%">0xC0 0x15</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDH_ANON_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x17</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDH_ANON_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x18</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDH_ANON_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x19</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_NULL_SHA1</td><td width="20%">0xC0 0x10</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x12</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x13</td><td width="20%">TLS1.0</td></tr>
@@ -16259,6 +16233,9 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <tr><td width="60%">TLS_ECDHE_RSA_AES_128_CBC_SHA256</td><td width="20%">0xC0 0x27</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_AES_128_GCM_SHA256</td><td width="20%">0xC0 0x2B</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_AES_128_GCM_SHA256</td><td width="20%">0xC0 0x2F</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_GCM_SHA384</td><td width="20%">0xC0 0x2C</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_AES_256_GCM_SHA384</td><td width="20%">0xC0 0x30</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_CBC_SHA384</td><td width="20%">0xC0 0x24</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x34</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x35</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x36</td><td width="20%">TLS1.0</td></tr>
@@ -16266,11 +16243,45 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <tr><td width="60%">TLS_ECDHE_PSK_AES_256_CBC_SHA384</td><td width="20%">0xC0 0x38</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_NULL_SHA256</td><td width="20%">0xC0 0x3A</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_NULL_SHA384</td><td width="20%">0xC0 0x3B</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_GCM_SHA384</td><td width="20%">0xC0 0x2C</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_ECDHE_RSA_AES_256_GCM_SHA384</td><td width="20%">0xC0 0x30</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_CBC_SHA384</td><td width="20%">0xC0 0x24</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_PSK_SHA_ARCFOUR_SHA1</td><td width="20%">0x00 0x8A</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_PSK_SHA_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x8B</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_PSK_SHA_AES_128_CBC_SHA1</td><td width="20%">0x00 0x8C</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_PSK_SHA_AES_256_CBC_SHA1</td><td width="20%">0x00 0x8D</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_PSK_AES_128_CBC_SHA256</td><td width="20%">0x00 0xAE</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_PSK_AES_128_GCM_SHA256</td><td width="20%">0x00 0xA8</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_PSK_NULL_SHA256</td><td width="20%">0x00 0xB0</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_SHA_ARCFOUR_SHA1</td><td width="20%">0x00 0x8E</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_SHA_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x8F</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_SHA_AES_128_CBC_SHA1</td><td width="20%">0x00 0x90</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_SHA_AES_256_CBC_SHA1</td><td width="20%">0x00 0x91</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_AES_128_CBC_SHA256</td><td width="20%">0x00 0xB2</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_AES_128_GCM_SHA256</td><td width="20%">0x00 0xAA</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_NULL_SHA256</td><td width="20%">0x00 0xB4</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_PSK_WITH_AES_256_GCM_SHA384</td><td width="20%">0x00 0xA9</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_PSK_WITH_AES_256_GCM_SHA384</td><td width="20%">0x00 0xAB</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DH_ANON_ARCFOUR_MD5</td><td width="20%">0x00 0x18</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_DH_ANON_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x1B</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_DH_ANON_AES_128_CBC_SHA1</td><td width="20%">0x00 0x34</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_DH_ANON_AES_256_CBC_SHA1</td><td width="20%">0x00 0x3A</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_DH_ANON_CAMELLIA_128_CBC_SHA1</td><td width="20%">0x00 0x46</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_DH_ANON_CAMELLIA_256_CBC_SHA1</td><td width="20%">0x00 0x89</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_DH_ANON_AES_128_CBC_SHA256</td><td width="20%">0x00 0x6C</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DH_ANON_AES_256_CBC_SHA256</td><td width="20%">0x00 0x6D</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DH_ANON_AES_128_GCM_SHA256</td><td width="20%">0x00 0xA6</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDH_ANON_NULL_SHA1</td><td width="20%">0xC0 0x15</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_ECDH_ANON_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x17</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_ECDH_ANON_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x18</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_ECDH_ANON_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x19</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_SRP_SHA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x1A</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_SRP_SHA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x1D</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_SRP_SHA_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x20</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_SRP_SHA_DSS_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x1C</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_SRP_SHA_RSA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x1B</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_SRP_SHA_DSS_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x1F</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_SRP_SHA_RSA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x1E</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_SRP_SHA_DSS_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x22</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_SRP_SHA_RSA_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x21</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_RSA_EXPORT_ARCFOUR_40_MD5</td><td width="20%">0x00 0x03</td><td width="20%">SSL3.0</td></tr>
 </table>
 
 
@@ -16330,9 +16341,9 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <dt><code>RSA</code></dt>
 <dt><code>RSA-EXPORT</code></dt>
 <dt><code>DHE-RSA</code></dt>
+<dt><code>DHE-DSS</code></dt>
 <dt><code>ECDHE-RSA</code></dt>
 <dt><code>ECDHE-ECDSA</code></dt>
-<dt><code>DHE-DSS</code></dt>
 <dt><code>SRP-DSS</code></dt>
 <dt><code>SRP-RSA</code></dt>
 <dt><code>SRP</code></dt>
@@ -16925,9 +16936,8 @@ function then the client will not be asked to send a certificate.
 <p>This function will set the Diffie-Hellman parameters for a
 certificate server to use. These parameters will be used in
 Ephemeral Diffie-Hellman cipher suites.  Note that only a pointer
-to the parameters are stored in the certificate handle, so if you
-deallocate the parameters before the certificate is deallocated,
-you must change the parameters stored in the certificate first.
+to the parameters are stored in the certificate handle, so you
+must not deallocate the parameters before the certificate is deallocated.
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffile-1"></a>
@@ -20335,6 +20345,20 @@ The returned  <code>data</code> are allocated and must be released using <code>g
 an error code is returned.
 </p></dd></dl>
 
+<a name="gnutls_005fsession_005fget_005fdesc-1"></a>
+<h4 class="subheading">gnutls_session_get_desc</h4>
+<a name="gnutls_005fsession_005fget_005fdesc"></a><dl>
+<dt><a name="index-gnutls_005fsession_005fget_005fdesc"></a>Function: <em>char *</em> <strong>gnutls_session_get_desc</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a gnutls session
+</p>
+<p>This function returns a string describing the current session.
+The string is null terminated and allocated using <code>gnutls_malloc()</code> .
+</p>
+<p><strong>Returns:</strong> a description of the protocols and algorithms in the current session.
+</p>
+<p><strong>Since:</strong> 3.1.10
+</p></dd></dl>
+
 <a name="gnutls_005fsession_005fget_005fid-1"></a>
 <h4 class="subheading">gnutls_session_get_id</h4>
 <a name="gnutls_005fsession_005fget_005fid"></a><dl>
@@ -22101,11 +22125,10 @@ negative error value.
 <p><var>issuer</var>: is the certificate of a possible issuer
 </p>
 <p>This function will check if the given CRL was issued by the given
-issuer certificate.  It will return true (1) if the given CRL was
-issued by the given issuer, and false (0) if not.
+issuer certificate.  
 </p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
+<p><strong>Returns:</strong> true (1) if the given CRL was issued by the given issuer, 
+and false (0) if not.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrl_005fdeinit-1"></a>
@@ -22385,6 +22408,25 @@ encoded, depending on the certificate data.
 <p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the provided buffer is
 not long enough, and in that case the sizeof_buf will be updated
 with the required size, and 0 on success.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn2-1"></a>
+<h4 class="subheading">gnutls_x509_crl_get_issuer_dn2</h4>
+<a name="gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn2"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn2"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_issuer_dn2</strong> <em>(gnutls_x509_crl_t <var>crl</var>, gnutls_datum_t * <var>dn</var>)</em></dt>
+<dd><p><var>crl</var>: &ndash; undescribed &ndash;
+</p>
+<p><var>dn</var>: a pointer to a structure to hold the name
+</p>
+<p>This function will allocate buffer and copy the name of the CRL issuer.
+The name will be in the form &quot;C=xxxx,O=yyyy,CN=zzzz&quot; as
+described in RFC4514. The output string will be ASCII or UTF-8
+encoded, depending on the certificate data.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value. and a negative error code on error.
+</p>
+<p><strong>Since:</strong> 3.1.10
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn_005fby_005foid-1"></a>
@@ -22774,21 +22816,25 @@ negative error value.
 <a name="gnutls_005fx509_005fcrl_005fverify-1"></a>
 <h4 class="subheading">gnutls_x509_crl_verify</h4>
 <a name="gnutls_005fx509_005fcrl_005fverify"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrl_005fverify"></a>Function: <em>int</em> <strong>gnutls_x509_crl_verify</strong> <em>(gnutls_x509_crl_t <var>crl</var>, const gnutls_x509_crt_t * <var>CA_list</var>, int <var>CA_list_length</var>, unsigned int <var>flags</var>, unsigned int * <var>verify</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrl_005fverify"></a>Function: <em>int</em> <strong>gnutls_x509_crl_verify</strong> <em>(gnutls_x509_crl_t <var>crl</var>, const gnutls_x509_crt_t * <var>trusted_cas</var>, int <var>tcas_size</var>, unsigned int <var>flags</var>, unsigned int * <var>verify</var>)</em></dt>
 <dd><p><var>crl</var>: is the crl to be verified
 </p>
-<p><var>CA_list</var>: is a certificate list that is considered to be trusted one
+<p><var>trusted_cas</var>: is a certificate list that is considered to be trusted one
 </p>
-<p><var>CA_list_length</var>: holds the number of CA certificates in CA_list
+<p><var>tcas_size</var>: holds the number of CA certificates in CA_list
 </p>
 <p><var>flags</var>: Flags that may be used to change the verification algorithm. Use OR of the gnutls_certificate_verify_flags enumerations.
 </p>
 <p><var>verify</var>: will hold the crl verification output.
 </p>
-<p>This function will try to verify the given crl and return its status.
+<p>This function will try to verify the given crl and return its verification status.
 See <code>gnutls_x509_crt_list_verify()</code>  for a detailed description of
 return values. Note that since GnuTLS 3.1.4 this function includes
 the time checks.
+</p>
+<p>Note that value in  <code>verify</code> is set only when the return value of this 
+function is success (i.e, failure to trust a CRL a certificate does not imply 
+a negative return value).
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -23005,6 +23051,25 @@ data.
 <p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the provided buffer is not
 long enough, and in that case the * <code>buf_size</code> will be updated with
 the required size.  On success 0 is returned.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrq_005fget_005fdn2-1"></a>
+<h4 class="subheading">gnutls_x509_crq_get_dn2</h4>
+<a name="gnutls_005fx509_005fcrq_005fget_005fdn2"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn2"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn2</strong> <em>(gnutls_x509_crq_t <var>crq</var>, gnutls_datum_t * <var>dn</var>)</em></dt>
+<dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
+</p>
+<p><var>dn</var>: a pointer to a structure to hold the name
+</p>
+<p>This function will allocate buffer and copy the name of the Certificate 
+request. The name will be in the form &quot;C=xxxx,O=yyyy,CN=zzzz&quot; as
+described in RFC4514. The output string will be ASCII or UTF-8
+encoded, depending on the certificate data.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value. and a negative error code on error.
+</p>
+<p><strong>Since:</strong> 3.1.10
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid-1"></a>
@@ -23728,8 +23793,7 @@ given issuer. It checks the DN fields and the authority
 key identifier and subject key identifier fields match.
 </p>
 <p><strong>Returns:</strong> It will return true (1) if the given certificate is issued
-by the given issuer, and false (0) if not.  A negative error code is
-returned in case of an error.
+by the given issuer, and false (0) if not.  
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fcheck_005frevocation-1"></a>
@@ -24047,7 +24111,7 @@ returned.
 <a name="gnutls_005fx509_005fcrt_005fget_005fdn-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_dn</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fdn"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn-1"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn</strong> <em>(gnutls_x509_crt_t <var>cert</var>, char * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn</strong> <em>(gnutls_x509_crt_t <var>cert</var>, char * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the name (may be null)
@@ -24066,10 +24130,29 @@ long enough, and in that case the  <code>buf_size</code> will be updated
 with the required size.  On success 0 is returned.
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrt_005fget_005fdn2-1"></a>
+<h4 class="subheading">gnutls_x509_crt_get_dn2</h4>
+<a name="gnutls_005fx509_005fcrt_005fget_005fdn2"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn2-1"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn2</strong> <em>(gnutls_x509_crt_t <var>cert</var>, gnutls_datum_t * <var>dn</var>)</em></dt>
+<dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
+</p>
+<p><var>dn</var>: a pointer to a structure to hold the name
+</p>
+<p>This function will allocate buffer and copy the name of the Certificate.
+The name will be in the form &quot;C=xxxx,O=yyyy,CN=zzzz&quot; as
+described in RFC4514. The output string will be ASCII or UTF-8
+encoded, depending on the certificate data.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value. and a negative error code on error.
+</p>
+<p><strong>Since:</strong> 3.1.10
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_dn_by_oid</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid-1"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn_by_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn_by_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
 </p>
 <p><var>oid</var>: holds an Object Identified in null terminated string
@@ -24105,7 +24188,7 @@ are no data in the current index. On success 0 is returned.
 <a name="gnutls_005fx509_005fcrt_005fget_005fdn_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_dn_oid</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fdn_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn_005foid-1"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
 </p>
 <p><var>indx</var>: This specifies which OID to return. Use (0) to get the first one.
@@ -24419,6 +24502,25 @@ long enough, and in that case the  <code>buf_size</code> will be updated with
 the required size.  On success 0 is returned.
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn2-1"></a>
+<h4 class="subheading">gnutls_x509_crt_get_issuer_dn2</h4>
+<a name="gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn2"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn2"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_issuer_dn2</strong> <em>(gnutls_x509_crt_t <var>cert</var>, gnutls_datum_t * <var>dn</var>)</em></dt>
+<dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
+</p>
+<p><var>dn</var>: a pointer to a structure to hold the name
+</p>
+<p>This function will allocate buffer and copy the name of issuer of the Certificate.
+The name will be in the form &quot;C=xxxx,O=yyyy,CN=zzzz&quot; as
+described in RFC4514. The output string will be ASCII or UTF-8
+encoded, depending on the certificate data.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value. and a negative error code on error.
+</p>
+<p><strong>Since:</strong> 3.1.10
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_issuer_dn_by_oid</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005fby_005foid"></a><dl>
@@ -24709,10 +24811,10 @@ otherwise a negative error code is returned.
 <a name="gnutls_005fx509_005fcrt_005fget_005fraw_005fdn-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_raw_dn</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fraw_005fdn"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fraw_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_raw_dn</strong> <em>(gnutls_x509_crt_t <var>cert</var>, gnutls_datum_t * <var>start</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fraw_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_raw_dn</strong> <em>(gnutls_x509_crt_t <var>cert</var>, gnutls_datum_t * <var>dn</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
 </p>
-<p><var>start</var>: will hold the starting point of the DN
+<p><var>dn</var>: will hold the starting point of the DN
 </p>
 <p>This function will return a pointer to the DER encoded DN structure and
 the length. This points to allocated data that must be free&rsquo;d using <code>gnutls_free()</code> .
@@ -24724,10 +24826,10 @@ negative error value. or a negative error code on error.
 <a name="gnutls_005fx509_005fcrt_005fget_005fraw_005fissuer_005fdn-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_raw_issuer_dn</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fraw_005fissuer_005fdn"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fraw_005fissuer_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_raw_issuer_dn</strong> <em>(gnutls_x509_crt_t <var>cert</var>, gnutls_datum_t * <var>start</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fraw_005fissuer_005fdn"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_raw_issuer_dn</strong> <em>(gnutls_x509_crt_t <var>cert</var>, gnutls_datum_t * <var>dn</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
 </p>
-<p><var>start</var>: will hold the starting point of the DN
+<p><var>dn</var>: will hold the starting point of the DN
 </p>
 <p>This function will return a pointer to the DER encoded DN structure
 and the length. This points to allocated data that must be free&rsquo;d using <code>gnutls_free()</code> .
@@ -25159,7 +25261,7 @@ negative error value.
 </p>
 <p><var>id</var>: The key ID
 </p>
-<p><var>id_size</var>: Holds the size of the serial field.
+<p><var>id_size</var>: Holds the size of the key ID field.
 </p>
 <p>This function will set the X.509 certificate&rsquo;s authority key ID extension.
 Only the keyIdentifier field can be set with this function.
@@ -25580,27 +25682,6 @@ a big-endian positive number (i.e. it&rsquo;s leftmost bit should be zero).
 negative error value.
 </p></dd></dl>
 
-<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname-1"></a>
-<h4 class="subheading">gnutls_x509_crt_set_subject_alternative_name</h4>
-<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_alternative_name</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_subject_alt_name_t                                               <var>type</var>, const char * <var>data_string</var>)</em></dt>
-<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
-</p>
-<p><var>type</var>: is one of the gnutls_x509_subject_alt_name_t enumerations
-</p>
-<p><var>data_string</var>: The data to be set, a (0) terminated string
-</p>
-<p>This function will set the subject alternative name certificate
-extension. This function assumes that data can be expressed as a null
-terminated string.
-</p>
-<p>The name of the function is unfortunate since it is incosistent with
-<code>gnutls_x509_crt_get_subject_alt_name()</code> .
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname-1"></a>
 <h4 class="subheading">gnutls_x509_crt_set_subject_alt_name</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname"></a><dl>
@@ -25624,6 +25705,27 @@ negative error value.
 <p><strong>Since:</strong> 2.6.0
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_subject_alternative_name</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_alternative_name</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_subject_alt_name_t                                               <var>type</var>, const char * <var>data_string</var>)</em></dt>
+<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>type</var>: is one of the gnutls_x509_subject_alt_name_t enumerations
+</p>
+<p><var>data_string</var>: The data to be set, a (0) terminated string
+</p>
+<p>This function will set the subject alternative name certificate
+extension. This function assumes that data can be expressed as a null
+terminated string.
+</p>
+<p>The name of the function is unfortunate since it is incosistent with
+<code>gnutls_x509_crt_get_subject_alt_name()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005fkey_005fid-1"></a>
 <h4 class="subheading">gnutls_x509_crt_set_subject_key_id</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005fkey_005fid"></a><dl>
@@ -25632,7 +25734,7 @@ negative error value.
 </p>
 <p><var>id</var>: The key ID
 </p>
-<p><var>id_size</var>: Holds the size of the serial field.
+<p><var>id_size</var>: Holds the size of the subject key ID field.
 </p>
 <p>This function will set the X.509 certificate&rsquo;s subject key ID
 extension.
@@ -25718,7 +25820,8 @@ negative error value.
 <p><var>verify</var>: will hold the certificate verification output.
 </p>
 <p>This function will try to verify the given certificate and return
-its status.
+its status. Note that a verification error does not imply a negative
+return status. In that case the  <code>verify</code> status is set.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -26499,19 +26602,19 @@ negative error value.
 <a name="gnutls_005fx509_005frdn_005fget-1"></a>
 <h4 class="subheading">gnutls_x509_rdn_get</h4>
 <a name="gnutls_005fx509_005frdn_005fget"></a><dl>
-<dt><a name="index-gnutls_005fx509_005frdn_005fget"></a>Function: <em>int</em> <strong>gnutls_x509_rdn_get</strong> <em>(const gnutls_datum_t * <var>idn</var>, char * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005frdn_005fget"></a>Function: <em>int</em> <strong>gnutls_x509_rdn_get</strong> <em>(const gnutls_datum_t * <var>idn</var>, char * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>idn</var>: should contain a DER encoded RDN sequence
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the peer&rsquo;s name
 </p>
-<p><var>sizeof_buf</var>: holds the size of  <code>buf</code> 
+<p><var>buf_size</var>: holds the size of  <code>buf</code> 
 </p>
 <p>This function will return the name of the given RDN sequence.  The
 name will be in the form &quot;C=xxxx,O=yyyy,CN=zzzz&quot; as described in
 RFC4514.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, or
-<code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  is returned and * <code>sizeof_buf</code> is
+<code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  is returned and * <code>buf_size</code> is
 updated if the provided buffer is not long enough, otherwise a
 negative error value.
 </p></dd></dl>
@@ -26519,7 +26622,7 @@ negative error value.
 <a name="gnutls_005fx509_005frdn_005fget_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_rdn_get_by_oid</h4>
 <a name="gnutls_005fx509_005frdn_005fget_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005frdn_005fget_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_rdn_get_by_oid</strong> <em>(const gnutls_datum_t * <var>idn</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005frdn_005fget_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_rdn_get_by_oid</strong> <em>(const gnutls_datum_t * <var>idn</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>idn</var>: should contain a DER encoded RDN sequence
 </p>
 <p><var>oid</var>: an Object Identifier
@@ -26531,14 +26634,14 @@ to send. Use 0 for the first one.
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the peer&rsquo;s name
 </p>
-<p><var>sizeof_buf</var>: holds the size of  <code>buf</code> 
+<p><var>buf_size</var>: holds the size of  <code>buf</code> 
 </p>
 <p>This function will return the name of the given Object identifier,
 of the RDN sequence.  The name will be encoded using the rules
 from RFC4514.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, or
-<code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  is returned and * <code>sizeof_buf</code> is
+<code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  is returned and * <code>buf_size</code> is
 updated if the provided buffer is not long enough, otherwise a
 negative error value.
 </p></dd></dl>
@@ -26546,20 +26649,20 @@ negative error value.
 <a name="gnutls_005fx509_005frdn_005fget_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_rdn_get_oid</h4>
 <a name="gnutls_005fx509_005frdn_005fget_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005frdn_005fget_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_rdn_get_oid</strong> <em>(const gnutls_datum_t * <var>idn</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005frdn_005fget_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_rdn_get_oid</strong> <em>(const gnutls_datum_t * <var>idn</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>idn</var>: should contain a DER encoded RDN sequence
 </p>
 <p><var>indx</var>: Indicates which OID to return. Use 0 for the first one.
 </p>
 <p><var>buf</var>: a pointer to a structure to hold the peer&rsquo;s name OID
 </p>
-<p><var>sizeof_buf</var>: holds the size of  <code>buf</code> 
+<p><var>buf_size</var>: holds the size of  <code>buf</code> 
 </p>
 <p>This function will return the specified Object identifier, of the
 RDN sequence.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, or
-<code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  is returned and * <code>sizeof_buf</code> is
+<code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  is returned and * <code>buf_size</code> is
 updated if the provided buffer is not long enough, otherwise a
 negative error value.
 </p>
@@ -26761,6 +26864,61 @@ negative error value.
 negative error value.
 </p>
 <p><strong>Since:</strong> 3.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005ftrust_005flist_005fremove_005fcas-1"></a>
+<h4 class="subheading">gnutls_x509_trust_list_remove_cas</h4>
+<a name="gnutls_005fx509_005ftrust_005flist_005fremove_005fcas"></a><dl>
+<dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fremove_005fcas"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_remove_cas</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const gnutls_x509_crt_t * <var>clist</var>, int <var>clist_size</var>)</em></dt>
+<dd><p><var>list</var>: The structure of the list
+</p>
+<p><var>clist</var>: A list of CAs
+</p>
+<p><var>clist_size</var>: The length of the CA list
+</p>
+<p>This function will remove the given certificate authorities
+from the trusted list. 
+</p>
+<p><strong>Returns:</strong> The number of removed elements is returned.
+</p>
+<p><strong>Since:</strong> 3.1.10
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005ftrust_005flist_005fremove_005ftrust_005ffile-1"></a>
+<h4 class="subheading">gnutls_x509_trust_list_remove_trust_file</h4>
+<a name="gnutls_005fx509_005ftrust_005flist_005fremove_005ftrust_005ffile"></a><dl>
+<dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fremove_005ftrust_005ffile"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_remove_trust_file</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const char* <var>ca_file</var>, gnutls_x509_crt_fmt_t <var>type</var>)</em></dt>
+<dd><p><var>list</var>: The structure of the list
+</p>
+<p><var>ca_file</var>: A file containing a list of CAs
+</p>
+<p><var>type</var>: The format of the certificates
+</p>
+<p>This function will add the given certificate authorities
+to the trusted list. pkcs11 URLs are also accepted, instead
+of files, by this function.
+</p>
+<p><strong>Returns:</strong> The number of added elements is returned.
+</p>
+<p><strong>Since:</strong> 3.1.10
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005ftrust_005flist_005fremove_005ftrust_005fmem-1"></a>
+<h4 class="subheading">gnutls_x509_trust_list_remove_trust_mem</h4>
+<a name="gnutls_005fx509_005ftrust_005flist_005fremove_005ftrust_005fmem"></a><dl>
+<dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fremove_005ftrust_005fmem"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_remove_trust_mem</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const gnutls_datum_t * <var>cas</var>, gnutls_x509_crt_fmt_t <var>type</var>)</em></dt>
+<dd><p><var>list</var>: The structure of the list
+</p>
+<p><var>cas</var>: A buffer containing a list of CAs (optional)
+</p>
+<p><var>type</var>: The format of the certificates
+</p>
+<p>This function will add the given certificate authorities
+to the trusted list. 
+</p>
+<p><strong>Returns:</strong> The number of added elements is returned.
+</p>
+<p><strong>Since:</strong> 3.1.10
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005ftrust_005flist_005fverify_005fcrt-1"></a>
@@ -28773,6 +28931,8 @@ otherwise a negative error code is returned.
 <p>This funtion will set a key retrieval function for OpenPGP keys. This
 callback is only useful in server side, and will be used if the peer
 sent a key fingerprint instead of a full key.
+</p>
+<p>The retrieved key must be allocated using <code>gnutls_malloc()</code> .
 </p></dd></dl>
 
 
@@ -30425,6 +30585,9 @@ success, or a negative error code on error.
 <code>gnutls_privkey_t</code>  structure. At least one of the two callbacks
 must be non-null.
 </p>
+<p>Note that the signing function is supposed to &quot;raw&quot; sign data, i.e.,
+without any hashing or preprocessing.
+</p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
 </p>
@@ -30453,6 +30616,9 @@ negative error value.
 <code>gnutls_privkey_t</code>  structure. At least one of the two callbacks
 must be non-null. If a deinitialization function is provided
 then flags is assumed to contain <code>GNUTLS_PRIVKEY_IMPORT_AUTO_RELEASE</code> .
+</p>
+<p>Note that the signing function is supposed to &quot;raw&quot; sign data, i.e.,
+without any hashing or preprocessing.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -30770,6 +30936,47 @@ negative error value.
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
 
+<a name="gnutls_005fprivkey_005fsign_005fraw_005fdata-1"></a>
+<h4 class="subheading">gnutls_privkey_sign_raw_data</h4>
+<a name="gnutls_005fprivkey_005fsign_005fraw_005fdata"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fsign_005fraw_005fdata"></a>Function: <em>int</em> <strong>gnutls_privkey_sign_raw_data</strong> <em>(gnutls_privkey_t <var>key</var>, unsigned <var>flags</var>, const gnutls_datum_t * <var>data</var>, gnutls_datum_t * <var>signature</var>)</em></dt>
+<dd><p><var>key</var>: Holds the key
+</p>
+<p><var>flags</var>: should be zero
+</p>
+<p><var>data</var>: holds the data to be signed
+</p>
+<p><var>signature</var>: will contain the signature allocate with <code>gnutls_malloc()</code> 
+</p>
+<p>This function will sign the given data using a signature algorithm
+supported by the private key. Note that this is a low-level function
+and does not apply any preprocessing or hash on the signed data. 
+For example on an RSA key the input  <code>data</code> should be of the DigestInfo
+PKCS <code>1</code>  1.5 format. Use it only if you know what are you doing.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.1.10
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fstatus-1"></a>
+<h4 class="subheading">gnutls_privkey_status</h4>
+<a name="gnutls_005fprivkey_005fstatus"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fstatus"></a>Function: <em>int</em> <strong>gnutls_privkey_status</strong> <em>(gnutls_privkey_t <var>key</var>)</em></dt>
+<dd><p><var>key</var>: Holds the key
+</p>
+<p>Checks the status of the private key token. This function
+is an actual wrapper over <code>gnutls_pkcs11_privkey_status()</code> , and
+if the private key is a PKCS <code>11</code>  token it will check whether
+it is inserted or not.
+</p>
+<p><strong>Returns:</strong> this function will return non-zero if the token 
+holding the private key is still available (inserted), and zero otherwise.
+</p>
+<p><strong>Since:</strong> 3.1.10
+</p></dd></dl>
+
 <a name="gnutls_005fpubkey_005fdeinit-1"></a>
 <h4 class="subheading">gnutls_pubkey_deinit</h4>
 <a name="gnutls_005fpubkey_005fdeinit"></a><dl>
@@ -30907,7 +31114,7 @@ negative error value.
 <dt><a name="index-gnutls_005fpubkey_005fget_005fopenpgp_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_openpgp_key_id</strong> <em>(gnutls_pubkey_t <var>key</var>, unsigned int <var>flags</var>, unsigned char * <var>output_data</var>, size_t * <var>output_data_size</var>, unsigned int * <var>subkey</var>)</em></dt>
 <dd><p><var>key</var>: Holds the public key
 </p>
-<p><var>flags</var>: should be 0 for now
+<p><var>flags</var>: should be 0 or <code>GNUTLS_PUBKEY_GET_OPENPGP_FINGERPRINT</code> 
 </p>
 <p><var>output_data</var>: will contain the key ID
 </p>
@@ -30916,9 +31123,12 @@ replaced by the actual size of parameters)
 </p>
 <p><var>subkey</var>: Will be non zero if the key ID corresponds to a subkey
 </p>
-<p>This function returned the OpenPGP key ID of the corresponding key.
+<p>This function returns the OpenPGP key ID of the corresponding key.
 The key is a unique ID that depends on the public
 key parameters. 
+</p>
+<p>If the flag <code>GNUTLS_PUBKEY_GET_OPENPGP_FINGERPRINT</code>  is specified
+this function returns the fingerprint of the master key.
 </p>
 <p>If the buffer provided is not long enough to hold the output, then
 *output_data_size is updated and <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  will
@@ -31909,7 +32119,7 @@ negative error value.
 </p>
 <p><var>sflags</var>: Flags for the the initialization of  <code>s</code> (if NULL)
 </p>
-<p><var>vflags</var>: Verification flags; should be zero
+<p><var>vflags</var>: Verification flags; an OR&rsquo;ed list of <code>dane_verify_flags_t</code> .
 </p>
 <p><var>verify</var>: An OR&rsquo;ed list of <code>dane_verify_status_t</code> .
 </p>
@@ -33594,6 +33804,13 @@ Security (TLS) Renegotiation Indication Extension&quot;, February 2010,
 available from <a href="http://www.ietf.org/rfc/rfc5746">http://www.ietf.org/rfc/rfc5746</a>.
 </p>
 </dd>
+<dt><a name="RFC5280"></a>[RFC5280]</dt>
+<dd><p>D. Cooper, S. Santesson, S. Farrell, S. Boeyen, R. Housley, and
+W. Polk, &quot;Internet X.509 Public Key Infrastructure Certificate and
+Certificate Revocation List (CRL) Profile&quot;, May 2008, available from
+<a href="http://www.ietf.org/rfc/rfc5280">http://www.ietf.org/rfc/rfc5280</a>.
+</p>
+</dd>
 <dt><a name="TLSTKT"></a>[TLSTKT]</dt>
 <dd><p>Joseph Salowey, Hao Zhou, Pasi Eronen, Hannes Tschofenig, &quot;Transport
 Layer Security (TLS) Session Resumption without Server-Side State&quot;,
@@ -34212,6 +34429,8 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fprivkey_005fsign_005fdata-1"><code>gnutls_privkey_sign_data</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Abstract-key-API">Abstract key API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fprivkey_005fsign_005fhash"><code>gnutls_privkey_sign_hash</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Operations">Operations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fprivkey_005fsign_005fhash-1"><code>gnutls_privkey_sign_hash</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Abstract-key-API">Abstract key API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fprivkey_005fsign_005fraw_005fdata"><code>gnutls_privkey_sign_raw_data</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Abstract-key-API">Abstract key API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fprivkey_005fstatus"><code>gnutls_privkey_status</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Abstract-key-API">Abstract key API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fprotocol_005fget_005fid"><code>gnutls_protocol_get_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fprotocol_005fget_005fname"><code>gnutls_protocol_get_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fprotocol_005fget_005fversion"><code>gnutls_protocol_get_version</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -34325,6 +34544,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fforce_005fvalid"><code>gnutls_session_force_valid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fget_005fdata"><code>gnutls_session_get_data</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fget_005fdata2"><code>gnutls_session_get_data2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fget_005fdesc"><code>gnutls_session_get_desc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fget_005fid"><code>gnutls_session_get_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fget_005fid2"><code>gnutls_session_get_id2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fget_005fptr"><code>gnutls_session_get_ptr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -34439,6 +34659,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrl_005fget_005fextension_005finfo"><code>gnutls_x509_crl_get_extension_info</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrl_005fget_005fextension_005foid"><code>gnutls_x509_crl_get_extension_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn"><code>gnutls_x509_crl_get_issuer_dn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn2"><code>gnutls_x509_crl_get_issuer_dn2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn_005fby_005foid"><code>gnutls_x509_crl_get_issuer_dn_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrl_005fget_005fnext_005fupdate"><code>gnutls_x509_crl_get_next_update</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrl_005fget_005fnumber"><code>gnutls_x509_crl_get_number</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
@@ -34474,6 +34695,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fget_005fbasic_005fconstraints"><code>gnutls_x509_crq_get_basic_constraints</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fget_005fchallenge_005fpassword"><code>gnutls_x509_crq_get_challenge_password</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fget_005fdn"><code>gnutls_x509_crq_get_dn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fget_005fdn2"><code>gnutls_x509_crq_get_dn2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid"><code>gnutls_x509_crq_get_dn_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fget_005fdn_005foid"><code>gnutls_x509_crq_get_dn_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid"><code>gnutls_x509_crq_get_extension_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
@@ -34525,12 +34747,11 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fbasic_005fconstraints"><code>gnutls_x509_crt_get_basic_constraints</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fca_005fstatus"><code>gnutls_x509_crt_get_ca_status</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fcrl_005fdist_005fpoints"><code>gnutls_x509_crt_get_crl_dist_points</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fdn"><code>gnutls_x509_crt_get_dn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X_002e509-distinguished-names">X.509 distinguished names</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fdn-1"><code>gnutls_x509_crt_get_dn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid"><code>gnutls_x509_crt_get_dn_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X_002e509-distinguished-names">X.509 distinguished names</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid-1"><code>gnutls_x509_crt_get_dn_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fdn_005foid"><code>gnutls_x509_crt_get_dn_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X_002e509-distinguished-names">X.509 distinguished names</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fdn_005foid-1"><code>gnutls_x509_crt_get_dn_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fdn"><code>gnutls_x509_crt_get_dn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fdn2"><code>gnutls_x509_crt_get_dn2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X_002e509-distinguished-names">X.509 distinguished names</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fdn2-1"><code>gnutls_x509_crt_get_dn2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid"><code>gnutls_x509_crt_get_dn_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fdn_005foid"><code>gnutls_x509_crt_get_dn_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fexpiration_005ftime"><code>gnutls_x509_crt_get_expiration_time</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid"><code>gnutls_x509_crt_get_extension_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fextension_005fdata"><code>gnutls_x509_crt_get_extension_data</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
@@ -34542,6 +34763,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fissuer_005falt_005fname2"><code>gnutls_x509_crt_get_issuer_alt_name2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fissuer_005falt_005fothername_005foid"><code>gnutls_x509_crt_get_issuer_alt_othername_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn"><code>gnutls_x509_crt_get_issuer_dn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn2"><code>gnutls_x509_crt_get_issuer_dn2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005fby_005foid"><code>gnutls_x509_crt_get_issuer_dn_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005foid"><code>gnutls_x509_crt_get_issuer_dn_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fissuer_005funique_005fid"><code>gnutls_x509_crt_get_issuer_unique_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
@@ -34672,6 +34894,9 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fdeinit"><code>gnutls_x509_trust_list_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fget_005fissuer"><code>gnutls_x509_trust_list_get_issuer</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005finit"><code>gnutls_x509_trust_list_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fremove_005fcas"><code>gnutls_x509_trust_list_remove_cas</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fremove_005ftrust_005ffile"><code>gnutls_x509_trust_list_remove_trust_file</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fremove_005ftrust_005fmem"><code>gnutls_x509_trust_list_remove_trust_mem</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fverify_005fcrt"><code>gnutls_x509_trust_list_verify_crt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Verifying-X_002e509-certificate-paths">Verifying X.509 certificate paths</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fverify_005fcrt-1"><code>gnutls_x509_trust_list_verify_crt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fverify_005fnamed_005fcrt"><code>gnutls_x509_trust_list_verify_named_crt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Verifying-X_002e509-certificate-paths">Verifying X.509 certificate paths</a></td></tr>
@@ -34948,48 +35173,44 @@ Previous: <a href="#Function-and-Data-Index" accesskey="p" rel="previous">Functi
 <h4 class="footnotes-heading">Footnotes</h4>
 
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
-<p><a href="http://www.gnu.org/software/libtasn1/">http://www.gnu.org/software/libtasn1/</a></p>
-<h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
-<p><a href="http://www.lysator.liu.se/~nisse/nettle/">http://www.lysator.liu.se/~nisse/nettle/</a></p>
-<h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
 <p>IETF, or Internet Engineering Task Force,
 is a large open international community of network designers,
 operators, vendors, and researchers concerned with the evolution of
 the Internet architecture and the smooth operation of the Internet.
 It is open to any interested individual.</p>
-<h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
+<h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
 <p>If this is not possible then please consult <a href="#Interoperability">Interoperability</a>.</p>
-<h3><a name="FOOT5" href="#DOCF5">(5)</a></h3>
+<h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
 <p>MAC stands for Message Authentication Code. It can be described as a keyed hash algorithm. See RFC2104.</p>
-<h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
+<h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
 <p>See also the Server Name Indication extension on
 <a href="#serverind">serverind</a>.</p>
-<h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
+<h3><a name="FOOT5" href="#DOCF5">(5)</a></h3>
 <p>See LDAP, IMAP etc.</p>
-<h3><a name="FOOT8" href="#DOCF8">(8)</a></h3>
+<h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
 <p><a href="http://www.gnupg.org/related_software/gpgme/">http://www.gnupg.org/related_software/gpgme/</a></p>
-<h3><a name="FOOT9" href="#DOCF9">(9)</a></h3>
+<h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
 <p><a href="http://www.opensc-project.org">http://www.opensc-project.org</a></p>
-<h3><a name="FOOT10" href="#DOCF10">(10)</a></h3>
+<h3><a name="FOOT8" href="#DOCF8">(8)</a></h3>
 <p><a href="http://p11-glue.freedesktop.org/">http://p11-glue.freedesktop.org/</a></p>
-<h3><a name="FOOT11" href="#DOCF11">(11)</a></h3>
+<h3><a name="FOOT9" href="#DOCF9">(9)</a></h3>
 <p>The first message in a <acronym>TLS</acronym> handshake</p>
-<h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
+<h3><a name="FOOT10" href="#DOCF10">(10)</a></h3>
 <p>A key of 128 bits or 16 bytes should be sufficient for this purpose.</p>
-<h3><a name="FOOT13" href="#DOCF13">(13)</a></h3>
+<h3><a name="FOOT11" href="#DOCF11">(11)</a></h3>
 <p>Except for the RSA-EXPORT which is only enabled in
 EXPORT level.</p>
-<h3><a name="FOOT14" href="#DOCF14">(14)</a></h3>
+<h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
 <p>It depends on the group used.  Primes with
 lesser bits are always faster, but also easier to break.  See <a href="#Selecting-cryptographic-key-sizes">Selecting cryptographic key sizes</a>
 for the acceptable security levels.</p>
-<h3><a name="FOOT15" href="#DOCF15">(15)</a></h3>
+<h3><a name="FOOT13" href="#DOCF13">(13)</a></h3>
 <p>such as the
 <code>gnutls_certificate_credentials_t</code> structures</p>
-<h3><a name="FOOT16" href="#DOCF16">(16)</a></h3>
+<h3><a name="FOOT14" href="#DOCF14">(14)</a></h3>
 <p>See
 <a href="http://lists.gnu.org/archive/html/gnutls-devel/2011-02/msg00079.html">http://lists.gnu.org/archive/html/gnutls-devel/2011-02/msg00079.html</a>.</p>
-<h3><a name="FOOT17" href="#DOCF17">(17)</a></h3>
+<h3><a name="FOOT15" href="#DOCF15">(15)</a></h3>
 <p>Check <a href="http://home.gna.org/cryptodev-linux/">http://home.gna.org/cryptodev-linux/</a> 
 for the Linux kernel implementation of <code>/dev/crypto</code>.</p>
 </div>

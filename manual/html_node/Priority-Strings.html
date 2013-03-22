@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.1.9 of GnuTLS.
+<!-- This manual is last updated 21 March 2013 for version
+3.1.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.9: Priority Strings</title>
+<title>GnuTLS 3.1.10: Priority Strings</title>
 
-<meta name="description" content="GnuTLS 3.1.9: Priority Strings">
-<meta name="keywords" content="GnuTLS 3.1.9: Priority Strings">
+<meta name="description" content="GnuTLS 3.1.10: Priority Strings">
+<meta name="keywords" content="GnuTLS 3.1.10: Priority Strings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -211,7 +211,7 @@ compression NULL; for certificate types X.509.
 In key exchange algorithms when in NORMAL or SECURE levels the
 perfect forward secrecy algorithms take precedence of the other
 protocols.  In all cases all the supported key exchange algorithms
-are enabled<a name="DOCF13" href="#FOOT13"><sup>13</sup></a>.
+are enabled<a name="DOCF11" href="#FOOT11"><sup>11</sup></a>.
 </p>
 <p>Note that the SECURE levels distinguish between overall security level and
 message authenticity security level. That is because the message
@@ -270,7 +270,7 @@ is SIGN-ALL. This is only valid for TLS 1.2 and later.</td></tr>
 
 <div class="float-caption"><p><strong>Table 6.3: </strong>The supported algorithm keywords in priority strings.</p></div></div>
 <p>Note that the DHE key exchange methods are generally
-slower<a name="DOCF14" href="#FOOT14"><sup>14</sup></a> than their elliptic curves counterpart
+slower<a name="DOCF12" href="#FOOT12"><sup>12</sup></a> than their elliptic curves counterpart
 (ECDHE). Moreover the plain Diffie-Hellman key exchange
 requires parameters to be generated and associated with a credentials
 structure by the server (see <a href="Parameter-generation.html#Parameter-generation">Parameter generation</a>). 
@@ -354,10 +354,10 @@ except TLS 1.2:
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT13" href="#DOCF13">(13)</a></h3>
+<h3><a name="FOOT11" href="#DOCF11">(11)</a></h3>
 <p>Except for the RSA-EXPORT which is only enabled in
 EXPORT level.</p>
-<h3><a name="FOOT14" href="#DOCF14">(14)</a></h3>
+<h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
 <p>It depends on the group used.  Primes with
 lesser bits are always faster, but also easier to break.  See <a href="Selecting-cryptographic-key-sizes.html#Selecting-cryptographic-key-sizes">Selecting cryptographic key sizes</a>
 for the acceptable security levels.</p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.1.9 of GnuTLS.
+<!-- This manual is last updated 21 March 2013 for version
+3.1.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.9: Abstract key API</title>
+<title>GnuTLS 3.1.10: Abstract key API</title>
 
-<meta name="description" content="GnuTLS 3.1.9: Abstract key API">
-<meta name="keywords" content="GnuTLS 3.1.9: Abstract key API">
+<meta name="description" content="GnuTLS 3.1.10: Abstract key API">
+<meta name="keywords" content="GnuTLS 3.1.10: Abstract key API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -450,6 +450,9 @@ success, or a negative error code on error.
 <code>gnutls_privkey_t</code>  structure. At least one of the two callbacks
 must be non-null.
 </p>
+<p>Note that the signing function is supposed to &quot;raw&quot; sign data, i.e.,
+without any hashing or preprocessing.
+</p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
 </p>
@@ -478,6 +481,9 @@ negative error value.
 <code>gnutls_privkey_t</code>  structure. At least one of the two callbacks
 must be non-null. If a deinitialization function is provided
 then flags is assumed to contain <code>GNUTLS_PRIVKEY_IMPORT_AUTO_RELEASE</code> .
+</p>
+<p>Note that the signing function is supposed to &quot;raw&quot; sign data, i.e.,
+without any hashing or preprocessing.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -795,6 +801,47 @@ negative error value.
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
 
+<a name="gnutls_005fprivkey_005fsign_005fraw_005fdata-1"></a>
+<h4 class="subheading">gnutls_privkey_sign_raw_data</h4>
+<a name="gnutls_005fprivkey_005fsign_005fraw_005fdata"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fsign_005fraw_005fdata"></a>Function: <em>int</em> <strong>gnutls_privkey_sign_raw_data</strong> <em>(gnutls_privkey_t <var>key</var>, unsigned <var>flags</var>, const gnutls_datum_t * <var>data</var>, gnutls_datum_t * <var>signature</var>)</em></dt>
+<dd><p><var>key</var>: Holds the key
+</p>
+<p><var>flags</var>: should be zero
+</p>
+<p><var>data</var>: holds the data to be signed
+</p>
+<p><var>signature</var>: will contain the signature allocate with <code>gnutls_malloc()</code> 
+</p>
+<p>This function will sign the given data using a signature algorithm
+supported by the private key. Note that this is a low-level function
+and does not apply any preprocessing or hash on the signed data. 
+For example on an RSA key the input  <code>data</code> should be of the DigestInfo
+PKCS <code>1</code>  1.5 format. Use it only if you know what are you doing.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.1.10
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fstatus-1"></a>
+<h4 class="subheading">gnutls_privkey_status</h4>
+<a name="gnutls_005fprivkey_005fstatus"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fstatus"></a>Function: <em>int</em> <strong>gnutls_privkey_status</strong> <em>(gnutls_privkey_t <var>key</var>)</em></dt>
+<dd><p><var>key</var>: Holds the key
+</p>
+<p>Checks the status of the private key token. This function
+is an actual wrapper over <code>gnutls_pkcs11_privkey_status()</code> , and
+if the private key is a PKCS <code>11</code>  token it will check whether
+it is inserted or not.
+</p>
+<p><strong>Returns:</strong> this function will return non-zero if the token 
+holding the private key is still available (inserted), and zero otherwise.
+</p>
+<p><strong>Since:</strong> 3.1.10
+</p></dd></dl>
+
 <a name="gnutls_005fpubkey_005fdeinit-1"></a>
 <h4 class="subheading">gnutls_pubkey_deinit</h4>
 <a name="gnutls_005fpubkey_005fdeinit"></a><dl>
@@ -932,7 +979,7 @@ negative error value.
 <dt><a name="index-gnutls_005fpubkey_005fget_005fopenpgp_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_openpgp_key_id</strong> <em>(gnutls_pubkey_t <var>key</var>, unsigned int <var>flags</var>, unsigned char * <var>output_data</var>, size_t * <var>output_data_size</var>, unsigned int * <var>subkey</var>)</em></dt>
 <dd><p><var>key</var>: Holds the public key
 </p>
-<p><var>flags</var>: should be 0 for now
+<p><var>flags</var>: should be 0 or <code>GNUTLS_PUBKEY_GET_OPENPGP_FINGERPRINT</code> 
 </p>
 <p><var>output_data</var>: will contain the key ID
 </p>
@@ -941,9 +988,12 @@ replaced by the actual size of parameters)
 </p>
 <p><var>subkey</var>: Will be non zero if the key ID corresponds to a subkey
 </p>
-<p>This function returned the OpenPGP key ID of the corresponding key.
+<p>This function returns the OpenPGP key ID of the corresponding key.
 The key is a unique ID that depends on the public
 key parameters. 
+</p>
+<p>If the flag <code>GNUTLS_PUBKEY_GET_OPENPGP_FINGERPRINT</code>  is specified
+this function returns the fingerprint of the master key.
 </p>
 <p>If the buffer provided is not long enough to hold the output, then
 *output_data_size is updated and <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  will

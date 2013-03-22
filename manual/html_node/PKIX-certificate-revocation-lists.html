@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.1.9 of GnuTLS.
+<!-- This manual is last updated 21 March 2013 for version
+3.1.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.9: PKIX certificate revocation lists</title>
+<title>GnuTLS 3.1.10: PKIX certificate revocation lists</title>
 
-<meta name="description" content="GnuTLS 3.1.9: PKIX certificate revocation lists">
-<meta name="keywords" content="GnuTLS 3.1.9: PKIX certificate revocation lists">
+<meta name="description" content="GnuTLS 3.1.10: PKIX certificate revocation lists">
+<meta name="keywords" content="GnuTLS 3.1.10: PKIX certificate revocation lists">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -232,11 +232,11 @@ negative error value. and a negative error code on error.
 <dl compact="compact">
 <dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrl_005fget_005fversion">gnutls_x509_crl_get_version</a> (gnutls_x509_crl_t <var>crl</var>)</code></dt>
 <dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn">gnutls_x509_crl_get_issuer_dn</a> (const gnutls_x509_crl_t <var>crl</var>, char * <var>buf</var>, size_t * <var>sizeof_buf</var>)</code></dt>
+<dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn2">gnutls_x509_crl_get_issuer_dn2</a> (gnutls_x509_crl_t <var>crl</var>, gnutls_datum_t * <var>dn</var>)</code></dt>
 <dt><code><var>time_t</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrl_005fget_005fthis_005fupdate">gnutls_x509_crl_get_this_update</a> (gnutls_x509_crl_t <var>crl</var>)</code></dt>
 <dt><code><var>time_t</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrl_005fget_005fnext_005fupdate">gnutls_x509_crl_get_next_update</a> (gnutls_x509_crl_t <var>crl</var>)</code></dt>
 <dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrl_005fget_005fcrt_005fcount">gnutls_x509_crl_get_crt_count</a> (gnutls_x509_crl_t <var>crl</var>)</code></dt>
 </dl>
-
 
 <a name="Generation-of-a-CRL"></a>
 <h4 class="subsubheading">Generation of a CRL</h4>

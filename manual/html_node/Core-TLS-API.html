@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.1.9 of GnuTLS.
+<!-- This manual is last updated 21 March 2013 for version
+3.1.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.9: Core TLS API</title>
+<title>GnuTLS 3.1.10: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.1.9: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.1.9: Core TLS API">
+<meta name="description" content="GnuTLS 3.1.10: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.1.10: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -653,9 +653,8 @@ function then the client will not be asked to send a certificate.
 <p>This function will set the Diffie-Hellman parameters for a
 certificate server to use. These parameters will be used in
 Ephemeral Diffie-Hellman cipher suites.  Note that only a pointer
-to the parameters are stored in the certificate handle, so if you
-deallocate the parameters before the certificate is deallocated,
-you must change the parameters stored in the certificate first.
+to the parameters are stored in the certificate handle, so you
+must not deallocate the parameters before the certificate is deallocated.
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffile-1"></a>
@@ -4061,6 +4060,20 @@ The returned  <code>data</code> are allocated and must be released using <code>g
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
+</p></dd></dl>
+
+<a name="gnutls_005fsession_005fget_005fdesc-1"></a>
+<h4 class="subheading">gnutls_session_get_desc</h4>
+<a name="gnutls_005fsession_005fget_005fdesc"></a><dl>
+<dt><a name="index-gnutls_005fsession_005fget_005fdesc"></a>Function: <em>char *</em> <strong>gnutls_session_get_desc</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a gnutls session
+</p>
+<p>This function returns a string describing the current session.
+The string is null terminated and allocated using <code>gnutls_malloc()</code> .
+</p>
+<p><strong>Returns:</strong> a description of the protocols and algorithms in the current session.
+</p>
+<p><strong>Since:</strong> 3.1.10
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fget_005fid-1"></a>
