@@ -3,7 +3,7 @@
 <id>http://www.gnu.org/software/gnutls/news.atom</id>
 <link href="http://www.gnu.org/software/gnutls/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2013-05-10T18:41:16+00:00</updated>
+<updated>2013-05-10T19:58:44+00:00</updated>
 
   <entry>
     <id>http://www.gnu.org/software/gnutls/news.html#2013-05-10</id>
@@ -18,7 +18,7 @@
 
 <p>
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6723">GnuTLS
-3.1.11</a> was released. and <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6725">GnuTLS
+3.1.11</a>, and <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6725">GnuTLS
 3.2.0</a> were released.
 </p>
 
