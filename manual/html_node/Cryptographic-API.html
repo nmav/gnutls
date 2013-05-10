@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 21 March 2013 for version
-3.1.10 of GnuTLS.
+<!-- This manual is last updated 24 April 2013 for version
+3.2.0 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.10: Cryptographic API</title>
+<title>GnuTLS 3.2.0: Cryptographic API</title>
 
-<meta name="description" content="GnuTLS 3.1.10: Cryptographic API">
-<meta name="keywords" content="GnuTLS 3.1.10: Cryptographic API">
+<meta name="description" content="GnuTLS 3.2.0: Cryptographic API">
+<meta name="keywords" content="GnuTLS 3.2.0: Cryptographic API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -293,6 +293,31 @@ specified by the context.
 <p><strong>Since:</strong> 2.10.0
 </p></dd></dl>
 
+<a name="gnutls_005fcipher_005fget_005fiv_005fsize-1"></a>
+<h4 class="subheading">gnutls_cipher_get_iv_size</h4>
+<a name="gnutls_005fcipher_005fget_005fiv_005fsize"></a><dl>
+<dt><a name="index-gnutls_005fcipher_005fget_005fiv_005fsize"></a>Function: <em>int</em> <strong>gnutls_cipher_get_iv_size</strong> <em>(gnutls_cipher_algorithm_t <var>algorithm</var>)</em></dt>
+<dd><p><var>algorithm</var>: is an encryption algorithm
+</p>
+<p>Get block size for encryption algorithm.
+</p>
+<p><strong>Returns:</strong> block size for encryption algorithm.
+</p>
+<p><strong>Since:</strong> 3.2.0
+</p></dd></dl>
+
+<a name="gnutls_005fcipher_005fget_005fkey_005fsize-1"></a>
+<h4 class="subheading">gnutls_cipher_get_key_size</h4>
+<a name="gnutls_005fcipher_005fget_005fkey_005fsize"></a><dl>
+<dt><a name="index-gnutls_005fcipher_005fget_005fkey_005fsize"></a>Function: <em>size_t</em> <strong>gnutls_cipher_get_key_size</strong> <em>(gnutls_cipher_algorithm_t <var>algorithm</var>)</em></dt>
+<dd><p><var>algorithm</var>: is an encryption algorithm
+</p>
+<p>Get key size for cipher.
+</p>
+<p><strong>Returns:</strong> length (in bytes) of the given cipher&rsquo;s key size, or 0 if
+the given cipher is invalid.
+</p></dd></dl>
+
 <a name="gnutls_005fcipher_005finit-1"></a>
 <h4 class="subheading">gnutls_cipher_init</h4>
 <a name="gnutls_005fcipher_005finit"></a><dl>
@@ -442,7 +467,8 @@ accelerator in use.
 </p>
 <p><var>digest</var>: is the output value of the hash
 </p>
-<p>This function will output the current hash value.
+<p>This function will output the current hash value
+and reset the state of the hash.
 </p>
 <p><strong>Since:</strong> 2.10.0
 </p></dd></dl>
@@ -534,6 +560,9 @@ produce a Message Authentication Code (MAC) of data.  This will
 effectively use the current crypto backend in use by gnutls or the
 cryptographic accelerator in use.
 </p>
+<p>Note that despite the name of this function, it can be used
+for other MAC algorithms than HMAC.
+</p>
 <p><strong>Returns:</strong> Zero or a negative error code on error.
 </p>
 <p><strong>Since:</strong> 2.10.0
@@ -547,9 +576,50 @@ cryptographic accelerator in use.
 </p>
 <p><var>digest</var>: is the output value of the MAC
 </p>
-<p>This function will output the current MAC value.
+<p>This function will output the current MAC value
+and reset the state of the MAC.
 </p>
 <p><strong>Since:</strong> 2.10.0
+</p></dd></dl>
+
+<a name="gnutls_005fhmac_005fset_005fnonce-1"></a>
+<h4 class="subheading">gnutls_hmac_set_nonce</h4>
+<a name="gnutls_005fhmac_005fset_005fnonce"></a><dl>
+<dt><a name="index-gnutls_005fhmac_005fset_005fnonce"></a>Function: <em>void</em> <strong>gnutls_hmac_set_nonce</strong> <em>(gnutls_hmac_hd_t <var>handle</var>, const void * <var>nonce</var>, size_t <var>nonce_len</var>)</em></dt>
+<dd><p><var>handle</var>: is a <code>gnutls_cipher_hd_t</code>  structure.
+</p>
+<p><var>nonce</var>: the data to set as nonce
+</p>
+<p><var>nonce_len</var>: The length of data
+</p>
+<p>This function will set the nonce in the MAC algorithm.
+</p>
+<p><strong>Since:</strong> 3.2.0
+</p></dd></dl>
+
+<a name="gnutls_005fmac_005fget_005fkey_005fsize-1"></a>
+<h4 class="subheading">gnutls_mac_get_key_size</h4>
+<a name="gnutls_005fmac_005fget_005fkey_005fsize"></a><dl>
+<dt><a name="index-gnutls_005fmac_005fget_005fkey_005fsize"></a>Function: <em>size_t</em> <strong>gnutls_mac_get_key_size</strong> <em>(gnutls_mac_algorithm_t <var>algorithm</var>)</em></dt>
+<dd><p><var>algorithm</var>: is an encryption algorithm
+</p>
+<p>Returns the size of the MAC key used in TLS. 
+</p>
+<p><strong>Returns:</strong> length (in bytes) of the given MAC key size, or 0 if the
+given MAC algorithm is invalid.
+</p></dd></dl>
+
+<a name="gnutls_005fmac_005fget_005fnonce_005fsize-1"></a>
+<h4 class="subheading">gnutls_mac_get_nonce_size</h4>
+<a name="gnutls_005fmac_005fget_005fnonce_005fsize"></a><dl>
+<dt><a name="index-gnutls_005fmac_005fget_005fnonce_005fsize"></a>Function: <em>size_t</em> <strong>gnutls_mac_get_nonce_size</strong> <em>(gnutls_mac_algorithm_t <var>algorithm</var>)</em></dt>
+<dd><p><var>algorithm</var>: is an encryption algorithm
+</p>
+<p>Returns the size of the nonce used by the MAC in TLS.
+</p>
+<p><strong>Returns:</strong> length (in bytes) of the given MAC nonce size, or 0.
+</p>
+<p><strong>Since:</strong> 3.2.0
 </p></dd></dl>
 
 <a name="gnutls_005frnd-1"></a>

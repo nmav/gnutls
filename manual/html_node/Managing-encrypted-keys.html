@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 21 March 2013 for version
-3.1.10 of GnuTLS.
+<!-- This manual is last updated 24 April 2013 for version
+3.2.0 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.10: Managing encrypted keys</title>
+<title>GnuTLS 3.2.0: Managing encrypted keys</title>
 
-<meta name="description" content="GnuTLS 3.1.10: Managing encrypted keys">
-<meta name="keywords" content="GnuTLS 3.1.10: Managing encrypted keys">
+<meta name="description" content="GnuTLS 3.2.0: Managing encrypted keys">
+<meta name="keywords" content="GnuTLS 3.2.0: Managing encrypted keys">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -189,6 +189,34 @@ import plain or encrypted keys and will auto-detect the encrypted key format.
 
 
 <dl>
+<dt><a name="index-gnutls_005fprivkey_005fimport_005fx509_005fraw"></a>Function: <em>int</em> <strong>gnutls_privkey_import_x509_raw</strong> <em>(gnutls_privkey_t <var>pkey</var>, const gnutls_datum_t * <var>data</var>, gnutls_x509_crt_fmt_t <var>format</var>, const char* <var>password</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>pkey</var>: The private key
+</p>
+<p><var>data</var>: The private key data to be imported
+</p>
+<p><var>format</var>: The format of the private key
+</p>
+<p><var>password</var>: A password (optional)
+</p>
+<p><var>flags</var>: an ORed sequence of gnutls_pkcs_encrypt_flags_t
+</p>
+<p>This function will import the given private key to the abstract
+<code>gnutls_privkey_t</code>  structure. 
+</p>
+<p>The supported formats are basic unencrypted key, PKCS8, PKCS12, 
+and the openssl format.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.1.0
+</p></dd></dl>
+
+
+
+
+
+<dl>
 <dt><a name="index-gnutls_005fx509_005fprivkey_005fimport2"></a>Function: <em>int</em> <strong>gnutls_x509_privkey_import2</strong> <em>(gnutls_x509_privkey_t <var>key</var>, const gnutls_datum_t * <var>data</var>, gnutls_x509_crt_fmt_t <var>format</var>, const char* <var>password</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>key</var>: The structure to store the parsed key
 </p>
@@ -204,7 +232,7 @@ import plain or encrypted keys and will auto-detect the encrypted key format.
 the native <code>gnutls_x509_privkey_t</code>  format, irrespective of the
 input format. The input format is auto-detected.
 </p>
-<p>The supported formats are basic unencrypted key, PKCS <code>8</code> , PKCS <code>12</code> ,
+<p>The supported formats are basic unencrypted key, PKCS8, PKCS12,
 and the openssl format.
 </p>
 <p>If the provided key is encrypted but no password was given, then
@@ -214,34 +242,10 @@ and the openssl format.
 negative error value.
 </p></dd></dl>
 
-
-
-
-
-<dl>
-<dt><a name="index-gnutls_005fprivkey_005fimport_005fx509_005fraw"></a>Function: <em>int</em> <strong>gnutls_privkey_import_x509_raw</strong> <em>(gnutls_privkey_t <var>pkey</var>, const gnutls_datum_t * <var>data</var>, gnutls_x509_crt_fmt_t <var>format</var>, const char* <var>password</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>pkey</var>: The private key
+<p>Any keys imported using those functions can be imported to a certificate
+credentials structure using <a href="Abstract-key-API.html#gnutls_005fcertificate_005fset_005fkey">gnutls_certificate_set_key</a>, or alternatively
+they can be directly imported using <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fx509_005fkey_005ffile2">gnutls_certificate_set_x509_key_file2</a>.
 </p>
-<p><var>data</var>: The private key data to be imported
-</p>
-<p><var>format</var>: The format of the private key
-</p>
-<p><var>password</var>: A password (optional)
-</p>
-<p><var>flags</var>: an ORed sequence of gnutls_pkcs_encrypt_flags_t
-</p>
-<p>This function will import the given private key to the abstract
-<code>gnutls_privkey_t</code>  structure. 
-</p>
-<p>The supported formats are basic unencrypted key, PKCS <code>8</code> , PKCS <code>12</code> , 
-and the openssl format.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p>
-<p><strong>Since:</strong> 3.1.0
-</p></dd></dl>
-
 <a name="PKCS-_00238-structures"></a>
 <h4 class="subsubheading"><acronym>PKCS</acronym> #8 structures</h4>
 <a name="index-PKCS-_00238"></a>
@@ -299,7 +303,9 @@ be decrypted.
 
 <p>A <acronym>PKCS</acronym> #12 structure [<em>PKCS12</em>] usually contains a user&rsquo;s
 private keys and certificates. It is commonly used in browsers to
-export and import the user&rsquo;s identities.
+export and import the user&rsquo;s identities. A file containing such a key can 
+be directly imported to a certificate credentials structure by using 
+<a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fx509_005fsimple_005fpkcs12_005ffile">gnutls_certificate_set_x509_simple_pkcs12_file</a>.
 </p>
 <p>In <acronym>GnuTLS</acronym> the <acronym>PKCS</acronym> #12 structures are handled
 using the <code>gnutls_pkcs12_t</code> type. This is an abstract type that
@@ -326,9 +332,9 @@ functions below.
 
 <dl>
 <dt><a name="index-gnutls_005fpkcs12_005fsimple_005fparse"></a>Function: <em>int</em> <strong>gnutls_pkcs12_simple_parse</strong> <em>(gnutls_pkcs12_t <var>p12</var>, const char * <var>password</var>, gnutls_x509_privkey_t * <var>key</var>, gnutls_x509_crt_t ** <var>chain</var>, unsigned int * <var>chain_len</var>, gnutls_x509_crt_t ** <var>extra_certs</var>, unsigned int * <var>extra_certs_len</var>, gnutls_x509_crl_t * <var>crl</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>p12</var>: the PKCS<code>12</code>  blob.
+<dd><p><var>p12</var>: the PKCS12 blob.
 </p>
-<p><var>password</var>: optional password used to decrypt PKCS<code>12</code>  blob, bags and keys.
+<p><var>password</var>: optional password used to decrypt PKCS12 blob, bags and keys.
 </p>
 <p><var>key</var>: a structure to store the parsed private key.
 </p>
@@ -337,7 +343,7 @@ functions below.
 <p><var>chain_len</var>: will be updated with the number of additional (may be <code>NULL</code> )
 </p>
 <p><var>extra_certs</var>: optional pointer to receive an array of additional
-certificates found in the PKCS<code>12</code>  blob (may be <code>NULL</code> ).
+certificates found in the PKCS12 blob (may be <code>NULL</code> ).
 </p>
 <p><var>extra_certs_len</var>: will be updated with the number of additional
 certs (may be <code>NULL</code> ).
@@ -346,7 +352,7 @@ certs (may be <code>NULL</code> ).
 </p>
 <p><var>flags</var>: should be zero or one of GNUTLS_PKCS12_SP_*
 </p>
-<p>This function parses a PKCS<code>12</code>  blob in  <code>p12blob</code> and extracts the
+<p>This function parses a PKCS12 blob in  <code>p12blob</code> and extracts the
 private key, the corresponding certificate chain, and any additional
 certificates and a CRL.
 </p>
@@ -354,13 +360,13 @@ certificates and a CRL.
 and both may be set to <code>NULL</code> . If either is non-<code>NULL</code> , then both must
 be set.
 </p>
-<p>Encrypted PKCS<code>12</code>  bags and PKCS<code>8</code>  private keys are supported.  However,
+<p>Encrypted PKCS12 bags and PKCS8 private keys are supported.  However,
 only password based security, and the same password for all
 operations, are supported.
 </p>
-<p>A PKCS<code>12</code>  file may contain many keys and/or certificates, and there
+<p>A PKCS12 file may contain many keys and/or certificates, and there
 is no way to identify which key/certificate pair you want.  You
-should make sure the PKCS<code>12</code>  file only contain one key/certificate
+should make sure the PKCS12 file only contain one key/certificate
 pair and/or one CRL.
 </p>
 <p>It is believed that the limitations of this function are acceptable
@@ -388,7 +394,7 @@ negative error value.
 </dl>
 
 <p>The functions below are used to generate a PKCS #12 structure. An example
-of their usage is also shown.
+of their usage is shown at <a href="PKCS12-structure-generation-example.html#PKCS12-structure-generation-example">PKCS12 structure generation example</a>.
 </p>
 <dl compact="compact">
 <dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fset_005fbag">gnutls_pkcs12_set_bag</a> (gnutls_pkcs12_t <var>pkcs12</var>, gnutls_pkcs12_bag_t <var>bag</var>)</code></dt>
@@ -403,141 +409,6 @@ of their usage is also shown.
 <dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fset_005ffriendly_005fname">gnutls_pkcs12_bag_set_friendly_name</a> (gnutls_pkcs12_bag_t <var>bag</var>, int <var>indx</var>, const char * <var>name</var>)</code></dt>
 </dl>
 
-<pre class="verbatim">/* This example code is placed in the public domain. */
-
-#ifdef HAVE_CONFIG_H
-#include &lt;config.h&gt;
-#endif
-
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;gnutls/gnutls.h&gt;
-#include &lt;gnutls/pkcs12.h&gt;
-
-#include &quot;examples.h&quot;
-
-#define OUTFILE &quot;out.p12&quot;
-
-/* This function will write a pkcs12 structure into a file.
- * cert: is a DER encoded certificate
- * pkcs8_key: is a PKCS #8 encrypted key (note that this must be
- *  encrypted using a PKCS #12 cipher, or some browsers will crash)
- * password: is the password used to encrypt the PKCS #12 packet.
- */
-int
-write_pkcs12 (const gnutls_datum_t * cert,
-              const gnutls_datum_t * pkcs8_key, const char *password)
-{
-  gnutls_pkcs12_t pkcs12;
-  int ret, bag_index;
-  gnutls_pkcs12_bag_t bag, key_bag;
-  char pkcs12_struct[10 * 1024];
-  size_t pkcs12_struct_size;
-  FILE *fd;
-
-  /* A good idea might be to use gnutls_x509_privkey_get_key_id()
-   * to obtain a unique ID.
-   */
-  gnutls_datum_t key_id = { (void *) &quot;\x00\x00\x07&quot;, 3 };
-
-  gnutls_global_init ();
-
-  /* Firstly we create two helper bags, which hold the certificate,
-   * and the (encrypted) key.
-   */
-
-  gnutls_pkcs12_bag_init (&amp;bag);
-  gnutls_pkcs12_bag_init (&amp;key_bag);
-
-  ret = gnutls_pkcs12_bag_set_data (bag, GNUTLS_BAG_CERTIFICATE, cert);
-  if (ret &lt; 0)
-    {
-      fprintf (stderr, &quot;ret: %s\n&quot;, gnutls_strerror (ret));
-      return 1;
-    }
-
-  /* ret now holds the bag's index.
-   */
-  bag_index = ret;
-
-  /* Associate a friendly name with the given certificate. Used
-   * by browsers.
-   */
-  gnutls_pkcs12_bag_set_friendly_name (bag, bag_index, &quot;My name&quot;);
-
-  /* Associate the certificate with the key using a unique key
-   * ID.
-   */
-  gnutls_pkcs12_bag_set_key_id (bag, bag_index, &amp;key_id);
-
-  /* use weak encryption for the certificate. 
-   */
-  gnutls_pkcs12_bag_encrypt (bag, password, GNUTLS_PKCS_USE_PKCS12_RC2_40);
-
-  /* Now the key.
-   */
-
-  ret = gnutls_pkcs12_bag_set_data (key_bag,
-                                    GNUTLS_BAG_PKCS8_ENCRYPTED_KEY,
-                                    pkcs8_key);
-  if (ret &lt; 0)
-    {
-      fprintf (stderr, &quot;ret: %s\n&quot;, gnutls_strerror (ret));
-      return 1;
-    }
-
-  /* Note that since the PKCS #8 key is already encrypted we don't
-   * bother encrypting that bag.
-   */
-  bag_index = ret;
-
-  gnutls_pkcs12_bag_set_friendly_name (key_bag, bag_index, &quot;My name&quot;);
-
-  gnutls_pkcs12_bag_set_key_id (key_bag, bag_index, &amp;key_id);
-
-
-  /* The bags were filled. Now create the PKCS #12 structure.
-   */
-  gnutls_pkcs12_init (&amp;pkcs12);
-
-  /* Insert the two bags in the PKCS #12 structure.
-   */
-
-  gnutls_pkcs12_set_bag (pkcs12, bag);
-  gnutls_pkcs12_set_bag (pkcs12, key_bag);
-
-
-  /* Generate a message authentication code for the PKCS #12
-   * structure.
-   */
-  gnutls_pkcs12_generate_mac (pkcs12, password);
-
-  pkcs12_struct_size = sizeof (pkcs12_struct);
-  ret =
-    gnutls_pkcs12_export (pkcs12, GNUTLS_X509_FMT_DER, pkcs12_struct,
-                          &amp;pkcs12_struct_size);
-  if (ret &lt; 0)
-    {
-      fprintf (stderr, &quot;ret: %s\n&quot;, gnutls_strerror (ret));
-      return 1;
-    }
-
-  fd = fopen (OUTFILE, &quot;w&quot;);
-  if (fd == NULL)
-    {
-      fprintf (stderr, &quot;cannot open file\n&quot;);
-      return 1;
-    }
-  fwrite (pkcs12_struct, 1, pkcs12_struct_size, fd);
-  fclose (fd);
-
-  gnutls_pkcs12_bag_deinit (bag);
-  gnutls_pkcs12_bag_deinit (key_bag);
-  gnutls_pkcs12_deinit (pkcs12);
-
-  return 0;
-}
-</pre>
 <a name="OpenSSL-encrypted-keys"></a>
 <h4 class="subsubheading">OpenSSL encrypted keys</h4>
 <a name="index-OpenSSL-encrypted-keys"></a>

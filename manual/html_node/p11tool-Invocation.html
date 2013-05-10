@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 21 March 2013 for version
-3.1.10 of GnuTLS.
+<!-- This manual is last updated 24 April 2013 for version
+3.2.0 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.10: p11tool Invocation</title>
+<title>GnuTLS 3.2.0: p11tool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.1.10: p11tool Invocation">
-<meta name="keywords" content="GnuTLS 3.1.10: p11tool Invocation">
+<meta name="description" content="GnuTLS 3.2.0: p11tool Invocation">
+<meta name="keywords" content="GnuTLS 3.2.0: p11tool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -178,12 +178,14 @@ using the <code>agtexi-cmd</code> template and the option descriptions for the <
 This software is released under the GNU General Public License, version 3 or later.
 </p>
 
-<a name="p11tool-usage"></a><a name="p11tool-help_002fusage-_0028_002dh_0029"></a>
-<h4 class="subsubheading">p11tool help/usage (-h)</h4>
+<a name="p11tool-usage"></a><a name="p11tool-help_002fusage-_0028_002d_002dhelp_0029"></a>
+<h4 class="subsubheading">p11tool help/usage (<samp>--help</samp>)</h4>
 <a name="index-p11tool-help"></a>
 
 <p>This is the automatically generated usage text for p11tool.
-The text printed is the same whether for the <code>help</code> option (-h) or the <code>more-help</code> option (-!).  <code>more-help</code> will print
+</p>
+<p>The text printed is the same whether selected with the <code>help</code> option
+(<samp>--help</samp>) or the <code>more-help</code> option (<samp>--more-help</samp>).  <code>more-help</code> will print
 the usage text by passing it through a pager program.
 <code>more-help</code> is disabled on platforms without a working
 <code>fork(2)</code> function.  The <code>PAGER</code> environment variable is
@@ -191,11 +193,11 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">p11tool - GnuTLS PKCS #11 tool - Ver. 3.1.10
-USAGE:  p11tool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [url]
+<pre class="example">p11tool - GnuTLS PKCS #11 tool
+Usage:  p11tool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [url]
 
    -d, --debug=num            Enable debugging.
-                                - It must be in the range:
+                                - it must be in the range:
                                   0 to 9999
        --outfile=str          Output file
        --list-tokens          List all available tokens
@@ -214,14 +216,14 @@ USAGE:  p11tool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;]
        --generate-ecc         Generate an RSA private-public key pair
        --label=str            Sets a label for the write operation
        --trusted              Marks the object to be written as trusted
-                                - disabled as --no-trusted
+                                - disabled as '--no-trusted'
        --private              Marks the object to be written as private
-                                - disabled as --no-private
+                                - disabled as '--no-private'
                                 - enabled by default
        --login                Force login to token
-                                - disabled as --no-login
+                                - disabled as '--no-login'
        --detailed-url         Print detailed URLs
-                                - disabled as --no-detailed-url
+                                - disabled as '--no-detailed-url'
        --secret-key=str       Provide a hex encoded secret key
        --load-privkey=file    Private key file to use
                                 - file must pre-exist
@@ -233,19 +235,17 @@ USAGE:  p11tool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;]
        --bits=num             Specify the number of bits for key generate
        --sec-param=str        Specify the security level
        --inder                Use DER/RAW format for input
-                                - disabled as --no-inder
-       --inraw                This is an alias for 'inder'
+                                - disabled as '--no-inder'
+       --inraw                an alias for the 'inder' option
        --provider=file        Specify the PKCS #11 provider library
                                 - file must pre-exist
-   -v, --version[=arg]        Output version information and exit
-   -h, --help                 Display extended usage information and exit
-   -!, --more-help            Extended usage information passed thru pager
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
 
 Options are specified by doubled hyphens and their name or by a single
 hyphen and the flag character.
 Operands and options may be intermixed.  They will be reordered.
-
-
 
 Program that allows handling data from PKCS #11 smart cards and security
 modules.
@@ -254,7 +254,7 @@ To use PKCS #11 tokens with gnutls the configuration file
 /etc/gnutls/pkcs11.conf has to exist and contain a number of lines of the
 form 'load=/usr/lib/opensc-pkcs11.so'.
 
-please send bug reports to:  bug-gnutls@gnu.org
+Please send bug reports to:  &lt;bug-gnutls@gnu.org&gt;
 </pre></div>
 
 <a name="p11tool-debug"></a><a name="debug-option-_0028_002dd_0029-5"></a>
@@ -308,7 +308,7 @@ Use DER/RAW format for input certificates and private keys.
 <a name="p11tool-inraw"></a></p><a name="inraw-option-2"></a>
 <h4 class="subsubheading">inraw option</h4>
 
-<p>This is an alias for the inder option,
+<p>This is an alias for the <code>inder</code> option,
 see <a href="#p11tool-inder">the inder option documentation</a>.
 </p>
 <a name="p11tool-provider"></a><a name="provider-option"></a>
@@ -332,8 +332,7 @@ This will override the default options in /etc/gnutls/pkcs11.conf
 <a name="p11tool-See-Also"></a><a name="p11tool-See-Also-1"></a>
 <h4 class="subsubheading">p11tool See Also</h4>
 <p>certtool (1)
-</p>
-<a name="p11tool-Examples"></a><a name="p11tool-Examples-1"></a>
+<a name="p11tool-Examples"></a></p><a name="p11tool-Examples-1"></a>
 <h4 class="subsubheading">p11tool Examples</h4>
 <p>To view all tokens in your system use:
 </p><div class="example">
@@ -368,8 +367,6 @@ request with certtool.
 <pre class="example">certtool --generate-request --load-privkey &quot;pkcs11:KEY-URL&quot; \
    --load-pubkey MyNewKey.pub --outfile request.pem
 </pre></div>
-
-
 
 <hr>
 <div class="header">

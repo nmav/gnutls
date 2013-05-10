@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 21 March 2013 for version
-3.1.10 of GnuTLS.
+<!-- This manual is last updated 24 April 2013 for version
+3.2.0 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.10: Abstract key API</title>
+<title>GnuTLS 3.2.0: Abstract key API</title>
 
-<meta name="description" content="GnuTLS 3.1.10: Abstract key API">
-<meta name="keywords" content="GnuTLS 3.1.10: Abstract key API">
+<meta name="description" content="GnuTLS 3.2.0: Abstract key API">
+<meta name="keywords" content="GnuTLS 3.2.0: Abstract key API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -450,8 +450,7 @@ success, or a negative error code on error.
 <code>gnutls_privkey_t</code>  structure. At least one of the two callbacks
 must be non-null.
 </p>
-<p>Note that the signing function is supposed to &quot;raw&quot; sign data, i.e.,
-without any hashing or preprocessing.
+<p>See also <code>gnutls_privkey_import_ext2()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -483,7 +482,9 @@ must be non-null. If a deinitialization function is provided
 then flags is assumed to contain <code>GNUTLS_PRIVKEY_IMPORT_AUTO_RELEASE</code> .
 </p>
 <p>Note that the signing function is supposed to &quot;raw&quot; sign data, i.e.,
-without any hashing or preprocessing.
+without any hashing or preprocessing. In case of RSA the DigestInfo
+will be provided, and the signing function is expected to do the PKCS <code>1</code> 
+1.5 padding and the exponentiation.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -702,7 +703,7 @@ negative error value.
 <p>This function will import the given private key to the abstract
 <code>gnutls_privkey_t</code>  structure. 
 </p>
-<p>The supported formats are basic unencrypted key, PKCS <code>8</code> , PKCS <code>12</code> , 
+<p>The supported formats are basic unencrypted key, PKCS8, PKCS12, 
 and the openssl format.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
@@ -753,7 +754,7 @@ to have effect.
 </p>
 <p><var>hash</var>: should be a digest algorithm
 </p>
-<p><var>flags</var>: should be 0 for now
+<p><var>flags</var>: Zero or on of <code>gnutls_privkey_flags_t</code> 
 </p>
 <p><var>data</var>: holds the data to be signed
 </p>
@@ -781,7 +782,7 @@ negative error value.
 </p>
 <p><var>hash_algo</var>: The hash algorithm used
 </p>
-<p><var>flags</var>: zero for now
+<p><var>flags</var>: Zero or on of <code>gnutls_privkey_flags_t</code> 
 </p>
 <p><var>hash_data</var>: holds the data to be signed
 </p>
@@ -799,30 +800,6 @@ the hash algorithm.
 negative error value.
 </p>
 <p><strong>Since:</strong> 2.12.0
-</p></dd></dl>
-
-<a name="gnutls_005fprivkey_005fsign_005fraw_005fdata-1"></a>
-<h4 class="subheading">gnutls_privkey_sign_raw_data</h4>
-<a name="gnutls_005fprivkey_005fsign_005fraw_005fdata"></a><dl>
-<dt><a name="index-gnutls_005fprivkey_005fsign_005fraw_005fdata"></a>Function: <em>int</em> <strong>gnutls_privkey_sign_raw_data</strong> <em>(gnutls_privkey_t <var>key</var>, unsigned <var>flags</var>, const gnutls_datum_t * <var>data</var>, gnutls_datum_t * <var>signature</var>)</em></dt>
-<dd><p><var>key</var>: Holds the key
-</p>
-<p><var>flags</var>: should be zero
-</p>
-<p><var>data</var>: holds the data to be signed
-</p>
-<p><var>signature</var>: will contain the signature allocate with <code>gnutls_malloc()</code> 
-</p>
-<p>This function will sign the given data using a signature algorithm
-supported by the private key. Note that this is a low-level function
-and does not apply any preprocessing or hash on the signed data. 
-For example on an RSA key the input  <code>data</code> should be of the DigestInfo
-PKCS <code>1</code>  1.5 format. Use it only if you know what are you doing.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p>
-<p><strong>Since:</strong> 3.1.10
 </p></dd></dl>
 
 <a name="gnutls_005fprivkey_005fstatus-1"></a>
@@ -1568,7 +1545,7 @@ to have effect.
 <dt><a name="index-gnutls_005fpubkey_005fverify_005fdata"></a>Function: <em>int</em> <strong>gnutls_pubkey_verify_data</strong> <em>(gnutls_pubkey_t <var>pubkey</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>data</var>, const gnutls_datum_t * <var>signature</var>)</em></dt>
 <dd><p><var>pubkey</var>: Holds the public key
 </p>
-<p><var>flags</var>: should be 0 for now
+<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>data</var>: holds the signed data
 </p>
@@ -1594,7 +1571,7 @@ is returned, and zero or positive code on success.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: should be 0 for now
+<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>data</var>: holds the signed data
 </p>
@@ -1615,7 +1592,7 @@ is returned, and zero or positive code on success.
 <dt><a name="index-gnutls_005fpubkey_005fverify_005fhash"></a>Function: <em>int</em> <strong>gnutls_pubkey_verify_hash</strong> <em>(gnutls_pubkey_t <var>key</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>hash</var>, const gnutls_datum_t * <var>signature</var>)</em></dt>
 <dd><p><var>key</var>: Holds the public key
 </p>
-<p><var>flags</var>: should be 0 for now
+<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>hash</var>: holds the hash digest to be verified
 </p>
@@ -1641,7 +1618,7 @@ is returned, and zero or positive code on success.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: should be 0 for now
+<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>hash</var>: holds the hash digest to be verified
 </p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 21 March 2013 for version
-3.1.10 of GnuTLS.
+<!-- This manual is last updated 24 April 2013 for version
+3.2.0 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.10: PKCS 12 API</title>
+<title>GnuTLS 3.2.0: PKCS 12 API</title>
 
-<meta name="description" content="GnuTLS 3.1.10: PKCS 12 API">
-<meta name="keywords" content="GnuTLS 3.1.10: PKCS 12 API">
+<meta name="description" content="GnuTLS 3.2.0: PKCS 12 API">
+<meta name="keywords" content="GnuTLS 3.2.0: PKCS 12 API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -530,9 +530,9 @@ negative error value.
 <h4 class="subheading">gnutls_pkcs12_simple_parse</h4>
 <a name="gnutls_005fpkcs12_005fsimple_005fparse"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005fsimple_005fparse-1"></a>Function: <em>int</em> <strong>gnutls_pkcs12_simple_parse</strong> <em>(gnutls_pkcs12_t <var>p12</var>, const char * <var>password</var>, gnutls_x509_privkey_t * <var>key</var>, gnutls_x509_crt_t ** <var>chain</var>, unsigned int * <var>chain_len</var>, gnutls_x509_crt_t ** <var>extra_certs</var>, unsigned int * <var>extra_certs_len</var>, gnutls_x509_crl_t * <var>crl</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>p12</var>: the PKCS<code>12</code>  blob.
+<dd><p><var>p12</var>: the PKCS12 blob.
 </p>
-<p><var>password</var>: optional password used to decrypt PKCS<code>12</code>  blob, bags and keys.
+<p><var>password</var>: optional password used to decrypt PKCS12 blob, bags and keys.
 </p>
 <p><var>key</var>: a structure to store the parsed private key.
 </p>
@@ -541,7 +541,7 @@ negative error value.
 <p><var>chain_len</var>: will be updated with the number of additional (may be <code>NULL</code> )
 </p>
 <p><var>extra_certs</var>: optional pointer to receive an array of additional
-certificates found in the PKCS<code>12</code>  blob (may be <code>NULL</code> ).
+certificates found in the PKCS12 blob (may be <code>NULL</code> ).
 </p>
 <p><var>extra_certs_len</var>: will be updated with the number of additional
 certs (may be <code>NULL</code> ).
@@ -550,7 +550,7 @@ certs (may be <code>NULL</code> ).
 </p>
 <p><var>flags</var>: should be zero or one of GNUTLS_PKCS12_SP_*
 </p>
-<p>This function parses a PKCS<code>12</code>  blob in  <code>p12blob</code> and extracts the
+<p>This function parses a PKCS12 blob in  <code>p12blob</code> and extracts the
 private key, the corresponding certificate chain, and any additional
 certificates and a CRL.
 </p>
@@ -558,13 +558,13 @@ certificates and a CRL.
 and both may be set to <code>NULL</code> . If either is non-<code>NULL</code> , then both must
 be set.
 </p>
-<p>Encrypted PKCS<code>12</code>  bags and PKCS<code>8</code>  private keys are supported.  However,
+<p>Encrypted PKCS12 bags and PKCS8 private keys are supported.  However,
 only password based security, and the same password for all
 operations, are supported.
 </p>
-<p>A PKCS<code>12</code>  file may contain many keys and/or certificates, and there
+<p>A PKCS12 file may contain many keys and/or certificates, and there
 is no way to identify which key/certificate pair you want.  You
-should make sure the PKCS<code>12</code>  file only contain one key/certificate
+should make sure the PKCS12 file only contain one key/certificate
 pair and/or one CRL.
 </p>
 <p>It is believed that the limitations of this function are acceptable

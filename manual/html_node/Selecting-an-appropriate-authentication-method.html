@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 21 March 2013 for version
-3.1.10 of GnuTLS.
+<!-- This manual is last updated 24 April 2013 for version
+3.2.0 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.10: Selecting an appropriate authentication method</title>
+<title>GnuTLS 3.2.0: Selecting an appropriate authentication method</title>
 
-<meta name="description" content="GnuTLS 3.1.10: Selecting an appropriate authentication method">
-<meta name="keywords" content="GnuTLS 3.1.10: Selecting an appropriate authentication method">
+<meta name="description" content="GnuTLS 3.2.0: Selecting an appropriate authentication method">
+<meta name="keywords" content="GnuTLS 3.2.0: Selecting an appropriate authentication method">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -219,12 +219,15 @@ connection other channels over the Internet may be used, e.g., <acronym>DNSSEC</
 <a name="Two-peers-and-a-trusted-third-party"></a>
 <h4 class="subsection">4.4.3 Two peers and a trusted third party</h4>
 
-<p>When a trusted third party is available the most suitable option is to use 
+<p>When a trusted third party is available (or a certificate authority) 
+the most suitable option is to use 
 certificate authentication (see <a href="Certificate-authentication.html#Certificate-authentication">Certificate authentication</a>). 
 The client and the server obtain certificates that associate their identity
-and public keys in a reliable way and use them to on the subsequent
-communications with each other. Each party verifies the peer&rsquo;s certificate
-using the trusted third party&rsquo;s certificate.
+and public keys using a digital signature by the trusted party and use 
+them to on the subsequent communications with each other. 
+Each party verifies the peer&rsquo;s certificate using the trusted third party&rsquo;s 
+signature. The parameters of the third party&rsquo;s signature are present
+in its certificate which must be available to all communicating parties.
 </p>
 <p>While the above is the typical authentication method for servers in the
 Internet by using the commercial CAs, the users that act as clients in the

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 21 March 2013 for version
-3.1.10 of GnuTLS.
+<!-- This manual is last updated 24 April 2013 for version
+3.2.0 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.10: psktool Invocation</title>
+<title>GnuTLS 3.2.0: psktool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.1.10: psktool Invocation">
-<meta name="keywords" content="GnuTLS 3.1.10: psktool Invocation">
+<meta name="description" content="GnuTLS 3.2.0: psktool Invocation">
+<meta name="keywords" content="GnuTLS 3.2.0: psktool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -174,12 +174,14 @@ using the <code>agtexi-cmd</code> template and the option descriptions for the <
 This software is released under the GNU General Public License, version 3 or later.
 </p>
 
-<a name="psktool-usage"></a><a name="psktool-help_002fusage-_0028_002dh_0029"></a>
-<h4 class="subsubheading">psktool help/usage (-h)</h4>
+<a name="psktool-usage"></a><a name="psktool-help_002fusage-_0028_002d_002dhelp_0029"></a>
+<h4 class="subsubheading">psktool help/usage (<samp>--help</samp>)</h4>
 <a name="index-psktool-help"></a>
 
 <p>This is the automatically generated usage text for psktool.
-The text printed is the same whether for the <code>help</code> option (-h) or the <code>more-help</code> option (-!).  <code>more-help</code> will print
+</p>
+<p>The text printed is the same whether selected with the <code>help</code> option
+(<samp>--help</samp>) or the <code>more-help</code> option (<samp>--more-help</samp>).  <code>more-help</code> will print
 the usage text by passing it through a pager program.
 <code>more-help</code> is disabled on platforms without a working
 <code>fork(2)</code> function.  The <code>PAGER</code> environment variable is
@@ -187,30 +189,28 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">psktool - GnuTLS PSK tool - Ver. 3.1.10
-USAGE:  psktool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+<pre class="example">psktool - GnuTLS PSK tool
+Usage:  psktool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
-                                - It must be in the range:
+                                - it must be in the range:
                                   0 to 9999
    -s, --keysize=num          specify the key size in bytes
-                                - It must be in the range:
+                                - it must be in the range:
                                   0 to 512
    -u, --username=str         specify a username
    -p, --passwd=str           specify a password file.
-   -v, --version[=arg]        Output version information and exit
-   -h, --help                 Display extended usage information and exit
-   -!, --more-help            Extended usage information passed thru pager
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
 
 Options are specified by doubled hyphens and their name or by a single
 hyphen and the flag character.
 
-
-
 Program that generates random keys for use with TLS-PSK.  The keys are
 stored in hexadecimal format in a key file.
 
-please send bug reports to:  bug-gnutls@gnu.org
+Please send bug reports to:  &lt;bug-gnutls@gnu.org&gt;
 </pre></div>
 
 <a name="psktool-debug"></a><a name="debug-option-_0028_002dd_0029-4"></a>
@@ -234,8 +234,7 @@ Specifies the debug level.
 <a name="psktool-See-Also"></a><a name="psktool-See-Also-1"></a>
 <h4 class="subsubheading">psktool See Also</h4>
 <p>gnutls-cli-debug (1), gnutls-serv (1), srptool (1), certtool (1)
-</p>
-<a name="psktool-Examples"></a><a name="psktool-Examples-1"></a>
+<a name="psktool-Examples"></a></p><a name="psktool-Examples-1"></a>
 <h4 class="subsubheading">psktool Examples</h4>
 <p>To add a user &rsquo;psk_identity&rsquo; in <samp>passwd.psk</samp> for use with GnuTLS run:
 </p><div class="example">
@@ -248,9 +247,8 @@ $
 </pre></div>
 
 <p>This command will create <samp>passwd.psk</samp> if it does not exist
-and will add user &rsquo;psk_identity&rsquo; (you will also be prompted for a password). 
+and will add user &rsquo;psk_identity&rsquo; (you will also be prompted for a password).
 </p>
-
 <hr>
 <div class="header">
 <p>

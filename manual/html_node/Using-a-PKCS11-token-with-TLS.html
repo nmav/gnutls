@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 21 March 2013 for version
-3.1.10 of GnuTLS.
+<!-- This manual is last updated 24 April 2013 for version
+3.2.0 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.10: Using a PKCS11 token with TLS</title>
+<title>GnuTLS 3.2.0: Using a PKCS11 token with TLS</title>
 
-<meta name="description" content="GnuTLS 3.1.10: Using a PKCS11 token with TLS">
-<meta name="keywords" content="GnuTLS 3.1.10: Using a PKCS11 token with TLS">
+<meta name="description" content="GnuTLS 3.2.0: Using a PKCS11 token with TLS">
+<meta name="keywords" content="GnuTLS 3.2.0: Using a PKCS11 token with TLS">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -171,7 +171,7 @@ certificates by specifying a PKCS #11 URL instead of a filename.
 </p>
 <dl compact="compact">
 <dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fx509_005ftrust_005ffile">gnutls_certificate_set_x509_trust_file</a> (gnutls_certificate_credentials_t <var>cred</var>, const char * <var>cafile</var>, gnutls_x509_crt_fmt_t <var>type</var>)</code></dt>
-<dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fx509_005fkey_005ffile">gnutls_certificate_set_x509_key_file</a> (gnutls_certificate_credentials_t <var>res</var>, const char * <var>certfile</var>, const char * <var>keyfile</var>, gnutls_x509_crt_fmt_t <var>type</var>)</code></dt>
+<dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fx509_005fkey_005ffile2">gnutls_certificate_set_x509_key_file2</a> (gnutls_certificate_credentials_t <var>res</var>, const char * <var>certfile</var>, const char * <var>keyfile</var>, gnutls_x509_crt_fmt_t <var>type</var>, const char* <var>pass</var>, unsigned int <var>flags</var>)</code></dt>
 </dl>
 
 

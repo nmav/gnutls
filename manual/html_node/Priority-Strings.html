@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 21 March 2013 for version
-3.1.10 of GnuTLS.
+<!-- This manual is last updated 24 April 2013 for version
+3.2.0 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.10: Priority Strings</title>
+<title>GnuTLS 3.2.0: Priority Strings</title>
 
-<meta name="description" content="GnuTLS 3.1.10: Priority Strings">
-<meta name="keywords" content="GnuTLS 3.1.10: Priority Strings">
+<meta name="description" content="GnuTLS 3.2.0: Priority Strings">
+<meta name="keywords" content="GnuTLS 3.2.0: Priority Strings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -211,7 +211,7 @@ compression NULL; for certificate types X.509.
 In key exchange algorithms when in NORMAL or SECURE levels the
 perfect forward secrecy algorithms take precedence of the other
 protocols.  In all cases all the supported key exchange algorithms
-are enabled<a name="DOCF11" href="#FOOT11"><sup>11</sup></a>.
+are enabled.
 </p>
 <p>Note that the SECURE levels distinguish between overall security level and
 message authenticity security level. That is because the message
@@ -253,14 +253,15 @@ CAMELLIA-256-CBC, ARCFOUR-128, 3DES-CBC ARCFOUR-40. Catch all
 name is CIPHER-ALL which will add all the algorithms from NORMAL
 priority.</td></tr>
 <tr><td width="20%">Key exchange</td><td width="70%">RSA, DHE-RSA, DHE-DSS, SRP, SRP-RSA, SRP-DSS,
-PSK, DHE-PSK, ECDHE-RSA, ANON-ECDH, ANON-DH, RSA-EXPORT. The
+PSK, DHE-PSK, ECDHE-RSA, ANON-ECDH, ANON-DH. The
 Catch all name is KX-ALL which will add all the algorithms from NORMAL
 priority.</td></tr>
 <tr><td width="20%">MAC</td><td width="70%">MD5, SHA1, SHA256, AEAD (used with
 GCM ciphers only). All algorithms from NORMAL priority can be accessed with MAC-ALL.</td></tr>
 <tr><td width="20%">Compression algorithms</td><td width="70%">COMP-NULL, COMP-DEFLATE. Catch all is COMP-ALL.</td></tr>
 <tr><td width="20%">TLS versions</td><td width="70%">VERS-SSL3.0, VERS-TLS1.0, VERS-TLS1.1,
-VERS-TLS1.2, VERS-DTLS1.0. Catch all is VERS-TLS-ALL.</td></tr>
+VERS-TLS1.2, VERS-DTLS1.2, VERS-DTLS1.0. 
+Catch all is VERS-TLS-ALL and VERS-DTLS-ALL.</td></tr>
 <tr><td width="20%">Signature algorithms</td><td width="70%">SIGN-RSA-SHA1, SIGN-RSA-SHA224, 
 SIGN-RSA-SHA256, SIGN-RSA-SHA384, SIGN-RSA-SHA512, SIGN-DSA-SHA1, 
 SIGN-DSA-SHA224, SIGN-DSA-SHA256, SIGN-RSA-MD5. Catch all
@@ -270,7 +271,7 @@ is SIGN-ALL. This is only valid for TLS 1.2 and later.</td></tr>
 
 <div class="float-caption"><p><strong>Table 6.3: </strong>The supported algorithm keywords in priority strings.</p></div></div>
 <p>Note that the DHE key exchange methods are generally
-slower<a name="DOCF12" href="#FOOT12"><sup>12</sup></a> than their elliptic curves counterpart
+slower<a name="DOCF11" href="#FOOT11"><sup>11</sup></a> than their elliptic curves counterpart
 (ECDHE). Moreover the plain Diffie-Hellman key exchange
 requires parameters to be generated and associated with a credentials
 structure by the server (see <a href="Parameter-generation.html#Parameter-generation">Parameter generation</a>). 
@@ -294,6 +295,10 @@ and not the client&rsquo;s.</td></tr>
 <tr><td width="45%">%SSL3_RECORD_VERSION</td><td width="45%">will use SSL3.0 record version in client hello.
 This is the default.</td></tr>
 <tr><td width="45%">%LATEST_RECORD_VERSION</td><td width="45%">will use the latest TLS version record version in client hello.</td></tr>
+<tr><td width="45%">%NEW_PADDING</td><td width="45%">will enable the new padding extension negotiation. If the new padding extension
+is negotiated, GnuTLS will use a more efficient length-hiding mechanism.
+Use <a href="Core-TLS-API.html#gnutls_005frecord_005fcan_005fuse_005flength_005fhiding">gnutls_record_can_use_length_hiding</a> to check whether length-hiding
+can be used in the current session.</td></tr>
 </table>
 
 <div class="float-caption"><p><strong>Table 6.4: </strong>Special priority string keywords.</p></div></div>
@@ -355,9 +360,6 @@ except TLS 1.2:
 <h4 class="footnotes-heading">Footnotes</h4>
 
 <h3><a name="FOOT11" href="#DOCF11">(11)</a></h3>
-<p>Except for the RSA-EXPORT which is only enabled in
-EXPORT level.</p>
-<h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
 <p>It depends on the group used.  Primes with
 lesser bits are always faster, but also easier to break.  See <a href="Selecting-cryptographic-key-sizes.html#Selecting-cryptographic-key-sizes">Selecting cryptographic key sizes</a>
 for the acceptable security levels.</p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 21 March 2013 for version
-3.1.10 of GnuTLS.
+<!-- This manual is last updated 24 April 2013 for version
+3.2.0 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.10: Top</title>
+<title>GnuTLS 3.2.0: Top</title>
 
-<meta name="description" content="GnuTLS 3.1.10: Top">
-<meta name="keywords" content="GnuTLS 3.1.10: Top">
+<meta name="description" content="GnuTLS 3.2.0: Top">
+<meta name="keywords" content="GnuTLS 3.2.0: Top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -154,7 +154,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.1.10</h1>
+<h1 class="settitle" align="center">GnuTLS 3.2.0</h1>
 
 
 
@@ -213,6 +213,7 @@ dl {
       <li><a name="toc-Safe-renegotiation-1" href="Safe-renegotiation.html#Safe-renegotiation">3.6.5 Safe renegotiation</a></li>
       <li><a name="toc-OCSP-status-request-1" href="OCSP-status-request.html#OCSP-status-request">3.6.6 OCSP status request</a></li>
       <li><a name="toc-SRTP-1" href="SRTP.html#SRTP">3.6.7 SRTP</a></li>
+      <li><a name="toc-Application-Layer-Protocol-Negotiation-_0028ALPN_0029-1" href="Application-Layer-Protocol-Negotiation-_0028ALPN_0029.html#Application-Layer-Protocol-Negotiation-_0028ALPN_0029">3.6.8 Application Layer Protocol Negotiation (ALPN)</a></li>
     </ul></li>
     <li><a name="toc-How-to-use-TLS-in-application-protocols-1" href="How-to-use-TLS-in-application-protocols.html#How-to-use-TLS-in-application-protocols">3.7 How to use <acronym>TLS</acronym> in application protocols</a>
     <ul class="no-bullet">
@@ -390,6 +391,7 @@ dl {
       <li><a name="toc-Checking-for-an-alert-1" href="Checking-for-an-alert.html#Checking-for-an-alert">7.4.1 Checking for an alert</a></li>
       <li><a name="toc-X_002e509-certificate-parsing-example-1" href="X_002e509-certificate-parsing-example.html#X_002e509-certificate-parsing-example">7.4.2 <acronym>X.509</acronym> certificate parsing example</a></li>
       <li><a name="toc-Listing-the-ciphersuites-in-a-priority-string-1" href="Listing-the-ciphersuites-in-a-priority-string.html#Listing-the-ciphersuites-in-a-priority-string">7.4.3 Listing the ciphersuites in a priority string</a></li>
+      <li><a name="toc-PKCS-_002312-structure-generation-example" href="PKCS12-structure-generation-example.html#PKCS12-structure-generation-example">7.4.4 PKCS #12 structure generation example</a></li>
     </ul></li>
     <li><a name="toc-XSSL-examples-1" href="XSSL-examples.html#XSSL-examples">7.5 XSSL examples</a>
     <ul class="no-bullet">
@@ -399,9 +401,10 @@ dl {
   </ul></li>
   <li><a name="toc-Using-GnuTLS-as-a-cryptographic-library-1" href="Using-GnuTLS-as-a-cryptographic-library.html#Using-GnuTLS-as-a-cryptographic-library">8 Using GnuTLS as a cryptographic library</a>
   <ul class="no-bullet">
-    <li><a name="toc-Encryption-algorithms-1" href="Encryption-algorithms.html#Encryption-algorithms">8.1 Encryption algorithms</a></li>
-    <li><a name="toc-Hash-and-HMAC-functions-1" href="Hash-and-HMAC-functions.html#Hash-and-HMAC-functions">8.2 Hash and HMAC functions</a></li>
-    <li><a name="toc-Random-number-generation-1" href="Random-number-generation.html#Random-number-generation">8.3 Random number generation</a></li>
+    <li><a name="toc-Symmetric-algorithms-1" href="Symmetric-algorithms.html#Symmetric-algorithms">8.1 Symmetric algorithms</a></li>
+    <li><a name="toc-Public-key-algorithms-1" href="Public-key-algorithms.html#Public-key-algorithms">8.2 Public key algorithms</a></li>
+    <li><a name="toc-Hash-and-HMAC-functions-1" href="Hash-and-HMAC-functions.html#Hash-and-HMAC-functions">8.3 Hash and HMAC functions</a></li>
+    <li><a name="toc-Random-number-generation-1" href="Random-number-generation.html#Random-number-generation">8.4 Random number generation</a></li>
   </ul></li>
   <li><a name="toc-Other-included-programs-1" href="Other-included-programs.html#Other-included-programs">9 Other included programs</a>
   <ul class="no-bullet">
@@ -460,8 +463,8 @@ Next: <a href="Preface.html#Preface" accesskey="n" rel="next">Preface</a>, Up: <
 <a name="GnuTLS"></a>
 <h1 class="top">GnuTLS</h1>
 
-<p>This manual is last updated 21 March 2013 for version
-3.1.10 of GnuTLS.
+<p>This manual is last updated 24 April 2013 for version
+3.2.0 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 21 March 2013 for version
-3.1.10 of GnuTLS.
+<!-- This manual is last updated 24 April 2013 for version
+3.2.0 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.1.10: Setting up the transport layer</title>
+<title>GnuTLS 3.2.0: Setting up the transport layer</title>
 
-<meta name="description" content="GnuTLS 3.1.10: Setting up the transport layer">
-<meta name="keywords" content="GnuTLS 3.1.10: Setting up the transport layer">
+<meta name="description" content="GnuTLS 3.2.0: Setting up the transport layer">
+<meta name="keywords" content="GnuTLS 3.2.0: Setting up the transport layer">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -261,8 +261,10 @@ whether data are ready to be received. It should wait for data a
 given time frame in milliseconds. The callback should return 0 on 
 timeout, a positive number if data can be received, and -1 on error.
 You&rsquo;ll need to override this function if <code>select()</code>  is not suitable
-for the provided transport calls. 
-The callback function is used in DTLS only.
+for the provided transport calls.
+</p>
+<p>As with <code>select()</code> , if the timeout value is zero the callback should return
+zero if no data are immediately available.
 </p>
 <p><code>gnutls_pull_timeout_func</code> is of the form,
 int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);
@@ -338,8 +340,10 @@ whether data are ready to be received. It should wait for data a
 given time frame in milliseconds. The callback should return 0 on 
 timeout, a positive number if data can be received, and -1 on error.
 You&rsquo;ll need to override this function if <code>select()</code>  is not suitable
-for the provided transport calls. 
-The callback function is used in DTLS only.
+for the provided transport calls.
+</p>
+<p>As with <code>select()</code> , if the timeout value is zero the callback should return
+zero if no data are immediately available.
 </p>
 <p><code>gnutls_pull_timeout_func</code> is of the form,
 int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);
