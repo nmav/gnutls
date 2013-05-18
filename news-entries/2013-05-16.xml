@@ -1,0 +1,5 @@
+<title>The addition of salsa20 and UMAC in GnuTLS</title>
+We are planning into pushing forward the standardization of
+<a
+href="http://nmav.gnutls.org/2013/05/salsa20-and-umac-in-tls.html">Salsa20
+and UMAC</a> as used in GnuTLS 3.2.0.
