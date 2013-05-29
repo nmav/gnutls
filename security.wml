@@ -37,6 +37,17 @@
     <th>Information</th>
   </tr>
   <tr>
+    <td>GNUTLS-SA-2013-2<br>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2116">
+	CVE-2013-2116</a>
+      </td>
+    <td>Denial of service</td>
+    <td>This vulnerability affects gnutls 2.12.23 and its TLS record decoding.<br>
+
+      <b>Recommendation:</b> Apply <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6754">the patch</a> or upgrade to gnutls 3.x.</td>
+  </tr>
+
+  <tr>
     <td><a name="GNUTLS-SA-2013-1">GNUTLS-SA-2013-1</a><br>
       <a href="http://www.isg.rhul.ac.uk/tls/">
 	TLS CBC padding timing attack</a><br>
