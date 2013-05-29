@@ -3,7 +3,7 @@
 <id>http://www.gnu.org/software/gnutls/news.atom</id>
 <link href="http://www.gnu.org/software/gnutls/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2013-05-29T21:03:07+00:00</updated>
+<updated>2013-05-29T21:04:49+00:00</updated>
 
   <entry>
     <id>http://www.gnu.org/software/gnutls/news.html#2013-05-29</id>
@@ -15,7 +15,7 @@
       <email>nmav@gnutls.org</email>
     </author>
     <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2013-05-29.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-<a href="http://www.gnutls.org/security.html#GNUTLS-SA-2013-1">Posted a security advisory</a> on a vulnerability
+<a href="http://www.gnutls.org/security.html#GNUTLS-SA-2013-2">Posted a security advisory</a> on a vulnerability
 on gnutls 2.12.23.
 
     </div>
