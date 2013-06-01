@@ -3,7 +3,7 @@
 <id>http://www.gnu.org/software/gnutls/news.atom</id>
 <link href="http://www.gnu.org/software/gnutls/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2013-06-01T13:31:30+00:00</updated>
+<updated>2013-06-01T14:28:24+00:00</updated>
 
   <entry>
     <id>http://www.gnu.org/software/gnutls/news.html#2013-06-01</id>
@@ -22,7 +22,10 @@
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6774">GnuTLS 3.2.1</a> 
 were released.
 </p>
-
+<p>
+<a href="http://www.lulu.com/shop/nikos-mavrogiannopoulos-and-simon-josefsson/the-gnutls-manual/paperback/product-21048042.html">The
+paperback manual</a> was updated.
+</p>
     </div>
     </content>
   </entry>
