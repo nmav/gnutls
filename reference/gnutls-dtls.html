@@ -43,7 +43,7 @@
                                                          <em class="parameter"><code><span class="type">size_t</span> client_data_size</code></em>,
                                                          <em class="parameter"><code><span class="type">gnutls_dtls_prestate_st</span> *prestate</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-transport-ptr-t" title="gnutls_transport_ptr_t"><span class="type">gnutls_transport_ptr_t</span></a> ptr</code></em>,
-                                                         <em class="parameter"><code><span class="type">gnutls_push_func</span> push_func</code></em>);
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-push-func"><span class="type">gnutls_push_func</span></a> push_func</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-dtls.html#gnutls-dtls-cookie-verify" title="gnutls_dtls_cookie_verify ()">gnutls_dtls_cookie_verify</a>           (<em class="parameter"><code><span class="type">gnutls_datum_t</span> *key</code></em>,
                                                          <em class="parameter"><code><span class="type">void</span> *client_data</code></em>,
                                                          <em class="parameter"><code><span class="type">size_t</span> client_data_size</code></em>,
@@ -87,7 +87,7 @@ unsigned <span class="returnvalue">int</span>        <a class="link" href="gnutl
                                                          <em class="parameter"><code><span class="type">size_t</span> client_data_size</code></em>,
                                                          <em class="parameter"><code><span class="type">gnutls_dtls_prestate_st</span> *prestate</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-transport-ptr-t" title="gnutls_transport_ptr_t"><span class="type">gnutls_transport_ptr_t</span></a> ptr</code></em>,
-                                                         <em class="parameter"><code><span class="type">gnutls_push_func</span> push_func</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-push-func"><span class="type">gnutls_push_func</span></a> push_func</code></em>);</pre>
 <p>
 This function can be used to prevent denial of service
 attacks to a DTLS server by requiring the client to
@@ -186,7 +186,7 @@ This function must be called after <a class="link" href="gnutls-dtls.html#gnutls
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<code class="literal">GNUTLS_E_SUCCESS</code> (0) on success, or a negative error code.</td>
+<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success, or a negative error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -324,7 +324,7 @@ account for the new protocol overhead.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<code class="literal">GNUTLS_E_SUCCESS</code> (0) on success, or a negative error code.</td>
+<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success, or a negative error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -376,7 +376,7 @@ respectively.
 </p>
 <p>
 If the retransmission timeout is zero then the handshake will operate
-in a non-blocking way, i.e., return <code class="literal">GNUTLS_E_AGAIN</code>.
+in a non-blocking way, i.e., return <a href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">

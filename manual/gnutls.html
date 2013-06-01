@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 24 April 2013 for version
-3.2.0 of GnuTLS.
+<!-- This manual is last updated 25 May 2013 for version
+3.2.1 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.0</title>
+<title>GnuTLS 3.2.1</title>
 
-<meta name="description" content="GnuTLS 3.2.0">
-<meta name="keywords" content="GnuTLS 3.2.0">
+<meta name="description" content="GnuTLS 3.2.1">
+<meta name="keywords" content="GnuTLS 3.2.1">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.2.0</h1>
+<h1 class="settitle" align="center">GnuTLS 3.2.1</h1>
 
 
 
@@ -426,6 +426,7 @@ dl {
     <li><a name="toc-Commercial-Support-1" href="#Commercial-Support">B.2 Commercial Support</a></li>
     <li><a name="toc-Bug-Reports-1" href="#Bug-Reports">B.3 Bug Reports</a></li>
     <li><a name="toc-Contributing-1" href="#Contributing">B.4 Contributing</a></li>
+    <li><a name="toc-Certification-1" href="#Certification">B.5 Certification</a></li>
   </ul></li>
   <li><a name="toc-Error-Codes-and-Descriptions" href="#Error-codes">Appendix C Error Codes and Descriptions</a></li>
   <li><a name="toc-Supported-Ciphersuites" href="#Supported-ciphersuites">Appendix D Supported Ciphersuites</a></li>
@@ -461,8 +462,8 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <a name="GnuTLS"></a>
 <h1 class="top">GnuTLS</h1>
 
-<p>This manual is last updated 24 April 2013 for version
-3.2.0 of GnuTLS.
+<p>This manual is last updated 25 May 2013 for version
+3.2.1 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -7051,7 +7052,60 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">tpmtool is unavailable - no --help
+<pre class="example">tpmtool - GnuTLS TPM tool - Ver. 3.2.1
+USAGE:  tpmtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+
+   -d, --debug=num            Enable debugging.
+                                - It must be in the range:
+                                  0 to 9999
+       --infile=file          Input file
+                                - file must pre-exist
+       --outfile=str          Output file
+       --generate-rsa         Generate an RSA private-public key pair
+       --register             Any generated key will be registered in the TPM
+                                - requires these options:
+                                generate-rsa
+       --signing              Any generated key will be a signing key
+                                - requires these options:
+                                generate-rsa
+                                -- and prohibits these options:
+                                legacy
+       --legacy               Any generated key will be a legacy key
+                                - requires these options:
+                                generate-rsa
+                                -- and prohibits these options:
+                                signing
+       --user                 Any registered key will be a user key
+                                - requires these options:
+                                register
+                                -- and prohibits these options:
+                                system
+       --system               Any registred key will be a system key
+                                - requires these options:
+                                register
+                                -- and prohibits these options:
+                                user
+       --pubkey=str           Prints the public key of the provided key
+       --list                 Lists all stored keys in the TPM
+       --delete=str           Delete the key identified by the given URL (UUID).
+       --sec-param=str        Specify the security level [low, legacy, normal, high, ultra].
+       --bits=num             Specify the number of bits for key generate
+       --inder                Use the DER format for keys.
+                                - disabled as --no-inder
+       --outder               Use DER format for output keys
+                                - disabled as --no-outder
+   -v, --version[=arg]        Output version information and exit
+   -h, --help                 Display extended usage information and exit
+   -!, --more-help            Extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+
+
+
+Program that allows handling cryptographic data from the TPM chip.
+
+please send bug reports to:  bug-gnutls@gnu.org
 </pre></div>
 
 <a name="tpmtool-debug"></a><a name="debug-option-_0028_002dd_0029-6"></a>
@@ -15844,6 +15898,8 @@ Next: <a href="#Error-codes" accesskey="n" rel="next">Error codes</a>, Previous:
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Contributing" accesskey="4">Contributing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Certification" accesskey="5">Certification</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 </table>
 
 <hr>
@@ -15955,7 +16011,7 @@ note.
 <a name="Contributing"></a>
 <div class="header">
 <p>
-Previous: <a href="#Bug-Reports" accesskey="p" rel="previous">Bug Reports</a>, Up: <a href="#Support" accesskey="u" rel="up">Support</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Certification" accesskey="n" rel="next">Certification</a>, Previous: <a href="#Bug-Reports" accesskey="p" rel="previous">Bug Reports</a>, Up: <a href="#Support" accesskey="u" rel="up">Support</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Contributing-1"></a>
 <h3 class="section">B.4 Contributing</h3>
@@ -16010,7 +16066,27 @@ formatted, are extracted into Texinfo manuals and GTK-DOC web pages.
 
 </li></ul>
 
+<hr>
+<a name="Certification"></a>
+<div class="header">
+<p>
+Previous: <a href="#Contributing" accesskey="p" rel="previous">Contributing</a>, Up: <a href="#Support" accesskey="u" rel="up">Support</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Certification-1"></a>
+<h3 class="section">B.5 Certification</h3>
+<a name="index-certification"></a>
 
+<p>Many cryptographic libraries claim certifications from national or international bodies. These certifications are tied on a specific (and often restricted) version of the library or a 
+specific product using the library, and typically in the case of software they assure that the algorithms implemented are correct. The major certifications known are:
+</p><ul>
+<li> USA&rsquo;s FIPS 140-2 at Level 1 which certifies that approved algorithms are used (see <a href="http://en.wikipedia.org/wiki/FIPS_140-2">http://en.wikipedia.org/wiki/FIPS_140-2</a>);
+</li><li> Common Criteria for Information Technology Security Evaluation (CC), an international standard for verification of elaborate security claims (see <a href="http://en.wikipedia.org/wiki/Common_Criteria">http://en.wikipedia.org/wiki/Common_Criteria</a>).
+</li></ul>
+
+<p>Obtaining such a certification is an expensive and elaborate job that has no immediate value for a continuously developed free software library (as the certification is tied to the
+particular version tested), and in the case of algorithm verification of FIPS 140-2 it doesn&rsquo;t make much sense as the library is freely available and anyone can verify the correctness
+of algorithm implementation. As such we are not actively pursuing this kind of certification. If you are, nevertheless, interested, see <a href="#Commercial-Support">Commercial Support</a>.
+</p>
 <hr>
 <a name="Error-codes"></a>
 <div class="header">
@@ -16207,10 +16283,10 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <tr><td width="60%">TLS_RSA_AES_128_CBC_SHA256</td><td width="20%">0x00 0x3C</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_RSA_AES_256_CBC_SHA256</td><td width="20%">0x00 0x3D</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_RSA_AES_128_GCM_SHA256</td><td width="20%">0x00 0x9C</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_RSA_WITH_SALSA20_256_SHA1</td><td width="20%">0xFA 0xA4</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_WITH_SALSA20_256_UMAC_96</td><td width="20%">0xFA 0xA5</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_WITH_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xFB 0xA4</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_WITH_ESTREAM_SALSA20_256_UMAC_96</td><td width="20%">0xFB 0xA5</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_WITH_SALSA20_256_SHA1</td><td width="20%">0xE4 0x11</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_WITH_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x31</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_WITH_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x10</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_WITH_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x30</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_ARCFOUR_SHA1</td><td width="20%">0x00 0x66</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x13</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_AES_128_CBC_SHA1</td><td width="20%">0x00 0x32</td><td width="20%">SSL3.0</td></tr>
@@ -16243,6 +16319,14 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_GCM_SHA384</td><td width="20%">0xC0 0x2C</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_AES_256_GCM_SHA384</td><td width="20%">0xC0 0x30</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_CBC_SHA384</td><td width="20%">0xC0 0x24</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_WITH_SALSA20_256_SHA1</td><td width="20%">0xE4 0x13</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_WITH_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x33</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_WITH_SALSA20_256_SHA1</td><td width="20%">0xE4 0x15</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_WITH_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x35</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_WITH_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x12</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_WITH_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x32</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_WITH_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x14</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_WITH_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x34</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x34</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x35</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x36</td><td width="20%">TLS1.0</td></tr>
@@ -16250,6 +16334,10 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <tr><td width="60%">TLS_ECDHE_PSK_AES_256_CBC_SHA384</td><td width="20%">0xC0 0x38</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_NULL_SHA256</td><td width="20%">0xC0 0x3A</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_NULL_SHA384</td><td width="20%">0xC0 0x3B</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_WITH_SALSA20_256_SHA1</td><td width="20%">0xE4 0x19</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_WITH_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x39</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_WITH_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x18</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_WITH_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x38</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_PSK_SHA_ARCFOUR_SHA1</td><td width="20%">0x00 0x8A</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_PSK_SHA_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x8B</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_PSK_SHA_AES_128_CBC_SHA1</td><td width="20%">0x00 0x8C</td><td width="20%">TLS1.0</td></tr>
@@ -16257,6 +16345,10 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <tr><td width="60%">TLS_PSK_AES_128_CBC_SHA256</td><td width="20%">0x00 0xAE</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_PSK_AES_128_GCM_SHA256</td><td width="20%">0x00 0xA8</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_PSK_NULL_SHA256</td><td width="20%">0x00 0xB0</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_PSK_WITH_SALSA20_256_SHA1</td><td width="20%">0xE4 0x17</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_PSK_WITH_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x37</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_PSK_WITH_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x16</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_PSK_WITH_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x36</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DHE_PSK_SHA_ARCFOUR_SHA1</td><td width="20%">0x00 0x8E</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_PSK_SHA_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x8F</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_PSK_SHA_AES_128_CBC_SHA1</td><td width="20%">0x00 0x90</td><td width="20%">TLS1.0</td></tr>
@@ -16575,7 +16667,7 @@ otherwise a negative error code is returned.
 </p>
 <p><var>protocols_size</var>: the number of protocols to add.
 </p>
-<p><var>flags</var>: one of <code>GNUTLS_ALPN_</code> *
+<p><var>flags</var>: zero or <code>GNUTLS_ALPN_</code> *
 </p>
 <p>This function is to be used by both clients and servers, to declare
 the supported ALPN protocols, which are used during peer negotiation.
@@ -17719,6 +17811,18 @@ type.
 the specified cipher, or <code>GNUTLS_CIPHER_UNKNOWN</code>  on error.
 </p></dd></dl>
 
+<a name="gnutls_005fcipher_005fget_005fkey_005fsize-1"></a>
+<h4 class="subheading">gnutls_cipher_get_key_size</h4>
+<a name="gnutls_005fcipher_005fget_005fkey_005fsize"></a><dl>
+<dt><a name="index-gnutls_005fcipher_005fget_005fkey_005fsize"></a>Function: <em>size_t</em> <strong>gnutls_cipher_get_key_size</strong> <em>(gnutls_cipher_algorithm_t <var>algorithm</var>)</em></dt>
+<dd><p><var>algorithm</var>: is an encryption algorithm
+</p>
+<p>Get key size for cipher.
+</p>
+<p><strong>Returns:</strong> length (in bytes) of the given cipher&rsquo;s key size, or 0 if
+the given cipher is invalid.
+</p></dd></dl>
+
 <a name="gnutls_005fcipher_005fget_005fname-1"></a>
 <h4 class="subheading">gnutls_cipher_get_name</h4>
 <a name="gnutls_005fcipher_005fget_005fname"></a><dl>
@@ -18290,7 +18394,7 @@ exchanged data.
 <p>Note that since 3.1.7 this function is deprecated. The minimum
 number of bits is set by the priority string level.
 Also this function must be called after <code>gnutls_priority_set_direct()</code> 
-or the set value may be overriden by the selected priority options.
+or the set value may be overridden by the selected priority options.
 </p></dd></dl>
 
 <a name="gnutls_005fecc_005fcurve_005fget-1"></a>
@@ -18890,6 +18994,8 @@ long enough, or 0 on success.
 <p>This function will convert the given data to printable data, using
 the hex encoding, as used in the PSK password files.
 </p>
+<p>Note that the size of the result includes the null terminator.
+</p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the buffer given is not
 long enough, or 0 on success.
 </p></dd></dl>
@@ -19028,6 +19134,18 @@ compared in a case insensitive way.
 </p>
 <p><strong>Returns:</strong> a <code>gnutls_mac_algorithm_t</code>  id of the specified MAC
 algorithm string, or <code>GNUTLS_MAC_UNKNOWN</code>  on failures.
+</p></dd></dl>
+
+<a name="gnutls_005fmac_005fget_005fkey_005fsize-1"></a>
+<h4 class="subheading">gnutls_mac_get_key_size</h4>
+<a name="gnutls_005fmac_005fget_005fkey_005fsize"></a><dl>
+<dt><a name="index-gnutls_005fmac_005fget_005fkey_005fsize"></a>Function: <em>size_t</em> <strong>gnutls_mac_get_key_size</strong> <em>(gnutls_mac_algorithm_t <var>algorithm</var>)</em></dt>
+<dd><p><var>algorithm</var>: is an encryption algorithm
+</p>
+<p>Returns the size of the MAC key used in TLS. 
+</p>
+<p><strong>Returns:</strong> length (in bytes) of the given MAC key size, or 0 if the
+given MAC algorithm is invalid.
 </p></dd></dl>
 
 <a name="gnutls_005fmac_005fget_005fname-1"></a>
@@ -20572,6 +20690,24 @@ performed.
 an error code is returned.
 </p></dd></dl>
 
+<a name="gnutls_005fsession_005fset_005fid-1"></a>
+<h4 class="subheading">gnutls_session_set_id</h4>
+<a name="gnutls_005fsession_005fset_005fid"></a><dl>
+<dt><a name="index-gnutls_005fsession_005fset_005fid"></a>Function: <em>int</em> <strong>gnutls_session_set_id</strong> <em>(gnutls_session_t <var>session</var>, const gnutls_datum_t * <var>sid</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>sid</var>: the session identifier
+</p>
+<p>This function sets the session ID to be used in a client hello.
+This is a function intended for exceptional uses. Do not use this
+function unless you are implementing a custom protocol.
+</p>
+<p>To set session resumption parameters use <code>gnutls_session_set_data()</code>  instead.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
+an error code is returned.
+</p></dd></dl>
+
 <a name="gnutls_005fsession_005fset_005fpremaster-1"></a>
 <h4 class="subheading">gnutls_session_set_premaster</h4>
 <a name="gnutls_005fsession_005fset_005fpremaster"></a><dl>
@@ -21785,6 +21921,10 @@ it can be ensured that a client we allocated resources
 for (i.e. <code>gnutls_session_t</code> ) is the one that the 
 original incoming packet was originated from.
 </p>
+<p>This function must be called at the first incoming packet,
+prior to allocating any resources and must be succeeded
+by <code>gnutls_dtls_cookie_verify()</code> .
+</p>
 <p><strong>Returns:</strong> the number of bytes sent, or a negative error code.  
 </p>
 <p><strong>Since:</strong> 3.0
@@ -21806,10 +21946,12 @@ original incoming packet was originated from.
 </p>
 <p><var>prestate</var>: The cookie of this client.
 </p>
-<p>This function will verify an incoming message for
+<p>This function will verify the received message for
 a valid cookie. If a valid cookie is returned then
 it should be associated with the session using
 <code>gnutls_dtls_prestate_set()</code> ;
+</p>
+<p>This function must be called after <code>gnutls_dtls_cookie_send()</code> .
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.  
 </p>
@@ -21875,6 +22017,9 @@ if no packets have been received.
 <p>This function will associate the prestate acquired by
 the cookie authentication with the client, with the newly 
 established session.
+</p>
+<p>This functions must be called after a successful <code>gnutls_dtls_cookie_verify()</code> 
+and should be succeeded by the actual DTLS handshake using <code>gnutls_handshake()</code> .
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -32409,18 +32554,6 @@ specified by the context.
 <p><strong>Since:</strong> 3.2.0
 </p></dd></dl>
 
-<a name="gnutls_005fcipher_005fget_005fkey_005fsize-1"></a>
-<h4 class="subheading">gnutls_cipher_get_key_size</h4>
-<a name="gnutls_005fcipher_005fget_005fkey_005fsize"></a><dl>
-<dt><a name="index-gnutls_005fcipher_005fget_005fkey_005fsize"></a>Function: <em>size_t</em> <strong>gnutls_cipher_get_key_size</strong> <em>(gnutls_cipher_algorithm_t <var>algorithm</var>)</em></dt>
-<dd><p><var>algorithm</var>: is an encryption algorithm
-</p>
-<p>Get key size for cipher.
-</p>
-<p><strong>Returns:</strong> length (in bytes) of the given cipher&rsquo;s key size, or 0 if
-the given cipher is invalid.
-</p></dd></dl>
-
 <a name="gnutls_005fcipher_005finit-1"></a>
 <h4 class="subheading">gnutls_cipher_init</h4>
 <a name="gnutls_005fcipher_005finit"></a><dl>
@@ -32698,18 +32831,6 @@ and reset the state of the MAC.
 <p>This function will set the nonce in the MAC algorithm.
 </p>
 <p><strong>Since:</strong> 3.2.0
-</p></dd></dl>
-
-<a name="gnutls_005fmac_005fget_005fkey_005fsize-1"></a>
-<h4 class="subheading">gnutls_mac_get_key_size</h4>
-<a name="gnutls_005fmac_005fget_005fkey_005fsize"></a><dl>
-<dt><a name="index-gnutls_005fmac_005fget_005fkey_005fsize"></a>Function: <em>size_t</em> <strong>gnutls_mac_get_key_size</strong> <em>(gnutls_mac_algorithm_t <var>algorithm</var>)</em></dt>
-<dd><p><var>algorithm</var>: is an encryption algorithm
-</p>
-<p>Returns the size of the MAC key used in TLS. 
-</p>
-<p><strong>Returns:</strong> length (in bytes) of the given MAC key size, or 0 if the
-given MAC algorithm is invalid.
 </p></dd></dl>
 
 <a name="gnutls_005fmac_005fget_005fnonce_005fsize-1"></a>
@@ -34253,7 +34374,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005fget_005fblock_005fsize"><code>gnutls_cipher_get_block_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005fget_005fid"><code>gnutls_cipher_get_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005fget_005fiv_005fsize"><code>gnutls_cipher_get_iv_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005fget_005fkey_005fsize"><code>gnutls_cipher_get_key_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005fget_005fkey_005fsize"><code>gnutls_cipher_get_key_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005fget_005fname"><code>gnutls_cipher_get_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005finit"><code>gnutls_cipher_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005flist"><code>gnutls_cipher_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -34368,7 +34489,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fload_005ffile"><code>gnutls_load_file</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fmac_005fget"><code>gnutls_mac_get</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fmac_005fget_005fid"><code>gnutls_mac_get_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fmac_005fget_005fkey_005fsize"><code>gnutls_mac_get_key_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fmac_005fget_005fkey_005fsize"><code>gnutls_mac_get_key_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fmac_005fget_005fname"><code>gnutls_mac_get_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fmac_005fget_005fnonce_005fsize"><code>gnutls_mac_get_nonce_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fmac_005flist"><code>gnutls_mac_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -34744,6 +34865,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fresumption_005frequested"><code>gnutls_session_resumption_requested</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Session-resumption">Session resumption</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fresumption_005frequested-1"><code>gnutls_session_resumption_requested</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fset_005fdata"><code>gnutls_session_set_data</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fset_005fid"><code>gnutls_session_set_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fset_005fpremaster"><code>gnutls_session_set_premaster</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fset_005fptr"><code>gnutls_session_set_ptr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fticket_005fenable_005fclient"><code>gnutls_session_ticket_enable_client</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -35172,6 +35294,7 @@ Previous: <a href="#Function-and-Data-Index" accesskey="p" rel="previous">Functi
 <tr><td></td><td valign="top"><a href="#index-certificate-status">certificate status</a>:</td><td>&nbsp;</td><td valign="top"><a href="#OCSP-certificate-status-checking">OCSP certificate status checking</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Certificate-status-request">Certificate status request</a>:</td><td>&nbsp;</td><td valign="top"><a href="#OCSP-status-request">OCSP status request</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Certificate-verification">Certificate verification</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Advanced-certificate-verification">Advanced certificate verification</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-certification">certification</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Certification">Certification</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-certtool"><code>certtool</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#certtool-Invocation">certtool Invocation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-certtool-help">certtool help</a>:</td><td>&nbsp;</td><td valign="top"><a href="#certtool-Invocation">certtool Invocation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-channel-bindings">channel bindings</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Channel-Bindings">Channel Bindings</a></td></tr>
