@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 25 May 2013 for version
+<!-- This manual is last updated 3 June 2013 for version
 3.2.1 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
@@ -12,7 +12,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GnuTLS 3.2.1: Operations</title>
 
@@ -276,7 +276,7 @@ negative error value.
 </p>
 <p><var>hash_algo</var>: The hash algorithm used
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_privkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_privkey_flags_t</code> 
 </p>
 <p><var>hash_data</var>: holds the data to be signed
 </p>
@@ -289,6 +289,9 @@ used for the RSA algorithm, but only SHA-XXX for the DSA keys.
 </p>
 <p>You may use <code>gnutls_pubkey_get_preferred_hash_algorithm()</code>  to determine
 the hash algorithm.
+</p>
+<p>Note that if <code>GNUTLS_PRIVKEY_SIGN_FLAG_TLS1_RSA</code>  flag is specified this function
+will ignore  <code>hash_algo</code> and perform a raw PKCS1 signature.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 25 May 2013 for version
+<!-- This manual is last updated 3 June 2013 for version
 3.2.1 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
@@ -12,7 +12,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GnuTLS 3.2.1</title>
 
@@ -462,7 +462,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <a name="GnuTLS"></a>
 <h1 class="top">GnuTLS</h1>
 
-<p>This manual is last updated 25 May 2013 for version
+<p>This manual is last updated 3 June 2013 for version
 3.2.1 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
@@ -5959,7 +5959,7 @@ negative error value.
 </p>
 <p><var>hash_algo</var>: The hash algorithm used
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_privkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_privkey_flags_t</code> 
 </p>
 <p><var>hash_data</var>: holds the data to be signed
 </p>
@@ -5972,6 +5972,9 @@ used for the RSA algorithm, but only SHA-XXX for the DSA keys.
 </p>
 <p>You may use <code>gnutls_pubkey_get_preferred_hash_algorithm()</code>  to determine
 the hash algorithm.
+</p>
+<p>Note that if <code>GNUTLS_PRIVKEY_SIGN_FLAG_TLS1_RSA</code>  flag is specified this function
+will ignore  <code>hash_algo</code> and perform a raw PKCS1 signature.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -21966,7 +21969,7 @@ it should be associated with the session using
 </p>
 <p>This function will return the actual maximum transfer unit for
 application data. I.e. DTLS headers are subtracted from the
-actual MTU.
+actual MTU which is set using <code>gnutls_dtls_set_mtu()</code> .
 </p>
 <p><strong>Returns:</strong> the maximum allowed transfer unit.
 </p>
@@ -22039,6 +22042,9 @@ calling <code>gnutls_dtls_set_mtu()</code>  with that value. In particular, this
 that you may need to call this function again after any negotiation or
 renegotiation, in order to ensure that the MTU is still sufficient to
 account for the new protocol overhead.
+</p>
+<p>In most cases you only need to call <code>gnutls_dtls_set_mtu()</code>  with
+the maximum MTU of your transport layer.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p>
@@ -31171,7 +31177,7 @@ negative error value.
 </p>
 <p><var>hash_algo</var>: The hash algorithm used
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_privkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_privkey_flags_t</code> 
 </p>
 <p><var>hash_data</var>: holds the data to be signed
 </p>
@@ -31184,6 +31190,9 @@ used for the RSA algorithm, but only SHA-XXX for the DSA keys.
 </p>
 <p>You may use <code>gnutls_pubkey_get_preferred_hash_algorithm()</code>  to determine
 the hash algorithm.
+</p>
+<p>Note that if <code>GNUTLS_PRIVKEY_SIGN_FLAG_TLS1_RSA</code>  flag is specified this function
+will ignore  <code>hash_algo</code> and perform a raw PKCS1 signature.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
