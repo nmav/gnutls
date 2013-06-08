@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 3 June 2013 for version
+<!-- This manual is last updated 10 February 2013 for version
 3.2.1 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
@@ -165,7 +165,9 @@ Next: <a href="Version-check.html#Version-check" accesskey="n" rel="next">Versio
 <h4 class="subsection">6.2.2 Initialization</h4>
 
 <p>GnuTLS must be initialized before it can be used.  The library is
-initialized by calling <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a>.  The resources
+initialized by calling <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a>. That call
+typically enables CPU-specific acceleration, and performs any requires
+precalculations needed by the library. The resources
 allocated by the initialization process can be released if the
 application no longer has a need to call GnuTLS functions, this is
 done by calling <a href="Core-TLS-API.html#gnutls_005fglobal_005fdeinit">gnutls_global_deinit</a>.

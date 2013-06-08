@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 3 June 2013 for version
+<!-- This manual is last updated 10 February 2013 for version
 3.2.1 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
@@ -356,6 +356,8 @@ respectively.
 </p>
 <p>If the retransmission timeout is zero then the handshake will operate
 in a non-blocking way, i.e., return <code>GNUTLS_E_AGAIN</code> .
+</p>
+<p>To disable retransmissions set a  <code>retrans_timeout</code> larger than the  <code>total_timeout</code> .
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>

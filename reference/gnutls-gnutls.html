@@ -60,132 +60,131 @@
 #define             <a class="link" href="gnutls-gnutls.html#HAVE-SSIZE-T:CAPS" title="HAVE_SSIZE_T">HAVE_SSIZE_T</a>
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t">gnutls_alert_description_t</a>;
 <a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="returnvalue">gnutls_alert_description_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-alert-get" title="gnutls_alert_get ()">gnutls_alert_get</a>             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-alert-get-name" title="gnutls_alert_get_name ()">gnutls_alert_get_name</a>               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="type">gnutls_alert_description_t</span></a> alert</code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-alert-get-strname" title="gnutls_alert_get_strname ()">gnutls_alert_get_strname</a>            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="type">gnutls_alert_description_t</span></a> alert</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-alert-get-name" title="gnutls_alert_get_name ()">gnutls_alert_get_name</a>               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="type">gnutls_alert_description_t</span></a> alert</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-alert-get-strname" title="gnutls_alert_get_strname ()">gnutls_alert_get_strname</a>            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="type">gnutls_alert_description_t</span></a> alert</code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-alert-level-t" title="enum gnutls_alert_level_t">gnutls_alert_level_t</a>;
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-alert-send" title="gnutls_alert_send ()">gnutls_alert_send</a>                   (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-alert-send" title="gnutls_alert_send ()">gnutls_alert_send</a>                   (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-level-t" title="enum gnutls_alert_level_t"><span class="type">gnutls_alert_level_t</span></a> level</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="type">gnutls_alert_description_t</span></a> desc</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-alert-send-appropriate" title="gnutls_alert_send_appropriate ()">gnutls_alert_send_appropriate</a>       (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code><span class="type">int</span> err</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-bye" title="gnutls_bye ()">gnutls_bye</a>                          (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-alert-send-appropriate" title="gnutls_alert_send_appropriate ()">gnutls_alert_send_appropriate</a>       (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> err</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-bye" title="gnutls_bye ()">gnutls_bye</a>                          (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-close-request-t" title="enum gnutls_close_request_t"><span class="type">gnutls_close_request_t</span></a> how</code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-certificate-print-formats-t" title="enum gnutls_certificate_print_formats_t">gnutls_certificate_print_formats_t</a>;
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-certificate-request-t" title="enum gnutls_certificate_request_t">gnutls_certificate_request_t</a>;
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-certificate-status-t" title="enum gnutls_certificate_status_t">gnutls_certificate_status_t</a>;
 <a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-t" title="enum gnutls_certificate_type_t"><span class="returnvalue">gnutls_certificate_type_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-get" title="gnutls_certificate_type_get ()">gnutls_certificate_type_get</a>   (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
 <a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-t" title="enum gnutls_certificate_type_t"><span class="returnvalue">gnutls_certificate_type_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-get-id" title="gnutls_certificate_type_get_id ()">gnutls_certificate_type_get_id</a>
-                                                        (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-get-name" title="gnutls_certificate_type_get_name ()">gnutls_certificate_type_get_name</a>    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-t" title="enum gnutls_certificate_type_t"><span class="type">gnutls_certificate_type_t</span></a> type</code></em>);
+                                                        (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-get-name" title="gnutls_certificate_type_get_name ()">gnutls_certificate_type_get_name</a>    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-t" title="enum gnutls_certificate_type_t"><span class="type">gnutls_certificate_type_t</span></a> type</code></em>);
 const <a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-t" title="enum gnutls_certificate_type_t"><span class="returnvalue">gnutls_certificate_type_t</span></a> * <a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-list" title="gnutls_certificate_type_list ()">gnutls_certificate_type_list</a>
                                                         (<em class="parameter"><code><span class="type">void</span></code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-t" title="enum gnutls_certificate_type_t">gnutls_certificate_type_t</a>;
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-channel-binding-t" title="enum gnutls_channel_binding_t">gnutls_channel_binding_t</a>;
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t">gnutls_cipher_algorithm_t</a>;
 <a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="returnvalue">gnutls_cipher_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-cipher-get" title="gnutls_cipher_get ()">gnutls_cipher_get</a>             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
-<a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="returnvalue">gnutls_cipher_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-cipher-get-id" title="gnutls_cipher_get_id ()">gnutls_cipher_get_id</a>          (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);
-<span class="returnvalue">size_t</span>              <a class="link" href="gnutls-gnutls.html#gnutls-cipher-get-key-size" title="gnutls_cipher_get_key_size ()">gnutls_cipher_get_key_size</a>          (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-cipher-get-name" title="gnutls_cipher_get_name ()">gnutls_cipher_get_name</a>              (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);
+<a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="returnvalue">gnutls_cipher_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-cipher-get-id" title="gnutls_cipher_get_id ()">gnutls_cipher_get_id</a>          (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);
+<GTKDOCLINK HREF="size-t"><span class="returnvalue">size_t</span></GTKDOCLINK>              <a class="link" href="gnutls-gnutls.html#gnutls-cipher-get-key-size" title="gnutls_cipher_get_key_size ()">gnutls_cipher_get_key_size</a>          (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-cipher-get-name" title="gnutls_cipher_get_name ()">gnutls_cipher_get_name</a>              (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);
 const <a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="returnvalue">gnutls_cipher_algorithm_t</span></a> * <a class="link" href="gnutls-gnutls.html#gnutls-cipher-list" title="gnutls_cipher_list ()">gnutls_cipher_list</a>    (<em class="parameter"><code><span class="type">void</span></code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-cipher-suite-info" title="gnutls_cipher_suite_info ()">gnutls_cipher_suite_info</a>            (<em class="parameter"><code><span class="type">size_t</span> idx</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">char</span> *cs_id</code></em>,
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-cipher-suite-info" title="gnutls_cipher_suite_info ()">gnutls_cipher_suite_info</a>            (<em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> idx</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *cs_id</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="type">gnutls_kx_algorithm_t</span></a> *kx</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> *cipher</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> *mac</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-protocol-t" title="enum gnutls_protocol_t"><span class="type">gnutls_protocol_t</span></a> *min_version</code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-close-request-t" title="enum gnutls_close_request_t">gnutls_close_request_t</a>;
 <a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" title="enum gnutls_compression_method_t"><span class="returnvalue">gnutls_compression_method_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-compression-get" title="gnutls_compression_get ()">gnutls_compression_get</a>      (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
-<a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" title="enum gnutls_compression_method_t"><span class="returnvalue">gnutls_compression_method_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-compression-get-id" title="gnutls_compression_get_id ()">gnutls_compression_get_id</a>   (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-compression-get-name" title="gnutls_compression_get_name ()">gnutls_compression_get_name</a>         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" title="enum gnutls_compression_method_t"><span class="type">gnutls_compression_method_t</span></a> algorithm</code></em>);
+<a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" title="enum gnutls_compression_method_t"><span class="returnvalue">gnutls_compression_method_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-compression-get-id" title="gnutls_compression_get_id ()">gnutls_compression_get_id</a>   (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-compression-get-name" title="gnutls_compression_get_name ()">gnutls_compression_get_name</a>         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" title="enum gnutls_compression_method_t"><span class="type">gnutls_compression_method_t</span></a> algorithm</code></em>);
 const <a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" title="enum gnutls_compression_method_t"><span class="returnvalue">gnutls_compression_method_t</span></a> * <a class="link" href="gnutls-gnutls.html#gnutls-compression-list" title="gnutls_compression_list ()">gnutls_compression_list</a>
                                                         (<em class="parameter"><code><span class="type">void</span></code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" title="enum gnutls_compression_method_t">gnutls_compression_method_t</a>;
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-credentials-type-t" title="enum gnutls_credentials_type_t">gnutls_credentials_type_t</a>;
-<span class="returnvalue">void</span>                <a class="link" href="gnutls-gnutls.html#gnutls-deinit" title="gnutls_deinit ()">gnutls_deinit</a>                       (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
+<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-gnutls.html#gnutls-deinit" title="gnutls_deinit ()">gnutls_deinit</a>                       (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
 struct              <a class="link" href="gnutls-gnutls.html#gnutls-dh-params-int" title="struct gnutls_dh_params_int">gnutls_dh_params_int</a>;
 typedef             <a class="link" href="gnutls-gnutls.html#gnutls-dh-params-t" title="gnutls_dh_params_t">gnutls_dh_params_t</a>;
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t">gnutls_digest_algorithm_t</a>;
 <a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="enum gnutls_ecc_curve_t"><span class="returnvalue">gnutls_ecc_curve_t</span></a>  <a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-get" title="gnutls_ecc_curve_get ()">gnutls_ecc_curve_get</a>                (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-get-name" title="gnutls_ecc_curve_get_name ()">gnutls_ecc_curve_get_name</a>           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="enum gnutls_ecc_curve_t"><span class="type">gnutls_ecc_curve_t</span></a> curve</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-get-size" title="gnutls_ecc_curve_get_size ()">gnutls_ecc_curve_get_size</a>           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="enum gnutls_ecc_curve_t"><span class="type">gnutls_ecc_curve_t</span></a> curve</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-get-name" title="gnutls_ecc_curve_get_name ()">gnutls_ecc_curve_get_name</a>           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="enum gnutls_ecc_curve_t"><span class="type">gnutls_ecc_curve_t</span></a> curve</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-get-size" title="gnutls_ecc_curve_get_size ()">gnutls_ecc_curve_get_size</a>           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="enum gnutls_ecc_curve_t"><span class="type">gnutls_ecc_curve_t</span></a> curve</code></em>);
 const <a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="enum gnutls_ecc_curve_t"><span class="returnvalue">gnutls_ecc_curve_t</span></a> * <a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-list" title="gnutls_ecc_curve_list ()">gnutls_ecc_curve_list</a>        (<em class="parameter"><code><span class="type">void</span></code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="enum gnutls_ecc_curve_t">gnutls_ecc_curve_t</a>;
 struct              <a class="link" href="gnutls-gnutls.html#gnutls-ecdh-params-int" title="struct gnutls_ecdh_params_int">gnutls_ecdh_params_int</a>;
 typedef             <a class="link" href="gnutls-gnutls.html#gnutls-ecdh-params-t" title="gnutls_ecdh_params_t">gnutls_ecdh_params_t</a>;
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-error-is-fatal" title="gnutls_error_is_fatal ()">gnutls_error_is_fatal</a>               (<em class="parameter"><code><span class="type">int</span> error</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-error-to-alert" title="gnutls_error_to_alert ()">gnutls_error_to_alert</a>               (<em class="parameter"><code><span class="type">int</span> err</code></em>,
-                                                         <em class="parameter"><code><span class="type">int</span> *level</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-handshake" title="gnutls_handshake ()">gnutls_handshake</a>                    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-error-is-fatal" title="gnutls_error_is_fatal ()">gnutls_error_is_fatal</a>               (<em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> error</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-error-to-alert" title="gnutls_error_to_alert ()">gnutls_error_to_alert</a>               (<em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> err</code></em>,
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> *level</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-handshake" title="gnutls_handshake ()">gnutls_handshake</a>                    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-handshake-description-t" title="enum gnutls_handshake_description_t">gnutls_handshake_description_t</a>;
 <a class="link" href="gnutls-gnutls.html#gnutls-handshake-description-t" title="enum gnutls_handshake_description_t"><span class="returnvalue">gnutls_handshake_description_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-handshake-get-last-in" title="gnutls_handshake_get_last_in ()">gnutls_handshake_get_last_in</a>
                                                         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
 <a class="link" href="gnutls-gnutls.html#gnutls-handshake-description-t" title="enum gnutls_handshake_description_t"><span class="returnvalue">gnutls_handshake_description_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-handshake-get-last-out" title="gnutls_handshake_get_last_out ()">gnutls_handshake_get_last_out</a>
                                                         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="gnutls-gnutls.html#gnutls-handshake-set-private-extensions" title="gnutls_handshake_set_private_extensions ()">gnutls_handshake_set_private_extensions</a>
+<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-gnutls.html#gnutls-handshake-set-private-extensions" title="gnutls_handshake_set_private_extensions ()">gnutls_handshake_set_private_extensions</a>
                                                         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code><span class="type">int</span> allow</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="gnutls-gnutls.html#gnutls-handshake-set-timeout" title="gnutls_handshake_set_timeout ()">gnutls_handshake_set_timeout</a>        (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> ms</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-heartbeat-ping" title="gnutls_heartbeat_ping ()">gnutls_heartbeat_ping</a>               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code><span class="type">size_t</span> data_size</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> max_tries</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-heartbeat-pong" title="gnutls_heartbeat_pong ()">gnutls_heartbeat_pong</a>               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-init" title="gnutls_init ()">gnutls_init</a>                         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> *session</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> allow</code></em>);
+<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-gnutls.html#gnutls-handshake-set-timeout" title="gnutls_handshake_set_timeout ()">gnutls_handshake_set_timeout</a>        (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> ms</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-heartbeat-ping" title="gnutls_heartbeat_ping ()">gnutls_heartbeat_ping</a>               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> data_size</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> max_tries</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-heartbeat-pong" title="gnutls_heartbeat_pong ()">gnutls_heartbeat_pong</a>               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-init" title="gnutls_init ()">gnutls_init</a>                         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> *session</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t">gnutls_kx_algorithm_t</a>;
 <a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="returnvalue">gnutls_kx_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-kx-get" title="gnutls_kx_get ()">gnutls_kx_get</a>                     (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
-<a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="returnvalue">gnutls_kx_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-kx-get-id" title="gnutls_kx_get_id ()">gnutls_kx_get_id</a>                  (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-kx-get-name" title="gnutls_kx_get_name ()">gnutls_kx_get_name</a>                  (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="type">gnutls_kx_algorithm_t</span></a> algorithm</code></em>);
+<a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="returnvalue">gnutls_kx_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-kx-get-id" title="gnutls_kx_get_id ()">gnutls_kx_get_id</a>                  (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-kx-get-name" title="gnutls_kx_get_name ()">gnutls_kx_get_name</a>                  (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="type">gnutls_kx_algorithm_t</span></a> algorithm</code></em>);
 const <a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="returnvalue">gnutls_kx_algorithm_t</span></a> * <a class="link" href="gnutls-gnutls.html#gnutls-kx-list" title="gnutls_kx_list ()">gnutls_kx_list</a>            (<em class="parameter"><code><span class="type">void</span></code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t">gnutls_mac_algorithm_t</a>;
 <a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="returnvalue">gnutls_mac_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-mac-get" title="gnutls_mac_get ()">gnutls_mac_get</a>                   (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
-<a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="returnvalue">gnutls_mac_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-mac-get-id" title="gnutls_mac_get_id ()">gnutls_mac_get_id</a>                (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);
-<span class="returnvalue">size_t</span>              <a class="link" href="gnutls-gnutls.html#gnutls-mac-get-key-size" title="gnutls_mac_get_key_size ()">gnutls_mac_get_key_size</a>             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);
-<span class="returnvalue">return</span>              <a class="link" href="gnutls-gnutls.html#gnutls-mac-get-name" title="gnutls_mac_get_name ()">gnutls_mac_get_name</a>                 ();
+<a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="returnvalue">gnutls_mac_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-mac-get-id" title="gnutls_mac_get_id ()">gnutls_mac_get_id</a>                (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);
+<GTKDOCLINK HREF="size-t"><span class="returnvalue">size_t</span></GTKDOCLINK>              <a class="link" href="gnutls-gnutls.html#gnutls-mac-get-key-size" title="gnutls_mac_get_key_size ()">gnutls_mac_get_key_size</a>             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-mac-get-name" title="gnutls_mac_get_name ()">gnutls_mac_get_name</a>                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);
 const <a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="returnvalue">gnutls_mac_algorithm_t</span></a> * <a class="link" href="gnutls-gnutls.html#gnutls-mac-list" title="gnutls_mac_list ()">gnutls_mac_list</a>          (<em class="parameter"><code><span class="type">void</span></code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-openpgp-crt-status-t" title="enum gnutls_openpgp_crt_status_t">gnutls_openpgp_crt_status_t</a>;
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-params-type-t" title="enum gnutls_params_type_t">gnutls_params_type_t</a>;
-<span class="returnvalue">void</span>                <a class="link" href="gnutls-gnutls.html#gnutls-perror" title="gnutls_perror ()">gnutls_perror</a>                       (<em class="parameter"><code><span class="type">int</span> error</code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-get-name" title="gnutls_pk_algorithm_get_name ()">gnutls_pk_algorithm_get_name</a>        (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> algorithm</code></em>);
+<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-gnutls.html#gnutls-perror" title="gnutls_perror ()">gnutls_perror</a>                       (<em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> error</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-get-name" title="gnutls_pk_algorithm_get_name ()">gnutls_pk_algorithm_get_name</a>        (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> algorithm</code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t">gnutls_pk_algorithm_t</a>;
 <a class="link" href="gnutls-gnutls.html#gnutls-sec-param-t" title="enum gnutls_sec_param_t"><span class="returnvalue">gnutls_sec_param_t</span></a>  <a class="link" href="gnutls-gnutls.html#gnutls-pk-bits-to-sec-param" title="gnutls_pk_bits_to_sec_param ()">gnutls_pk_bits_to_sec_param</a>         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> algo</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> bits</code></em>);
-<a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="returnvalue">gnutls_pk_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-pk-get-id" title="gnutls_pk_get_id ()">gnutls_pk_get_id</a>                  (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-pk-get-name" title="gnutls_pk_get_name ()">gnutls_pk_get_name</a>                  (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> algorithm</code></em>);
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> bits</code></em>);
+<a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="returnvalue">gnutls_pk_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-pk-get-id" title="gnutls_pk_get_id ()">gnutls_pk_get_id</a>                  (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-pk-get-name" title="gnutls_pk_get_name ()">gnutls_pk_get_name</a>                  (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> algorithm</code></em>);
 const <a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="returnvalue">gnutls_pk_algorithm_t</span></a> * <a class="link" href="gnutls-gnutls.html#gnutls-pk-list" title="gnutls_pk_list ()">gnutls_pk_list</a>            (<em class="parameter"><code><span class="type">void</span></code></em>);
 <a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="returnvalue">gnutls_sign_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-pk-to-sign" title="gnutls_pk_to_sign ()">gnutls_pk_to_sign</a>               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> pk</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t"><span class="type">gnutls_digest_algorithm_t</span></a> hash</code></em>);
 struct              <a class="link" href="gnutls-gnutls.html#gnutls-priority-st" title="struct gnutls_priority_st">gnutls_priority_st</a>;
 typedef             <a class="link" href="gnutls-gnutls.html#gnutls-priority-t" title="gnutls_priority_t">gnutls_priority_t</a>;
-<a class="link" href="gnutls-gnutls.html#gnutls-protocol-t" title="enum gnutls_protocol_t"><span class="returnvalue">gnutls_protocol_t</span></a>   <a class="link" href="gnutls-gnutls.html#gnutls-protocol-get-id" title="gnutls_protocol_get_id ()">gnutls_protocol_get_id</a>              (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);
-#define             <a class="link" href="gnutls-gnutls.html#gnutls-protocol-get-version" title="gnutls_protocol_get_version">gnutls_protocol_get_version</a>
+<a class="link" href="gnutls-gnutls.html#gnutls-protocol-t" title="enum gnutls_protocol_t"><span class="returnvalue">gnutls_protocol_t</span></a>   <a class="link" href="gnutls-gnutls.html#gnutls-protocol-get-id" title="gnutls_protocol_get_id ()">gnutls_protocol_get_id</a>              (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);
 const <a class="link" href="gnutls-gnutls.html#gnutls-protocol-t" title="enum gnutls_protocol_t"><span class="returnvalue">gnutls_protocol_t</span></a> * <a class="link" href="gnutls-gnutls.html#gnutls-protocol-list" title="gnutls_protocol_list ()">gnutls_protocol_list</a>          (<em class="parameter"><code><span class="type">void</span></code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-protocol-t" title="enum gnutls_protocol_t">gnutls_protocol_t</a>;
-<span class="returnvalue">void</span>                <a class="link" href="gnutls-gnutls.html#gnutls-record-disable-padding" title="gnutls_record_disable_padding ()">gnutls_record_disable_padding</a>       (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-rehandshake" title="gnutls_rehandshake ()">gnutls_rehandshake</a>                  (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
+<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-gnutls.html#gnutls-record-disable-padding" title="gnutls_record_disable_padding ()">gnutls_record_disable_padding</a>       (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-rehandshake" title="gnutls_rehandshake ()">gnutls_rehandshake</a>                  (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
 typedef             <a class="link" href="gnutls-gnutls.html#gnutls-rsa-params-t" title="gnutls_rsa_params_t">gnutls_rsa_params_t</a>;
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-sec-param-get-name" title="gnutls_sec_param_get_name ()">gnutls_sec_param_get_name</a>           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sec-param-t" title="enum gnutls_sec_param_t"><span class="type">gnutls_sec_param_t</span></a> param</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-sec-param-get-name" title="gnutls_sec_param_get_name ()">gnutls_sec_param_get_name</a>           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sec-param-t" title="enum gnutls_sec_param_t"><span class="type">gnutls_sec_param_t</span></a> param</code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-sec-param-t" title="enum gnutls_sec_param_t">gnutls_sec_param_t</a>;
-<span class="returnvalue">return</span>              <a class="link" href="gnutls-gnutls.html#gnutls-sec-param-to-pk-bits" title="gnutls_sec_param_to_pk_bits ()">gnutls_sec_param_to_pk_bits</a>         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#GNUTLS-PK-DH:CAPS"><span class="type">GNUTLS_PK_DH</span></a> Param1</code></em>);
+<GTKDOCLINK HREF="return"><span class="returnvalue">return</span></GTKDOCLINK>              <a class="link" href="gnutls-gnutls.html#gnutls-sec-param-to-pk-bits" title="gnutls_sec_param_to_pk_bits ()">gnutls_sec_param_to_pk_bits</a>         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#GNUTLS-PK-DH:CAPS"><span class="type">GNUTLS_PK_DH</span></a> Param1</code></em>);
 struct              <a class="link" href="gnutls-gnutls.html#gnutls-session-int" title="struct gnutls_session_int">gnutls_session_int</a>;
 typedef             <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t">gnutls_session_t</a>;
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-get" title="gnutls_sign_algorithm_get ()">gnutls_sign_algorithm_get</a>           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-get" title="gnutls_sign_algorithm_get ()">gnutls_sign_algorithm_get</a>           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
 #define             <a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-get-name" title="gnutls_sign_algorithm_get_name">gnutls_sign_algorithm_get_name</a>
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-get-requested" title="gnutls_sign_algorithm_get_requested ()">gnutls_sign_algorithm_get_requested</a> (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code><span class="type">size_t</span> indx</code></em>,
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-get-requested" title="gnutls_sign_algorithm_get_requested ()">gnutls_sign_algorithm_get_requested</a> (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> indx</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="type">gnutls_sign_algorithm_t</span></a> *algo</code></em>);
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t">gnutls_sign_algorithm_t</a>;
 <a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t"><span class="returnvalue">gnutls_digest_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-sign-get-hash-algorithm" title="gnutls_sign_get_hash_algorithm ()">gnutls_sign_get_hash_algorithm</a>
                                                         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="type">gnutls_sign_algorithm_t</span></a> sign</code></em>);
-<a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="returnvalue">gnutls_sign_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-sign-get-id" title="gnutls_sign_get_id ()">gnutls_sign_get_id</a>              (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-sign-get-name" title="gnutls_sign_get_name ()">gnutls_sign_get_name</a>                (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="type">gnutls_sign_algorithm_t</span></a> algorithm</code></em>);
+<a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="returnvalue">gnutls_sign_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-sign-get-id" title="gnutls_sign_get_id ()">gnutls_sign_get_id</a>              (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-sign-get-name" title="gnutls_sign_get_name ()">gnutls_sign_get_name</a>                (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="type">gnutls_sign_algorithm_t</span></a> algorithm</code></em>);
 <a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="returnvalue">gnutls_pk_algorithm_t</span></a> <a class="link" href="gnutls-gnutls.html#gnutls-sign-get-pk-algorithm" title="gnutls_sign_get_pk_algorithm ()">gnutls_sign_get_pk_algorithm</a>      (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="type">gnutls_sign_algorithm_t</span></a> sign</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-gnutls.html#gnutls-sign-is-secure" title="gnutls_sign_is_secure ()">gnutls_sign_is_secure</a>               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="type">gnutls_sign_algorithm_t</span></a> algorithm</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-gnutls.html#gnutls-sign-is-secure" title="gnutls_sign_is_secure ()">gnutls_sign_is_secure</a>               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="type">gnutls_sign_algorithm_t</span></a> algorithm</code></em>);
 const <a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="returnvalue">gnutls_sign_algorithm_t</span></a> * <a class="link" href="gnutls-gnutls.html#gnutls-sign-list" title="gnutls_sign_list ()">gnutls_sign_list</a>        (<em class="parameter"><code><span class="type">void</span></code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-strerror" title="gnutls_strerror ()">gnutls_strerror</a>                     (<em class="parameter"><code><span class="type">int</span> error</code></em>);
-const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-gnutls.html#gnutls-strerror-name" title="gnutls_strerror_name ()">gnutls_strerror_name</a>                (<em class="parameter"><code><span class="type">int</span> error</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-strerror" title="gnutls_strerror ()">gnutls_strerror</a>                     (<em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> error</code></em>);
+const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        <a class="link" href="gnutls-gnutls.html#gnutls-strerror-name" title="gnutls_strerror_name ()">gnutls_strerror_name</a>                (<em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> error</code></em>);
 typedef             <a class="link" href="gnutls-gnutls.html#gnutls-transport-ptr-t" title="gnutls_transport_ptr_t">gnutls_transport_ptr_t</a>;
 enum                <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t">gnutls_x509_crt_fmt_t</a>;
 struct              <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey-int" title="struct gnutls_x509_privkey_int">gnutls_x509_privkey_int</a>;
@@ -320,7 +319,7 @@ struct              <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.2.1"
+<pre class="programlisting">#define GNUTLS_VERSION "3.2.0"
 </pre>
 <p>
 </p>
@@ -344,7 +343,7 @@ struct              <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030201
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030200
 </pre>
 <p>
 </p>
@@ -352,7 +351,7 @@ struct              <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 1
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 0
 </pre>
 <p>
 </p>
@@ -563,8 +562,8 @@ Enumeration of different TLS alerts.
 <pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="returnvalue">gnutls_alert_description_t</span></a> gnutls_alert_get             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>
 This function will return the last alert number received.  This
-function should be called when <a href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a> or
-<a href="gnutls-gnutls.html#GNUTLS-E-FATAL-ALERT-RECEIVED:CAPS"><code class="literal">GNUTLS_E_FATAL_ALERT_RECEIVED</code></a> errors are returned by a gnutls
+function should be called when <GTKDOCLINK HREF="GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></GTKDOCLINK> or
+<GTKDOCLINK HREF="GNUTLS-E-FATAL-ALERT-RECEIVED:CAPS"><code class="literal">GNUTLS_E_FATAL_ALERT_RECEIVED</code></GTKDOCLINK> errors are returned by a gnutls
 function.  The peer may send alerts if he encounters an error.
 If no alert has been received the returned value is undefined.
 </p>
@@ -586,10 +585,10 @@ If no alert has been received the returned value is undefined.
 <hr>
 <div class="refsect2">
 <a name="gnutls-alert-get-name"></a><h3>gnutls_alert_get_name ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_alert_get_name               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="type">gnutls_alert_description_t</span></a> alert</code></em>);</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_alert_get_name               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="type">gnutls_alert_description_t</span></a> alert</code></em>);</pre>
 <p>
 This function will return a string that describes the given alert
-number, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.  See <a class="link" href="gnutls-gnutls.html#gnutls-alert-get" title="gnutls_alert_get ()"><code class="function">gnutls_alert_get()</code></a>.
+number, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.  See <a class="link" href="gnutls-gnutls.html#gnutls-alert-get" title="gnutls_alert_get ()"><code class="function">gnutls_alert_get()</code></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -608,7 +607,7 @@ number, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:
 <hr>
 <div class="refsect2">
 <a name="gnutls-alert-get-strname"></a><h3>gnutls_alert_get_strname ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_alert_get_strname            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="type">gnutls_alert_description_t</span></a> alert</code></em>);</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_alert_get_strname            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="type">gnutls_alert_description_t</span></a> alert</code></em>);</pre>
 <p>
 This function will return a string of the name of the alert.
 </p>
@@ -657,7 +656,7 @@ Enumeration of different TLS alert severities.
 <hr>
 <div class="refsect2">
 <a name="gnutls-alert-send"></a><h3>gnutls_alert_send ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_alert_send                   (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_alert_send                   (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-level-t" title="enum gnutls_alert_level_t"><span class="type">gnutls_alert_level_t</span></a> level</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="type">gnutls_alert_description_t</span></a> desc</code></em>);</pre>
 <p>
@@ -668,8 +667,8 @@ connection, otherwise he may ignore the alert and continue.
 </p>
 <p>
 The error code of the underlying record send function will be
-returned, so you may also receive <a href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS"><code class="literal">GNUTLS_E_INTERRUPTED</code></a> or
-<a href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></a> as well.
+returned, so you may also receive <GTKDOCLINK HREF="GNUTLS-E-INTERRUPTED:CAPS"><code class="literal">GNUTLS_E_INTERRUPTED</code></GTKDOCLINK> or
+<GTKDOCLINK HREF="GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></GTKDOCLINK> as well.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -688,7 +687,7 @@ returned, so you may also receive <a href="gnutls-gnutls.html#GNUTLS-E-INTERRUPT
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise
+<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise
 an error code is returned.</td>
 </tr>
 </tbody>
@@ -697,19 +696,19 @@ an error code is returned.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-alert-send-appropriate"></a><h3>gnutls_alert_send_appropriate ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_alert_send_appropriate       (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code><span class="type">int</span> err</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_alert_send_appropriate       (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> err</code></em>);</pre>
 <p>
 Sends an alert to the peer depending on the error code returned by
 a gnutls function. This function will call <a class="link" href="gnutls-gnutls.html#gnutls-error-to-alert" title="gnutls_error_to_alert ()"><code class="function">gnutls_error_to_alert()</code></a>
 to determine the appropriate alert to send.
 </p>
 <p>
-This function may also return <a href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></a>, or
-<a href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS"><code class="literal">GNUTLS_E_INTERRUPTED</code></a>.
+This function may also return <GTKDOCLINK HREF="GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></GTKDOCLINK>, or
+<GTKDOCLINK HREF="GNUTLS-E-INTERRUPTED:CAPS"><code class="literal">GNUTLS_E_INTERRUPTED</code></GTKDOCLINK>.
 </p>
 <p>
-If the return value is <a href="gnutls-gnutls.html#GNUTLS-E-INVALID-REQUEST:CAPS"><code class="literal">GNUTLS_E_INVALID_REQUEST</code></a>, then no alert has
+If the return value is <GTKDOCLINK HREF="GNUTLS-E-INVALID-REQUEST:CAPS"><code class="literal">GNUTLS_E_INVALID_REQUEST</code></GTKDOCLINK>, then no alert has
 been sent to the peer.
 </p>
 <div class="variablelist"><table border="0">
@@ -725,7 +724,7 @@ been sent to the peer.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise
+<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise
 an error code is returned.</td>
 </tr>
 </tbody>
@@ -734,7 +733,7 @@ an error code is returned.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-bye"></a><h3>gnutls_bye ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_bye                          (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_bye                          (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-close-request-t" title="enum gnutls_close_request_t"><span class="type">gnutls_close_request_t</span></a> how</code></em>);</pre>
 <p>
 Terminates the current TLS/SSL connection. The connection should
@@ -762,8 +761,8 @@ distinguishing between a malicious party prematurely terminating
 the connection and normal termination. 
 </p>
 <p>
-This function may also return <a href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></a> or
-<a href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS"><code class="literal">GNUTLS_E_INTERRUPTED</code></a>; cf.  <a href="gnutls-gnutls.html#gnutls-record-get-direction"><code class="function">gnutls_record_get_direction()</code></a>.
+This function may also return <GTKDOCLINK HREF="GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></GTKDOCLINK> or
+<GTKDOCLINK HREF="GNUTLS-E-INTERRUPTED:CAPS"><code class="literal">GNUTLS_E_INTERRUPTED</code></GTKDOCLINK>; cf.  <GTKDOCLINK HREF="gnutls-record-get-direction"><code class="function">gnutls_record_get_direction()</code></GTKDOCLINK>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -779,7 +778,7 @@ This function may also return <a href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS"><
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, or an error code, see
+<GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> on success, or an error code, see
 function documentation for entire semantics.</td>
 </tr>
 </tbody>
@@ -994,7 +993,7 @@ type.</td>
 <div class="refsect2">
 <a name="gnutls-certificate-type-get-id"></a><h3>gnutls_certificate_type_get_id ()</h3>
 <pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-t" title="enum gnutls_certificate_type_t"><span class="returnvalue">gnutls_certificate_type_t</span></a> gnutls_certificate_type_get_id
-                                                        (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);</pre>
+                                                        (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);</pre>
 <p>
 The names are compared in a case insensitive way.
 </p>
@@ -1016,7 +1015,7 @@ string certificate type, or <a class="link" href="gnutls-gnutls.html#GNUTLS-CRT-
 <hr>
 <div class="refsect2">
 <a name="gnutls-certificate-type-get-name"></a><h3>gnutls_certificate_type_get_name ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_certificate_type_get_name    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-t" title="enum gnutls_certificate_type_t"><span class="type">gnutls_certificate_type_t</span></a> type</code></em>);</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_certificate_type_get_name    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-t" title="enum gnutls_certificate_type_t"><span class="type">gnutls_certificate_type_t</span></a> type</code></em>);</pre>
 <p>
 Convert a <a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-t" title="enum gnutls_certificate_type_t"><span class="type">gnutls_certificate_type_t</span></a> type to a string.
 </p>
@@ -1030,7 +1029,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-t" ti
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a string that contains the name of the specified
-certificate type, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> in case of unknown types.</td>
+certificate type, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK> in case of unknown types.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1309,7 +1308,7 @@ type.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-cipher-get-id"></a><h3>gnutls_cipher_get_id ()</h3>
-<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="returnvalue">gnutls_cipher_algorithm_t</span></a> gnutls_cipher_get_id          (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="returnvalue">gnutls_cipher_algorithm_t</span></a> gnutls_cipher_get_id          (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);</pre>
 <p>
 The names are compared in a case insensitive way.
 </p>
@@ -1331,7 +1330,7 @@ the specified cipher, or <a class="link" href="gnutls-gnutls.html#GNUTLS-CIPHER-
 <hr>
 <div class="refsect2">
 <a name="gnutls-cipher-get-key-size"></a><h3>gnutls_cipher_get_key_size ()</h3>
-<pre class="programlisting"><span class="returnvalue">size_t</span>              gnutls_cipher_get_key_size          (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="size-t"><span class="returnvalue">size_t</span></GTKDOCLINK>              gnutls_cipher_get_key_size          (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);</pre>
 <p>
 Get key size for cipher.
 </p>
@@ -1353,7 +1352,7 @@ the given cipher is invalid.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-cipher-get-name"></a><h3>gnutls_cipher_get_name ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_cipher_get_name              (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_cipher_get_name              (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);</pre>
 <p>
 Convert a <a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> type to a string.
 </p>
@@ -1367,7 +1366,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" ti
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a pointer to a string that contains the name of the
-specified cipher, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+specified cipher, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1397,8 +1396,8 @@ integers indicating the available ciphers.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-cipher-suite-info"></a><h3>gnutls_cipher_suite_info ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_cipher_suite_info            (<em class="parameter"><code><span class="type">size_t</span> idx</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">char</span> *cs_id</code></em>,
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_cipher_suite_info            (<em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> idx</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *cs_id</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="type">gnutls_kx_algorithm_t</span></a> *kx</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> *cipher</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> *mac</code></em>,
@@ -1422,25 +1421,25 @@ idx=1 and so on until the function returns NULL.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>kx</code></em> :</span></p></td>
-<td>output variable indicating key exchange algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+<td>output variable indicating key exchange algorithm, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cipher</code></em> :</span></p></td>
-<td>output variable indicating cipher, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+<td>output variable indicating cipher, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>mac</code></em> :</span></p></td>
-<td>output variable indicating MAC algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+<td>output variable indicating MAC algorithm, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>min_version</code></em> :</span></p></td>
-<td>output variable indicating TLS protocol version, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+<td>output variable indicating TLS protocol version, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>the name of <em class="parameter"><code>idx</code></em> cipher suite, and set the information
 about the cipher suite in the output variables.  If <em class="parameter"><code>idx</code></em> is out of
-bounds, <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> is returned.</td>
+bounds, <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK> is returned.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1497,7 +1496,7 @@ Get currently used compression algorithm.
 <hr>
 <div class="refsect2">
 <a name="gnutls-compression-get-id"></a><h3>gnutls_compression_get_id ()</h3>
-<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" title="enum gnutls_compression_method_t"><span class="returnvalue">gnutls_compression_method_t</span></a> gnutls_compression_get_id   (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" title="enum gnutls_compression_method_t"><span class="returnvalue">gnutls_compression_method_t</span></a> gnutls_compression_get_id   (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);</pre>
 <p>
 The names are compared in a case insensitive way.
 </p>
@@ -1519,7 +1518,7 @@ The names are compared in a case insensitive way.
 <hr>
 <div class="refsect2">
 <a name="gnutls-compression-get-name"></a><h3>gnutls_compression_get_name ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_compression_get_name         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" title="enum gnutls_compression_method_t"><span class="type">gnutls_compression_method_t</span></a> algorithm</code></em>);</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_compression_get_name         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" title="enum gnutls_compression_method_t"><span class="type">gnutls_compression_method_t</span></a> algorithm</code></em>);</pre>
 <p>
 Convert a <a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" title="enum gnutls_compression_method_t"><span class="type">gnutls_compression_method_t</span></a> value to a string.
 </p>
@@ -1533,7 +1532,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" 
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a pointer to a string that contains the name of the
-specified compression algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+specified compression algorithm, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1642,7 +1641,7 @@ Enumeration of different credential types.
 <hr>
 <div class="refsect2">
 <a name="gnutls-deinit"></a><h3>gnutls_deinit ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_deinit                       (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_deinit                       (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>
 This function clears all buffers associated with the <em class="parameter"><code>session</code></em>.
 This function will also remove session data from the session
@@ -1775,7 +1774,7 @@ type.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-ecc-curve-get-name"></a><h3>gnutls_ecc_curve_get_name ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_ecc_curve_get_name           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="enum gnutls_ecc_curve_t"><span class="type">gnutls_ecc_curve_t</span></a> curve</code></em>);</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_ecc_curve_get_name           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="enum gnutls_ecc_curve_t"><span class="type">gnutls_ecc_curve_t</span></a> curve</code></em>);</pre>
 <p>
 Convert a <a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="enum gnutls_ecc_curve_t"><span class="type">gnutls_ecc_curve_t</span></a> value to a string.
 </p>
@@ -1789,7 +1788,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="en
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a string that contains the name of the specified
-curve or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+curve or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1798,7 +1797,7 @@ curve or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CA
 <hr>
 <div class="refsect2">
 <a name="gnutls-ecc-curve-get-size"></a><h3>gnutls_ecc_curve_get_size ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_ecc_curve_get_size           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="enum gnutls_ecc_curve_t"><span class="type">gnutls_ecc_curve_t</span></a> curve</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_ecc_curve_get_size           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="enum gnutls_ecc_curve_t"><span class="type">gnutls_ecc_curve_t</span></a> curve</code></em>);</pre>
 <p>
 Returns the size in bytes of the curve.
 </p>
@@ -1905,7 +1904,7 @@ Enumeration of ECC curves.
 <hr>
 <div class="refsect2">
 <a name="gnutls-error-is-fatal"></a><h3>gnutls_error_is_fatal ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_error_is_fatal               (<em class="parameter"><code><span class="type">int</span> error</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_error_is_fatal               (<em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> error</code></em>);</pre>
 <p>
 If a GnuTLS function returns a negative error code you may feed that
 value to this function to see if the error condition is fatal. 
@@ -1935,12 +1934,12 @@ the record layer or the handshake layer.
 <hr>
 <div class="refsect2">
 <a name="gnutls-error-to-alert"></a><h3>gnutls_error_to_alert ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_error_to_alert               (<em class="parameter"><code><span class="type">int</span> err</code></em>,
-                                                         <em class="parameter"><code><span class="type">int</span> *level</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_error_to_alert               (<em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> err</code></em>,
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> *level</code></em>);</pre>
 <p>
 Get an alert depending on the error code returned by a gnutls
 function.  All alerts sent by this function should be considered
-fatal.  The only exception is when <em class="parameter"><code>err</code></em> is <a href="gnutls-gnutls.html#GNUTLS-E-REHANDSHAKE:CAPS"><code class="literal">GNUTLS_E_REHANDSHAKE</code></a>,
+fatal.  The only exception is when <em class="parameter"><code>err</code></em> is <GTKDOCLINK HREF="GNUTLS-E-REHANDSHAKE:CAPS"><code class="literal">GNUTLS_E_REHANDSHAKE</code></GTKDOCLINK>,
 where a warning alert should be sent to the peer indicating that no
 renegotiation will be performed.
 </p>
@@ -1969,7 +1968,7 @@ internal error is returned.
 <hr>
 <div class="refsect2">
 <a name="gnutls-handshake"></a><h3>gnutls_handshake ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_handshake                    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_handshake                    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>
 This function does the handshake of the TLS/SSL protocol, and
 initializes the TLS connection.
@@ -1981,19 +1980,19 @@ has asked to resume a session, but the server couldn't, then a
 full handshake will be performed.
 </p>
 <p>
-The non-fatal errors such as <a href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></a> and
-<a href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS"><code class="literal">GNUTLS_E_INTERRUPTED</code></a> interrupt the handshake procedure, which
+The non-fatal errors such as <GTKDOCLINK HREF="GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></GTKDOCLINK> and
+<GTKDOCLINK HREF="GNUTLS-E-INTERRUPTED:CAPS"><code class="literal">GNUTLS_E_INTERRUPTED</code></GTKDOCLINK> interrupt the handshake procedure, which
 should be resumed later.  Call this function again, until it
-returns 0; cf.  <a href="gnutls-gnutls.html#gnutls-record-get-direction"><code class="function">gnutls_record_get_direction()</code></a> and
+returns 0; cf.  <GTKDOCLINK HREF="gnutls-record-get-direction"><code class="function">gnutls_record_get_direction()</code></GTKDOCLINK> and
 <a class="link" href="gnutls-gnutls.html#gnutls-error-is-fatal" title="gnutls_error_is_fatal ()"><code class="function">gnutls_error_is_fatal()</code></a>.
 </p>
 <p>
 If this function is called by a server after a rehandshake request
-then <a href="gnutls-gnutls.html#GNUTLS-E-GOT-APPLICATION-DATA:CAPS"><code class="literal">GNUTLS_E_GOT_APPLICATION_DATA</code></a> or
-<a href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a> may be returned.  Note that these
+then <GTKDOCLINK HREF="GNUTLS-E-GOT-APPLICATION-DATA:CAPS"><code class="literal">GNUTLS_E_GOT_APPLICATION_DATA</code></GTKDOCLINK> or
+<GTKDOCLINK HREF="GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></GTKDOCLINK> may be returned.  Note that these
 are non fatal errors, only in the specific case of a rehandshake.
 Their meaning is that the client rejected the rehandshake request or
-in the case of <a href="gnutls-gnutls.html#GNUTLS-E-GOT-APPLICATION-DATA:CAPS"><code class="literal">GNUTLS_E_GOT_APPLICATION_DATA</code></a> it might also mean that
+in the case of <GTKDOCLINK HREF="GNUTLS-E-GOT-APPLICATION-DATA:CAPS"><code class="literal">GNUTLS_E_GOT_APPLICATION_DATA</code></GTKDOCLINK> it might also mean that
 some data were pending.
 </p>
 <div class="variablelist"><table border="0">
@@ -2006,7 +2005,7 @@ some data were pending.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, otherwise a negative error code.</td>
+<GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> on success, otherwise a negative error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2183,9 +2182,9 @@ available handshake descriptions.
 <hr>
 <div class="refsect2">
 <a name="gnutls-handshake-set-private-extensions"></a><h3>gnutls_handshake_set_private_extensions ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_handshake_set_private_extensions
+<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_handshake_set_private_extensions
                                                         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code><span class="type">int</span> allow</code></em>);</pre>
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> allow</code></em>);</pre>
 <p>
 This function will enable or disable the use of private cipher
 suites (the ones that start with 0xFF).  By default or if <em class="parameter"><code>allow</code></em>
@@ -2216,8 +2215,8 @@ gnutls servers and clients may cause interoperability problems.
 <hr>
 <div class="refsect2">
 <a name="gnutls-handshake-set-timeout"></a><h3>gnutls_handshake_set_timeout ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_handshake_set_timeout        (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> ms</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_handshake_set_timeout        (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> ms</code></em>);</pre>
 <p>
 This function sets the timeout for the handshake process
 to the provided value. Use an <em class="parameter"><code>ms</code></em> value of zero to disable
@@ -2225,7 +2224,7 @@ timeout.
 </p>
 <p>
 Note that in order for the timeout to be enforced
-<code class="function">gnutls_transport_set_pull_timeout_function()</code> must be set
+<GTKDOCLINK HREF="gnutls-transport-set-pull-timeout-function"><code class="function">gnutls_transport_set_pull_timeout_function()</code></GTKDOCLINK> must be set
 (it is set by default in most systems).
 </p>
 <div class="variablelist"><table border="0">
@@ -2245,10 +2244,10 @@ Note that in order for the timeout to be enforced
 <hr>
 <div class="refsect2">
 <a name="gnutls-heartbeat-ping"></a><h3>gnutls_heartbeat_ping ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_heartbeat_ping               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code><span class="type">size_t</span> data_size</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> max_tries</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_heartbeat_ping               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> data_size</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> max_tries</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);</pre>
 <p>
 This function sends a ping to the peer. If the <em class="parameter"><code>flags</code></em> is set
 to <a class="link" href="gnutls-gnutls.html#GNUTLS-HEARTBEAT-WAIT:CAPS" title="GNUTLS_HEARTBEAT_WAIT"><code class="literal">GNUTLS_HEARTBEAT_WAIT</code></a> then it waits for a reply from the peer.
@@ -2280,7 +2279,7 @@ and timeouts manually.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, otherwise a negative error code.</td>
+<GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> on success, otherwise a negative error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2289,8 +2288,8 @@ and timeouts manually.
 <hr>
 <div class="refsect2">
 <a name="gnutls-heartbeat-pong"></a><h3>gnutls_heartbeat_pong ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_heartbeat_pong               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_heartbeat_pong               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);</pre>
 <p>
 This function replies to a ping by sending a pong to the peer.
 </p>
@@ -2308,7 +2307,7 @@ This function replies to a ping by sending a pong to the peer.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, otherwise a negative error code.</td>
+<GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> on success, otherwise a negative error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2317,13 +2316,13 @@ This function replies to a ping by sending a pong to the peer.
 <hr>
 <div class="refsect2">
 <a name="gnutls-init"></a><h3>gnutls_init ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_init                         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> *session</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_init                         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> *session</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);</pre>
 <p>
 This function initializes the current session to null. Every
 session must be initialized before use, so internal structures can
 be allocated.  This function allocates structures which can only
-be free'd by calling <a class="link" href="gnutls-gnutls.html#gnutls-deinit" title="gnutls_deinit ()"><code class="function">gnutls_deinit()</code></a>.  Returns <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success.
+be free'd by calling <a class="link" href="gnutls-gnutls.html#gnutls-deinit" title="gnutls_deinit ()"><code class="function">gnutls_deinit()</code></a>.  Returns <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) on success.
 </p>
 <p>
 <em class="parameter"><code>flags</code></em> can be one of <a class="link" href="gnutls-gnutls.html#GNUTLS-CLIENT:CAPS" title="GNUTLS_CLIENT"><code class="literal">GNUTLS_CLIENT</code></a> and <a class="link" href="gnutls-gnutls.html#GNUTLS-SERVER:CAPS" title="GNUTLS_SERVER"><code class="literal">GNUTLS_SERVER</code></a>. For a DTLS
@@ -2351,7 +2350,7 @@ flag.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, or an error code.</td>
+<GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> on success, or an error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2486,7 +2485,7 @@ Get currently used key exchange algorithm.
 <hr>
 <div class="refsect2">
 <a name="gnutls-kx-get-id"></a><h3>gnutls_kx_get_id ()</h3>
-<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="returnvalue">gnutls_kx_algorithm_t</span></a> gnutls_kx_get_id                  (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="returnvalue">gnutls_kx_algorithm_t</span></a> gnutls_kx_get_id                  (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);</pre>
 <p>
 Convert a string to a <a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="type">gnutls_kx_algorithm_t</span></a> value.  The names are
 compared in a case insensitive way.
@@ -2509,7 +2508,7 @@ on error.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-kx-get-name"></a><h3>gnutls_kx_get_name ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_kx_get_name                  (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="type">gnutls_kx_algorithm_t</span></a> algorithm</code></em>);</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_kx_get_name                  (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="type">gnutls_kx_algorithm_t</span></a> algorithm</code></em>);</pre>
 <p>
 Convert a <a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title="enum gnutls_kx_algorithm_t"><span class="type">gnutls_kx_algorithm_t</span></a> value to a string.
 </p>
@@ -2523,7 +2522,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title=
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a pointer to a string that contains the name of the
-specified key exchange algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+specified key exchange algorithm, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2668,7 +2667,7 @@ Get currently used MAC algorithm.
 <hr>
 <div class="refsect2">
 <a name="gnutls-mac-get-id"></a><h3>gnutls_mac_get_id ()</h3>
-<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="returnvalue">gnutls_mac_algorithm_t</span></a> gnutls_mac_get_id                (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="returnvalue">gnutls_mac_algorithm_t</span></a> gnutls_mac_get_id                (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);</pre>
 <p>
 Convert a string to a <a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> value.  The names are
 compared in a case insensitive way.
@@ -2691,7 +2690,7 @@ algorithm string, or <a class="link" href="gnutls-gnutls.html#GNUTLS-MAC-UNKNOWN
 <hr>
 <div class="refsect2">
 <a name="gnutls-mac-get-key-size"></a><h3>gnutls_mac_get_key_size ()</h3>
-<pre class="programlisting"><span class="returnvalue">size_t</span>              gnutls_mac_get_key_size             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="size-t"><span class="returnvalue">size_t</span></GTKDOCLINK>              gnutls_mac_get_key_size             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);</pre>
 <p>
 Returns the size of the MAC key used in TLS.
 </p>
@@ -2713,17 +2712,23 @@ given MAC algorithm is invalid.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-mac-get-name"></a><h3>gnutls_mac_get_name ()</h3>
-<pre class="programlisting"><span class="returnvalue">return</span>              gnutls_mac_get_name                 ();</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_mac_get_name                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);</pre>
 <p>
 Convert a <a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> value to a string.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
-<tbody><tr>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>algorithm</code></em> :</span></p></td>
+<td>is a MAC algorithm</td>
+</tr>
+<tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a string that contains the name of the specified MAC
-algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
-</tr></tbody>
+algorithm, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.</td>
+</tr>
+</tbody>
 </table></div>
 </div>
 <hr>
@@ -2811,9 +2816,9 @@ Enumeration of different TLS session parameter types.
 <hr>
 <div class="refsect2">
 <a name="gnutls-perror"></a><h3>gnutls_perror ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_perror                       (<em class="parameter"><code><span class="type">int</span> error</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_perror                       (<em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> error</code></em>);</pre>
 <p>
-This function is like <code class="function">perror()</code>. The only difference is that it
+This function is like <GTKDOCLINK HREF="perror"><code class="function">perror()</code></GTKDOCLINK>. The only difference is that it
 accepts an error number returned by a gnutls function.
 </p>
 <div class="variablelist"><table border="0">
@@ -2827,7 +2832,7 @@ accepts an error number returned by a gnutls function.
 <hr>
 <div class="refsect2">
 <a name="gnutls-pk-algorithm-get-name"></a><h3>gnutls_pk_algorithm_get_name ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_pk_algorithm_get_name        (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> algorithm</code></em>);</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_pk_algorithm_get_name        (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> algorithm</code></em>);</pre>
 <p>
 Convert a <a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> value to a string.
 </p>
@@ -2841,7 +2846,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title=
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a string that contains the name of the specified public
-key algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+key algorithm, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2895,7 +2900,7 @@ Enumeration of different public-key algorithms.
 <div class="refsect2">
 <a name="gnutls-pk-bits-to-sec-param"></a><h3>gnutls_pk_bits_to_sec_param ()</h3>
 <pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-sec-param-t" title="enum gnutls_sec_param_t"><span class="returnvalue">gnutls_sec_param_t</span></a>  gnutls_pk_bits_to_sec_param         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> algo</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> bits</code></em>);</pre>
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> bits</code></em>);</pre>
 <p>
 This is the inverse of <a class="link" href="gnutls-gnutls.html#gnutls-sec-param-to-pk-bits" title="gnutls_sec_param_to_pk_bits ()"><code class="function">gnutls_sec_param_to_pk_bits()</code></a>. Given an algorithm
 and the number of bits, it will return the security parameter. This is
@@ -2923,7 +2928,7 @@ a rough indication.
 <hr>
 <div class="refsect2">
 <a name="gnutls-pk-get-id"></a><h3>gnutls_pk_get_id ()</h3>
-<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="returnvalue">gnutls_pk_algorithm_t</span></a> gnutls_pk_get_id                  (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="returnvalue">gnutls_pk_algorithm_t</span></a> gnutls_pk_get_id                  (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);</pre>
 <p>
 Convert a string to a <a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> value.  The names are
 compared in a case insensitive way.  For example,
@@ -2948,7 +2953,7 @@ algorithm string, or <a class="link" href="gnutls-gnutls.html#GNUTLS-PK-UNKNOWN:
 <hr>
 <div class="refsect2">
 <a name="gnutls-pk-get-name"></a><h3>gnutls_pk_get_name ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_pk_get_name                  (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> algorithm</code></em>);</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_pk_get_name                  (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> algorithm</code></em>);</pre>
 <p>
 Convert a <a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> value to a string.
 </p>
@@ -2962,7 +2967,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title=
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a pointer to a string that contains the name of the
-specified public key algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+specified public key algorithm, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -3033,7 +3038,7 @@ to signature algorithms.
 <hr>
 <div class="refsect2">
 <a name="gnutls-protocol-get-id"></a><h3>gnutls_protocol_get_id ()</h3>
-<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-protocol-t" title="enum gnutls_protocol_t"><span class="returnvalue">gnutls_protocol_t</span></a>   gnutls_protocol_get_id              (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-protocol-t" title="enum gnutls_protocol_t"><span class="returnvalue">gnutls_protocol_t</span></a>   gnutls_protocol_get_id              (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);</pre>
 <p>
 The names are compared in a case insensitive way.
 </p>
@@ -3048,28 +3053,6 @@ The names are compared in a case insensitive way.
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>an id of the specified protocol, or
 <a class="link" href="gnutls-gnutls.html#GNUTLS-VERSION-UNKNOWN:CAPS"><code class="literal">GNUTLS_VERSION_UNKNOWN</code></a> on error.</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gnutls-protocol-get-version"></a><h3>gnutls_protocol_get_version</h3>
-<pre class="programlisting">#define gnutls_protocol_get_version _gnutls_protocol_get_version
-</pre>
-<p>
-Get TLS version, a <a class="link" href="gnutls-gnutls.html#gnutls-protocol-t" title="enum gnutls_protocol_t"><span class="type">gnutls_protocol_t</span></a> value.
-</p>
-<div class="variablelist"><table border="0">
-<col align="left" valign="top">
-<tbody>
-<tr>
-<td><p><span class="term"><em class="parameter"><code>session</code></em> :</span></p></td>
-<td>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> structure.</td>
-</tr>
-<tr>
-<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>The version of the currently used protocol.</td>
 </tr>
 </tbody>
 </table></div>
@@ -3183,7 +3166,7 @@ Enumeration of different SSL/TLS protocol versions.
 <hr>
 <div class="refsect2">
 <a name="gnutls-record-disable-padding"></a><h3>gnutls_record_disable_padding ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_record_disable_padding       (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_record_disable_padding       (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>
 Used to disabled padding in TLS 1.0 and above.  Normally you do not
 need to use this function, but there are buggy clients that
@@ -3192,7 +3175,7 @@ disable protection against statistical attacks on the data.
 </p>
 <p>
 This functions is defunt since 3.1.7. Random padding is disabled
-by default unless requested using <code class="function">gnutls_range_send_message()</code>.
+by default unless requested using <GTKDOCLINK HREF="gnutls-range-send-message"><code class="function">gnutls_range_send_message()</code></GTKDOCLINK>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -3205,7 +3188,7 @@ by default unless requested using <code class="function">gnutls_range_send_messa
 <hr>
 <div class="refsect2">
 <a name="gnutls-rehandshake"></a><h3>gnutls_rehandshake ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_rehandshake                  (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_rehandshake                  (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>
 This function will renegotiate security parameters with the
 client.  This should only be called in case of a server.
@@ -3222,7 +3205,7 @@ parameters.
 <p>
 Since TLS is full duplex some application data might have been
 sent during peer's processing of this message. In that case
-one should call <a href="gnutls-gnutls.html#gnutls-record-recv"><code class="function">gnutls_record_recv()</code></a> until GNUTLS_E_REHANDSHAKE
+one should call <GTKDOCLINK HREF="gnutls-record-recv"><code class="function">gnutls_record_recv()</code></GTKDOCLINK> until GNUTLS_E_REHANDSHAKE
 is returned to clear any pending data. Care must be taken if
 rehandshake is mandatory to terminate if it does not start after
 some threshold.
@@ -3230,7 +3213,7 @@ some threshold.
 <p>
 If the client does not wish to renegotiate parameters he will
 should with an alert message, thus the return code will be
-<a href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a> and the alert will be
+<GTKDOCLINK HREF="GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></GTKDOCLINK> and the alert will be
 <a class="link" href="gnutls-gnutls.html#GNUTLS-A-NO-RENEGOTIATION:CAPS"><code class="literal">GNUTLS_A_NO_RENEGOTIATION</code></a>.  A client may also choose to ignore
 this message.
 </p>
@@ -3244,7 +3227,7 @@ this message.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, otherwise a negative error code.</td>
+<GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> on success, otherwise a negative error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -3260,7 +3243,7 @@ this message.
 <hr>
 <div class="refsect2">
 <a name="gnutls-sec-param-get-name"></a><h3>gnutls_sec_param_get_name ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_sec_param_get_name           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sec-param-t" title="enum gnutls_sec_param_t"><span class="type">gnutls_sec_param_t</span></a> param</code></em>);</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_sec_param_get_name           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sec-param-t" title="enum gnutls_sec_param_t"><span class="type">gnutls_sec_param_t</span></a> param</code></em>);</pre>
 <p>
 Convert a <a class="link" href="gnutls-gnutls.html#gnutls-sec-param-t" title="enum gnutls_sec_param_t"><span class="type">gnutls_sec_param_t</span></a> value to a string.
 </p>
@@ -3274,7 +3257,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-sec-param-t" title="en
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a pointer to a string that contains the name of the
-specified security level, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+specified security level, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -3358,7 +3341,7 @@ Enumeration of security parameters for passive attacks.
 <hr>
 <div class="refsect2">
 <a name="gnutls-sec-param-to-pk-bits"></a><h3>gnutls_sec_param_to_pk_bits ()</h3>
-<pre class="programlisting"><span class="returnvalue">return</span>              gnutls_sec_param_to_pk_bits         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#GNUTLS-PK-DH:CAPS"><span class="type">GNUTLS_PK_DH</span></a> Param1</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="return"><span class="returnvalue">return</span></GTKDOCLINK>              gnutls_sec_param_to_pk_bits         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#GNUTLS-PK-DH:CAPS"><span class="type">GNUTLS_PK_DH</span></a> Param1</code></em>);</pre>
 <p>
 When generating private and public key pairs a difficult question
 is which size of "bits" the modulus will be in RSA and the group size
@@ -3393,7 +3376,7 @@ appropriate size for the specific algorithm.
 <hr>
 <div class="refsect2">
 <a name="gnutls-sign-algorithm-get"></a><h3>gnutls_sign_algorithm_get ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_sign_algorithm_get           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_sign_algorithm_get           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>
 Returns the signature algorithm that is (or will be) used in this 
 session by the server to sign data.
@@ -3424,15 +3407,15 @@ session by the server to sign data.
 <hr>
 <div class="refsect2">
 <a name="gnutls-sign-algorithm-get-requested"></a><h3>gnutls_sign_algorithm_get_requested ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_sign_algorithm_get_requested (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code><span class="type">size_t</span> indx</code></em>,
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_sign_algorithm_get_requested (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> indx</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="type">gnutls_sign_algorithm_t</span></a> *algo</code></em>);</pre>
 <p>
 Returns the signature algorithm specified by index that was
 requested by the peer. If the specified index has no data available
-this function returns <a href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a>.  If
+this function returns <GTKDOCLINK HREF="GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></GTKDOCLINK>.  If
 the negotiated TLS version does not support signature algorithms
-then <a href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a> will be returned even
+then <GTKDOCLINK HREF="GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></GTKDOCLINK> will be returned even
 for the first index.  The first index is 0.
 </p>
 <p>
@@ -3456,7 +3439,7 @@ to assist in selecting the correct certificate.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise
+<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise
 an error code is returned.</td>
 </tr>
 </tbody>
@@ -3619,7 +3602,7 @@ the given signature algorithms.
 <hr>
 <div class="refsect2">
 <a name="gnutls-sign-get-id"></a><h3>gnutls_sign_get_id ()</h3>
-<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="returnvalue">gnutls_sign_algorithm_t</span></a> gnutls_sign_get_id              (<em class="parameter"><code>const <span class="type">char</span> *name</code></em>);</pre>
+<pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="returnvalue">gnutls_sign_algorithm_t</span></a> gnutls_sign_get_id              (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);</pre>
 <p>
 The names are compared in a case insensitive way.
 </p>
@@ -3641,7 +3624,7 @@ the specified algorithm, or <a class="link" href="gnutls-gnutls.html#GNUTLS-SIGN
 <hr>
 <div class="refsect2">
 <a name="gnutls-sign-get-name"></a><h3>gnutls_sign_get_name ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_sign_get_name                (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="type">gnutls_sign_algorithm_t</span></a> algorithm</code></em>);</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_sign_get_name                (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="type">gnutls_sign_algorithm_t</span></a> algorithm</code></em>);</pre>
 <p>
 Convert a <a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="type">gnutls_sign_algorithm_t</span></a> value to a string.
 </p>
@@ -3655,7 +3638,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" titl
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a string that contains the name of the specified sign
-algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+algorithm, or <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -3686,7 +3669,7 @@ the given signature algorithms.
 <hr>
 <div class="refsect2">
 <a name="gnutls-sign-is-secure"></a><h3>gnutls_sign_is_secure ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_sign_is_secure               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="type">gnutls_sign_algorithm_t</span></a> algorithm</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_sign_is_secure               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" title="enum gnutls_sign_algorithm_t"><span class="type">gnutls_sign_algorithm_t</span></a> algorithm</code></em>);</pre>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
@@ -3720,11 +3703,11 @@ integers indicating the available ciphers.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-strerror"></a><h3>gnutls_strerror ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_strerror                     (<em class="parameter"><code><span class="type">int</span> error</code></em>);</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_strerror                     (<em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> error</code></em>);</pre>
 <p>
 This function is similar to strerror.  The difference is that it
 accepts an error number returned by a gnutls function; In case of
-an unknown error a descriptive string is sent instead of <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+an unknown error a descriptive string is sent instead of <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>.
 </p>
 <p>
 Error codes are always a negative error code.
@@ -3746,7 +3729,7 @@ Error codes are always a negative error code.
 <hr>
 <div class="refsect2">
 <a name="gnutls-strerror-name"></a><h3>gnutls_strerror_name ()</h3>
-<pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_strerror_name                (<em class="parameter"><code><span class="type">int</span> error</code></em>);</pre>
+<pre class="programlisting">const <GTKDOCLINK HREF="char"><span class="returnvalue">char</span></GTKDOCLINK> *        gnutls_strerror_name                (<em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> error</code></em>);</pre>
 <p>
 Return the GnuTLS error code define as a string.  For example,
 gnutls_strerror_name (GNUTLS_E_DH_PRIME_UNACCEPTABLE) will return

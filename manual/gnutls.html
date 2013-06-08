@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 3 June 2013 for version
+<!-- This manual is last updated 10 February 2013 for version
 3.2.1 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
@@ -462,7 +462,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <a name="GnuTLS"></a>
 <h1 class="top">GnuTLS</h1>
 
-<p>This manual is last updated 3 June 2013 for version
+<p>This manual is last updated 10 February 2013 for version
 3.2.1 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
@@ -5434,8 +5434,10 @@ Previous: <a href="#PSK-authentication" accesskey="p" rel="previous">PSK authent
 indication of the peer&rsquo;s identity.  This kind of authentication
 is vulnerable to a man in the middle attack, but can be
 used even if there is no prior communication or shared trusted parties 
-with the peer. Moreover it is useful when complete anonymity is required. 
-Unless in one of the above cases, do not use anonymous authentication.  
+with the peer. Nevertheless it is useful when complete anonymity is required. 
+</p>
+<p>Unless in the above case, it is not recommended to use anonymous authentication. An alternative
+with better properties is trust on first use (see <a href="#Verifying-a-certificate-using-trust-on-first-use-authentication">Verifying a certificate using trust on first use authentication</a>).
 </p>
 <p>The available key exchange algorithms for anonymous authentication are
 shown below, but note that few public servers support them. They typically
@@ -5859,7 +5861,7 @@ signature verification operations with the underlying keys.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>data</var>: holds the signed data
 </p>
@@ -5883,7 +5885,7 @@ is returned, and zero or positive code on success.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>hash</var>: holds the hash digest to be verified
 </p>
@@ -5930,7 +5932,7 @@ negative error value.
 </p>
 <p><var>hash</var>: should be a digest algorithm
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_privkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_privkey_flags_t</code> 
 </p>
 <p><var>data</var>: holds the data to be signed
 </p>
@@ -7055,60 +7057,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">tpmtool - GnuTLS TPM tool - Ver. 3.2.1
-USAGE:  tpmtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
-
-   -d, --debug=num            Enable debugging.
-                                - It must be in the range:
-                                  0 to 9999
-       --infile=file          Input file
-                                - file must pre-exist
-       --outfile=str          Output file
-       --generate-rsa         Generate an RSA private-public key pair
-       --register             Any generated key will be registered in the TPM
-                                - requires these options:
-                                generate-rsa
-       --signing              Any generated key will be a signing key
-                                - requires these options:
-                                generate-rsa
-                                -- and prohibits these options:
-                                legacy
-       --legacy               Any generated key will be a legacy key
-                                - requires these options:
-                                generate-rsa
-                                -- and prohibits these options:
-                                signing
-       --user                 Any registered key will be a user key
-                                - requires these options:
-                                register
-                                -- and prohibits these options:
-                                system
-       --system               Any registred key will be a system key
-                                - requires these options:
-                                register
-                                -- and prohibits these options:
-                                user
-       --pubkey=str           Prints the public key of the provided key
-       --list                 Lists all stored keys in the TPM
-       --delete=str           Delete the key identified by the given URL (UUID).
-       --sec-param=str        Specify the security level [low, legacy, normal, high, ultra].
-       --bits=num             Specify the number of bits for key generate
-       --inder                Use the DER format for keys.
-                                - disabled as --no-inder
-       --outder               Use DER format for output keys
-                                - disabled as --no-outder
-   -v, --version[=arg]        Output version information and exit
-   -h, --help                 Display extended usage information and exit
-   -!, --more-help            Extended usage information passed thru pager
-
-Options are specified by doubled hyphens and their name or by a single
-hyphen and the flag character.
-
-
-
-Program that allows handling cryptographic data from the TPM chip.
-
-please send bug reports to:  bug-gnutls@gnu.org
+<pre class="example">tpmtool is unavailable - no --help
 </pre></div>
 
 <a name="tpmtool-debug"></a><a name="debug-option-_0028_002dd_0029-6"></a>
@@ -7587,7 +7536,9 @@ Next: <a href="#Version-check" accesskey="n" rel="next">Version check</a>, Previ
 <h4 class="subsection">6.2.2 Initialization</h4>
 
 <p>GnuTLS must be initialized before it can be used.  The library is
-initialized by calling <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>.  The resources
+initialized by calling <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>. That call
+typically enables CPU-specific acceleration, and performs any requires
+precalculations needed by the library. The resources
 allocated by the initialization process can be released if the
 application no longer has a need to call GnuTLS functions, this is
 done by calling <a href="#gnutls_005fglobal_005fdeinit">gnutls_global_deinit</a>.
@@ -15688,8 +15639,10 @@ it use option &ndash;heartbeat with example client and server supplied with
 gnutls:
 </p>
 <div class="example">
-<pre class="example">./doc/credentials/gnutls-http-serv --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 --heartbeat --echo
-./src/gnutls-cli --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 localhost -p 5556 --insecure --heartbeat
+<pre class="example">./doc/credentials/gnutls-http-serv --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 \
+    --heartbeat --echo
+./src/gnutls-cli --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 localhost -p 5556 \
+    --insecure --heartbeat
 </pre></div>
 
 <p>After that pasting
@@ -15880,6 +15833,18 @@ functions have been deprecated and are listed below.
 is functionally equivalent and safer to use.</td></tr>
 <tr><td width="30%"><code>gnutls_pubkey_verify_data</code></td><td width="60%">The function <a href="#gnutls_005fpubkey_005fverify_005fdata2">gnutls_pubkey_verify_data2</a> is provided and
 is functionally equivalent and safer to use.</td></tr>
+</table>
+
+<a name="Upgrading-to-3_002e2_002ex-from-3_002e1_002ex"></a>
+<h3 class="heading">Upgrading to 3.2.x from 3.1.x</h3>
+
+<p>GnuTLS 3.2.x is source and binary compatible with GnuTLS 3.1.x releases. Few
+functions have been deprecated and are listed below.
+</p>
+<table>
+<thead><tr><th width="30%">Old function</th><th width="60%">Replacement</th></tr></thead>
+<tr><td width="30%"><code>gnutls_privkey_sign_raw_data</code></td><td width="60%">The function <a href="#gnutls_005fprivkey_005fsign_005fhash">gnutls_privkey_sign_hash</a> is equivalent
+when the flag <code>GNUTLS_PRIVKEY_SIGN_FLAG_TLS1_RSA</code> is specified.</td></tr>
 </table>
 
 
@@ -18537,12 +18502,11 @@ using <code>gnutls_global_init()</code> .
 <a name="gnutls_005fglobal_005finit"></a><dl>
 <dt><a name="index-gnutls_005fglobal_005finit"></a>Function: <em>int</em> <strong>gnutls_global_init</strong> <em>( <var>void</var>)</em></dt>
 <dd>
-<p>This function initializes the global data to defaults.  
-In order to free resources you may call <code>gnutls_global_deinit()</code>  
+<p>This function performs any required precalculations, detects
+the supported CPU capabilities and initializes the underlying
+cryptographic backend. In order to free any resources 
+taken by this call you should <code>gnutls_global_deinit()</code>  
 when gnutls usage is no longer needed.
-</p>
-<p>Note that this function will also initialize the underlying crypto
-backend, if it has not been initialized before.  
 </p>
 <p>This function increments a global counter, so that
 <code>gnutls_global_deinit()</code>  only releases resources when it has been
@@ -18930,14 +18894,11 @@ and timeouts manually.
 </p>
 <p><var>total_timeout</var>: The time at which the connection will be aborted, in milliseconds.
 </p>
-<p>This function will set the timeouts required for the DTLS handshake
+<p>This function will override the timeouts for the DTLS heartbeat
 protocol. The retransmission timeout is the time after which a
-message from the peer is not received, the previous messages will
+message from the peer is not received, the previous request will
 be retransmitted. The total timeout is the time after which the
 handshake will be aborted with <code>GNUTLS_E_TIMEDOUT</code> .
-</p>
-<p>The DTLS protocol recommends the values of 1 sec and 60 seconds
-respectively.
 </p>
 <p>If the retransmission timeout is zero then the handshake will operate
 in a non-blocking way, i.e., return <code>GNUTLS_E_AGAIN</code> .
@@ -19650,7 +19611,7 @@ information.
 </p>
 <p>&quot;NORMAL:-ARCFOUR-128&quot; means normal ciphers except for ARCFOUR-128.
 </p>
-<p>&quot;SECURE:-VERS-SSL3.0:+COMP-DEFLATE&quot; means that only secure ciphers are
+<p>&quot;SECURE128:-VERS-SSL3.0:+COMP-DEFLATE&quot; means that only secure ciphers are
 enabled, SSL3.0 is disabled, and libz compression enabled.
 </p>
 <p>&quot;NONE:+VERS-TLS-ALL:+AES-128-CBC:+RSA:+SHA1:+COMP-NULL:+SIGN-RSA-SHA1&quot;, 
@@ -22089,6 +22050,8 @@ respectively.
 </p>
 <p>If the retransmission timeout is zero then the handshake will operate
 in a non-blocking way, i.e., return <code>GNUTLS_E_AGAIN</code> .
+</p>
+<p>To disable retransmissions set a  <code>retrans_timeout</code> larger than the  <code>total_timeout</code> .
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -31149,7 +31112,7 @@ to have effect.
 </p>
 <p><var>hash</var>: should be a digest algorithm
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_privkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_privkey_flags_t</code> 
 </p>
 <p><var>data</var>: holds the data to be signed
 </p>
@@ -31943,7 +31906,7 @@ to have effect.
 <dt><a name="index-gnutls_005fpubkey_005fverify_005fdata"></a>Function: <em>int</em> <strong>gnutls_pubkey_verify_data</strong> <em>(gnutls_pubkey_t <var>pubkey</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>data</var>, const gnutls_datum_t * <var>signature</var>)</em></dt>
 <dd><p><var>pubkey</var>: Holds the public key
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>data</var>: holds the signed data
 </p>
@@ -31969,7 +31932,7 @@ is returned, and zero or positive code on success.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>data</var>: holds the signed data
 </p>
@@ -31990,7 +31953,7 @@ is returned, and zero or positive code on success.
 <dt><a name="index-gnutls_005fpubkey_005fverify_005fhash"></a>Function: <em>int</em> <strong>gnutls_pubkey_verify_hash</strong> <em>(gnutls_pubkey_t <var>key</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>hash</var>, const gnutls_datum_t * <var>signature</var>)</em></dt>
 <dd><p><var>key</var>: Holds the public key
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>hash</var>: holds the hash digest to be verified
 </p>
@@ -32016,7 +31979,7 @@ is returned, and zero or positive code on success.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>hash</var>: holds the hash digest to be verified
 </p>

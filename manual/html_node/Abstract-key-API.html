@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 3 June 2013 for version
+<!-- This manual is last updated 10 February 2013 for version
 3.2.1 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
@@ -754,7 +754,7 @@ to have effect.
 </p>
 <p><var>hash</var>: should be a digest algorithm
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_privkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_privkey_flags_t</code> 
 </p>
 <p><var>data</var>: holds the data to be signed
 </p>
@@ -1548,7 +1548,7 @@ to have effect.
 <dt><a name="index-gnutls_005fpubkey_005fverify_005fdata"></a>Function: <em>int</em> <strong>gnutls_pubkey_verify_data</strong> <em>(gnutls_pubkey_t <var>pubkey</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>data</var>, const gnutls_datum_t * <var>signature</var>)</em></dt>
 <dd><p><var>pubkey</var>: Holds the public key
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>data</var>: holds the signed data
 </p>
@@ -1574,7 +1574,7 @@ is returned, and zero or positive code on success.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>data</var>: holds the signed data
 </p>
@@ -1595,7 +1595,7 @@ is returned, and zero or positive code on success.
 <dt><a name="index-gnutls_005fpubkey_005fverify_005fhash"></a>Function: <em>int</em> <strong>gnutls_pubkey_verify_hash</strong> <em>(gnutls_pubkey_t <var>key</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>hash</var>, const gnutls_datum_t * <var>signature</var>)</em></dt>
 <dd><p><var>key</var>: Holds the public key
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>hash</var>: holds the hash digest to be verified
 </p>
@@ -1621,7 +1621,7 @@ is returned, and zero or positive code on success.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or on of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
 </p>
 <p><var>hash</var>: holds the hash digest to be verified
 </p>

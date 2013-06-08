@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 3 June 2013 for version
+<!-- This manual is last updated 10 February 2013 for version
 3.2.1 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
@@ -501,8 +501,10 @@ it use option &ndash;heartbeat with example client and server supplied with
 gnutls:
 </p>
 <div class="example">
-<pre class="example">./doc/credentials/gnutls-http-serv --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 --heartbeat --echo
-./src/gnutls-cli --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 localhost -p 5556 --insecure --heartbeat
+<pre class="example">./doc/credentials/gnutls-http-serv --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 \
+    --heartbeat --echo
+./src/gnutls-cli --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 localhost -p 5556 \
+    --insecure --heartbeat
 </pre></div>
 
 <p>After that pasting

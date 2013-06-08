@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 3 June 2013 for version
+<!-- This manual is last updated 10 February 2013 for version
 3.2.1 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
@@ -223,6 +223,18 @@ functions have been deprecated and are listed below.
 is functionally equivalent and safer to use.</td></tr>
 <tr><td width="30%"><code>gnutls_pubkey_verify_data</code></td><td width="60%">The function <a href="Abstract-key-API.html#gnutls_005fpubkey_005fverify_005fdata2">gnutls_pubkey_verify_data2</a> is provided and
 is functionally equivalent and safer to use.</td></tr>
+</table>
+
+<a name="Upgrading-to-3_002e2_002ex-from-3_002e1_002ex"></a>
+<h3 class="heading">Upgrading to 3.2.x from 3.1.x</h3>
+
+<p>GnuTLS 3.2.x is source and binary compatible with GnuTLS 3.1.x releases. Few
+functions have been deprecated and are listed below.
+</p>
+<table>
+<thead><tr><th width="30%">Old function</th><th width="60%">Replacement</th></tr></thead>
+<tr><td width="30%"><code>gnutls_privkey_sign_raw_data</code></td><td width="60%">The function <a href="Abstract-key-API.html#gnutls_005fprivkey_005fsign_005fhash">gnutls_privkey_sign_hash</a> is equivalent
+when the flag <code>GNUTLS_PRIVKEY_SIGN_FLAG_TLS1_RSA</code> is specified.</td></tr>
 </table>
 
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 3 June 2013 for version
+<!-- This manual is last updated 10 February 2013 for version
 3.2.1 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
@@ -2149,12 +2149,11 @@ using <code>gnutls_global_init()</code> .
 <a name="gnutls_005fglobal_005finit"></a><dl>
 <dt><a name="index-gnutls_005fglobal_005finit"></a>Function: <em>int</em> <strong>gnutls_global_init</strong> <em>( <var>void</var>)</em></dt>
 <dd>
-<p>This function initializes the global data to defaults.  
-In order to free resources you may call <code>gnutls_global_deinit()</code>  
+<p>This function performs any required precalculations, detects
+the supported CPU capabilities and initializes the underlying
+cryptographic backend. In order to free any resources 
+taken by this call you should <code>gnutls_global_deinit()</code>  
 when gnutls usage is no longer needed.
-</p>
-<p>Note that this function will also initialize the underlying crypto
-backend, if it has not been initialized before.  
 </p>
 <p>This function increments a global counter, so that
 <code>gnutls_global_deinit()</code>  only releases resources when it has been
@@ -2542,14 +2541,11 @@ and timeouts manually.
 </p>
 <p><var>total_timeout</var>: The time at which the connection will be aborted, in milliseconds.
 </p>
-<p>This function will set the timeouts required for the DTLS handshake
+<p>This function will override the timeouts for the DTLS heartbeat
 protocol. The retransmission timeout is the time after which a
-message from the peer is not received, the previous messages will
+message from the peer is not received, the previous request will
 be retransmitted. The total timeout is the time after which the
 handshake will be aborted with <code>GNUTLS_E_TIMEDOUT</code> .
-</p>
-<p>The DTLS protocol recommends the values of 1 sec and 60 seconds
-respectively.
 </p>
 <p>If the retransmission timeout is zero then the handshake will operate
 in a non-blocking way, i.e., return <code>GNUTLS_E_AGAIN</code> .
@@ -3262,7 +3258,7 @@ information.
 </p>
 <p>&quot;NORMAL:-ARCFOUR-128&quot; means normal ciphers except for ARCFOUR-128.
 </p>
-<p>&quot;SECURE:-VERS-SSL3.0:+COMP-DEFLATE&quot; means that only secure ciphers are
+<p>&quot;SECURE128:-VERS-SSL3.0:+COMP-DEFLATE&quot; means that only secure ciphers are
 enabled, SSL3.0 is disabled, and libz compression enabled.
 </p>
 <p>&quot;NONE:+VERS-TLS-ALL:+AES-128-CBC:+RSA:+SHA1:+COMP-NULL:+SIGN-RSA-SHA1&quot;, 

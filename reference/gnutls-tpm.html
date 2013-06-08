@@ -40,24 +40,24 @@
 <pre class="synopsis">#define             <a class="link" href="gnutls-tpm.html#GNUTLS-TPM-KEY-SIGNING:CAPS" title="GNUTLS_TPM_KEY_SIGNING">GNUTLS_TPM_KEY_SIGNING</a>
 #define             <a class="link" href="gnutls-tpm.html#GNUTLS-TPM-KEY-USER:CAPS" title="GNUTLS_TPM_KEY_USER">GNUTLS_TPM_KEY_USER</a>
 #define             <a class="link" href="gnutls-tpm.html#GNUTLS-TPM-REGISTER-KEY:CAPS" title="GNUTLS_TPM_REGISTER_KEY">GNUTLS_TPM_REGISTER_KEY</a>
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-tpm.html#gnutls-tpm-get-registered" title="gnutls_tpm_get_registered ()">gnutls_tpm_get_registered</a>           (<em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-t" title="gnutls_tpm_key_list_t"><span class="type">gnutls_tpm_key_list_t</span></a> *list</code></em>);
-<span class="returnvalue">void</span>                <a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-deinit" title="gnutls_tpm_key_list_deinit ()">gnutls_tpm_key_list_deinit</a>          (<em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-t" title="gnutls_tpm_key_list_t"><span class="type">gnutls_tpm_key_list_t</span></a> list</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-get-url" title="gnutls_tpm_key_list_get_url ()">gnutls_tpm_key_list_get_url</a>         (<em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-t" title="gnutls_tpm_key_list_t"><span class="type">gnutls_tpm_key_list_t</span></a> list</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> idx</code></em>,
-                                                         <em class="parameter"><code><span class="type">char</span> **url</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-tpm.html#gnutls-tpm-get-registered" title="gnutls_tpm_get_registered ()">gnutls_tpm_get_registered</a>           (<em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-t" title="gnutls_tpm_key_list_t"><span class="type">gnutls_tpm_key_list_t</span></a> *list</code></em>);
+<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-deinit" title="gnutls_tpm_key_list_deinit ()">gnutls_tpm_key_list_deinit</a>          (<em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-t" title="gnutls_tpm_key_list_t"><span class="type">gnutls_tpm_key_list_t</span></a> list</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-get-url" title="gnutls_tpm_key_list_get_url ()">gnutls_tpm_key_list_get_url</a>         (<em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-t" title="gnutls_tpm_key_list_t"><span class="type">gnutls_tpm_key_list_t</span></a> list</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> idx</code></em>,
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> **url</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);
 typedef             <a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-t" title="gnutls_tpm_key_list_t">gnutls_tpm_key_list_t</a>;
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-tpm.html#gnutls-tpm-privkey-delete" title="gnutls_tpm_privkey_delete ()">gnutls_tpm_privkey_delete</a>           (<em class="parameter"><code>const <span class="type">char</span> *url</code></em>,
-                                                         <em class="parameter"><code>const <span class="type">char</span> *srk_password</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-tpm.html#gnutls-tpm-privkey-generate" title="gnutls_tpm_privkey_generate ()">gnutls_tpm_privkey_generate</a>         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> pk</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> bits</code></em>,
-                                                         <em class="parameter"><code>const <span class="type">char</span> *srk_password</code></em>,
-                                                         <em class="parameter"><code>const <span class="type">char</span> *key_password</code></em>,
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-tpm.html#gnutls-tpm-privkey-delete" title="gnutls_tpm_privkey_delete ()">gnutls_tpm_privkey_delete</a>           (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *url</code></em>,
+                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *srk_password</code></em>);
+<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-tpm.html#gnutls-tpm-privkey-generate" title="gnutls_tpm_privkey_generate ()">gnutls_tpm_privkey_generate</a>         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> pk</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> bits</code></em>,
+                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *srk_password</code></em>,
+                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *key_password</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpmkey-fmt-t" title="enum gnutls_tpmkey_fmt_t"><span class="type">gnutls_tpmkey_fmt_t</span></a> format</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> pub_format</code></em>,
-                                                         <em class="parameter"><code><span class="type">gnutls_datum_t</span> *privkey</code></em>,
-                                                         <em class="parameter"><code><span class="type">gnutls_datum_t</span> *pubkey</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *privkey</code></em>,
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *pubkey</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);
 enum                <a class="link" href="gnutls-tpm.html#gnutls-tpmkey-fmt-t" title="enum gnutls_tpmkey_fmt_t">gnutls_tpmkey_fmt_t</a>;
 struct              <a class="link" href="gnutls-tpm.html#tpm-key-list-st" title="struct tpm_key_list_st">tpm_key_list_st</a>;
 </pre>
@@ -95,7 +95,7 @@ struct              <a class="link" href="gnutls-tpm.html#tpm-key-list-st" title
 <hr>
 <div class="refsect2">
 <a name="gnutls-tpm-get-registered"></a><h3>gnutls_tpm_get_registered ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_tpm_get_registered           (<em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-t" title="gnutls_tpm_key_list_t"><span class="type">gnutls_tpm_key_list_t</span></a> *list</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_tpm_get_registered           (<em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-t" title="gnutls_tpm_key_list_t"><span class="type">gnutls_tpm_key_list_t</span></a> *list</code></em>);</pre>
 <p>
 This function will get a list of stored keys in the TPM. The uuid
 of those keys
@@ -109,7 +109,7 @@ of those keys
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -119,7 +119,7 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-tpm-key-list-deinit"></a><h3>gnutls_tpm_key_list_deinit ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_tpm_key_list_deinit          (<em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-t" title="gnutls_tpm_key_list_t"><span class="type">gnutls_tpm_key_list_t</span></a> list</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_tpm_key_list_deinit          (<em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-t" title="gnutls_tpm_key_list_t"><span class="type">gnutls_tpm_key_list_t</span></a> list</code></em>);</pre>
 <p>
 This function will deinitialize the list of stored keys in the TPM.
 </p>
@@ -135,14 +135,14 @@ This function will deinitialize the list of stored keys in the TPM.
 <hr>
 <div class="refsect2">
 <a name="gnutls-tpm-key-list-get-url"></a><h3>gnutls_tpm_key_list_get_url ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_tpm_key_list_get_url         (<em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-t" title="gnutls_tpm_key_list_t"><span class="type">gnutls_tpm_key_list_t</span></a> list</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> idx</code></em>,
-                                                         <em class="parameter"><code><span class="type">char</span> **url</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_tpm_key_list_get_url         (<em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpm-key-list-t" title="gnutls_tpm_key_list_t"><span class="type">gnutls_tpm_key_list_t</span></a> list</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> idx</code></em>,
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> **url</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);</pre>
 <p>
 This function will return for each given index a URL of
 the corresponding key.
-If the provided index is out of bounds then <a href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a>
+If the provided index is out of bounds then <GTKDOCLINK HREF="GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></GTKDOCLINK>
 is returned.
 </p>
 <div class="variablelist"><table border="0">
@@ -166,7 +166,7 @@ is returned.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -184,8 +184,8 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-tpm-privkey-delete"></a><h3>gnutls_tpm_privkey_delete ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_tpm_privkey_delete           (<em class="parameter"><code>const <span class="type">char</span> *url</code></em>,
-                                                         <em class="parameter"><code>const <span class="type">char</span> *srk_password</code></em>);</pre>
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_tpm_privkey_delete           (<em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *url</code></em>,
+                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *srk_password</code></em>);</pre>
 <p>
 This function will unregister the private key from the TPM
 chip.
@@ -203,7 +203,7 @@ chip.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -213,15 +213,15 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-tpm-privkey-generate"></a><h3>gnutls_tpm_privkey_generate ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_tpm_privkey_generate         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> pk</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> bits</code></em>,
-                                                         <em class="parameter"><code>const <span class="type">char</span> *srk_password</code></em>,
-                                                         <em class="parameter"><code>const <span class="type">char</span> *key_password</code></em>,
+<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_tpm_privkey_generate         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title="enum gnutls_pk_algorithm_t"><span class="type">gnutls_pk_algorithm_t</span></a> pk</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> bits</code></em>,
+                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *srk_password</code></em>,
+                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *key_password</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-tpm.html#gnutls-tpmkey-fmt-t" title="enum gnutls_tpmkey_fmt_t"><span class="type">gnutls_tpmkey_fmt_t</span></a> format</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> pub_format</code></em>,
-                                                         <em class="parameter"><code><span class="type">gnutls_datum_t</span> *privkey</code></em>,
-                                                         <em class="parameter"><code><span class="type">gnutls_datum_t</span> *pubkey</code></em>,
-                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *privkey</code></em>,
+                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *pubkey</code></em>,
+                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);</pre>
 <p>
 This function will generate a private key in the TPM
 chip. The private key will be generated within the chip
@@ -285,7 +285,7 @@ case <em class="parameter"><code>privkey</code></em> would contain a URL with th
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
