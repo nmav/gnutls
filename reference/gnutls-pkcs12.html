@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>pkcs12</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
 <link rel="home" href="index.html" title="GnuTLS API Reference Manual">
 <link rel="up" href="intro.html" title="GnuTLS API Reference Manual">
 <link rel="prev" href="gnutls-pkcs11.html" title="pkcs11">
@@ -38,72 +38,72 @@
 <div class="refsynopsisdiv">
 <a name="gnutls-pkcs12.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">#define             <a class="link" href="gnutls-pkcs12.html#GNUTLS-PKCS12-SP-INCLUDE-SELF-SIGNED:CAPS" title="GNUTLS_PKCS12_SP_INCLUDE_SELF_SIGNED">GNUTLS_PKCS12_SP_INCLUDE_SELF_SIGNED</a>
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-decrypt" title="gnutls_pkcs12_bag_decrypt ()">gnutls_pkcs12_bag_decrypt</a>           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *pass</code></em>);
-<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-deinit" title="gnutls_pkcs12_bag_deinit ()">gnutls_pkcs12_bag_deinit</a>            (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-encrypt" title="gnutls_pkcs12_bag_encrypt ()">gnutls_pkcs12_bag_encrypt</a>           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *pass</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-get-count" title="gnutls_pkcs12_bag_get_count ()">gnutls_pkcs12_bag_get_count</a>         (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-get-data" title="gnutls_pkcs12_bag_get_data ()">gnutls_pkcs12_bag_get_data</a>          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> indx</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *data</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-get-friendly-name" title="gnutls_pkcs12_bag_get_friendly_name ()">gnutls_pkcs12_bag_get_friendly_name</a> (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> indx</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> **name</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-get-key-id" title="gnutls_pkcs12_bag_get_key_id ()">gnutls_pkcs12_bag_get_key_id</a>        (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> indx</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *id</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-init" title="gnutls_pkcs12_bag_init ()">gnutls_pkcs12_bag_init</a>              (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> *bag</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-decrypt" title="gnutls_pkcs12_bag_decrypt ()">gnutls_pkcs12_bag_decrypt</a>           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *pass</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-deinit" title="gnutls_pkcs12_bag_deinit ()">gnutls_pkcs12_bag_deinit</a>            (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-encrypt" title="gnutls_pkcs12_bag_encrypt ()">gnutls_pkcs12_bag_encrypt</a>           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *pass</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-get-count" title="gnutls_pkcs12_bag_get_count ()">gnutls_pkcs12_bag_get_count</a>         (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-get-data" title="gnutls_pkcs12_bag_get_data ()">gnutls_pkcs12_bag_get_data</a>          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indx</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_datum_t</span> *data</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-get-friendly-name" title="gnutls_pkcs12_bag_get_friendly_name ()">gnutls_pkcs12_bag_get_friendly_name</a> (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indx</code></em>,
+                                                         <em class="parameter"><code><span class="type">char</span> **name</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-get-key-id" title="gnutls_pkcs12_bag_get_key_id ()">gnutls_pkcs12_bag_get_key_id</a>        (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indx</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_datum_t</span> *id</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-init" title="gnutls_pkcs12_bag_init ()">gnutls_pkcs12_bag_init</a>              (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> *bag</code></em>);
 struct              <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-int" title="struct gnutls_pkcs12_bag_int">gnutls_pkcs12_bag_int</a>;
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-crl" title="gnutls_pkcs12_bag_set_crl ()">gnutls_pkcs12_bag_set_crl</a>           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-x509-crl-t"><span class="type">gnutls_x509_crl_t</span></GTKDOCLINK> crl</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-crt" title="gnutls_pkcs12_bag_set_crt ()">gnutls_pkcs12_bag_set_crt</a>           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></GTKDOCLINK> crt</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-data" title="gnutls_pkcs12_bag_set_data ()">gnutls_pkcs12_bag_set_data</a>          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-crl" title="gnutls_pkcs12_bag_set_crl ()">gnutls_pkcs12_bag_set_crl</a>           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crl-t"><span class="type">gnutls_x509_crl_t</span></a> crl</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-crt" title="gnutls_pkcs12_bag_set_crt ()">gnutls_pkcs12_bag_set_crt</a>           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-data" title="gnutls_pkcs12_bag_set_data ()">gnutls_pkcs12_bag_set_data</a>          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-type-t" title="enum gnutls_pkcs12_bag_type_t"><span class="type">gnutls_pkcs12_bag_type_t</span></a> type</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *data</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-friendly-name" title="gnutls_pkcs12_bag_set_friendly_name ()">gnutls_pkcs12_bag_set_friendly_name</a> (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> indx</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-key-id" title="gnutls_pkcs12_bag_set_key_id ()">gnutls_pkcs12_bag_set_key_id</a>        (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> indx</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *id</code></em>);
+                                                         <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *data</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-friendly-name" title="gnutls_pkcs12_bag_set_friendly_name ()">gnutls_pkcs12_bag_set_friendly_name</a> (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indx</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *name</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-key-id" title="gnutls_pkcs12_bag_set_key_id ()">gnutls_pkcs12_bag_set_key_id</a>        (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indx</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *id</code></em>);
 typedef             <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t">gnutls_pkcs12_bag_t</a>;
 enum                <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-type-t" title="enum gnutls_pkcs12_bag_type_t">gnutls_pkcs12_bag_type_t</a>;
-<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-deinit" title="gnutls_pkcs12_deinit ()">gnutls_pkcs12_deinit</a>                (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-export" title="gnutls_pkcs12_export ()">gnutls_pkcs12_export</a>                (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-deinit" title="gnutls_pkcs12_deinit ()">gnutls_pkcs12_deinit</a>                (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-export" title="gnutls_pkcs12_export ()">gnutls_pkcs12_export</a>                (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> format</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *output_data</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> *output_data_size</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-export2" title="gnutls_pkcs12_export2 ()">gnutls_pkcs12_export2</a>               (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *output_data</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> *output_data_size</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-export2" title="gnutls_pkcs12_export2 ()">gnutls_pkcs12_export2</a>               (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> format</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *out</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-generate-mac" title="gnutls_pkcs12_generate_mac ()">gnutls_pkcs12_generate_mac</a>          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *pass</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-get-bag" title="gnutls_pkcs12_get_bag ()">gnutls_pkcs12_get_bag</a>               (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> indx</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_datum_t</span> *out</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-generate-mac" title="gnutls_pkcs12_generate_mac ()">gnutls_pkcs12_generate_mac</a>          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *pass</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-get-bag" title="gnutls_pkcs12_get_bag ()">gnutls_pkcs12_get_bag</a>               (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indx</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-import" title="gnutls_pkcs12_import ()">gnutls_pkcs12_import</a>                (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *data</code></em>,
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-import" title="gnutls_pkcs12_import ()">gnutls_pkcs12_import</a>                (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *data</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> format</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-init" title="gnutls_pkcs12_init ()">gnutls_pkcs12_init</a>                  (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> *pkcs12</code></em>);
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-init" title="gnutls_pkcs12_init ()">gnutls_pkcs12_init</a>                  (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> *pkcs12</code></em>);
 struct              <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-int" title="struct gnutls_pkcs12_int">gnutls_pkcs12_int</a>;
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-set-bag" title="gnutls_pkcs12_set_bag ()">gnutls_pkcs12_set_bag</a>               (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-set-bag" title="gnutls_pkcs12_set_bag ()">gnutls_pkcs12_set_bag</a>               (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-simple-parse" title="gnutls_pkcs12_simple_parse ()">gnutls_pkcs12_simple_parse</a>          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> p12</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *password</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-x509-privkey-t"><span class="type">gnutls_x509_privkey_t</span></GTKDOCLINK> *key</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></GTKDOCLINK> **chain</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> *chain_len</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></GTKDOCLINK> **extra_certs</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> *extra_certs_len</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-x509-crl-t"><span class="type">gnutls_x509_crl_t</span></GTKDOCLINK> *crl</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-simple-parse" title="gnutls_pkcs12_simple_parse ()">gnutls_pkcs12_simple_parse</a>          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> p12</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *password</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-privkey-t"><span class="type">gnutls_x509_privkey_t</span></a> *key</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> **chain</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> *chain_len</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> **extra_certs</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> *extra_certs_len</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crl-t"><span class="type">gnutls_x509_crl_t</span></a> *crl</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
 typedef             <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t">gnutls_pkcs12_t</a>;
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-verify-mac" title="gnutls_pkcs12_verify_mac ()">gnutls_pkcs12_verify_mac</a>            (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *pass</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-verify-mac" title="gnutls_pkcs12_verify_mac ()">gnutls_pkcs12_verify_mac</a>            (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *pass</code></em>);
 </pre>
 </div>
 <div class="refsect1">
@@ -123,14 +123,17 @@ typedef             <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" ti
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-decrypt"></a><h3>gnutls_pkcs12_bag_decrypt ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_bag_decrypt           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *pass</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_decrypt           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *pass</code></em>);</pre>
 <p>
 This function will decrypt the given encrypted bag and return 0 on
 success.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bag</code></em> :</span></p></td>
@@ -142,7 +145,7 @@ success.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned,
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned,
 otherwise a negative error code is returned.</td>
 </tr>
 </tbody>
@@ -151,12 +154,15 @@ otherwise a negative error code is returned.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-deinit"></a><h3>gnutls_pkcs12_bag_deinit ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_pkcs12_bag_deinit            (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_pkcs12_bag_deinit            (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>);</pre>
 <p>
 This function will deinitialize a PKCS12 Bag structure.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>bag</code></em> :</span></p></td>
 <td>The structure to be initialized</td>
@@ -166,14 +172,17 @@ This function will deinitialize a PKCS12 Bag structure.
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-encrypt"></a><h3>gnutls_pkcs12_bag_encrypt ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_bag_encrypt           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *pass</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_encrypt           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *pass</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
 <p>
 This function will encrypt the given bag.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bag</code></em> :</span></p></td>
@@ -189,7 +198,7 @@ This function will encrypt the given bag.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned,
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned,
 otherwise a negative error code is returned.</td>
 </tr>
 </tbody>
@@ -198,12 +207,15 @@ otherwise a negative error code is returned.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-get-count"></a><h3>gnutls_pkcs12_bag_get_count ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_bag_get_count         (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_get_count         (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>);</pre>
 <p>
 This function will return the number of the elements withing the bag.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bag</code></em> :</span></p></td>
@@ -220,16 +232,19 @@ error.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-get-data"></a><h3>gnutls_pkcs12_bag_get_data ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_bag_get_data          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> indx</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *data</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_get_data          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indx</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_datum_t</span> *data</code></em>);</pre>
 <p>
 This function will return the bag's data. The data is a constant
 that is stored into the bag.  Should not be accessed after the bag
 is deleted.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bag</code></em> :</span></p></td>
@@ -245,7 +260,7 @@ is deleted.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -254,16 +269,19 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-get-friendly-name"></a><h3>gnutls_pkcs12_bag_get_friendly_name ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_bag_get_friendly_name (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> indx</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> **name</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_get_friendly_name (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indx</code></em>,
+                                                         <em class="parameter"><code><span class="type">char</span> **name</code></em>);</pre>
 <p>
 This function will return the friendly name, of the specified bag
 element.  The key ID is usually used to distinguish the local
 private key and the certificate pair.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bag</code></em> :</span></p></td>
@@ -279,7 +297,7 @@ private key and the certificate pair.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value. or a negative error code on error.</td>
 </tr>
 </tbody>
@@ -288,16 +306,19 @@ negative error value. or a negative error code on error.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-get-key-id"></a><h3>gnutls_pkcs12_bag_get_key_id ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_bag_get_key_id        (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> indx</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *id</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_get_key_id        (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indx</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_datum_t</span> *id</code></em>);</pre>
 <p>
 This function will return the key ID, of the specified bag element.
 The key ID is usually used to distinguish the local private key and
 the certificate pair.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bag</code></em> :</span></p></td>
@@ -313,7 +334,7 @@ the certificate pair.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value. or a negative error code on error.</td>
 </tr>
 </tbody>
@@ -322,14 +343,17 @@ negative error value. or a negative error code on error.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-init"></a><h3>gnutls_pkcs12_bag_init ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_bag_init              (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> *bag</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_init              (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> *bag</code></em>);</pre>
 <p>
 This function will initialize a PKCS12 bag structure. PKCS12 Bags
 usually contain private keys, lists of X.509 Certificates and X.509
 Certificate revocation lists.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bag</code></em> :</span></p></td>
@@ -337,7 +361,7 @@ Certificate revocation lists.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -353,14 +377,17 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-set-crl"></a><h3>gnutls_pkcs12_bag_set_crl ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_bag_set_crl           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-x509-crl-t"><span class="type">gnutls_x509_crl_t</span></GTKDOCLINK> crl</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_set_crl           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crl-t"><span class="type">gnutls_x509_crl_t</span></a> crl</code></em>);</pre>
 <p>
 This function will insert the given CRL into the
 bag. This is just a wrapper over <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-data" title="gnutls_pkcs12_bag_set_data ()"><code class="function">gnutls_pkcs12_bag_set_data()</code></a>.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bag</code></em> :</span></p></td>
@@ -381,14 +408,17 @@ on failure.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-set-crt"></a><h3>gnutls_pkcs12_bag_set_crt ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_bag_set_crt           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></GTKDOCLINK> crt</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_set_crt           (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>);</pre>
 <p>
 This function will insert the given certificate into the
 bag. This is just a wrapper over <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-set-data" title="gnutls_pkcs12_bag_set_data ()"><code class="function">gnutls_pkcs12_bag_set_data()</code></a>.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bag</code></em> :</span></p></td>
@@ -409,15 +439,18 @@ value on failure.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-set-data"></a><h3>gnutls_pkcs12_bag_set_data ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_bag_set_data          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_set_data          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-type-t" title="enum gnutls_pkcs12_bag_type_t"><span class="type">gnutls_pkcs12_bag_type_t</span></a> type</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *data</code></em>);</pre>
+                                                         <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *data</code></em>);</pre>
 <p>
 This function will insert the given data of the given type into
 the bag.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bag</code></em> :</span></p></td>
@@ -442,17 +475,20 @@ value on error.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-set-friendly-name"></a><h3>gnutls_pkcs12_bag_set_friendly_name ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_bag_set_friendly_name (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> indx</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *name</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_set_friendly_name (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indx</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *name</code></em>);</pre>
 <p>
 This function will add the given key friendly name, to the
 specified, by the index, bag element. The name will be encoded as
 a 'Friendly name' bag attribute, which is usually used to set a
 user name to the local private key and the certificate pair.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bag</code></em> :</span></p></td>
@@ -468,7 +504,7 @@ user name to the local private key and the certificate pair.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value. or a negative error code on error.</td>
 </tr>
 </tbody>
@@ -477,17 +513,20 @@ negative error value. or a negative error code on error.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-bag-set-key-id"></a><h3>gnutls_pkcs12_bag_set_key_id ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_bag_set_key_id        (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> indx</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *id</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_bag_set_key_id        (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indx</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *id</code></em>);</pre>
 <p>
 This function will add the given key ID, to the specified, by the
 index, bag element. The key ID will be encoded as a 'Local key
 identifier' bag attribute, which is usually used to distinguish
 the local private key and the certificate pair.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bag</code></em> :</span></p></td>
@@ -503,7 +542,7 @@ the local private key and the certificate pair.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value. or a negative error code on error.</td>
 </tr>
 </tbody>
@@ -538,8 +577,11 @@ negative error value. or a negative error code on error.</td>
 <p>
 Enumeration of different PKCS 12 bag types.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><a name="GNUTLS-BAG-EMPTY:CAPS"></a><span class="term"><code class="literal">GNUTLS_BAG_EMPTY</code></span></p></td>
@@ -587,12 +629,15 @@ Enumeration of different PKCS 12 bag types.
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-deinit"></a><h3>gnutls_pkcs12_deinit ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_pkcs12_deinit                (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_pkcs12_deinit                (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>);</pre>
 <p>
 This function will deinitialize a PKCS12 structure.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>pkcs12</code></em> :</span></p></td>
 <td>The structure to be initialized</td>
@@ -602,10 +647,10 @@ This function will deinitialize a PKCS12 structure.
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-export"></a><h3>gnutls_pkcs12_export ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_export                (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_export                (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> format</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *output_data</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> *output_data_size</code></em>);</pre>
+                                                         <em class="parameter"><code><span class="type">void</span> *output_data</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> *output_data_size</code></em>);</pre>
 <p>
 This function will export the pkcs12 structure to DER or PEM format.
 </p>
@@ -618,8 +663,11 @@ will be returned.
 If the structure is PEM encoded, it will have a header
 of "BEGIN PKCS12".
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>pkcs12</code></em> :</span></p></td>
@@ -649,21 +697,24 @@ returned, and 0 on success.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-export2"></a><h3>gnutls_pkcs12_export2 ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_export2               (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_export2               (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> format</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *out</code></em>);</pre>
+                                                         <em class="parameter"><code><span class="type">gnutls_datum_t</span> *out</code></em>);</pre>
 <p>
 This function will export the pkcs12 structure to DER or PEM format.
 </p>
 <p>
-The output buffer is allocated using <GTKDOCLINK HREF="gnutls-malloc"><code class="function">gnutls_malloc()</code></GTKDOCLINK>.
+The output buffer is allocated using <a href="gnutls-gnutls.html#gnutls-malloc"><code class="function">gnutls_malloc()</code></a>.
 </p>
 <p>
 If the structure is PEM encoded, it will have a header
 of "BEGIN PKCS12".
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>pkcs12</code></em> :</span></p></td>
@@ -689,13 +740,16 @@ returned, and 0 on success.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-generate-mac"></a><h3>gnutls_pkcs12_generate_mac ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_generate_mac          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *pass</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_generate_mac          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *pass</code></em>);</pre>
 <p>
 This function will generate a MAC for the PKCS12 structure.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>pkcs12</code></em> :</span></p></td>
@@ -707,7 +761,7 @@ This function will generate a MAC for the PKCS12 structure.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -716,18 +770,21 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-get-bag"></a><h3>gnutls_pkcs12_get_bag ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_get_bag               (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> indx</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_get_bag               (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indx</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>);</pre>
 <p>
 This function will return a Bag from the PKCS12 structure.
 </p>
 <p>
 After the last Bag has been read
-<GTKDOCLINK HREF="GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></GTKDOCLINK> will be returned.
+<a href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a> will be returned.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>pkcs12</code></em> :</span></p></td>
@@ -743,7 +800,7 @@ After the last Bag has been read
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -752,10 +809,10 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-import"></a><h3>gnutls_pkcs12_import ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_import                (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *data</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_import                (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *data</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> format</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);</pre>
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
 <p>
 This function will convert the given DER or PEM encoded PKCS12
 to the native gnutls_pkcs12_t format. The output will be stored in 'pkcs12'.
@@ -763,8 +820,11 @@ to the native gnutls_pkcs12_t format. The output will be stored in 'pkcs12'.
 <p>
 If the PKCS12 is PEM encoded it should have a header of "PKCS12".
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>pkcs12</code></em> :</span></p></td>
@@ -784,7 +844,7 @@ If the PKCS12 is PEM encoded it should have a header of "PKCS12".
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -793,14 +853,17 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-init"></a><h3>gnutls_pkcs12_init ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_init                  (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> *pkcs12</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_init                  (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> *pkcs12</code></em>);</pre>
 <p>
 This function will initialize a PKCS12 structure. PKCS12 structures
 usually contain lists of X.509 Certificates and X.509 Certificate
 revocation lists.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>pkcs12</code></em> :</span></p></td>
@@ -808,7 +871,7 @@ revocation lists.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -824,13 +887,16 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-set-bag"></a><h3>gnutls_pkcs12_set_bag ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_set_bag               (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_set_bag               (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-bag-t" title="gnutls_pkcs12_bag_t"><span class="type">gnutls_pkcs12_bag_t</span></a> bag</code></em>);</pre>
 <p>
 This function will insert a Bag into the PKCS12 structure.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>pkcs12</code></em> :</span></p></td>
@@ -842,7 +908,7 @@ This function will insert a Bag into the PKCS12 structure.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -851,15 +917,15 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-simple-parse"></a><h3>gnutls_pkcs12_simple_parse ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_simple_parse          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> p12</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *password</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-x509-privkey-t"><span class="type">gnutls_x509_privkey_t</span></GTKDOCLINK> *key</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></GTKDOCLINK> **chain</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> *chain_len</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></GTKDOCLINK> **extra_certs</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> *extra_certs_len</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-x509-crl-t"><span class="type">gnutls_x509_crl_t</span></GTKDOCLINK> *crl</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> flags</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_simple_parse          (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> p12</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *password</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-privkey-t"><span class="type">gnutls_x509_privkey_t</span></a> *key</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> **chain</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> *chain_len</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> **extra_certs</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> *extra_certs_len</code></em>,
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crl-t"><span class="type">gnutls_x509_crl_t</span></a> *crl</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
 <p>
 This function parses a PKCS12 blob in <em class="parameter"><code>p12blob</code></em> and extracts the
 private key, the corresponding certificate chain, and any additional
@@ -867,7 +933,7 @@ certificates and a CRL.
 </p>
 <p>
 The <em class="parameter"><code>extra_certs_ret</code></em> and <em class="parameter"><code>extra_certs_len</code></em> parameters are optional
-and both may be set to <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>. If either is non-<GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>, then both must
+and both may be set to <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. If either is non-<a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>, then both must
 be set.
 </p>
 <p>
@@ -889,7 +955,7 @@ all.
 </p>
 <p>
 If the provided structure has encrypted fields but no password
-is provided then this function returns <GTKDOCLINK HREF="GNUTLS-E-DECRYPTION-FAILED:CAPS"><code class="literal">GNUTLS_E_DECRYPTION_FAILED</code></GTKDOCLINK>.
+is provided then this function returns <a href="gnutls-gnutls.html#GNUTLS-E-DECRYPTION-FAILED:CAPS"><code class="literal">GNUTLS_E_DECRYPTION_FAILED</code></a>.
 </p>
 <p>
 Note that normally the chain constructed does not include self signed
@@ -897,8 +963,11 @@ certificates, to comply with TLS' requirements. If, however, the flag
 <a class="link" href="gnutls-pkcs12.html#GNUTLS-PKCS12-SP-INCLUDE-SELF-SIGNED:CAPS" title="GNUTLS_PKCS12_SP_INCLUDE_SELF_SIGNED"><code class="literal">GNUTLS_PKCS12_SP_INCLUDE_SELF_SIGNED</code></a> is specified then
 self signed certificates will be included in the chain.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>p12</code></em> :</span></p></td>
@@ -914,25 +983,25 @@ self signed certificates will be included in the chain.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>chain</code></em> :</span></p></td>
-<td>the corresponding to key certificate chain (may be <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>)</td>
+<td>the corresponding to key certificate chain (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>chain_len</code></em> :</span></p></td>
-<td>will be updated with the number of additional (may be <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>)</td>
+<td>will be updated with the number of additional (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>extra_certs</code></em> :</span></p></td>
 <td>optional pointer to receive an array of additional
-certificates found in the PKCS12 blob (may be <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>).</td>
+certificates found in the PKCS12 blob (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>).</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>extra_certs_len</code></em> :</span></p></td>
 <td>will be updated with the number of additional
-certs (may be <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>).</td>
+certs (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>).</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>crl</code></em> :</span></p></td>
-<td>an optional structure to store the parsed CRL (may be <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GTKDOCLINK>).</td>
+<td>an optional structure to store the parsed CRL (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>).</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>flags</code></em> :</span></p></td>
@@ -940,7 +1009,7 @@ certs (may be <GTKDOCLINK HREF="NULL:CAPS"><code class="literal">NULL</code></GT
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -958,13 +1027,16 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs12-verify-mac"></a><h3>gnutls_pkcs12_verify_mac ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_pkcs12_verify_mac            (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="char"><span class="type">char</span></GTKDOCLINK> *pass</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs12_verify_mac            (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *pass</code></em>);</pre>
 <p>
 This function will verify the MAC for the PKCS12 structure.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>pkcs12</code></em> :</span></p></td>
@@ -976,7 +1048,7 @@ This function will verify the MAC for the PKCS12 structure.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) is returned, otherwise a
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>

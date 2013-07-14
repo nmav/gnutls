@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.1 of GnuTLS.
+3.2.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.1: Data transfer and termination</title>
+<title>GnuTLS 3.2.2: Data transfer and termination</title>
 
-<meta name="description" content="GnuTLS 3.2.1: Data transfer and termination">
-<meta name="keywords" content="GnuTLS 3.2.1: Data transfer and termination">
+<meta name="description" content="GnuTLS 3.2.2: Data transfer and termination">
+<meta name="keywords" content="GnuTLS 3.2.2: Data transfer and termination">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -195,8 +195,12 @@ default is <code>send()</code> ) then <code>GNUTLS_E_INTERRUPTED</code>  will be
 <code>GNUTLS_E_INTERRUPTED</code>  or <code>GNUTLS_E_AGAIN</code>  is returned, you must
 call this function again, with the same parameters; alternatively
 you could provide a <code>NULL</code>  pointer for data, and 0 for
-size. cf. <code>gnutls_record_get_direction()</code> . The errno value EMSGSIZE
-maps to <code>GNUTLS_E_LARGE_PACKET</code> .
+size. cf. <code>gnutls_record_get_direction()</code> . 
+</p>
+<p>Note that in DTLS this function will return the <code>GNUTLS_E_LARGE_PACKET</code> 
+error code if the send data exceed the data MTU value - as returned
+by <code>gnutls_dtls_get_data_mtu()</code> . The errno value EMSGSIZE
+also maps to <code>GNUTLS_E_LARGE_PACKET</code> .
 </p>
 <p><strong>Returns:</strong> The number of bytes sent, or a negative error code.  The
 number of bytes sent might be less than  <code>data_size</code> .  The maximum

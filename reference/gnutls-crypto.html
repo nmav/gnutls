@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>crypto</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
 <link rel="home" href="index.html" title="GnuTLS API Reference Manual">
 <link rel="up" href="intro.html" title="GnuTLS API Reference Manual">
 <link rel="prev" href="gnutls-openpgp.html" title="openpgp">
@@ -37,75 +37,75 @@
 </tr></table></div>
 <div class="refsynopsisdiv">
 <a name="gnutls-crypto.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-add-auth" title="gnutls_cipher_add_auth ()">gnutls_cipher_add_auth</a>              (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> text_size</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-decrypt" title="gnutls_cipher_decrypt ()">gnutls_cipher_decrypt</a>               (<em class="parameter"><code>const <a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *ciphertext</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> ciphertextlen</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-decrypt2" title="gnutls_cipher_decrypt2 ()">gnutls_cipher_decrypt2</a>              (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *ciphertext</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> ciphertextlen</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>);
-<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-crypto.html#gnutls-cipher-deinit" title="gnutls_cipher_deinit ()">gnutls_cipher_deinit</a>                (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-encrypt" title="gnutls_cipher_encrypt ()">gnutls_cipher_encrypt</a>               (<em class="parameter"><code>const <a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-encrypt2" title="gnutls_cipher_encrypt2 ()">gnutls_cipher_encrypt2</a>              (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *ciphertext</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> ciphertextlen</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-get-block-size" title="gnutls_cipher_get_block_size ()">gnutls_cipher_get_block_size</a>        (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);
+<pre class="synopsis"><span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-add-auth" title="gnutls_cipher_add_auth ()">gnutls_cipher_add_auth</a>              (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> text_size</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-decrypt" title="gnutls_cipher_decrypt ()">gnutls_cipher_decrypt</a>               (<em class="parameter"><code>const <a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *ciphertext</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> ciphertextlen</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-decrypt2" title="gnutls_cipher_decrypt2 ()">gnutls_cipher_decrypt2</a>              (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *ciphertext</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> ciphertextlen</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-crypto.html#gnutls-cipher-deinit" title="gnutls_cipher_deinit ()">gnutls_cipher_deinit</a>                (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-encrypt" title="gnutls_cipher_encrypt ()">gnutls_cipher_encrypt</a>               (<em class="parameter"><code>const <a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-encrypt2" title="gnutls_cipher_encrypt2 ()">gnutls_cipher_encrypt2</a>              (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *ciphertext</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> ciphertextlen</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-get-block-size" title="gnutls_cipher_get_block_size ()">gnutls_cipher_get_block_size</a>        (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);
 typedef             <a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t">gnutls_cipher_hd_t</a>;
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-init" title="gnutls_cipher_init ()">gnutls_cipher_init</a>                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> *handle</code></em>,
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-init" title="gnutls_cipher_init ()">gnutls_cipher_init</a>                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> *handle</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> cipher</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *key</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *iv</code></em>);
-<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-crypto.html#gnutls-cipher-set-iv" title="gnutls_cipher_set_iv ()">gnutls_cipher_set_iv</a>                (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *iv</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> ivlen</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-tag" title="gnutls_cipher_tag ()">gnutls_cipher_tag</a>                   (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *tag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> tag_size</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-hash" title="gnutls_hash ()">gnutls_hash</a>                         (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>);
-<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-crypto.html#gnutls-hash-deinit" title="gnutls_hash_deinit ()">gnutls_hash_deinit</a>                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *digest</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-hash-fast" title="gnutls_hash_fast ()">gnutls_hash_fast</a>                    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t"><span class="type">gnutls_digest_algorithm_t</span></a> algorithm</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *digest</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-hash-get-len" title="gnutls_hash_get_len ()">gnutls_hash_get_len</a>                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t"><span class="type">gnutls_digest_algorithm_t</span></a> algorithm</code></em>);
+                                                         <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *key</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *iv</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-crypto.html#gnutls-cipher-set-iv" title="gnutls_cipher_set_iv ()">gnutls_cipher_set_iv</a>                (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *iv</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> ivlen</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-tag" title="gnutls_cipher_tag ()">gnutls_cipher_tag</a>                   (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *tag</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> tag_size</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-hash" title="gnutls_hash ()">gnutls_hash</a>                         (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-crypto.html#gnutls-hash-deinit" title="gnutls_hash_deinit ()">gnutls_hash_deinit</a>                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *digest</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-hash-fast" title="gnutls_hash_fast ()">gnutls_hash_fast</a>                    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t"><span class="type">gnutls_digest_algorithm_t</span></a> algorithm</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *digest</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-hash-get-len" title="gnutls_hash_get_len ()">gnutls_hash_get_len</a>                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t"><span class="type">gnutls_digest_algorithm_t</span></a> algorithm</code></em>);
 typedef             <a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t">gnutls_hash_hd_t</a>;
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-hash-init" title="gnutls_hash_init ()">gnutls_hash_init</a>                    (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> *dig</code></em>,
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-hash-init" title="gnutls_hash_init ()">gnutls_hash_init</a>                    (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> *dig</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t"><span class="type">gnutls_digest_algorithm_t</span></a> algorithm</code></em>);
-<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-crypto.html#gnutls-hash-output" title="gnutls_hash_output ()">gnutls_hash_output</a>                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *digest</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-hmac" title="gnutls_hmac ()">gnutls_hmac</a>                         (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>);
-<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-crypto.html#gnutls-hmac-deinit" title="gnutls_hmac_deinit ()">gnutls_hmac_deinit</a>                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *digest</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-hmac-fast" title="gnutls_hmac_fast ()">gnutls_hmac_fast</a>                    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *key</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> keylen</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *digest</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-hmac-get-len" title="gnutls_hmac_get_len ()">gnutls_hmac_get_len</a>                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-crypto.html#gnutls-hash-output" title="gnutls_hash_output ()">gnutls_hash_output</a>                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *digest</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-hmac" title="gnutls_hmac ()">gnutls_hmac</a>                         (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-crypto.html#gnutls-hmac-deinit" title="gnutls_hmac_deinit ()">gnutls_hmac_deinit</a>                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *digest</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-hmac-fast" title="gnutls_hmac_fast ()">gnutls_hmac_fast</a>                    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *key</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> keylen</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *digest</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-hmac-get-len" title="gnutls_hmac_get_len ()">gnutls_hmac_get_len</a>                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);
 typedef             <a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t">gnutls_hmac_hd_t</a>;
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-hmac-init" title="gnutls_hmac_init ()">gnutls_hmac_init</a>                    (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> *dig</code></em>,
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-hmac-init" title="gnutls_hmac_init ()">gnutls_hmac_init</a>                    (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> *dig</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *key</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> keylen</code></em>);
-<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-crypto.html#gnutls-hmac-output" title="gnutls_hmac_output ()">gnutls_hmac_output</a>                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *digest</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-crypto.html#gnutls-rnd" title="gnutls_rnd ()">gnutls_rnd</a>                          (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-rnd-level-t" title="enum gnutls_rnd_level_t"><span class="type">gnutls_rnd_level_t</span></a> level</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *data</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> len</code></em>);
+                                                         <em class="parameter"><code>const <span class="type">void</span> *key</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> keylen</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-crypto.html#gnutls-hmac-output" title="gnutls_hmac_output ()">gnutls_hmac_output</a>                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *digest</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-rnd" title="gnutls_rnd ()">gnutls_rnd</a>                          (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-rnd-level-t" title="enum gnutls_rnd_level_t"><span class="type">gnutls_rnd_level_t</span></a> level</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *data</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> len</code></em>);
 enum                <a class="link" href="gnutls-crypto.html#gnutls-rnd-level-t" title="enum gnutls_rnd_level_t">gnutls_rnd_level_t</a>;
 </pre>
 </div>
@@ -118,17 +118,20 @@ enum                <a class="link" href="gnutls-crypto.html#gnutls-rnd-level-t"
 <a name="gnutls-crypto.details"></a><h2>Details</h2>
 <div class="refsect2">
 <a name="gnutls-cipher-add-auth"></a><h3>gnutls_cipher_add_auth ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_cipher_add_auth              (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> text_size</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_cipher_add_auth              (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> text_size</code></em>);</pre>
 <p>
 This function operates on authenticated encryption with
 associated data (AEAD) ciphers and authenticate the
 input data. This function can only be called once
 and before any encryption operations.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -153,15 +156,22 @@ and before any encryption operations.
 <hr>
 <div class="refsect2">
 <a name="gnutls-cipher-decrypt"></a><h3>gnutls_cipher_decrypt ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_cipher_decrypt               (<em class="parameter"><code>const <a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *ciphertext</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> ciphertextlen</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_cipher_decrypt               (<em class="parameter"><code>const <a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *ciphertext</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> ciphertextlen</code></em>);</pre>
 <p>
 This function will decrypt the given data using the algorithm
 specified by the context.
 </p>
-<div class="variablelist"><table border="0">
+<p>
+Note that in AEAD ciphers, this will not check the tag. You will
+need to compare the tag sent with the value returned from <a class="link" href="gnutls-crypto.html#gnutls-cipher-tag" title="gnutls_cipher_tag ()"><code class="function">gnutls_cipher_tag()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -186,17 +196,24 @@ specified by the context.
 <hr>
 <div class="refsect2">
 <a name="gnutls-cipher-decrypt2"></a><h3>gnutls_cipher_decrypt2 ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_cipher_decrypt2              (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *ciphertext</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> ciphertextlen</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_cipher_decrypt2              (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *ciphertext</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> ciphertextlen</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>);</pre>
 <p>
 This function will decrypt the given data using the algorithm
 specified by the context.
 </p>
-<div class="variablelist"><table border="0">
+<p>
+Note that in AEAD ciphers, this will not check the tag. You will
+need to compare the tag sent with the value returned from <a class="link" href="gnutls-crypto.html#gnutls-cipher-tag" title="gnutls_cipher_tag ()"><code class="function">gnutls_cipher_tag()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -229,13 +246,16 @@ specified by the context.
 <hr>
 <div class="refsect2">
 <a name="gnutls-cipher-deinit"></a><h3>gnutls_cipher_deinit ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_cipher_deinit                (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_cipher_deinit                (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>);</pre>
 <p>
 This function will deinitialize all resources occupied by the given
 encryption context.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody><tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
 <td>is a <a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> structure.</td>
@@ -246,15 +266,18 @@ encryption context.
 <hr>
 <div class="refsect2">
 <a name="gnutls-cipher-encrypt"></a><h3>gnutls_cipher_encrypt ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_cipher_encrypt               (<em class="parameter"><code>const <a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_cipher_encrypt               (<em class="parameter"><code>const <a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>);</pre>
 <p>
 This function will encrypt the given data using the algorithm
 specified by the context.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -279,17 +302,20 @@ specified by the context.
 <hr>
 <div class="refsect2">
 <a name="gnutls-cipher-encrypt2"></a><h3>gnutls_cipher_encrypt2 ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_cipher_encrypt2              (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *ciphertext</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> ciphertextlen</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_cipher_encrypt2              (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *ciphertext</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> ciphertextlen</code></em>);</pre>
 <p>
 This function will encrypt the given data using the algorithm
 specified by the context.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -322,12 +348,12 @@ specified by the context.
 <hr>
 <div class="refsect2">
 <a name="gnutls-cipher-get-block-size"></a><h3>gnutls_cipher_get_block_size ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_cipher_get_block_size        (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);</pre>
-<p>
-Get block size for encryption algorithm.
-</p>
-<div class="variablelist"><table border="0">
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_cipher_get_block_size        (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);</pre>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>algorithm</code></em> :</span></p></td>
@@ -335,7 +361,7 @@ Get block size for encryption algorithm.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>block size for encryption algorithm.</td>
+<td>the block size of the encryption algorithm.</td>
 </tr>
 </tbody>
 </table></div>
@@ -352,18 +378,21 @@ Get block size for encryption algorithm.
 <hr>
 <div class="refsect2">
 <a name="gnutls-cipher-init"></a><h3>gnutls_cipher_init ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_cipher_init                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> *handle</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_cipher_init                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> *handle</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> cipher</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *key</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *iv</code></em>);</pre>
+                                                         <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *key</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *iv</code></em>);</pre>
 <p>
 This function will initialize an context that can be used for
 encryption/decryption of data. This will effectively use the
 current crypto backend in use by gnutls or the cryptographic
 accelerator in use.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -392,15 +421,18 @@ accelerator in use.
 <hr>
 <div class="refsect2">
 <a name="gnutls-cipher-set-iv"></a><h3>gnutls_cipher_set_iv ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_cipher_set_iv                (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *iv</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> ivlen</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_cipher_set_iv                (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *iv</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> ivlen</code></em>);</pre>
 <p>
 This function will set the IV to be used for the next
 encryption block.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -421,16 +453,19 @@ encryption block.
 <hr>
 <div class="refsect2">
 <a name="gnutls-cipher-tag"></a><h3>gnutls_cipher_tag ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_cipher_tag                   (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *tag</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> tag_size</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_cipher_tag                   (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *tag</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> tag_size</code></em>);</pre>
 <p>
 This function operates on authenticated encryption with
 associated data (AEAD) ciphers and will return the
 output tag.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -455,15 +490,18 @@ output tag.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hash"></a><h3>gnutls_hash ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_hash                         (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_hash                         (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>);</pre>
 <p>
 This function will hash the given data using the algorithm
 specified by the context.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -488,14 +526,17 @@ specified by the context.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hash-deinit"></a><h3>gnutls_hash_deinit ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_hash_deinit                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *digest</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_hash_deinit                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *digest</code></em>);</pre>
 <p>
 This function will deinitialize all resources occupied by
 the given hash context.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -512,16 +553,19 @@ the given hash context.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hash-fast"></a><h3>gnutls_hash_fast ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_hash_fast                    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t"><span class="type">gnutls_digest_algorithm_t</span></a> algorithm</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *digest</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_hash_fast                    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t"><span class="type">gnutls_digest_algorithm_t</span></a> algorithm</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *digest</code></em>);</pre>
 <p>
 This convenience function will hash the given data and return output
 on a single call.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>algorithm</code></em> :</span></p></td>
@@ -550,13 +594,16 @@ on a single call.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hash-get-len"></a><h3>gnutls_hash_get_len ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_hash_get_len                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t"><span class="type">gnutls_digest_algorithm_t</span></a> algorithm</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_hash_get_len                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t"><span class="type">gnutls_digest_algorithm_t</span></a> algorithm</code></em>);</pre>
 <p>
 This function will return the length of the output data
 of the given hash algorithm.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>algorithm</code></em> :</span></p></td>
@@ -581,7 +628,7 @@ of the given hash algorithm.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hash-init"></a><h3>gnutls_hash_init ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_hash_init                    (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> *dig</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_hash_init                    (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> *dig</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t"><span class="type">gnutls_digest_algorithm_t</span></a> algorithm</code></em>);</pre>
 <p>
 This function will initialize an context that can be used to
@@ -589,8 +636,11 @@ produce a Message Digest of data.  This will effectively use the
 current crypto backend in use by gnutls or the cryptographic
 accelerator in use.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>dig</code></em> :</span></p></td>
@@ -611,14 +661,17 @@ accelerator in use.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hash-output"></a><h3>gnutls_hash_output ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_hash_output                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *digest</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_hash_output                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hash-hd-t" title="gnutls_hash_hd_t"><span class="type">gnutls_hash_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *digest</code></em>);</pre>
 <p>
 This function will output the current hash value
 and reset the state of the hash.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -635,15 +688,18 @@ and reset the state of the hash.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hmac"></a><h3>gnutls_hmac ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_hmac                         (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_hmac                         (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>);</pre>
 <p>
 This function will hash the given data using the algorithm
 specified by the context.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -668,14 +724,17 @@ specified by the context.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hmac-deinit"></a><h3>gnutls_hmac_deinit ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_hmac_deinit                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *digest</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_hmac_deinit                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *digest</code></em>);</pre>
 <p>
 This function will deinitialize all resources occupied by
 the given hmac context.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -692,18 +751,21 @@ the given hmac context.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hmac-fast"></a><h3>gnutls_hmac_fast ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_hmac_fast                    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *key</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> keylen</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *text</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> textlen</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *digest</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_hmac_fast                    (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *key</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> keylen</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> textlen</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *digest</code></em>);</pre>
 <p>
 This convenience function will hash the given data and return output
 on a single call.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>algorithm</code></em> :</span></p></td>
@@ -740,13 +802,16 @@ on a single call.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hmac-get-len"></a><h3>gnutls_hmac_get_len ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_hmac_get_len                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_hmac_get_len                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);</pre>
 <p>
 This function will return the length of the output data
 of the given hmac algorithm.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>algorithm</code></em> :</span></p></td>
@@ -771,10 +836,10 @@ of the given hmac algorithm.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hmac-init"></a><h3>gnutls_hmac_init ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_hmac_init                    (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> *dig</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_hmac_init                    (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> *dig</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>,
-                                                         <em class="parameter"><code>const <GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *key</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> keylen</code></em>);</pre>
+                                                         <em class="parameter"><code>const <span class="type">void</span> *key</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> keylen</code></em>);</pre>
 <p>
 This function will initialize an context that can be used to
 produce a Message Authentication Code (MAC) of data.  This will
@@ -785,8 +850,11 @@ cryptographic accelerator in use.
 Note that despite the name of this function, it can be used
 for other MAC algorithms than HMAC.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>dig</code></em> :</span></p></td>
@@ -815,14 +883,17 @@ for other MAC algorithms than HMAC.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hmac-output"></a><h3>gnutls_hmac_output ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_hmac_output                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *digest</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_hmac_output                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *digest</code></em>);</pre>
 <p>
 This function will output the current MAC value
 and reset the state of the MAC.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
@@ -839,15 +910,18 @@ and reset the state of the MAC.
 <hr>
 <div class="refsect2">
 <a name="gnutls-rnd"></a><h3>gnutls_rnd ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_rnd                          (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-rnd-level-t" title="enum gnutls_rnd_level_t"><span class="type">gnutls_rnd_level_t</span></a> level</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *data</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> len</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_rnd                          (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-rnd-level-t" title="enum gnutls_rnd_level_t"><span class="type">gnutls_rnd_level_t</span></a> level</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *data</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> len</code></em>);</pre>
 <p>
 This function will generate random data and store it to output
 buffer.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>level</code></em> :</span></p></td>
@@ -881,8 +955,11 @@ buffer.
 <p>
 Enumeration of random quality levels.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><a name="GNUTLS-RND-NONCE:CAPS"></a><span class="term"><code class="literal">GNUTLS_RND_NONCE</code></span></p></td>

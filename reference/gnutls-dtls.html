@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>dtls</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
 <link rel="home" href="index.html" title="GnuTLS API Reference Manual">
 <link rel="up" href="intro.html" title="GnuTLS API Reference Manual">
 <link rel="prev" href="gnutls-ocsp.html" title="ocsp">
@@ -38,31 +38,31 @@
 <div class="refsynopsisdiv">
 <a name="gnutls-dtls.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">#define             <a class="link" href="gnutls-dtls.html#GNUTLS-COOKIE-KEY-SIZE:CAPS" title="GNUTLS_COOKIE_KEY_SIZE">GNUTLS_COOKIE_KEY_SIZE</a>
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-dtls.html#gnutls-dtls-cookie-send" title="gnutls_dtls_cookie_send ()">gnutls_dtls_cookie_send</a>             (<em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *key</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *client_data</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> client_data_size</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-dtls-prestate-st"><span class="type">gnutls_dtls_prestate_st</span></GTKDOCLINK> *prestate</code></em>,
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-dtls.html#gnutls-dtls-cookie-send" title="gnutls_dtls_cookie_send ()">gnutls_dtls_cookie_send</a>             (<em class="parameter"><code><span class="type">gnutls_datum_t</span> *key</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *client_data</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> client_data_size</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_dtls_prestate_st</span> *prestate</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-transport-ptr-t" title="gnutls_transport_ptr_t"><span class="type">gnutls_transport_ptr_t</span></a> ptr</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-push-func"><span class="type">gnutls_push_func</span></GTKDOCLINK> push_func</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-dtls.html#gnutls-dtls-cookie-verify" title="gnutls_dtls_cookie_verify ()">gnutls_dtls_cookie_verify</a>           (<em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *key</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *client_data</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> client_data_size</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *_msg</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> msg_size</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-dtls-prestate-st"><span class="type">gnutls_dtls_prestate_st</span></GTKDOCLINK> *prestate</code></em>);
-unsigned <GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>        <a class="link" href="gnutls-dtls.html#gnutls-dtls-get-data-mtu" title="gnutls_dtls_get_data_mtu ()">gnutls_dtls_get_data_mtu</a>            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
-unsigned <GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>        <a class="link" href="gnutls-dtls.html#gnutls-dtls-get-mtu" title="gnutls_dtls_get_mtu ()">gnutls_dtls_get_mtu</a>                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
-unsigned <GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>        <a class="link" href="gnutls-dtls.html#gnutls-dtls-get-timeout" title="gnutls_dtls_get_timeout ()">gnutls_dtls_get_timeout</a>             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
-<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-dtls.html#gnutls-dtls-prestate-set" title="gnutls_dtls_prestate_set ()">gnutls_dtls_prestate_set</a>            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-dtls-prestate-st"><span class="type">gnutls_dtls_prestate_st</span></GTKDOCLINK> *prestate</code></em>);
-<GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 <a class="link" href="gnutls-dtls.html#gnutls-dtls-set-data-mtu" title="gnutls_dtls_set_data_mtu ()">gnutls_dtls_set_data_mtu</a>            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> mtu</code></em>);
-<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-dtls.html#gnutls-dtls-set-mtu" title="gnutls_dtls_set_mtu ()">gnutls_dtls_set_mtu</a>                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> mtu</code></em>);
-<GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                <a class="link" href="gnutls-dtls.html#gnutls-dtls-set-timeouts" title="gnutls_dtls_set_timeouts ()">gnutls_dtls_set_timeouts</a>            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> retrans_timeout</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> total_timeout</code></em>);
-unsigned <GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>        <a class="link" href="gnutls-dtls.html#gnutls-record-get-discarded" title="gnutls_record_get_discarded ()">gnutls_record_get_discarded</a>         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-push-func"><span class="type">gnutls_push_func</span></a> push_func</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-dtls.html#gnutls-dtls-cookie-verify" title="gnutls_dtls_cookie_verify ()">gnutls_dtls_cookie_verify</a>           (<em class="parameter"><code><span class="type">gnutls_datum_t</span> *key</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *client_data</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> client_data_size</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *_msg</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> msg_size</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_dtls_prestate_st</span> *prestate</code></em>);
+unsigned <span class="returnvalue">int</span>        <a class="link" href="gnutls-dtls.html#gnutls-dtls-get-data-mtu" title="gnutls_dtls_get_data_mtu ()">gnutls_dtls_get_data_mtu</a>            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
+unsigned <span class="returnvalue">int</span>        <a class="link" href="gnutls-dtls.html#gnutls-dtls-get-mtu" title="gnutls_dtls_get_mtu ()">gnutls_dtls_get_mtu</a>                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
+unsigned <span class="returnvalue">int</span>        <a class="link" href="gnutls-dtls.html#gnutls-dtls-get-timeout" title="gnutls_dtls_get_timeout ()">gnutls_dtls_get_timeout</a>             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-dtls.html#gnutls-dtls-prestate-set" title="gnutls_dtls_prestate_set ()">gnutls_dtls_prestate_set</a>            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_dtls_prestate_st</span> *prestate</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-dtls.html#gnutls-dtls-set-data-mtu" title="gnutls_dtls_set_data_mtu ()">gnutls_dtls_set_data_mtu</a>            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> mtu</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-dtls.html#gnutls-dtls-set-mtu" title="gnutls_dtls_set_mtu ()">gnutls_dtls_set_mtu</a>                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> mtu</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-dtls.html#gnutls-dtls-set-timeouts" title="gnutls_dtls_set_timeouts ()">gnutls_dtls_set_timeouts</a>            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> retrans_timeout</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> total_timeout</code></em>);
+unsigned <span class="returnvalue">int</span>        <a class="link" href="gnutls-dtls.html#gnutls-record-get-discarded" title="gnutls_record_get_discarded ()">gnutls_record_get_discarded</a>         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);
 </pre>
 </div>
 <div class="refsect1">
@@ -82,12 +82,12 @@ unsigned <GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK
 <hr>
 <div class="refsect2">
 <a name="gnutls-dtls-cookie-send"></a><h3>gnutls_dtls_cookie_send ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_dtls_cookie_send             (<em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *key</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *client_data</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> client_data_size</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-dtls-prestate-st"><span class="type">gnutls_dtls_prestate_st</span></GTKDOCLINK> *prestate</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_dtls_cookie_send             (<em class="parameter"><code><span class="type">gnutls_datum_t</span> *key</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *client_data</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> client_data_size</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_dtls_prestate_st</span> *prestate</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-transport-ptr-t" title="gnutls_transport_ptr_t"><span class="type">gnutls_transport_ptr_t</span></a> ptr</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-push-func"><span class="type">gnutls_push_func</span></GTKDOCLINK> push_func</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-push-func"><span class="type">gnutls_push_func</span></a> push_func</code></em>);</pre>
 <p>
 This function can be used to prevent denial of service
 attacks to a DTLS server by requiring the client to
@@ -101,8 +101,11 @@ This function must be called at the first incoming packet,
 prior to allocating any resources and must be succeeded
 by <a class="link" href="gnutls-dtls.html#gnutls-dtls-cookie-verify" title="gnutls_dtls_cookie_verify ()"><code class="function">gnutls_dtls_cookie_verify()</code></a>.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>key</code></em> :</span></p></td>
@@ -141,12 +144,12 @@ by <a class="link" href="gnutls-dtls.html#gnutls-dtls-cookie-verify" title="gnut
 <hr>
 <div class="refsect2">
 <a name="gnutls-dtls-cookie-verify"></a><h3>gnutls_dtls_cookie_verify ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_dtls_cookie_verify           (<em class="parameter"><code><GTKDOCLINK HREF="gnutls-datum-t"><span class="type">gnutls_datum_t</span></GTKDOCLINK> *key</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *client_data</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> client_data_size</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="void"><span class="type">void</span></GTKDOCLINK> *_msg</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="size-t"><span class="type">size_t</span></GTKDOCLINK> msg_size</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-dtls-prestate-st"><span class="type">gnutls_dtls_prestate_st</span></GTKDOCLINK> *prestate</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_dtls_cookie_verify           (<em class="parameter"><code><span class="type">gnutls_datum_t</span> *key</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *client_data</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> client_data_size</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *_msg</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> msg_size</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_dtls_prestate_st</span> *prestate</code></em>);</pre>
 <p>
 This function will verify the received message for
 a valid cookie. If a valid cookie is returned then
@@ -156,8 +159,11 @@ it should be associated with the session using
 <p>
 This function must be called after <a class="link" href="gnutls-dtls.html#gnutls-dtls-cookie-send" title="gnutls_dtls_cookie_send ()"><code class="function">gnutls_dtls_cookie_send()</code></a>.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>key</code></em> :</span></p></td>
@@ -186,7 +192,7 @@ This function must be called after <a class="link" href="gnutls-dtls.html#gnutls
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) on success, or a negative error code.</td>
+<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success, or a negative error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -195,14 +201,17 @@ This function must be called after <a class="link" href="gnutls-dtls.html#gnutls
 <hr>
 <div class="refsect2">
 <a name="gnutls-dtls-get-data-mtu"></a><h3>gnutls_dtls_get_data_mtu ()</h3>
-<pre class="programlisting">unsigned <GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>        gnutls_dtls_get_data_mtu            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
+<pre class="programlisting">unsigned <span class="returnvalue">int</span>        gnutls_dtls_get_data_mtu            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>
 This function will return the actual maximum transfer unit for
 application data. I.e. DTLS headers are subtracted from the
-actual MTU.
+actual MTU which is set using <a class="link" href="gnutls-dtls.html#gnutls-dtls-set-mtu" title="gnutls_dtls_set_mtu ()"><code class="function">gnutls_dtls_set_mtu()</code></a>.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>session</code></em> :</span></p></td>
@@ -219,15 +228,18 @@ actual MTU.
 <hr>
 <div class="refsect2">
 <a name="gnutls-dtls-get-mtu"></a><h3>gnutls_dtls_get_mtu ()</h3>
-<pre class="programlisting">unsigned <GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>        gnutls_dtls_get_mtu                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
+<pre class="programlisting">unsigned <span class="returnvalue">int</span>        gnutls_dtls_get_mtu                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>
 This function will return the MTU size as set with
 <a class="link" href="gnutls-dtls.html#gnutls-dtls-set-mtu" title="gnutls_dtls_set_mtu ()"><code class="function">gnutls_dtls_set_mtu()</code></a>. This is not the actual MTU
 of data you can transmit. Use <a class="link" href="gnutls-dtls.html#gnutls-dtls-get-data-mtu" title="gnutls_dtls_get_data_mtu ()"><code class="function">gnutls_dtls_get_data_mtu()</code></a>
 for that reason.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>session</code></em> :</span></p></td>
@@ -244,7 +256,7 @@ for that reason.
 <hr>
 <div class="refsect2">
 <a name="gnutls-dtls-get-timeout"></a><h3>gnutls_dtls_get_timeout ()</h3>
-<pre class="programlisting">unsigned <GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>        gnutls_dtls_get_timeout             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
+<pre class="programlisting">unsigned <span class="returnvalue">int</span>        gnutls_dtls_get_timeout             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>
 This function will return the milliseconds remaining
 for a retransmission of the previously sent handshake
@@ -252,8 +264,11 @@ message. This function is useful when DTLS is used in
 non-blocking mode, to estimate when to call <a class="link" href="gnutls-gnutls.html#gnutls-handshake" title="gnutls_handshake ()"><code class="function">gnutls_handshake()</code></a>
 if no packets have been received.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>session</code></em> :</span></p></td>
@@ -270,8 +285,8 @@ if no packets have been received.
 <hr>
 <div class="refsect2">
 <a name="gnutls-dtls-prestate-set"></a><h3>gnutls_dtls_prestate_set ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_dtls_prestate_set            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code><GTKDOCLINK HREF="gnutls-dtls-prestate-st"><span class="type">gnutls_dtls_prestate_st</span></GTKDOCLINK> *prestate</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_dtls_prestate_set            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_dtls_prestate_st</span> *prestate</code></em>);</pre>
 <p>
 This function will associate the prestate acquired by
 the cookie authentication with the client, with the newly 
@@ -281,8 +296,11 @@ established session.
 This functions must be called after a successful <a class="link" href="gnutls-dtls.html#gnutls-dtls-cookie-verify" title="gnutls_dtls_cookie_verify ()"><code class="function">gnutls_dtls_cookie_verify()</code></a>
 and should be succeeded by the actual DTLS handshake using <a class="link" href="gnutls-gnutls.html#gnutls-handshake" title="gnutls_handshake ()"><code class="function">gnutls_handshake()</code></a>.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>session</code></em> :</span></p></td>
@@ -299,8 +317,8 @@ and should be succeeded by the actual DTLS handshake using <a class="link" href=
 <hr>
 <div class="refsect2">
 <a name="gnutls-dtls-set-data-mtu"></a><h3>gnutls_dtls_set_data_mtu ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>                 gnutls_dtls_set_data_mtu            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> mtu</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_dtls_set_data_mtu            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> mtu</code></em>);</pre>
 <p>
 This function will set the maximum size of the *unencrypted* records
 which will be sent over a DTLS session. It is equivalent to calculating
@@ -310,8 +328,15 @@ that you may need to call this function again after any negotiation or
 renegotiation, in order to ensure that the MTU is still sufficient to
 account for the new protocol overhead.
 </p>
-<div class="variablelist"><table border="0">
+<p>
+In most cases you only need to call <a class="link" href="gnutls-dtls.html#gnutls-dtls-set-mtu" title="gnutls_dtls_set_mtu ()"><code class="function">gnutls_dtls_set_mtu()</code></a> with
+the maximum MTU of your transport layer.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>session</code></em> :</span></p></td>
@@ -324,7 +349,7 @@ account for the new protocol overhead.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<GTKDOCLINK HREF="GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></GTKDOCLINK> (0) on success, or a negative error code.</td>
+<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success, or a negative error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -333,8 +358,8 @@ account for the new protocol overhead.
 <hr>
 <div class="refsect2">
 <a name="gnutls-dtls-set-mtu"></a><h3>gnutls_dtls_set_mtu ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_dtls_set_mtu                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> mtu</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_dtls_set_mtu                 (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> mtu</code></em>);</pre>
 <p>
 This function will set the maximum transfer unit of the transport
 that DTLS packets are sent over. Note that this should exclude
@@ -342,8 +367,11 @@ the IP (or IPv6) and UDP headers. So for DTLS over IPv6 on an
 Ethenet device with MTU 1500, the DTLS MTU set with this function
 would be 1500 - 40 (IPV6 header) - 8 (UDP header) = 1452.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>session</code></em> :</span></p></td>
@@ -360,15 +388,15 @@ would be 1500 - 40 (IPV6 header) - 8 (UDP header) = 1452.
 <hr>
 <div class="refsect2">
 <a name="gnutls-dtls-set-timeouts"></a><h3>gnutls_dtls_set_timeouts ()</h3>
-<pre class="programlisting"><GTKDOCLINK HREF="void"><span class="returnvalue">void</span></GTKDOCLINK>                gnutls_dtls_set_timeouts            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> retrans_timeout</code></em>,
-                                                         <em class="parameter"><code>unsigned <GTKDOCLINK HREF="int"><span class="type">int</span></GTKDOCLINK> total_timeout</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_dtls_set_timeouts            (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> retrans_timeout</code></em>,
+                                                         <em class="parameter"><code>unsigned <span class="type">int</span> total_timeout</code></em>);</pre>
 <p>
 This function will set the timeouts required for the DTLS handshake
 protocol. The retransmission timeout is the time after which a
 message from the peer is not received, the previous messages will
 be retransmitted. The total timeout is the time after which the
-handshake will be aborted with <GTKDOCLINK HREF="GNUTLS-E-TIMEDOUT:CAPS"><code class="literal">GNUTLS_E_TIMEDOUT</code></GTKDOCLINK>.
+handshake will be aborted with <code class="literal">GNUTLS_E_TIMEDOUT</code>.
 </p>
 <p>
 The DTLS protocol recommends the values of 1 sec and 60 seconds
@@ -376,10 +404,16 @@ respectively.
 </p>
 <p>
 If the retransmission timeout is zero then the handshake will operate
-in a non-blocking way, i.e., return <GTKDOCLINK HREF="GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></GTKDOCLINK>.
+in a non-blocking way, i.e., return <a href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></a>.
 </p>
-<div class="variablelist"><table border="0">
+<p>
+To disable retransmissions set a <em class="parameter"><code>retrans_timeout</code></em> larger than the <em class="parameter"><code>total_timeout</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>session</code></em> :</span></p></td>
@@ -400,13 +434,16 @@ in a non-blocking way, i.e., return <GTKDOCLINK HREF="GNUTLS-E-AGAIN:CAPS"><code
 <hr>
 <div class="refsect2">
 <a name="gnutls-record-get-discarded"></a><h3>gnutls_record_get_discarded ()</h3>
-<pre class="programlisting">unsigned <GTKDOCLINK HREF="int"><span class="returnvalue">int</span></GTKDOCLINK>        gnutls_record_get_discarded         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
+<pre class="programlisting">unsigned <span class="returnvalue">int</span>        gnutls_record_get_discarded         (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>
 Returns the number of discarded packets in a
 DTLS connection.
 </p>
-<div class="variablelist"><table border="0">
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
 <col align="left" valign="top">
+<col>
+</colgroup>
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>session</code></em> :</span></p></td>

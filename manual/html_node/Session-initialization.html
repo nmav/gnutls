@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.1 of GnuTLS.
+3.2.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.1: Session initialization</title>
+<title>GnuTLS 3.2.2: Session initialization</title>
 
-<meta name="description" content="GnuTLS 3.2.1: Session initialization">
-<meta name="keywords" content="GnuTLS 3.2.1: Session initialization">
+<meta name="description" content="GnuTLS 3.2.2: Session initialization">
+<meta name="keywords" content="GnuTLS 3.2.2: Session initialization">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -191,6 +191,10 @@ be free&rsquo;d by calling <code>gnutls_deinit()</code> .  Returns <code>GNUTLS_
 entity, the flags <code>GNUTLS_DATAGRAM</code>  and  <code>GNUTLS_NONBLOCK</code>  are
 also available. The latter flag will enable a non-blocking
 operation of the DTLS timers. 
+</p>
+<p>The flag <code>GNUTLS_NO_REPLAY_PROTECTION</code>  will disable any 
+replay protection in DTLS mode. That must only used when 
+replay protection is achieved using other means.
 </p>
 <p>Note that since version 3.1.2 this function enables some common
 TLS extensions such as session tickets and OCSP certificate status

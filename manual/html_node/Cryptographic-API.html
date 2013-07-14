@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.1 of GnuTLS.
+3.2.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.1: Cryptographic API</title>
+<title>GnuTLS 3.2.2: Cryptographic API</title>
 
-<meta name="description" content="GnuTLS 3.2.1: Cryptographic API">
-<meta name="keywords" content="GnuTLS 3.2.1: Cryptographic API">
+<meta name="description" content="GnuTLS 3.2.2: Cryptographic API">
+<meta name="keywords" content="GnuTLS 3.2.2: Cryptographic API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -286,9 +286,8 @@ specified by the context.
 <dt><a name="index-gnutls_005fcipher_005fget_005fblock_005fsize"></a>Function: <em>int</em> <strong>gnutls_cipher_get_block_size</strong> <em>(gnutls_cipher_algorithm_t <var>algorithm</var>)</em></dt>
 <dd><p><var>algorithm</var>: is an encryption algorithm
 </p>
-<p>Get block size for encryption algorithm.
-</p>
-<p><strong>Returns:</strong> block size for encryption algorithm.
+
+<p><strong>Returns:</strong> the block size of the encryption algorithm.
 </p>
 <p><strong>Since:</strong> 2.10.0
 </p></dd></dl>
@@ -304,6 +303,18 @@ specified by the context.
 <p><strong>Returns:</strong> block size for encryption algorithm.
 </p>
 <p><strong>Since:</strong> 3.2.0
+</p></dd></dl>
+
+<a name="gnutls_005fcipher_005fget_005ftag_005fsize-1"></a>
+<h4 class="subheading">gnutls_cipher_get_tag_size</h4>
+<a name="gnutls_005fcipher_005fget_005ftag_005fsize"></a><dl>
+<dt><a name="index-gnutls_005fcipher_005fget_005ftag_005fsize"></a>Function: <em>int</em> <strong>gnutls_cipher_get_tag_size</strong> <em>(gnutls_cipher_algorithm_t <var>algorithm</var>)</em></dt>
+<dd><p><var>algorithm</var>: is an encryption algorithm
+</p>
+
+<p><strong>Returns:</strong> the tag size of the authenticated encryption algorithm.
+</p>
+<p><strong>Since:</strong> 3.2.2
 </p></dd></dl>
 
 <a name="gnutls_005fcipher_005finit-1"></a>

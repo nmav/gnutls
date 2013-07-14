@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.1 of GnuTLS.
+3.2.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.1</title>
+<title>GnuTLS 3.2.2</title>
 
-<meta name="description" content="GnuTLS 3.2.1">
-<meta name="keywords" content="GnuTLS 3.2.1">
+<meta name="description" content="GnuTLS 3.2.2">
+<meta name="keywords" content="GnuTLS 3.2.2">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.2.1</h1>
+<h1 class="settitle" align="center">GnuTLS 3.2.2</h1>
 
 
 
@@ -463,7 +463,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 10 February 2013 for version
-3.2.1 of GnuTLS.
+3.2.2 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -854,8 +854,6 @@ data size.
 encryption (EDE). Has 64 bits block size and is used in CBC mode.</td></tr>
 <tr><td width="20%">ARCFOUR_128</td><td width="70%">ARCFOUR_128 is a compatible algorithm with RSA&rsquo;s RC4 algorithm, which is considered to be a trade
 secret. It is a fast cipher but considered weak today.</td></tr>
-<tr><td width="20%">ARCFOUR_40</td><td width="70%">This is the ARCFOUR cipher fed with a 40 bit key,
-which is considered weak.</td></tr>
 <tr><td width="20%">AES_CBC</td><td width="70%">AES or RIJNDAEL is the block cipher algorithm that replaces the old
 DES algorithm.  Has 128 bits block size and is used in CBC mode.</td></tr>
 <tr><td width="20%">AES_GCM</td><td width="70%">This is the AES algorithm in the authenticated encryption GCM mode.
@@ -864,6 +862,11 @@ be extremely fast on CPUs that support hardware acceleration.</td></tr>
 <tr><td width="20%">CAMELLIA_CBC</td><td width="70%">This is an 128-bit block cipher developed by Mitsubishi and NTT. It
 is one of the approved ciphers of the European NESSIE and Japanese
 CRYPTREC projects.</td></tr>
+<tr><td width="20%">SALSA20_256</td><td width="70%">SALSA20_256 is a fast stream cipher. This is currently a GnuTLS
+extension.</td></tr>
+<tr><td width="20%">ESTREAM_SALSA20_256</td><td width="70%">ESTREAM_SALSA20_256 is a faster variant of SALSA20, and is one of the 
+selected ciphers of the ESTREAM competition. This is currently a GnuTLS
+extension.</td></tr>
 </table>
 
 <div class="float-caption"><p><strong>Table 3.1: </strong>Supported ciphers.</p></div></div>
@@ -876,6 +879,8 @@ by Ron Rivest. Outputs 128 bits of data.</td></tr>
 <tr><td width="20%">MAC_SHA1</td><td width="70%">An HMAC based on the SHA1 cryptographic hash algorithm 
 designed by NSA. Outputs 160 bits of data.</td></tr>
 <tr><td width="20%">MAC_SHA256</td><td width="70%">An HMAC based on SHA256. Outputs 256 bits of data.</td></tr>
+<tr><td width="20%">MAC_UMAC</td><td width="70%">This is a very fast MAC algorithm based on universal hashing, described in
+[<em>RFC4418</em>]. This is currently a GnuTLS extension.</td></tr>
 <tr><td width="20%">MAC_AEAD</td><td width="70%">This indicates that an authenticated encryption algorithm, such as
 GCM, is in use.</td></tr>
 </table>
@@ -1846,10 +1851,6 @@ shown in <a href="#tab_003akey_002dexchange">Table 4.1</a>.
 <thead><tr><th width="20%">Key exchange</th><th width="70%">Description</th></tr></thead>
 <tr><td width="20%">RSA</td><td width="70%">The RSA algorithm is used to encrypt a key and send it to the peer.
 The certificate must allow the key to be used for encryption.</td></tr>
-<tr><td width="20%">RSA_EXPORT</td><td width="70%">The RSA algorithm is used to encrypt a key and send it to the peer.
-In the EXPORT algorithm, the server signs temporary RSA parameters of
-512 bits &mdash; which are considered weak &mdash; and sends them to the
-client.</td></tr>
 <tr><td width="20%">DHE_RSA</td><td width="70%">The RSA algorithm is used to sign ephemeral Diffie-Hellman parameters
 which are sent to the peer. The key in the certificate must allow the
 key to be used for signing. Note that key exchange algorithms which
@@ -7057,7 +7058,49 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">tpmtool is unavailable - no --help
+<pre class="example">tpmtool - GnuTLS TPM tool
+Usage:  tpmtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+
+   -d, --debug=num            Enable debugging.
+                                - it must be in the range:
+                                  0 to 9999
+       --infile=file          Input file
+                                - file must pre-exist
+       --outfile=str          Output file
+       --generate-rsa         Generate an RSA private-public key pair
+       --register             Any generated key will be registered in the TPM
+                                - requires the option 'generate-rsa'
+       --signing              Any generated key will be a signing key
+                                - requires the option 'generate-rsa'
+                                -- and prohibits the option 'legacy'
+       --legacy               Any generated key will be a legacy key
+                                - requires the option 'generate-rsa'
+                                -- and prohibits the option 'signing'
+       --user                 Any registered key will be a user key
+                                - requires the option 'register'
+                                -- and prohibits the option 'system'
+       --system               Any registred key will be a system key
+                                - requires the option 'register'
+                                -- and prohibits the option 'user'
+       --pubkey=str           Prints the public key of the provided key
+       --list                 Lists all stored keys in the TPM
+       --delete=str           Delete the key identified by the given URL (UUID).
+       --sec-param=str        Specify the security level [low, legacy, normal, high, ultra].
+       --bits=num             Specify the number of bits for key generate
+       --inder                Use the DER format for keys.
+                                - disabled as '--no-inder'
+       --outder               Use DER format for output keys
+                                - disabled as '--no-outder'
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+
+Program that allows handling cryptographic data from the TPM chip.
+
+Please send bug reports to:  &lt;bug-gnutls@gnu.org&gt;
 </pre></div>
 
 <a name="tpmtool-debug"></a><a name="debug-option-_0028_002dd_0029-6"></a>
@@ -7662,6 +7705,10 @@ be free&rsquo;d by calling <code>gnutls_deinit()</code> .  Returns <code>GNUTLS_
 entity, the flags <code>GNUTLS_DATAGRAM</code>  and  <code>GNUTLS_NONBLOCK</code>  are
 also available. The latter flag will enable a non-blocking
 operation of the DTLS timers. 
+</p>
+<p>The flag <code>GNUTLS_NO_REPLAY_PROTECTION</code>  will disable any 
+replay protection in DTLS mode. That must only used when 
+replay protection is achieved using other means.
 </p>
 <p>Note that since version 3.1.2 this function enables some common
 TLS extensions such as session tickets and OCSP certificate status
@@ -8750,8 +8797,12 @@ default is <code>send()</code> ) then <code>GNUTLS_E_INTERRUPTED</code>  will be
 <code>GNUTLS_E_INTERRUPTED</code>  or <code>GNUTLS_E_AGAIN</code>  is returned, you must
 call this function again, with the same parameters; alternatively
 you could provide a <code>NULL</code>  pointer for data, and 0 for
-size. cf. <code>gnutls_record_get_direction()</code> . The errno value EMSGSIZE
-maps to <code>GNUTLS_E_LARGE_PACKET</code> .
+size. cf. <code>gnutls_record_get_direction()</code> . 
+</p>
+<p>Note that in DTLS this function will return the <code>GNUTLS_E_LARGE_PACKET</code> 
+error code if the send data exceed the data MTU value - as returned
+by <code>gnutls_dtls_get_data_mtu()</code> . The errno value EMSGSIZE
+also maps to <code>GNUTLS_E_LARGE_PACKET</code> .
 </p>
 <p><strong>Returns:</strong> The number of bytes sent, or a negative error code.  The
 number of bytes sent might be less than  <code>data_size</code> .  The maximum
@@ -16272,14 +16323,14 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <tr><td width="60%">TLS_DHE_RSA_AES_256_CBC_SHA256</td><td width="20%">0x00 0x6B</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_AES_128_GCM_SHA256</td><td width="20%">0x00 0x9E</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_AES_128_GCM_SHA256</td><td width="20%">0x00 0xA2</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_ECDHE_RSA_NULL_SHA1</td><td width="20%">0xC0 0x10</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_RSA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x12</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_RSA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x13</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_RSA_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x14</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_ECDSA_NULL_SHA1</td><td width="20%">0xC0 0x06</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_ECDSA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x08</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_ECDSA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x09</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x0A</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_NULL_SHA1</td><td width="20%">0xC0 0x10</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x12</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x13</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x14</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_NULL_SHA1</td><td width="20%">0xC0 0x06</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x08</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x09</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x0A</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_AES_128_CBC_SHA256</td><td width="20%">0xC0 0x23</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_AES_128_CBC_SHA256</td><td width="20%">0xC0 0x27</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_AES_128_GCM_SHA256</td><td width="20%">0xC0 0x2B</td><td width="20%">TLS1.2</td></tr>
@@ -16295,9 +16346,9 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <tr><td width="60%">TLS_ECDHE_RSA_WITH_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x32</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_WITH_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x14</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_WITH_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x34</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_PSK_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x34</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_PSK_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x35</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_PSK_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x36</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x34</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x35</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x36</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_AES_128_CBC_SHA256</td><td width="20%">0xC0 0x37</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_AES_256_CBC_SHA384</td><td width="20%">0xC0 0x38</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_NULL_SHA256</td><td width="20%">0xC0 0x3A</td><td width="20%">TLS1.2</td></tr>
@@ -16335,10 +16386,10 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <tr><td width="60%">TLS_DH_ANON_AES_128_CBC_SHA256</td><td width="20%">0x00 0x6C</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DH_ANON_AES_256_CBC_SHA256</td><td width="20%">0x00 0x6D</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DH_ANON_AES_128_GCM_SHA256</td><td width="20%">0x00 0xA6</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_ECDH_ANON_NULL_SHA1</td><td width="20%">0xC0 0x15</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDH_ANON_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x17</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDH_ANON_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x18</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDH_ANON_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x19</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_ECDH_ANON_NULL_SHA1</td><td width="20%">0xC0 0x15</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDH_ANON_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x17</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDH_ANON_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x18</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDH_ANON_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x19</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_SRP_SHA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x1A</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_SRP_SHA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x1D</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_SRP_SHA_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x20</td><td width="20%">TLS1.0</td></tr>
@@ -18365,6 +18416,44 @@ Also this function must be called after <code>gnutls_priority_set_direct()</code
 or the set value may be overridden by the selected priority options.
 </p></dd></dl>
 
+<a name="gnutls_005fdigest_005fget_005fid-1"></a>
+<h4 class="subheading">gnutls_digest_get_id</h4>
+<a name="gnutls_005fdigest_005fget_005fid"></a><dl>
+<dt><a name="index-gnutls_005fdigest_005fget_005fid"></a>Function: <em>gnutls_digest_algorithm_t</em> <strong>gnutls_digest_get_id</strong> <em>(const char * <var>name</var>)</em></dt>
+<dd><p><var>name</var>: is a digest algorithm name
+</p>
+<p>Convert a string to a <code>gnutls_digest_algorithm_t</code>  value.  The names are
+compared in a case insensitive way.
+</p>
+<p><strong>Returns:</strong> a <code>gnutls_digest_algorithm_t</code>  id of the specified MAC
+algorithm string, or <code>GNUTLS_DIG_UNKNOWN</code>  on failures.
+</p></dd></dl>
+
+<a name="gnutls_005fdigest_005fget_005fname-1"></a>
+<h4 class="subheading">gnutls_digest_get_name</h4>
+<a name="gnutls_005fdigest_005fget_005fname"></a><dl>
+<dt><a name="index-gnutls_005fdigest_005fget_005fname"></a>Function: <em>const char *</em> <strong>gnutls_digest_get_name</strong> <em>(gnutls_digest_algorithm_t <var>algorithm</var>)</em></dt>
+<dd><p><var>algorithm</var>: is a digest algorithm
+</p>
+<p>Convert a <code>gnutls_digest_algorithm_t</code>  value to a string.
+</p>
+<p><strong>Returns:</strong> a string that contains the name of the specified digest
+algorithm, or <code>NULL</code> .
+</p></dd></dl>
+
+<a name="gnutls_005fdigest_005flist-1"></a>
+<h4 class="subheading">gnutls_digest_list</h4>
+<a name="gnutls_005fdigest_005flist"></a><dl>
+<dt><a name="index-gnutls_005fdigest_005flist"></a>Function: <em>const gnutls_digest_algorithm_t *</em> <strong>gnutls_digest_list</strong> <em>( <var>void</var>)</em></dt>
+<dd>
+<p>Get a list of hash (digest) algorithms supported by GnuTLS.
+</p>
+<p>This function is not thread safe.
+</p>
+<p><strong>Returns:</strong> Return a (0)-terminated list of <code>gnutls_digest_algorithm_t</code> 
+integers indicating the available digests.
+</p></dd></dl>
+
 <a name="gnutls_005fecc_005fcurve_005fget-1"></a>
 <h4 class="subheading">gnutls_ecc_curve_get</h4>
 <a name="gnutls_005fecc_005fcurve_005fget"></a><dl>
@@ -18457,6 +18546,31 @@ renegotiation will be performed.
 internal error is returned.
 </p>
 <p><strong>Returns:</strong> the alert code to use for a particular error code.
+</p></dd></dl>
+
+<a name="gnutls_005fest_005frecord_005foverhead_005fsize-1"></a>
+<h4 class="subheading">gnutls_est_record_overhead_size</h4>
+<a name="gnutls_005fest_005frecord_005foverhead_005fsize"></a><dl>
+<dt><a name="index-gnutls_005fest_005frecord_005foverhead_005fsize"></a>Function: <em>size_t</em> <strong>gnutls_est_record_overhead_size</strong> <em>(gnutls_protocol_t <var>version</var>, gnutls_cipher_algorithm_t <var>cipher</var>, gnutls_mac_algorithm_t <var>mac</var>, gnutls_compression_method_t <var>comp</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>version</var>: is a <code>gnutls_protocol_t</code>  value
+</p>
+<p><var>cipher</var>: is a <code>gnutls_cipher_algorithm_t</code>  value
+</p>
+<p><var>mac</var>: is a <code>gnutls_mac_algorithm_t</code>  value
+</p>
+<p><var>comp</var>: is a <code>gnutls_compression_method_t</code>  value
+</p>
+<p><var>flags</var>: must be zero
+</p>
+<p>This function will return the set size in bytes of the overhead
+due to TLS (or DTLS) per record.
+</p>
+<p>Note that this function may provide inacurate values when TLS
+extensions that modify the record format are negotiated. In these
+cases a more accurate value can be obtained using <code>gnutls_record_overhead_size()</code>  
+after a completed handshake.
+</p>
+<p><strong>Since:</strong> 3.2.2
 </p></dd></dl>
 
 <a name="gnutls_005ffingerprint-1"></a>
@@ -18664,6 +18778,18 @@ some data were pending.
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p></dd></dl>
 
+<a name="gnutls_005fhandshake_005fdescription_005fget_005fname-1"></a>
+<h4 class="subheading">gnutls_handshake_description_get_name</h4>
+<a name="gnutls_005fhandshake_005fdescription_005fget_005fname"></a><dl>
+<dt><a name="index-gnutls_005fhandshake_005fdescription_005fget_005fname"></a>Function: <em>const char *</em> <strong>gnutls_handshake_description_get_name</strong> <em>(gnutls_handshake_description_t <var>type</var>)</em></dt>
+<dd><p><var>type</var>: is a handshake message description
+</p>
+<p>Convert a <code>gnutls_handshake_description_t</code>  value to a string.
+</p>
+<p><strong>Returns:</strong> a string that contains the name of the specified handshake
+message or <code>NULL</code> .
+</p></dd></dl>
+
 <a name="gnutls_005fhandshake_005fget_005flast_005fin-1"></a>
 <h4 class="subheading">gnutls_handshake_get_last_in</h4>
 <a name="gnutls_005fhandshake_005fget_005flast_005fin"></a><dl>
@@ -18696,6 +18822,39 @@ available handshake descriptions.
 </p>
 <p><strong>Returns:</strong> the last handshake message type sent, a
 <code>gnutls_handshake_description_t</code> .
+</p></dd></dl>
+
+<a name="gnutls_005fhandshake_005fset_005fhook_005ffunction-1"></a>
+<h4 class="subheading">gnutls_handshake_set_hook_function</h4>
+<a name="gnutls_005fhandshake_005fset_005fhook_005ffunction"></a><dl>
+<dt><a name="index-gnutls_005fhandshake_005fset_005fhook_005ffunction"></a>Function: <em>void</em> <strong>gnutls_handshake_set_hook_function</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>htype</var>, int <var>post</var>, gnutls_handshake_hook_func <var>func</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure
+</p>
+<p><var>htype</var>: the <code>gnutls_handshake_description_t</code>  of the message to hook at
+</p>
+<p><var>post</var>: <code>GNUTLS_HOOK_</code> * depending on when the hook function should be called
+</p>
+<p><var>func</var>: is the function to be called
+</p>
+<p>This function will set a callback to be called after or before the specified
+handshake message has been received or generated. This is a
+generalization of <code>gnutls_handshake_set_post_client_hello_function()</code> .
+</p>
+<p>To call the hook function prior to the message being sent/generation use 
+<code>GNUTLS_HOOK_PRE</code>  as  <code>post</code> parameter, <code>GNUTLS_HOOK_POST</code>  to call
+after, and <code>GNUTLS_HOOK_BOTH</code>  for both cases.
+</p>
+<p>This callback must return 0 on success or a gnutls error code to
+terminate the handshake.
+</p>
+<p>Note to hook at all handshake messages use an  <code>htype</code> of <code>GNUTLS_HANDSHAKE_ANY</code> .
+</p>
+<p><strong>Warning:</strong> You should not use this function to terminate the
+handshake based on client input unless you know what you are
+doing. Before the handshake is finished there is no way to know if
+there is a man-in-the-middle attack being performed.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
 </p></dd></dl>
 
 <a name="gnutls_005fhandshake_005fset_005fmax_005fpacket_005flength-1"></a>
@@ -18982,6 +19141,10 @@ entity, the flags <code>GNUTLS_DATAGRAM</code>  and  <code>GNUTLS_NONBLOCK</code
 also available. The latter flag will enable a non-blocking
 operation of the DTLS timers. 
 </p>
+<p>The flag <code>GNUTLS_NO_REPLAY_PROTECTION</code>  will disable any 
+replay protection in DTLS mode. That must only used when 
+replay protection is achieved using other means.
+</p>
 <p>Note that since version 3.1.2 this function enables some common
 TLS extensions such as session tickets and OCSP certificate status
 request in client side by default. To prevent that use the <code>GNUTLS_NO_EXTENSIONS</code> 
@@ -19130,11 +19293,8 @@ algorithm, or <code>NULL</code> .
 <dt><a name="index-gnutls_005fmac_005flist"></a>Function: <em>const gnutls_mac_algorithm_t *</em> <strong>gnutls_mac_list</strong> <em>( <var>void</var>)</em></dt>
 <dd>
 <p>Get a list of hash algorithms for use as MACs.  Note that not
-necessarily all MACs are supported in TLS cipher suites.  For
-example, MD2 is not supported as a cipher suite, but is supported
-for other purposes (e.g., X.509 signature verification or similar).
-</p>
-<p>This function is not thread safe.
+necessarily all MACs are supported in TLS cipher suites.  
+This function is not thread safe.
 </p>
 <p><strong>Returns:</strong> Return a (0)-terminated list of <code>gnutls_mac_algorithm_t</code> 
 integers indicating the available MACs.
@@ -19421,7 +19581,8 @@ to signature algorithms.
 <p><var>out</var>: pre-allocated buffer to hold the generated data.
 </p>
 <p>Apply the TLS Pseudo-Random-Function (PRF) on the master secret
-and the provided data, seeded with the client and server random fields.
+and the provided data, seeded with the client and server random fields,
+as specified in RFC5705.
 </p>
 <p>The  <code>label</code> variable usually contains a string denoting the purpose
 for the generated data.  The  <code>server_random_first</code> indicates whether
@@ -20096,6 +20257,18 @@ client after the first handshake message.
 <p><strong>Returns:</strong> The maximum record packet size in this connection.
 </p></dd></dl>
 
+<a name="gnutls_005frecord_005foverhead_005fsize-1"></a>
+<h4 class="subheading">gnutls_record_overhead_size</h4>
+<a name="gnutls_005frecord_005foverhead_005fsize"></a><dl>
+<dt><a name="index-gnutls_005frecord_005foverhead_005fsize"></a>Function: <em>size_t</em> <strong>gnutls_record_overhead_size</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is <code>gnutls_session_t</code> 
+</p>
+<p>This function will return the set size in bytes of the overhead
+due to TLS (or DTLS) per record.
+</p>
+<p><strong>Since:</strong> 3.2.2
+</p></dd></dl>
+
 <a name="gnutls_005frecord_005frecv-1"></a>
 <h4 class="subheading">gnutls_record_recv</h4>
 <a name="gnutls_005frecord_005frecv"></a><dl>
@@ -20177,8 +20350,12 @@ default is <code>send()</code> ) then <code>GNUTLS_E_INTERRUPTED</code>  will be
 <code>GNUTLS_E_INTERRUPTED</code>  or <code>GNUTLS_E_AGAIN</code>  is returned, you must
 call this function again, with the same parameters; alternatively
 you could provide a <code>NULL</code>  pointer for data, and 0 for
-size. cf. <code>gnutls_record_get_direction()</code> . The errno value EMSGSIZE
-maps to <code>GNUTLS_E_LARGE_PACKET</code> .
+size. cf. <code>gnutls_record_get_direction()</code> . 
+</p>
+<p>Note that in DTLS this function will return the <code>GNUTLS_E_LARGE_PACKET</code> 
+error code if the send data exceed the data MTU value - as returned
+by <code>gnutls_dtls_get_data_mtu()</code> . The errno value EMSGSIZE
+also maps to <code>GNUTLS_E_LARGE_PACKET</code> .
 </p>
 <p><strong>Returns:</strong> The number of bytes sent, or a negative error code.  The
 number of bytes sent might be less than  <code>data_size</code> .  The maximum
@@ -20468,6 +20645,9 @@ if required they will be reported through the audit subsystem.
 </p>
 <p>Normally only servers that require maximum compatibility with
 everything out there, need to call this function.
+</p>
+<p>Note that this function must be called after any call to gnutls_priority
+functions.
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fforce_005fvalid-1"></a>
@@ -22084,6 +22264,27 @@ Next: <a href="#OCSP-API" accesskey="n" rel="next">OCSP API</a>, Previous: <a hr
 <p>The following functions are to be used for <acronym>X.509</acronym> certificate handling.
 Their prototypes lie in <samp>gnutls/x509.h</samp>.
 </p>
+
+<a name="gnutls_005fcertificate_005fset_005ftrust_005flist-1"></a>
+<h4 class="subheading">gnutls_certificate_set_trust_list</h4>
+<a name="gnutls_005fcertificate_005fset_005ftrust_005flist"></a><dl>
+<dt><a name="index-gnutls_005fcertificate_005fset_005ftrust_005flist"></a>Function: <em>void</em> <strong>gnutls_certificate_set_trust_list</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, gnutls_x509_trust_list_t <var>tlist</var>, unsigned <var>flags</var>)</em></dt>
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+</p>
+<p><var>tlist</var>: is a <code>gnutls_x509_trust_list_t</code>  structure
+</p>
+<p><var>flags</var>: must be zero
+</p>
+<p>This function sets a trust list in the gnutls_certificate_credentials_t structure. 
+</p>
+<p>Note that the  <code>tlist</code> will become part of the credentials 
+structure and must not be deallocated. It will be automatically deallocated 
+when the  <code>res</code> structure is deinitialized.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
+</p>
+<p><strong>Since:</strong> 3.2.2
+</p></dd></dl>
 
 <a name="gnutls_005fpkcs7_005fdeinit-1"></a>
 <h4 class="subheading">gnutls_pkcs7_deinit</h4>
@@ -32506,9 +32707,8 @@ specified by the context.
 <dt><a name="index-gnutls_005fcipher_005fget_005fblock_005fsize"></a>Function: <em>int</em> <strong>gnutls_cipher_get_block_size</strong> <em>(gnutls_cipher_algorithm_t <var>algorithm</var>)</em></dt>
 <dd><p><var>algorithm</var>: is an encryption algorithm
 </p>
-<p>Get block size for encryption algorithm.
-</p>
-<p><strong>Returns:</strong> block size for encryption algorithm.
+
+<p><strong>Returns:</strong> the block size of the encryption algorithm.
 </p>
 <p><strong>Since:</strong> 2.10.0
 </p></dd></dl>
@@ -32524,6 +32724,18 @@ specified by the context.
 <p><strong>Returns:</strong> block size for encryption algorithm.
 </p>
 <p><strong>Since:</strong> 3.2.0
+</p></dd></dl>
+
+<a name="gnutls_005fcipher_005fget_005ftag_005fsize-1"></a>
+<h4 class="subheading">gnutls_cipher_get_tag_size</h4>
+<a name="gnutls_005fcipher_005fget_005ftag_005fsize"></a><dl>
+<dt><a name="index-gnutls_005fcipher_005fget_005ftag_005fsize"></a>Function: <em>int</em> <strong>gnutls_cipher_get_tag_size</strong> <em>(gnutls_cipher_algorithm_t <var>algorithm</var>)</em></dt>
+<dd><p><var>algorithm</var>: is an encryption algorithm
+</p>
+
+<p><strong>Returns:</strong> the tag size of the authenticated encryption algorithm.
+</p>
+<p><strong>Since:</strong> 3.2.2
 </p></dd></dl>
 
 <a name="gnutls_005fcipher_005finit-1"></a>
@@ -33981,6 +34193,12 @@ January 1999, Available from
 <a href="http://www.ietf.org/rfc/rfc2246.txt">http://www.ietf.org/rfc/rfc2246.txt</a>.
 </p>
 </dd>
+<dt><a name="RFC4418"></a>[RFC4418]</dt>
+<dd><p>Ted Krovetz, &quot;UMAC: Message Authentication Code using Universal Hashing&quot;,
+March 2006, Available from
+<a href="http://www.ietf.org/rfc/rfc4418.txt">http://www.ietf.org/rfc/rfc4418.txt</a>.
+</p>
+</dd>
 <dt><a name="RFC4680"></a>[RFC4680]</dt>
 <dd><p>S. Santesson, &quot;TLS Handshake Message for Supplemental Data&quot;,
 September 2006, Available from
@@ -34305,6 +34523,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fretrieve_005ffunction"><code>gnutls_certificate_set_retrieve_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fretrieve_005ffunction2"><code>gnutls_certificate_set_retrieve_function2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Abstract-key-API">Abstract key API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005frsa_005fexport_005fparams"><code>gnutls_certificate_set_rsa_export_params</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compatibility-API">Compatibility API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005ftrust_005flist"><code>gnutls_certificate_set_trust_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fverify_005fflags"><code>gnutls_certificate_set_verify_flags</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fverify_005ffunction"><code>gnutls_certificate_set_verify_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Certificate-credentials">Certificate credentials</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fverify_005ffunction-1"><code>gnutls_certificate_set_verify_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -34348,6 +34567,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005fget_005fiv_005fsize"><code>gnutls_cipher_get_iv_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005fget_005fkey_005fsize"><code>gnutls_cipher_get_key_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005fget_005fname"><code>gnutls_cipher_get_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005fget_005ftag_005fsize"><code>gnutls_cipher_get_tag_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005finit"><code>gnutls_cipher_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005flist"><code>gnutls_cipher_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005fset_005fiv"><code>gnutls_cipher_set_iv</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
@@ -34389,6 +34609,9 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fdh_005fparams_005fimport_005fraw"><code>gnutls_dh_params_import_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fdh_005fparams_005finit"><code>gnutls_dh_params_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fdh_005fset_005fprime_005fbits"><code>gnutls_dh_set_prime_bits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fdigest_005fget_005fid"><code>gnutls_digest_get_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fdigest_005fget_005fname"><code>gnutls_digest_get_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fdigest_005flist"><code>gnutls_digest_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fdtls_005fcookie_005fsend"><code>gnutls_dtls_cookie_send</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Datagram-TLS-API">Datagram TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fdtls_005fcookie_005fverify"><code>gnutls_dtls_cookie_verify</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Datagram-TLS-API">Datagram TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fdtls_005fget_005fdata_005fmtu"><code>gnutls_dtls_get_data_mtu</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Datagram-TLS-API">Datagram TLS API</a></td></tr>
@@ -34407,6 +34630,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ferror_005fis_005ffatal-1"><code>gnutls_error_is_fatal</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ferror_005fto_005falert"><code>gnutls_error_to_alert</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Handling-alerts">Handling alerts</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ferror_005fto_005falert-1"><code>gnutls_error_to_alert</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fest_005frecord_005foverhead_005fsize"><code>gnutls_est_record_overhead_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ffingerprint"><code>gnutls_fingerprint</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fglobal_005fdeinit"><code>gnutls_global_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fglobal_005finit"><code>gnutls_global_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -34420,8 +34644,10 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fglobal_005fset_005ftime_005ffunction"><code>gnutls_global_set_time_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake"><code>gnutls_handshake</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#TLS-handshake">TLS handshake</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake-1"><code>gnutls_handshake</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake_005fdescription_005fget_005fname"><code>gnutls_handshake_description_get_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake_005fget_005flast_005fin"><code>gnutls_handshake_get_last_in</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake_005fget_005flast_005fout"><code>gnutls_handshake_get_last_out</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake_005fset_005fhook_005ffunction"><code>gnutls_handshake_set_hook_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake_005fset_005fmax_005fpacket_005flength"><code>gnutls_handshake_set_max_packet_length</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake_005fset_005fpost_005fclient_005fhello_005ffunction"><code>gnutls_handshake_set_post_client_hello_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fhandshake_005fset_005fprivate_005fextensions"><code>gnutls_handshake_set_private_extensions</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -34790,6 +35016,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fget_005fdirection-1"><code>gnutls_record_get_direction</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fget_005fdiscarded"><code>gnutls_record_get_discarded</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Datagram-TLS-API">Datagram TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fget_005fmax_005fsize"><code>gnutls_record_get_max_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005foverhead_005fsize"><code>gnutls_record_overhead_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005frecv"><code>gnutls_record_recv</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Data-transfer-and-termination">Data transfer and termination</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005frecv-1"><code>gnutls_record_recv</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005frecv_005fseq"><code>gnutls_record_recv_seq</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Data-transfer-and-termination">Data transfer and termination</a></td></tr>

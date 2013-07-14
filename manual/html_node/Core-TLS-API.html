@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.1 of GnuTLS.
+3.2.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.1: Core TLS API</title>
+<title>GnuTLS 3.2.2: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.2.1: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.2.1: Core TLS API">
+<meta name="description" content="GnuTLS 3.2.2: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.2.2: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -2012,6 +2012,44 @@ Also this function must be called after <code>gnutls_priority_set_direct()</code
 or the set value may be overridden by the selected priority options.
 </p></dd></dl>
 
+<a name="gnutls_005fdigest_005fget_005fid-1"></a>
+<h4 class="subheading">gnutls_digest_get_id</h4>
+<a name="gnutls_005fdigest_005fget_005fid"></a><dl>
+<dt><a name="index-gnutls_005fdigest_005fget_005fid"></a>Function: <em>gnutls_digest_algorithm_t</em> <strong>gnutls_digest_get_id</strong> <em>(const char * <var>name</var>)</em></dt>
+<dd><p><var>name</var>: is a digest algorithm name
+</p>
+<p>Convert a string to a <code>gnutls_digest_algorithm_t</code>  value.  The names are
+compared in a case insensitive way.
+</p>
+<p><strong>Returns:</strong> a <code>gnutls_digest_algorithm_t</code>  id of the specified MAC
+algorithm string, or <code>GNUTLS_DIG_UNKNOWN</code>  on failures.
+</p></dd></dl>
+
+<a name="gnutls_005fdigest_005fget_005fname-1"></a>
+<h4 class="subheading">gnutls_digest_get_name</h4>
+<a name="gnutls_005fdigest_005fget_005fname"></a><dl>
+<dt><a name="index-gnutls_005fdigest_005fget_005fname"></a>Function: <em>const char *</em> <strong>gnutls_digest_get_name</strong> <em>(gnutls_digest_algorithm_t <var>algorithm</var>)</em></dt>
+<dd><p><var>algorithm</var>: is a digest algorithm
+</p>
+<p>Convert a <code>gnutls_digest_algorithm_t</code>  value to a string.
+</p>
+<p><strong>Returns:</strong> a string that contains the name of the specified digest
+algorithm, or <code>NULL</code> .
+</p></dd></dl>
+
+<a name="gnutls_005fdigest_005flist-1"></a>
+<h4 class="subheading">gnutls_digest_list</h4>
+<a name="gnutls_005fdigest_005flist"></a><dl>
+<dt><a name="index-gnutls_005fdigest_005flist"></a>Function: <em>const gnutls_digest_algorithm_t *</em> <strong>gnutls_digest_list</strong> <em>( <var>void</var>)</em></dt>
+<dd>
+<p>Get a list of hash (digest) algorithms supported by GnuTLS.
+</p>
+<p>This function is not thread safe.
+</p>
+<p><strong>Returns:</strong> Return a (0)-terminated list of <code>gnutls_digest_algorithm_t</code> 
+integers indicating the available digests.
+</p></dd></dl>
+
 <a name="gnutls_005fecc_005fcurve_005fget-1"></a>
 <h4 class="subheading">gnutls_ecc_curve_get</h4>
 <a name="gnutls_005fecc_005fcurve_005fget"></a><dl>
@@ -2104,6 +2142,31 @@ renegotiation will be performed.
 internal error is returned.
 </p>
 <p><strong>Returns:</strong> the alert code to use for a particular error code.
+</p></dd></dl>
+
+<a name="gnutls_005fest_005frecord_005foverhead_005fsize-1"></a>
+<h4 class="subheading">gnutls_est_record_overhead_size</h4>
+<a name="gnutls_005fest_005frecord_005foverhead_005fsize"></a><dl>
+<dt><a name="index-gnutls_005fest_005frecord_005foverhead_005fsize"></a>Function: <em>size_t</em> <strong>gnutls_est_record_overhead_size</strong> <em>(gnutls_protocol_t <var>version</var>, gnutls_cipher_algorithm_t <var>cipher</var>, gnutls_mac_algorithm_t <var>mac</var>, gnutls_compression_method_t <var>comp</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>version</var>: is a <code>gnutls_protocol_t</code>  value
+</p>
+<p><var>cipher</var>: is a <code>gnutls_cipher_algorithm_t</code>  value
+</p>
+<p><var>mac</var>: is a <code>gnutls_mac_algorithm_t</code>  value
+</p>
+<p><var>comp</var>: is a <code>gnutls_compression_method_t</code>  value
+</p>
+<p><var>flags</var>: must be zero
+</p>
+<p>This function will return the set size in bytes of the overhead
+due to TLS (or DTLS) per record.
+</p>
+<p>Note that this function may provide inacurate values when TLS
+extensions that modify the record format are negotiated. In these
+cases a more accurate value can be obtained using <code>gnutls_record_overhead_size()</code>  
+after a completed handshake.
+</p>
+<p><strong>Since:</strong> 3.2.2
 </p></dd></dl>
 
 <a name="gnutls_005ffingerprint-1"></a>
@@ -2311,6 +2374,18 @@ some data were pending.
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p></dd></dl>
 
+<a name="gnutls_005fhandshake_005fdescription_005fget_005fname-1"></a>
+<h4 class="subheading">gnutls_handshake_description_get_name</h4>
+<a name="gnutls_005fhandshake_005fdescription_005fget_005fname"></a><dl>
+<dt><a name="index-gnutls_005fhandshake_005fdescription_005fget_005fname"></a>Function: <em>const char *</em> <strong>gnutls_handshake_description_get_name</strong> <em>(gnutls_handshake_description_t <var>type</var>)</em></dt>
+<dd><p><var>type</var>: is a handshake message description
+</p>
+<p>Convert a <code>gnutls_handshake_description_t</code>  value to a string.
+</p>
+<p><strong>Returns:</strong> a string that contains the name of the specified handshake
+message or <code>NULL</code> .
+</p></dd></dl>
+
 <a name="gnutls_005fhandshake_005fget_005flast_005fin-1"></a>
 <h4 class="subheading">gnutls_handshake_get_last_in</h4>
 <a name="gnutls_005fhandshake_005fget_005flast_005fin"></a><dl>
@@ -2343,6 +2418,39 @@ available handshake descriptions.
 </p>
 <p><strong>Returns:</strong> the last handshake message type sent, a
 <code>gnutls_handshake_description_t</code> .
+</p></dd></dl>
+
+<a name="gnutls_005fhandshake_005fset_005fhook_005ffunction-1"></a>
+<h4 class="subheading">gnutls_handshake_set_hook_function</h4>
+<a name="gnutls_005fhandshake_005fset_005fhook_005ffunction"></a><dl>
+<dt><a name="index-gnutls_005fhandshake_005fset_005fhook_005ffunction"></a>Function: <em>void</em> <strong>gnutls_handshake_set_hook_function</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>htype</var>, int <var>post</var>, gnutls_handshake_hook_func <var>func</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure
+</p>
+<p><var>htype</var>: the <code>gnutls_handshake_description_t</code>  of the message to hook at
+</p>
+<p><var>post</var>: <code>GNUTLS_HOOK_</code> * depending on when the hook function should be called
+</p>
+<p><var>func</var>: is the function to be called
+</p>
+<p>This function will set a callback to be called after or before the specified
+handshake message has been received or generated. This is a
+generalization of <code>gnutls_handshake_set_post_client_hello_function()</code> .
+</p>
+<p>To call the hook function prior to the message being sent/generation use 
+<code>GNUTLS_HOOK_PRE</code>  as  <code>post</code> parameter, <code>GNUTLS_HOOK_POST</code>  to call
+after, and <code>GNUTLS_HOOK_BOTH</code>  for both cases.
+</p>
+<p>This callback must return 0 on success or a gnutls error code to
+terminate the handshake.
+</p>
+<p>Note to hook at all handshake messages use an  <code>htype</code> of <code>GNUTLS_HANDSHAKE_ANY</code> .
+</p>
+<p><strong>Warning:</strong> You should not use this function to terminate the
+handshake based on client input unless you know what you are
+doing. Before the handshake is finished there is no way to know if
+there is a man-in-the-middle attack being performed.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
 </p></dd></dl>
 
 <a name="gnutls_005fhandshake_005fset_005fmax_005fpacket_005flength-1"></a>
@@ -2629,6 +2737,10 @@ entity, the flags <code>GNUTLS_DATAGRAM</code>  and  <code>GNUTLS_NONBLOCK</code
 also available. The latter flag will enable a non-blocking
 operation of the DTLS timers. 
 </p>
+<p>The flag <code>GNUTLS_NO_REPLAY_PROTECTION</code>  will disable any 
+replay protection in DTLS mode. That must only used when 
+replay protection is achieved using other means.
+</p>
 <p>Note that since version 3.1.2 this function enables some common
 TLS extensions such as session tickets and OCSP certificate status
 request in client side by default. To prevent that use the <code>GNUTLS_NO_EXTENSIONS</code> 
@@ -2777,11 +2889,8 @@ algorithm, or <code>NULL</code> .
 <dt><a name="index-gnutls_005fmac_005flist"></a>Function: <em>const gnutls_mac_algorithm_t *</em> <strong>gnutls_mac_list</strong> <em>( <var>void</var>)</em></dt>
 <dd>
 <p>Get a list of hash algorithms for use as MACs.  Note that not
-necessarily all MACs are supported in TLS cipher suites.  For
-example, MD2 is not supported as a cipher suite, but is supported
-for other purposes (e.g., X.509 signature verification or similar).
-</p>
-<p>This function is not thread safe.
+necessarily all MACs are supported in TLS cipher suites.  
+This function is not thread safe.
 </p>
 <p><strong>Returns:</strong> Return a (0)-terminated list of <code>gnutls_mac_algorithm_t</code> 
 integers indicating the available MACs.
@@ -3068,7 +3177,8 @@ to signature algorithms.
 <p><var>out</var>: pre-allocated buffer to hold the generated data.
 </p>
 <p>Apply the TLS Pseudo-Random-Function (PRF) on the master secret
-and the provided data, seeded with the client and server random fields.
+and the provided data, seeded with the client and server random fields,
+as specified in RFC5705.
 </p>
 <p>The  <code>label</code> variable usually contains a string denoting the purpose
 for the generated data.  The  <code>server_random_first</code> indicates whether
@@ -3743,6 +3853,18 @@ client after the first handshake message.
 <p><strong>Returns:</strong> The maximum record packet size in this connection.
 </p></dd></dl>
 
+<a name="gnutls_005frecord_005foverhead_005fsize-1"></a>
+<h4 class="subheading">gnutls_record_overhead_size</h4>
+<a name="gnutls_005frecord_005foverhead_005fsize"></a><dl>
+<dt><a name="index-gnutls_005frecord_005foverhead_005fsize"></a>Function: <em>size_t</em> <strong>gnutls_record_overhead_size</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is <code>gnutls_session_t</code> 
+</p>
+<p>This function will return the set size in bytes of the overhead
+due to TLS (or DTLS) per record.
+</p>
+<p><strong>Since:</strong> 3.2.2
+</p></dd></dl>
+
 <a name="gnutls_005frecord_005frecv-1"></a>
 <h4 class="subheading">gnutls_record_recv</h4>
 <a name="gnutls_005frecord_005frecv"></a><dl>
@@ -3824,8 +3946,12 @@ default is <code>send()</code> ) then <code>GNUTLS_E_INTERRUPTED</code>  will be
 <code>GNUTLS_E_INTERRUPTED</code>  or <code>GNUTLS_E_AGAIN</code>  is returned, you must
 call this function again, with the same parameters; alternatively
 you could provide a <code>NULL</code>  pointer for data, and 0 for
-size. cf. <code>gnutls_record_get_direction()</code> . The errno value EMSGSIZE
-maps to <code>GNUTLS_E_LARGE_PACKET</code> .
+size. cf. <code>gnutls_record_get_direction()</code> . 
+</p>
+<p>Note that in DTLS this function will return the <code>GNUTLS_E_LARGE_PACKET</code> 
+error code if the send data exceed the data MTU value - as returned
+by <code>gnutls_dtls_get_data_mtu()</code> . The errno value EMSGSIZE
+also maps to <code>GNUTLS_E_LARGE_PACKET</code> .
 </p>
 <p><strong>Returns:</strong> The number of bytes sent, or a negative error code.  The
 number of bytes sent might be less than  <code>data_size</code> .  The maximum
@@ -4115,6 +4241,9 @@ if required they will be reported through the audit subsystem.
 </p>
 <p>Normally only servers that require maximum compatibility with
 everything out there, need to call this function.
+</p>
+<p>Note that this function must be called after any call to gnutls_priority
+functions.
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fforce_005fvalid-1"></a>

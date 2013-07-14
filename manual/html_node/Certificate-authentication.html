@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.1 of GnuTLS.
+3.2.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.1: Certificate authentication</title>
+<title>GnuTLS 3.2.2: Certificate authentication</title>
 
-<meta name="description" content="GnuTLS 3.2.1: Certificate authentication">
-<meta name="keywords" content="GnuTLS 3.2.1: Certificate authentication">
+<meta name="description" content="GnuTLS 3.2.2: Certificate authentication">
+<meta name="keywords" content="GnuTLS 3.2.2: Certificate authentication">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -179,10 +179,6 @@ shown in <a href="#tab_003akey_002dexchange">Table 4.1</a>.
 <thead><tr><th width="20%">Key exchange</th><th width="70%">Description</th></tr></thead>
 <tr><td width="20%">RSA</td><td width="70%">The RSA algorithm is used to encrypt a key and send it to the peer.
 The certificate must allow the key to be used for encryption.</td></tr>
-<tr><td width="20%">RSA_EXPORT</td><td width="70%">The RSA algorithm is used to encrypt a key and send it to the peer.
-In the EXPORT algorithm, the server signs temporary RSA parameters of
-512 bits &mdash; which are considered weak &mdash; and sends them to the
-client.</td></tr>
 <tr><td width="20%">DHE_RSA</td><td width="70%">The RSA algorithm is used to sign ephemeral Diffie-Hellman parameters
 which are sent to the peer. The key in the certificate must allow the
 key to be used for signing. Note that key exchange algorithms which
