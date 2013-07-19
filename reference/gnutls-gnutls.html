@@ -2919,11 +2919,7 @@ algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NU
 <pre class="programlisting">const <a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="returnvalue">gnutls_mac_algorithm_t</span></a> * gnutls_mac_list          (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
 <p>
 Get a list of hash algorithms for use as MACs.  Note that not
-necessarily all MACs are supported in TLS cipher suites.  For
-example, MD2 is not supported as a cipher suite, but is supported
-for other purposes (e.g., X.509 signature verification or similar).
-</p>
-<p>
+necessarily all MACs are supported in TLS cipher suites.  
 This function is not thread safe.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">

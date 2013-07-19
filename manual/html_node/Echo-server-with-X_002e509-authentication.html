@@ -189,7 +189,16 @@ Next: <a href="Echo-server-with-OpenPGP-authentication.html#Echo-server-with-Ope
 #define CAFILE &quot;/etc/ssl/certs/ca-certificates.crt&quot;
 #define CRLFILE &quot;crl.pem&quot;
 
-/* This is a sample TLS 1.0 echo server, using X.509 authentication.
+/* The OCSP status file contains up to date information about revocation
+ * of the server's certificate. That can be periodically be updated
+ * using:
+ * $ ocsptool --ask --load-cert your_cert.pem --load-issuer your_issuer.pem
+ *            --load-signer your_issuer.pem --outfile ocsp-status.der
+ */
+#define OCSP_STATUS_FILE &quot;ocsp-status.der&quot;
+
+/* This is a sample TLS 1.0 echo server, using X.509 authentication and
+ * OCSP stapling support.
  */
 
 #define MAX_BUF 1024
@@ -248,6 +257,9 @@ main (void)
       printf(&quot;No certificate or key were found\n&quot;);
       exit(1);
     }
+
+  /* loads an OCSP status request if available */
+  gnutls_certificate_set_ocsp_status_request_file(x509_cred, OCSP_STATUS_FILE, 0);
 
   generate_dh_params ();
 
