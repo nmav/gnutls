@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.2 of GnuTLS.
+3.2.3 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.2</title>
+<title>GnuTLS 3.2.3</title>
 
-<meta name="description" content="GnuTLS 3.2.2">
-<meta name="keywords" content="GnuTLS 3.2.2">
+<meta name="description" content="GnuTLS 3.2.3">
+<meta name="keywords" content="GnuTLS 3.2.3">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.2.2</h1>
+<h1 class="settitle" align="center">GnuTLS 3.2.3</h1>
 
 
 
@@ -463,7 +463,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 10 February 2013 for version
-3.2.2 of GnuTLS.
+3.2.3 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -7422,10 +7422,11 @@ or other information about the peer involved.
 <dt><a name="index-gnutls_005fglobal_005fset_005faudit_005flog_005ffunction"></a>Function: <em>void</em> <strong>gnutls_global_set_audit_log_function</strong> <em>(gnutls_audit_log_func <var>log_func</var>)</em></dt>
 <dd><p><var>log_func</var>: it is the audit log function
 </p>
-<p>This is the function where you set the logging function gnutls is
-going to use.  This is different from <code>gnutls_global_set_log_function()</code> 
-because it will report the session of the event if any. Note that
-that session might be null if there is no corresponding TLS session.
+<p>This is the function to set the audit logging function. This
+is a function to report important issues, such as possible
+attacks in the protocol. This is different from <code>gnutls_global_set_log_function()</code> 
+because it will report also session-specific events. The session
+parameter will be null if there is no corresponding TLS session.
 </p>
 <p><code>gnutls_audit_log_func</code> is of the form,
 void (*gnutls_audit_log_func)( gnutls_session_t, const char*);
@@ -8632,7 +8633,10 @@ trying to write data.
 
 <p>Moreover, to prevent blocking from DTLS&rsquo; retransmission timers to block a
 handshake, the <a href="#gnutls_005finit">gnutls_init</a> function should be called with the
-<code>GNUTLS_NONBLOCK</code> flag set (see <a href="#Session-initialization">Session initialization</a>).
+<code>GNUTLS_NONBLOCK</code> flag set (see <a href="#Session-initialization">Session initialization</a>). In that
+case, in order to be able to use the DTLS handshake timers, the function
+<a href="#gnutls_005fdtls_005fget_005ftimeout">gnutls_dtls_get_timeout</a> should be used to estimate when to call
+<a href="#gnutls_005fhandshake">gnutls_handshake</a> if no packets have been received.
 </p>
 
 <hr>
@@ -8644,9 +8648,9 @@ Previous: <a href="#Asynchronous-operation" accesskey="p" rel="previous">Asynchr
 <a name="DTLS-sessions-1"></a>
 <h4 class="subsection">6.5.2 DTLS sessions</h4>
 
-<p>Because datagram TLS can operate over connections where the peer
-of a server cannot be reliably verified, functionality is available to prevent
-denial of service attacks. <acronym>GnuTLS</acronym> requires a server
+<p>Because datagram TLS can operate over connections where the client
+cannot be reliably verified, functionality in the form of cookies, is available to prevent
+denial of service attacks to servers. <acronym>GnuTLS</acronym> requires a server
 to generate a secret key that is used to sign a cookie<a name="DOCF10" href="#FOOT10"><sup>10</sup></a>. 
 That cookie is sent to the client using <a href="#gnutls_005fdtls_005fcookie_005fsend">gnutls_dtls_cookie_send</a>, and 
 the client must reply using the correct cookie. The server side
@@ -17403,6 +17407,10 @@ the server.  For clients that need to send more than its own end
 entity certificate, e.g., also an intermediate CA cert, then the
  <code>certfile</code> must contain the ordered certificate chain.
 </p>
+<p>Note that the names in the certificate provided will be considered
+when selecting the appropriate certificate to use (in case of multiple
+certificate/key pairs).
+</p>
 <p>This function can also accept URLs at  <code>keyfile</code> and  <code>certfile</code> . In that case it
 will import the private key and certificate indicated by the URLs. Note
 that the supported URLs are the ones indicated by <code>gnutls_url_is_supported()</code> .
@@ -17433,6 +17441,10 @@ called more than once, in case multiple keys/certificates exist for
 the server.  For clients that need to send more than its own end
 entity certificate, e.g., also an intermediate CA cert, then the
  <code>certfile</code> must contain the ordered certificate chain.
+</p>
+<p>Note that the names in the certificate provided will be considered
+when selecting the appropriate certificate to use (in case of multiple
+certificate/key pairs).
 </p>
 <p>This function can also accept URLs at  <code>keyfile</code> and  <code>certfile</code> . In that case it
 will import the private key and certificate indicated by the URLs. Note
@@ -18659,10 +18671,11 @@ otherwise a negative error code is returned.
 <dt><a name="index-gnutls_005fglobal_005fset_005faudit_005flog_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_global_set_audit_log_function</strong> <em>(gnutls_audit_log_func <var>log_func</var>)</em></dt>
 <dd><p><var>log_func</var>: it is the audit log function
 </p>
-<p>This is the function where you set the logging function gnutls is
-going to use.  This is different from <code>gnutls_global_set_log_function()</code> 
-because it will report the session of the event if any. Note that
-that session might be null if there is no corresponding TLS session.
+<p>This is the function to set the audit logging function. This
+is a function to report important issues, such as possible
+attacks in the protocol. This is different from <code>gnutls_global_set_log_function()</code> 
+because it will report also session-specific events. The session
+parameter will be null if there is no corresponding TLS session.
 </p>
 <p><code>gnutls_audit_log_func</code> is of the form,
 void (*gnutls_audit_log_func)( gnutls_session_t, const char*);
@@ -19666,6 +19679,22 @@ structure.
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
 
+<a name="gnutls_005fpriority_005fcipher_005flist-1"></a>
+<h4 class="subheading">gnutls_priority_cipher_list</h4>
+<a name="gnutls_005fpriority_005fcipher_005flist"></a><dl>
+<dt><a name="index-gnutls_005fpriority_005fcipher_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_cipher_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+</p>
+<p><var>list</var>: will point to an integer list
+</p>
+<p>Get a list of available ciphers in the priority
+structure. 
+</p>
+<p><strong>Returns:</strong> the number of curves, or an error code.
+</p>
+<p><strong>Since:</strong> 3.2.3
+</p></dd></dl>
+
 <a name="gnutls_005fpriority_005fcompression_005flist-1"></a>
 <h4 class="subheading">gnutls_priority_compression_list</h4>
 <a name="gnutls_005fpriority_005fcompression_005flist"></a><dl>
@@ -19797,6 +19826,38 @@ enabled, SSL3.0 is disabled, and libz compression enabled.
 </p>
 <p><strong>Returns:</strong> On syntax error <code>GNUTLS_E_INVALID_REQUEST</code>  is returned,
 <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
+</p></dd></dl>
+
+<a name="gnutls_005fpriority_005fkx_005flist-1"></a>
+<h4 class="subheading">gnutls_priority_kx_list</h4>
+<a name="gnutls_005fpriority_005fkx_005flist"></a><dl>
+<dt><a name="index-gnutls_005fpriority_005fkx_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_kx_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+</p>
+<p><var>list</var>: will point to an integer list
+</p>
+<p>Get a list of available key exchange methods in the priority
+structure. 
+</p>
+<p><strong>Returns:</strong> the number of curves, or an error code.
+</p>
+<p><strong>Since:</strong> 3.2.3
+</p></dd></dl>
+
+<a name="gnutls_005fpriority_005fmac_005flist-1"></a>
+<h4 class="subheading">gnutls_priority_mac_list</h4>
+<a name="gnutls_005fpriority_005fmac_005flist"></a><dl>
+<dt><a name="index-gnutls_005fpriority_005fmac_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_mac_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+</p>
+<p><var>list</var>: will point to an integer list
+</p>
+<p>Get a list of available MAC algorithms in the priority
+structure. 
+</p>
+<p><strong>Returns:</strong> the number of curves, or an error code.
+</p>
+<p><strong>Since:</strong> 3.2.3
 </p></dd></dl>
 
 <a name="gnutls_005fpriority_005fprotocol_005flist-1"></a>
@@ -34915,11 +34976,14 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fprf"><code>gnutls_prf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fprf_005fraw"><code>gnutls_prf_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpriority_005fcertificate_005ftype_005flist"><code>gnutls_priority_certificate_type_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpriority_005fcipher_005flist"><code>gnutls_priority_cipher_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpriority_005fcompression_005flist"><code>gnutls_priority_compression_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpriority_005fdeinit"><code>gnutls_priority_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpriority_005fecc_005fcurve_005flist"><code>gnutls_priority_ecc_curve_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpriority_005fget_005fcipher_005fsuite_005findex"><code>gnutls_priority_get_cipher_suite_index</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpriority_005finit"><code>gnutls_priority_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpriority_005fkx_005flist"><code>gnutls_priority_kx_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpriority_005fmac_005flist"><code>gnutls_priority_mac_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpriority_005fprotocol_005flist"><code>gnutls_priority_protocol_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpriority_005fset"><code>gnutls_priority_set</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpriority_005fset_005fdirect"><code>gnutls_priority_set_direct</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>

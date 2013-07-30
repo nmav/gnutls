@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.2 of GnuTLS.
+3.2.3 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.2: DTLS sessions</title>
+<title>GnuTLS 3.2.3: DTLS sessions</title>
 
-<meta name="description" content="GnuTLS 3.2.2: DTLS sessions">
-<meta name="keywords" content="GnuTLS 3.2.2: DTLS sessions">
+<meta name="description" content="GnuTLS 3.2.3: DTLS sessions">
+<meta name="keywords" content="GnuTLS 3.2.3: DTLS sessions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -164,9 +164,9 @@ Previous: <a href="Asynchronous-operation.html#Asynchronous-operation" accesskey
 <a name="DTLS-sessions-1"></a>
 <h4 class="subsection">6.5.2 DTLS sessions</h4>
 
-<p>Because datagram TLS can operate over connections where the peer
-of a server cannot be reliably verified, functionality is available to prevent
-denial of service attacks. <acronym>GnuTLS</acronym> requires a server
+<p>Because datagram TLS can operate over connections where the client
+cannot be reliably verified, functionality in the form of cookies, is available to prevent
+denial of service attacks to servers. <acronym>GnuTLS</acronym> requires a server
 to generate a secret key that is used to sign a cookie<a name="DOCF10" href="#FOOT10"><sup>10</sup></a>. 
 That cookie is sent to the client using <a href="Datagram-TLS-API.html#gnutls_005fdtls_005fcookie_005fsend">gnutls_dtls_cookie_send</a>, and 
 the client must reply using the correct cookie. The server side

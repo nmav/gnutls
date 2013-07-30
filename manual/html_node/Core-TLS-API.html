@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.2 of GnuTLS.
+3.2.3 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.2: Core TLS API</title>
+<title>GnuTLS 3.2.3: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.2.2: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.2.2: Core TLS API">
+<meta name="description" content="GnuTLS 3.2.3: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.2.3: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -987,6 +987,10 @@ the server.  For clients that need to send more than its own end
 entity certificate, e.g., also an intermediate CA cert, then the
  <code>certfile</code> must contain the ordered certificate chain.
 </p>
+<p>Note that the names in the certificate provided will be considered
+when selecting the appropriate certificate to use (in case of multiple
+certificate/key pairs).
+</p>
 <p>This function can also accept URLs at  <code>keyfile</code> and  <code>certfile</code> . In that case it
 will import the private key and certificate indicated by the URLs. Note
 that the supported URLs are the ones indicated by <code>gnutls_url_is_supported()</code> .
@@ -1017,6 +1021,10 @@ called more than once, in case multiple keys/certificates exist for
 the server.  For clients that need to send more than its own end
 entity certificate, e.g., also an intermediate CA cert, then the
  <code>certfile</code> must contain the ordered certificate chain.
+</p>
+<p>Note that the names in the certificate provided will be considered
+when selecting the appropriate certificate to use (in case of multiple
+certificate/key pairs).
 </p>
 <p>This function can also accept URLs at  <code>keyfile</code> and  <code>certfile</code> . In that case it
 will import the private key and certificate indicated by the URLs. Note
@@ -2243,10 +2251,11 @@ otherwise a negative error code is returned.
 <dt><a name="index-gnutls_005fglobal_005fset_005faudit_005flog_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_global_set_audit_log_function</strong> <em>(gnutls_audit_log_func <var>log_func</var>)</em></dt>
 <dd><p><var>log_func</var>: it is the audit log function
 </p>
-<p>This is the function where you set the logging function gnutls is
-going to use.  This is different from <code>gnutls_global_set_log_function()</code> 
-because it will report the session of the event if any. Note that
-that session might be null if there is no corresponding TLS session.
+<p>This is the function to set the audit logging function. This
+is a function to report important issues, such as possible
+attacks in the protocol. This is different from <code>gnutls_global_set_log_function()</code> 
+because it will report also session-specific events. The session
+parameter will be null if there is no corresponding TLS session.
 </p>
 <p><code>gnutls_audit_log_func</code> is of the form,
 void (*gnutls_audit_log_func)( gnutls_session_t, const char*);
@@ -3250,6 +3259,22 @@ structure.
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
 
+<a name="gnutls_005fpriority_005fcipher_005flist-1"></a>
+<h4 class="subheading">gnutls_priority_cipher_list</h4>
+<a name="gnutls_005fpriority_005fcipher_005flist"></a><dl>
+<dt><a name="index-gnutls_005fpriority_005fcipher_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_cipher_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+</p>
+<p><var>list</var>: will point to an integer list
+</p>
+<p>Get a list of available ciphers in the priority
+structure. 
+</p>
+<p><strong>Returns:</strong> the number of curves, or an error code.
+</p>
+<p><strong>Since:</strong> 3.2.3
+</p></dd></dl>
+
 <a name="gnutls_005fpriority_005fcompression_005flist-1"></a>
 <h4 class="subheading">gnutls_priority_compression_list</h4>
 <a name="gnutls_005fpriority_005fcompression_005flist"></a><dl>
@@ -3381,6 +3406,38 @@ enabled, SSL3.0 is disabled, and libz compression enabled.
 </p>
 <p><strong>Returns:</strong> On syntax error <code>GNUTLS_E_INVALID_REQUEST</code>  is returned,
 <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
+</p></dd></dl>
+
+<a name="gnutls_005fpriority_005fkx_005flist-1"></a>
+<h4 class="subheading">gnutls_priority_kx_list</h4>
+<a name="gnutls_005fpriority_005fkx_005flist"></a><dl>
+<dt><a name="index-gnutls_005fpriority_005fkx_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_kx_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+</p>
+<p><var>list</var>: will point to an integer list
+</p>
+<p>Get a list of available key exchange methods in the priority
+structure. 
+</p>
+<p><strong>Returns:</strong> the number of curves, or an error code.
+</p>
+<p><strong>Since:</strong> 3.2.3
+</p></dd></dl>
+
+<a name="gnutls_005fpriority_005fmac_005flist-1"></a>
+<h4 class="subheading">gnutls_priority_mac_list</h4>
+<a name="gnutls_005fpriority_005fmac_005flist"></a><dl>
+<dt><a name="index-gnutls_005fpriority_005fmac_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_mac_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+</p>
+<p><var>list</var>: will point to an integer list
+</p>
+<p>Get a list of available MAC algorithms in the priority
+structure. 
+</p>
+<p><strong>Returns:</strong> the number of curves, or an error code.
+</p>
+<p><strong>Since:</strong> 3.2.3
 </p></dd></dl>
 
 <a name="gnutls_005fpriority_005fprotocol_005flist-1"></a>

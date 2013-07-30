@@ -3,7 +3,30 @@
 <id>http://www.gnu.org/software/gnutls/news.atom</id>
 <link href="http://www.gnu.org/software/gnutls/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2013-07-14T11:04:45+00:00</updated>
+<updated>2013-07-30T09:09:19+00:00</updated>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2013-07-30</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2013-07-30'/>
+    <title>GnuTLS 3.2.3</title>
+    <updated>2013-07-30T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2013-07-30.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6915">GnuTLS
+3.2.3</a>,
+was released. This is a bug-fix release in the current
+stable branch.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnu.org/software/gnutls/news.html#2013-07-14</id>
@@ -393,32 +416,6 @@ protocol and the OCSP status request extension.
 <p>
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6359">
 GnuTLS 3.0.25</a> was released, a bug fix release in the old stable branch.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnu.org/software/gnutls/news.html#2012-09-26</id>
-    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-09-26'/>
-    <title>GnuTLS 3.0.24 and 3.1.2</title>
-    <updated>2012-09-26T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-09-26.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6334">
-GnuTLS 3.1.2</a> was released.  This release includes feature
-updates, notably support for the DTLS heartbeat message, and bug fixes
-in the current stable branch.
-</p>
-<p>
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6333">
-GnuTLS 3.0.24</a> was released, a bug fix release in the old stable branch.
 </p>
 
     </div>
