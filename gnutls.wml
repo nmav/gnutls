@@ -16,7 +16,8 @@
 
   <li><a name="features"><b>Features</b></a>
     <ul>
-      <li>Support for TLS 1.2, TLS 1.1, TLS 1.0, SSL 3.0 and <a href="http://tools.ietf.org/html/rfc4347">Datagram TLS</a> protocols</li>
+      <li>Support for <a href="http://tools.ietf.org/html/rfc5247">TLS 1.2</a>, TLS 1.1, TLS 1.0, and SSL 3.0 protocols</li>
+      <li>Support for <a href="http://tools.ietf.org/html/rfc6347">DTLS 1.2</a>, and DTLS 1.0,  protocols</li>
       <li>Support for certificate path validation, as well as <a href="http://www.gnutls.org/manual/html_node/Verifying-a-certificate-using-DANE-_0028DNSSEC_0029.html">DANE</a> and <a href="http://www.gnutls.org/manual/html_node/Verifying-a-certificate-using-trust-on-first-use-authentication.html#Verifying-a-certificate-using-trust-on-first-use-authentication">trust on first use</a>.</li>
       <li>Support for the <a href="http://www.gnutls.org/manual/html_node/OCSP-certificate-status-checking.html">Online Certificate Status Protocol (OCSP)</a>.</li>
       <li>Support for multiple certificate types including X.509 and <a href="openpgp.html">OpenPGP</a> certificates.</li>
