@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.3 of GnuTLS.
+<!-- This manual is last updated 24 April 2013 for version
+3.2.4 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.3: Authentication using PSK</title>
+<title>GnuTLS 3.2.4: Authentication using PSK</title>
 
-<meta name="description" content="GnuTLS 3.2.3: Authentication using PSK">
-<meta name="keywords" content="GnuTLS 3.2.3: Authentication using PSK">
+<meta name="description" content="GnuTLS 3.2.4: Authentication using PSK">
+<meta name="keywords" content="GnuTLS 3.2.4: Authentication using PSK">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -186,6 +186,11 @@ exchange.  This method offers perfect forward secrecy.
 <dt><code>ECDHE-PSK:</code></dt>
 <dd><p>Authentication using the <acronym>PSK</acronym> protocol and Elliptic curve Diffie-Hellman key
 exchange.  This method offers perfect forward secrecy.
+</p>
+</dd>
+<dt><code>RSA-PSK:</code></dt>
+<dd><p>Authentication using the <acronym>PSK</acronym> protocol for the client and an RSA certificate
+for the server.
 </p>
 </dd>
 </dl>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.3 of GnuTLS.
+<!-- This manual is last updated 24 April 2013 for version
+3.2.4 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.3</title>
+<title>GnuTLS 3.2.4</title>
 
-<meta name="description" content="GnuTLS 3.2.3">
-<meta name="keywords" content="GnuTLS 3.2.3">
+<meta name="description" content="GnuTLS 3.2.4">
+<meta name="keywords" content="GnuTLS 3.2.4">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.2.3</h1>
+<h1 class="settitle" align="center">GnuTLS 3.2.4</h1>
 
 
 
@@ -462,8 +462,8 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <a name="GnuTLS"></a>
 <h1 class="top">GnuTLS</h1>
 
-<p>This manual is last updated 10 February 2013 for version
-3.2.3 of GnuTLS.
+<p>This manual is last updated 24 April 2013 for version
+3.2.4 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -5315,6 +5315,11 @@ exchange.  This method offers perfect forward secrecy.
 exchange.  This method offers perfect forward secrecy.
 </p>
 </dd>
+<dt><code>RSA-PSK:</code></dt>
+<dd><p>Authentication using the <acronym>PSK</acronym> protocol for the client and an RSA certificate
+for the server.
+</p>
+</dd>
 </dl>
 
 
@@ -7908,9 +7913,11 @@ gnutls_certificate_credentials_t structure.  This function may be
 called more than once, in case multiple keys/certificates exist for
 the server.  For clients that wants to send more than its own end
 entity certificate (e.g., also an intermediate CA cert) then put
-the certificate chain in  <code>pcert_list</code> . The  <code>pcert_list</code> and  <code>key</code> will
-become part of the credentials structure and must not
-be deallocated. They will be automatically deallocated when  <code>res</code> is deinitialized.
+the certificate chain in  <code>pcert_list</code> . 
+</p>
+<p>Note that the  <code>pcert_list</code> and  <code>key</code> will become part of the credentials 
+structure and must not be deallocated. They will be automatically deallocated 
+when the  <code>res</code> structure is deinitialized.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p>
@@ -9173,6 +9180,11 @@ performance. The message authenticity security level is of 64 bits or more.</td>
 <tr><td width="20%">NORMAL</td><td width="70%">Means all the known to be secure ciphersuites. The ciphers are sorted by security
 margin, although the 256-bit ciphers are included as a fallback only.
 The message authenticity security level is of 64 bits or more.</td></tr>
+<tr><td width="20%">PFS</td><td width="70%">Means all the known to be secure ciphersuites that support perfect forward
+secrecy. The ciphers are sorted by security
+margin, although the 256-bit ciphers are included as a fallback only.
+The message authenticity security level is of 64 bits or more. This
+option is available since 3.2.4 or later.</td></tr>
 <tr><td width="20%">SECURE128</td><td width="70%">Means all known to be secure ciphersuites that offer a 
 security level 128-bit or more and a message authenticity
 security level of 80 bits or more.</td></tr>
@@ -9285,7 +9297,7 @@ This is the default.</td></tr>
 <tr><td width="45%">%NEW_PADDING</td><td width="45%">will enable the new padding extension negotiation. If the new padding extension
 is negotiated, GnuTLS will use a more efficient length-hiding mechanism.
 Use <a href="#gnutls_005frecord_005fcan_005fuse_005flength_005fhiding">gnutls_record_can_use_length_hiding</a> to check whether length-hiding
-can be used in the current session.</td></tr>
+can be used in the current session. This is a GnuTLS extension to the protocol.</td></tr>
 </table>
 
 <div class="float-caption"><p><strong>Table 6.4: </strong>Special priority string keywords.</p></div></div>
@@ -10040,13 +10052,8 @@ options that are known to cause compatibility problems, is shown below.
 another priority string is:
 </p><pre class="verbatim">NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:%COMPAT
 </pre><p>This priority string will in addition to above, only enable SSL 3.0 and 
-TLS 1.0 as protocols. Note however that
-there are known attacks against those protocol versions, especially over
-the CBC-mode ciphersuites. To mitigate them another priority string
-that only allows the stream cipher ARCFOUR is below.
-</p><pre class="verbatim">NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:-CIPHER-ALL:+ARCFOUR-128:%COMPAT
-</pre>
-
+TLS 1.0 as protocols. 
+</p>
 
 <hr>
 <a name="Compatibility-with-the-OpenSSL-library"></a>
@@ -19782,6 +19789,10 @@ performance.
 <p>&quot;NORMAL&quot; means all &quot;secure&quot; ciphersuites. The 256-bit ciphers are
 included as a fallback only.  The ciphers are sorted by security
 margin.
+</p>
+<p>&quot;PFS&quot; means all &quot;secure&quot; ciphersuites that support perfect forward secrecy. 
+The 256-bit ciphers are included as a fallback only.  
+The ciphers are sorted by security margin.
 </p>
 <p>&quot;SECURE128&quot; means all &quot;secure&quot; ciphersuites of security level 128-bit
 or more.
@@ -30821,9 +30832,11 @@ gnutls_certificate_credentials_t structure.  This function may be
 called more than once, in case multiple keys/certificates exist for
 the server.  For clients that wants to send more than its own end
 entity certificate (e.g., also an intermediate CA cert) then put
-the certificate chain in  <code>pcert_list</code> . The  <code>pcert_list</code> and  <code>key</code> will
-become part of the credentials structure and must not
-be deallocated. They will be automatically deallocated when  <code>res</code> is deinitialized.
+the certificate chain in  <code>pcert_list</code> . 
+</p>
+<p>Note that the  <code>pcert_list</code> and  <code>key</code> will become part of the credentials 
+structure and must not be deallocated. They will be automatically deallocated 
+when the  <code>res</code> structure is deinitialized.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p>
@@ -32695,6 +32708,9 @@ and before any encryption operations.
 <p>This function will decrypt the given data using the algorithm
 specified by the context.
 </p>
+<p>Note that in AEAD ciphers, this will not check the tag. You will
+need to compare the tag sent with the value returned from <code>gnutls_cipher_tag()</code> .
+</p>
 <p><strong>Returns:</strong> Zero or a negative error code on error.
 </p>
 <p><strong>Since:</strong> 2.10.0
@@ -32716,6 +32732,9 @@ specified by the context.
 </p>
 <p>This function will decrypt the given data using the algorithm
 specified by the context.
+</p>
+<p>Note that in AEAD ciphers, this will not check the tag. You will
+need to compare the tag sent with the value returned from <code>gnutls_cipher_tag()</code> .
 </p>
 <p><strong>Returns:</strong> Zero or a negative error code on error.
 </p>
