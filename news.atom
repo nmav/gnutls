@@ -3,7 +3,29 @@
 <id>http://www.gnu.org/software/gnutls/news.atom</id>
 <link href="http://www.gnu.org/software/gnutls/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2013-08-02T13:26:57+00:00</updated>
+<updated>2013-08-31T13:06:08+00:00</updated>
+
+  <entry>
+    <id>http://www.gnu.org/software/gnutls/news.html#2013-08-31</id>
+    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2013-08-31'/>
+    <title>GnuTLS 3.0.32 and 3.1.14</title>
+    <updated>2013-08-31T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2013-08-31.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6966">GnuTLS 3.0.32</a>,
+and
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6967">GnuTLS 3.1.14</a>, 
+were released.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnu.org/software/gnutls/news.html#2013-08-02</id>
@@ -392,26 +414,6 @@ encoded DNs, improvements in smart card key generation and few bug-fixes.
 GnuTLS 3.1.4</a> was released.  This release includes support
 for the DTLS-SRTP, updates on the DANE library, and several 
 simplifications on the existing API.
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnu.org/software/gnutls/news.html#2012-11-09</id>
-    <link rel='alternate' href='http://www.gnu.org/software/gnutls/news.html#2012-11-09'/>
-    <title>GnuTLS 2.12.21 and 3.0.26</title>
-    <updated>2012-11-09T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2012-11-09.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6418">
-GnuTLS 2.12.21</a> and <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6419">
-GnuTLS 3.0.26</a> were released, bug-fix releases on the previous
-stable branches.
 
     </div>
     </content>
