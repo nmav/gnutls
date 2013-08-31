@@ -3,7 +3,7 @@
 <id>http://www.gnu.org/software/gnutls/news.atom</id>
 <link href="http://www.gnu.org/software/gnutls/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2013-08-31T17:19:59+00:00</updated>
+<updated>2013-08-31T17:28:14+00:00</updated>
 
   <entry>
     <id>http://www.gnu.org/software/gnutls/news.html#2013-08-31</id>
@@ -17,7 +17,7 @@
     <content type='xhtml' xml:base='http://www.gnu.org/software/gnutls/news-entries/2013-08-31.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
 
 <p>
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6968">GnuTLS 3.1.14</a>, 
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6968">GnuTLS 3.2.4</a>, 
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6967">GnuTLS 3.1.14</a>, 
 and
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6966">GnuTLS 3.0.32</a>,
