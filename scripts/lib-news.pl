@@ -7,7 +7,7 @@ my $s_refhash;
 my $t_refhash;
 
 my $directory = './news-entries';
-#my $base = "http://www.gnu.org/software/gnutls";
+#my $base = "http://www.gnutls.org";
 #my $self = "$base/news.atom";
 #my $direct = "$base/news.html";
 
