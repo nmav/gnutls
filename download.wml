@@ -141,6 +141,10 @@
     <td><a href="http://pypi.python.org/pypi/python-gnutls/">Python-gnutls</a>, <a href="https://gitorious.org/pygnutls">pygnutls</a></td>
   </tr>
   <tr>
+    <td>PHP</td>
+    <td><a href="https://github.com/netaware/php5-gnutls">PHP5-gnutls</a></td>
+  </tr>
+  <tr>
     <td>Guile (scheme)</td>
     <td>Included in the GnuTLS distribution</td>
   </tr>
