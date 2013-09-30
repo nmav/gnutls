@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 24 April 2013 for version
+<!-- This manual is last updated 10 February 2013 for version
 3.2.4 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
@@ -462,7 +462,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <a name="GnuTLS"></a>
 <h1 class="top">GnuTLS</h1>
 
-<p>This manual is last updated 24 April 2013 for version
+<p>This manual is last updated 10 February 2013 for version
 3.2.4 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
@@ -1316,8 +1316,8 @@ Next: <a href="#Safe-renegotiation" accesskey="n" rel="next">Safe renegotiation<
 <a name="index-TLS-extensions-4"></a>
 <a name="index-heartbeat"></a>
 
-<p>This TLS extension allows to ping and receive confirmation from the peer,
-is described in [<em>RFC6520</em>]. The extension is disabled by default and
+<p>This is a TLS extension that allows to ping and receive confirmation from the peer,
+and is described in [<em>RFC6520</em>]. The extension is disabled by default and
 <a href="#gnutls_005fheartbeat_005fenable">gnutls_heartbeat_enable</a> can be used to enable it. A policy
 may be negotiated to only allow sending heartbeat messages or sending and receiving.
 The current session policy can be checked with <a href="#gnutls_005fheartbeat_005fallowed">gnutls_heartbeat_allowed</a>. 
@@ -6776,18 +6776,21 @@ Previous: <a href="#Smart-cards-and-HSMs" accesskey="p" rel="previous">Smart car
 
 <p>In this section we present the Trusted Platform Module (TPM) support 
 in <acronym>GnuTLS</acronym>. Note that this functionality is disabled by default
-because the <code>trousers</code> libraries GnuTLS depends on for that functionality
-are under the Common Public License which is not compatible with the GPL license.
+because the <code>trousers</code> libraries GnuTLS depends on
+are under the Common Public License which is not compatible with the GPL 
+license. By disabling this feature by default we ensure that the GnuTLS library can
+be linked by both GPL and non-GPL programs, but you can enable this option
+during the library configuration.
 </p>
 <p>There was a big hype when the TPM chip was introduced into 
 computers. Briefly it is a co-processor in your PC that allows it to perform 
 calculations independently of the main processor. This has good and bad 
-side-effects. In this section we focus on the good ones, which are the fact that 
-you can use it to perform cryptographic operations the similarly to a
-<acronym>PKCS</acronym> #11 smart card. 
-It allows for storing and using RSA keys but with slight differences
-from a <acronym>PKCS</acronym> #11 module that require different handling. 
-The basic operations supported, and used by GnuTLS, are key generation and signing. 
+side-effects. In this section we focus on the good ones; these are the fact that 
+you can use the TPM chip to perform cryptographic operations on keys stored in it, without 
+accessing them. That is very similar to the operation of a <acronym>PKCS</acronym> #11 smart card. 
+The chip allows for storage and usage of RSA keys, but has quite some 
+operational differences from <acronym>PKCS</acronym> #11 module, and thus require different handling. 
+The basic TPM operations supported and used by GnuTLS, are key generation and signing. 
 </p>
 <p>In GnuTLS the TPM functionality is available in <code>gnutls/tpm.h</code>.
 </p>
@@ -6814,7 +6817,7 @@ Next: <a href="#Key-generation" accesskey="n" rel="next">Key generation</a>, Up:
 <p>The RSA keys in the TPM module may either be stored in a flash memory
 within TPM or stored in a file in disk. In the former case the key can
 provide operations as with <acronym>PKCS</acronym> #11 and is identified by
-a URL. The URL is described in [<em>TPMURI</em>] and are of the following form.
+a URL. The URL is described in [<em>TPMURI</em>] and is of the following form.
 </p><pre class="verbatim">tpmkey:uuid=42309df8-d101-11e1-a89a-97bb33c23ad1;storage=user
 </pre>
 <p>It consists from a unique identifier of the key as well as the part of the
@@ -7612,6 +7615,16 @@ with the dynamic linker an old version is actually used.  So you may
 want to check that the version is okay right after program start-up.
 See the function <a href="#gnutls_005fcheck_005fversion">gnutls_check_version</a>.
 </p>
+<p>On the other hand, it is often desirable to support more than one
+versions of the library. In that case you could utilize compile-time 
+feature checks using the the <code>GNUTLS_VERSION_NUMBER</code> macro. 
+For example, to conditionally add code for GnuTLS 3.2.1 or later, you may use:
+</p><div class="example">
+<pre class="example">#if GNUTLS_VERSION_NUMBER &gt;= 0x030201
+ ...
+#endif
+</pre></div>
+
 <hr>
 <a name="Building-the-source"></a>
 <div class="header">
@@ -7913,11 +7926,9 @@ gnutls_certificate_credentials_t structure.  This function may be
 called more than once, in case multiple keys/certificates exist for
 the server.  For clients that wants to send more than its own end
 entity certificate (e.g., also an intermediate CA cert) then put
-the certificate chain in  <code>pcert_list</code> . 
-</p>
-<p>Note that the  <code>pcert_list</code> and  <code>key</code> will become part of the credentials 
-structure and must not be deallocated. They will be automatically deallocated 
-when the  <code>res</code> structure is deinitialized.
+the certificate chain in  <code>pcert_list</code> . The  <code>pcert_list</code> and  <code>key</code> will
+become part of the credentials structure and must not
+be deallocated. They will be automatically deallocated when  <code>res</code> is deinitialized.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p>
@@ -19782,6 +19793,9 @@ separated list of the cipher priorities to enable.
 Some keywords are defined to provide quick access
 to common preferences.
 </p>
+<p>Unless there is a special need, using &quot;NORMAL&quot; or &quot;NORMAL:<code>COMPAT</code> &quot; for compatibility 
+is recommended.
+</p>
 <p>&quot;PERFORMANCE&quot; means all the &quot;secure&quot; ciphersuites are enabled,
 limited to 128 bit ciphers and sorted by terms of speed
 performance.
@@ -30832,11 +30846,9 @@ gnutls_certificate_credentials_t structure.  This function may be
 called more than once, in case multiple keys/certificates exist for
 the server.  For clients that wants to send more than its own end
 entity certificate (e.g., also an intermediate CA cert) then put
-the certificate chain in  <code>pcert_list</code> . 
-</p>
-<p>Note that the  <code>pcert_list</code> and  <code>key</code> will become part of the credentials 
-structure and must not be deallocated. They will be automatically deallocated 
-when the  <code>res</code> structure is deinitialized.
+the certificate chain in  <code>pcert_list</code> . The  <code>pcert_list</code> and  <code>key</code> will
+become part of the credentials structure and must not
+be deallocated. They will be automatically deallocated when  <code>res</code> is deinitialized.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p>
@@ -32708,9 +32720,6 @@ and before any encryption operations.
 <p>This function will decrypt the given data using the algorithm
 specified by the context.
 </p>
-<p>Note that in AEAD ciphers, this will not check the tag. You will
-need to compare the tag sent with the value returned from <code>gnutls_cipher_tag()</code> .
-</p>
 <p><strong>Returns:</strong> Zero or a negative error code on error.
 </p>
 <p><strong>Since:</strong> 2.10.0
@@ -32732,9 +32741,6 @@ need to compare the tag sent with the value returned from <code>gnutls_cipher_ta
 </p>
 <p>This function will decrypt the given data using the algorithm
 specified by the context.
-</p>
-<p>Note that in AEAD ciphers, this will not check the tag. You will
-need to compare the tag sent with the value returned from <code>gnutls_cipher_tag()</code> .
 </p>
 <p><strong>Returns:</strong> Zero or a negative error code on error.
 </p>

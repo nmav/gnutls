@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 24 April 2013 for version
+<!-- This manual is last updated 10 February 2013 for version
 3.2.4 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
@@ -168,18 +168,21 @@ Previous: <a href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" accesskey="p"
 
 <p>In this section we present the Trusted Platform Module (TPM) support 
 in <acronym>GnuTLS</acronym>. Note that this functionality is disabled by default
-because the <code>trousers</code> libraries GnuTLS depends on for that functionality
-are under the Common Public License which is not compatible with the GPL license.
+because the <code>trousers</code> libraries GnuTLS depends on
+are under the Common Public License which is not compatible with the GPL 
+license. By disabling this feature by default we ensure that the GnuTLS library can
+be linked by both GPL and non-GPL programs, but you can enable this option
+during the library configuration.
 </p>
 <p>There was a big hype when the TPM chip was introduced into 
 computers. Briefly it is a co-processor in your PC that allows it to perform 
 calculations independently of the main processor. This has good and bad 
-side-effects. In this section we focus on the good ones, which are the fact that 
-you can use it to perform cryptographic operations the similarly to a
-<acronym>PKCS</acronym> #11 smart card. 
-It allows for storing and using RSA keys but with slight differences
-from a <acronym>PKCS</acronym> #11 module that require different handling. 
-The basic operations supported, and used by GnuTLS, are key generation and signing. 
+side-effects. In this section we focus on the good ones; these are the fact that 
+you can use the TPM chip to perform cryptographic operations on keys stored in it, without 
+accessing them. That is very similar to the operation of a <acronym>PKCS</acronym> #11 smart card. 
+The chip allows for storage and usage of RSA keys, but has quite some 
+operational differences from <acronym>PKCS</acronym> #11 module, and thus require different handling. 
+The basic TPM operations supported and used by GnuTLS, are key generation and signing. 
 </p>
 <p>In GnuTLS the TPM functionality is available in <code>gnutls/tpm.h</code>.
 </p>
@@ -194,6 +197,11 @@ The basic operations supported, and used by GnuTLS, are key generation and signi
 </td></tr>
 </table>
 
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" accesskey="p" rel="previous">Smart cards and HSMs</a>, Up: <a href="Hardware-security-modules-and-abstract-key-types.html#Hardware-security-modules-and-abstract-key-types" accesskey="u" rel="up">Hardware security modules and abstract key types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

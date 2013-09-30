@@ -319,7 +319,7 @@ struct              <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.2.3"
+<pre class="programlisting">#define GNUTLS_VERSION "3.2.4"
 </pre>
 <p>
 </p>
@@ -343,7 +343,7 @@ struct              <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030203
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030204
 </pre>
 <p>
 </p>
@@ -351,7 +351,7 @@ struct              <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 3
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 4
 </pre>
 <p>
 </p>
@@ -2526,6 +2526,7 @@ flag.
     GNUTLS_KX_ECDHE_RSA = 12,
     GNUTLS_KX_ECDHE_ECDSA = 13,
     GNUTLS_KX_ECDHE_PSK = 14,
+    GNUTLS_KX_RSA_PSK = 15,
 } gnutls_kx_algorithm_t;
 </pre>
 <p>
@@ -2610,6 +2611,11 @@ Enumeration of different key exchange algorithms.
 <tr>
 <td><p><a name="GNUTLS-KX-ECDHE-PSK:CAPS"></a><span class="term"><code class="literal">GNUTLS_KX_ECDHE_PSK</code></span></p></td>
 <td>ECDHE-PSK key-exchange algorithm.
+</td>
+</tr>
+<tr>
+<td><p><a name="GNUTLS-KX-RSA-PSK:CAPS"></a><span class="term"><code class="literal">GNUTLS_KX_RSA_PSK</code></span></p></td>
+<td>RSA-PSK key-exchange algorithm.
 </td>
 </tr>
 </tbody>
