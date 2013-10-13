@@ -12,7 +12,7 @@ COMMON=common.wml bottom.wml head.wml rawnews.wml
 OUTPUT=index.html contrib.html devel.html lists.html	\
  download.html gnutls-logo.html news.html future.html	\
  documentation.html help.html openpgp.html \
- security.html commercial.html soc.html \
+ security.html commercial.html soc.html faq.html \
  comparison.html admin/bugs.html manual/index.html
 
 all: $(OUTPUT) news.atom
