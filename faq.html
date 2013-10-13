@@ -152,7 +152,9 @@ Note that currently in the NORMAL priority string, the minimum acceptable
 size of DH group is set to be at 728 bits. This is a very low size for
 today's threats but unfortunately there are many popular Internet servers
 providing such a weak security level. To increase the security level use
-the SECURE128 or better priority strings.
+the SECURE128 or better priority strings, at the risk of a failed connection
+with an insecure server. To avoid this error, newer versions of GnuTLS prioritize the elliptic
+curve DH ciphersuites that have no such issues.
 </p>
 </li>
 <li><p><i>The software I use outputs the following error:
