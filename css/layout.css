@@ -404,6 +404,7 @@ acronym, abbr {border-bottom: 1px dotted #111;}
 .small { font-size: 22px; background-color: #89b1bd; }
 
 .emph-box { background-color: #ececec; border: 1px solid #ccc; padding: 12px; }
+.emph-box:target { background-color: #ff8; }
 
 .emph-box p { font-size: 0.9em }
 
