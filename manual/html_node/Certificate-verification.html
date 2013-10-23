@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.4 of GnuTLS.
+3.2.5 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.4: Certificate verification</title>
+<title>GnuTLS 3.2.5: Certificate verification</title>
 
-<meta name="description" content="GnuTLS 3.2.4: Certificate verification">
-<meta name="keywords" content="GnuTLS 3.2.4: Certificate verification">
+<meta name="description" content="GnuTLS 3.2.5: Certificate verification">
+<meta name="keywords" content="GnuTLS 3.2.5: Certificate verification">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -363,9 +363,9 @@ AC_SUBST([LIBDANE_LIBS])
 <p><var>verify</var>: An OR&rsquo;ed list of <code>dane_verify_status_t</code> .
 </p>
 <p>This function will verify the given certificate chain against the
-CA constrains and/or the certificate available via DANE. 
+CA constrains and/or the certificate available via DANE.
 If no information via DANE can be obtained the flag <code>DANE_VERIFY_NO_DANE_INFO</code> 
-is set. If a DNSSEC signature is not available for the DANE 
+is set. If a DNSSEC signature is not available for the DANE
 record then the verify flag <code>DANE_VERIFY_NO_DNSSEC_DATA</code>  is set.
 </p>
 <p>Note that the CA constraint only applies for the directly certifying CA

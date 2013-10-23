@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.4 of GnuTLS.
+3.2.5 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.4: srptool Invocation</title>
+<title>GnuTLS 3.2.5: srptool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.2.4: srptool Invocation">
-<meta name="keywords" content="GnuTLS 3.2.4: srptool Invocation">
+<meta name="description" content="GnuTLS 3.2.5: srptool Invocation">
+<meta name="keywords" content="GnuTLS 3.2.5: srptool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -194,25 +194,27 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">srptool - GnuTLS SRP tool
-Usage:  srptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+<pre class="example">srptool - GnuTLS SRP tool - Ver. 3.2.5
+USAGE:  srptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
                                 - it must be in the range:
                                   0 to 9999
-   -i, --index                specify the index of the group parameters in tpasswd.conf to use.
+   -i, --index=num            specify the index of the group parameters in tpasswd.conf to use.
    -u, --username=str         specify a username
    -p, --passwd=str           specify a password file.
    -s, --salt=num             specify salt size.
        --verify               just verify the password.
    -v, --passwd-conf=str      specify a password conf file.
        --create-conf=str      Generate a password configuration file.
-   -v, --version[=arg]        output version information and exit
-   -h, --help                 display extended usage information and exit
-   -!, --more-help            extended usage information passed thru pager
+   -v, --version[=arg]        Output version information and exit
+   -h, --help                 Display extended usage information and exit
+   -!, --more-help            Extended usage information passed thru pager
 
 Options are specified by doubled hyphens and their name or by a single
 hyphen and the flag character.
+
+
 
 Simple program that emulates the programs in the Stanford SRP (Secure
 Remote Password) libraries using GnuTLS.  It is intended for use in places
@@ -264,7 +266,8 @@ containing the required for TLS parameters.
 <a name="srptool-See-Also"></a><a name="srptool-See-Also-1"></a>
 <h4 class="subsubheading">srptool See Also</h4>
 <p>gnutls-cli-debug (1), gnutls-serv (1), srptool (1), psktool (1), certtool (1)
-<a name="srptool-Examples"></a></p><a name="srptool-Examples-1"></a>
+</p>
+<a name="srptool-Examples"></a><a name="srptool-Examples-1"></a>
 <h4 class="subsubheading">srptool Examples</h4>
 <p>To create <samp>tpasswd.conf</samp> which holds the g and n values for SRP protocol
 (generator and a large prime), run:
@@ -285,6 +288,7 @@ the one in <samp>/etc/tpasswd</samp> you will get an ok.
 </p><div class="example">
 <pre class="example">$ srptool --passwd /etc/tpasswd --passwd\-conf /etc/tpasswd.conf --verify -u test
 </pre></div>
+
 
 <hr>
 <div class="header">

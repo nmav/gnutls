@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.4 of GnuTLS.
+3.2.5 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.4</title>
+<title>GnuTLS 3.2.5</title>
 
-<meta name="description" content="GnuTLS 3.2.4">
-<meta name="keywords" content="GnuTLS 3.2.4">
+<meta name="description" content="GnuTLS 3.2.5">
+<meta name="keywords" content="GnuTLS 3.2.5">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.2.4</h1>
+<h1 class="settitle" align="center">GnuTLS 3.2.5</h1>
 
 
 
@@ -463,7 +463,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 10 February 2013 for version
-3.2.4 of GnuTLS.
+3.2.5 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -2299,8 +2299,6 @@ to allow verifying the CRLs for validity.
 <p>This function will try to verify the given certificate and return
 its status. The  <code>verify</code> parameter will hold an OR&rsquo;ed sequence of
 <code>gnutls_certificate_status_t</code>  flags.
-</p>
-<p><strong>Limitation:</strong> Pathlen constraints or key usage flags are not consulted.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -5174,25 +5172,27 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">srptool - GnuTLS SRP tool
-Usage:  srptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+<pre class="example">srptool - GnuTLS SRP tool - Ver. 3.2.5
+USAGE:  srptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
    -d, --debug=num            Enable debugging.
                                 - it must be in the range:
                                   0 to 9999
-   -i, --index                specify the index of the group parameters in tpasswd.conf to use.
+   -i, --index=num            specify the index of the group parameters in tpasswd.conf to use.
    -u, --username=str         specify a username
    -p, --passwd=str           specify a password file.
    -s, --salt=num             specify salt size.
        --verify               just verify the password.
    -v, --passwd-conf=str      specify a password conf file.
        --create-conf=str      Generate a password configuration file.
-   -v, --version[=arg]        output version information and exit
-   -h, --help                 display extended usage information and exit
-   -!, --more-help            extended usage information passed thru pager
+   -v, --version[=arg]        Output version information and exit
+   -h, --help                 Display extended usage information and exit
+   -!, --more-help            Extended usage information passed thru pager
 
 Options are specified by doubled hyphens and their name or by a single
 hyphen and the flag character.
+
+
 
 Simple program that emulates the programs in the Stanford SRP (Secure
 Remote Password) libraries using GnuTLS.  It is intended for use in places
@@ -5244,7 +5244,8 @@ containing the required for TLS parameters.
 <a name="srptool-See-Also"></a><a name="srptool-See-Also-1"></a>
 <h4 class="subsubheading">srptool See Also</h4>
 <p>gnutls-cli-debug (1), gnutls-serv (1), srptool (1), psktool (1), certtool (1)
-<a name="srptool-Examples"></a></p><a name="srptool-Examples-1"></a>
+</p>
+<a name="srptool-Examples"></a><a name="srptool-Examples-1"></a>
 <h4 class="subsubheading">srptool Examples</h4>
 <p>To create <samp>tpasswd.conf</samp> which holds the g and n values for SRP protocol
 (generator and a large prime), run:
@@ -5265,6 +5266,7 @@ the one in <samp>/etc/tpasswd</samp> you will get an ok.
 </p><div class="example">
 <pre class="example">$ srptool --passwd /etc/tpasswd --passwd\-conf /etc/tpasswd.conf --verify -u test
 </pre></div>
+
 
 <hr>
 <a name="PSK-authentication"></a>
@@ -7926,9 +7928,11 @@ gnutls_certificate_credentials_t structure.  This function may be
 called more than once, in case multiple keys/certificates exist for
 the server.  For clients that wants to send more than its own end
 entity certificate (e.g., also an intermediate CA cert) then put
-the certificate chain in  <code>pcert_list</code> . The  <code>pcert_list</code> and  <code>key</code> will
-become part of the credentials structure and must not
-be deallocated. They will be automatically deallocated when  <code>res</code> is deinitialized.
+the certificate chain in  <code>pcert_list</code> . 
+</p>
+<p>Note that the  <code>pcert_list</code> and  <code>key</code> will become part of the credentials 
+structure and must not be deallocated. They will be automatically deallocated 
+when the  <code>res</code> structure is deinitialized.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p>
@@ -8225,8 +8229,8 @@ error code.
 SRP credentials.  The callback&rsquo;s function form is:
 </p>
 <p>int (*callback)(gnutls_session_t, const char* username,
-gnutls_datum_t* salt, gnutls_datum_t *verifier, gnutls_datum_t* g,
-gnutls_datum_t* n);
+gnutls_datum_t* salt, gnutls_datum_t *verifier, gnutls_datum_t* generator,
+gnutls_datum_t* prime);
 </p>
 <p><code>username</code> contains the actual username.
 The  <code>salt</code> ,  <code>verifier</code> ,  <code>generator</code> and  <code>prime</code> must be filled
@@ -9839,9 +9843,9 @@ AC_SUBST([LIBDANE_LIBS])
 <p><var>verify</var>: An OR&rsquo;ed list of <code>dane_verify_status_t</code> .
 </p>
 <p>This function will verify the given certificate chain against the
-CA constrains and/or the certificate available via DANE. 
+CA constrains and/or the certificate available via DANE.
 If no information via DANE can be obtained the flag <code>DANE_VERIFY_NO_DANE_INFO</code> 
-is set. If a DNSSEC signature is not available for the DANE 
+is set. If a DNSSEC signature is not available for the DANE
 record then the verify flag <code>DANE_VERIFY_NO_DNSSEC_DATA</code>  is set.
 </p>
 <p>Note that the CA constraint only applies for the directly certifying CA
@@ -11445,7 +11449,7 @@ pin_callback (void *user, int attempt, const char *token_url,
       exit (1);
     }
 
-  len = MIN (pin_max, strlen (password));
+  len = MIN (pin_max-1, strlen (password));
   memcpy (pin, password, len);
   pin[len] = 0;
 
@@ -14573,8 +14577,8 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-cli - GnuTLS client
-Usage:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [hostname]
+<pre class="example">gnutls-cli - GnuTLS client - Ver. 3.2.5
+USAGE:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [hostname]
 
    -d, --debug=num            Enable debugging.
                                 - it must be in the range:
@@ -14639,13 +14643,18 @@ Usage:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&g
                                   0 to 4096
        --disable-sni          Do not send a Server Name Indication (SNI)
        --disable-extensions   Disable all the TLS extensions
-   -v, --version[=arg]        output version information and exit
-   -h, --help                 display extended usage information and exit
-   -!, --more-help            extended usage information passed thru pager
+       --inline-commands      Inline commands of the form ^&lt;cmd&gt;^
+       --inline-commands-prefix=str Change the default (^) used as a delimiter for inline commands.  The
+value is a single US-ASCII character (octets 0 - 127).
+   -v, --version[=arg]        Output version information and exit
+   -h, --help                 Display extended usage information and exit
+   -!, --more-help            Extended usage information passed thru pager
 
 Options are specified by doubled hyphens and their name or by a single
 hyphen and the flag character.
 Operands and options may be intermixed.  They will be reordered.
+
+
 
 Simple client program to set up a TLS connection to some other computer.  It
 sets up a TLS connection and forwards data from the standard input to the
@@ -14753,6 +14762,18 @@ This option takes an argument string.
 
 <p>This is the &ldquo;disable all the tls extensions&rdquo; option.
 This option disables all TLS extensions. Deprecated option. Use the priority string.
+<a name="gnutls_002dcli-inline_002dcommands"></a></p><a name="inline_002dcommands-option"></a>
+<h4 class="subheading">inline-commands option</h4>
+
+<p>This is the &ldquo;inline commands of the form ^&lt;cmd&gt;^&rdquo; option.
+Enable inline commands of the form ^&lt;cmd&gt;^. The inline commands are expected to be in a line by themselves. The available commands are: resume and renegotiate.
+<a name="gnutls_002dcli-inline_002dcommands_002dprefix"></a></p><a name="inline_002dcommands_002dprefix-option"></a>
+<h4 class="subheading">inline-commands-prefix option</h4>
+
+<p>This is the &ldquo;change the default (^) used as a delimiter for inline commands.
+				the value is a single us-ascii character (octets 0 - 127).&rdquo; option.
+This option takes an argument string.
+Change the default (^) delimiter used for inline commands. The delimiter is expected to be a single US-ASCII character (octets 0 - 127). This option is only relevant if inline commands are enabled via the inline-commands option
 <a name="gnutls_002dcli-exit-status"></a></p><a name="gnutls_002dcli-exit-status-1"></a>
 <h4 class="subheading">gnutls-cli exit status</h4>
 
@@ -14768,7 +14789,8 @@ This option disables all TLS extensions. Deprecated option. Use the priority str
 <a name="gnutls_002dcli-See-Also"></a><a name="gnutls_002dcli-See-Also-1"></a>
 <h4 class="subheading">gnutls-cli See Also</h4>
 <p>gnutls-cli-debug(1), gnutls-serv(1)
-<a name="gnutls_002dcli-Examples"></a></p><a name="gnutls_002dcli-Examples-1"></a>
+</p>
+<a name="gnutls_002dcli-Examples"></a><a name="gnutls_002dcli-Examples-1"></a>
 <h4 class="subheading">gnutls-cli Examples</h4>
 <a name="Connecting-using-PSK-authentication"></a>
 <h4 class="subheading">Connecting using PSK authentication</h4>
@@ -14810,6 +14832,7 @@ Compression: COMP-NULL
 Elliptic curves: CURVE-SECP384R1, CURVE-SECP521R1
 PK-signatures: SIGN-RSA-SHA384, SIGN-ECDSA-SHA384, SIGN-RSA-SHA512, SIGN-ECDSA-SHA512
 </pre></div>
+
 <hr>
 <a name="gnutls_002dserv-Invocation"></a>
 <div class="header">
@@ -16331,77 +16354,126 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <tr><td width="60%">TLS_RSA_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x0A</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_RSA_AES_128_CBC_SHA1</td><td width="20%">0x00 0x2F</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_RSA_AES_256_CBC_SHA1</td><td width="20%">0x00 0x35</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_CAMELLIA_128_CBC_SHA256</td><td width="20%">0x00 0xBA</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_RSA_CAMELLIA_256_CBC_SHA256</td><td width="20%">0x00 0xC0</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_RSA_CAMELLIA_128_CBC_SHA1</td><td width="20%">0x00 0x41</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_RSA_CAMELLIA_256_CBC_SHA1</td><td width="20%">0x00 0x84</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_RSA_AES_128_CBC_SHA256</td><td width="20%">0x00 0x3C</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_RSA_AES_256_CBC_SHA256</td><td width="20%">0x00 0x3D</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_RSA_AES_128_GCM_SHA256</td><td width="20%">0x00 0x9C</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_RSA_WITH_SALSA20_256_SHA1</td><td width="20%">0xE4 0x11</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_WITH_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x31</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_WITH_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x10</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_WITH_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x30</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_AES_256_GCM_SHA384</td><td width="20%">0x00 0x9D</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_CAMELLIA_128_GCM_SHA256</td><td width="20%">0xC0 0x7A</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_CAMELLIA_256_GCM_SHA384</td><td width="20%">0xC0 0x7B</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_SALSA20_256_SHA1</td><td width="20%">0xE4 0x11</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x31</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x10</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x30</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_ARCFOUR_SHA1</td><td width="20%">0x00 0x66</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x13</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_AES_128_CBC_SHA1</td><td width="20%">0x00 0x32</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_AES_256_CBC_SHA1</td><td width="20%">0x00 0x38</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_DHE_DSS_CAMELLIA_128_CBC_SHA256</td><td width="20%">0x00 0xBD</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_DHE_DSS_CAMELLIA_256_CBC_SHA256</td><td width="20%">0x00 0xC3</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_CAMELLIA_128_CBC_SHA1</td><td width="20%">0x00 0x44</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_CAMELLIA_256_CBC_SHA1</td><td width="20%">0x00 0x87</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_AES_128_CBC_SHA256</td><td width="20%">0x00 0x40</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_AES_256_CBC_SHA256</td><td width="20%">0x00 0x6A</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_DSS_AES_128_GCM_SHA256</td><td width="20%">0x00 0xA2</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_DSS_AES_256_GCM_SHA384</td><td width="20%">0x00 0xA3</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_DSS_CAMELLIA_128_GCM_SHA256</td><td width="20%">0xC0 0x80</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_DSS_CAMELLIA_256_GCM_SHA384</td><td width="20%">0xC0 0x81</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x16</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_AES_128_CBC_SHA1</td><td width="20%">0x00 0x33</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_AES_256_CBC_SHA1</td><td width="20%">0x00 0x39</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_DHE_RSA_CAMELLIA_128_CBC_SHA256</td><td width="20%">0x00 0xBE</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_DHE_RSA_CAMELLIA_256_CBC_SHA256</td><td width="20%">0x00 0xC4</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_CAMELLIA_128_CBC_SHA1</td><td width="20%">0x00 0x45</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_CAMELLIA_256_CBC_SHA1</td><td width="20%">0x00 0x88</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_AES_128_CBC_SHA256</td><td width="20%">0x00 0x67</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_AES_256_CBC_SHA256</td><td width="20%">0x00 0x6B</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_AES_128_GCM_SHA256</td><td width="20%">0x00 0x9E</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_DHE_DSS_AES_128_GCM_SHA256</td><td width="20%">0x00 0xA2</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_RSA_AES_256_GCM_SHA384</td><td width="20%">0x00 0x9F</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_RSA_CAMELLIA_128_GCM_SHA256</td><td width="20%">0xC0 0x7C</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_RSA_CAMELLIA_256_GCM_SHA384</td><td width="20%">0xC0 0x7D</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_NULL_SHA1</td><td width="20%">0xC0 0x10</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x12</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x13</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x14</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_ARCFOUR_128_SHA1</td><td width="20%">0xC0 0x11</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_CAMELLIA_128_CBC_SHA256</td><td width="20%">0xC0 0x76</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_CAMELLIA_256_CBC_SHA384</td><td width="20%">0xC0 0x77</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_NULL_SHA1</td><td width="20%">0xC0 0x06</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x08</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x09</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x0A</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_ARCFOUR_128_SHA1</td><td width="20%">0xC0 0x07</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_CAMELLIA_128_CBC_SHA256</td><td width="20%">0xC0 0x72</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_CAMELLIA_256_CBC_SHA384</td><td width="20%">0xC0 0x73</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_AES_128_CBC_SHA256</td><td width="20%">0xC0 0x23</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_AES_128_CBC_SHA256</td><td width="20%">0xC0 0x27</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_CAMELLIA_128_GCM_SHA256</td><td width="20%">0xC0 0x86</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_CAMELLIA_256_GCM_SHA384</td><td width="20%">0xC0 0x87</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_AES_128_GCM_SHA256</td><td width="20%">0xC0 0x2B</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_ECDHE_RSA_AES_128_GCM_SHA256</td><td width="20%">0xC0 0x2F</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_GCM_SHA384</td><td width="20%">0xC0 0x2C</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_AES_128_GCM_SHA256</td><td width="20%">0xC0 0x2F</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_AES_256_GCM_SHA384</td><td width="20%">0xC0 0x30</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_CBC_SHA384</td><td width="20%">0xC0 0x24</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_ECDHE_RSA_WITH_SALSA20_256_SHA1</td><td width="20%">0xE4 0x13</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_RSA_WITH_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x33</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_ECDSA_WITH_SALSA20_256_SHA1</td><td width="20%">0xE4 0x15</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_ECDSA_WITH_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x35</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_RSA_WITH_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x12</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_RSA_WITH_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x32</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_ECDSA_WITH_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x14</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_ECDSA_WITH_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x34</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_CAMELLIA_128_GCM_SHA256</td><td width="20%">0xC0 0x8A</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_CAMELLIA_256_GCM_SHA384</td><td width="20%">0xC0 0x8B</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_SALSA20_256_SHA1</td><td width="20%">0xE4 0x13</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x33</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_SALSA20_256_SHA1</td><td width="20%">0xE4 0x15</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x35</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x12</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x32</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x14</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x34</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x34</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x35</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x36</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_AES_128_CBC_SHA256</td><td width="20%">0xC0 0x37</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_AES_256_CBC_SHA384</td><td width="20%">0xC0 0x38</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_ARCFOUR_128_SHA1</td><td width="20%">0xC0 0x33</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_NULL_SHA256</td><td width="20%">0xC0 0x3A</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_NULL_SHA384</td><td width="20%">0xC0 0x3B</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_ECDHE_PSK_WITH_SALSA20_256_SHA1</td><td width="20%">0xE4 0x19</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_PSK_WITH_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x39</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_PSK_WITH_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x18</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_PSK_WITH_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x38</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_CAMELLIA_128_CBC_SHA256</td><td width="20%">0xC0 0x9A</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_CAMELLIA_256_CBC_SHA384</td><td width="20%">0xC0 0x9B</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_SALSA20_256_SHA1</td><td width="20%">0xE4 0x19</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x39</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x18</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x38</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_PSK_SHA_ARCFOUR_SHA1</td><td width="20%">0x00 0x8A</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_PSK_SHA_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x8B</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_PSK_SHA_AES_128_CBC_SHA1</td><td width="20%">0x00 0x8C</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_PSK_SHA_AES_256_CBC_SHA1</td><td width="20%">0x00 0x8D</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_PSK_AES_128_CBC_SHA256</td><td width="20%">0x00 0xAE</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_PSK_AES_256_GCM_SHA384</td><td width="20%">0x00 0xA9</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_PSK_CAMELLIA_128_GCM_SHA256</td><td width="20%">0xC0 0x8D</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_PSK_CAMELLIA_256_GCM_SHA384</td><td width="20%">0xC0 0x8F</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_PSK_AES_128_GCM_SHA256</td><td width="20%">0x00 0xA8</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_PSK_NULL_SHA256</td><td width="20%">0x00 0xB0</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_PSK_WITH_SALSA20_256_SHA1</td><td width="20%">0xE4 0x17</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_PSK_WITH_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x37</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_PSK_WITH_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x16</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_PSK_WITH_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x36</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_PSK_CAMELLIA_128_CBC_SHA256</td><td width="20%">0xC0 0x94</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_PSK_CAMELLIA_256_CBC_SHA384</td><td width="20%">0xC0 0x95</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_PSK_SALSA20_256_SHA1</td><td width="20%">0xE4 0x17</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_PSK_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x37</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_PSK_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x16</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_PSK_ESTREAM_SALSA20_256_UMAC96</td><td width="20%">0xE4 0x36</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_PSK_AES_256_CBC_SHA384</td><td width="20%">0x00 0xAF</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_PSK_NULL_SHA384</td><td width="20%">0x00 0xB1</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_SHA_ARCFOUR_SHA1</td><td width="20%">0x00 0x92</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_SHA_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x93</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_SHA_AES_128_CBC_SHA1</td><td width="20%">0x00 0x94</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_SHA_AES_256_CBC_SHA1</td><td width="20%">0x00 0x95</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_CAMELLIA_128_GCM_SHA256</td><td width="20%">0xC0 0x92</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_CAMELLIA_256_GCM_SHA384</td><td width="20%">0xC0 0x93</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_AES_128_GCM_SHA256</td><td width="20%">0x00 0xAC</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_AES_128_CBC_SHA256</td><td width="20%">0x00 0xB6</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_NULL_SHA256</td><td width="20%">0x00 0xB8</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_AES_256_GCM_SHA384</td><td width="20%">0x00 0xAD</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_AES_256_CBC_SHA384</td><td width="20%">0x00 0xB7</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_NULL_SHA384</td><td width="20%">0x00 0xB9</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_CAMELLIA_128_CBC_SHA256</td><td width="20%">0xC0 0x98</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_CAMELLIA_256_CBC_SHA384</td><td width="20%">0xC0 0x99</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DHE_PSK_SHA_ARCFOUR_SHA1</td><td width="20%">0x00 0x8E</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_PSK_SHA_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x8F</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_PSK_SHA_AES_128_CBC_SHA1</td><td width="20%">0x00 0x90</td><td width="20%">TLS1.0</td></tr>
@@ -16409,21 +16481,32 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <tr><td width="60%">TLS_DHE_PSK_AES_128_CBC_SHA256</td><td width="20%">0x00 0xB2</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_PSK_AES_128_GCM_SHA256</td><td width="20%">0x00 0xAA</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_PSK_NULL_SHA256</td><td width="20%">0x00 0xB4</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_PSK_WITH_AES_256_GCM_SHA384</td><td width="20%">0x00 0xA9</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_DHE_PSK_WITH_AES_256_GCM_SHA384</td><td width="20%">0x00 0xAB</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_NULL_SHA384</td><td width="20%">0x00 0xB5</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_AES_256_CBC_SHA384</td><td width="20%">0x00 0xB3</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_AES_256_GCM_SHA384</td><td width="20%">0x00 0xAB</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_CAMELLIA_128_CBC_SHA256</td><td width="20%">0xC0 0x96</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_CAMELLIA_256_CBC_SHA384</td><td width="20%">0xC0 0x97</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_CAMELLIA_128_GCM_SHA256</td><td width="20%">0xC0 0x90</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_CAMELLIA_256_GCM_SHA384</td><td width="20%">0xC0 0x91</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DH_ANON_ARCFOUR_MD5</td><td width="20%">0x00 0x18</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DH_ANON_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x1B</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DH_ANON_AES_128_CBC_SHA1</td><td width="20%">0x00 0x34</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DH_ANON_AES_256_CBC_SHA1</td><td width="20%">0x00 0x3A</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_DH_ANON_CAMELLIA_128_CBC_SHA256</td><td width="20%">0x00 0xBF</td><td width="20%">TLS1.0</td></tr>
+<tr><td width="60%">TLS_DH_ANON_CAMELLIA_256_CBC_SHA256</td><td width="20%">0x00 0xC5</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DH_ANON_CAMELLIA_128_CBC_SHA1</td><td width="20%">0x00 0x46</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DH_ANON_CAMELLIA_256_CBC_SHA1</td><td width="20%">0x00 0x89</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DH_ANON_AES_128_CBC_SHA256</td><td width="20%">0x00 0x6C</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DH_ANON_AES_256_CBC_SHA256</td><td width="20%">0x00 0x6D</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DH_ANON_AES_128_GCM_SHA256</td><td width="20%">0x00 0xA6</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DH_ANON_AES_256_GCM_SHA384</td><td width="20%">0x00 0xA7</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DH_ANON_CAMELLIA_128_GCM_SHA256</td><td width="20%">0xC0 0x84</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DH_ANON_CAMELLIA_256_GCM_SHA384</td><td width="20%">0xC0 0x85</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDH_ANON_NULL_SHA1</td><td width="20%">0xC0 0x15</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDH_ANON_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x17</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDH_ANON_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x18</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDH_ANON_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x19</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDH_ANON_ARCFOUR_128_SHA1</td><td width="20%">0xC0 0x16</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_SRP_SHA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x1A</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_SRP_SHA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x1D</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_SRP_SHA_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x20</td><td width="20%">TLS1.0</td></tr>
@@ -16469,6 +16552,8 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <dt><code>CAMELLIA-256-CBC</code></dt>
 <dt><code>CAMELLIA-192-CBC</code></dt>
 <dt><code>CAMELLIA-128-CBC</code></dt>
+<dt><code>CAMELLIA-128-GCM</code></dt>
+<dt><code>CAMELLIA-256-GCM</code></dt>
 <dt><code>3DES-CBC</code></dt>
 <dt><code>DES-CBC</code></dt>
 <dt><code>ARCFOUR-40</code></dt>
@@ -16503,6 +16588,7 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <dt><code>SRP-RSA</code></dt>
 <dt><code>SRP</code></dt>
 <dt><code>PSK</code></dt>
+<dt><code>RSA-PSK</code></dt>
 <dt><code>DHE-PSK</code></dt>
 <dt><code>ECDHE-PSK</code></dt>
 </dl>
@@ -17013,6 +17099,30 @@ with the given credentials.
 <p>This function will delete all the keys and the certificates associated
 with the given credentials. This function must not be called when a
 TLS negotiation that uses the credentials is in progress.
+</p></dd></dl>
+
+<a name="gnutls_005fcertificate_005fget_005fcrt_005fraw-1"></a>
+<h4 class="subheading">gnutls_certificate_get_crt_raw</h4>
+<a name="gnutls_005fcertificate_005fget_005fcrt_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fcertificate_005fget_005fcrt_005fraw"></a>Function: <em>int</em> <strong>gnutls_certificate_get_crt_raw</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>, unsigned <var>idx1</var>, unsigned <var>idx2</var>, gnutls_datum_t * <var>cert</var>)</em></dt>
+<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+</p>
+<p><var>idx1</var>: the index of the certificate if multiple are present
+</p>
+<p><var>idx2</var>: the index in the certificate list. Zero gives the server&rsquo;s certificate.
+</p>
+<p><var>cert</var>: Will hold the DER encoded certificate.
+</p>
+<p>This function will return the DER encoded certificate of the
+server or any other certificate on its certificate chain (based on  <code>idx2</code> ).
+The returned data should be treated as constant and only accessible during the lifetime
+of  <code>sc</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value. In case the indexes are out of bounds <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> 
+is returned.
+</p>
+<p><strong>Since:</strong> 3.2.5
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fget_005fissuer-1"></a>
@@ -19024,8 +19134,12 @@ to be sent or received in this session.
 </p>
 <p><var>type</var>: one of the GNUTLS_HB_* flags
 </p>
-<p>This function will allow heartbeat messages to be
-received.
+<p>If this function is called with the <code>GNUTLS_HB_PEER_ALLOWED_TO_SEND</code> 
+GnuTLS will allow heartbeat messages to be received. Moreover it also
+request the peer to accept heartbeat messages.
+</p>
+<p>The function <code>gnutls_heartbeat_allowed()</code>  can be used to test Whether
+locally generated heartbeat messages can be accepted by the peer.
 </p>
 <p><strong>Since:</strong> 3.1.2
 </p></dd></dl>
@@ -21437,8 +21551,8 @@ error code.
 SRP credentials.  The callback&rsquo;s function form is:
 </p>
 <p>int (*callback)(gnutls_session_t, const char* username,
-gnutls_datum_t* salt, gnutls_datum_t *verifier, gnutls_datum_t* g,
-gnutls_datum_t* n);
+gnutls_datum_t* salt, gnutls_datum_t *verifier, gnutls_datum_t* generator,
+gnutls_datum_t* prime);
 </p>
 <p><code>username</code> contains the actual username.
 The  <code>salt</code> ,  <code>verifier</code> ,  <code>generator</code> and  <code>prime</code> must be filled
@@ -27463,8 +27577,6 @@ to the trusted list.
 its status. The  <code>verify</code> parameter will hold an OR&rsquo;ed sequence of
 <code>gnutls_certificate_status_t</code>  flags.
 </p>
-<p><strong>Limitation:</strong> Pathlen constraints or key usage flags are not consulted.
-</p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
 </p>
@@ -30846,9 +30958,11 @@ gnutls_certificate_credentials_t structure.  This function may be
 called more than once, in case multiple keys/certificates exist for
 the server.  For clients that wants to send more than its own end
 entity certificate (e.g., also an intermediate CA cert) then put
-the certificate chain in  <code>pcert_list</code> . The  <code>pcert_list</code> and  <code>key</code> will
-become part of the credentials structure and must not
-be deallocated. They will be automatically deallocated when  <code>res</code> is deinitialized.
+the certificate chain in  <code>pcert_list</code> . 
+</p>
+<p>Note that the  <code>pcert_list</code> and  <code>key</code> will become part of the credentials 
+structure and must not be deallocated. They will be automatically deallocated 
+when the  <code>res</code> structure is deinitialized.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p>
@@ -32532,6 +32646,34 @@ data for the given host.
 negative error value.
 </p></dd></dl>
 
+<a name="dane_005fraw_005ftlsa-1"></a>
+<h4 class="subheading">dane_raw_tlsa</h4>
+<a name="dane_005fraw_005ftlsa"></a><dl>
+<dt><a name="index-dane_005fraw_005ftlsa"></a>Function: <em>int</em> <strong>dane_raw_tlsa</strong> <em>(dane_state_t <var>s</var>, dane_query_t * <var>r</var>, char * <var>const*dane_data</var>, const int * <var>dane_data_len</var>, int <var>secure</var>, int <var>bogus</var>)</em></dt>
+<dd><p><var>s</var>: The DANE state structure
+</p>
+<p><var>r</var>: A structure to place the result
+</p>
+<p><var>const*dane_data</var>: &ndash; undescribed &ndash;
+</p>
+<p><var>dane_data_len</var>: the length n bytes of the dane_data items
+ <code>param</code> secure true if the result is validated securely, false if
+validation failed or the domain queried has no security info
+ <code>param</code> bogus if the result was not secure (secure = 0) due to a security failure,
+and the result is due to a security failure, bogus is true.
+</p>
+<p><var>secure</var>: &ndash; undescribed &ndash;
+</p>
+<p><var>bogus</var>: &ndash; undescribed &ndash;
+</p>
+
+<p>This function will fill in the TLSA (DANE) structure from
+the given raw DNS record data.
+</p>
+<p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
 <a name="dane_005fstate_005fdeinit-1"></a>
 <h4 class="subheading">dane_state_deinit</h4>
 <a name="dane_005fstate_005fdeinit"></a><dl>
@@ -32563,7 +32705,7 @@ negative error value.
 </p>
 <p><var>file</var>: The file holding the DLV keys.
 </p>
-<p>This function will set a file with trusted keys 
+<p>This function will set a file with trusted keys
 for DLV  (DNSSEC  Lookaside  Validation).
 </p></dd></dl>
 
@@ -32626,9 +32768,49 @@ negative error value.
 <p><var>verify</var>: An OR&rsquo;ed list of <code>dane_verify_status_t</code> .
 </p>
 <p>This function will verify the given certificate chain against the
-CA constrains and/or the certificate available via DANE. 
+CA constrains and/or the certificate available via DANE.
 If no information via DANE can be obtained the flag <code>DANE_VERIFY_NO_DANE_INFO</code> 
-is set. If a DNSSEC signature is not available for the DANE 
+is set. If a DNSSEC signature is not available for the DANE
+record then the verify flag <code>DANE_VERIFY_NO_DNSSEC_DATA</code>  is set.
+</p>
+<p>Note that the CA constraint only applies for the directly certifying CA
+and does not account for long CA chains.
+</p>
+<p>Due to the many possible options of DANE, there is no single threat
+model countered. When notifying the user about DANE verification results
+it may be better to mention: DANE verification did not reject the certificate,
+rather than mentioning a successful DANE verication.
+</p>
+<p>If the  <code>q</code> parameter is provided it will be used for caching entries.
+</p>
+<p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="dane_005fverify_005fcrt_005fraw-1"></a>
+<h4 class="subheading">dane_verify_crt_raw</h4>
+<a name="dane_005fverify_005fcrt_005fraw"></a><dl>
+<dt><a name="index-dane_005fverify_005fcrt_005fraw"></a>Function: <em>int</em> <strong>dane_verify_crt_raw</strong> <em>(dane_state_t <var>s</var>, const gnutls_datum_t * <var>chain</var>, unsigned <var>chain_size</var>, gnutls_certificate_type_t <var>chain_type</var>, dane_query_t <var>r</var>, unsigned int <var>sflags</var>, unsigned int <var>vflags</var>, unsigned int * <var>verify</var>)</em></dt>
+<dd><p><var>s</var>: A DANE state structure (may be NULL)
+</p>
+<p><var>chain</var>: A certificate chain
+</p>
+<p><var>chain_size</var>: The size of the chain
+</p>
+<p><var>chain_type</var>: The type of the certificate chain
+</p>
+<p><var>r</var>: DANE data to check against
+</p>
+<p><var>sflags</var>: Flags for the the initialization of  <code>s</code> (if NULL)
+</p>
+<p><var>vflags</var>: Verification flags; an OR&rsquo;ed list of <code>dane_verify_flags_t</code> .
+</p>
+<p><var>verify</var>: An OR&rsquo;ed list of <code>dane_verify_status_t</code> .
+</p>
+<p>This function will verify the given certificate chain against the
+CA constrains and/or the certificate available via DANE.
+If no information via DANE can be obtained the flag <code>DANE_VERIFY_NO_DANE_INFO</code> 
+is set. If a DNSSEC signature is not available for the DANE
 record then the verify flag <code>DANE_VERIFY_NO_DNSSEC_DATA</code>  is set.
 </p>
 <p>Note that the CA constraint only applies for the directly certifying CA
@@ -32666,7 +32848,7 @@ negative error value.
 <p><var>verify</var>: An OR&rsquo;ed list of <code>dane_verify_status_t</code> .
 </p>
 <p>This function will verify session&rsquo;s certificate chain against the
-CA constrains and/or the certificate available via DANE. 
+CA constrains and/or the certificate available via DANE.
 See <code>dane_verify_crt()</code>  for more information.
 </p>
 <p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
@@ -32720,6 +32902,9 @@ and before any encryption operations.
 <p>This function will decrypt the given data using the algorithm
 specified by the context.
 </p>
+<p>Note that in AEAD ciphers, this will not check the tag. You will
+need to compare the tag sent with the value returned from <code>gnutls_cipher_tag()</code> .
+</p>
 <p><strong>Returns:</strong> Zero or a negative error code on error.
 </p>
 <p><strong>Since:</strong> 2.10.0
@@ -32741,6 +32926,9 @@ specified by the context.
 </p>
 <p>This function will decrypt the given data using the algorithm
 specified by the context.
+</p>
+<p>Note that in AEAD ciphers, this will not check the tag. You will
+need to compare the tag sent with the value returned from <code>gnutls_cipher_tag()</code> .
 </p>
 <p><strong>Returns:</strong> Zero or a negative error code on error.
 </p>
@@ -34552,6 +34740,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-dane_005fquery_005fentries"><code>dane_query_entries</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dane_005fquery_005fstatus"><code>dane_query_status</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dane_005fquery_005ftlsa"><code>dane_query_tlsa</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-dane_005fraw_005ftlsa"><code>dane_raw_tlsa</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dane_005fstate_005fdeinit"><code>dane_state_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dane_005fstate_005finit"><code>dane_state_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dane_005fstate_005fset_005fdlv_005ffile"><code>dane_state_set_dlv_file</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
@@ -34559,6 +34748,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-dane_005fverification_005fstatus_005fprint"><code>dane_verification_status_print</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dane_005fverify_005fcrt"><code>dane_verify_crt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Certificate-verification">Certificate verification</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dane_005fverify_005fcrt-1"><code>dane_verify_crt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-dane_005fverify_005fcrt_005fraw"><code>dane_verify_crt_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dane_005fverify_005fsession_005fcrt"><code>dane_verify_session_crt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DANE-API">DANE API</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Function-and-Data-Index_fn_letter-G">G</a></th><td></td><td></td></tr>
@@ -34593,6 +34783,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005ffree_005fcredentials"><code>gnutls_certificate_free_credentials</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005ffree_005fcrls"><code>gnutls_certificate_free_crls</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005ffree_005fkeys"><code>gnutls_certificate_free_keys</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fget_005fcrt_005fraw"><code>gnutls_certificate_get_crt_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fget_005fissuer"><code>gnutls_certificate_get_issuer</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fget_005fours"><code>gnutls_certificate_get_ours</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fget_005fpeers"><code>gnutls_certificate_get_peers</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>

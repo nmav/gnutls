@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.4 of GnuTLS.
+3.2.5 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.4: DANE API</title>
+<title>GnuTLS 3.2.5: DANE API</title>
 
-<meta name="description" content="GnuTLS 3.2.4: DANE API">
-<meta name="keywords" content="GnuTLS 3.2.4: DANE API">
+<meta name="description" content="GnuTLS 3.2.5: DANE API">
+<meta name="keywords" content="GnuTLS 3.2.5: DANE API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -281,6 +281,34 @@ data for the given host.
 negative error value.
 </p></dd></dl>
 
+<a name="dane_005fraw_005ftlsa-1"></a>
+<h4 class="subheading">dane_raw_tlsa</h4>
+<a name="dane_005fraw_005ftlsa"></a><dl>
+<dt><a name="index-dane_005fraw_005ftlsa"></a>Function: <em>int</em> <strong>dane_raw_tlsa</strong> <em>(dane_state_t <var>s</var>, dane_query_t * <var>r</var>, char * <var>const*dane_data</var>, const int * <var>dane_data_len</var>, int <var>secure</var>, int <var>bogus</var>)</em></dt>
+<dd><p><var>s</var>: The DANE state structure
+</p>
+<p><var>r</var>: A structure to place the result
+</p>
+<p><var>const*dane_data</var>: &ndash; undescribed &ndash;
+</p>
+<p><var>dane_data_len</var>: the length n bytes of the dane_data items
+ <code>param</code> secure true if the result is validated securely, false if
+validation failed or the domain queried has no security info
+ <code>param</code> bogus if the result was not secure (secure = 0) due to a security failure,
+and the result is due to a security failure, bogus is true.
+</p>
+<p><var>secure</var>: &ndash; undescribed &ndash;
+</p>
+<p><var>bogus</var>: &ndash; undescribed &ndash;
+</p>
+
+<p>This function will fill in the TLSA (DANE) structure from
+the given raw DNS record data.
+</p>
+<p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
 <a name="dane_005fstate_005fdeinit-1"></a>
 <h4 class="subheading">dane_state_deinit</h4>
 <a name="dane_005fstate_005fdeinit"></a><dl>
@@ -312,7 +340,7 @@ negative error value.
 </p>
 <p><var>file</var>: The file holding the DLV keys.
 </p>
-<p>This function will set a file with trusted keys 
+<p>This function will set a file with trusted keys
 for DLV  (DNSSEC  Lookaside  Validation).
 </p></dd></dl>
 
@@ -375,9 +403,49 @@ negative error value.
 <p><var>verify</var>: An OR&rsquo;ed list of <code>dane_verify_status_t</code> .
 </p>
 <p>This function will verify the given certificate chain against the
-CA constrains and/or the certificate available via DANE. 
+CA constrains and/or the certificate available via DANE.
 If no information via DANE can be obtained the flag <code>DANE_VERIFY_NO_DANE_INFO</code> 
-is set. If a DNSSEC signature is not available for the DANE 
+is set. If a DNSSEC signature is not available for the DANE
+record then the verify flag <code>DANE_VERIFY_NO_DNSSEC_DATA</code>  is set.
+</p>
+<p>Note that the CA constraint only applies for the directly certifying CA
+and does not account for long CA chains.
+</p>
+<p>Due to the many possible options of DANE, there is no single threat
+model countered. When notifying the user about DANE verification results
+it may be better to mention: DANE verification did not reject the certificate,
+rather than mentioning a successful DANE verication.
+</p>
+<p>If the  <code>q</code> parameter is provided it will be used for caching entries.
+</p>
+<p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="dane_005fverify_005fcrt_005fraw-1"></a>
+<h4 class="subheading">dane_verify_crt_raw</h4>
+<a name="dane_005fverify_005fcrt_005fraw"></a><dl>
+<dt><a name="index-dane_005fverify_005fcrt_005fraw"></a>Function: <em>int</em> <strong>dane_verify_crt_raw</strong> <em>(dane_state_t <var>s</var>, const gnutls_datum_t * <var>chain</var>, unsigned <var>chain_size</var>, gnutls_certificate_type_t <var>chain_type</var>, dane_query_t <var>r</var>, unsigned int <var>sflags</var>, unsigned int <var>vflags</var>, unsigned int * <var>verify</var>)</em></dt>
+<dd><p><var>s</var>: A DANE state structure (may be NULL)
+</p>
+<p><var>chain</var>: A certificate chain
+</p>
+<p><var>chain_size</var>: The size of the chain
+</p>
+<p><var>chain_type</var>: The type of the certificate chain
+</p>
+<p><var>r</var>: DANE data to check against
+</p>
+<p><var>sflags</var>: Flags for the the initialization of  <code>s</code> (if NULL)
+</p>
+<p><var>vflags</var>: Verification flags; an OR&rsquo;ed list of <code>dane_verify_flags_t</code> .
+</p>
+<p><var>verify</var>: An OR&rsquo;ed list of <code>dane_verify_status_t</code> .
+</p>
+<p>This function will verify the given certificate chain against the
+CA constrains and/or the certificate available via DANE.
+If no information via DANE can be obtained the flag <code>DANE_VERIFY_NO_DANE_INFO</code> 
+is set. If a DNSSEC signature is not available for the DANE
 record then the verify flag <code>DANE_VERIFY_NO_DNSSEC_DATA</code>  is set.
 </p>
 <p>Note that the CA constraint only applies for the directly certifying CA
@@ -415,7 +483,7 @@ negative error value.
 <p><var>verify</var>: An OR&rsquo;ed list of <code>dane_verify_status_t</code> .
 </p>
 <p>This function will verify session&rsquo;s certificate chain against the
-CA constrains and/or the certificate available via DANE. 
+CA constrains and/or the certificate available via DANE.
 See <code>dane_verify_crt()</code>  for more information.
 </p>
 <p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
