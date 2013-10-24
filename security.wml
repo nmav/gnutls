@@ -30,12 +30,22 @@
 <p>
 <h2>Advisories</h2></p>
 <p>
-<table class="news" border="0" cellspacing="1" width="90%">
+<table class="news" width="90%">
   <tr>
     <th>Tag</th>
     <th>Severity</th>
     <th>Information</th>
   </tr>
+  <tr>
+    <td><a name="GNUTLS-SA-2013-3">GNUTLS-SA-2013-3</a>
+      </td>
+    <td>Denial of service</td>
+    <td>This vulnerability affects the DANE library of gnutls 3.1.x and gnutls 3.2.x. A server that
+returns more 4 DANE entries could corrupt the memory a requesting client.<br>
+
+      <b>Recommendation:</b> Upgrade to gnutls 3.1.15 or 3.2.5</td>
+  </tr>
+
   <tr>
     <td><a name="GNUTLS-SA-2013-2">GNUTLS-SA-2013-2</a><br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2116">

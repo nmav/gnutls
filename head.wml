@@ -96,7 +96,7 @@ table.news {
 }
 table.news th {
 	border-width: 0px;
-	padding: 1px;
+        padding:10px 5px;
 	border-style: inset;
 	border-color: gray;
 	background-color: $(TABLE_HDCOLOR);
@@ -104,7 +104,7 @@ table.news th {
 }
 table.news td {
 	border-width: 0px;
-	padding: 1px;
+        padding:10px 5px;
 	border-style: inset;
 	border-color: gray;
 	background-color: $(TABLE_BGCOLOR2);
