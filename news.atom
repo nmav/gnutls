@@ -3,7 +3,7 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2013-10-24T12:35:02+00:00</updated>
+<updated>2013-10-24T12:41:24+00:00</updated>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2013-10-24</id>
@@ -38,6 +38,10 @@ of the DANE library in gnutls 3.1.x and 3.2.x.
 and
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7049">GnuTLS 3.1.15</a>, 
 were released.
+</p>
+<p>
+Added <a href="http://www.gnutls.org/faq.html">answers to frequently asked
+questions</a>.
 </p>
 
     </div>
