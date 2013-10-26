@@ -45,17 +45,17 @@
   <tr>
     <td>stable-next</td><td>$(STABLE_NEXT_VER).x</td>
     <td><a href="ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_NEXT_VER)">
-	ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_NEXT_VER)</a></td>
+	ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_NEXT_VER)</a> (<a href="http://www.gnupg.org/download/mirrors.en.html">mirror list</a>)</td>
   </tr>
   <tr>
     <td>stable</td><td>$(STABLE_VER).x</td>
     <td><a href="ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_VER)">
-	ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_VER)</a></td>
+	ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_VER)</a> (<a href="http://www.gnupg.org/download/mirrors.en.html">mirror list</a>)</td>
   </tr>
   <tr>
     <td>stable-old</td><td>$(STABLE_OLD_VER).x</td>
     <td><a href="ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_OLD_VER)">
-	ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_OLD_VER)</a></td>
+	ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_OLD_VER)</a> (<a href="http://www.gnupg.org/download/mirrors.en.html">mirror list</a>)</td>
   </tr>
 
 <!--
@@ -98,7 +98,7 @@
   </tr>
 
   <tr>
-    <td>primary FTP server</td>
+    <td>Latest precompiled version</td>
     <td>
         <a href="ftp://ftp.gnutls.org/gcrypt/gnutls/w32/">ftp://ftp.gnutls.org/gcrypt/gnutls/w32/</a>
     </td>
