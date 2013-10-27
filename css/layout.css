@@ -422,75 +422,68 @@ acronym, abbr {border-bottom: 1px dotted #111;}
 /* emacs-page */
 /* Items specific to education */
 
-table.transparent {
-	border-width: 0px;
-	border-spacing: 2px;
-	border-style: none;
-	border-color: white;
-	border-collapse: separate;
-	background-color: white;
+/* definitions for /education-specific navigation bar */
+ul#edu-navigation {
+  text-align: center;
+  /* the selected colors are the same as for h2 */
+  background-color: #3465a4;
+  color: white;
+  /* right and left extents should be the same as for h2;
+     the top separation is determined via h2 margin-bottom */
+  margin: 0;
+  margin-bottom: 1.7em;
 }
-table.transparent th {
-	border-width: 0px;
-	padding: 1px;
-	border-style: inset;
-	border-color: gray;
-	background-color: white;
-	-moz-border-radius: ;
+
+#edu-navigation li {
+  display: inline;
+  list-style-type: none;
 }
-table.transparent td {
-	border-width: 0px;
-	padding: 1px;
-	border-style: inset;
-	border-color: gray;
-	background-color: white;
-	-moz-border-radius: ;
+
+#edu-navigation li a {
+  /* font size and padding are set to make the navigation bar
+     remain a single line when window is 921 pixels or wider */
+  font-size: 12.8px;
+  padding: 0 10px;
+  display: inline-block;
+  background-color: #3465a4;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
-table.news-transparent {
-	border-width: 3px;
-	border-spacing: 5px;
-	border-style: none;
-	border-color: $(TABLE_HDCOLOR);
-	border-collapse: separate;
-	background-color: transparent;
+
+#edu-navigation li a:hover, #edu-navigation li.active a {
+  background-color: #006;
+  color: yellow;
 }
-table.news-transparent th {
-	border-width: 0px;
-	padding: 1px;
-	border-style: inset;
-	border-color: gray;
-	background-color: transparent;
-	-moz-border-radius: ;
+
+/* let edu-navigation bar approach closer to h2 */
+div#education-content h2 { margin-bottom: 1px; }
+
+/* breadcrumb for /education */
+p.edu-breadcrumb {
+  line-height: 150% !important;
+  padding-left: 10px;
 }
-table.news-transparent td {
-	border-width: 1px;
-	padding: 3px;
-	border-style: solid;
-	border-color: $(TABLE_BGCOLOR2);
-	background-color: transparent;
-	-moz-border-radius: ;
+
+/* styles for subsections of /education "Case Studies" */
+
+div.edu-cases {
+  border-top: 5px ridge #3465a4;
+  border-bottom: 5px ridge #3465a4;
+  margin-right: 4em;
+  margin-left: 4em;
+  margin-bottom: 1em;
 }
-table.news {
-	border-width: 0px;
-	border-spacing: 2px;
-	border-style: none;
-	border-color: white;
-	border-collapse: separate;
-	background-color: $(TABLE_BGCOLOR);
+
+/* make h3 for edu-cases look like h4 for other pages */
+div.edu-cases h3 {
+  font-size: 1.3em !important;
+  margin: 0;
 }
-table.news th {
-	border-width: 0px;
-        padding:10px 5px;
-	border-style: inset;
-	border-color: gray;
-	background-color: $(TABLE_HDCOLOR);
-	-moz-border-radius: ;
+
+div.edu-cases ul, div.edu-cases ol {
+  padding-left: 3em;
+  margin-right: 3em;
 }
-table.news td {
-	border-width: 0px;
-        padding:10px 5px;
-	border-style: inset;
-	border-color: gray;
-	background-color: $(TABLE_BGCOLOR2);
-	-moz-border-radius: ;
-}
+
+/* End items specific to education */
