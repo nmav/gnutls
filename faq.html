@@ -177,7 +177,7 @@ versions of GnuTLS may also allow such key usage violations (and will only outpu
 <h1><a href="#key-usage-violation2">"The server software I use outputs the following error:
 "Insufficient credentials for that request." after a client connects.</a></h1>
 <p><b>Answer:</b>
-If the server uses X.509 certificates, most probably the server certificate doesn't allow
+If the server uses an X.509 certificate with RSA keys, most probably the server certificate doesn't allow
 any of the ciphersuites requested by the client (this is related to <a href="#key-usage-violation">key-usage-violation</a>).
 There are three possibilities:
 <ul>
