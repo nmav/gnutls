@@ -28,81 +28,6 @@
    end of flattr -->
 </head>
 <body>
-<!-- <body bgcolor="#ffffff" text="#000000" link="#1f00ff" alink="#ff0000" vlink="#9900dd"> -->
-<style type="text/css">
-table.transparent {
-	border-width: 0px;
-	border-spacing: 2px;
-	border-style: none;
-	border-color: white;
-	border-collapse: separate;
-	background-color: white;
-}
-table.transparent th {
-	border-width: 0px;
-	padding: 1px;
-	border-style: inset;
-	border-color: gray;
-	background-color: white;
-	-moz-border-radius: ;
-}
-table.transparent td {
-	border-width: 0px;
-	padding: 1px;
-	border-style: inset;
-	border-color: gray;
-	background-color: white;
-	-moz-border-radius: ;
-}
-table.news-transparent {
-	border-width: 3px;
-	border-spacing: 5px;
-	border-style: none;
-	border-color: #ccbcbc;
-	border-collapse: separate;
-	background-color: transparent;
-}
-table.news-transparent th {
-	border-width: 0px;
-	padding: 1px;
-	border-style: inset;
-	border-color: gray;
-	background-color: transparent;
-	-moz-border-radius: ;
-}
-table.news-transparent td {
-	border-width: 1px;
-	padding: 3px;
-	border-style: solid;
-	border-color: #e0d7d7;
-	background-color: transparent;
-	-moz-border-radius: ;
-}
-table.news {
-	border-width: 0px;
-	border-spacing: 2px;
-	border-style: none;
-	border-color: white;
-	border-collapse: separate;
-	background-color: #e5e5e5;
-}
-table.news th {
-	border-width: 0px;
-        padding:10px 5px;
-	border-style: inset;
-	border-color: gray;
-	background-color: #ccbcbc;
-	-moz-border-radius: ;
-}
-table.news td {
-	border-width: 0px;
-        padding:10px 5px;
-	border-style: inset;
-	border-color: gray;
-	background-color: #e0d7d7;
-	-moz-border-radius: ;
-}
-</style>
 <div id="null-wrapper">
 <!-- begin of body-include-2 -->
       <div id="header">
@@ -162,9 +87,10 @@ table.news td {
     <th>Information</th>
   </tr>
   <tr>
-    <td><a name="GNUTLS-SA-2013-3">GNUTLS-SA-2013-3</a><br>
+    <td><div class="emph-box" id="GNUTLS-SA-2013-3">GNUTLS-SA-2013-3<br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4466">
 	CVE-2013-4466</a>
+    </div>
       </td>
     <td>Denial of service</td>
     <td>This vulnerability affects the DANE library of gnutls 3.1.x and gnutls 3.2.x. A server that
@@ -172,21 +98,21 @@ returns more 4 DANE entries could corrupt the memory of a requesting client.<br>
       <b>Recommendation:</b> Upgrade to the latest gnutls version (3.1.15 or 3.2.5)</td>
   </tr>
   <tr>
-    <td><a name="GNUTLS-SA-2013-2">GNUTLS-SA-2013-2</a><br>
+    <td><div class="emph-box" id="GNUTLS-SA-2013-2">GNUTLS-SA-2013-2<br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2116">
 	CVE-2013-2116</a>
-      </td>
+      </div></td>
     <td>Denial of service</td>
     <td>This vulnerability affects gnutls 2.12.23 and its TLS record decoding.<br>
       <b>Recommendation:</b> Apply <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6754">the patch</a> or upgrade to gnutls 3.x.</td>
   </tr>
   <tr>
-    <td><a name="GNUTLS-SA-2013-1">GNUTLS-SA-2013-1</a><br>
+    <td><div class="emph-box" id="GNUTLS-SA-2013-1">GNUTLS-SA-2013-1<br>
       <a href="http://www.isg.rhul.ac.uk/tls/">
 	TLS CBC padding timing attack</a><br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1619">
 	CVE-2013-1619</a>
-      </td>
+      </div></td>
     <td>Possible plaintext recovery</td>
     <td><p>
 Nadhem Alfardan and Kenny Paterson devised an attack that recovers
