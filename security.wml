@@ -37,10 +37,10 @@
     <th>Information</th>
   </tr>
   <tr>
-    <td><a name="GNUTLS-SA-2013-3">GNUTLS-SA-2013-3</a><br>
+    <td><div class="emph-box" id="GNUTLS-SA-2013-3">GNUTLS-SA-2013-3<br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4466">
 	CVE-2013-4466</a>
-      </td>
+      </div></td>
     <td>Denial of service</td>
     <td>This vulnerability affects the DANE library of gnutls 3.1.x and gnutls 3.2.x. A server that
 returns more 4 DANE entries could corrupt the memory of a requesting client.<br>
@@ -49,10 +49,10 @@ returns more 4 DANE entries could corrupt the memory of a requesting client.<br>
   </tr>
 
   <tr>
-    <td><a name="GNUTLS-SA-2013-2">GNUTLS-SA-2013-2</a><br>
+    <td><div class="emph-box" id="GNUTLS-SA-2013-2">GNUTLS-SA-2013-2<br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2116">
 	CVE-2013-2116</a>
-      </td>
+      </div></td>
     <td>Denial of service</td>
     <td>This vulnerability affects gnutls 2.12.23 and its TLS record decoding.<br>
 
@@ -60,12 +60,12 @@ returns more 4 DANE entries could corrupt the memory of a requesting client.<br>
   </tr>
 
   <tr>
-    <td><a name="GNUTLS-SA-2013-1">GNUTLS-SA-2013-1</a><br>
+    <td><div class="emph-box" id="GNUTLS-SA-2013-1">GNUTLS-SA-2013-1<br>
       <a href="http://www.isg.rhul.ac.uk/tls/">
 	TLS CBC padding timing attack</a><br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1619">
 	CVE-2013-1619</a>
-      </td>
+      </div></td>
     <td>Possible plaintext recovery</td>
     <td><p>
 Nadhem Alfardan and Kenny Paterson devised an attack that recovers
