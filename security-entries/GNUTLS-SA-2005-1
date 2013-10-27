@@ -1,0 +1,7 @@
+    <td>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1431">CVE-2005-1431</a></td>
+    <td>Denial of service</td>
+    <td><a href="http://lists.gnu.org/archive/html/help-gnutls/2005-04/msg00039.html">Announcement</a><br>
+<a href="http://lists.gnu.org/archive/html/help-gnutls/2005-05/msg00004.html">
+	Write-up by Éric Leblond</a><br>
+      <b>Recommendation:</b> Upgrade to GnuTLS 1.0.25 or 1.2.3.</td>

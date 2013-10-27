@@ -1,0 +1,9 @@
+    <td>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1416">
+	CVE-2009-1416</a>
+    </td>
+    <td>GnuTLS 2.6.x DSA keys are corrupt</td>
+    <td><a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3516">Security advisory including patch</a><br>
+      <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3514">
+	   Announcement of v2.6.6 that includes patch.</a><br>
+      <b>Recommendation:</b> If you are using GnuTLS 2.6.x, upgrade to GnuTLS 2.6.6.</td>

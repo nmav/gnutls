@@ -1,0 +1,6 @@
+    <td></td>
+    <td>None</td>
+    <td><a href="http://lists.gnupg.org/pipermail/gnutls-dev/2006-September/001203.html">Announcement</a><br>
+      <a href="http://www.bell-labs.com/user/bleichen/papers/pkcs.ps">Bleichenbacher's Crypto 98 paper</a><br>
+      <b>Recommendation:</b>
+      No action required, see the <a href="http://lists.gnupg.org/pipermail/gnutls-dev/2006-September/001208.html">post where this advisory is essentially withdrawn</a>.</td>

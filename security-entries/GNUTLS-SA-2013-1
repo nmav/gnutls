@@ -1,0 +1,35 @@
+    <td>
+      <a href="http://www.isg.rhul.ac.uk/tls/">
+	TLS CBC padding timing attack</a><br>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1619">
+	CVE-2013-1619</a>
+      </div></td>
+    <td>Possible plaintext recovery</td>
+    <td><p>
+Nadhem Alfardan and Kenny Paterson devised an attack that recovers
+some bits of the plaintext of a GnuTLS session that utilizes that CBC 
+ciphersuites, by using timing information.
+</p>
+<p>
+In order for the attack to work the client must operate as follows. 
+It connects to a server, it sends some (encrypted) data that will be 
+intercepted by the attacker, who will terminate the client's connection 
+abnormally (i.e. the client will receive a premature termination error). 
+The client should repeat that, multiple times.
+</p>
+<p>
+<b>Who is affected by this attack?</b>
+<ul>
+<li>Clients that repeatedly reconnect and transfer the same data, after 
+a TLS fatal error occurs.</li>
+</ul>
+</p><p>
+<b>How to mitigate the attack?</b>
+<ul>
+<li>Do not enable the CBC ciphersuites, prefer ARCFOUR or GCM modes.</li>
+<li>Upgrade to the latest GnuTLS version (3.1.7, 3.0.28, or 2.12.23).</li>
+</ul>
+
+<a href="http://nikmav.blogspot.be/2013/02/time-is-money-for-cbc-ciphersuites.html">Write-up by Nikos</a><br>
+</p>
+</td>

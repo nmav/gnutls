@@ -1,0 +1,34 @@
+    <td>
+      <a href="http://security.blogoverflow.com/2012/09/how-can-you-protect-yourself-from-crime-beasts-successor/">
+	"CRIME" attack</a><br>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-4929">
+	CVE-2012-4929</a>
+      </td>
+    <td>Possible plaintext recovery</td>
+    <td><p>There is an attack on TLS called "CRIME" which
+takes advantage of compression and may recover plaintext under certain
+circumstances.</p>
+<p>
+<b>Who is affected by this attack?</b>
+<ul>
+<li>Clients or servers that use compression and provide the ability to
+an adversary to inject data (multiple times) in their session.</li>
+</ul>
+</p><p>
+<b>How to mitigate the attack?</b>
+<ul>
+<li>Do not enable compression (GnuTLS doesn't enable it by default)</li>
+<li>When using compression use the CBC ciphers that include a random
+padding up to 255 bytes. That would increase the number of trials an
+attacker needs to perform significantly.</li>
+</ul>
+</p>
+Note that using compression provides <a href="https://www.cosic.esat.kuleuven.be/ecrypt/provpriv2012/abstracts/barghavan.pdf">information to an attacker</a> on the plaintext.
+<br>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6304">Security advisory</a>
+<br>
+<a href="http://security.blogoverflow.com/2012/09/how-can-you-protect-yourself-from-crime-beasts-successor/">A description of the attack</a>
+<br>
+<a href="http://bridge.grumpy-troll.org/2012/09/tls-crime-beast-and-you-programmer.html">Another analysis of the attack</a>
+<br>
+</td>

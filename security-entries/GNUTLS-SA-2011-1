@@ -1,0 +1,10 @@
+    <td>
+      <a href="http://www.ekoparty.org/2011/juliano-rizzo.php">
+	Rizzo attack on TLS</a>
+    </td>
+    <td>Plaintext recovery</td>
+    <td><a href="http://lists.gnu.org/archive/html/gnutls-devel/2011-09/msg00064.html">
+	Mailing list discussion</a>
+<br>
+<b>Recommendation:</b> Make use of TLS 1.1 or TLS 1.2 protocols that are not vulnerable to the attack. 
+TLS 1.1 is enabled by default in GnuTLS since version 2.0.0 (released in 2007). If this is not possible, disable CBC ciphers.</td>

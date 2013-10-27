@@ -1,0 +1,5 @@
+    <td>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0645">CVE-2006-0645</a></td>
+    <td>Denial of service?</td>
+    <td><a href="http://lists.gnupg.org/pipermail/gnutls-dev/2006-February/001058.html">Libtasn1 Announcement</a><br>
+      <b>Recommendation:</b> Upgrade to Libtasn1 0.2.18 and GnuTLS 1.2.10 (stable) or 1.3.4 (experimental).</td>

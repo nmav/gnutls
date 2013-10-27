@@ -1,0 +1,15 @@
+    <td>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2730">
+	CVE-2009-2730</a>
+    </td>
+    <td>False positive in certificate hostname validation</td>
+    <td><a href="http://article.gmane.org/gmane.network.gnutls.general/1743">
+	Announcement of v2.8.3 that solves the problem.</a><br>
+      <a href="http://lists.gnu.org/archive/html/help-gnutls/2009-08/msg00011.html">
+	Analysis of the vulnerability and minimal patch.</a><br>
+      <a href="http://lists.gnu.org/archive/html/gnutls-devel/2009-08/msg00062.html">
+	How to check if your GnuTLS library is vulnerable.</a><br>
+      Back-ported patches for earlier releases:
+      <a href="http://article.gmane.org/gmane.comp.security.oss.general/1994">[1]</a>
+      <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3790">[2]</a><br>
+      <b>Recommendation:</b> Upgrade to GnuTLS 2.8.3 or later.</td>

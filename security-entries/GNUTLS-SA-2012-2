@@ -1,0 +1,9 @@
+    <td>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1573">
+	CVE-2012-1573</a>
+      </td>
+    <td>Possible buffer overflow/Denial of service</td>
+    <td>TLS record handling vulnerability fixed in <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/5912">GnuTLS 3.0.15</a>.<br>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/5959">
+	Write-up by Mu Dynamics</a><br>
+      <b>Recommendation:</b> Upgrade to GnuTLS 3.0.17 or 2.12.18.</td>

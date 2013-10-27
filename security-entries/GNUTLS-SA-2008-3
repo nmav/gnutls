@@ -1,0 +1,17 @@
+    <td>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4989">
+	CVE-2008-4989</a>
+    </td>
+    <td>Remote X.509 Trust Chain Validation error</td>
+    <td><a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3215">Announcement of v2.6.1 and patch</a><br>
+      <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3217">
+	   Detailed analysis</a><br>
+      <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3248">
+	   Announcement of v2.6.2 and updated patch.</a><br>
+      <a href="http://article.gmane.org/gmane.network.gnutls.general/1499">
+	   Announcement of updated patch and 2.6.3 release candidate.</a><br>
+      <a href="http://article.gmane.org/gmane.network.gnutls.general/1500">
+	   Announcement of v2.6.3.</a><br>
+      <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3411">
+	   Announcement of v2.6.4 and v2.4.3.</a><br>
+      <b>Recommendation:</b> Upgrade to GnuTLS 2.6.4 or, if you still use the 2.4.x branch, 2.4.3, or later.</td>

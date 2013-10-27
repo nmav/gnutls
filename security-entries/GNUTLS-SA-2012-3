@@ -1,0 +1,9 @@
+    <td>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1569">
+	CVE-2012-1569</a>
+      </td>
+    <td>Denial of service</td>
+    <td>This vulnerability is in the libtasn1 library and affects the DER length decoding which is fixed in <a href="http://lists.gnu.org/archive/html/help-libtasn1/2012-03/msg00000.html">2.12 release</a>.<br>
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/5959">
+	Write-up by Mu Dynamics</a><br>
+      <b>Recommendation:</b> Upgrade to libtasn1 2.12.</td>

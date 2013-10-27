@@ -1,0 +1,12 @@
+
+    <td>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0731">
+	CVE-2010-0731</a>
+    </td>
+    <td>Remote Denial of Service</td>
+    <td><a href="https://bugzilla.redhat.com/show_bug.cgi?id=573028">
+	RedHat bugzilla report</a><br>
+	<a href="http://thread.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/4230">
+	Mailing list discussion</a>
+      <p>This vulnerability is on a deprecated since 2006 version of GnuTLS. We keep the information here because this version was included in some distributions.
+<b>Recommendation:</b> Upgrade to the latest stable branch.</td>

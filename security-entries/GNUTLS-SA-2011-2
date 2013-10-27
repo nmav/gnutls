@@ -1,0 +1,13 @@
+    <td>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-4128">
+	CVE-2011-4128</a>
+    </td>
+    <td>Possible buffer overflow/Denial of service</td>
+    <td> <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/5596">
+	Mailing list discussion</a>
+<br>
+Note that this vulnerability is triggered by TLS clients that utilize the session resumption 
+functions in a particular way. Clients that perform session resumption using the
+same steps as in <a href="http://www.gnutls.org/manual/html_node/Client-with-Resume-capability-example.html#Client-with-Resume-capability-example">the example
+code of GnuTLS documentation</a> are not vulnerable. A preliminary analysis found no vulnerable clients.
+<b>Recommendation:</b> Upgrade to GnuTLS 3.0.7 or 2.12.14.

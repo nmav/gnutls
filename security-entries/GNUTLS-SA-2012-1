@@ -1,0 +1,13 @@
+    <td>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0390">
+	CVE-2012-0390</a>
+    </td>
+    <td>Timing attack (DTLS)</td>
+    <td> <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/5657">
+	Announcement of GnuTLS 3.0.11</a><br>
+<a href="http://www.isg.rhul.ac.uk/~kp/dtls.pdf">
+	The paper describing the attack</a><br>
+This vulnerability allows an attacker to perform partial plaintext recovery 
+using a timing attack in CBC-mode encryption. The attack is applicable to Datagram TLS (DTLS).
+<br>
+<b>Recommendation:</b> Upgrade to GnuTLS 3.0.11.

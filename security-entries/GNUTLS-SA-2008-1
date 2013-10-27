@@ -1,0 +1,11 @@
+    <td>
+    <a href="https://www.cert.fi/haavoittuvuudet/advisory-gnutls.html">CERT-FI announcement</a><br>
+    <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1948">CVE-2008-1948</a>,
+    <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1949">CVE-2008-1949</a>,
+    <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1950">CVE-2008-1950</a>
+    </td>
+    <td>Remote Denial of Service</td>
+    <td><a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/2803">Announcement and Patch</a><br>
+      <a href="http://lists.gnu.org/archive/html/gnutls-devel/2008-05/msg00060.html">Updated announcement and Patch</a><br>
+      <b>Recommendation:</b> Upgrade to GnuTLS 2.2.5 or apply the
+      patch in the second link.</td>

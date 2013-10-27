@@ -1,0 +1,12 @@
+    <td>
+    <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2377">
+      CVE-2008-2377</a>
+    </td>
+    <td>Local denial of service<br>
+    Server can trigger crash in GnuTLS clients?</td>
+    <td><a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/2947">Announcement</a><br>
+      <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/2948">
+	Detailed analysis and patch</a><br>
+	<a href="https://savannah.gnu.org/support/?106491">Another report that suggest it can be exploited by hostile servers</a><br>
+      <b>Recommendation:</b> Upgrade to GnuTLS 2.4.1 or apply the
+      patch.</td>

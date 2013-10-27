@@ -155,33 +155,32 @@ table.news td {
 <p>
 <h2>Advisories</h2></p>
 <p>
-<table class="news" width="90%" summary="">
-  <tr>
-    <th>Tag</th>
-    <th>Severity</th>
-    <th>Information</th>
-  </tr>
-  <tr>
-    <td><div class="emph-box" id="GNUTLS-SA-2013-3">GNUTLS-SA-2013-3<br>
-      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4466">
+<div align="center">
+  <table class="news" width="90%" summary="">
+<tr><th>Tag</th><th>Other identifier</th><th>Severity</th><th>Information</th>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2013-3">GNUTLS-SA-2013-3</div></td>
+    <td><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4466">
 	CVE-2013-4466</a>
       </div></td>
     <td>Denial of service</td>
     <td>This vulnerability affects the DANE library of gnutls 3.1.x and gnutls 3.2.x. A server that
 returns more 4 DANE entries could corrupt the memory of a requesting client.<br>
       <b>Recommendation:</b> Upgrade to the latest gnutls version (3.1.15 or 3.2.5)</td>
-  </tr>
-  <tr>
-    <td><div class="emph-box" id="GNUTLS-SA-2013-2">GNUTLS-SA-2013-2<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2013-2">GNUTLS-SA-2013-2</div></td>
+    <td>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2116">
 	CVE-2013-2116</a>
-      </div></td>
+      </td>
     <td>Denial of service</td>
     <td>This vulnerability affects gnutls 2.12.23 and its TLS record decoding.<br>
       <b>Recommendation:</b> Apply <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6754">the patch</a> or upgrade to gnutls 3.x.</td>
-  </tr>
-  <tr>
-    <td><div class="emph-box" id="GNUTLS-SA-2013-1">GNUTLS-SA-2013-1<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2013-1">GNUTLS-SA-2013-1</div></td>
+    <td>
       <a href="http://www.isg.rhul.ac.uk/tls/">
 	TLS CBC padding timing attack</a><br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1619">
@@ -215,9 +214,10 @@ a TLS fatal error occurs.</li>
 <a href="http://nikmav.blogspot.be/2013/02/time-is-money-for-cbc-ciphersuites.html">Write-up by Nikos</a><br>
 </p>
 </td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2012-4<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2012-4">GNUTLS-SA-2012-4</div></td>
+    <td>
       <a href="http://security.blogoverflow.com/2012/09/how-can-you-protect-yourself-from-crime-beasts-successor/">
 	"CRIME" attack</a><br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-4929">
@@ -251,9 +251,10 @@ Note that using compression provides <a href="https://www.cosic.esat.kuleuven.be
 <a href="http://bridge.grumpy-troll.org/2012/09/tls-crime-beast-and-you-programmer.html">Another analysis of the attack</a>
 <br>
 </td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2012-3<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2012-3">GNUTLS-SA-2012-3</div></td>
+    <td>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1569">
 	CVE-2012-1569</a>
       </td>
@@ -262,9 +263,10 @@ Note that using compression provides <a href="https://www.cosic.esat.kuleuven.be
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/5959">
 	Write-up by Mu Dynamics</a><br>
       <b>Recommendation:</b> Upgrade to libtasn1 2.12.</td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2012-2<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2012-2">GNUTLS-SA-2012-2</div></td>
+    <td>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1573">
 	CVE-2012-1573</a>
       </td>
@@ -273,10 +275,10 @@ Note that using compression provides <a href="https://www.cosic.esat.kuleuven.be
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/5959">
 	Write-up by Mu Dynamics</a><br>
       <b>Recommendation:</b> Upgrade to GnuTLS 3.0.17 or 2.12.18.</td>
-  </tr>
-  <tr>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2012-1">GNUTLS-SA-2012-1</div></td>
     <td>
-      GNUTLS-SA-2012-1<br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0390">
 	CVE-2012-0390</a>
     </td>
@@ -289,10 +291,10 @@ This vulnerability allows an attacker to perform partial plaintext recovery
 using a timing attack in CBC-mode encryption. The attack is applicable to Datagram TLS (DTLS).
 <br>
 <b>Recommendation:</b> Upgrade to GnuTLS 3.0.11.
-  </tr>
-  <tr>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2011-2">GNUTLS-SA-2011-2</div></td>
     <td>
-      GNUTLS-SA-2011-2<br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-4128">
 	CVE-2011-4128</a>
     </td>
@@ -305,10 +307,10 @@ functions in a particular way. Clients that perform session resumption using the
 same steps as in <a href="http://www.gnutls.org/manual/html_node/Client-with-Resume-capability-example.html#Client-with-Resume-capability-example">the example
 code of GnuTLS documentation</a> are not vulnerable. A preliminary analysis found no vulnerable clients.
 <b>Recommendation:</b> Upgrade to GnuTLS 3.0.7 or 2.12.14.
-  </tr>
-  <tr>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2011-1">GNUTLS-SA-2011-1</div></td>
     <td>
-      GNUTLS-SA-2011-1<br>
       <a href="http://www.ekoparty.org/2011/juliano-rizzo.php">
 	Rizzo attack on TLS</a>
     </td>
@@ -318,10 +320,10 @@ code of GnuTLS documentation</a> are not vulnerable. A preliminary analysis foun
 <br>
 <b>Recommendation:</b> Make use of TLS 1.1 or TLS 1.2 protocols that are not vulnerable to the attack.
 TLS 1.1 is enabled by default in GnuTLS since version 2.0.0 (released in 2007). If this is not possible, disable CBC ciphers.</td>
-  </tr>
-  <tr>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2010-1">GNUTLS-SA-2010-1</div></td>
     <td>
-      <s>GNUTLS-SA-2010-1</s><br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0731">
 	CVE-2010-0731</a>
     </td>
@@ -332,9 +334,10 @@ TLS 1.1 is enabled by default in GnuTLS since version 2.0.0 (released in 2007). 
 	Mailing list discussion</a>
       <p>This vulnerability is on a deprecated since 2006 version of GnuTLS. We keep the information here because this version was included in some distributions.
 <b>Recommendation:</b> Upgrade to the latest stable branch.</td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2009-5<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2009-5">GNUTLS-SA-2009-5</div></td>
+    <td>
       <a href="http://www.kb.cert.org/vuls/id/120541">CERT VU#120541</a><br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3555">
 	CVE-2009-3555</a>
@@ -344,9 +347,10 @@ TLS 1.1 is enabled by default in GnuTLS since version 2.0.0 (released in 2007). 
 	Mailing list discussion</a>
       <p><b>Recommendation:</b> Disable support for TLS renegotiation
       in application servers, or better upgrade to GnuTLS 2.10.x.</td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2009-4<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2009-4">GNUTLS-SA-2009-4</div></td>
+    <td>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2730">
 	CVE-2009-2730</a>
     </td>
@@ -361,9 +365,10 @@ TLS 1.1 is enabled by default in GnuTLS since version 2.0.0 (released in 2007). 
       <a href="http://article.gmane.org/gmane.comp.security.oss.general/1994">[1]</a>
       <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3790">[2]</a><br>
       <b>Recommendation:</b> Upgrade to GnuTLS 2.8.3 or later.</td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2009-3<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2009-3">GNUTLS-SA-2009-3</div></td>
+    <td>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1417">
 	CVE-2009-1417</a>
     </td>
@@ -374,9 +379,10 @@ TLS 1.1 is enabled by default in GnuTLS since version 2.0.0 (released in 2007). 
       <b>Recommendation:</b> Upgrade to GnuTLS 2.6.6 or later. If you
       still use the 2.4.x branch or earlier branches, apply the
       patch.</td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2009-2<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2009-2">GNUTLS-SA-2009-2</div></td>
+    <td>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1416">
 	CVE-2009-1416</a>
     </td>
@@ -385,9 +391,10 @@ TLS 1.1 is enabled by default in GnuTLS since version 2.0.0 (released in 2007). 
       <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3514">
 	   Announcement of v2.6.6 that includes patch.</a><br>
       <b>Recommendation:</b> If you are using GnuTLS 2.6.x, upgrade to GnuTLS 2.6.6.</td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2009-1<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2009-1">GNUTLS-SA-2009-1</div></td>
+    <td>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1415">
 	CVE-2009-1415</a>
     </td>
@@ -396,9 +403,10 @@ TLS 1.1 is enabled by default in GnuTLS since version 2.0.0 (released in 2007). 
       <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3514">
 	   Announcement of v2.6.6 that includes patch.</a><br>
       <b>Recommendation:</b> If you are using GnuTLS 2.6.x, upgrade to GnuTLS 2.6.6.</td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2008-3<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2008-3">GNUTLS-SA-2008-3</div></td>
+    <td>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4989">
 	CVE-2008-4989</a>
     </td>
@@ -415,9 +423,10 @@ TLS 1.1 is enabled by default in GnuTLS since version 2.0.0 (released in 2007). 
       <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3411">
 	   Announcement of v2.6.4 and v2.4.3.</a><br>
       <b>Recommendation:</b> Upgrade to GnuTLS 2.6.4 or, if you still use the 2.4.x branch, 2.4.3, or later.</td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2008-2<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2008-2">GNUTLS-SA-2008-2</div></td>
+    <td>
     <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2377">
       CVE-2008-2377</a>
     </td>
@@ -429,9 +438,10 @@ TLS 1.1 is enabled by default in GnuTLS since version 2.0.0 (released in 2007). 
 	<a href="https://savannah.gnu.org/support/?106491">Another report that suggest it can be exploited by hostile servers</a><br>
       <b>Recommendation:</b> Upgrade to GnuTLS 2.4.1 or apply the
       patch.</td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2008-1<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2008-1">GNUTLS-SA-2008-1</div></td>
+    <td>
     <a href="https://www.cert.fi/haavoittuvuudet/advisory-gnutls.html">CERT-FI announcement</a><br>
     <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1948">CVE-2008-1948</a>,
     <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1949">CVE-2008-1949</a>,
@@ -442,9 +452,10 @@ TLS 1.1 is enabled by default in GnuTLS since version 2.0.0 (released in 2007). 
       <a href="http://lists.gnu.org/archive/html/gnutls-devel/2008-05/msg00060.html">Updated announcement and Patch</a><br>
       <b>Recommendation:</b> Upgrade to GnuTLS 2.2.5 or apply the
       patch in the second link.</td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2006-4<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2006-4">GNUTLS-SA-2006-4</div></td>
+    <td>
     <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4790">CVE-2006-4790</a><br>(<a href="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-4790">via NVD</a>)
     </td>
     <td>False positive in verifying signature</td>
@@ -452,38 +463,43 @@ TLS 1.1 is enabled by default in GnuTLS since version 2.0.0 (released in 2007). 
     <a href="http://lists.gnupg.org/pipermail/gnutls-dev/2006-September/001212.html">Updated patch</a><br>
     <a href="http://lists.gnupg.org/pipermail/gnutls-dev/2006-September/001240.html">Original report</a><br>
       <b>Recommendation:</b> Upgrade to GnuTLS 1.4.4.</td>
-  </tr>
-  <tr>
-    <td><s>GNUTLS-SA-2006-3</s><br></td>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2006-3">GNUTLS-SA-2006-3</div></td>
+    <td></td>
     <td>None</td>
     <td><a href="http://lists.gnupg.org/pipermail/gnutls-dev/2006-September/001203.html">Announcement</a><br>
       <a href="http://www.bell-labs.com/user/bleichen/papers/pkcs.ps">Bleichenbacher's Crypto 98 paper</a><br>
       <b>Recommendation:</b>
       No action required, see the <a href="http://lists.gnupg.org/pipermail/gnutls-dev/2006-September/001208.html">post where this advisory is essentially withdrawn</a>.</td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2006-2<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2006-2">GNUTLS-SA-2006-2</div></td>
+    <td>
     <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-7239">CVE-2006-7239</a></td>
     <td>Denial of service?</td>
     <td><a href="http://lists.gnupg.org/pipermail/gnutls-dev/2006-August/001190.html">Details</a><br>
       <b>Recommendation:</b> Upgrade to GnuTLS 1.4.2.</td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2006-1<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2006-1">GNUTLS-SA-2006-1</div></td>
+    <td>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-0645">CVE-2006-0645</a></td>
     <td>Denial of service?</td>
     <td><a href="http://lists.gnupg.org/pipermail/gnutls-dev/2006-February/001058.html">Libtasn1 Announcement</a><br>
       <b>Recommendation:</b> Upgrade to Libtasn1 0.2.18 and GnuTLS 1.2.10 (stable) or 1.3.4 (experimental).</td>
-  </tr>
-  <tr>
-    <td>GNUTLS-SA-2005-1<br>
+</tr>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2005-1">GNUTLS-SA-2005-1</div></td>
+    <td>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-1431">CVE-2005-1431</a></td>
     <td>Denial of service</td>
     <td><a href="http://lists.gnu.org/archive/html/help-gnutls/2005-04/msg00039.html">Announcement</a><br>
 <a href="http://lists.gnu.org/archive/html/help-gnutls/2005-05/msg00004.html">
 	Write-up by Éric Leblond</a><br>
       <b>Recommendation:</b> Upgrade to GnuTLS 1.0.25 or 1.2.3.</td>
-  </tr>
+</tr>
+</table>
 </table>
 </div>
 </div>

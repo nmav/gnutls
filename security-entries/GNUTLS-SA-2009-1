@@ -1,0 +1,9 @@
+    <td>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1415">
+	CVE-2009-1415</a>
+    </td>
+    <td>Double/invalid free in GnuTLS 2.6.x on certain errors</td>
+    <td><a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3515">Security advisory including patch</a><br>
+      <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3514">
+	   Announcement of v2.6.6 that includes patch.</a><br>
+      <b>Recommendation:</b> If you are using GnuTLS 2.6.x, upgrade to GnuTLS 2.6.6.</td>

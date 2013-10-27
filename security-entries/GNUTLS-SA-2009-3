@@ -1,0 +1,11 @@
+    <td>
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1417">
+	CVE-2009-1417</a>
+    </td>
+    <td>No checking of certificate activation/expiration times</td>
+    <td><a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3517">Security advisory including patch</a><br>
+      <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/3514">
+	   Announcement of v2.6.6 that includes patch.</a><br>
+      <b>Recommendation:</b> Upgrade to GnuTLS 2.6.6 or later.  If you
+      still use the 2.4.x branch or earlier branches, apply the
+      patch.</td>

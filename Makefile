@@ -46,6 +46,10 @@ news.atom: $(NEWS_FILES) scripts/atom.pl
 tweet: $(NEWS_FILES)
 	perl scripts/tweet.pl
 
+security.html: security.wml rawsecurity.wml $(COMMON)
+	$(WML) $(WMLFLAGS) $< > $@.tmp
+	mv $@.tmp $@
+
 news.html: news.wml $(COMMON) $(NEWS_FILES)
 	$(WML) $(WMLFLAGS) $< > $@.tmp
 	mv $@.tmp $@
