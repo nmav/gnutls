@@ -72,8 +72,8 @@ with keyEncipherment set, replace or (better) add another server certificate wit
 </ul>
 
 Note that while having a single certificate with the Key Usage extension unset, or with both
-flags digitalSignature and keyEncipherment would solve the issue; it is considered bad practice 
-to use a single key/certificate for both RSA encryption and RSA signatures.
+digitalSignature and keyEncipherment flags would solve the issue; it is considered bad practice 
+to use a single key/certificate for both RSA encryption and signatures.
 </p>
 </div>
 
