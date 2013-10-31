@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.5 of GnuTLS.
+3.2.6 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.5: Certificate verification</title>
+<title>GnuTLS 3.2.6: Certificate verification</title>
 
-<meta name="description" content="GnuTLS 3.2.5: Certificate verification">
-<meta name="keywords" content="GnuTLS 3.2.5: Certificate verification">
+<meta name="description" content="GnuTLS 3.2.6: Certificate verification">
+<meta name="keywords" content="GnuTLS 3.2.6: Certificate verification">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Advanced-topics.html#Advanced-topics" rel="up" title="Advanced topics">
 <link href="Parameter-generation.html#Parameter-generation" rel="next" title="Parameter generation">
-<link href="Session-resumption.html#Session-resumption" rel="previous" title="Session resumption">
+<link href="Session-resumption.html#Session-resumption" rel="prev" title="Session resumption">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="Certificate-verification"></a>
 <div class="header">
 <p>
-Next: <a href="Parameter-generation.html#Parameter-generation" accesskey="n" rel="next">Parameter generation</a>, Previous: <a href="Session-resumption.html#Session-resumption" accesskey="p" rel="previous">Session resumption</a>, Up: <a href="Advanced-topics.html#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Parameter-generation.html#Parameter-generation" accesskey="n" rel="next">Parameter generation</a>, Previous: <a href="Session-resumption.html#Session-resumption" accesskey="p" rel="prev">Session resumption</a>, Up: <a href="Advanced-topics.html#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Certificate-verification-1"></a>
@@ -341,7 +341,7 @@ AC_SUBST([LIBDANE_LIBS])
 
 
 <dl>
-<dt><a name="index-dane_005fverify_005fcrt"></a>Function: <em>int</em> <strong>dane_verify_crt</strong> <em>(dane_state_t <var>s</var>, const gnutls_datum_t * <var>chain</var>, unsigned <var>chain_size</var>, gnutls_certificate_type_t <var>chain_type</var>, const char * <var>hostname</var>, const char* <var>proto</var>, unsigned int <var>port</var>, unsigned int <var>sflags</var>, unsigned int <var>vflags</var>, unsigned int * <var>verify</var>)</em></dt>
+<dt><a name="index-dane_005fverify_005fcrt"></a>Function: <em>int</em> <strong>dane_verify_crt</strong> <em>(dane_state_t <var>s</var>, const gnutls_datum_t * <var>chain</var>, unsigned <var>chain_size</var>, gnutls_certificate_type_t <var>chain_type</var>, const char * <var>hostname</var>, const char * <var>proto</var>, unsigned int <var>port</var>, unsigned int <var>sflags</var>, unsigned int <var>vflags</var>, unsigned int * <var>verify</var>)</em></dt>
 <dd><p><var>s</var>: A DANE state structure (may be NULL)
 </p>
 <p><var>chain</var>: A certificate chain
@@ -383,7 +383,7 @@ negative error value.
 </p></dd></dl>
 
 <dl compact="compact">
-<dt><code><var>int</var> <a href="DANE-API.html#dane_005fverify_005fsession_005fcrt">dane_verify_session_crt</a> (dane_state_t <var>s</var>, gnutls_session_t <var>session</var>, const char * <var>hostname</var>, const char* <var>proto</var>, unsigned int <var>port</var>, unsigned int <var>sflags</var>, unsigned int <var>vflags</var>, unsigned int * <var>verify</var>)</code></dt>
+<dt><code><var>int</var> <a href="DANE-API.html#dane_005fverify_005fsession_005fcrt">dane_verify_session_crt</a> (dane_state_t <var>s</var>, gnutls_session_t <var>session</var>, const char * <var>hostname</var>, const char * <var>proto</var>, unsigned int <var>port</var>, unsigned int <var>sflags</var>, unsigned int <var>vflags</var>, unsigned int * <var>verify</var>)</code></dt>
 <dt><code><var>const char *</var> <a href="DANE-API.html#dane_005fstrerror">dane_strerror</a> (int <var>error</var>)</code></dt>
 </dl>
 
@@ -417,7 +417,7 @@ you may use danetool (see <a href="danetool-Invocation.html#danetool-Invocation"
 <hr>
 <div class="header">
 <p>
-Next: <a href="Parameter-generation.html#Parameter-generation" accesskey="n" rel="next">Parameter generation</a>, Previous: <a href="Session-resumption.html#Session-resumption" accesskey="p" rel="previous">Session resumption</a>, Up: <a href="Advanced-topics.html#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Parameter-generation.html#Parameter-generation" accesskey="n" rel="next">Parameter generation</a>, Previous: <a href="Session-resumption.html#Session-resumption" accesskey="p" rel="prev">Session resumption</a>, Up: <a href="Advanced-topics.html#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

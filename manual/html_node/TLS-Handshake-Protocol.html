@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.5 of GnuTLS.
+3.2.6 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.5: TLS Handshake Protocol</title>
+<title>GnuTLS 3.2.6: TLS Handshake Protocol</title>
 
-<meta name="description" content="GnuTLS 3.2.5: TLS Handshake Protocol">
-<meta name="keywords" content="GnuTLS 3.2.5: TLS Handshake Protocol">
+<meta name="description" content="GnuTLS 3.2.6: TLS Handshake Protocol">
+<meta name="keywords" content="GnuTLS 3.2.6: TLS Handshake Protocol">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Internal-architecture-of-GnuTLS.html#Internal-architecture-of-GnuTLS" rel="up" title="Internal architecture of GnuTLS">
 <link href="TLS-Authentication-Methods.html#TLS-Authentication-Methods" rel="next" title="TLS Authentication Methods">
-<link href="The-TLS-Protocol.html#The-TLS-Protocol" rel="previous" title="The TLS Protocol">
+<link href="The-TLS-Protocol.html#The-TLS-Protocol" rel="prev" title="The TLS Protocol">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,16 +158,16 @@ dl {
 <a name="TLS-Handshake-Protocol"></a>
 <div class="header">
 <p>
-Next: <a href="TLS-Authentication-Methods.html#TLS-Authentication-Methods" accesskey="n" rel="next">TLS Authentication Methods</a>, Previous: <a href="The-TLS-Protocol.html#The-TLS-Protocol" accesskey="p" rel="previous">The TLS Protocol</a>, Up: <a href="Internal-architecture-of-GnuTLS.html#Internal-architecture-of-GnuTLS" accesskey="u" rel="up">Internal architecture of GnuTLS</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="TLS-Authentication-Methods.html#TLS-Authentication-Methods" accesskey="n" rel="next">TLS Authentication Methods</a>, Previous: <a href="The-TLS-Protocol.html#The-TLS-Protocol" accesskey="p" rel="prev">The TLS Protocol</a>, Up: <a href="Internal-architecture-of-GnuTLS.html#Internal-architecture-of-GnuTLS" accesskey="u" rel="up">Internal architecture of GnuTLS</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="TLS-Handshake-Protocol-1"></a>
 <h3 class="section">10.2 TLS Handshake Protocol</h3>
 <p>The <acronym>GnuTLS</acronym> handshake protocol is implemented as a state
 machine that waits for input or returns immediately when the non-blocking
-transport layer functions are used. The main idea is shown in <a href="#fig_003agnutls_002dhandshake">Figure 10.2</a>.
+transport layer functions are used. The main idea is shown in <a href="#fig_002dgnutls_002dhandshake">Figure 10.2</a>.
 </p>
-<div class="float"><a name="fig_003agnutls_002dhandshake"></a>
+<div class="float"><a name="fig_002dgnutls_002dhandshake"></a>
 <img src="gnutls-handshake-state.png" alt="gnutls-handshake-state">
 
 <div class="float-caption"><p><strong>Figure 10.2: </strong>GnuTLS handshake state machine.</p></div></div>
@@ -176,9 +176,9 @@ implementations of the internal handlers are available and
 <a href="Core-TLS-API.html#gnutls_005fhandshake">gnutls_handshake</a> only multiplexes the input to the appropriate 
 handler. For example a <acronym>PSK</acronym> ciphersuite has a different 
 implementation of the <code>process_client_key_exchange</code> than a
-certificate ciphersuite. We illustrate the idea in <a href="#fig_003agnutls_002dhandshake_002dsequence">Figure 10.3</a>.
+certificate ciphersuite. We illustrate the idea in <a href="#fig_002dgnutls_002dhandshake_002dsequence">Figure 10.3</a>.
 </p>
-<div class="float"><a name="fig_003agnutls_002dhandshake_002dsequence"></a>
+<div class="float"><a name="fig_002dgnutls_002dhandshake_002dsequence"></a>
 <img src="gnutls-handshake-sequence.png" alt="gnutls-handshake-sequence">
 
 <div class="float-caption"><p><strong>Figure 10.3: </strong>GnuTLS handshake process sequence.</p></div></div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.5 of GnuTLS.
+3.2.6 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.5: DANE API</title>
+<title>GnuTLS 3.2.6: DANE API</title>
 
-<meta name="description" content="GnuTLS 3.2.5: DANE API">
-<meta name="keywords" content="GnuTLS 3.2.5: DANE API">
+<meta name="description" content="GnuTLS 3.2.6: DANE API">
+<meta name="keywords" content="GnuTLS 3.2.6: DANE API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="API-reference.html#API-reference" rel="up" title="API reference">
 <link href="Cryptographic-API.html#Cryptographic-API" rel="next" title="Cryptographic API">
-<link href="Abstract-key-API.html#Abstract-key-API" rel="previous" title="Abstract key API">
+<link href="Abstract-key-API.html#Abstract-key-API" rel="prev" title="Abstract key API">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="DANE-API"></a>
 <div class="header">
 <p>
-Next: <a href="Cryptographic-API.html#Cryptographic-API" accesskey="n" rel="next">Cryptographic API</a>, Previous: <a href="Abstract-key-API.html#Abstract-key-API" accesskey="p" rel="previous">Abstract key API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Cryptographic-API.html#Cryptographic-API" accesskey="n" rel="next">Cryptographic API</a>, Previous: <a href="Abstract-key-API.html#Abstract-key-API" accesskey="p" rel="prev">Abstract key API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="DANE-API-1"></a>
@@ -263,7 +263,7 @@ See <code>dane_query_status_t</code>  for the possible types.
 <a name="dane_005fquery_005ftlsa-1"></a>
 <h4 class="subheading">dane_query_tlsa</h4>
 <a name="dane_005fquery_005ftlsa"></a><dl>
-<dt><a name="index-dane_005fquery_005ftlsa"></a>Function: <em>int</em> <strong>dane_query_tlsa</strong> <em>(dane_state_t <var>s</var>, dane_query_t * <var>r</var>, const char* <var>host</var>, const char* <var>proto</var>, unsigned int <var>port</var>)</em></dt>
+<dt><a name="index-dane_005fquery_005ftlsa"></a>Function: <em>int</em> <strong>dane_query_tlsa</strong> <em>(dane_state_t <var>s</var>, dane_query_t * <var>r</var>, const char * <var>host</var>, const char * <var>proto</var>, unsigned int <var>port</var>)</em></dt>
 <dd><p><var>s</var>: The DANE state structure
 </p>
 <p><var>r</var>: A structure to place the result
@@ -284,24 +284,23 @@ negative error value.
 <a name="dane_005fraw_005ftlsa-1"></a>
 <h4 class="subheading">dane_raw_tlsa</h4>
 <a name="dane_005fraw_005ftlsa"></a><dl>
-<dt><a name="index-dane_005fraw_005ftlsa"></a>Function: <em>int</em> <strong>dane_raw_tlsa</strong> <em>(dane_state_t <var>s</var>, dane_query_t * <var>r</var>, char * <var>const*dane_data</var>, const int * <var>dane_data_len</var>, int <var>secure</var>, int <var>bogus</var>)</em></dt>
+<dt><a name="index-dane_005fraw_005ftlsa"></a>Function: <em>int</em> <strong>dane_raw_tlsa</strong> <em>(dane_state_t <var>s</var>, dane_query_t * <var>r</var>, char *const * <var>dane_data</var>, const int * <var>dane_data_len</var>, int <var>secure</var>, int <var>bogus</var>)</em></dt>
 <dd><p><var>s</var>: The DANE state structure
 </p>
 <p><var>r</var>: A structure to place the result
 </p>
-<p><var>const*dane_data</var>: &ndash; undescribed &ndash;
+<p><var>dane_data</var>: array of DNS rdata items, terminated with a NULL pointer;
+caller must guarantee that the referenced data remains
+valid until <code>dane_query_deinit()</code>  is called.
 </p>
 <p><var>dane_data_len</var>: the length n bytes of the dane_data items
- <code>param</code> secure true if the result is validated securely, false if
+</p>
+<p><var>secure</var>: true if the result is validated securely, false if
 validation failed or the domain queried has no security info
- <code>param</code> bogus if the result was not secure (secure = 0) due to a security failure,
+</p>
+<p><var>bogus</var>: if the result was not secure (secure = 0) due to a security failure,
 and the result is due to a security failure, bogus is true.
 </p>
-<p><var>secure</var>: &ndash; undescribed &ndash;
-</p>
-<p><var>bogus</var>: &ndash; undescribed &ndash;
-</p>
-
 <p>This function will fill in the TLSA (DANE) structure from
 the given raw DNS record data.
 </p>
@@ -321,7 +320,7 @@ negative error value.
 <a name="dane_005fstate_005finit-1"></a>
 <h4 class="subheading">dane_state_init</h4>
 <a name="dane_005fstate_005finit"></a><dl>
-<dt><a name="index-dane_005fstate_005finit"></a>Function: <em>int</em> <strong>dane_state_init</strong> <em>(dane_state_t* <var>s</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-dane_005fstate_005finit"></a>Function: <em>int</em> <strong>dane_state_init</strong> <em>(dane_state_t * <var>s</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>s</var>: The structure to be initialized
 </p>
 <p><var>flags</var>: flags from the <code>dane_state_flags</code>  enumeration
@@ -335,7 +334,7 @@ negative error value.
 <a name="dane_005fstate_005fset_005fdlv_005ffile-1"></a>
 <h4 class="subheading">dane_state_set_dlv_file</h4>
 <a name="dane_005fstate_005fset_005fdlv_005ffile"></a><dl>
-<dt><a name="index-dane_005fstate_005fset_005fdlv_005ffile"></a>Function: <em>int</em> <strong>dane_state_set_dlv_file</strong> <em>(dane_state_t <var>s</var>, const char* <var>file</var>)</em></dt>
+<dt><a name="index-dane_005fstate_005fset_005fdlv_005ffile"></a>Function: <em>int</em> <strong>dane_state_set_dlv_file</strong> <em>(dane_state_t <var>s</var>, const char * <var>file</var>)</em></dt>
 <dd><p><var>s</var>: The structure to be deinitialized
 </p>
 <p><var>file</var>: The file holding the DLV keys.
@@ -381,7 +380,7 @@ negative error value.
 <a name="dane_005fverify_005fcrt-1"></a>
 <h4 class="subheading">dane_verify_crt</h4>
 <a name="dane_005fverify_005fcrt"></a><dl>
-<dt><a name="index-dane_005fverify_005fcrt-1"></a>Function: <em>int</em> <strong>dane_verify_crt</strong> <em>(dane_state_t <var>s</var>, const gnutls_datum_t * <var>chain</var>, unsigned <var>chain_size</var>, gnutls_certificate_type_t <var>chain_type</var>, const char * <var>hostname</var>, const char* <var>proto</var>, unsigned int <var>port</var>, unsigned int <var>sflags</var>, unsigned int <var>vflags</var>, unsigned int * <var>verify</var>)</em></dt>
+<dt><a name="index-dane_005fverify_005fcrt-1"></a>Function: <em>int</em> <strong>dane_verify_crt</strong> <em>(dane_state_t <var>s</var>, const gnutls_datum_t * <var>chain</var>, unsigned <var>chain_size</var>, gnutls_certificate_type_t <var>chain_type</var>, const char * <var>hostname</var>, const char * <var>proto</var>, unsigned int <var>port</var>, unsigned int <var>sflags</var>, unsigned int <var>vflags</var>, unsigned int * <var>verify</var>)</em></dt>
 <dd><p><var>s</var>: A DANE state structure (may be NULL)
 </p>
 <p><var>chain</var>: A certificate chain
@@ -465,7 +464,7 @@ negative error value.
 <a name="dane_005fverify_005fsession_005fcrt-1"></a>
 <h4 class="subheading">dane_verify_session_crt</h4>
 <a name="dane_005fverify_005fsession_005fcrt"></a><dl>
-<dt><a name="index-dane_005fverify_005fsession_005fcrt"></a>Function: <em>int</em> <strong>dane_verify_session_crt</strong> <em>(dane_state_t <var>s</var>, gnutls_session_t <var>session</var>, const char * <var>hostname</var>, const char* <var>proto</var>, unsigned int <var>port</var>, unsigned int <var>sflags</var>, unsigned int <var>vflags</var>, unsigned int * <var>verify</var>)</em></dt>
+<dt><a name="index-dane_005fverify_005fsession_005fcrt"></a>Function: <em>int</em> <strong>dane_verify_session_crt</strong> <em>(dane_state_t <var>s</var>, gnutls_session_t <var>session</var>, const char * <var>hostname</var>, const char * <var>proto</var>, unsigned int <var>port</var>, unsigned int <var>sflags</var>, unsigned int <var>vflags</var>, unsigned int * <var>verify</var>)</em></dt>
 <dd><p><var>s</var>: A DANE state structure (may be NULL)
 </p>
 <p><var>session</var>: A gnutls session
@@ -494,7 +493,7 @@ negative error value.
 <hr>
 <div class="header">
 <p>
-Next: <a href="Cryptographic-API.html#Cryptographic-API" accesskey="n" rel="next">Cryptographic API</a>, Previous: <a href="Abstract-key-API.html#Abstract-key-API" accesskey="p" rel="previous">Abstract key API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Cryptographic-API.html#Cryptographic-API" accesskey="n" rel="next">Cryptographic API</a>, Previous: <a href="Abstract-key-API.html#Abstract-key-API" accesskey="p" rel="prev">Abstract key API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

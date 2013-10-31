@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.5 of GnuTLS.
+3.2.6 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.5: Smart cards and HSMs</title>
+<title>GnuTLS 3.2.6: Smart cards and HSMs</title>
 
-<meta name="description" content="GnuTLS 3.2.5: Smart cards and HSMs">
-<meta name="keywords" content="GnuTLS 3.2.5: Smart cards and HSMs">
+<meta name="description" content="GnuTLS 3.2.6: Smart cards and HSMs">
+<meta name="keywords" content="GnuTLS 3.2.6: Smart cards and HSMs">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Hardware-security-modules-and-abstract-key-types.html#Hardware-security-modules-and-abstract-key-types" rel="up" title="Hardware security modules and abstract key types">
 <link href="PKCS11-Initialization.html#PKCS11-Initialization" rel="next" title="PKCS11 Initialization">
-<link href="Operations.html#Operations" rel="previous" title="Operations">
+<link href="Operations.html#Operations" rel="prev" title="Operations">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="Smart-cards-and-HSMs"></a>
 <div class="header">
 <p>
-Next: <a href="Trusted-Platform-Module.html#Trusted-Platform-Module" accesskey="n" rel="next">Trusted Platform Module</a>, Previous: <a href="Abstract-key-types.html#Abstract-key-types" accesskey="p" rel="previous">Abstract key types</a>, Up: <a href="Hardware-security-modules-and-abstract-key-types.html#Hardware-security-modules-and-abstract-key-types" accesskey="u" rel="up">Hardware security modules and abstract key types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Trusted-Platform-Module.html#Trusted-Platform-Module" accesskey="n" rel="next">Trusted Platform Module</a>, Previous: <a href="Abstract-key-types.html#Abstract-key-types" accesskey="p" rel="prev">Abstract key types</a>, Up: <a href="Hardware-security-modules-and-abstract-key-types.html#Hardware-security-modules-and-abstract-key-types" accesskey="u" rel="up">Hardware security modules and abstract key types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Smart-cards-and-HSMs-1"></a>
@@ -190,12 +190,12 @@ and signing without exposing the key. In GnuTLS the PKCS #11 functionality is
 available in <code>gnutls/pkcs11.h</code>.
 </p>
 <p>Moreover <acronym>PKCS</acronym> #11 can be (ab)used to allow all applications in the same operating system to access
-shared cryptographic keys and certificates in a uniform way, as in <a href="#fig_003apkcs11_002dvision">Figure 5.1</a>.
+shared cryptographic keys and certificates in a uniform way, as in <a href="#fig_002dpkcs11_002dvision">Figure 5.1</a>.
 That way applications could load their trusted certificate list, as well as user
 certificates from a common PKCS #11 module. Such a provider exists in the <acronym>Gnome</acronym> 
 system, being the <acronym>Gnome Keyring</acronym>.
 </p>
-<div class="float"><a name="fig_003apkcs11_002dvision"></a>
+<div class="float"><a name="fig_002dpkcs11_002dvision"></a>
 <img src="pkcs11-vision.png" alt="pkcs11-vision">
 
 <div class="float-caption"><p><strong>Figure 5.1: </strong>PKCS #11 module usage.</p></div></div>
@@ -224,7 +224,7 @@ system, being the <acronym>Gnome Keyring</acronym>.
 <hr>
 <div class="header">
 <p>
-Next: <a href="Trusted-Platform-Module.html#Trusted-Platform-Module" accesskey="n" rel="next">Trusted Platform Module</a>, Previous: <a href="Abstract-key-types.html#Abstract-key-types" accesskey="p" rel="previous">Abstract key types</a>, Up: <a href="Hardware-security-modules-and-abstract-key-types.html#Hardware-security-modules-and-abstract-key-types" accesskey="u" rel="up">Hardware security modules and abstract key types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Trusted-Platform-Module.html#Trusted-Platform-Module" accesskey="n" rel="next">Trusted Platform Module</a>, Previous: <a href="Abstract-key-types.html#Abstract-key-types" accesskey="p" rel="prev">Abstract key types</a>, Up: <a href="Hardware-security-modules-and-abstract-key-types.html#Hardware-security-modules-and-abstract-key-types" accesskey="u" rel="up">Hardware security modules and abstract key types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

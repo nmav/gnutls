@@ -931,7 +931,7 @@ preferred will be used, or the master key otherwise.
 </p>
 <p>
 <em class="parameter"><code>flags</code></em> might be zero or one of <a href="gnutls-abstract.html#GNUTLS-PRIVKEY-IMPORT-AUTO-RELEASE:CAPS"><code class="literal">GNUTLS_PRIVKEY_IMPORT_AUTO_RELEASE</code></a>
-and <code class="literal">GNUTLS_PRIVKEY_IMPORT_COPY</code>.
+and <a href="/usr/share/gtk-doc/html/gnutls/gnutls-abstract.html#GNUTLS-PRIVKEY-IMPORT-COPY:CAPS"><code class="literal">GNUTLS_PRIVKEY_IMPORT_COPY</code></a>.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -1023,7 +1023,7 @@ during the lifetime of this structure.
 </p>
 <p>
 <em class="parameter"><code>flags</code></em> might be zero or one of <a href="gnutls-abstract.html#GNUTLS-PRIVKEY-IMPORT-AUTO-RELEASE:CAPS"><code class="literal">GNUTLS_PRIVKEY_IMPORT_AUTO_RELEASE</code></a>
-and <code class="literal">GNUTLS_PRIVKEY_IMPORT_COPY</code>.
+and <a href="/usr/share/gtk-doc/html/gnutls/gnutls-abstract.html#GNUTLS-PRIVKEY-IMPORT-COPY:CAPS"><code class="literal">GNUTLS_PRIVKEY_IMPORT_COPY</code></a>.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -1153,7 +1153,7 @@ This function will import the given private key to the abstract
 <a href="gnutls-abstract.html#gnutls-privkey-t"><span class="type">gnutls_privkey_t</span></a> structure.
 </p>
 <p>
-Note that unless <code class="literal">GNUTLS_PRIVKEY_DISABLE_CALLBACKS</code>
+Note that unless <a href="/usr/share/gtk-doc/html/gnutls/gnutls-abstract.html#GNUTLS-PRIVKEY-DISABLE-CALLBACKS:CAPS"><code class="literal">GNUTLS_PRIVKEY_DISABLE_CALLBACKS</code></a>
 is specified, if incorrect (or NULL) passwords are given
 the PKCS11 callback functions will be used to obtain the
 correct passwords. Otherwise if the SRK password is wrong
@@ -1251,7 +1251,7 @@ during the lifetime of this structure.
 </p>
 <p>
 <em class="parameter"><code>flags</code></em> might be zero or one of <a href="gnutls-abstract.html#GNUTLS-PRIVKEY-IMPORT-AUTO-RELEASE:CAPS"><code class="literal">GNUTLS_PRIVKEY_IMPORT_AUTO_RELEASE</code></a>
-and <code class="literal">GNUTLS_PRIVKEY_IMPORT_COPY</code>.
+and <a href="/usr/share/gtk-doc/html/gnutls/gnutls-abstract.html#GNUTLS-PRIVKEY-IMPORT-COPY:CAPS"><code class="literal">GNUTLS_PRIVKEY_IMPORT_COPY</code></a>.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -1429,7 +1429,7 @@ the hash algorithm.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>flags</code></em> :</span></p></td>
-<td>Zero or one of <code class="literal">gnutls_privkey_flags_t</code>
+<td>Zero or one of <a href="/usr/share/gtk-doc/html/gnutls/gnutls-abstract.html#gnutls-privkey-flags-t"><code class="literal">gnutls_privkey_flags_t</code></a>
 </td>
 </tr>
 <tr>
@@ -1479,7 +1479,7 @@ You may use <a class="link" href="gnutls-abstract.html#gnutls-pubkey-get-preferr
 the hash algorithm.
 </p>
 <p>
-Note that if <code class="literal">GNUTLS_PRIVKEY_SIGN_FLAG_TLS1_RSA</code> flag is specified this function
+Note that if <a href="/usr/share/gtk-doc/html/gnutls/gnutls-abstract.html#GNUTLS-PRIVKEY-SIGN-FLAG-TLS1-RSA:CAPS"><code class="literal">GNUTLS_PRIVKEY_SIGN_FLAG_TLS1_RSA</code></a> flag is specified this function
 will ignore <em class="parameter"><code>hash_algo</code></em> and perform a raw PKCS1 signature.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
@@ -1498,7 +1498,7 @@ will ignore <em class="parameter"><code>hash_algo</code></em> and perform a raw 
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>flags</code></em> :</span></p></td>
-<td>Zero or one of <code class="literal">gnutls_privkey_flags_t</code>
+<td>Zero or one of <a href="/usr/share/gtk-doc/html/gnutls/gnutls-abstract.html#gnutls-privkey-flags-t"><code class="literal">gnutls_privkey_flags_t</code></a>
 </td>
 </tr>
 <tr>
@@ -1772,7 +1772,7 @@ The key is a unique ID that depends on the public
 key parameters. 
 </p>
 <p>
-If the flag <code class="literal">GNUTLS_PUBKEY_GET_OPENPGP_FINGERPRINT</code> is specified
+If the flag <a href="/usr/share/gtk-doc/html/gnutls/gnutls-abstract.html#GNUTLS-PUBKEY-GET-OPENPGP-FINGERPRINT:CAPS"><code class="literal">GNUTLS_PUBKEY_GET_OPENPGP_FINGERPRINT</code></a> is specified
 this function returns the fingerprint of the master key.
 </p>
 <p>
@@ -1792,7 +1792,7 @@ be returned.  The output is <a class="link" href="gnutls-openpgp.html#GNUTLS-OPE
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>flags</code></em> :</span></p></td>
-<td>should be 0 or <code class="literal">GNUTLS_PUBKEY_GET_OPENPGP_FINGERPRINT</code>
+<td>should be 0 or <a href="/usr/share/gtk-doc/html/gnutls/gnutls-abstract.html#GNUTLS-PUBKEY-GET-OPENPGP-FINGERPRINT:CAPS"><code class="literal">GNUTLS_PUBKEY_GET_OPENPGP_FINGERPRINT</code></a>
 </td>
 </tr>
 <tr>
@@ -2568,7 +2568,7 @@ This function will import the given private key to the abstract
 <a href="gnutls-abstract.html#gnutls-privkey-t"><span class="type">gnutls_privkey_t</span></a> structure. 
 </p>
 <p>
-Note that unless <code class="literal">GNUTLS_PUBKEY_DISABLE_CALLBACKS</code>
+Note that unless <a href="/usr/share/gtk-doc/html/gnutls/gnutls-abstract.html#GNUTLS-PUBKEY-DISABLE-CALLBACKS:CAPS"><code class="literal">GNUTLS_PUBKEY_DISABLE_CALLBACKS</code></a>
 is specified, if incorrect (or NULL) passwords are given
 the PKCS11 callback functions will be used to obtain the
 correct passwords. Otherwise if the SRK password is wrong
@@ -2884,7 +2884,7 @@ Use <a class="link" href="gnutls-abstract.html#gnutls-pubkey-verify-data2" title
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>flags</code></em> :</span></p></td>
-<td>Zero or one of <code class="literal">gnutls_pubkey_flags_t</code>
+<td>Zero or one of <a href="/usr/share/gtk-doc/html/gnutls/gnutls-abstract.html#gnutls-pubkey-flags-t"><code class="literal">gnutls_pubkey_flags_t</code></a>
 </td>
 </tr>
 <tr>
@@ -2932,7 +2932,7 @@ parameters from the certificate.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>flags</code></em> :</span></p></td>
-<td>Zero or one of <code class="literal">gnutls_pubkey_flags_t</code>
+<td>Zero or one of <a href="/usr/share/gtk-doc/html/gnutls/gnutls-abstract.html#gnutls-pubkey-flags-t"><code class="literal">gnutls_pubkey_flags_t</code></a>
 </td>
 </tr>
 <tr>
@@ -2980,7 +2980,7 @@ parameters from the public key.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>flags</code></em> :</span></p></td>
-<td>Zero or one of <code class="literal">gnutls_pubkey_flags_t</code>
+<td>Zero or one of <a href="/usr/share/gtk-doc/html/gnutls/gnutls-abstract.html#gnutls-pubkey-flags-t"><code class="literal">gnutls_pubkey_flags_t</code></a>
 </td>
 </tr>
 <tr>

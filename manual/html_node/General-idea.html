@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 10 February 2013 for version
-3.2.5 of GnuTLS.
+3.2.6 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.5: General idea</title>
+<title>GnuTLS 3.2.6: General idea</title>
 
-<meta name="description" content="GnuTLS 3.2.5: General idea">
-<meta name="keywords" content="GnuTLS 3.2.5: General idea">
+<meta name="description" content="GnuTLS 3.2.6: General idea">
+<meta name="keywords" content="GnuTLS 3.2.6: General idea">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Introduction-to-the-library.html#Introduction-to-the-library" rel="up" title="Introduction to the library">
 <link href="Error-handling.html#Error-handling" rel="next" title="Error handling">
-<link href="Introduction-to-the-library.html#Introduction-to-the-library" rel="previous" title="Introduction to the library">
+<link href="Introduction-to-the-library.html#Introduction-to-the-library" rel="prev" title="Introduction to the library">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -165,7 +165,7 @@ Next: <a href="Error-handling.html#Error-handling" accesskey="n" rel="next">Erro
 <h4 class="subsection">6.1.1 General idea</h4>
 
 <p>A brief description of how <acronym>GnuTLS</acronym> sessions operate is shown
-at <a href="#fig_003agnutls_002ddesign">Figure 6.1</a>. This section will become more clear when it
+at <a href="#fig_002dgnutls_002ddesign">Figure 6.1</a>. This section will become more clear when it
 is completely read.
 As shown in the figure, there is a read-only global state that is
 initialized once by the global initialization function.  This global
@@ -177,7 +177,7 @@ for the deinitialization function which frees all allocated memory
 and must be called after the program has permanently
 finished using <acronym>GnuTLS</acronym>.
 </p>
-<div class="float"><a name="fig_003agnutls_002ddesign"></a>
+<div class="float"><a name="fig_002dgnutls_002ddesign"></a>
 <img src="gnutls-internals.png" alt="gnutls-internals">
 
 <div class="float-caption"><p><strong>Figure 6.1: </strong>High level design of GnuTLS.</p></div></div>
