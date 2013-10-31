@@ -13,7 +13,7 @@ my %summary_hash = ();
 parse_news(\%title_hash, \%summary_hash);
 
 foreach $key (sort {$b cmp $a} keys %summary_hash) {
-	print "<tr>\n<td><a name=\"$key\">$key</a></td>\n<td>$summary_hash{$key}</td>\n</tr>\n";
+	print "<tr>\n<td><div class=\"emph-box\" id=\"$key\">$key</div></td>\n<td>$summary_hash{$key}</td>\n</tr>\n";
 	$max--;
 
 	last if ($max <= 0);
