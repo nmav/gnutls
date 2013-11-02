@@ -42,21 +42,22 @@
     <th>Location:</th>
   </tr>
 
-  <tr>
-    <td>stable-next</td><td>$(STABLE_NEXT_VER).x</td>
-    <td><a href="ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_NEXT_VER)">
-	ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_NEXT_VER)</a> (<a href="http://www.gnupg.org/download/mirrors.en.html">mirror list</a>)</td>
-  </tr>
-  <tr>
-    <td>stable</td><td>$(STABLE_VER).x</td>
-    <td><a href="ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_VER)">
-	ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_VER)</a> (<a href="http://www.gnupg.org/download/mirrors.en.html">mirror list</a>)</td>
-  </tr>
-  <tr>
-    <td>stable-old</td><td>$(STABLE_OLD_VER).x</td>
-    <td><a href="ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_OLD_VER)">
-	ftp://ftp.gnutls.org/gcrypt/gnutls/v$(STABLE_OLD_VER)</a> (<a href="http://www.gnupg.org/download/mirrors.en.html">mirror list</a>)</td>
-  </tr>
+<perl>
+sub print_ver {
+my $name = $_[0];
+my $version = $_[1];
+
+print " <tr>
+    <td>$name</td><td>${version}.x</td>
+    <td><a href=\"ftp://ftp.gnutls.org/gcrypt/gnutls/v${version}\">
+	ftp://ftp.gnutls.org/gcrypt/gnutls/v${version}</a> (<a href=\"http://www.gnupg.org/download/mirrors.en.html\">mirror list</a>)</td>
+  </tr>\n" if ("${version}" ne "");
+}
+</perl>
+
+<:= &print_ver("stable-next", "$(STABLE_NEXT_VER)") :>
+<:= &print_ver("stable", "$(STABLE_VER)") :>
+<:= &print_ver("stable-old", "$(STABLE_OLD_VER)") :>
 
 <!--
   <tr>
