@@ -1,4 +1,4 @@
-
+<protect>
 /*
 layout.css -- css stylesheet used on www.gnu.org
 
@@ -470,6 +470,7 @@ div.edu-cases ul, div.edu-cases ol {
 }
 
 /* End items specific to education */
+</protect>
 
 /* GnuTLS tables */
 table.transparent {
@@ -500,7 +501,7 @@ table.news-transparent {
 	border-width: 3px;
 	border-spacing: 5px;
 	border-style: none;
-	border-color: #ccbcbc;
+	border-color: $(TABLE_HDCOLOR);
 	border-collapse: separate;
 	background-color: transparent;
 }
@@ -516,7 +517,7 @@ table.news-transparent td {
 	border-width: 1px;
 	padding: 3px;
 	border-style: solid;
-	border-color: #e0d7d7;
+	border-color: $(TABLE_BGCOLOR2);
 	background-color: transparent;
 	-moz-border-radius: ;
 }
@@ -526,14 +527,14 @@ table.news {
 	border-style: none;
 	border-color: white;
 	border-collapse: separate;
-	background-color: #e5e5e5;
+	background-color: $(TABLE_BGCOLOR);
 }
 table.news th {
 	border-width: 0px;
         padding:10px 5px;
 	border-style: inset;
 	border-color: gray;
-	background-color: #ccbcbc;
+	background-color: $(TABLE_HDCOLOR);
 	-moz-border-radius: ;
 }
 table.news td {
@@ -541,6 +542,6 @@ table.news td {
         padding:10px 5px;
 	border-style: inset;
 	border-color: gray;
-	background-color: #e0d7d7;
+	background-color: $(TABLE_BGCOLOR2);
 	-moz-border-radius: ;
 }

@@ -13,7 +13,7 @@ OUTPUT=index.html contrib.html devel.html lists.html	\
  download.html gnutls-logo.html news.html future.html	\
  documentation.html help.html openpgp.html \
  security.html commercial.html soc.html faq.html \
- comparison.html admin/bugs.html manual/index.html
+ comparison.html admin/bugs.html manual/index.html css/layout.css
 
 all: $(OUTPUT) news.atom
 	@for i in news-entries/*.xml;do X=0; if ! test -e $$i.tweet;then X=1;fi;done;if test "$$X" = "1";then echo "There are unsubmitted news. Use 'make tweet'.";fi
@@ -59,6 +59,10 @@ index.html: gnutls.wml $(COMMON) $(NEWS_FILES)
 	mv $@.tmp $@
 
 %.html: %.wml $(COMMON)
+	$(WML) $(WMLFLAGS) $< > $@.tmp
+	mv $@.tmp $@
+
+%.css: %.cwml $(COMMON)
 	$(WML) $(WMLFLAGS) $< > $@.tmp
 	mv $@.tmp $@
 
