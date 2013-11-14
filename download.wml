@@ -47,11 +47,13 @@ sub print_ver {
 my $name = $_[0];
 my $version = $_[1];
 
+if ($version ne '') {
 print " <tr>
     <td>$name</td><td>${version}.x</td>
     <td><a href=\"ftp://ftp.gnutls.org/gcrypt/gnutls/v${version}\">
 	ftp://ftp.gnutls.org/gcrypt/gnutls/v${version}</a> (<a href=\"http://www.gnupg.org/download/mirrors.en.html\">mirror list</a>)</td>
   </tr>\n" if ("${version}" ne "");
+}
 }
 </perl>
 
