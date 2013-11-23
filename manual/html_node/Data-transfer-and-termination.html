@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: Data transfer and termination</title>
+<title>GnuTLS 3.2.7: Data transfer and termination</title>
 
-<meta name="description" content="GnuTLS 3.2.6: Data transfer and termination">
-<meta name="keywords" content="GnuTLS 3.2.6: Data transfer and termination">
+<meta name="description" content="GnuTLS 3.2.7: Data transfer and termination">
+<meta name="keywords" content="GnuTLS 3.2.7: Data transfer and termination">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="How-to-use-GnuTLS-in-applications.html#How-to-use-GnuTLS-in-applications" rel="up" title="How to use GnuTLS in applications">
 <link href="Buffered-data-transfer.html#Buffered-data-transfer" rel="next" title="Buffered data transfer">
-<link href="TLS-handshake.html#TLS-handshake" rel="prev" title="TLS handshake">
+<link href="TLS-handshake.html#TLS-handshake" rel="previous" title="TLS handshake">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="Data-transfer-and-termination"></a>
 <div class="header">
 <p>
-Next: <a href="Buffered-data-transfer.html#Buffered-data-transfer" accesskey="n" rel="next">Buffered data transfer</a>, Previous: <a href="TLS-handshake.html#TLS-handshake" accesskey="p" rel="prev">TLS handshake</a>, Up: <a href="How-to-use-GnuTLS-in-applications.html#How-to-use-GnuTLS-in-applications" accesskey="u" rel="up">How to use GnuTLS in applications</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Buffered-data-transfer.html#Buffered-data-transfer" accesskey="n" rel="next">Buffered data transfer</a>, Previous: <a href="TLS-handshake.html#TLS-handshake" accesskey="p" rel="previous">TLS handshake</a>, Up: <a href="How-to-use-GnuTLS-in-applications.html#How-to-use-GnuTLS-in-applications" accesskey="u" rel="up">How to use GnuTLS in applications</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Data-transfer-and-termination-1"></a>
@@ -251,16 +251,19 @@ The number of bytes received might be less than the requested  <code>data_size</
 <dd><p><var>error</var>: is a GnuTLS error code, a negative error code
 </p>
 <p>If a GnuTLS function returns a negative error code you may feed that
-value to this function to see if the error condition is fatal. 
-Note that you may also want to check the error code manually, since some
+value to this function to see if the error condition is fatal to
+a TLS session (i.e., must be terminated). 
+</p>
+<p>Note that you may also want to check the error code manually, since some
 non-fatal errors to the protocol (such as a warning alert or
 a rehandshake request) may be fatal for your program.
 </p>
 <p>This function is only useful if you are dealing with errors from
-the record layer or the handshake layer.
+functions that relate to a TLS session (e.g., record layer or handshake 
+layer handling functions).
 </p>
-<p><strong>Returns:</strong> 1 if the error code is fatal, for positive  <code>error</code> values,
-0 is returned.  For unknown  <code>error</code> values, -1 is returned.
+<p><strong>Returns:</strong> zero on non fatal errors or positive  <code>error</code> values. Non-zero
+on fatal error codes.
 </p></dd></dl>
 
 <p>Although, in the TLS protocol the receive function can be called
@@ -385,7 +388,7 @@ database if the session was terminated abnormally.
 <hr>
 <div class="header">
 <p>
-Next: <a href="Buffered-data-transfer.html#Buffered-data-transfer" accesskey="n" rel="next">Buffered data transfer</a>, Previous: <a href="TLS-handshake.html#TLS-handshake" accesskey="p" rel="prev">TLS handshake</a>, Up: <a href="How-to-use-GnuTLS-in-applications.html#How-to-use-GnuTLS-in-applications" accesskey="u" rel="up">How to use GnuTLS in applications</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Buffered-data-transfer.html#Buffered-data-transfer" accesskey="n" rel="next">Buffered data transfer</a>, Previous: <a href="TLS-handshake.html#TLS-handshake" accesskey="p" rel="previous">TLS handshake</a>, Up: <a href="How-to-use-GnuTLS-in-applications.html#How-to-use-GnuTLS-in-applications" accesskey="u" rel="up">How to use GnuTLS in applications</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

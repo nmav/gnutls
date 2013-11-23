@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: Compatibility API</title>
+<title>GnuTLS 3.2.7: Compatibility API</title>
 
-<meta name="description" content="GnuTLS 3.2.6: Compatibility API">
-<meta name="keywords" content="GnuTLS 3.2.6: Compatibility API">
+<meta name="description" content="GnuTLS 3.2.7: Compatibility API">
+<meta name="keywords" content="GnuTLS 3.2.7: Compatibility API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="API-reference.html#API-reference" rel="up" title="API reference">
 <link href="Copying-Information.html#Copying-Information" rel="next" title="Copying Information">
-<link href="Cryptographic-API.html#Cryptographic-API" rel="prev" title="Cryptographic API">
+<link href="Cryptographic-API.html#Cryptographic-API" rel="previous" title="Cryptographic API">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="Compatibility-API"></a>
 <div class="header">
 <p>
-Previous: <a href="Cryptographic-API.html#Cryptographic-API" accesskey="p" rel="prev">Cryptographic API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Cryptographic-API.html#Cryptographic-API" accesskey="p" rel="previous">Cryptographic API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Compatibility-API-1"></a>
@@ -168,10 +168,74 @@ Previous: <a href="Cryptographic-API.html#Cryptographic-API" accesskey="p" rel="
 Their prototypes lie in <samp>gnutls/compat.h</samp>.
 </p>
 
+<a name="gnutls_005fcertificate_005fclient_005fset_005fretrieve_005ffunction-1"></a>
+<h4 class="subheading">gnutls_certificate_client_set_retrieve_function</h4>
+<a name="gnutls_005fcertificate_005fclient_005fset_005fretrieve_005ffunction"></a><dl>
+<dt><a name="index-gnutls_005fcertificate_005fclient_005fset_005fretrieve_005ffunction"></a>Function: <em>void</em> <strong>gnutls_certificate_client_set_retrieve_function</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, gnutls_certificate_client_retrieve_function * <var>func</var>)</em></dt>
+<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+</p>
+<p><var>func</var>: is the callback function
+</p>
+<p>This function sets a callback to be called in order to retrieve the
+certificate to be used in the handshake.
+You are advised to use <code>gnutls_certificate_set_retrieve_function2()</code>  because it
+is much more efficient in the processing it requires from gnutls.
+</p>
+<p>The callback&rsquo;s function prototype is:
+int (*callback)(gnutls_session_t, const gnutls_datum_t* req_ca_dn, int nreqs,
+const gnutls_pk_algorithm_t* pk_algos, int pk_algos_length, gnutls_retr_st* st);
+</p>
+<p><code>req_ca_cert</code> is only used in X.509 certificates.
+Contains a list with the CA names that the server considers trusted.
+Normally we should send a certificate that is signed
+by one of these CAs. These names are DER encoded. To get a more
+meaningful value use the function <code>gnutls_x509_rdn_get()</code> .
+</p>
+<p><code>pk_algos</code> contains a list with server&rsquo;s acceptable signature algorithms.
+The certificate returned should support the server&rsquo;s given algorithms.
+</p>
+<p><code>st</code> should contain the certificates and private keys.
+</p>
+<p>If the callback function is provided then gnutls will call it, in the
+handshake, if a certificate is requested by the server (and after the 
+certificate request message has been received).
+</p>
+<p>The callback function should set the certificate list to be sent,
+and return 0 on success. If no certificate was selected then the
+number of certificates should be set to zero. The value (-1)
+indicates error and the handshake will be terminated.
+</p></dd></dl>
+
+<a name="gnutls_005fcertificate_005fserver_005fset_005fretrieve_005ffunction-1"></a>
+<h4 class="subheading">gnutls_certificate_server_set_retrieve_function</h4>
+<a name="gnutls_005fcertificate_005fserver_005fset_005fretrieve_005ffunction"></a><dl>
+<dt><a name="index-gnutls_005fcertificate_005fserver_005fset_005fretrieve_005ffunction"></a>Function: <em>void</em> <strong>gnutls_certificate_server_set_retrieve_function</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, gnutls_certificate_server_retrieve_function * <var>func</var>)</em></dt>
+<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+</p>
+<p><var>func</var>: is the callback function
+</p>
+<p>This function sets a callback to be called in order to retrieve the
+certificate to be used in the handshake.
+You are advised to use <code>gnutls_certificate_set_retrieve_function2()</code>  because it
+is much more efficient in the processing it requires from gnutls.
+</p>
+<p>The callback&rsquo;s function prototype is:
+int (*callback)(gnutls_session_t, gnutls_retr_st* st);
+</p>
+<p><code>st</code> should contain the certificates and private keys.
+</p>
+<p>If the callback function is provided then gnutls will call it, in the
+handshake, after the certificate request message has been received.
+</p>
+<p>The callback function should set the certificate list to be sent, and
+return 0 on success.  The value (-1) indicates error and the handshake
+will be terminated.
+</p></dd></dl>
+
 <a name="gnutls_005fcertificate_005fset_005frsa_005fexport_005fparams-1"></a>
 <h4 class="subheading">gnutls_certificate_set_rsa_export_params</h4>
 <a name="gnutls_005fcertificate_005fset_005frsa_005fexport_005fparams"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fset_005frsa_005fexport_005fparams"></a>Function: <em>void</em> <strong>gnutls_certificate_set_rsa_export_params</strong> <em>(gnutls_certificate_credentials_t                                           <var>res</var>, gnutls_rsa_params_t <var>rsa_params</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fset_005frsa_005fexport_005fparams"></a>Function: <em>void</em> <strong>gnutls_certificate_set_rsa_export_params</strong> <em>(gnutls_certificate_credentials_t       <var>res</var>, gnutls_rsa_params_t <var>rsa_params</var>)</em></dt>
 <dd><p><var>res</var>: is a gnutls_certificate_credentials_t structure
 </p>
 <p><var>rsa_params</var>: is a structure that holds temporary RSA parameters.
@@ -616,7 +680,7 @@ negative error value.
 <a name="gnutls_005fx509_005fcrt_005fget_005fpreferred_005fhash_005falgorithm-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_preferred_hash_algorithm</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fpreferred_005fhash_005falgorithm"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fpreferred_005fhash_005falgorithm"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_preferred_hash_algorithm</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_digest_algorithm_t *                                               <var>hash</var>, unsigned int * <var>mand</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fpreferred_005fhash_005falgorithm"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_preferred_hash_algorithm</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_digest_algorithm_t *           <var>hash</var>, unsigned int * <var>mand</var>)</em></dt>
 <dd><p><var>crt</var>: Holds the certificate
 </p>
 <p><var>hash</var>: The result of the call with the hash algorithm used for signature
@@ -760,7 +824,7 @@ negative error value.
 <hr>
 <div class="header">
 <p>
-Previous: <a href="Cryptographic-API.html#Cryptographic-API" accesskey="p" rel="prev">Cryptographic API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Cryptographic-API.html#Cryptographic-API" accesskey="p" rel="previous">Cryptographic API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

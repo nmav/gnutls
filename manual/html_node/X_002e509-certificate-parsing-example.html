@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: X.509 certificate parsing example</title>
+<title>GnuTLS 3.2.7: X.509 certificate parsing example</title>
 
-<meta name="description" content="GnuTLS 3.2.6: X.509 certificate parsing example">
-<meta name="keywords" content="GnuTLS 3.2.6: X.509 certificate parsing example">
+<meta name="description" content="GnuTLS 3.2.7: X.509 certificate parsing example">
+<meta name="keywords" content="GnuTLS 3.2.7: X.509 certificate parsing example">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Miscellaneous-examples.html#Miscellaneous-examples" rel="up" title="Miscellaneous examples">
 <link href="Listing-the-ciphersuites-in-a-priority-string.html#Listing-the-ciphersuites-in-a-priority-string" rel="next" title="Listing the ciphersuites in a priority string">
-<link href="Checking-for-an-alert.html#Checking-for-an-alert" rel="prev" title="Checking for an alert">
+<link href="Checking-for-an-alert.html#Checking-for-an-alert" rel="previous" title="Checking for an alert">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="X_002e509-certificate-parsing-example"></a>
 <div class="header">
 <p>
-Next: <a href="Listing-the-ciphersuites-in-a-priority-string.html#Listing-the-ciphersuites-in-a-priority-string" accesskey="n" rel="next">Listing the ciphersuites in a priority string</a>, Previous: <a href="Checking-for-an-alert.html#Checking-for-an-alert" accesskey="p" rel="prev">Checking for an alert</a>, Up: <a href="Miscellaneous-examples.html#Miscellaneous-examples" accesskey="u" rel="up">Miscellaneous examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Listing-the-ciphersuites-in-a-priority-string.html#Listing-the-ciphersuites-in-a-priority-string" accesskey="n" rel="next">Listing the ciphersuites in a priority string</a>, Previous: <a href="Checking-for-an-alert.html#Checking-for-an-alert" accesskey="p" rel="previous">Checking for an alert</a>, Up: <a href="Miscellaneous-examples.html#Miscellaneous-examples" accesskey="u" rel="up">Miscellaneous examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="X_002e509-certificate-parsing-example-1"></a>
@@ -181,120 +181,123 @@ information about it.
 
 #include &quot;examples.h&quot;
 
-static const char *
-bin2hex (const void *bin, size_t bin_size)
+static const char *bin2hex(const void *bin, size_t bin_size)
 {
-  static char printable[110];
-  const unsigned char *_bin = bin;
-  char *print;
-  size_t i;
+        static char printable[110];
+        const unsigned char *_bin = bin;
+        char *print;
+        size_t i;
 
-  if (bin_size &gt; 50)
-    bin_size = 50;
+        if (bin_size &gt; 50)
+                bin_size = 50;
 
-  print = printable;
-  for (i = 0; i &lt; bin_size; i++)
-    {
-      sprintf (print, &quot;%.2x &quot;, _bin[i]);
-      print += 2;
-    }
+        print = printable;
+        for (i = 0; i &lt; bin_size; i++) {
+                sprintf(print, &quot;%.2x &quot;, _bin[i]);
+                print += 2;
+        }
 
-  return printable;
+        return printable;
 }
 
 /* This function will print information about this session's peer
  * certificate.
  */
-void
-print_x509_certificate_info (gnutls_session_t session)
+void print_x509_certificate_info(gnutls_session_t session)
 {
-  char serial[40];
-  char dn[256];
-  size_t size;
-  unsigned int algo, bits;
-  time_t expiration_time, activation_time;
-  const gnutls_datum_t *cert_list;
-  unsigned int cert_list_size = 0;
-  gnutls_x509_crt_t cert;
-  gnutls_datum_t cinfo;
+        char serial[40];
+        char dn[256];
+        size_t size;
+        unsigned int algo, bits;
+        time_t expiration_time, activation_time;
+        const gnutls_datum_t *cert_list;
+        unsigned int cert_list_size = 0;
+        gnutls_x509_crt_t cert;
+        gnutls_datum_t cinfo;
 
-  /* This function only works for X.509 certificates.
-   */
-  if (gnutls_certificate_type_get (session) != GNUTLS_CRT_X509)
-    return;
+        /* This function only works for X.509 certificates.
+         */
+        if (gnutls_certificate_type_get(session) != GNUTLS_CRT_X509)
+                return;
 
-  cert_list = gnutls_certificate_get_peers (session, &amp;cert_list_size);
+        cert_list = gnutls_certificate_get_peers(session, &amp;cert_list_size);
 
-  printf (&quot;Peer provided %d certificates.\n&quot;, cert_list_size);
+        printf(&quot;Peer provided %d certificates.\n&quot;, cert_list_size);
 
-  if (cert_list_size &gt; 0)
-    {
-      int ret;
+        if (cert_list_size &gt; 0) {
+                int ret;
 
-      /* we only print information about the first certificate.
-       */
-      gnutls_x509_crt_init (&amp;cert);
+                /* we only print information about the first certificate.
+                 */
+                gnutls_x509_crt_init(&amp;cert);
 
-      gnutls_x509_crt_import (cert, &amp;cert_list[0], GNUTLS_X509_FMT_DER);
+                gnutls_x509_crt_import(cert, &amp;cert_list[0],
+                                       GNUTLS_X509_FMT_DER);
 
-      printf (&quot;Certificate info:\n&quot;);
+                printf(&quot;Certificate info:\n&quot;);
 
-      /* This is the preferred way of printing short information about
-         a certificate. */
+                /* This is the preferred way of printing short information about
+                   a certificate. */
 
-      ret = gnutls_x509_crt_print (cert, GNUTLS_CRT_PRINT_ONELINE, &amp;cinfo);
-      if (ret == 0)
-        {
-          printf (&quot;\t%s\n&quot;, cinfo.data);
-          gnutls_free (cinfo.data);
+                ret =
+                    gnutls_x509_crt_print(cert, GNUTLS_CRT_PRINT_ONELINE,
+                                          &amp;cinfo);
+                if (ret == 0) {
+                        printf(&quot;\t%s\n&quot;, cinfo.data);
+                        gnutls_free(cinfo.data);
+                }
+
+                /* If you want to extract fields manually for some other reason,
+                   below are popular example calls. */
+
+                expiration_time =
+                    gnutls_x509_crt_get_expiration_time(cert);
+                activation_time =
+                    gnutls_x509_crt_get_activation_time(cert);
+
+                printf(&quot;\tCertificate is valid since: %s&quot;,
+                       ctime(&amp;activation_time));
+                printf(&quot;\tCertificate expires: %s&quot;,
+                       ctime(&amp;expiration_time));
+
+                /* Print the serial number of the certificate.
+                 */
+                size = sizeof(serial);
+                gnutls_x509_crt_get_serial(cert, serial, &amp;size);
+
+                printf(&quot;\tCertificate serial number: %s\n&quot;,
+                       bin2hex(serial, size));
+
+                /* Extract some of the public key algorithm's parameters
+                 */
+                algo = gnutls_x509_crt_get_pk_algorithm(cert, &amp;bits);
+
+                printf(&quot;Certificate public key: %s&quot;,
+                       gnutls_pk_algorithm_get_name(algo));
+
+                /* Print the version of the X.509
+                 * certificate.
+                 */
+                printf(&quot;\tCertificate version: #%d\n&quot;,
+                       gnutls_x509_crt_get_version(cert));
+
+                size = sizeof(dn);
+                gnutls_x509_crt_get_dn(cert, dn, &amp;size);
+                printf(&quot;\tDN: %s\n&quot;, dn);
+
+                size = sizeof(dn);
+                gnutls_x509_crt_get_issuer_dn(cert, dn, &amp;size);
+                printf(&quot;\tIssuer's DN: %s\n&quot;, dn);
+
+                gnutls_x509_crt_deinit(cert);
+
         }
-
-      /* If you want to extract fields manually for some other reason,
-         below are popular example calls. */
-
-      expiration_time = gnutls_x509_crt_get_expiration_time (cert);
-      activation_time = gnutls_x509_crt_get_activation_time (cert);
-
-      printf (&quot;\tCertificate is valid since: %s&quot;, ctime (&amp;activation_time));
-      printf (&quot;\tCertificate expires: %s&quot;, ctime (&amp;expiration_time));
-
-      /* Print the serial number of the certificate.
-       */
-      size = sizeof (serial);
-      gnutls_x509_crt_get_serial (cert, serial, &amp;size);
-
-      printf (&quot;\tCertificate serial number: %s\n&quot;, bin2hex (serial, size));
-
-      /* Extract some of the public key algorithm's parameters
-       */
-      algo = gnutls_x509_crt_get_pk_algorithm (cert, &amp;bits);
-
-      printf (&quot;Certificate public key: %s&quot;,
-              gnutls_pk_algorithm_get_name (algo));
-
-      /* Print the version of the X.509
-       * certificate.
-       */
-      printf (&quot;\tCertificate version: #%d\n&quot;,
-              gnutls_x509_crt_get_version (cert));
-
-      size = sizeof (dn);
-      gnutls_x509_crt_get_dn (cert, dn, &amp;size);
-      printf (&quot;\tDN: %s\n&quot;, dn);
-
-      size = sizeof (dn);
-      gnutls_x509_crt_get_issuer_dn (cert, dn, &amp;size);
-      printf (&quot;\tIssuer's DN: %s\n&quot;, dn);
-
-      gnutls_x509_crt_deinit (cert);
-
-    }
 }
 </pre>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Listing-the-ciphersuites-in-a-priority-string.html#Listing-the-ciphersuites-in-a-priority-string" accesskey="n" rel="next">Listing the ciphersuites in a priority string</a>, Previous: <a href="Checking-for-an-alert.html#Checking-for-an-alert" accesskey="p" rel="prev">Checking for an alert</a>, Up: <a href="Miscellaneous-examples.html#Miscellaneous-examples" accesskey="u" rel="up">Miscellaneous examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Listing-the-ciphersuites-in-a-priority-string.html#Listing-the-ciphersuites-in-a-priority-string" accesskey="n" rel="next">Listing the ciphersuites in a priority string</a>, Previous: <a href="Checking-for-an-alert.html#Checking-for-an-alert" accesskey="p" rel="previous">Checking for an alert</a>, Up: <a href="Miscellaneous-examples.html#Miscellaneous-examples" accesskey="u" rel="up">Miscellaneous examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

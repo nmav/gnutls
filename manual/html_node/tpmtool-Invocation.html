@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: tpmtool Invocation</title>
+<title>GnuTLS 3.2.7: tpmtool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.2.6: tpmtool Invocation">
-<meta name="keywords" content="GnuTLS 3.2.6: tpmtool Invocation">
+<meta name="description" content="GnuTLS 3.2.7: tpmtool Invocation">
+<meta name="keywords" content="GnuTLS 3.2.7: tpmtool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Trusted-Platform-Module.html#Trusted-Platform-Module" rel="up" title="Trusted Platform Module">
 <link href="How-to-use-GnuTLS-in-applications.html#How-to-use-GnuTLS-in-applications" rel="next" title="How to use GnuTLS in applications">
-<link href="Using-keys.html#Using-keys" rel="prev" title="Using keys">
+<link href="Using-keys.html#Using-keys" rel="previous" title="Using keys">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="tpmtool-Invocation"></a>
 <div class="header">
 <p>
-Previous: <a href="Using-keys.html#Using-keys" accesskey="p" rel="prev">Using keys</a>, Up: <a href="Trusted-Platform-Module.html#Trusted-Platform-Module" accesskey="u" rel="up">Trusted Platform Module</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Using-keys.html#Using-keys" accesskey="p" rel="previous">Using keys</a>, Up: <a href="Trusted-Platform-Module.html#Trusted-Platform-Module" accesskey="u" rel="up">Trusted Platform Module</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Invoking-tpmtool"></a>
@@ -191,7 +191,7 @@ with a status code of 0.
 <pre class="example">tpmtool - GnuTLS TPM tool
 Usage:  tpmtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
-   -d, --debug=num            Enable debugging.
+   -d, --debug=num            Enable debugging
                                 - it must be in the range:
                                   0 to 9999
        --infile=file          Input file
@@ -230,14 +230,14 @@ hyphen and the flag character.
 
 Program that allows handling cryptographic data from the TPM chip.
 
-Please send bug reports to:  &lt;bug-gnutls@gnu.org&gt;
+Please send bug reports to:  &lt;bugs@gnutls.org&gt;
 </pre></div>
 
 <a name="tpmtool-debug"></a><a name="debug-option-_0028_002dd_0029-6"></a>
 <h4 class="subsubheading">debug option (-d)</h4>
 
-<p>This is the &ldquo;enable debugging.&rdquo; option.
-This option takes an argument number.
+<p>This is the &ldquo;enable debugging&rdquo; option.
+This option takes a number argument.
 Specifies the debug level.
 <a name="tpmtool-generate_002drsa"></a></p><a name="generate_002drsa-option-1"></a>
 <h4 class="subsubheading">generate-rsa option</h4>
@@ -278,21 +278,33 @@ user.
 <h4 class="subsubheading">sec-param option</h4>
 
 <p>This is the &ldquo;specify the security level [low, legacy, normal, high, ultra].&rdquo; option.
-This option takes an argument string <samp>Security parameter</samp>.
+This option takes a string argument <samp>Security parameter</samp>.
 This is alternative to the bits option. Note however that the
 values allowed by the TPM chip are quantized and given values may be rounded up.
 <a name="tpmtool-inder"></a></p><a name="inder-option-3"></a>
 <h4 class="subsubheading">inder option</h4>
 
 <p>This is the &ldquo;use the der format for keys.&rdquo; option.
-The input files will be assumed to be in the portable
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-inder.
+</li></ul>
+
+<p>The input files will be assumed to be in the portable
 DER format of TPM. The default format is a custom format used by various
 TPM tools
-<a name="tpmtool-outder"></a></p><a name="outder-option-1"></a>
+<a name="tpmtool-outder"></a></p><a name="outder-option-2"></a>
 <h4 class="subsubheading">outder option</h4>
 
 <p>This is the &ldquo;use der format for output keys&rdquo; option.
-The output will be in the TPM portable DER format.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-outder.
+</li></ul>
+
+<p>The output will be in the TPM portable DER format.
 <a name="tpmtool-exit-status"></a></p><a name="tpmtool-exit-status-1"></a>
 <h4 class="subsubheading">tpmtool exit status</h4>
 
@@ -340,7 +352,7 @@ The output will be in the TPM portable DER format.
 <hr>
 <div class="header">
 <p>
-Previous: <a href="Using-keys.html#Using-keys" accesskey="p" rel="prev">Using keys</a>, Up: <a href="Trusted-Platform-Module.html#Trusted-Platform-Module" accesskey="u" rel="up">Trusted Platform Module</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Using-keys.html#Using-keys" accesskey="p" rel="previous">Using keys</a>, Up: <a href="Trusted-Platform-Module.html#Trusted-Platform-Module" accesskey="u" rel="up">Trusted Platform Module</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

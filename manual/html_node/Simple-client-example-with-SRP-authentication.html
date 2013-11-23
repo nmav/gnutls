@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: Simple client example with SRP authentication</title>
+<title>GnuTLS 3.2.7: Simple client example with SRP authentication</title>
 
-<meta name="description" content="GnuTLS 3.2.6: Simple client example with SRP authentication">
-<meta name="keywords" content="GnuTLS 3.2.6: Simple client example with SRP authentication">
+<meta name="description" content="GnuTLS 3.2.7: Simple client example with SRP authentication">
+<meta name="keywords" content="GnuTLS 3.2.7: Simple client example with SRP authentication">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Client-examples.html#Client-examples" rel="up" title="Client examples">
 <link href="Simple-client-example-in-C_002b_002b.html#Simple-client-example-in-C_002b_002b" rel="next" title="Simple client example in C++">
-<link href="Client-with-Resume-capability-example.html#Client-with-Resume-capability-example" rel="prev" title="Client with Resume capability example">
+<link href="Client-with-Resume-capability-example.html#Client-with-Resume-capability-example" rel="previous" title="Client with Resume capability example">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="Simple-client-example-with-SRP-authentication"></a>
 <div class="header">
 <p>
-Next: <a href="Simple-client-example-in-C_002b_002b.html#Simple-client-example-in-C_002b_002b" accesskey="n" rel="next">Simple client example in C++</a>, Previous: <a href="Client-with-Resume-capability-example.html#Client-with-Resume-capability-example" accesskey="p" rel="prev">Client with Resume capability example</a>, Up: <a href="Client-examples.html#Client-examples" accesskey="u" rel="up">Client examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Simple-client-example-in-C_002b_002b.html#Simple-client-example-in-C_002b_002b" accesskey="n" rel="next">Simple client example in C++</a>, Previous: <a href="Client-with-Resume-capability-example.html#Client-with-Resume-capability-example" accesskey="p" rel="previous">Client with Resume capability example</a>, Up: <a href="Client-examples.html#Client-examples" accesskey="u" rel="up">Client examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Simple-client-example-with-SRP-authentication-1"></a>
@@ -182,9 +182,9 @@ itself using a certificate, and in that case it has to be verified.
 
 /* Those functions are defined in other examples.
  */
-extern void check_alert (gnutls_session_t session, int ret);
-extern int tcp_connect (void);
-extern void tcp_close (int sd);
+extern void check_alert(gnutls_session_t session, int ret);
+extern int tcp_connect(void);
+extern void tcp_close(int sd);
 
 #define MAX_BUF 1024
 #define USERNAME &quot;user&quot;
@@ -192,117 +192,109 @@ extern void tcp_close (int sd);
 #define CAFILE &quot;/etc/ssl/certs/ca-certificates.crt&quot;
 #define MSG &quot;GET / HTTP/1.0\r\n\r\n&quot;
 
-int
-main (void)
+int main(void)
 {
-  int ret;
-  int sd, ii;
-  gnutls_session_t session;
-  char buffer[MAX_BUF + 1];
-  gnutls_srp_client_credentials_t srp_cred;
-  gnutls_certificate_credentials_t cert_cred;
+        int ret;
+        int sd, ii;
+        gnutls_session_t session;
+        char buffer[MAX_BUF + 1];
+        gnutls_srp_client_credentials_t srp_cred;
+        gnutls_certificate_credentials_t cert_cred;
 
-  gnutls_global_init ();
+        gnutls_global_init();
 
-  gnutls_srp_allocate_client_credentials (&amp;srp_cred);
-  gnutls_certificate_allocate_credentials (&amp;cert_cred);
+        gnutls_srp_allocate_client_credentials(&amp;srp_cred);
+        gnutls_certificate_allocate_credentials(&amp;cert_cred);
 
-  gnutls_certificate_set_x509_trust_file (cert_cred, CAFILE,
-                                          GNUTLS_X509_FMT_PEM);
-  gnutls_srp_set_client_credentials (srp_cred, USERNAME, PASSWORD);
+        gnutls_certificate_set_x509_trust_file(cert_cred, CAFILE,
+                                               GNUTLS_X509_FMT_PEM);
+        gnutls_srp_set_client_credentials(srp_cred, USERNAME, PASSWORD);
 
-  /* connects to server
-   */
-  sd = tcp_connect ();
+        /* connects to server
+         */
+        sd = tcp_connect();
 
-  /* Initialize TLS session
-   */
-  gnutls_init (&amp;session, GNUTLS_CLIENT);
+        /* Initialize TLS session
+         */
+        gnutls_init(&amp;session, GNUTLS_CLIENT);
 
 
-  /* Set the priorities.
-   */
-  gnutls_priority_set_direct (session, &quot;NORMAL:+SRP:+SRP-RSA:+SRP-DSS&quot;, NULL);
+        /* Set the priorities.
+         */
+        gnutls_priority_set_direct(session,
+                                   &quot;NORMAL:+SRP:+SRP-RSA:+SRP-DSS&quot;, NULL);
 
-  /* put the SRP credentials to the current session
-   */
-  gnutls_credentials_set (session, GNUTLS_CRD_SRP, srp_cred);
-  gnutls_credentials_set (session, GNUTLS_CRD_CERTIFICATE, cert_cred);
+        /* put the SRP credentials to the current session
+         */
+        gnutls_credentials_set(session, GNUTLS_CRD_SRP, srp_cred);
+        gnutls_credentials_set(session, GNUTLS_CRD_CERTIFICATE, cert_cred);
 
-  gnutls_transport_set_int (session, sd);
-  gnutls_handshake_set_timeout (session, GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT);
+        gnutls_transport_set_int(session, sd);
+        gnutls_handshake_set_timeout(session,
+                                     GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT);
 
-  /* Perform the TLS handshake
-   */
-  do
-    {
-      ret = gnutls_handshake (session);
-    }
-  while (ret &lt; 0 &amp;&amp; gnutls_error_is_fatal (ret) == 0);
-
-  if (ret &lt; 0)
-    {
-      fprintf (stderr, &quot;*** Handshake failed\n&quot;);
-      gnutls_perror (ret);
-      goto end;
-    }
-  else
-    {
-      char* desc;
-      
-      desc = gnutls_session_get_desc(session);
-      printf (&quot;- Session info: %s\n&quot;, desc);
-      gnutls_free(desc);
-    }
-
-  gnutls_record_send (session, MSG, strlen (MSG));
-
-  ret = gnutls_record_recv (session, buffer, MAX_BUF);
-  if (gnutls_error_is_fatal (ret) != 0 || ret == 0)
-    {
-      if (ret == 0)
-        {
-          printf (&quot;- Peer has closed the GnuTLS connection\n&quot;);
-          goto end;
+        /* Perform the TLS handshake
+         */
+        do {
+                ret = gnutls_handshake(session);
         }
-      else
-        {
-          fprintf (stderr, &quot;*** Error: %s\n&quot;, gnutls_strerror (ret));
-          goto end;
+        while (ret &lt; 0 &amp;&amp; gnutls_error_is_fatal(ret) == 0);
+
+        if (ret &lt; 0) {
+                fprintf(stderr, &quot;*** Handshake failed\n&quot;);
+                gnutls_perror(ret);
+                goto end;
+        } else {
+                char *desc;
+
+                desc = gnutls_session_get_desc(session);
+                printf(&quot;- Session info: %s\n&quot;, desc);
+                gnutls_free(desc);
         }
-    }
-  else
-    check_alert (session, ret);
 
-  if (ret &gt; 0)
-    {
-      printf (&quot;- Received %d bytes: &quot;, ret);
-      for (ii = 0; ii &lt; ret; ii++)
-        {
-          fputc (buffer[ii], stdout);
+        gnutls_record_send(session, MSG, strlen(MSG));
+
+        ret = gnutls_record_recv(session, buffer, MAX_BUF);
+        if (gnutls_error_is_fatal(ret) != 0 || ret == 0) {
+                if (ret == 0) {
+                        printf
+                            (&quot;- Peer has closed the GnuTLS connection\n&quot;);
+                        goto end;
+                } else {
+                        fprintf(stderr, &quot;*** Error: %s\n&quot;,
+                                gnutls_strerror(ret));
+                        goto end;
+                }
+        } else
+                check_alert(session, ret);
+
+        if (ret &gt; 0) {
+                printf(&quot;- Received %d bytes: &quot;, ret);
+                for (ii = 0; ii &lt; ret; ii++) {
+                        fputc(buffer[ii], stdout);
+                }
+                fputs(&quot;\n&quot;, stdout);
         }
-      fputs (&quot;\n&quot;, stdout);
-    }
-  gnutls_bye (session, GNUTLS_SHUT_RDWR);
+        gnutls_bye(session, GNUTLS_SHUT_RDWR);
 
-end:
+      end:
 
-  tcp_close (sd);
+        tcp_close(sd);
 
-  gnutls_deinit (session);
+        gnutls_deinit(session);
 
-  gnutls_srp_free_client_credentials (srp_cred);
-  gnutls_certificate_free_credentials (cert_cred);
+        gnutls_srp_free_client_credentials(srp_cred);
+        gnutls_certificate_free_credentials(cert_cred);
 
-  gnutls_global_deinit ();
+        gnutls_global_deinit();
 
-  return 0;
+        return 0;
 }
 </pre>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Simple-client-example-in-C_002b_002b.html#Simple-client-example-in-C_002b_002b" accesskey="n" rel="next">Simple client example in C++</a>, Previous: <a href="Client-with-Resume-capability-example.html#Client-with-Resume-capability-example" accesskey="p" rel="prev">Client with Resume capability example</a>, Up: <a href="Client-examples.html#Client-examples" accesskey="u" rel="up">Client examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Simple-client-example-in-C_002b_002b.html#Simple-client-example-in-C_002b_002b" accesskey="n" rel="next">Simple client example in C++</a>, Previous: <a href="Client-with-Resume-capability-example.html#Client-with-Resume-capability-example" accesskey="p" rel="previous">Client with Resume capability example</a>, Up: <a href="Client-examples.html#Client-examples" accesskey="u" rel="up">Client examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

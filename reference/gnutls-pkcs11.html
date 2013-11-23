@@ -55,11 +55,11 @@
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> key_usage</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-copy-x509-crt" title="gnutls_pkcs11_copy_x509_crt ()">gnutls_pkcs11_copy_x509_crt</a>         (<em class="parameter"><code>const <span class="type">char</span> *token_url</code></em>,
-                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_x509_crt_t</span> crt</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *label</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-copy-x509-privkey" title="gnutls_pkcs11_copy_x509_privkey ()">gnutls_pkcs11_copy_x509_privkey</a>     (<em class="parameter"><code>const <span class="type">char</span> *token_url</code></em>,
-                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-privkey-t"><span class="type">gnutls_x509_privkey_t</span></a> key</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_x509_privkey_t</span> key</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *label</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> key_usage</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
@@ -104,8 +104,8 @@ enum                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-obj-i
 struct              <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-obj-st" title="struct gnutls_pkcs11_obj_st">gnutls_pkcs11_obj_st</a>;
 typedef             <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-obj-t" title="gnutls_pkcs11_obj_t">gnutls_pkcs11_obj_t</a>;
 enum                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-obj-type-t" title="enum gnutls_pkcs11_obj_type_t">gnutls_pkcs11_obj_type_t</a>;
-<span class="returnvalue">void</span>                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-deinit" title="gnutls_pkcs11_privkey_deinit ()">gnutls_pkcs11_privkey_deinit</a>        (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> key</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-export-url" title="gnutls_pkcs11_privkey_export_url ()">gnutls_pkcs11_privkey_export_url</a>    (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> key</code></em>,
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-deinit" title="gnutls_pkcs11_privkey_deinit ()">gnutls_pkcs11_privkey_deinit</a>        (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> key</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-export-url" title="gnutls_pkcs11_privkey_export_url ()">gnutls_pkcs11_privkey_export_url</a>    (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> key</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-url-type-t" title="enum gnutls_pkcs11_url_type_t"><span class="type">gnutls_pkcs11_url_type_t</span></a> detailed</code></em>,
                                                          <em class="parameter"><code><span class="type">char</span> **url</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-generate" title="gnutls_pkcs11_privkey_generate ()">gnutls_pkcs11_privkey_generate</a>      (<em class="parameter"><code>const <span class="type">char</span> *url</code></em>,
@@ -120,21 +120,22 @@ enum                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-obj-t
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> fmt</code></em>,
                                                          <em class="parameter"><code><span class="type">gnutls_datum_t</span> *pubkey</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-get-info" title="gnutls_pkcs11_privkey_get_info ()">gnutls_pkcs11_privkey_get_info</a>      (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> pkey</code></em>,
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-get-info" title="gnutls_pkcs11_privkey_get_info ()">gnutls_pkcs11_privkey_get_info</a>      (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> pkey</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-obj-info-t" title="enum gnutls_pkcs11_obj_info_t"><span class="type">gnutls_pkcs11_obj_info_t</span></a> itype</code></em>,
                                                          <em class="parameter"><code><span class="type">void</span> *output</code></em>,
                                                          <em class="parameter"><code><span class="type">size_t</span> *output_size</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-get-pk-algorithm" title="gnutls_pkcs11_privkey_get_pk_algorithm ()">gnutls_pkcs11_privkey_get_pk_algorithm</a>
-                                                        (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> key</code></em>,
+                                                        (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> key</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> *bits</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-import-url" title="gnutls_pkcs11_privkey_import_url ()">gnutls_pkcs11_privkey_import_url</a>    (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> pkey</code></em>,
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-import-url" title="gnutls_pkcs11_privkey_import_url ()">gnutls_pkcs11_privkey_import_url</a>    (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> pkey</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *url</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-init" title="gnutls_pkcs11_privkey_init ()">gnutls_pkcs11_privkey_init</a>          (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> *key</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-init" title="gnutls_pkcs11_privkey_init ()">gnutls_pkcs11_privkey_init</a>          (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> *key</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-set-pin-function" title="gnutls_pkcs11_privkey_set_pin_function ()">gnutls_pkcs11_privkey_set_pin_function</a>
-                                                        (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> key</code></em>,
+                                                        (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> key</code></em>,
                                                          <em class="parameter"><code><span class="type">gnutls_pin_callback_t</span> fn</code></em>,
                                                          <em class="parameter"><code><span class="type">void</span> *userdata</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-privkey-status" title="gnutls_pkcs11_privkey_status ()">gnutls_pkcs11_privkey_status</a>        (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> key</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-reinit" title="gnutls_pkcs11_reinit ()">gnutls_pkcs11_reinit</a>                (<em class="parameter"><code><span class="type">void</span></code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-set-pin-function" title="gnutls_pkcs11_set_pin_function ()">gnutls_pkcs11_set_pin_function</a>      (<em class="parameter"><code><span class="type">gnutls_pin_callback_t</span> fn</code></em>,
                                                          <em class="parameter"><code><span class="type">void</span> *userdata</code></em>);
@@ -165,12 +166,12 @@ enum                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-token
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
 const <span class="returnvalue">char</span> *        <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-type-get-name" title="gnutls_pkcs11_type_get_name ()">gnutls_pkcs11_type_get_name</a>         (<em class="parameter"><code><a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-obj-type-t" title="enum gnutls_pkcs11_obj_type_t"><span class="type">gnutls_pkcs11_obj_type_t</span></a> type</code></em>);
 enum                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-url-type-t" title="enum gnutls_pkcs11_url_type_t">gnutls_pkcs11_url_type_t</a>;
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-x509-crt-import-pkcs11" title="gnutls_x509_crt_import_pkcs11 ()">gnutls_x509_crt_import_pkcs11</a>       (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>,
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-x509-crt-import-pkcs11" title="gnutls_x509_crt_import_pkcs11 ()">gnutls_x509_crt_import_pkcs11</a>       (<em class="parameter"><code><span class="type">gnutls_x509_crt_t</span> crt</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-obj-t" title="gnutls_pkcs11_obj_t"><span class="type">gnutls_pkcs11_obj_t</span></a> pkcs11_crt</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-x509-crt-import-pkcs11-url" title="gnutls_x509_crt_import_pkcs11_url ()">gnutls_x509_crt_import_pkcs11_url</a>   (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>,
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-x509-crt-import-pkcs11-url" title="gnutls_x509_crt_import_pkcs11_url ()">gnutls_x509_crt_import_pkcs11_url</a>   (<em class="parameter"><code><span class="type">gnutls_x509_crt_t</span> crt</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *url</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
-<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-x509-crt-list-import-pkcs11" title="gnutls_x509_crt_list_import_pkcs11 ()">gnutls_x509_crt_list_import_pkcs11</a>  (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> *certs</code></em>,
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-pkcs11.html#gnutls-x509-crt-list-import-pkcs11" title="gnutls_x509_crt_list_import_pkcs11 ()">gnutls_x509_crt_list_import_pkcs11</a>  (<em class="parameter"><code><span class="type">gnutls_x509_crt_t</span> *certs</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> cert_max</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-obj-t" title="gnutls_pkcs11_obj_t"><span class="type">gnutls_pkcs11_obj_t</span></a> * const objs</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);
@@ -185,7 +186,7 @@ enum                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-url-t
 <a name="gnutls-pkcs11.details"></a><h2>Details</h2>
 <div class="refsect2">
 <a name="GNUTLS-PKCS11-FLAG-AUTO:CAPS"></a><h3>GNUTLS_PKCS11_FLAG_AUTO</h3>
-<pre class="programlisting">#define GNUTLS_PKCS11_FLAG_AUTO 1       /* Automatically load libraries by reading /etc/gnutls/pkcs11.conf */
+<pre class="programlisting">#define GNUTLS_PKCS11_FLAG_AUTO 1 /* Automatically load libraries by reading /etc/gnutls/pkcs11.conf */
 </pre>
 <p>
 </p>
@@ -193,7 +194,7 @@ enum                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-url-t
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-PKCS11-FLAG-MANUAL:CAPS"></a><h3>GNUTLS_PKCS11_FLAG_MANUAL</h3>
-<pre class="programlisting">#define GNUTLS_PKCS11_FLAG_MANUAL 0     /* Manual loading of libraries */
+<pre class="programlisting">#define GNUTLS_PKCS11_FLAG_MANUAL 0 /* Manual loading of libraries */
 </pre>
 <p>
 </p>
@@ -209,7 +210,7 @@ enum                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-url-t
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-PKCS11-OBJ-FLAG-LOGIN:CAPS"></a><h3>GNUTLS_PKCS11_OBJ_FLAG_LOGIN</h3>
-<pre class="programlisting">#define GNUTLS_PKCS11_OBJ_FLAG_LOGIN (1&lt;&lt;0)     /* force login in the token for the operation */
+<pre class="programlisting">#define GNUTLS_PKCS11_OBJ_FLAG_LOGIN (1&lt;&lt;0) /* force login in the token for the operation */
 </pre>
 <p>
 </p>
@@ -217,7 +218,7 @@ enum                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-url-t
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-PKCS11-OBJ-FLAG-LOGIN-SO:CAPS"></a><h3>GNUTLS_PKCS11_OBJ_FLAG_LOGIN_SO</h3>
-<pre class="programlisting">#define GNUTLS_PKCS11_OBJ_FLAG_LOGIN_SO (1&lt;&lt;3)     /* force login as a security officer in the token for the operation */
+<pre class="programlisting">#define GNUTLS_PKCS11_OBJ_FLAG_LOGIN_SO (1&lt;&lt;3) /* force login as a security officer in the token for the operation */
 </pre>
 <p>
 </p>
@@ -225,7 +226,7 @@ enum                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-url-t
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-PKCS11-OBJ-FLAG-MARK-NOT-PRIVATE:CAPS"></a><h3>GNUTLS_PKCS11_OBJ_FLAG_MARK_NOT_PRIVATE</h3>
-<pre class="programlisting">#define GNUTLS_PKCS11_OBJ_FLAG_MARK_NOT_PRIVATE (1&lt;&lt;5) /* marked as not private */
+<pre class="programlisting">#define GNUTLS_PKCS11_OBJ_FLAG_MARK_NOT_PRIVATE (1&lt;&lt;5) /* marked as not private */
 </pre>
 <p>
 </p>
@@ -233,7 +234,7 @@ enum                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-url-t
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-PKCS11-OBJ-FLAG-MARK-PRIVATE:CAPS"></a><h3>GNUTLS_PKCS11_OBJ_FLAG_MARK_PRIVATE</h3>
-<pre class="programlisting">#define GNUTLS_PKCS11_OBJ_FLAG_MARK_PRIVATE (1&lt;&lt;4) /* marked as private (requires PIN to access) */
+<pre class="programlisting">#define GNUTLS_PKCS11_OBJ_FLAG_MARK_PRIVATE (1&lt;&lt;4) /* marked as private (requires PIN to access) */
 </pre>
 <p>
 </p>
@@ -241,7 +242,7 @@ enum                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-url-t
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-PKCS11-OBJ-FLAG-MARK-SENSITIVE:CAPS"></a><h3>GNUTLS_PKCS11_OBJ_FLAG_MARK_SENSITIVE</h3>
-<pre class="programlisting">#define GNUTLS_PKCS11_OBJ_FLAG_MARK_SENSITIVE (1&lt;&lt;2)    /* object marked as sensitive (unexportable) */
+<pre class="programlisting">#define GNUTLS_PKCS11_OBJ_FLAG_MARK_SENSITIVE (1&lt;&lt;2) /* object marked as sensitive (unexportable) */
 </pre>
 <p>
 </p>
@@ -249,7 +250,7 @@ enum                <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-url-t
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-PKCS11-OBJ-FLAG-MARK-TRUSTED:CAPS"></a><h3>GNUTLS_PKCS11_OBJ_FLAG_MARK_TRUSTED</h3>
-<pre class="programlisting">#define GNUTLS_PKCS11_OBJ_FLAG_MARK_TRUSTED (1&lt;&lt;1)      /* object marked as trusted */
+<pre class="programlisting">#define GNUTLS_PKCS11_OBJ_FLAG_MARK_TRUSTED (1&lt;&lt;1) /* object marked as trusted */
 </pre>
 <p>
 </p>
@@ -288,7 +289,7 @@ be used for PKCS 11 operations.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -335,7 +336,7 @@ token specified by a URL. The key can be marked as sensitive or not.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -346,7 +347,7 @@ negative error value.</td>
 <div class="refsect2">
 <a name="gnutls-pkcs11-copy-x509-crt"></a><h3>gnutls_pkcs11_copy_x509_crt ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs11_copy_x509_crt         (<em class="parameter"><code>const <span class="type">char</span> *token_url</code></em>,
-                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_x509_crt_t</span> crt</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *label</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
 <p>
@@ -377,7 +378,7 @@ a URL. The certificate can be marked as trusted or not.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -388,7 +389,7 @@ negative error value.</td>
 <div class="refsect2">
 <a name="gnutls-pkcs11-copy-x509-privkey"></a><h3>gnutls_pkcs11_copy_x509_privkey ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs11_copy_x509_privkey     (<em class="parameter"><code>const <span class="type">char</span> *token_url</code></em>,
-                                                         <em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-privkey-t"><span class="type">gnutls_x509_privkey_t</span></a> key</code></em>,
+                                                         <em class="parameter"><code><span class="type">gnutls_x509_privkey_t</span> key</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *label</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> key_usage</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
@@ -425,7 +426,7 @@ unless there is a strong reason not to.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -512,7 +513,7 @@ if <a class="link" href="gnutls-pkcs11.html#GNUTLS-PKCS11-FLAG-MANUAL:CAPS" titl
 </p>
 <p>
 Normally you don't need to call this function since it is being called
-by <a href="gnutls-gnutls.html#gnutls-global-init"><code class="function">gnutls_global_init()</code></a> using the <a class="link" href="gnutls-pkcs11.html#GNUTLS-PKCS11-FLAG-AUTO:CAPS" title="GNUTLS_PKCS11_FLAG_AUTO"><code class="literal">GNUTLS_PKCS11_FLAG_AUTO</code></a>. If other option
+by <code class="function">gnutls_global_init()</code> using the <a class="link" href="gnutls-pkcs11.html#GNUTLS-PKCS11-FLAG-AUTO:CAPS" title="GNUTLS_PKCS11_FLAG_AUTO"><code class="literal">GNUTLS_PKCS11_FLAG_AUTO</code></a>. If other option
 is required then it must be called before it.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
@@ -534,7 +535,7 @@ configuration file</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -545,13 +546,13 @@ negative error value.</td>
 <div class="refsect2">
 <a name="gnutls-pkcs11-obj-attr-t"></a><h3>enum gnutls_pkcs11_obj_attr_t</h3>
 <pre class="programlisting">typedef enum {
-    GNUTLS_PKCS11_OBJ_ATTR_CRT_ALL = 1,   /* all certificates */
-    GNUTLS_PKCS11_OBJ_ATTR_CRT_TRUSTED,   /* certificates marked as trusted */
-    GNUTLS_PKCS11_OBJ_ATTR_CRT_WITH_PRIVKEY,      /* certificates with corresponding private key */
-    GNUTLS_PKCS11_OBJ_ATTR_PUBKEY,        /* public keys */
-    GNUTLS_PKCS11_OBJ_ATTR_PRIVKEY,       /* private keys */
-    GNUTLS_PKCS11_OBJ_ATTR_ALL,    /* everything! */
-    GNUTLS_PKCS11_OBJ_ATTR_CRT_TRUSTED_CA,       /* CAs */
+	GNUTLS_PKCS11_OBJ_ATTR_CRT_ALL = 1, /* all certificates */
+	GNUTLS_PKCS11_OBJ_ATTR_CRT_TRUSTED, /* certificates marked as trusted */
+	GNUTLS_PKCS11_OBJ_ATTR_CRT_WITH_PRIVKEY, /* certificates with corresponding private key */
+	GNUTLS_PKCS11_OBJ_ATTR_PUBKEY, /* public keys */
+	GNUTLS_PKCS11_OBJ_ATTR_PRIVKEY, /* private keys */
+	GNUTLS_PKCS11_OBJ_ATTR_ALL, /* everything! */
+	GNUTLS_PKCS11_OBJ_ATTR_CRT_TRUSTED_CA, /* CAs */
 } gnutls_pkcs11_obj_attr_t;
 </pre>
 <p>
@@ -628,17 +629,13 @@ This function will deinitialize a certificate structure.
                                                          <em class="parameter"><code><span class="type">size_t</span> *output_data_size</code></em>);</pre>
 <p>
 This function will export the PKCS11 object data.  It is normal for
-data to be inaccesible and in that case <a href="gnutls-gnutls.html#GNUTLS-E-INVALID-REQUEST:CAPS"><code class="literal">GNUTLS_E_INVALID_REQUEST</code></a>
+data to be inaccesible and in that case <code class="literal">GNUTLS_E_INVALID_REQUEST</code>
 will be returned.
 </p>
 <p>
 If the buffer provided is not long enough to hold the output, then
 *output_data_size is updated and GNUTLS_E_SHORT_MEMORY_BUFFER will
 be returned.
-</p>
-<p>
-If the structure is PEM encoded, it will have a header
-of "BEGIN CERTIFICATE".
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -652,7 +649,7 @@ of "BEGIN CERTIFICATE".
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>output_data</code></em> :</span></p></td>
-<td>will contain a certificate PEM or DER encoded</td>
+<td>will contain the object data</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>output_data_size</code></em> :</span></p></td>
@@ -662,7 +659,7 @@ replaced by the actual size of parameters)</td>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>In case of failure a negative error code will be
-returned, and <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success.</td>
+returned, and <code class="literal">GNUTLS_E_SUCCESS</code> (0) on success.</td>
 </tr>
 </tbody>
 </table></div>
@@ -675,15 +672,11 @@ returned, and <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="li
                                                          <em class="parameter"><code><span class="type">gnutls_datum_t</span> *out</code></em>);</pre>
 <p>
 This function will export the PKCS11 object data.  It is normal for
-data to be inaccesible and in that case <a href="gnutls-gnutls.html#GNUTLS-E-INVALID-REQUEST:CAPS"><code class="literal">GNUTLS_E_INVALID_REQUEST</code></a>
+data to be inaccesible and in that case <code class="literal">GNUTLS_E_INVALID_REQUEST</code>
 will be returned.
 </p>
 <p>
-The output buffer is allocated using <a href="gnutls-gnutls.html#gnutls-malloc"><code class="function">gnutls_malloc()</code></a>.
-</p>
-<p>
-If the structure is PEM encoded, it will have a header
-of "BEGIN CERTIFICATE".
+The output buffer is allocated using <code class="function">gnutls_malloc()</code>.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -697,12 +690,12 @@ of "BEGIN CERTIFICATE".
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out</code></em> :</span></p></td>
-<td>will contain a certificate PEM or DER encoded</td>
+<td>will contain the object data</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>In case of failure a negative error code will be
-returned, and <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success.</td>
+returned, and <code class="literal">GNUTLS_E_SUCCESS</code> (0) on success.</td>
 </tr>
 </tbody>
 </table></div>
@@ -737,7 +730,7 @@ This function will export a URL identifying the given certificate.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -782,7 +775,7 @@ although <em class="parameter"><code>output_size</code></em> contains the size o
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success or a negative error code on error.</td>
+<code class="literal">GNUTLS_E_SUCCESS</code> (0) on success or a negative error code on error.</td>
 </tr>
 </tbody>
 </table></div>
@@ -820,7 +813,7 @@ format agnostic. Only data are transferred.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -831,17 +824,17 @@ negative error value.</td>
 <div class="refsect2">
 <a name="gnutls-pkcs11-obj-info-t"></a><h3>enum gnutls_pkcs11_obj_info_t</h3>
 <pre class="programlisting">typedef enum {
-    GNUTLS_PKCS11_OBJ_ID_HEX = 1,
-    GNUTLS_PKCS11_OBJ_LABEL,
-    GNUTLS_PKCS11_OBJ_TOKEN_LABEL,
-    GNUTLS_PKCS11_OBJ_TOKEN_SERIAL,
-    GNUTLS_PKCS11_OBJ_TOKEN_MANUFACTURER,
-    GNUTLS_PKCS11_OBJ_TOKEN_MODEL,
-    GNUTLS_PKCS11_OBJ_ID,
-    /* the pkcs11 provider library info  */
-    GNUTLS_PKCS11_OBJ_LIBRARY_VERSION,
-    GNUTLS_PKCS11_OBJ_LIBRARY_DESCRIPTION,
-    GNUTLS_PKCS11_OBJ_LIBRARY_MANUFACTURER
+	GNUTLS_PKCS11_OBJ_ID_HEX = 1,
+	GNUTLS_PKCS11_OBJ_LABEL,
+	GNUTLS_PKCS11_OBJ_TOKEN_LABEL,
+	GNUTLS_PKCS11_OBJ_TOKEN_SERIAL,
+	GNUTLS_PKCS11_OBJ_TOKEN_MANUFACTURER,
+	GNUTLS_PKCS11_OBJ_TOKEN_MODEL,
+	GNUTLS_PKCS11_OBJ_ID,
+	/* the pkcs11 provider library info  */
+	GNUTLS_PKCS11_OBJ_LIBRARY_VERSION,
+	GNUTLS_PKCS11_OBJ_LIBRARY_DESCRIPTION,
+	GNUTLS_PKCS11_OBJ_LIBRARY_MANUFACTURER
 } gnutls_pkcs11_obj_info_t;
 </pre>
 <p>
@@ -925,7 +918,7 @@ This function will initialize a pkcs11 certificate structure.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -972,7 +965,7 @@ by using all objects identified by a PKCS 11 URL.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -1020,7 +1013,7 @@ is stored in <em class="parameter"><code>p_list</code></em>, which will be initi
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -1079,12 +1072,12 @@ set using <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-set-pin-functio
 <div class="refsect2">
 <a name="gnutls-pkcs11-obj-type-t"></a><h3>enum gnutls_pkcs11_obj_type_t</h3>
 <pre class="programlisting">typedef enum {
-    GNUTLS_PKCS11_OBJ_UNKNOWN,
-    GNUTLS_PKCS11_OBJ_X509_CRT,
-    GNUTLS_PKCS11_OBJ_PUBKEY,
-    GNUTLS_PKCS11_OBJ_PRIVKEY,
-    GNUTLS_PKCS11_OBJ_SECRET_KEY,
-    GNUTLS_PKCS11_OBJ_DATA
+	GNUTLS_PKCS11_OBJ_UNKNOWN,
+	GNUTLS_PKCS11_OBJ_X509_CRT,
+	GNUTLS_PKCS11_OBJ_PUBKEY,
+	GNUTLS_PKCS11_OBJ_PRIVKEY,
+	GNUTLS_PKCS11_OBJ_SECRET_KEY,
+	GNUTLS_PKCS11_OBJ_DATA
 } gnutls_pkcs11_obj_type_t;
 </pre>
 <p>
@@ -1132,7 +1125,7 @@ Enumeration of object types.
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs11-privkey-deinit"></a><h3>gnutls_pkcs11_privkey_deinit ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_pkcs11_privkey_deinit        (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> key</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_pkcs11_privkey_deinit        (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> key</code></em>);</pre>
 <p>
 This function will deinitialize a private key structure.
 </p>
@@ -1150,7 +1143,7 @@ This function will deinitialize a private key structure.
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs11-privkey-export-url"></a><h3>gnutls_pkcs11_privkey_export_url ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs11_privkey_export_url    (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> key</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs11_privkey_export_url    (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> key</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-url-type-t" title="enum gnutls_pkcs11_url_type_t"><span class="type">gnutls_pkcs11_url_type_t</span></a> detailed</code></em>,
                                                          <em class="parameter"><code><span class="type">char</span> **url</code></em>);</pre>
 <p>
@@ -1176,7 +1169,7 @@ This function will export a URL identifying the given key.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -1223,7 +1216,7 @@ the token and will not be exportable.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -1245,7 +1238,7 @@ This function will generate a private key in the specified
 by the <em class="parameter"><code>url</code></em> token. The private key will be generate within
 the token and will not be exportable. This function will
 store the DER-encoded public key in the SubjectPublicKeyInfo format 
-in <em class="parameter"><code>pubkey</code></em>. The <em class="parameter"><code>pubkey</code></em> should be deinitialized using <a href="gnutls-gnutls.html#gnutls-free"><code class="function">gnutls_free()</code></a>.
+in <em class="parameter"><code>pubkey</code></em>. The <em class="parameter"><code>pubkey</code></em> should be deinitialized using <code class="function">gnutls_free()</code>.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -1275,7 +1268,7 @@ in <em class="parameter"><code>pubkey</code></em>. The <em class="parameter"><co
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>pubkey</code></em> :</span></p></td>
-<td>will hold the public key (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>)</td>
+<td>will hold the public key (may be <code class="literal">NULL</code>)</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>flags</code></em> :</span></p></td>
@@ -1283,7 +1276,7 @@ in <em class="parameter"><code>pubkey</code></em>. The <em class="parameter"><co
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -1293,7 +1286,7 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs11-privkey-get-info"></a><h3>gnutls_pkcs11_privkey_get_info ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs11_privkey_get_info      (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> pkey</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs11_privkey_get_info      (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> pkey</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-obj-info-t" title="enum gnutls_pkcs11_obj_info_t"><span class="type">gnutls_pkcs11_obj_info_t</span></a> itype</code></em>,
                                                          <em class="parameter"><code><span class="type">void</span> *output</code></em>,
                                                          <em class="parameter"><code><span class="type">size_t</span> *output_size</code></em>);</pre>
@@ -1311,7 +1304,7 @@ the size of the actual data only.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>pkey</code></em> :</span></p></td>
-<td>should contain a <a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> structure</td>
+<td>should contain a <span class="type">gnutls_pkcs11_privkey_t</span> structure</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>itype</code></em> :</span></p></td>
@@ -1328,7 +1321,7 @@ the size of the actual data only.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success or a negative error code on error.</td>
+<code class="literal">GNUTLS_E_SUCCESS</code> (0) on success or a negative error code on error.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1337,7 +1330,7 @@ the size of the actual data only.
 <div class="refsect2">
 <a name="gnutls-pkcs11-privkey-get-pk-algorithm"></a><h3>gnutls_pkcs11_privkey_get_pk_algorithm ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs11_privkey_get_pk_algorithm
-                                                        (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> key</code></em>,
+                                                        (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> key</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> *bits</code></em>);</pre>
 <p>
 This function will return the public key algorithm of a private
@@ -1351,7 +1344,7 @@ key.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>key</code></em> :</span></p></td>
-<td>should contain a <a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> structure</td>
+<td>should contain a <span class="type">gnutls_pkcs11_privkey_t</span> structure</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>bits</code></em> :</span></p></td>
@@ -1368,12 +1361,12 @@ success, or a negative error code on error.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs11-privkey-import-url"></a><h3>gnutls_pkcs11_privkey_import_url ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs11_privkey_import_url    (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> pkey</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs11_privkey_import_url    (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> pkey</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *url</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
 <p>
 This function will "import" a PKCS 11 URL identifying a private
-key to the <a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> structure. In reality since
+key to the <span class="type">gnutls_pkcs11_privkey_t</span> structure. In reality since
 in most cases keys cannot be exported, the private key structure
 is being associated with the available operations on the token.
 </p>
@@ -1397,7 +1390,7 @@ is being associated with the available operations on the token.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -1406,7 +1399,7 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-pkcs11-privkey-init"></a><h3>gnutls_pkcs11_privkey_init ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs11_privkey_init          (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> *key</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs11_privkey_init          (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> *key</code></em>);</pre>
 <p>
 This function will initialize an private key structure.
 </p>
@@ -1422,7 +1415,7 @@ This function will initialize an private key structure.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -1432,7 +1425,7 @@ negative error value.</td>
 <div class="refsect2">
 <a name="gnutls-pkcs11-privkey-set-pin-function"></a><h3>gnutls_pkcs11_privkey_set_pin_function ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gnutls_pkcs11_privkey_set_pin_function
-                                                        (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-pkcs11-privkey-t"><span class="type">gnutls_pkcs11_privkey_t</span></a> key</code></em>,
+                                                        (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> key</code></em>,
                                                          <em class="parameter"><code><span class="type">gnutls_pin_callback_t</span> fn</code></em>,
                                                          <em class="parameter"><code><span class="type">void</span> *userdata</code></em>);</pre>
 <p>
@@ -1464,6 +1457,32 @@ set using <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-set-pin-functio
 </div>
 <hr>
 <div class="refsect2">
+<a name="gnutls-pkcs11-privkey-status"></a><h3>gnutls_pkcs11_privkey_status ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs11_privkey_status        (<em class="parameter"><code><span class="type">gnutls_pkcs11_privkey_t</span> key</code></em>);</pre>
+<p>
+Checks the status of the private key token.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>key</code></em> :</span></p></td>
+<td>Holds the key</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>this function will return non-zero if the token
+holding the private key is still available (inserted), and zero otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.1.9</p>
+</div>
+<hr>
+<div class="refsect2">
 <a name="gnutls-pkcs11-reinit"></a><h3>gnutls_pkcs11_reinit ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_pkcs11_reinit                (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
 <p>
@@ -1478,7 +1497,7 @@ reinitialization function must be called on the child.
 </colgroup>
 <tbody><tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr></tbody>
 </table></div>
@@ -1574,7 +1593,7 @@ increased.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success or a negative error code
+<code class="literal">GNUTLS_E_SUCCESS</code> (0) on success or a negative error code
 on error.</td>
 </tr>
 </tbody>
@@ -1607,7 +1626,7 @@ The flags from the <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-token-
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success or a negative error code on error.</td>
+<code class="literal">GNUTLS_E_SUCCESS</code> (0) on success or a negative error code on error.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1649,7 +1668,7 @@ as the label, id, etc.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success or a negative error code
+<code class="literal">GNUTLS_E_SUCCESS</code> (0) on success or a negative error code
 on error.</td>
 </tr>
 </tbody>
@@ -1688,7 +1707,7 @@ it return GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success or a negative error code on error.</td>
+<code class="literal">GNUTLS_E_SUCCESS</code> (0) on success or a negative error code on error.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1702,7 +1721,7 @@ it return GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE.
                                                          <em class="parameter"><code><span class="type">char</span> **url</code></em>);</pre>
 <p>
 This function will return the URL for each token available
-in system. The url has to be released using <a href="gnutls-gnutls.html#gnutls-free"><code class="function">gnutls_free()</code></a>
+in system. The url has to be released using <code class="function">gnutls_free()</code>
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -1724,8 +1743,8 @@ in system. The url has to be released using <a href="gnutls-gnutls.html#gnutls-f
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned,
-<a href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a> if the sequence number
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned,
+<code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> if the sequence number
 exceeds the available tokens, otherwise a negative error value.</td>
 </tr>
 </tbody>
@@ -1736,10 +1755,10 @@ exceeds the available tokens, otherwise a negative error value.</td>
 <div class="refsect2">
 <a name="gnutls-pkcs11-token-info-t"></a><h3>enum gnutls_pkcs11_token_info_t</h3>
 <pre class="programlisting">typedef enum {
-    GNUTLS_PKCS11_TOKEN_LABEL,
-    GNUTLS_PKCS11_TOKEN_SERIAL,
-    GNUTLS_PKCS11_TOKEN_MANUFACTURER,
-    GNUTLS_PKCS11_TOKEN_MODEL
+	GNUTLS_PKCS11_TOKEN_LABEL,
+	GNUTLS_PKCS11_TOKEN_SERIAL,
+	GNUTLS_PKCS11_TOKEN_MANUFACTURER,
+	GNUTLS_PKCS11_TOKEN_MODEL
 } gnutls_pkcs11_token_info_t;
 </pre>
 <p>
@@ -1805,7 +1824,7 @@ set to be the default. Otherwise it should match the officer's PIN.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -1847,7 +1866,7 @@ be NULL.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -1885,9 +1904,9 @@ types.
 <div class="refsect2">
 <a name="gnutls-pkcs11-url-type-t"></a><h3>enum gnutls_pkcs11_url_type_t</h3>
 <pre class="programlisting">typedef enum {
-    GNUTLS_PKCS11_URL_GENERIC,    /* URL specifies the object on token level */
-    GNUTLS_PKCS11_URL_LIB,        /* URL specifies the object on module level */
-    GNUTLS_PKCS11_URL_LIB_VERSION /* URL specifies the object on module and version level */
+	GNUTLS_PKCS11_URL_GENERIC, /* URL specifies the object on token level */
+	GNUTLS_PKCS11_URL_LIB, /* URL specifies the object on module level */
+	GNUTLS_PKCS11_URL_LIB_VERSION /* URL specifies the object on module and version level */
 } gnutls_pkcs11_url_type_t;
 </pre>
 <p>
@@ -1920,10 +1939,10 @@ Enumeration of different URL extraction flags.
 <hr>
 <div class="refsect2">
 <a name="gnutls-x509-crt-import-pkcs11"></a><h3>gnutls_x509_crt_import_pkcs11 ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_x509_crt_import_pkcs11       (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_x509_crt_import_pkcs11       (<em class="parameter"><code><span class="type">gnutls_x509_crt_t</span> crt</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-obj-t" title="gnutls_pkcs11_obj_t"><span class="type">gnutls_pkcs11_obj_t</span></a> pkcs11_crt</code></em>);</pre>
 <p>
-This function will import a PKCS 11 certificate to a <a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a>
+This function will import a PKCS 11 certificate to a <span class="type">gnutls_x509_crt_t</span>
 structure.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
@@ -1934,7 +1953,7 @@ structure.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>crt</code></em> :</span></p></td>
-<td>A certificate of type <a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a>
+<td>A certificate of type <span class="type">gnutls_x509_crt_t</span>
 </td>
 </tr>
 <tr>
@@ -1943,7 +1962,7 @@ structure.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -1953,7 +1972,7 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-x509-crt-import-pkcs11-url"></a><h3>gnutls_x509_crt_import_pkcs11_url ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_x509_crt_import_pkcs11_url   (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_x509_crt_import_pkcs11_url   (<em class="parameter"><code><span class="type">gnutls_x509_crt_t</span> crt</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *url</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
 <p>
@@ -1969,7 +1988,7 @@ fail if the certificate stored is not of X.509 type.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>crt</code></em> :</span></p></td>
-<td>A certificate of type <a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a>
+<td>A certificate of type <span class="type">gnutls_x509_crt_t</span>
 </td>
 </tr>
 <tr>
@@ -1982,7 +2001,7 @@ fail if the certificate stored is not of X.509 type.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -1992,13 +2011,13 @@ negative error value.</td>
 <hr>
 <div class="refsect2">
 <a name="gnutls-x509-crt-list-import-pkcs11"></a><h3>gnutls_x509_crt_list_import_pkcs11 ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_x509_crt_list_import_pkcs11  (<em class="parameter"><code><a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> *certs</code></em>,
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_x509_crt_list_import_pkcs11  (<em class="parameter"><code><span class="type">gnutls_x509_crt_t</span> *certs</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> cert_max</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-obj-t" title="gnutls_pkcs11_obj_t"><span class="type">gnutls_pkcs11_obj_t</span></a> * const objs</code></em>,
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
 <p>
 This function will import a PKCS 11 certificate list to a list of 
-<a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a> structure. These must not be initialized.
+<span class="type">gnutls_x509_crt_t</span> structure. These must not be initialized.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -2008,7 +2027,7 @@ This function will import a PKCS 11 certificate list to a list of
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>certs</code></em> :</span></p></td>
-<td>A list of certificates of type <a href="gnutls-gnutls.html#gnutls-x509-crt-t"><span class="type">gnutls_x509_crt_t</span></a>
+<td>A list of certificates of type <span class="type">gnutls_x509_crt_t</span>
 </td>
 </tr>
 <tr>
@@ -2025,7 +2044,7 @@ This function will import a PKCS 11 certificate list to a list of
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>

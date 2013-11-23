@@ -58,6 +58,8 @@
                                                          <em class="parameter"><code><span class="type">void</span> *ciphertext</code></em>,
                                                          <em class="parameter"><code><span class="type">size_t</span> ciphertextlen</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-get-block-size" title="gnutls_cipher_get_block_size ()">gnutls_cipher_get_block_size</a>        (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);
+<span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-get-iv-size" title="gnutls_cipher_get_iv_size ()">gnutls_cipher_get_iv_size</a>           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);
+<span class="returnvalue">size_t</span>              <a class="link" href="gnutls-crypto.html#gnutls-cipher-get-key-size" title="gnutls_cipher_get_key_size ()">gnutls_cipher_get_key_size</a>          (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);
 typedef             <a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t">gnutls_cipher_hd_t</a>;
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-cipher-init" title="gnutls_cipher_init ()">gnutls_cipher_init</a>                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> *handle</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> cipher</code></em>,
@@ -103,10 +105,16 @@ typedef             <a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" t
                                                          <em class="parameter"><code><span class="type">size_t</span> keylen</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="gnutls-crypto.html#gnutls-hmac-output" title="gnutls_hmac_output ()">gnutls_hmac_output</a>                  (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
                                                          <em class="parameter"><code><span class="type">void</span> *digest</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-crypto.html#gnutls-hmac-set-nonce" title="gnutls_hmac_set_nonce ()">gnutls_hmac_set_nonce</a>               (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *nonce</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> nonce_len</code></em>);
+<span class="returnvalue">size_t</span>              <a class="link" href="gnutls-crypto.html#gnutls-mac-get-key-size" title="gnutls_mac_get_key_size ()">gnutls_mac_get_key_size</a>             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);
+<span class="returnvalue">size_t</span>              <a class="link" href="gnutls-crypto.html#gnutls-mac-get-nonce-size" title="gnutls_mac_get_nonce_size ()">gnutls_mac_get_nonce_size</a>           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);
 <span class="returnvalue">int</span>                 <a class="link" href="gnutls-crypto.html#gnutls-rnd" title="gnutls_rnd ()">gnutls_rnd</a>                          (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-rnd-level-t" title="enum gnutls_rnd_level_t"><span class="type">gnutls_rnd_level_t</span></a> level</code></em>,
                                                          <em class="parameter"><code><span class="type">void</span> *data</code></em>,
                                                          <em class="parameter"><code><span class="type">size_t</span> len</code></em>);
 enum                <a class="link" href="gnutls-crypto.html#gnutls-rnd-level-t" title="enum gnutls_rnd_level_t">gnutls_rnd_level_t</a>;
+<span class="returnvalue">void</span>                <a class="link" href="gnutls-crypto.html#gnutls-rnd-refresh" title="gnutls_rnd_refresh ()">gnutls_rnd_refresh</a>                  (<em class="parameter"><code><span class="type">void</span></code></em>);
 </pre>
 </div>
 <div class="refsect1">
@@ -369,8 +377,58 @@ specified by the context.
 </div>
 <hr>
 <div class="refsect2">
+<a name="gnutls-cipher-get-iv-size"></a><h3>gnutls_cipher_get_iv_size ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_cipher_get_iv_size           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);</pre>
+<p>
+Get block size for encryption algorithm.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>algorithm</code></em> :</span></p></td>
+<td>is an encryption algorithm</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>block size for encryption algorithm.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.2.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnutls-cipher-get-key-size"></a><h3>gnutls_cipher_get_key_size ()</h3>
+<pre class="programlisting"><span class="returnvalue">size_t</span>              gnutls_cipher_get_key_size          (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" title="enum gnutls_cipher_algorithm_t"><span class="type">gnutls_cipher_algorithm_t</span></a> algorithm</code></em>);</pre>
+<p>
+Get key size for cipher.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>algorithm</code></em> :</span></p></td>
+<td>is an encryption algorithm</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>length (in bytes) of the given cipher's key size, or 0 if
+the given cipher is invalid.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
 <a name="gnutls-cipher-hd-t"></a><h3>gnutls_cipher_hd_t</h3>
-<pre class="programlisting">  typedef struct api_cipher_hd_st *gnutls_cipher_hd_t;
+<pre class="programlisting">typedef struct api_cipher_hd_st *gnutls_cipher_hd_t;
 </pre>
 <p>
 </p>
@@ -620,7 +678,7 @@ of the given hash algorithm.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hash-hd-t"></a><h3>gnutls_hash_hd_t</h3>
-<pre class="programlisting">  typedef struct hash_hd_st *gnutls_hash_hd_t;
+<pre class="programlisting">typedef struct hash_hd_st *gnutls_hash_hd_t;
 </pre>
 <p>
 </p>
@@ -828,7 +886,7 @@ of the given hmac algorithm.
 <hr>
 <div class="refsect2">
 <a name="gnutls-hmac-hd-t"></a><h3>gnutls_hmac_hd_t</h3>
-<pre class="programlisting">  typedef struct hmac_hd_st *gnutls_hmac_hd_t;
+<pre class="programlisting">typedef struct hmac_hd_st *gnutls_hmac_hd_t;
 </pre>
 <p>
 </p>
@@ -909,6 +967,87 @@ and reset the state of the MAC.
 </div>
 <hr>
 <div class="refsect2">
+<a name="gnutls-hmac-set-nonce"></a><h3>gnutls_hmac_set_nonce ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_hmac_set_nonce               (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-hmac-hd-t" title="gnutls_hmac_hd_t"><span class="type">gnutls_hmac_hd_t</span></a> handle</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *nonce</code></em>,
+                                                         <em class="parameter"><code><span class="type">size_t</span> nonce_len</code></em>);</pre>
+<p>
+This function will set the nonce in the MAC algorithm.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>handle</code></em> :</span></p></td>
+<td>is a <a class="link" href="gnutls-crypto.html#gnutls-cipher-hd-t" title="gnutls_cipher_hd_t"><span class="type">gnutls_cipher_hd_t</span></a> structure.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>nonce</code></em> :</span></p></td>
+<td>the data to set as nonce</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>nonce_len</code></em> :</span></p></td>
+<td>The length of data</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.2.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnutls-mac-get-key-size"></a><h3>gnutls_mac_get_key_size ()</h3>
+<pre class="programlisting"><span class="returnvalue">size_t</span>              gnutls_mac_get_key_size             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);</pre>
+<p>
+Returns the size of the MAC key used in TLS.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>algorithm</code></em> :</span></p></td>
+<td>is an encryption algorithm</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>length (in bytes) of the given MAC key size, or 0 if the
+given MAC algorithm is invalid.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnutls-mac-get-nonce-size"></a><h3>gnutls_mac_get_nonce_size ()</h3>
+<pre class="programlisting"><span class="returnvalue">size_t</span>              gnutls_mac_get_nonce_size           (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-mac-algorithm-t" title="enum gnutls_mac_algorithm_t"><span class="type">gnutls_mac_algorithm_t</span></a> algorithm</code></em>);</pre>
+<p>
+Returns the size of the nonce used by the MAC in TLS.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>algorithm</code></em> :</span></p></td>
+<td>is an encryption algorithm</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>length (in bytes) of the given MAC nonce size, or 0.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.2.0</p>
+</div>
+<hr>
+<div class="refsect2">
 <a name="gnutls-rnd"></a><h3>gnutls_rnd ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>                 gnutls_rnd                          (<em class="parameter"><code><a class="link" href="gnutls-crypto.html#gnutls-rnd-level-t" title="enum gnutls_rnd_level_t"><span class="type">gnutls_rnd_level_t</span></a> level</code></em>,
                                                          <em class="parameter"><code><span class="type">void</span> *data</code></em>,
@@ -947,9 +1086,9 @@ buffer.
 <div class="refsect2">
 <a name="gnutls-rnd-level-t"></a><h3>enum gnutls_rnd_level_t</h3>
 <pre class="programlisting">typedef enum {
-    GNUTLS_RND_NONCE = 0,
-    GNUTLS_RND_RANDOM = 1,
-    GNUTLS_RND_KEY = 2
+	GNUTLS_RND_NONCE = 0,
+	GNUTLS_RND_RANDOM = 1,
+	GNUTLS_RND_KEY = 2
 } gnutls_rnd_level_t;
 </pre>
 <p>
@@ -980,6 +1119,20 @@ Enumeration of random quality levels.
 </tr>
 </tbody>
 </table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnutls-rnd-refresh"></a><h3>gnutls_rnd_refresh ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnutls_rnd_refresh                  (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+This function refreshes the random generator state.
+That is the current precise time, CPU usage, and
+other values are input into its state.
+</p>
+<p>
+On a slower rate input from /dev/urandom is mixed too.
+</p>
+<p class="since">Since 3.1.7</p>
 </div>
 </div>
 </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: Verifying a certificate in the context of TLS session</title>
+<title>GnuTLS 3.2.7: Verifying a certificate in the context of TLS session</title>
 
-<meta name="description" content="GnuTLS 3.2.6: Verifying a certificate in the context of TLS session">
-<meta name="keywords" content="GnuTLS 3.2.6: Verifying a certificate in the context of TLS session">
+<meta name="description" content="GnuTLS 3.2.7: Verifying a certificate in the context of TLS session">
+<meta name="keywords" content="GnuTLS 3.2.7: Verifying a certificate in the context of TLS session">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="X_002e509-certificates.html#X_002e509-certificates" rel="up" title="X.509 certificates">
 <link href="OpenPGP-certificates.html#OpenPGP-certificates" rel="next" title="OpenPGP certificates">
-<link href="Verifying-X_002e509-certificate-paths.html#Verifying-X_002e509-certificate-paths" rel="prev" title="Verifying X.509 certificate paths">
+<link href="Verifying-X_002e509-certificate-paths.html#Verifying-X_002e509-certificate-paths" rel="previous" title="Verifying X.509 certificate paths">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="Verifying-a-certificate-in-the-context-of-TLS-session"></a>
 <div class="header">
 <p>
-Previous: <a href="Verifying-X_002e509-certificate-paths.html#Verifying-X_002e509-certificate-paths" accesskey="p" rel="prev">Verifying X.509 certificate paths</a>, Up: <a href="X_002e509-certificates.html#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Verifying-X_002e509-certificate-paths.html#Verifying-X_002e509-certificate-paths" accesskey="p" rel="previous">Verifying X.509 certificate paths</a>, Up: <a href="X_002e509-certificates.html#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Verifying-a-certificate-in-the-context-of-TLS-session-1"></a>
@@ -169,9 +169,9 @@ Previous: <a href="Verifying-X_002e509-certificate-paths.html#Verifying-X_002e50
 <p>When operating in the context of a TLS session, the trusted certificate
 authority list may also be set using:
 </p><dl compact="compact">
-<dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fx509_005ftrust_005ffile">gnutls_certificate_set_x509_trust_file</a> (gnutls_certificate_credentials_t <var>cred</var>, const char * <var>cafile</var>, gnutls_x509_crt_fmt_t <var>type</var>)</code></dt>
+<dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fx509_005ftrust_005ffile">gnutls_certificate_set_x509_trust_file</a> (gnutls_certificate_credentials_t            <var>cred</var>, const char * <var>cafile</var>, gnutls_x509_crt_fmt_t <var>type</var>)</code></dt>
 <dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fx509_005fcrl_005ffile">gnutls_certificate_set_x509_crl_file</a> (gnutls_certificate_credentials_t <var>res</var>, const char * <var>crlfile</var>, gnutls_x509_crt_fmt_t <var>type</var>)</code></dt>
-<dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fx509_005fsystem_005ftrust">gnutls_certificate_set_x509_system_trust</a> (gnutls_certificate_credentials_t <var>cred</var>)</code></dt>
+<dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fx509_005fsystem_005ftrust">gnutls_certificate_set_x509_system_trust</a> (gnutls_certificate_credentials_t       <var>cred</var>)</code></dt>
 </dl>
 
 <p>Then it is not required to setup a trusted list as above.
@@ -256,7 +256,7 @@ certificate chain.
 <hr>
 <div class="header">
 <p>
-Previous: <a href="Verifying-X_002e509-certificate-paths.html#Verifying-X_002e509-certificate-paths" accesskey="p" rel="prev">Verifying X.509 certificate paths</a>, Up: <a href="X_002e509-certificates.html#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Verifying-X_002e509-certificate-paths.html#Verifying-X_002e509-certificate-paths" accesskey="p" rel="previous">Verifying X.509 certificate paths</a>, Up: <a href="X_002e509-certificates.html#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

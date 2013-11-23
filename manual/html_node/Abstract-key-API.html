@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: Abstract key API</title>
+<title>GnuTLS 3.2.7: Abstract key API</title>
 
-<meta name="description" content="GnuTLS 3.2.6: Abstract key API">
-<meta name="keywords" content="GnuTLS 3.2.6: Abstract key API">
+<meta name="description" content="GnuTLS 3.2.7: Abstract key API">
+<meta name="keywords" content="GnuTLS 3.2.7: Abstract key API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="API-reference.html#API-reference" rel="up" title="API reference">
 <link href="DANE-API.html#DANE-API" rel="next" title="DANE API">
-<link href="TPM-API.html#TPM-API" rel="prev" title="TPM API">
+<link href="TPM-API.html#TPM-API" rel="previous" title="TPM API">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="Abstract-key-API"></a>
 <div class="header">
 <p>
-Next: <a href="DANE-API.html#DANE-API" accesskey="n" rel="next">DANE API</a>, Previous: <a href="TPM-API.html#TPM-API" accesskey="p" rel="prev">TPM API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="DANE-API.html#DANE-API" accesskey="n" rel="next">DANE API</a>, Previous: <a href="TPM-API.html#TPM-API" accesskey="p" rel="previous">TPM API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Abstract-key-API-1"></a>
@@ -171,7 +171,7 @@ Their prototypes lie in <samp>gnutls/abstract.h</samp>.
 <a name="gnutls_005fcertificate_005fset_005fkey-1"></a>
 <h4 class="subheading">gnutls_certificate_set_key</h4>
 <a name="gnutls_005fcertificate_005fset_005fkey"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fset_005fkey-1"></a>Function: <em>int</em> <strong>gnutls_certificate_set_key</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const char** <var>names</var>, int <var>names_size</var>, gnutls_pcert_st * <var>pcert_list</var>, int <var>pcert_list_size</var>, gnutls_privkey_t <var>key</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fset_005fkey-1"></a>Function: <em>int</em> <strong>gnutls_certificate_set_key</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const char ** <var>names</var>, int <var>names_size</var>, gnutls_pcert_st * <var>pcert_list</var>, int <var>pcert_list_size</var>, gnutls_privkey_t <var>key</var>)</em></dt>
 <dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
 </p>
 <p><var>names</var>: is an array of DNS name of the certificate (NULL if none)
@@ -258,7 +258,7 @@ indicates error and the handshake will be terminated.
 <a name="gnutls_005fpcert_005fimport_005fopenpgp-1"></a>
 <h4 class="subheading">gnutls_pcert_import_openpgp</h4>
 <a name="gnutls_005fpcert_005fimport_005fopenpgp"></a><dl>
-<dt><a name="index-gnutls_005fpcert_005fimport_005fopenpgp"></a>Function: <em>int</em> <strong>gnutls_pcert_import_openpgp</strong> <em>(gnutls_pcert_st* <var>pcert</var>, gnutls_openpgp_crt_t <var>crt</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fpcert_005fimport_005fopenpgp"></a>Function: <em>int</em> <strong>gnutls_pcert_import_openpgp</strong> <em>(gnutls_pcert_st * <var>pcert</var>, gnutls_openpgp_crt_t <var>crt</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>pcert</var>: The pcert structure
 </p>
 <p><var>crt</var>: The raw certificate to be imported
@@ -278,7 +278,7 @@ negative error value.
 <a name="gnutls_005fpcert_005fimport_005fopenpgp_005fraw-1"></a>
 <h4 class="subheading">gnutls_pcert_import_openpgp_raw</h4>
 <a name="gnutls_005fpcert_005fimport_005fopenpgp_005fraw"></a><dl>
-<dt><a name="index-gnutls_005fpcert_005fimport_005fopenpgp_005fraw"></a>Function: <em>int</em> <strong>gnutls_pcert_import_openpgp_raw</strong> <em>(gnutls_pcert_st * <var>pcert</var>, const gnutls_datum_t* <var>cert</var>, gnutls_openpgp_crt_fmt_t <var>format</var>, gnutls_openpgp_keyid_t <var>keyid</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fpcert_005fimport_005fopenpgp_005fraw"></a>Function: <em>int</em> <strong>gnutls_pcert_import_openpgp_raw</strong> <em>(gnutls_pcert_st * <var>pcert</var>, const gnutls_datum_t * <var>cert</var>, gnutls_openpgp_crt_fmt_t <var>format</var>, gnutls_openpgp_keyid_t <var>keyid</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>pcert</var>: The pcert structure
 </p>
 <p><var>cert</var>: The raw certificate to be imported
@@ -302,7 +302,7 @@ negative error value.
 <a name="gnutls_005fpcert_005fimport_005fx509-1"></a>
 <h4 class="subheading">gnutls_pcert_import_x509</h4>
 <a name="gnutls_005fpcert_005fimport_005fx509"></a><dl>
-<dt><a name="index-gnutls_005fpcert_005fimport_005fx509"></a>Function: <em>int</em> <strong>gnutls_pcert_import_x509</strong> <em>(gnutls_pcert_st* <var>pcert</var>, gnutls_x509_crt_t <var>crt</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fpcert_005fimport_005fx509"></a>Function: <em>int</em> <strong>gnutls_pcert_import_x509</strong> <em>(gnutls_pcert_st * <var>pcert</var>, gnutls_x509_crt_t <var>crt</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>pcert</var>: The pcert structure
 </p>
 <p><var>crt</var>: The raw certificate to be imported
@@ -322,7 +322,7 @@ negative error value.
 <a name="gnutls_005fpcert_005fimport_005fx509_005fraw-1"></a>
 <h4 class="subheading">gnutls_pcert_import_x509_raw</h4>
 <a name="gnutls_005fpcert_005fimport_005fx509_005fraw"></a><dl>
-<dt><a name="index-gnutls_005fpcert_005fimport_005fx509_005fraw"></a>Function: <em>int</em> <strong>gnutls_pcert_import_x509_raw</strong> <em>(gnutls_pcert_st * <var>pcert</var>, const gnutls_datum_t* <var>cert</var>, gnutls_x509_crt_fmt_t <var>format</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fpcert_005fimport_005fx509_005fraw"></a>Function: <em>int</em> <strong>gnutls_pcert_import_x509_raw</strong> <em>(gnutls_pcert_st * <var>pcert</var>, const gnutls_datum_t * <var>cert</var>, gnutls_x509_crt_fmt_t <var>format</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>pcert</var>: The pcert structure
 </p>
 <p><var>cert</var>: The raw certificate to be imported
@@ -435,7 +435,7 @@ success, or a negative error code on error.
 <a name="gnutls_005fprivkey_005fimport_005fext-1"></a>
 <h4 class="subheading">gnutls_privkey_import_ext</h4>
 <a name="gnutls_005fprivkey_005fimport_005fext"></a><dl>
-<dt><a name="index-gnutls_005fprivkey_005fimport_005fext"></a>Function: <em>int</em> <strong>gnutls_privkey_import_ext</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_pk_algorithm_t <var>pk</var>, void* <var>userdata</var>, gnutls_privkey_sign_func <var>sign_func</var>, gnutls_privkey_decrypt_func <var>decrypt_func</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fprivkey_005fimport_005fext"></a>Function: <em>int</em> <strong>gnutls_privkey_import_ext</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_pk_algorithm_t <var>pk</var>, void * <var>userdata</var>, gnutls_privkey_sign_func <var>sign_func</var>, gnutls_privkey_decrypt_func <var>decrypt_func</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>pkey</var>: The private key
 </p>
 <p><var>pk</var>: The public key algorithm
@@ -463,7 +463,7 @@ negative error value.
 <a name="gnutls_005fprivkey_005fimport_005fext2-1"></a>
 <h4 class="subheading">gnutls_privkey_import_ext2</h4>
 <a name="gnutls_005fprivkey_005fimport_005fext2"></a><dl>
-<dt><a name="index-gnutls_005fprivkey_005fimport_005fext2-1"></a>Function: <em>int</em> <strong>gnutls_privkey_import_ext2</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_pk_algorithm_t <var>pk</var>, void* <var>userdata</var>, gnutls_privkey_sign_func <var>sign_func</var>, gnutls_privkey_decrypt_func <var>decrypt_func</var>, gnutls_privkey_deinit_func <var>deinit_func</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fprivkey_005fimport_005fext2-1"></a>Function: <em>int</em> <strong>gnutls_privkey_import_ext2</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_pk_algorithm_t <var>pk</var>, void * <var>userdata</var>, gnutls_privkey_sign_func <var>sign_func</var>, gnutls_privkey_decrypt_func <var>decrypt_func</var>, gnutls_privkey_deinit_func <var>deinit_func</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>pkey</var>: The private key
 </p>
 <p><var>pk</var>: The public key algorithm
@@ -523,7 +523,7 @@ negative error value.
 <a name="gnutls_005fprivkey_005fimport_005fopenpgp_005fraw-1"></a>
 <h4 class="subheading">gnutls_privkey_import_openpgp_raw</h4>
 <a name="gnutls_005fprivkey_005fimport_005fopenpgp_005fraw"></a><dl>
-<dt><a name="index-gnutls_005fprivkey_005fimport_005fopenpgp_005fraw"></a>Function: <em>int</em> <strong>gnutls_privkey_import_openpgp_raw</strong> <em>(gnutls_privkey_t <var>pkey</var>, const gnutls_datum_t * <var>data</var>, gnutls_openpgp_crt_fmt_t <var>format</var>, const gnutls_openpgp_keyid_t <var>keyid</var>, const char* <var>password</var>)</em></dt>
+<dt><a name="index-gnutls_005fprivkey_005fimport_005fopenpgp_005fraw"></a>Function: <em>int</em> <strong>gnutls_privkey_import_openpgp_raw</strong> <em>(gnutls_privkey_t <var>pkey</var>, const gnutls_datum_t * <var>data</var>, gnutls_openpgp_crt_fmt_t <var>format</var>, const gnutls_openpgp_keyid_t <var>keyid</var>, const char * <var>password</var>)</em></dt>
 <dd><p><var>pkey</var>: The private key
 </p>
 <p><var>data</var>: The private key data to be imported
@@ -615,7 +615,7 @@ negative error value.
 <a name="gnutls_005fprivkey_005fimport_005ftpm_005furl-1"></a>
 <h4 class="subheading">gnutls_privkey_import_tpm_url</h4>
 <a name="gnutls_005fprivkey_005fimport_005ftpm_005furl"></a><dl>
-<dt><a name="index-gnutls_005fprivkey_005fimport_005ftpm_005furl-1"></a>Function: <em>int</em> <strong>gnutls_privkey_import_tpm_url</strong> <em>(gnutls_privkey_t <var>pkey</var>, const char* <var>url</var>, const char * <var>srk_password</var>, const char * <var>key_password</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fprivkey_005fimport_005ftpm_005furl-1"></a>Function: <em>int</em> <strong>gnutls_privkey_import_tpm_url</strong> <em>(gnutls_privkey_t <var>pkey</var>, const char * <var>url</var>, const char * <var>srk_password</var>, const char * <var>key_password</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>pkey</var>: The private key
 </p>
 <p><var>url</var>: The URL of the TPM key to be imported
@@ -691,7 +691,7 @@ negative error value.
 <a name="gnutls_005fprivkey_005fimport_005fx509_005fraw-1"></a>
 <h4 class="subheading">gnutls_privkey_import_x509_raw</h4>
 <a name="gnutls_005fprivkey_005fimport_005fx509_005fraw"></a><dl>
-<dt><a name="index-gnutls_005fprivkey_005fimport_005fx509_005fraw-1"></a>Function: <em>int</em> <strong>gnutls_privkey_import_x509_raw</strong> <em>(gnutls_privkey_t <var>pkey</var>, const gnutls_datum_t * <var>data</var>, gnutls_x509_crt_fmt_t <var>format</var>, const char* <var>password</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fprivkey_005fimport_005fx509_005fraw-1"></a>Function: <em>int</em> <strong>gnutls_privkey_import_x509_raw</strong> <em>(gnutls_privkey_t <var>pkey</var>, const gnutls_datum_t * <var>data</var>, gnutls_x509_crt_fmt_t <var>format</var>, const char * <var>password</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>pkey</var>: The private key
 </p>
 <p><var>data</var>: The private key data to be imported
@@ -1052,7 +1052,7 @@ the given certificate.  The new parameters will be allocated using
 <a name="gnutls_005fpubkey_005fget_005fpk_005fecc_005fx962-1"></a>
 <h4 class="subheading">gnutls_pubkey_get_pk_ecc_x962</h4>
 <a name="gnutls_005fpubkey_005fget_005fpk_005fecc_005fx962"></a><dl>
-<dt><a name="index-gnutls_005fpubkey_005fget_005fpk_005fecc_005fx962"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_pk_ecc_x962</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_datum_t* <var>parameters</var>, gnutls_datum_t * <var>ecpoint</var>)</em></dt>
+<dt><a name="index-gnutls_005fpubkey_005fget_005fpk_005fecc_005fx962"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_pk_ecc_x962</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>parameters</var>, gnutls_datum_t * <var>ecpoint</var>)</em></dt>
 <dd><p><var>key</var>: Holds the public key
 </p>
 <p><var>parameters</var>: DER encoding of an ANSI X9.62 parameters
@@ -1090,7 +1090,7 @@ the given structure.  The new parameters will be allocated using
 <a name="gnutls_005fpubkey_005fget_005fpreferred_005fhash_005falgorithm-1"></a>
 <h4 class="subheading">gnutls_pubkey_get_preferred_hash_algorithm</h4>
 <a name="gnutls_005fpubkey_005fget_005fpreferred_005fhash_005falgorithm"></a><dl>
-<dt><a name="index-gnutls_005fpubkey_005fget_005fpreferred_005fhash_005falgorithm"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_preferred_hash_algorithm</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_digest_algorithm_t *                                             <var>hash</var>, unsigned int * <var>mand</var>)</em></dt>
+<dt><a name="index-gnutls_005fpubkey_005fget_005fpreferred_005fhash_005falgorithm"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_preferred_hash_algorithm</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_digest_algorithm_t *         <var>hash</var>, unsigned int * <var>mand</var>)</em></dt>
 <dd><p><var>key</var>: Holds the certificate
 </p>
 <p><var>hash</var>: The result of the call with the hash algorithm used for signature
@@ -1366,7 +1366,7 @@ negative error value.
 <a name="gnutls_005fpubkey_005fimport_005ftpm_005furl-1"></a>
 <h4 class="subheading">gnutls_pubkey_import_tpm_url</h4>
 <a name="gnutls_005fpubkey_005fimport_005ftpm_005furl"></a><dl>
-<dt><a name="index-gnutls_005fpubkey_005fimport_005ftpm_005furl-1"></a>Function: <em>int</em> <strong>gnutls_pubkey_import_tpm_url</strong> <em>(gnutls_pubkey_t <var>pkey</var>, const char* <var>url</var>, const char * <var>srk_password</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fpubkey_005fimport_005ftpm_005furl-1"></a>Function: <em>int</em> <strong>gnutls_pubkey_import_tpm_url</strong> <em>(gnutls_pubkey_t <var>pkey</var>, const char * <var>url</var>, const char * <var>srk_password</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>pkey</var>: The public key
 </p>
 <p><var>url</var>: The URL of the TPM key to be imported
@@ -1754,7 +1754,7 @@ negative error value.
 <hr>
 <div class="header">
 <p>
-Next: <a href="DANE-API.html#DANE-API" accesskey="n" rel="next">DANE API</a>, Previous: <a href="TPM-API.html#TPM-API" accesskey="p" rel="prev">TPM API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="DANE-API.html#DANE-API" accesskey="n" rel="next">DANE API</a>, Previous: <a href="TPM-API.html#TPM-API" accesskey="p" rel="previous">TPM API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

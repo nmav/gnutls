@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: Using a callback to select the certificate to use</title>
+<title>GnuTLS 3.2.7: Using a callback to select the certificate to use</title>
 
-<meta name="description" content="GnuTLS 3.2.6: Using a callback to select the certificate to use">
-<meta name="keywords" content="GnuTLS 3.2.6: Using a callback to select the certificate to use">
+<meta name="description" content="GnuTLS 3.2.7: Using a callback to select the certificate to use">
+<meta name="keywords" content="GnuTLS 3.2.7: Using a callback to select the certificate to use">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Client-examples.html#Client-examples" rel="up" title="Client examples">
 <link href="Verifying-a-certificate.html#Verifying-a-certificate" rel="next" title="Verifying a certificate">
-<link href="Obtaining-session-information.html#Obtaining-session-information" rel="prev" title="Obtaining session information">
+<link href="Obtaining-session-information.html#Obtaining-session-information" rel="previous" title="Obtaining session information">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="Using-a-callback-to-select-the-certificate-to-use"></a>
 <div class="header">
 <p>
-Next: <a href="Verifying-a-certificate.html#Verifying-a-certificate" accesskey="n" rel="next">Verifying a certificate</a>, Previous: <a href="Obtaining-session-information.html#Obtaining-session-information" accesskey="p" rel="prev">Obtaining session information</a>, Up: <a href="Client-examples.html#Client-examples" accesskey="u" rel="up">Client examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Verifying-a-certificate.html#Verifying-a-certificate" accesskey="n" rel="next">Verifying a certificate</a>, Previous: <a href="Obtaining-session-information.html#Obtaining-session-information" accesskey="p" rel="previous">Obtaining session information</a>, Up: <a href="Client-examples.html#Client-examples" accesskey="u" rel="up">Client examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Using-a-callback-to-select-the-certificate-to-use-1"></a>
@@ -199,163 +199,155 @@ certificate selection callback.
 #define KEY_FILE &quot;key.pem&quot;
 #define CAFILE &quot;/etc/ssl/certs/ca-certificates.crt&quot;
 
-extern int tcp_connect (void);
-extern void tcp_close (int sd);
+extern int tcp_connect(void);
+extern void tcp_close(int sd);
 
 static int
-cert_callback (gnutls_session_t session,
-               const gnutls_datum_t * req_ca_rdn, int nreqs,
-               const gnutls_pk_algorithm_t * sign_algos,
-               int sign_algos_length, gnutls_pcert_st ** pcert,
-               unsigned int *pcert_length, gnutls_privkey_t * pkey);
+cert_callback(gnutls_session_t session,
+              const gnutls_datum_t * req_ca_rdn, int nreqs,
+              const gnutls_pk_algorithm_t * sign_algos,
+              int sign_algos_length, gnutls_pcert_st ** pcert,
+              unsigned int *pcert_length, gnutls_privkey_t * pkey);
 
 gnutls_pcert_st pcrt;
 gnutls_privkey_t key;
 
 /* Load the certificate and the private key.
  */
-static void
-load_keys (void)
+static void load_keys(void)
 {
-  int ret;
-  gnutls_datum_t data;
+        int ret;
+        gnutls_datum_t data;
 
-  ret = gnutls_load_file (CERT_FILE, &amp;data);
-  if (ret &lt; 0)
-    {
-      fprintf (stderr, &quot;*** Error loading certificate file.\n&quot;);
-      exit (1);
-    }
+        ret = gnutls_load_file(CERT_FILE, &amp;data);
+        if (ret &lt; 0) {
+                fprintf(stderr, &quot;*** Error loading certificate file.\n&quot;);
+                exit(1);
+        }
 
-  ret = gnutls_pcert_import_x509_raw (&amp;pcrt, &amp;data, GNUTLS_X509_FMT_PEM, 0);
-  if (ret &lt; 0)
-    {
-      fprintf (stderr, &quot;*** Error loading certificate file: %s\n&quot;,
-               gnutls_strerror (ret));
-      exit (1);
-    }
+        ret =
+            gnutls_pcert_import_x509_raw(&amp;pcrt, &amp;data, GNUTLS_X509_FMT_PEM,
+                                         0);
+        if (ret &lt; 0) {
+                fprintf(stderr, &quot;*** Error loading certificate file: %s\n&quot;,
+                        gnutls_strerror(ret));
+                exit(1);
+        }
 
-  gnutls_free(data.data);
+        gnutls_free(data.data);
 
-  ret = gnutls_load_file (KEY_FILE, &amp;data);
-  if (ret &lt; 0)
-    {
-      fprintf (stderr, &quot;*** Error loading key file.\n&quot;);
-      exit (1);
-    }
+        ret = gnutls_load_file(KEY_FILE, &amp;data);
+        if (ret &lt; 0) {
+                fprintf(stderr, &quot;*** Error loading key file.\n&quot;);
+                exit(1);
+        }
 
-  gnutls_privkey_init (&amp;key);
+        gnutls_privkey_init(&amp;key);
 
-  ret = gnutls_privkey_import_x509_raw (key, &amp;data, GNUTLS_X509_FMT_PEM, NULL, 0);
-  if (ret &lt; 0)
-    {
-      fprintf (stderr, &quot;*** Error loading key file: %s\n&quot;,
-               gnutls_strerror (ret));
-      exit (1);
-    }
-    
-  gnutls_free(data.data);
+        ret =
+            gnutls_privkey_import_x509_raw(key, &amp;data, GNUTLS_X509_FMT_PEM,
+                                           NULL, 0);
+        if (ret &lt; 0) {
+                fprintf(stderr, &quot;*** Error loading key file: %s\n&quot;,
+                        gnutls_strerror(ret));
+                exit(1);
+        }
+
+        gnutls_free(data.data);
 }
 
-int
-main (void)
+int main(void)
 {
-  int ret, sd, ii;
-  gnutls_session_t session;
-  gnutls_priority_t priorities_cache;
-  char buffer[MAX_BUF + 1];
-  gnutls_certificate_credentials_t xcred;
-  /* Allow connections to servers that have OpenPGP keys as well.
-   */
+        int ret, sd, ii;
+        gnutls_session_t session;
+        gnutls_priority_t priorities_cache;
+        char buffer[MAX_BUF + 1];
+        gnutls_certificate_credentials_t xcred;
+        /* Allow connections to servers that have OpenPGP keys as well.
+         */
 
-  gnutls_global_init ();
+        gnutls_global_init();
 
-  load_keys ();
+        load_keys();
 
-  /* X509 stuff */
-  gnutls_certificate_allocate_credentials (&amp;xcred);
+        /* X509 stuff */
+        gnutls_certificate_allocate_credentials(&amp;xcred);
 
-  /* priorities */
-  gnutls_priority_init (&amp;priorities_cache, &quot;NORMAL&quot;, NULL);
+        /* priorities */
+        gnutls_priority_init(&amp;priorities_cache, &quot;NORMAL&quot;, NULL);
 
 
-  /* sets the trusted cas file
-   */
-  gnutls_certificate_set_x509_trust_file (xcred, CAFILE, GNUTLS_X509_FMT_PEM);
+        /* sets the trusted cas file
+         */
+        gnutls_certificate_set_x509_trust_file(xcred, CAFILE,
+                                               GNUTLS_X509_FMT_PEM);
 
-  gnutls_certificate_set_retrieve_function2 (xcred, cert_callback);
+        gnutls_certificate_set_retrieve_function2(xcred, cert_callback);
 
-  /* Initialize TLS session 
-   */
-  gnutls_init (&amp;session, GNUTLS_CLIENT);
+        /* Initialize TLS session 
+         */
+        gnutls_init(&amp;session, GNUTLS_CLIENT);
 
-  /* Use default priorities */
-  gnutls_priority_set (session, priorities_cache);
+        /* Use default priorities */
+        gnutls_priority_set(session, priorities_cache);
 
-  /* put the x509 credentials to the current session
-   */
-  gnutls_credentials_set (session, GNUTLS_CRD_CERTIFICATE, xcred);
+        /* put the x509 credentials to the current session
+         */
+        gnutls_credentials_set(session, GNUTLS_CRD_CERTIFICATE, xcred);
 
-  /* connect to the peer
-   */
-  sd = tcp_connect ();
+        /* connect to the peer
+         */
+        sd = tcp_connect();
 
-  gnutls_transport_set_int (session, sd);
+        gnutls_transport_set_int(session, sd);
 
-  /* Perform the TLS handshake
-   */
-  ret = gnutls_handshake (session);
+        /* Perform the TLS handshake
+         */
+        ret = gnutls_handshake(session);
 
-  if (ret &lt; 0)
-    {
-      fprintf (stderr, &quot;*** Handshake failed\n&quot;);
-      gnutls_perror (ret);
-      goto end;
-    }
-  else
-    {
-      char* desc;
-      
-      desc = gnutls_session_get_desc(session);
-      printf (&quot;- Session info: %s\n&quot;, desc);
-      gnutls_free(desc);
-    }
+        if (ret &lt; 0) {
+                fprintf(stderr, &quot;*** Handshake failed\n&quot;);
+                gnutls_perror(ret);
+                goto end;
+        } else {
+                char *desc;
 
-  gnutls_record_send (session, MSG, strlen (MSG));
+                desc = gnutls_session_get_desc(session);
+                printf(&quot;- Session info: %s\n&quot;, desc);
+                gnutls_free(desc);
+        }
 
-  ret = gnutls_record_recv (session, buffer, MAX_BUF);
-  if (ret == 0)
-    {
-      printf (&quot;- Peer has closed the TLS connection\n&quot;);
-      goto end;
-    }
-  else if (ret &lt; 0)
-    {
-      fprintf (stderr, &quot;*** Error: %s\n&quot;, gnutls_strerror (ret));
-      goto end;
-    }
+        gnutls_record_send(session, MSG, strlen(MSG));
 
-  printf (&quot;- Received %d bytes: &quot;, ret);
-  for (ii = 0; ii &lt; ret; ii++)
-    {
-      fputc (buffer[ii], stdout);
-    }
-  fputs (&quot;\n&quot;, stdout);
+        ret = gnutls_record_recv(session, buffer, MAX_BUF);
+        if (ret == 0) {
+                printf(&quot;- Peer has closed the TLS connection\n&quot;);
+                goto end;
+        } else if (ret &lt; 0) {
+                fprintf(stderr, &quot;*** Error: %s\n&quot;, gnutls_strerror(ret));
+                goto end;
+        }
 
-  gnutls_bye (session, GNUTLS_SHUT_RDWR);
+        printf(&quot;- Received %d bytes: &quot;, ret);
+        for (ii = 0; ii &lt; ret; ii++) {
+                fputc(buffer[ii], stdout);
+        }
+        fputs(&quot;\n&quot;, stdout);
 
-end:
+        gnutls_bye(session, GNUTLS_SHUT_RDWR);
 
-  tcp_close (sd);
+      end:
 
-  gnutls_deinit (session);
+        tcp_close(sd);
 
-  gnutls_certificate_free_credentials (xcred);
-  gnutls_priority_deinit (priorities_cache);
+        gnutls_deinit(session);
 
-  gnutls_global_deinit ();
+        gnutls_certificate_free_credentials(xcred);
+        gnutls_priority_deinit(priorities_cache);
 
-  return 0;
+        gnutls_global_deinit();
+
+        return 0;
 }
 
 
@@ -366,60 +358,56 @@ end:
  */
 
 static int
-cert_callback (gnutls_session_t session,
-               const gnutls_datum_t * req_ca_rdn, int nreqs,
-               const gnutls_pk_algorithm_t * sign_algos,
-               int sign_algos_length, gnutls_pcert_st ** pcert,
-               unsigned int *pcert_length, gnutls_privkey_t * pkey)
+cert_callback(gnutls_session_t session,
+              const gnutls_datum_t * req_ca_rdn, int nreqs,
+              const gnutls_pk_algorithm_t * sign_algos,
+              int sign_algos_length, gnutls_pcert_st ** pcert,
+              unsigned int *pcert_length, gnutls_privkey_t * pkey)
 {
-  char issuer_dn[256];
-  int i, ret;
-  size_t len;
-  gnutls_certificate_type_t type;
+        char issuer_dn[256];
+        int i, ret;
+        size_t len;
+        gnutls_certificate_type_t type;
 
-  /* Print the server's trusted CAs
-   */
-  if (nreqs &gt; 0)
-    printf (&quot;- Server's trusted authorities:\n&quot;);
-  else
-    printf (&quot;- Server did not send us any trusted authorities names.\n&quot;);
+        /* Print the server's trusted CAs
+         */
+        if (nreqs &gt; 0)
+                printf(&quot;- Server's trusted authorities:\n&quot;);
+        else
+                printf
+                    (&quot;- Server did not send us any trusted authorities names.\n&quot;);
 
-  /* print the names (if any) */
-  for (i = 0; i &lt; nreqs; i++)
-    {
-      len = sizeof (issuer_dn);
-      ret = gnutls_x509_rdn_get (&amp;req_ca_rdn[i], issuer_dn, &amp;len);
-      if (ret &gt;= 0)
-        {
-          printf (&quot;   [%d]: &quot;, i);
-          printf (&quot;%s\n&quot;, issuer_dn);
+        /* print the names (if any) */
+        for (i = 0; i &lt; nreqs; i++) {
+                len = sizeof(issuer_dn);
+                ret = gnutls_x509_rdn_get(&amp;req_ca_rdn[i], issuer_dn, &amp;len);
+                if (ret &gt;= 0) {
+                        printf(&quot;   [%d]: &quot;, i);
+                        printf(&quot;%s\n&quot;, issuer_dn);
+                }
         }
-    }
 
-  /* Select a certificate and return it.
-   * The certificate must be of any of the &quot;sign algorithms&quot;
-   * supported by the server.
-   */
-  type = gnutls_certificate_type_get (session);
-  if (type == GNUTLS_CRT_X509)
-    {
-      *pcert_length = 1;
-      *pcert = &amp;pcrt;
-      *pkey = key;
-    }
-  else
-    {
-      return -1;
-    }
+        /* Select a certificate and return it.
+         * The certificate must be of any of the &quot;sign algorithms&quot;
+         * supported by the server.
+         */
+        type = gnutls_certificate_type_get(session);
+        if (type == GNUTLS_CRT_X509) {
+                *pcert_length = 1;
+                *pcert = &amp;pcrt;
+                *pkey = key;
+        } else {
+                return -1;
+        }
 
-  return 0;
+        return 0;
 
 }
 </pre>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Verifying-a-certificate.html#Verifying-a-certificate" accesskey="n" rel="next">Verifying a certificate</a>, Previous: <a href="Obtaining-session-information.html#Obtaining-session-information" accesskey="p" rel="prev">Obtaining session information</a>, Up: <a href="Client-examples.html#Client-examples" accesskey="u" rel="up">Client examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Verifying-a-certificate.html#Verifying-a-certificate" accesskey="n" rel="next">Verifying a certificate</a>, Previous: <a href="Obtaining-session-information.html#Obtaining-session-information" accesskey="p" rel="previous">Obtaining session information</a>, Up: <a href="Client-examples.html#Client-examples" accesskey="u" rel="up">Client examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: Helper functions for TCP connections</title>
+<title>GnuTLS 3.2.7: Helper functions for TCP connections</title>
 
-<meta name="description" content="GnuTLS 3.2.6: Helper functions for TCP connections">
-<meta name="keywords" content="GnuTLS 3.2.6: Helper functions for TCP connections">
+<meta name="description" content="GnuTLS 3.2.7: Helper functions for TCP connections">
+<meta name="keywords" content="GnuTLS 3.2.7: Helper functions for TCP connections">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Client-examples.html#Client-examples" rel="up" title="Client examples">
 <link href="Helper-functions-for-UDP-connections.html#Helper-functions-for-UDP-connections" rel="next" title="Helper functions for UDP connections">
-<link href="Simple-client-example-in-C_002b_002b.html#Simple-client-example-in-C_002b_002b" rel="prev" title="Simple client example in C++">
+<link href="Simple-client-example-in-C_002b_002b.html#Simple-client-example-in-C_002b_002b" rel="previous" title="Simple client example in C++">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="Helper-functions-for-TCP-connections"></a>
 <div class="header">
 <p>
-Next: <a href="Helper-functions-for-UDP-connections.html#Helper-functions-for-UDP-connections" accesskey="n" rel="next">Helper functions for UDP connections</a>, Previous: <a href="Simple-client-example-in-C_002b_002b.html#Simple-client-example-in-C_002b_002b" accesskey="p" rel="prev">Simple client example in C++</a>, Up: <a href="Client-examples.html#Client-examples" accesskey="u" rel="up">Client examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Helper-functions-for-UDP-connections.html#Helper-functions-for-UDP-connections" accesskey="n" rel="next">Helper functions for UDP connections</a>, Previous: <a href="Simple-client-example-in-C_002b_002b.html#Simple-client-example-in-C_002b_002b" accesskey="p" rel="previous">Simple client example in C++</a>, Up: <a href="Client-examples.html#Client-examples" accesskey="u" rel="up">Client examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Helper-functions-for-TCP-connections-1"></a>
@@ -183,46 +183,43 @@ other examples.  It is required to build some examples.
 #include &lt;unistd.h&gt;
 
 /* tcp.c */
-int tcp_connect (void);
-void tcp_close (int sd);
+int tcp_connect(void);
+void tcp_close(int sd);
 
 /* Connects to the peer and returns a socket
  * descriptor.
  */
-extern int
-tcp_connect (void)
+extern int tcp_connect(void)
 {
-  const char *PORT = &quot;5556&quot;;
-  const char *SERVER = &quot;127.0.0.1&quot;;
-  int err, sd;
-  struct sockaddr_in sa;
+        const char *PORT = &quot;5556&quot;;
+        const char *SERVER = &quot;127.0.0.1&quot;;
+        int err, sd;
+        struct sockaddr_in sa;
 
-  /* connects to server
-   */
-  sd = socket (AF_INET, SOCK_STREAM, 0);
+        /* connects to server
+         */
+        sd = socket(AF_INET, SOCK_STREAM, 0);
 
-  memset (&amp;sa, '\0', sizeof (sa));
-  sa.sin_family = AF_INET;
-  sa.sin_port = htons (atoi (PORT));
-  inet_pton (AF_INET, SERVER, &amp;sa.sin_addr);
+        memset(&amp;sa, '\0', sizeof(sa));
+        sa.sin_family = AF_INET;
+        sa.sin_port = htons(atoi(PORT));
+        inet_pton(AF_INET, SERVER, &amp;sa.sin_addr);
 
-  err = connect (sd, (struct sockaddr *) &amp; sa, sizeof (sa));
-  if (err &lt; 0)
-    {
-      fprintf (stderr, &quot;Connect error\n&quot;);
-      exit (1);
-    }
+        err = connect(sd, (struct sockaddr *) &amp;sa, sizeof(sa));
+        if (err &lt; 0) {
+                fprintf(stderr, &quot;Connect error\n&quot;);
+                exit(1);
+        }
 
-  return sd;
+        return sd;
 }
 
 /* closes the given socket descriptor.
  */
-extern void
-tcp_close (int sd)
+extern void tcp_close(int sd)
 {
-  shutdown (sd, SHUT_RDWR);     /* no more receptions */
-  close (sd);
+        shutdown(sd, SHUT_RDWR);        /* no more receptions */
+        close(sd);
 }
 </pre>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: Abstract private keys</title>
+<title>GnuTLS 3.2.7: Abstract private keys</title>
 
-<meta name="description" content="GnuTLS 3.2.6: Abstract private keys">
-<meta name="keywords" content="GnuTLS 3.2.6: Abstract private keys">
+<meta name="description" content="GnuTLS 3.2.7: Abstract private keys">
+<meta name="keywords" content="GnuTLS 3.2.7: Abstract private keys">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Abstract-key-types.html#Abstract-key-types" rel="up" title="Abstract key types">
 <link href="Operations.html#Operations" rel="next" title="Operations">
-<link href="Abstract-public-keys.html#Abstract-public-keys" rel="prev" title="Abstract public keys">
+<link href="Abstract-public-keys.html#Abstract-public-keys" rel="previous" title="Abstract public keys">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="Abstract-private-keys"></a>
 <div class="header">
 <p>
-Next: <a href="Operations.html#Operations" accesskey="n" rel="next">Operations</a>, Previous: <a href="Abstract-public-keys.html#Abstract-public-keys" accesskey="p" rel="prev">Abstract public keys</a>, Up: <a href="Abstract-key-types.html#Abstract-key-types" accesskey="u" rel="up">Abstract key types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Operations.html#Operations" accesskey="n" rel="next">Operations</a>, Previous: <a href="Abstract-public-keys.html#Abstract-public-keys" accesskey="p" rel="previous">Abstract public keys</a>, Up: <a href="Abstract-key-types.html#Abstract-key-types" accesskey="u" rel="up">Abstract key types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Private-keys"></a>
@@ -181,8 +181,8 @@ OpenPGP structures are shown below. Again, as with public keys, private keys
 can be imported from a hardware module using URLs.
 </p>
 <dl compact="compact">
-<dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fprivkey_005fimport_005fx509_005fraw">gnutls_privkey_import_x509_raw</a> (gnutls_privkey_t <var>pkey</var>, const gnutls_datum_t * <var>data</var>, gnutls_x509_crt_fmt_t <var>format</var>, const char* <var>password</var>, unsigned int <var>flags</var>)</code></dt>
-<dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fprivkey_005fimport_005fopenpgp_005fraw">gnutls_privkey_import_openpgp_raw</a> (gnutls_privkey_t <var>pkey</var>, const gnutls_datum_t * <var>data</var>, gnutls_openpgp_crt_fmt_t <var>format</var>, const gnutls_openpgp_keyid_t <var>keyid</var>, const char* <var>password</var>)</code></dt>
+<dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fprivkey_005fimport_005fx509_005fraw">gnutls_privkey_import_x509_raw</a> (gnutls_privkey_t <var>pkey</var>, const gnutls_datum_t * <var>data</var>, gnutls_x509_crt_fmt_t <var>format</var>, const char * <var>password</var>, unsigned int <var>flags</var>)</code></dt>
+<dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fprivkey_005fimport_005fopenpgp_005fraw">gnutls_privkey_import_openpgp_raw</a> (gnutls_privkey_t <var>pkey</var>, const gnutls_datum_t * <var>data</var>, gnutls_openpgp_crt_fmt_t <var>format</var>, const gnutls_openpgp_keyid_t <var>keyid</var>, const char * <var>password</var>)</code></dt>
 </dl>
 
 
@@ -223,7 +223,7 @@ resorting to <acronym>PKCS</acronym> #11.
 
 
 <dl>
-<dt><a name="index-gnutls_005fprivkey_005fimport_005fext2"></a>Function: <em>int</em> <strong>gnutls_privkey_import_ext2</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_pk_algorithm_t <var>pk</var>, void* <var>userdata</var>, gnutls_privkey_sign_func <var>sign_func</var>, gnutls_privkey_decrypt_func <var>decrypt_func</var>, gnutls_privkey_deinit_func <var>deinit_func</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fprivkey_005fimport_005fext2"></a>Function: <em>int</em> <strong>gnutls_privkey_import_ext2</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_pk_algorithm_t <var>pk</var>, void * <var>userdata</var>, gnutls_privkey_sign_func <var>sign_func</var>, gnutls_privkey_decrypt_func <var>decrypt_func</var>, gnutls_privkey_deinit_func <var>deinit_func</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>pkey</var>: The private key
 </p>
 <p><var>pk</var>: The public key algorithm
@@ -257,7 +257,7 @@ negative error value.
 <hr>
 <div class="header">
 <p>
-Next: <a href="Operations.html#Operations" accesskey="n" rel="next">Operations</a>, Previous: <a href="Abstract-public-keys.html#Abstract-public-keys" accesskey="p" rel="prev">Abstract public keys</a>, Up: <a href="Abstract-key-types.html#Abstract-key-types" accesskey="u" rel="up">Abstract key types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Operations.html#Operations" accesskey="n" rel="next">Operations</a>, Previous: <a href="Abstract-public-keys.html#Abstract-public-keys" accesskey="p" rel="previous">Abstract public keys</a>, Up: <a href="Abstract-key-types.html#Abstract-key-types" accesskey="u" rel="up">Abstract key types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

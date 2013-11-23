@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: gnutls-cli Invocation</title>
+<title>GnuTLS 3.2.7: gnutls-cli Invocation</title>
 
-<meta name="description" content="GnuTLS 3.2.6: gnutls-cli Invocation">
-<meta name="keywords" content="GnuTLS 3.2.6: gnutls-cli Invocation">
+<meta name="description" content="GnuTLS 3.2.7: gnutls-cli Invocation">
+<meta name="keywords" content="GnuTLS 3.2.7: gnutls-cli Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Other-included-programs.html#Other-included-programs" rel="up" title="Other included programs">
 <link href="gnutls_002dserv-Invocation.html#gnutls_002dserv-Invocation" rel="next" title="gnutls-serv Invocation">
-<link href="Other-included-programs.html#Other-included-programs" rel="prev" title="Other included programs">
+<link href="Other-included-programs.html#Other-included-programs" rel="previous" title="Other included programs">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -189,10 +189,10 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-cli - GnuTLS client - Ver. 3.2.6
-USAGE:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [hostname]
+<pre class="example">gnutls-cli - GnuTLS client
+Usage:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [hostname]
 
-   -d, --debug=num            Enable debugging.
+   -d, --debug=num            Enable debugging
                                 - it must be in the range:
                                   0 to 9999
    -V, --verbose              More verbose output
@@ -201,7 +201,7 @@ USAGE:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&g
                                 - disabled as '--no-tofu'
        --dane                 Enable DANE certificate verification (DNSSEC)
                                 - disabled as '--no-dane'
-       --local-dns            Use the local DNS server for DNSSEC resolving.
+       --local-dns            Use the local DNS server for DNSSEC resolving
                                 - disabled as '--no-local-dns'
        --ca-verification      Disable CA certificate verification
                                 - disabled as '--no-ca-verification'
@@ -210,7 +210,7 @@ USAGE:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&g
                                 - disabled as '--no-ocsp'
    -r, --resume               Establish a session and resume
    -e, --rehandshake          Establish a session and rehandshake
-   -s, --starttls             Connect, establish a plain session and start TLS.
+   -s, --starttls             Connect, establish a plain session and start TLS
    -u, --udp                  Use DTLS (datagram TLS) over UDP
        --mtu=num              Set MTU for datagram TLS
                                 - it must be in the range:
@@ -258,46 +258,62 @@ USAGE:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&g
        --inline-commands      Inline commands of the form ^&lt;cmd&gt;^
        --inline-commands-prefix=str Change the default (^) used as a delimiter for inline commands.  The
 value is a single US-ASCII character (octets 0 - 127).
-   -v, --version[=arg]        Output version information and exit
-   -h, --help                 Display extended usage information and exit
-   -!, --more-help            Extended usage information passed thru pager
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
 
 Options are specified by doubled hyphens and their name or by a single
 hyphen and the flag character.
 Operands and options may be intermixed.  They will be reordered.
 
-
-
 Simple client program to set up a TLS connection to some other computer.  It
 sets up a TLS connection and forwards data from the standard input to the
 secured socket and vice versa.
 
-Please send bug reports to:  &lt;bug-gnutls@gnu.org&gt;
+Please send bug reports to:  &lt;bugs@gnutls.org&gt;
 </pre></div>
 
 <a name="gnutls_002dcli-debug"></a><a name="debug-option-_0028_002dd_0029-7"></a>
 <h4 class="subheading">debug option (-d)</h4>
 
-<p>This is the &ldquo;enable debugging.&rdquo; option.
-This option takes an argument number.
+<p>This is the &ldquo;enable debugging&rdquo; option.
+This option takes a number argument.
 Specifies the debug level.
 <a name="gnutls_002dcli-tofu"></a></p><a name="tofu-option"></a>
 <h4 class="subheading">tofu option</h4>
 
 <p>This is the &ldquo;enable trust on first use authentication&rdquo; option.
-This option will, in addition to certificate authentication, perform authentication based on previously seen public keys, a model similar to SSH authentication.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-tofu.
+</li></ul>
+
+<p>This option will, in addition to certificate authentication, perform authentication based on previously seen public keys, a model similar to SSH authentication.
 <a name="gnutls_002dcli-dane"></a></p><a name="dane-option"></a>
 <h4 class="subheading">dane option</h4>
 
 <p>This is the &ldquo;enable dane certificate verification (dnssec)&rdquo; option.
-This option will, in addition to certificate authentication using 
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-dane.
+</li></ul>
+
+<p>This option will, in addition to certificate authentication using 
 the trusted CAs, verify the server certificates using on the DANE information
 available via DNSSEC.
 <a name="gnutls_002dcli-local_002ddns"></a></p><a name="local_002ddns-option-1"></a>
 <h4 class="subheading">local-dns option</h4>
 
-<p>This is the &ldquo;use the local dns server for dnssec resolving.&rdquo; option.
-This option will use the local DNS server for DNSSEC.
+<p>This is the &ldquo;use the local dns server for dnssec resolving&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-local-dns.
+</li></ul>
+
+<p>This option will use the local DNS server for DNSSEC.
 This is disabled by default due to many servers not allowing DNSSEC.
 <a name="gnutls_002dcli-ca_002dverification"></a></p><a name="ca_002dverification-option"></a>
 <h4 class="subheading">ca-verification option</h4>
@@ -306,7 +322,8 @@ This is disabled by default due to many servers not allowing DNSSEC.
 </p>
 <p>This option has some usage constraints.  It:
 </p><ul>
-<li> is enabled by default.
+<li> can be disabled with &ndash;no-ca-verification.
+</li><li> It is enabled by default.
 </li></ul>
 
 <p>This option will disable CA certificate verification. It is to be used with the &ndash;dane or &ndash;tofu options.
@@ -314,7 +331,13 @@ This is disabled by default due to many servers not allowing DNSSEC.
 <h4 class="subheading">ocsp option</h4>
 
 <p>This is the &ldquo;enable ocsp certificate verification&rdquo; option.
-This option will enable verification of the peer&rsquo;s certificate using ocsp
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-ocsp.
+</li></ul>
+
+<p>This option will enable verification of the peer&rsquo;s certificate using ocsp
 <a name="gnutls_002dcli-resume"></a></p><a name="resume-option-_0028_002dr_0029"></a>
 <h4 class="subheading">resume option (-r)</h4>
 
@@ -328,19 +351,19 @@ Connect, establish a session and rehandshake immediately.
 <a name="gnutls_002dcli-starttls"></a></p><a name="starttls-option-_0028_002ds_0029"></a>
 <h4 class="subheading">starttls option (-s)</h4>
 
-<p>This is the &ldquo;connect, establish a plain session and start tls.&rdquo; option.
+<p>This is the &ldquo;connect, establish a plain session and start tls&rdquo; option.
 The TLS session will be initiated when EOF or a SIGALRM is received.
 <a name="gnutls_002dcli-dh_002dbits"></a></p><a name="dh_002dbits-option"></a>
 <h4 class="subheading">dh-bits option</h4>
 
 <p>This is the &ldquo;the minimum number of bits allowed for dh&rdquo; option.
-This option takes an argument number.
+This option takes a number argument.
 This option sets the minimum number of bits allowed for a Diffie-Hellman key exchange. You may want to lower the default value if the peer sends a weak prime and you get an connection error with unacceptable prime.
 <a name="gnutls_002dcli-priority"></a></p><a name="priority-option"></a>
 <h4 class="subheading">priority option</h4>
 
 <p>This is the &ldquo;priorities string&rdquo; option.
-This option takes an argument string.
+This option takes a string argument.
 TLS algorithms and protocols to enable. You can
 use predefined sets of ciphersuites such as PERFORMANCE,
 NORMAL, SECURE128, SECURE256.
@@ -361,7 +384,7 @@ Print a list of the supported algorithms and modes. If a priority string is give
 <h4 class="subheading">alpn option</h4>
 
 <p>This is the &ldquo;application layer protocol&rdquo; option.
-This option takes an argument string.
+This option takes a string argument.
 </p>
 <p>This option has some usage constraints.  It:
 </p><ul>
@@ -384,7 +407,7 @@ Enable inline commands of the form ^&lt;cmd&gt;^. The inline commands are expect
 
 <p>This is the &ldquo;change the default (^) used as a delimiter for inline commands.
 				the value is a single us-ascii character (octets 0 - 127).&rdquo; option.
-This option takes an argument string.
+This option takes a string argument.
 Change the default (^) delimiter used for inline commands. The delimiter is expected to be a single US-ASCII character (octets 0 - 127). This option is only relevant if inline commands are enabled via the inline-commands option
 <a name="gnutls_002dcli-exit-status"></a></p><a name="gnutls_002dcli-exit-status-1"></a>
 <h4 class="subheading">gnutls-cli exit status</h4>
@@ -401,8 +424,7 @@ Change the default (^) delimiter used for inline commands. The delimiter is expe
 <a name="gnutls_002dcli-See-Also"></a><a name="gnutls_002dcli-See-Also-1"></a>
 <h4 class="subheading">gnutls-cli See Also</h4>
 <p>gnutls-cli-debug(1), gnutls-serv(1)
-</p>
-<a name="gnutls_002dcli-Examples"></a><a name="gnutls_002dcli-Examples-1"></a>
+<a name="gnutls_002dcli-Examples"></a></p><a name="gnutls_002dcli-Examples-1"></a>
 <h4 class="subheading">gnutls-cli Examples</h4>
 <a name="Connecting-using-PSK-authentication"></a>
 <h4 class="subheading">Connecting using PSK authentication</h4>
@@ -445,7 +467,38 @@ Elliptic curves: CURVE-SECP384R1, CURVE-SECP521R1
 PK-signatures: SIGN-RSA-SHA384, SIGN-ECDSA-SHA384, SIGN-RSA-SHA512, SIGN-ECDSA-SHA512
 </pre></div>
 
-<hr>
+<a name="Connecting-using-a-PKCS-_002311-token"></a>
+<h4 class="subheading">Connecting using a PKCS #11 token</h4>
+<p>To connect to a server using a certificate and a private key present in a PKCS #11 token you 
+need to substitute the PKCS 11 URLs in the x509certfile and x509keyfile parameters.
+</p>
+<p>Those can be found using &quot;p11tool &ndash;list-tokens&quot; and then listing all the objects in the
+needed token, and using the appropriate.
+</p><div class="example">
+<pre class="example">$ p11tool --list-tokens
+
+Token 0:
+URL: pkcs11:model=PKCS15;manufacturer=MyMan;serial=1234;token=Test
+Label: Test
+Manufacturer: EnterSafe
+Model: PKCS15
+Serial: 1234
+
+$ p11tool --login --list-certs &quot;pkcs11:model=PKCS15;manufacturer=MyMan;serial=1234;token=Test&quot;
+
+Object 0:
+URL: pkcs11:model=PKCS15;manufacturer=MyMan;serial=1234;token=Test;object=client;object-type=cert
+Type: X.509 Certificate
+Label: client
+ID: 2a:97:0d:58:d1:51:3c:23:07:ae:4e:0d:72:26:03:7d:99:06:02:6a
+
+$ export MYCERT=&quot;pkcs11:model=PKCS15;manufacturer=MyMan;serial=1234;token=Test;object=client;object-type=cert&quot;
+$ export MYKEY=&quot;pkcs11:model=PKCS15;manufacturer=MyMan;serial=1234;token=Test;object=client;object-type=private&quot;
+
+$ gnutls-cli www.example.com --x509keyfile $MYKEY --x509certfile MYCERT
+</pre></div>
+<p>Notice that the private key only differs from the certificate in the object-type.
+</p><hr>
 <div class="header">
 <p>
 Next: <a href="gnutls_002dserv-Invocation.html#gnutls_002dserv-Invocation" accesskey="n" rel="next">gnutls-serv Invocation</a>, Up: <a href="Other-included-programs.html#Other-included-programs" accesskey="u" rel="up">Other included programs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>

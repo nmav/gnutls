@@ -112,7 +112,7 @@ of those keys
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -148,7 +148,7 @@ This function will deinitialize the list of stored keys in the TPM.
 <p>
 This function will return for each given index a URL of
 the corresponding key.
-If the provided index is out of bounds then <a href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a>
+If the provided index is out of bounds then <code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>
 is returned.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
@@ -175,7 +175,7 @@ is returned.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -215,7 +215,7 @@ chip.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -300,7 +300,7 @@ case <em class="parameter"><code>privkey</code></em> would contain a URL with th
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
+<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
 negative error value.</td>
 </tr>
 </tbody>
@@ -311,9 +311,9 @@ negative error value.</td>
 <div class="refsect2">
 <a name="gnutls-tpmkey-fmt-t"></a><h3>enum gnutls_tpmkey_fmt_t</h3>
 <pre class="programlisting">typedef enum {
-    GNUTLS_TPMKEY_FMT_RAW = 0,
-    GNUTLS_TPMKEY_FMT_DER = GNUTLS_TPMKEY_FMT_RAW,
-    GNUTLS_TPMKEY_FMT_CTK_PEM = 1
+	GNUTLS_TPMKEY_FMT_RAW = 0,
+	GNUTLS_TPMKEY_FMT_DER = GNUTLS_TPMKEY_FMT_RAW,
+	GNUTLS_TPMKEY_FMT_CTK_PEM = 1
 } gnutls_tpmkey_fmt_t;
 </pre>
 <p>

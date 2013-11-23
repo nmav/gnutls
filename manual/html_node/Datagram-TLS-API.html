@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: Datagram TLS API</title>
+<title>GnuTLS 3.2.7: Datagram TLS API</title>
 
-<meta name="description" content="GnuTLS 3.2.6: Datagram TLS API">
-<meta name="keywords" content="GnuTLS 3.2.6: Datagram TLS API">
+<meta name="description" content="GnuTLS 3.2.7: Datagram TLS API">
+<meta name="keywords" content="GnuTLS 3.2.7: Datagram TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="API-reference.html#API-reference" rel="up" title="API reference">
 <link href="X509-certificate-API.html#X509-certificate-API" rel="next" title="X509 certificate API">
-<link href="High-level-TLS-API.html#High-level-TLS-API" rel="prev" title="High level TLS API">
+<link href="High-level-TLS-API.html#High-level-TLS-API" rel="previous" title="High level TLS API">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="Datagram-TLS-API"></a>
 <div class="header">
 <p>
-Next: <a href="X509-certificate-API.html#X509-certificate-API" accesskey="n" rel="next">X509 certificate API</a>, Previous: <a href="High-level-TLS-API.html#High-level-TLS-API" accesskey="p" rel="prev">High level TLS API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="X509-certificate-API.html#X509-certificate-API" accesskey="n" rel="next">X509 certificate API</a>, Previous: <a href="High-level-TLS-API.html#High-level-TLS-API" accesskey="p" rel="previous">High level TLS API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Datagram-TLS-API-1"></a>
@@ -171,7 +171,7 @@ Next: <a href="X509-certificate-API.html#X509-certificate-API" accesskey="n" rel
 <a name="gnutls_005fdtls_005fcookie_005fsend-1"></a>
 <h4 class="subheading">gnutls_dtls_cookie_send</h4>
 <a name="gnutls_005fdtls_005fcookie_005fsend"></a><dl>
-<dt><a name="index-gnutls_005fdtls_005fcookie_005fsend"></a>Function: <em>int</em> <strong>gnutls_dtls_cookie_send</strong> <em>(gnutls_datum_t* <var>key</var>, void* <var>client_data</var>, size_t <var>client_data_size</var>, gnutls_dtls_prestate_st* <var>prestate</var>, gnutls_transport_ptr_t <var>ptr</var>, gnutls_push_func <var>push_func</var>)</em></dt>
+<dt><a name="index-gnutls_005fdtls_005fcookie_005fsend"></a>Function: <em>int</em> <strong>gnutls_dtls_cookie_send</strong> <em>(gnutls_datum_t * <var>key</var>, void * <var>client_data</var>, size_t <var>client_data_size</var>, gnutls_dtls_prestate_st * <var>prestate</var>, gnutls_transport_ptr_t <var>ptr</var>, gnutls_push_func <var>push_func</var>)</em></dt>
 <dd><p><var>key</var>: is a random key to be used at cookie generation
 </p>
 <p><var>client_data</var>: contains data identifying the client (i.e. address)
@@ -203,7 +203,7 @@ by <code>gnutls_dtls_cookie_verify()</code> .
 <a name="gnutls_005fdtls_005fcookie_005fverify-1"></a>
 <h4 class="subheading">gnutls_dtls_cookie_verify</h4>
 <a name="gnutls_005fdtls_005fcookie_005fverify"></a><dl>
-<dt><a name="index-gnutls_005fdtls_005fcookie_005fverify"></a>Function: <em>int</em> <strong>gnutls_dtls_cookie_verify</strong> <em>(gnutls_datum_t* <var>key</var>, void* <var>client_data</var>, size_t <var>client_data_size</var>, void* <var>_msg</var>, size_t <var>msg_size</var>, gnutls_dtls_prestate_st* <var>prestate</var>)</em></dt>
+<dt><a name="index-gnutls_005fdtls_005fcookie_005fverify"></a>Function: <em>int</em> <strong>gnutls_dtls_cookie_verify</strong> <em>(gnutls_datum_t * <var>key</var>, void * <var>client_data</var>, size_t <var>client_data_size</var>, void * <var>_msg</var>, size_t <var>msg_size</var>, gnutls_dtls_prestate_st * <var>prestate</var>)</em></dt>
 <dd><p><var>key</var>: is a random key to be used at cookie generation
 </p>
 <p><var>client_data</var>: contains data identifying the client (i.e. address)
@@ -279,7 +279,7 @@ if no packets have been received.
 <a name="gnutls_005fdtls_005fprestate_005fset-1"></a>
 <h4 class="subheading">gnutls_dtls_prestate_set</h4>
 <a name="gnutls_005fdtls_005fprestate_005fset"></a><dl>
-<dt><a name="index-gnutls_005fdtls_005fprestate_005fset"></a>Function: <em>void</em> <strong>gnutls_dtls_prestate_set</strong> <em>(gnutls_session_t <var>session</var>, gnutls_dtls_prestate_st* <var>prestate</var>)</em></dt>
+<dt><a name="index-gnutls_005fdtls_005fprestate_005fset"></a>Function: <em>void</em> <strong>gnutls_dtls_prestate_set</strong> <em>(gnutls_session_t <var>session</var>, gnutls_dtls_prestate_st * <var>prestate</var>)</em></dt>
 <dd><p><var>session</var>: a new session
 </p>
 <p><var>prestate</var>: contains the client&rsquo;s prestate
@@ -380,7 +380,7 @@ DTLS connection.
 <hr>
 <div class="header">
 <p>
-Next: <a href="X509-certificate-API.html#X509-certificate-API" accesskey="n" rel="next">X509 certificate API</a>, Previous: <a href="High-level-TLS-API.html#High-level-TLS-API" accesskey="p" rel="prev">High level TLS API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="X509-certificate-API.html#X509-certificate-API" accesskey="n" rel="next">X509 certificate API</a>, Previous: <a href="High-level-TLS-API.html#High-level-TLS-API" accesskey="p" rel="previous">High level TLS API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

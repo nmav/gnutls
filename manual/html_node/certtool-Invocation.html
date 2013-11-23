@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: certtool Invocation</title>
+<title>GnuTLS 3.2.7: certtool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.2.6: certtool Invocation">
-<meta name="keywords" content="GnuTLS 3.2.6: certtool Invocation">
+<meta name="description" content="GnuTLS 3.2.7: certtool Invocation">
+<meta name="keywords" content="GnuTLS 3.2.7: certtool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="More-on-certificate-authentication.html#More-on-certificate-authentication" rel="up" title="More on certificate authentication">
 <link href="ocsptool-Invocation.html#ocsptool-Invocation" rel="next" title="ocsptool Invocation">
-<link href="Managing-encrypted-keys.html#Managing-encrypted-keys" rel="prev" title="Managing encrypted keys">
+<link href="Managing-encrypted-keys.html#Managing-encrypted-keys" rel="previous" title="Managing encrypted keys">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="certtool-Invocation"></a>
 <div class="header">
 <p>
-Next: <a href="ocsptool-Invocation.html#ocsptool-Invocation" accesskey="n" rel="next">ocsptool Invocation</a>, Previous: <a href="Managing-encrypted-keys.html#Managing-encrypted-keys" accesskey="p" rel="prev">Managing encrypted keys</a>, Up: <a href="More-on-certificate-authentication.html#More-on-certificate-authentication" accesskey="u" rel="up">More on certificate authentication</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="ocsptool-Invocation.html#ocsptool-Invocation" accesskey="n" rel="next">ocsptool Invocation</a>, Previous: <a href="Managing-encrypted-keys.html#Managing-encrypted-keys" accesskey="p" rel="previous">Managing encrypted keys</a>, Up: <a href="More-on-certificate-authentication.html#More-on-certificate-authentication" accesskey="u" rel="up">More on certificate authentication</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Invoking-certtool"></a>
@@ -190,10 +190,10 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">certtool - GnuTLS certificate tool - Ver. 3.2.6
-USAGE:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+<pre class="example">certtool - GnuTLS certificate tool
+Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
 
-   -d, --debug=num            Enable debugging.
+   -d, --debug=num            Enable debugging
                                 - it must be in the range:
                                   0 to 9999
    -V, --verbose              More verbose output
@@ -209,13 +209,13 @@ USAGE:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
    -p, --generate-privkey     Generate a private key
    -q, --generate-request     Generate a PKCS #10 certificate request
                                 - prohibits the option 'infile'
-   -e, --verify-chain         Verify a PEM encoded certificate chain.
-       --verify               Verify a PEM encoded certificate chain using a trusted list.
+   -e, --verify-chain         Verify a PEM encoded certificate chain
+       --verify               Verify a PEM encoded certificate chain using a trusted list
                                 - requires the option 'load-ca-certificate'
-       --verify-crl           Verify a CRL using a trusted list.
+       --verify-crl           Verify a CRL using a trusted list
                                 - requires the option 'load-ca-certificate'
-       --generate-dh-params   Generate PKCS #3 encoded Diffie-Hellman parameters.
-       --get-dh-params        Get the included PKCS #3 encoded Diffie-Hellman parameters.
+       --generate-dh-params   Generate PKCS #3 encoded Diffie-Hellman parameters
+       --get-dh-params        Get the included PKCS #3 encoded Diffie-Hellman parameters
        --dh-info              Print information PKCS #3 encoded Diffie-Hellman parameters
        --load-privkey=str     Loads a private key file
        --load-pubkey=str      Loads a public key file
@@ -249,41 +249,39 @@ USAGE:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --rsa                  Generate RSA key
        --dsa                  Generate DSA key
        --ecc                  Generate ECC (ECDSA) key
-       --ecdsa                This is an alias for 'ecc'
-       --hash=str             Hash algorithm to use for signing.
-       --inder                Use DER format for input certificates and private keys.
+       --ecdsa                an alias for the 'ecc' option
+       --hash=str             Hash algorithm to use for signing
+       --inder                Use DER format for input certificates, private keys, and DH parameters
                                 - disabled as '--no-inder'
-       --inraw                This is an alias for 'inder'
-       --outder               Use DER format for output certificates and private keys
+       --inraw                an alias for the 'inder' option
+       --outder               Use DER format for output certificates, private keys, and DH parameters
                                 - disabled as '--no-outder'
-       --outraw               This is an alias for 'outder'
+       --outraw               an alias for the 'outder' option
        --bits=num             Specify the number of bits for key generate
-       --sec-param=str        Specify the security level [low, legacy, normal, high, ultra].
+       --sec-param=str        Specify the security level [low, legacy, normal, high, ultra]
        --disable-quick-random  No effect
        --template=file        Template file to use for non-interactive operation
                                 - file must pre-exist
        --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
-   -v, --version[=arg]        Output version information and exit
-   -h, --help                 Display extended usage information and exit
-   -!, --more-help            Extended usage information passed thru pager
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
 
 Options are specified by doubled hyphens and their name or by a single
 hyphen and the flag character.
-
-
 
 Tool to parse and generate X.509 certificates, requests and private keys.
 It can be used interactively or non interactively by specifying the
 template command line option.
 
-Please send bug reports to:  &lt;bug-gnutls@gnu.org&gt;
+Please send bug reports to:  &lt;bugs@gnutls.org&gt;
 </pre></div>
 
 <a name="certtool-debug"></a><a name="debug-option-_0028_002dd_0029"></a>
 <h4 class="subsubheading">debug option (-d)</h4>
 
-<p>This is the &ldquo;enable debugging.&rdquo; option.
-This option takes an argument number.
+<p>This is the &ldquo;enable debugging&rdquo; option.
+This option takes a number argument.
 Specifies the debug level.
 <a name="certtool-generate_002drequest"></a></p><a name="generate_002drequest-option-_0028_002dq_0029"></a>
 <h4 class="subsubheading">generate-request option (-q)</h4>
@@ -300,12 +298,12 @@ infile.
 <a name="certtool-verify_002dchain"></a></p><a name="verify_002dchain-option-_0028_002de_0029"></a>
 <h4 class="subsubheading">verify-chain option (-e)</h4>
 
-<p>This is the &ldquo;verify a pem encoded certificate chain.&rdquo; option.
+<p>This is the &ldquo;verify a pem encoded certificate chain&rdquo; option.
 The last certificate in the chain must be a self signed one.
 <a name="certtool-verify"></a></p><a name="verify-option"></a>
 <h4 class="subsubheading">verify option</h4>
 
-<p>This is the &ldquo;verify a pem encoded certificate chain using a trusted list.&rdquo; option.
+<p>This is the &ldquo;verify a pem encoded certificate chain using a trusted list&rdquo; option.
 </p>
 <p>This option has some usage constraints.  It:
 </p><ul>
@@ -317,7 +315,7 @@ load-ca-certificate.
 <a name="certtool-verify_002dcrl"></a></p><a name="verify_002dcrl-option"></a>
 <h4 class="subsubheading">verify-crl option</h4>
 
-<p>This is the &ldquo;verify a crl using a trusted list.&rdquo; option.
+<p>This is the &ldquo;verify a crl using a trusted list&rdquo; option.
 </p>
 <p>This option has some usage constraints.  It:
 </p><ul>
@@ -329,38 +327,38 @@ load-ca-certificate.
 <a name="certtool-get_002ddh_002dparams"></a></p><a name="get_002ddh_002dparams-option"></a>
 <h4 class="subsubheading">get-dh-params option</h4>
 
-<p>This is the &ldquo;get the included pkcs #3 encoded diffie-hellman parameters.&rdquo; option.
+<p>This is the &ldquo;get the included pkcs #3 encoded diffie-hellman parameters&rdquo; option.
 Returns stored DH parameters in GnuTLS. Those parameters are used in the SRP protocol. The parameters returned by fresh generation
 are more efficient since GnuTLS 3.0.9.
 <a name="certtool-load_002dprivkey"></a></p><a name="load_002dprivkey-option"></a>
 <h4 class="subsubheading">load-privkey option</h4>
 
 <p>This is the &ldquo;loads a private key file&rdquo; option.
-This option takes an argument string.
+This option takes a string argument.
 This can be either a file or a PKCS #11 URL
 <a name="certtool-load_002dpubkey"></a></p><a name="load_002dpubkey-option"></a>
 <h4 class="subsubheading">load-pubkey option</h4>
 
 <p>This is the &ldquo;loads a public key file&rdquo; option.
-This option takes an argument string.
+This option takes a string argument.
 This can be either a file or a PKCS #11 URL
 <a name="certtool-load_002dcertificate"></a></p><a name="load_002dcertificate-option"></a>
 <h4 class="subsubheading">load-certificate option</h4>
 
 <p>This is the &ldquo;loads a certificate file&rdquo; option.
-This option takes an argument string.
+This option takes a string argument.
 This can be either a file or a PKCS #11 URL
 <a name="certtool-load_002dca_002dprivkey"></a></p><a name="load_002dca_002dprivkey-option"></a>
 <h4 class="subsubheading">load-ca-privkey option</h4>
 
 <p>This is the &ldquo;loads the certificate authority&rsquo;s private key file&rdquo; option.
-This option takes an argument string.
+This option takes a string argument.
 This can be either a file or a PKCS #11 URL
 <a name="certtool-load_002dca_002dcertificate"></a></p><a name="load_002dca_002dcertificate-option"></a>
 <h4 class="subsubheading">load-ca-certificate option</h4>
 
 <p>This is the &ldquo;loads the certificate authority&rsquo;s certificate file&rdquo; option.
-This option takes an argument string.
+This option takes a string argument.
 This can be either a file or a PKCS #11 URL
 <a name="certtool-cprint"></a></p><a name="cprint-option"></a>
 <h4 class="subsubheading">cprint option</h4>
@@ -407,50 +405,62 @@ When combined with &ndash;generate-privkey generates an elliptic curve private k
 <a name="certtool-ecdsa"></a></p><a name="ecdsa-option"></a>
 <h4 class="subsubheading">ecdsa option</h4>
 
-<p>This is an alias for the ecc option,
+<p>This is an alias for the <code>ecc</code> option,
 see <a href="#certtool-ecc">the ecc option documentation</a>.
 </p>
 <a name="certtool-hash"></a><a name="hash-option"></a>
 <h4 class="subsubheading">hash option</h4>
 
-<p>This is the &ldquo;hash algorithm to use for signing.&rdquo; option.
-This option takes an argument string.
+<p>This is the &ldquo;hash algorithm to use for signing&rdquo; option.
+This option takes a string argument.
 Available hash functions are SHA1, RMD160, SHA256, SHA384, SHA512.
 <a name="certtool-inder"></a></p><a name="inder-option"></a>
 <h4 class="subsubheading">inder option</h4>
 
-<p>This is the &ldquo;use der format for input certificates and private keys.&rdquo; option.
-The input files will be assumed to be in DER or RAW format. 
+<p>This is the &ldquo;use der format for input certificates, private keys, and dh parameters &rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-inder.
+</li></ul>
+
+<p>The input files will be assumed to be in DER or RAW format. 
 Unlike options that in PEM input would allow multiple input data (e.g. multiple 
 certificates), when reading in DER format a single data structure is read.
 <a name="certtool-inraw"></a></p><a name="inraw-option"></a>
 <h4 class="subsubheading">inraw option</h4>
 
-<p>This is an alias for the inder option,
+<p>This is an alias for the <code>inder</code> option,
 see <a href="#certtool-inder">the inder option documentation</a>.
 </p>
 <a name="certtool-outder"></a><a name="outder-option"></a>
 <h4 class="subsubheading">outder option</h4>
 
-<p>This is the &ldquo;use der format for output certificates and private keys&rdquo; option.
-The output will be in DER or RAW format.
+<p>This is the &ldquo;use der format for output certificates, private keys, and dh parameters&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-outder.
+</li></ul>
+
+<p>The output will be in DER or RAW format.
 <a name="certtool-outraw"></a></p><a name="outraw-option"></a>
 <h4 class="subsubheading">outraw option</h4>
 
-<p>This is an alias for the outder option,
+<p>This is an alias for the <code>outder</code> option,
 see <a href="#certtool-outder">the outder option documentation</a>.
 </p>
 <a name="certtool-sec_002dparam"></a><a name="sec_002dparam-option"></a>
 <h4 class="subsubheading">sec-param option</h4>
 
-<p>This is the &ldquo;specify the security level [low, legacy, normal, high, ultra].&rdquo; option.
-This option takes an argument string <samp>Security parameter</samp>.
+<p>This is the &ldquo;specify the security level [low, legacy, normal, high, ultra]&rdquo; option.
+This option takes a string argument <samp>Security parameter</samp>.
 This is alternative to the bits option.
 <a name="certtool-pkcs_002dcipher"></a></p><a name="pkcs_002dcipher-option"></a>
 <h4 class="subsubheading">pkcs-cipher option</h4>
 
 <p>This is the &ldquo;cipher to use for pkcs #8 and #12 operations&rdquo; option.
-This option takes an argument string <samp>Cipher</samp>.
+This option takes a string argument <samp>Cipher</samp>.
 Cipher may be one of 3des, 3des-pkcs12, aes-128, aes-192, aes-256, rc2-40, arcfour.
 <a name="certtool-exit-status"></a></p><a name="certtool-exit-status-1"></a>
 <h4 class="subsubheading">certtool exit status</h4>
@@ -467,8 +477,7 @@ Cipher may be one of 3des, 3des-pkcs12, aes-128, aes-192, aes-256, rc2-40, arcfo
 <a name="certtool-See-Also"></a><a name="certtool-See-Also-1"></a>
 <h4 class="subsubheading">certtool See Also</h4>
 <p>p11tool (1)
-</p>
-<a name="certtool-Examples"></a><a name="certtool-Examples-1"></a>
+<a name="certtool-Examples"></a></p><a name="certtool-Examples-1"></a>
 <h4 class="subsubheading">certtool Examples</h4>
 <a name="Generating-private-keys"></a>
 <h4 class="subsubheading">Generating private keys</h4>
@@ -595,7 +604,6 @@ certificates in a file and use <code>--load-certificate</code> as follows:
 <div class="example">
 <pre class="example">$ certtool --verify-crl --load-ca-certificate x509-ca.pem &lt; crl.pem
 </pre></div>
-
 <a name="certtool-Files"></a><a name="certtool-Files-1"></a>
 <h4 class="subsubheading">certtool Files</h4>
 <a name="Certtool_0027s-template-file-format"></a>
@@ -670,7 +678,15 @@ cn = &quot;Cindy Lauper&quot;
 serial = 007
 
 # In how many days, counting from today, this certificate will expire.
+# Use -1 if there is no expiration date.
 expiration_days = 700
+
+# Alternatively you may set concrete dates and time. The GNU date string 
+# formats are accepted. See:
+# http://www.gnu.org/software/tar/manual/html_node/Date-input-formats.html
+
+#activation_date = &quot;2004-02-29 16:21:42&quot;
+#expiration_date = &quot;2025-02-29 16:24:41&quot;
 
 # X.509 v3 extensions
 
@@ -781,12 +797,10 @@ encryption_key
 
 </pre></div>
 
-
-
 <hr>
 <div class="header">
 <p>
-Next: <a href="ocsptool-Invocation.html#ocsptool-Invocation" accesskey="n" rel="next">ocsptool Invocation</a>, Previous: <a href="Managing-encrypted-keys.html#Managing-encrypted-keys" accesskey="p" rel="prev">Managing encrypted keys</a>, Up: <a href="More-on-certificate-authentication.html#More-on-certificate-authentication" accesskey="u" rel="up">More on certificate authentication</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="ocsptool-Invocation.html#ocsptool-Invocation" accesskey="n" rel="next">ocsptool Invocation</a>, Previous: <a href="Managing-encrypted-keys.html#Managing-encrypted-keys" accesskey="p" rel="previous">Managing encrypted keys</a>, Up: <a href="More-on-certificate-authentication.html#More-on-certificate-authentication" accesskey="u" rel="up">More on certificate authentication</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

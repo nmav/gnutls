@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: Abstract public keys</title>
+<title>GnuTLS 3.2.7: Abstract public keys</title>
 
-<meta name="description" content="GnuTLS 3.2.6: Abstract public keys">
-<meta name="keywords" content="GnuTLS 3.2.6: Abstract public keys">
+<meta name="description" content="GnuTLS 3.2.7: Abstract public keys">
+<meta name="keywords" content="GnuTLS 3.2.7: Abstract public keys">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Abstract-key-types.html#Abstract-key-types" rel="up" title="Abstract key types">
 <link href="Abstract-private-keys.html#Abstract-private-keys" rel="next" title="Abstract private keys">
-<link href="Abstract-key-types.html#Abstract-key-types" rel="prev" title="Abstract key types">
+<link href="Abstract-key-types.html#Abstract-key-types" rel="previous" title="Abstract key types">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -226,7 +226,7 @@ A function to check for a supported by GnuTLS URL is <a href="Core-TLS-API.html#
 
 
 <dl>
-<dt><a name="index-gnutls_005furl_005fis_005fsupported"></a>Function: <em>int</em> <strong>gnutls_url_is_supported</strong> <em>(const char* <var>url</var>)</em></dt>
+<dt><a name="index-gnutls_005furl_005fis_005fsupported"></a>Function: <em>int</em> <strong>gnutls_url_is_supported</strong> <em>(const char * <var>url</var>)</em></dt>
 <dd><p><var>url</var>: A PKCS 11 url
 </p>
 <p>Check whether url is supported.  Depending on the system libraries
@@ -250,9 +250,9 @@ subjectPublicKeyInfo object.
 </p>
 <dl compact="compact">
 <dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fpubkey_005fget_005fpk_005falgorithm">gnutls_pubkey_get_pk_algorithm</a> (gnutls_pubkey_t <var>key</var>, unsigned int * <var>bits</var>)</code></dt>
-<dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fpubkey_005fget_005fpreferred_005fhash_005falgorithm">gnutls_pubkey_get_preferred_hash_algorithm</a> (gnutls_pubkey_t <var>key</var>, gnutls_digest_algorithm_t *                                             <var>hash</var>, unsigned int * <var>mand</var>)</code></dt>
+<dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fpubkey_005fget_005fpreferred_005fhash_005falgorithm">gnutls_pubkey_get_preferred_hash_algorithm</a> (gnutls_pubkey_t <var>key</var>, gnutls_digest_algorithm_t *         <var>hash</var>, unsigned int * <var>mand</var>)</code></dt>
 <dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fpubkey_005fget_005fkey_005fid">gnutls_pubkey_get_key_id</a> (gnutls_pubkey_t <var>key</var>, unsigned int <var>flags</var>, unsigned char * <var>output_data</var>, size_t * <var>output_data_size</var>)</code></dt>
-<dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005frandom_005fart">gnutls_random_art</a> (gnutls_random_art_t <var>type</var>, const char* <var>key_type</var>, unsigned int <var>key_size</var>, void * <var>fpr</var>, size_t <var>fpr_size</var>, gnutls_datum_t* <var>art</var>)</code></dt>
+<dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005frandom_005fart">gnutls_random_art</a> (gnutls_random_art_t <var>type</var>, const char * <var>key_type</var>, unsigned int <var>key_size</var>, void * <var>fpr</var>, size_t <var>fpr_size</var>, gnutls_datum_t * <var>art</var>)</code></dt>
 </dl>
 
 <p>To export the key-specific parameters, or obtain a unique key ID the following functions are provided.
@@ -261,7 +261,7 @@ subjectPublicKeyInfo object.
 <dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fpubkey_005fget_005fpk_005frsa_005fraw">gnutls_pubkey_get_pk_rsa_raw</a> (gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>m</var>, gnutls_datum_t * <var>e</var>)</code></dt>
 <dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fpubkey_005fget_005fpk_005fdsa_005fraw">gnutls_pubkey_get_pk_dsa_raw</a> (gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>p</var>, gnutls_datum_t * <var>q</var>, gnutls_datum_t * <var>g</var>, gnutls_datum_t * <var>y</var>)</code></dt>
 <dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fpubkey_005fget_005fpk_005fecc_005fraw">gnutls_pubkey_get_pk_ecc_raw</a> (gnutls_pubkey_t <var>key</var>, gnutls_ecc_curve_t * <var>curve</var>, gnutls_datum_t * <var>x</var>, gnutls_datum_t * <var>y</var>)</code></dt>
-<dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fpubkey_005fget_005fpk_005fecc_005fx962">gnutls_pubkey_get_pk_ecc_x962</a> (gnutls_pubkey_t <var>key</var>, gnutls_datum_t* <var>parameters</var>, gnutls_datum_t * <var>ecpoint</var>)</code></dt>
+<dt><code><var>int</var> <a href="Abstract-key-API.html#gnutls_005fpubkey_005fget_005fpk_005fecc_005fx962">gnutls_pubkey_get_pk_ecc_x962</a> (gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>parameters</var>, gnutls_datum_t * <var>ecpoint</var>)</code></dt>
 </dl>
 
 <hr>

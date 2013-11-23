@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: Core TLS API</title>
+<title>GnuTLS 3.2.7: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.2.6: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.2.6: Core TLS API">
+<meta name="description" content="GnuTLS 3.2.7: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.2.7: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="API-reference.html#API-reference" rel="up" title="API reference">
 <link href="High-level-TLS-API.html#High-level-TLS-API" rel="next" title="High level TLS API">
-<link href="API-reference.html#API-reference" rel="prev" title="API reference">
+<link href="API-reference.html#API-reference" rel="previous" title="API reference">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -299,7 +299,7 @@ otherwise a negative error code is returned.
 <a name="gnutls_005fanon_005fallocate_005fclient_005fcredentials-1"></a>
 <h4 class="subheading">gnutls_anon_allocate_client_credentials</h4>
 <a name="gnutls_005fanon_005fallocate_005fclient_005fcredentials"></a><dl>
-<dt><a name="index-gnutls_005fanon_005fallocate_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_anon_allocate_client_credentials</strong> <em>(gnutls_anon_client_credentials_t *                                          <var>sc</var>)</em></dt>
+<dt><a name="index-gnutls_005fanon_005fallocate_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_anon_allocate_client_credentials</strong> <em>(gnutls_anon_client_credentials_t *      <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a pointer to a <code>gnutls_anon_client_credentials_t</code>  structure.
 </p>
 <p>This structure is complex enough to manipulate directly thus
@@ -311,7 +311,7 @@ this helper function is provided in order to allocate it.
 <a name="gnutls_005fanon_005fallocate_005fserver_005fcredentials-1"></a>
 <h4 class="subheading">gnutls_anon_allocate_server_credentials</h4>
 <a name="gnutls_005fanon_005fallocate_005fserver_005fcredentials"></a><dl>
-<dt><a name="index-gnutls_005fanon_005fallocate_005fserver_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_anon_allocate_server_credentials</strong> <em>(gnutls_anon_server_credentials_t *                                          <var>sc</var>)</em></dt>
+<dt><a name="index-gnutls_005fanon_005fallocate_005fserver_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_anon_allocate_server_credentials</strong> <em>(gnutls_anon_server_credentials_t *      <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a pointer to a <code>gnutls_anon_server_credentials_t</code>  structure.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
@@ -369,7 +369,7 @@ Anonymous Diffie-Hellman cipher suites.
 <a name="gnutls_005fanon_005fset_005fserver_005fparams_005ffunction-1"></a>
 <h4 class="subheading">gnutls_anon_set_server_params_function</h4>
 <a name="gnutls_005fanon_005fset_005fserver_005fparams_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005fanon_005fset_005fserver_005fparams_005ffunction"></a>Function: <em>void</em> <strong>gnutls_anon_set_server_params_function</strong> <em>(gnutls_anon_server_credentials_t <var>res</var>, gnutls_params_function * <var>func</var>)</em></dt>
+<dt><a name="index-gnutls_005fanon_005fset_005fserver_005fparams_005ffunction"></a>Function: <em>void</em> <strong>gnutls_anon_set_server_params_function</strong> <em>(gnutls_anon_server_credentials_t            <var>res</var>, gnutls_params_function * <var>func</var>)</em></dt>
 <dd><p><var>res</var>: is a gnutls_certificate_credentials_t structure
 </p>
 <p><var>func</var>: is the function to be called
@@ -478,7 +478,7 @@ This is the creation time for openpgp keys.
 <a name="gnutls_005fcertificate_005fallocate_005fcredentials-1"></a>
 <h4 class="subheading">gnutls_certificate_allocate_credentials</h4>
 <a name="gnutls_005fcertificate_005fallocate_005fcredentials"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fallocate_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_certificate_allocate_credentials</strong> <em>(gnutls_certificate_credentials_t *                                          <var>res</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fallocate_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_certificate_allocate_credentials</strong> <em>(gnutls_certificate_credentials_t *      <var>res</var>)</em></dt>
 <dd><p><var>res</var>: is a pointer to a <code>gnutls_certificate_credentials_t</code>  structure.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
@@ -604,7 +604,7 @@ is returned.
 <a name="gnutls_005fcertificate_005fget_005fissuer-1"></a>
 <h4 class="subheading">gnutls_certificate_get_issuer</h4>
 <a name="gnutls_005fcertificate_005fget_005fissuer"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fget_005fissuer"></a>Function: <em>int</em> <strong>gnutls_certificate_get_issuer</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>, gnutls_x509_crt_t <var>cert</var>, gnutls_x509_crt_t* <var>issuer</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fget_005fissuer"></a>Function: <em>int</em> <strong>gnutls_certificate_get_issuer</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>, gnutls_x509_crt_t <var>cert</var>, gnutls_x509_crt_t * <var>issuer</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
 </p>
 <p><var>cert</var>: is the certificate to find issuer for
@@ -639,7 +639,7 @@ was used.
 <a name="gnutls_005fcertificate_005fget_005fpeers-1"></a>
 <h4 class="subheading">gnutls_certificate_get_peers</h4>
 <a name="gnutls_005fcertificate_005fget_005fpeers"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fget_005fpeers"></a>Function: <em>const gnutls_datum_t *</em> <strong>gnutls_certificate_get_peers</strong> <em>(gnutls_session_t                               <var>session</var>, unsigned int * <var>list_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fget_005fpeers"></a>Function: <em>const gnutls_datum_t *</em> <strong>gnutls_certificate_get_peers</strong> <em>(gnutls_session_t          <var>session</var>, unsigned int * <var>list_size</var>)</em></dt>
 <dd><p><var>session</var>: is a gnutls session
 </p>
 <p><var>list_size</var>: is the length of the certificate list
@@ -726,7 +726,7 @@ must not deallocate the parameters before the certificate is deallocated.
 <a name="gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffile-1"></a>
 <h4 class="subheading">gnutls_certificate_set_ocsp_status_request_file</h4>
 <a name="gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffile"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffile"></a>Function: <em>int</em> <strong>gnutls_certificate_set_ocsp_status_request_file</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>, const char* <var>response_file</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffile"></a>Function: <em>int</em> <strong>gnutls_certificate_set_ocsp_status_request_file</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>, const char * <var>response_file</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>sc</var>: &ndash; undescribed &ndash;
 </p>
 <p><var>response_file</var>: a filename of the OCSP response
@@ -781,7 +781,7 @@ otherwise a negative error code is returned.
 <a name="gnutls_005fcertificate_005fset_005fparams_005ffunction-1"></a>
 <h4 class="subheading">gnutls_certificate_set_params_function</h4>
 <a name="gnutls_005fcertificate_005fset_005fparams_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fset_005fparams_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_certificate_set_params_function</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, gnutls_params_function * <var>func</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fset_005fparams_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_certificate_set_params_function</strong> <em>(gnutls_certificate_credentials_t            <var>res</var>, gnutls_params_function * <var>func</var>)</em></dt>
 <dd><p><var>res</var>: is a gnutls_certificate_credentials_t structure
 </p>
 <p><var>func</var>: is the function to be called
@@ -794,7 +794,7 @@ authentication.  The callback should return <code>GNUTLS_E_SUCCESS</code>  (0) o
 <a name="gnutls_005fcertificate_005fset_005fpin_005ffunction-1"></a>
 <h4 class="subheading">gnutls_certificate_set_pin_function</h4>
 <a name="gnutls_005fcertificate_005fset_005fpin_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fset_005fpin_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_certificate_set_pin_function</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, gnutls_pin_callback_t <var>fn</var>, void * <var>userdata</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fset_005fpin_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_certificate_set_pin_function</strong> <em>(gnutls_certificate_credentials_t       <var>cred</var>, gnutls_pin_callback_t <var>fn</var>, void * <var>userdata</var>)</em></dt>
 <dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
 </p>
 <p><var>fn</var>: A PIN callback
@@ -855,7 +855,7 @@ indicates error and the handshake will be terminated.
 <a name="gnutls_005fcertificate_005fset_005fverify_005fflags-1"></a>
 <h4 class="subheading">gnutls_certificate_set_verify_flags</h4>
 <a name="gnutls_005fcertificate_005fset_005fverify_005fflags"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fset_005fverify_005fflags"></a>Function: <em>void</em> <strong>gnutls_certificate_set_verify_flags</strong> <em>(gnutls_certificate_credentials_t                                      <var>res</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fset_005fverify_005fflags"></a>Function: <em>void</em> <strong>gnutls_certificate_set_verify_flags</strong> <em>(gnutls_certificate_credentials_t         <var>res</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>res</var>: is a gnutls_certificate_credentials_t structure
 </p>
 <p><var>flags</var>: are the flags
@@ -1019,13 +1019,16 @@ certificate/key pairs).
 will import the private key and certificate indicated by the URLs. Note
 that the supported URLs are the ones indicated by <code>gnutls_url_is_supported()</code> .
 </p>
+<p>In case the  <code>certfile</code> is provided as a PKCS <code>11</code>  URL, then the certificate, and its
+present issuers in the token are are imported (i.e., the required trust chain).
+</p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fset_005fx509_005fkey_005ffile2-1"></a>
 <h4 class="subheading">gnutls_certificate_set_x509_key_file2</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fkey_005ffile2"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fkey_005ffile2"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_key_file2</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const char * <var>certfile</var>, const char * <var>keyfile</var>, gnutls_x509_crt_fmt_t <var>type</var>, const char* <var>pass</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fkey_005ffile2"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_key_file2</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const char * <var>certfile</var>, const char * <var>keyfile</var>, gnutls_x509_crt_fmt_t <var>type</var>, const char * <var>pass</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
 </p>
 <p><var>certfile</var>: is a file that containing the certificate list (path) for
@@ -1053,6 +1056,9 @@ certificate/key pairs).
 <p>This function can also accept URLs at  <code>keyfile</code> and  <code>certfile</code> . In that case it
 will import the private key and certificate indicated by the URLs. Note
 that the supported URLs are the ones indicated by <code>gnutls_url_is_supported()</code> .
+</p>
+<p>In case the  <code>certfile</code> is provided as a PKCS <code>11</code>  URL, then the certificate, and its
+present issuers in the token are are imported (i.e., the required trust chain).
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p></dd></dl>
@@ -1090,7 +1096,7 @@ then the strings that hold their values must be null terminated.
 <a name="gnutls_005fcertificate_005fset_005fx509_005fkey_005fmem2-1"></a>
 <h4 class="subheading">gnutls_certificate_set_x509_key_mem2</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fkey_005fmem2"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fkey_005fmem2"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_key_mem2</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const gnutls_datum_t * <var>cert</var>, const gnutls_datum_t * <var>key</var>, gnutls_x509_crt_fmt_t <var>type</var>, const char* <var>pass</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fkey_005fmem2"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_key_mem2</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const gnutls_datum_t * <var>cert</var>, const gnutls_datum_t * <var>key</var>, gnutls_x509_crt_fmt_t <var>type</var>, const char * <var>pass</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
 </p>
 <p><var>cert</var>: contains a certificate list (path) for the specified private key
@@ -1195,7 +1201,7 @@ all.
 <a name="gnutls_005fcertificate_005fset_005fx509_005fsystem_005ftrust-1"></a>
 <h4 class="subheading">gnutls_certificate_set_x509_system_trust</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fsystem_005ftrust"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fsystem_005ftrust-1"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_system_trust</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fsystem_005ftrust-1"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_system_trust</strong> <em>(gnutls_certificate_credentials_t       <var>cred</var>)</em></dt>
 <dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
 </p>
 <p>This function adds the system&rsquo;s default trusted CAs in order to
@@ -1239,7 +1245,7 @@ on error.
 <a name="gnutls_005fcertificate_005fset_005fx509_005ftrust_005ffile-1"></a>
 <h4 class="subheading">gnutls_certificate_set_x509_trust_file</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005ftrust_005ffile"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005ftrust_005ffile"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_trust_file</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, const char * <var>cafile</var>, gnutls_x509_crt_fmt_t <var>type</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005ftrust_005ffile"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_trust_file</strong> <em>(gnutls_certificate_credentials_t            <var>cred</var>, const char * <var>cafile</var>, gnutls_x509_crt_fmt_t <var>type</var>)</em></dt>
 <dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
 </p>
 <p><var>cafile</var>: is a file containing the list of trusted CAs (DER or PEM list)
@@ -1316,7 +1322,7 @@ string certificate type, or <code>GNUTLS_CRT_UNKNOWN</code>  on error.
 <a name="gnutls_005fcertificate_005ftype_005fget_005fname-1"></a>
 <h4 class="subheading">gnutls_certificate_type_get_name</h4>
 <a name="gnutls_005fcertificate_005ftype_005fget_005fname"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005ftype_005fget_005fname"></a>Function: <em>const char *</em> <strong>gnutls_certificate_type_get_name</strong> <em>(gnutls_certificate_type_t <var>type</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005ftype_005fget_005fname"></a>Function: <em>const char *</em> <strong>gnutls_certificate_type_get_name</strong> <em>(gnutls_certificate_type_t           <var>type</var>)</em></dt>
 <dd><p><var>type</var>: is a certificate type
 </p>
 <p>Convert a <code>gnutls_certificate_type_t</code>  type to a string.
@@ -1339,7 +1345,7 @@ integers indicating the available certificate types.
 <a name="gnutls_005fcertificate_005fverification_005fstatus_005fprint-1"></a>
 <h4 class="subheading">gnutls_certificate_verification_status_print</h4>
 <a name="gnutls_005fcertificate_005fverification_005fstatus_005fprint"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fverification_005fstatus_005fprint"></a>Function: <em>int</em> <strong>gnutls_certificate_verification_status_print</strong> <em>(unsigned int <var>status</var>, gnutls_certificate_type_t <var>type</var>, gnutls_datum_t * <var>out</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fverification_005fstatus_005fprint"></a>Function: <em>int</em> <strong>gnutls_certificate_verification_status_print</strong> <em>(unsigned int <var>status</var>, gnutls_certificate_type_t           <var>type</var>, gnutls_datum_t * <var>out</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>status</var>: The status flags to be printed
 </p>
 <p><var>type</var>: The certificate type
@@ -1389,7 +1395,7 @@ or use <code>gnutls_certificate_verify_peers3()</code> .
 <a name="gnutls_005fcertificate_005fverify_005fpeers3-1"></a>
 <h4 class="subheading">gnutls_certificate_verify_peers3</h4>
 <a name="gnutls_005fcertificate_005fverify_005fpeers3"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fverify_005fpeers3-1"></a>Function: <em>int</em> <strong>gnutls_certificate_verify_peers3</strong> <em>(gnutls_session_t <var>session</var>, const char* <var>hostname</var>, unsigned int * <var>status</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fverify_005fpeers3-1"></a>Function: <em>int</em> <strong>gnutls_certificate_verify_peers3</strong> <em>(gnutls_session_t <var>session</var>, const char * <var>hostname</var>, unsigned int * <var>status</var>)</em></dt>
 <dd><p><var>session</var>: is a gnutls session
 </p>
 <p><var>hostname</var>: is the expected name of the peer; may be <code>NULL</code> 
@@ -1501,7 +1507,7 @@ integers indicating the available ciphers.
 <a name="gnutls_005fcipher_005fsuite_005fget_005fname-1"></a>
 <h4 class="subheading">gnutls_cipher_suite_get_name</h4>
 <a name="gnutls_005fcipher_005fsuite_005fget_005fname"></a><dl>
-<dt><a name="index-gnutls_005fcipher_005fsuite_005fget_005fname"></a>Function: <em>const char *</em> <strong>gnutls_cipher_suite_get_name</strong> <em>(gnutls_kx_algorithm_t <var>kx_algorithm</var>, gnutls_cipher_algorithm_t <var>cipher_algorithm</var>, gnutls_mac_algorithm_t <var>mac_algorithm</var>)</em></dt>
+<dt><a name="index-gnutls_005fcipher_005fsuite_005fget_005fname"></a>Function: <em>const char *</em> <strong>gnutls_cipher_suite_get_name</strong> <em>(gnutls_kx_algorithm_t       <var>kx_algorithm</var>, gnutls_cipher_algorithm_t       <var>cipher_algorithm</var>, gnutls_mac_algorithm_t       <var>mac_algorithm</var>)</em></dt>
 <dd><p><var>kx_algorithm</var>: is a Key exchange algorithm
 </p>
 <p><var>cipher_algorithm</var>: is a cipher algorithm
@@ -1568,7 +1574,7 @@ bounds, <code>NULL</code>  is returned.
 <a name="gnutls_005fcompression_005fget_005fname-1"></a>
 <h4 class="subheading">gnutls_compression_get_name</h4>
 <a name="gnutls_005fcompression_005fget_005fname"></a><dl>
-<dt><a name="index-gnutls_005fcompression_005fget_005fname"></a>Function: <em>const char *</em> <strong>gnutls_compression_get_name</strong> <em>(gnutls_compression_method_t <var>algorithm</var>)</em></dt>
+<dt><a name="index-gnutls_005fcompression_005fget_005fname"></a>Function: <em>const char *</em> <strong>gnutls_compression_get_name</strong> <em>(gnutls_compression_method_t      <var>algorithm</var>)</em></dt>
 <dd><p><var>algorithm</var>: is a Compression algorithm
 </p>
 <p>Convert a <code>gnutls_compression_method_t</code>  value to a string.
@@ -2144,16 +2150,19 @@ integers indicating the available curves.
 <dd><p><var>error</var>: is a GnuTLS error code, a negative error code
 </p>
 <p>If a GnuTLS function returns a negative error code you may feed that
-value to this function to see if the error condition is fatal. 
-Note that you may also want to check the error code manually, since some
+value to this function to see if the error condition is fatal to
+a TLS session (i.e., must be terminated). 
+</p>
+<p>Note that you may also want to check the error code manually, since some
 non-fatal errors to the protocol (such as a warning alert or
 a rehandshake request) may be fatal for your program.
 </p>
 <p>This function is only useful if you are dealing with errors from
-the record layer or the handshake layer.
+functions that relate to a TLS session (e.g., record layer or handshake 
+layer handling functions).
 </p>
-<p><strong>Returns:</strong> 1 if the error code is fatal, for positive  <code>error</code> values,
-0 is returned.  For unknown  <code>error</code> values, -1 is returned.
+<p><strong>Returns:</strong> zero on non fatal errors or positive  <code>error</code> values. Non-zero
+on fatal error codes.
 </p></dd></dl>
 
 <a name="gnutls_005ferror_005fto_005falert-1"></a>
@@ -2260,10 +2269,9 @@ first time.
 <p>Note!  This function is not thread safe.  If two threads call this
 function simultaneously, they can cause a race between checking
 the global counter and incrementing it, causing both threads to
-execute the library initialization code.  That would lead to a
-memory leak.  To handle this, your application could invoke this
-function after aquiring a thread mutex.  To ignore the potential
-memory leak is also an option.
+execute the library initialization code.  That could lead to a
+memory leak or even a crash.  To handle this, your application should 
+invoke this function after aquiring a thread mutex.  
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
@@ -2410,7 +2418,7 @@ some data were pending.
 <a name="gnutls_005fhandshake_005fdescription_005fget_005fname-1"></a>
 <h4 class="subheading">gnutls_handshake_description_get_name</h4>
 <a name="gnutls_005fhandshake_005fdescription_005fget_005fname"></a><dl>
-<dt><a name="index-gnutls_005fhandshake_005fdescription_005fget_005fname"></a>Function: <em>const char *</em> <strong>gnutls_handshake_description_get_name</strong> <em>(gnutls_handshake_description_t <var>type</var>)</em></dt>
+<dt><a name="index-gnutls_005fhandshake_005fdescription_005fget_005fname"></a>Function: <em>const char     *</em> <strong>gnutls_handshake_description_get_name</strong> <em>(gnutls_handshake_description_t         <var>type</var>)</em></dt>
 <dd><p><var>type</var>: is a handshake message description
 </p>
 <p>Convert a <code>gnutls_handshake_description_t</code>  value to a string.
@@ -2507,7 +2515,7 @@ limit Denial of Service attacks.
 <a name="gnutls_005fhandshake_005fset_005fpost_005fclient_005fhello_005ffunction-1"></a>
 <h4 class="subheading">gnutls_handshake_set_post_client_hello_function</h4>
 <a name="gnutls_005fhandshake_005fset_005fpost_005fclient_005fhello_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005fhandshake_005fset_005fpost_005fclient_005fhello_005ffunction"></a>Function: <em>void</em> <strong>gnutls_handshake_set_post_client_hello_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_handshake_post_client_hello_func                                                  <var>func</var>)</em></dt>
+<dt><a name="index-gnutls_005fhandshake_005fset_005fpost_005fclient_005fhello_005ffunction"></a>Function: <em>void</em> <strong>gnutls_handshake_set_post_client_hello_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_handshake_post_client_hello_func       <var>func</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
 </p>
 <p><var>func</var>: is the function to be called
@@ -2550,7 +2558,7 @@ gnutls servers and clients may cause interoperability problems.
 <a name="gnutls_005fhandshake_005fset_005frandom-1"></a>
 <h4 class="subheading">gnutls_handshake_set_random</h4>
 <a name="gnutls_005fhandshake_005fset_005frandom"></a><dl>
-<dt><a name="index-gnutls_005fhandshake_005fset_005frandom"></a>Function: <em>int</em> <strong>gnutls_handshake_set_random</strong> <em>(gnutls_session_t <var>session</var>, const gnutls_datum_t* <var>random</var>)</em></dt>
+<dt><a name="index-gnutls_005fhandshake_005fset_005frandom"></a>Function: <em>int</em> <strong>gnutls_handshake_set_random</strong> <em>(gnutls_session_t <var>session</var>, const gnutls_datum_t * <var>random</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
 </p>
 <p><var>random</var>: a random value of 32-bytes
@@ -2856,7 +2864,7 @@ indicating the available key exchange algorithms.
 <a name="gnutls_005fload_005ffile-1"></a>
 <h4 class="subheading">gnutls_load_file</h4>
 <a name="gnutls_005fload_005ffile"></a><dl>
-<dt><a name="index-gnutls_005fload_005ffile"></a>Function: <em>int</em> <strong>gnutls_load_file</strong> <em>(const char* <var>filename</var>, gnutls_datum_t * <var>data</var>)</em></dt>
+<dt><a name="index-gnutls_005fload_005ffile"></a>Function: <em>int</em> <strong>gnutls_load_file</strong> <em>(const char * <var>filename</var>, gnutls_datum_t * <var>data</var>)</em></dt>
 <dd><p><var>filename</var>: the name of the file to load
 </p>
 <p><var>data</var>: Where the file will be stored
@@ -3274,7 +3282,7 @@ want to generate pseudo random data unique for each session.
 <a name="gnutls_005fpriority_005fcertificate_005ftype_005flist-1"></a>
 <h4 class="subheading">gnutls_priority_certificate_type_list</h4>
 <a name="gnutls_005fpriority_005fcertificate_005ftype_005flist"></a><dl>
-<dt><a name="index-gnutls_005fpriority_005fcertificate_005ftype_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_certificate_type_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dt><a name="index-gnutls_005fpriority_005fcertificate_005ftype_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_certificate_type_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
 <dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
 </p>
 <p><var>list</var>: will point to an integer list
@@ -3290,7 +3298,7 @@ structure.
 <a name="gnutls_005fpriority_005fcipher_005flist-1"></a>
 <h4 class="subheading">gnutls_priority_cipher_list</h4>
 <a name="gnutls_005fpriority_005fcipher_005flist"></a><dl>
-<dt><a name="index-gnutls_005fpriority_005fcipher_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_cipher_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dt><a name="index-gnutls_005fpriority_005fcipher_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_cipher_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
 <dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
 </p>
 <p><var>list</var>: will point to an integer list
@@ -3306,7 +3314,7 @@ structure.
 <a name="gnutls_005fpriority_005fcompression_005flist-1"></a>
 <h4 class="subheading">gnutls_priority_compression_list</h4>
 <a name="gnutls_005fpriority_005fcompression_005flist"></a><dl>
-<dt><a name="index-gnutls_005fpriority_005fcompression_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_compression_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dt><a name="index-gnutls_005fpriority_005fcompression_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_compression_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
 <dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
 </p>
 <p><var>list</var>: will point to an integer list
@@ -3331,7 +3339,7 @@ structure.
 <a name="gnutls_005fpriority_005fecc_005fcurve_005flist-1"></a>
 <h4 class="subheading">gnutls_priority_ecc_curve_list</h4>
 <a name="gnutls_005fpriority_005fecc_005fcurve_005flist"></a><dl>
-<dt><a name="index-gnutls_005fpriority_005fecc_005fcurve_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_ecc_curve_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dt><a name="index-gnutls_005fpriority_005fecc_005fcurve_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_ecc_curve_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
 <dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
 </p>
 <p><var>list</var>: will point to an integer list
@@ -3446,7 +3454,7 @@ enabled, SSL3.0 is disabled, and libz compression enabled.
 <a name="gnutls_005fpriority_005fkx_005flist-1"></a>
 <h4 class="subheading">gnutls_priority_kx_list</h4>
 <a name="gnutls_005fpriority_005fkx_005flist"></a><dl>
-<dt><a name="index-gnutls_005fpriority_005fkx_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_kx_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dt><a name="index-gnutls_005fpriority_005fkx_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_kx_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
 <dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
 </p>
 <p><var>list</var>: will point to an integer list
@@ -3462,7 +3470,7 @@ structure.
 <a name="gnutls_005fpriority_005fmac_005flist-1"></a>
 <h4 class="subheading">gnutls_priority_mac_list</h4>
 <a name="gnutls_005fpriority_005fmac_005flist"></a><dl>
-<dt><a name="index-gnutls_005fpriority_005fmac_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_mac_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dt><a name="index-gnutls_005fpriority_005fmac_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_mac_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
 <dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
 </p>
 <p><var>list</var>: will point to an integer list
@@ -3478,7 +3486,7 @@ structure.
 <a name="gnutls_005fpriority_005fprotocol_005flist-1"></a>
 <h4 class="subheading">gnutls_priority_protocol_list</h4>
 <a name="gnutls_005fpriority_005fprotocol_005flist"></a><dl>
-<dt><a name="index-gnutls_005fpriority_005fprotocol_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_protocol_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dt><a name="index-gnutls_005fpriority_005fprotocol_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_protocol_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
 <dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
 </p>
 <p><var>list</var>: will point to an integer list
@@ -3527,7 +3535,7 @@ TLS session.  For documentation check the <code>gnutls_priority_init()</code> .
 <a name="gnutls_005fpriority_005fsign_005flist-1"></a>
 <h4 class="subheading">gnutls_priority_sign_list</h4>
 <a name="gnutls_005fpriority_005fsign_005flist"></a><dl>
-<dt><a name="index-gnutls_005fpriority_005fsign_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_sign_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int** <var>list</var>)</em></dt>
+<dt><a name="index-gnutls_005fpriority_005fsign_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_sign_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
 <dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
 </p>
 <p><var>list</var>: will point to an integer list
@@ -3591,7 +3599,7 @@ indicating the available protocols.
 <a name="gnutls_005fpsk_005fallocate_005fclient_005fcredentials-1"></a>
 <h4 class="subheading">gnutls_psk_allocate_client_credentials</h4>
 <a name="gnutls_005fpsk_005fallocate_005fclient_005fcredentials"></a><dl>
-<dt><a name="index-gnutls_005fpsk_005fallocate_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_psk_allocate_client_credentials</strong> <em>(gnutls_psk_client_credentials_t * <var>sc</var>)</em></dt>
+<dt><a name="index-gnutls_005fpsk_005fallocate_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_psk_allocate_client_credentials</strong> <em>(gnutls_psk_client_credentials_t *            <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a pointer to a <code>gnutls_psk_server_credentials_t</code>  structure.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
@@ -3604,7 +3612,7 @@ an error code is returned.
 <a name="gnutls_005fpsk_005fallocate_005fserver_005fcredentials-1"></a>
 <h4 class="subheading">gnutls_psk_allocate_server_credentials</h4>
 <a name="gnutls_005fpsk_005fallocate_005fserver_005fcredentials"></a><dl>
-<dt><a name="index-gnutls_005fpsk_005fallocate_005fserver_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_psk_allocate_server_credentials</strong> <em>(gnutls_psk_server_credentials_t * <var>sc</var>)</em></dt>
+<dt><a name="index-gnutls_005fpsk_005fallocate_005fserver_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_psk_allocate_server_credentials</strong> <em>(gnutls_psk_server_credentials_t *            <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a pointer to a <code>gnutls_psk_server_credentials_t</code>  structure.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
@@ -3688,7 +3696,7 @@ an error code is returned.
 <a name="gnutls_005fpsk_005fset_005fclient_005fcredentials_005ffunction-1"></a>
 <h4 class="subheading">gnutls_psk_set_client_credentials_function</h4>
 <a name="gnutls_005fpsk_005fset_005fclient_005fcredentials_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005fpsk_005fset_005fclient_005fcredentials_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_psk_set_client_credentials_function</strong> <em>(gnutls_psk_client_credentials_t                                             <var>cred</var>, gnutls_psk_client_credentials_function                                             * <var>func</var>)</em></dt>
+<dt><a name="index-gnutls_005fpsk_005fset_005fclient_005fcredentials_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_psk_set_client_credentials_function</strong> <em>(gnutls_psk_client_credentials_t         <var>cred</var>, gnutls_psk_client_credentials_function         * <var>func</var>)</em></dt>
 <dd><p><var>cred</var>: is a <code>gnutls_psk_server_credentials_t</code>  structure.
 </p>
 <p><var>func</var>: is the callback function
@@ -3725,7 +3733,7 @@ callback should return <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 <a name="gnutls_005fpsk_005fset_005fserver_005fcredentials_005ffile-1"></a>
 <h4 class="subheading">gnutls_psk_set_server_credentials_file</h4>
 <a name="gnutls_005fpsk_005fset_005fserver_005fcredentials_005ffile"></a><dl>
-<dt><a name="index-gnutls_005fpsk_005fset_005fserver_005fcredentials_005ffile-1"></a>Function: <em>int</em> <strong>gnutls_psk_set_server_credentials_file</strong> <em>(gnutls_psk_server_credentials_t                                         <var>res</var>, const char * <var>password_file</var>)</em></dt>
+<dt><a name="index-gnutls_005fpsk_005fset_005fserver_005fcredentials_005ffile-1"></a>Function: <em>int</em> <strong>gnutls_psk_set_server_credentials_file</strong> <em>(gnutls_psk_server_credentials_t            <var>res</var>, const char * <var>password_file</var>)</em></dt>
 <dd><p><var>res</var>: is a <code>gnutls_psk_server_credentials_t</code>  structure.
 </p>
 <p><var>password_file</var>: is the PSK password file (passwd.psk)
@@ -3741,7 +3749,7 @@ an error code is returned.
 <a name="gnutls_005fpsk_005fset_005fserver_005fcredentials_005ffunction-1"></a>
 <h4 class="subheading">gnutls_psk_set_server_credentials_function</h4>
 <a name="gnutls_005fpsk_005fset_005fserver_005fcredentials_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005fpsk_005fset_005fserver_005fcredentials_005ffunction"></a>Function: <em>void</em> <strong>gnutls_psk_set_server_credentials_function</strong> <em>(gnutls_psk_server_credentials_t                                             <var>cred</var>, gnutls_psk_server_credentials_function                                             * <var>func</var>)</em></dt>
+<dt><a name="index-gnutls_005fpsk_005fset_005fserver_005fcredentials_005ffunction"></a>Function: <em>void</em> <strong>gnutls_psk_set_server_credentials_function</strong> <em>(gnutls_psk_server_credentials_t         <var>cred</var>, gnutls_psk_server_credentials_function         * <var>func</var>)</em></dt>
 <dd><p><var>cred</var>: is a <code>gnutls_psk_server_credentials_t</code>  structure.
 </p>
 <p><var>func</var>: is the callback function
@@ -3810,7 +3818,7 @@ should return <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 <a name="gnutls_005frandom_005fart-1"></a>
 <h4 class="subheading">gnutls_random_art</h4>
 <a name="gnutls_005frandom_005fart"></a><dl>
-<dt><a name="index-gnutls_005frandom_005fart"></a>Function: <em>int</em> <strong>gnutls_random_art</strong> <em>(gnutls_random_art_t <var>type</var>, const char* <var>key_type</var>, unsigned int <var>key_size</var>, void * <var>fpr</var>, size_t <var>fpr_size</var>, gnutls_datum_t* <var>art</var>)</em></dt>
+<dt><a name="index-gnutls_005frandom_005fart"></a>Function: <em>int</em> <strong>gnutls_random_art</strong> <em>(gnutls_random_art_t <var>type</var>, const char * <var>key_type</var>, unsigned int <var>key_size</var>, void * <var>fpr</var>, size_t <var>fpr_size</var>, gnutls_datum_t * <var>art</var>)</em></dt>
 <dd><p><var>type</var>: The type of the random art
 </p>
 <p><var>key_type</var>: The type of the key (RSA, DSA etc.)
@@ -4458,7 +4466,7 @@ pointer set with <code>gnutls_session_set_ptr()</code> .
 <a name="gnutls_005fsession_005fget_005frandom-1"></a>
 <h4 class="subheading">gnutls_session_get_random</h4>
 <a name="gnutls_005fsession_005fget_005frandom"></a><dl>
-<dt><a name="index-gnutls_005fsession_005fget_005frandom"></a>Function: <em>void</em> <strong>gnutls_session_get_random</strong> <em>(gnutls_session_t <var>session</var>, gnutls_datum_t* <var>client</var>, gnutls_datum_t* <var>server</var>)</em></dt>
+<dt><a name="index-gnutls_005fsession_005fget_005frandom"></a>Function: <em>void</em> <strong>gnutls_session_get_random</strong> <em>(gnutls_session_t <var>session</var>, gnutls_datum_t * <var>client</var>, gnutls_datum_t * <var>server</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
 </p>
 <p><var>client</var>: the client part of the random
@@ -4543,7 +4551,7 @@ an error code is returned.
 <a name="gnutls_005fsession_005fset_005fpremaster-1"></a>
 <h4 class="subheading">gnutls_session_set_premaster</h4>
 <a name="gnutls_005fsession_005fset_005fpremaster"></a><dl>
-<dt><a name="index-gnutls_005fsession_005fset_005fpremaster"></a>Function: <em>int</em> <strong>gnutls_session_set_premaster</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>entity</var>, gnutls_protocol_t <var>version</var>, gnutls_kx_algorithm_t <var>kx</var>, gnutls_cipher_algorithm_t <var>cipher</var>, gnutls_mac_algorithm_t <var>mac</var>, gnutls_compression_method_t <var>comp</var>, const gnutls_datum_t* <var>master</var>, const gnutls_datum_t * <var>session_id</var>)</em></dt>
+<dt><a name="index-gnutls_005fsession_005fset_005fpremaster"></a>Function: <em>int</em> <strong>gnutls_session_set_premaster</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>entity</var>, gnutls_protocol_t <var>version</var>, gnutls_kx_algorithm_t <var>kx</var>, gnutls_cipher_algorithm_t <var>cipher</var>, gnutls_mac_algorithm_t <var>mac</var>, gnutls_compression_method_t <var>comp</var>, const gnutls_datum_t * <var>master</var>, const gnutls_datum_t * <var>session_id</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
 </p>
 <p><var>entity</var>: GNUTLS_SERVER or GNUTLS_CLIENT
@@ -4785,7 +4793,7 @@ integers indicating the available ciphers.
 <a name="gnutls_005fsrp_005fallocate_005fclient_005fcredentials-1"></a>
 <h4 class="subheading">gnutls_srp_allocate_client_credentials</h4>
 <a name="gnutls_005fsrp_005fallocate_005fclient_005fcredentials"></a><dl>
-<dt><a name="index-gnutls_005fsrp_005fallocate_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_srp_allocate_client_credentials</strong> <em>(gnutls_srp_client_credentials_t * <var>sc</var>)</em></dt>
+<dt><a name="index-gnutls_005fsrp_005fallocate_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_srp_allocate_client_credentials</strong> <em>(gnutls_srp_client_credentials_t *            <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a pointer to a <code>gnutls_srp_server_credentials_t</code>  structure.
 </p>
 <p>This structure is complex enough to manipulate directly thus
@@ -4798,7 +4806,7 @@ error code.
 <a name="gnutls_005fsrp_005fallocate_005fserver_005fcredentials-1"></a>
 <h4 class="subheading">gnutls_srp_allocate_server_credentials</h4>
 <a name="gnutls_005fsrp_005fallocate_005fserver_005fcredentials"></a><dl>
-<dt><a name="index-gnutls_005fsrp_005fallocate_005fserver_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_srp_allocate_server_credentials</strong> <em>(gnutls_srp_server_credentials_t * <var>sc</var>)</em></dt>
+<dt><a name="index-gnutls_005fsrp_005fallocate_005fserver_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_srp_allocate_server_credentials</strong> <em>(gnutls_srp_server_credentials_t *            <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a pointer to a <code>gnutls_srp_server_credentials_t</code>  structure.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
@@ -4949,7 +4957,7 @@ error code.
 <a name="gnutls_005fsrp_005fset_005fclient_005fcredentials_005ffunction-1"></a>
 <h4 class="subheading">gnutls_srp_set_client_credentials_function</h4>
 <a name="gnutls_005fsrp_005fset_005fclient_005fcredentials_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005fsrp_005fset_005fclient_005fcredentials_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_srp_set_client_credentials_function</strong> <em>(gnutls_srp_client_credentials_t                                             <var>cred</var>, gnutls_srp_client_credentials_function                                             * <var>func</var>)</em></dt>
+<dt><a name="index-gnutls_005fsrp_005fset_005fclient_005fcredentials_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_srp_set_client_credentials_function</strong> <em>(gnutls_srp_client_credentials_t         <var>cred</var>, gnutls_srp_client_credentials_function         * <var>func</var>)</em></dt>
 <dd><p><var>cred</var>: is a <code>gnutls_srp_server_credentials_t</code>  structure.
 </p>
 <p><var>func</var>: is the callback function
@@ -5018,7 +5026,7 @@ error code.
 <a name="gnutls_005fsrp_005fset_005fserver_005fcredentials_005ffunction-1"></a>
 <h4 class="subheading">gnutls_srp_set_server_credentials_function</h4>
 <a name="gnutls_005fsrp_005fset_005fserver_005fcredentials_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005fsrp_005fset_005fserver_005fcredentials_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_srp_set_server_credentials_function</strong> <em>(gnutls_srp_server_credentials_t                                             <var>cred</var>, gnutls_srp_server_credentials_function                                             * <var>func</var>)</em></dt>
+<dt><a name="index-gnutls_005fsrp_005fset_005fserver_005fcredentials_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_srp_set_server_credentials_function</strong> <em>(gnutls_srp_server_credentials_t         <var>cred</var>, gnutls_srp_server_credentials_function         * <var>func</var>)</em></dt>
 <dd><p><var>cred</var>: is a <code>gnutls_srp_server_credentials_t</code>  structure.
 </p>
 <p><var>func</var>: is the callback function
@@ -5226,7 +5234,7 @@ what SRTP profiles they support, to negotiate with the peer.
 <a name="gnutls_005fstore_005fcommitment-1"></a>
 <h4 class="subheading">gnutls_store_commitment</h4>
 <a name="gnutls_005fstore_005fcommitment"></a><dl>
-<dt><a name="index-gnutls_005fstore_005fcommitment-1"></a>Function: <em>int</em> <strong>gnutls_store_commitment</strong> <em>(const char* <var>db_name</var>, gnutls_tdb_t <var>tdb</var>, const char* <var>host</var>, const char* <var>service</var>, gnutls_digest_algorithm_t <var>hash_algo</var>, const gnutls_datum_t* <var>hash</var>, time_t <var>expiration</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fstore_005fcommitment-1"></a>Function: <em>int</em> <strong>gnutls_store_commitment</strong> <em>(const char * <var>db_name</var>, gnutls_tdb_t <var>tdb</var>, const char * <var>host</var>, const char * <var>service</var>, gnutls_digest_algorithm_t <var>hash_algo</var>, const gnutls_datum_t * <var>hash</var>, time_t <var>expiration</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>db_name</var>: A file specifying the stored keys (use NULL for the default)
 </p>
 <p><var>tdb</var>: A storage structure or NULL to use the default
@@ -5262,7 +5270,7 @@ negative error value.
 <a name="gnutls_005fstore_005fpubkey-1"></a>
 <h4 class="subheading">gnutls_store_pubkey</h4>
 <a name="gnutls_005fstore_005fpubkey"></a><dl>
-<dt><a name="index-gnutls_005fstore_005fpubkey-1"></a>Function: <em>int</em> <strong>gnutls_store_pubkey</strong> <em>(const char* <var>db_name</var>, gnutls_tdb_t <var>tdb</var>, const char* <var>host</var>, const char* <var>service</var>, gnutls_certificate_type_t <var>cert_type</var>, const gnutls_datum_t * <var>cert</var>, time_t <var>expiration</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fstore_005fpubkey-1"></a>Function: <em>int</em> <strong>gnutls_store_pubkey</strong> <em>(const char * <var>db_name</var>, gnutls_tdb_t <var>tdb</var>, const char * <var>host</var>, const char * <var>service</var>, gnutls_certificate_type_t <var>cert_type</var>, const gnutls_datum_t * <var>cert</var>, time_t <var>expiration</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>db_name</var>: A file specifying the stored keys (use NULL for the default)
 </p>
 <p><var>tdb</var>: A storage structure or NULL to use the default
@@ -5327,7 +5335,7 @@ code.
 <a name="gnutls_005fsupplemental_005fget_005fname-1"></a>
 <h4 class="subheading">gnutls_supplemental_get_name</h4>
 <a name="gnutls_005fsupplemental_005fget_005fname"></a><dl>
-<dt><a name="index-gnutls_005fsupplemental_005fget_005fname"></a>Function: <em>const char *</em> <strong>gnutls_supplemental_get_name</strong> <em>(gnutls_supplemental_data_format_type_t <var>type</var>)</em></dt>
+<dt><a name="index-gnutls_005fsupplemental_005fget_005fname"></a>Function: <em>const char     *</em> <strong>gnutls_supplemental_get_name</strong> <em>(gnutls_supplemental_data_format_type_t       <var>type</var>)</em></dt>
 <dd><p><var>type</var>: is a supplemental data format type
 </p>
 <p>Convert a <code>gnutls_supplemental_data_format_type_t</code>  value to a
@@ -5349,7 +5357,7 @@ supplemental data format type, or <code>NULL</code>  for unknown types.
 <a name="gnutls_005ftdb_005finit-1"></a>
 <h4 class="subheading">gnutls_tdb_init</h4>
 <a name="gnutls_005ftdb_005finit"></a><dl>
-<dt><a name="index-gnutls_005ftdb_005finit"></a>Function: <em>int</em> <strong>gnutls_tdb_init</strong> <em>(gnutls_tdb_t* <var>tdb</var>)</em></dt>
+<dt><a name="index-gnutls_005ftdb_005finit"></a>Function: <em>int</em> <strong>gnutls_tdb_init</strong> <em>(gnutls_tdb_t * <var>tdb</var>)</em></dt>
 <dd><p><var>tdb</var>: The structure to be initialized
 </p>
 <p>This function will initialize a public key trust storage structure.
@@ -5361,7 +5369,7 @@ negative error value.
 <a name="gnutls_005ftdb_005fset_005fstore_005fcommitment_005ffunc-1"></a>
 <h4 class="subheading">gnutls_tdb_set_store_commitment_func</h4>
 <a name="gnutls_005ftdb_005fset_005fstore_005fcommitment_005ffunc"></a><dl>
-<dt><a name="index-gnutls_005ftdb_005fset_005fstore_005fcommitment_005ffunc"></a>Function: <em>void</em> <strong>gnutls_tdb_set_store_commitment_func</strong> <em>(gnutls_tdb_t <var>tdb</var>, gnutls_tdb_store_commitment_func <var>cstore</var>)</em></dt>
+<dt><a name="index-gnutls_005ftdb_005fset_005fstore_005fcommitment_005ffunc"></a>Function: <em>void</em> <strong>gnutls_tdb_set_store_commitment_func</strong> <em>(gnutls_tdb_t <var>tdb</var>, gnutls_tdb_store_commitment_func        <var>cstore</var>)</em></dt>
 <dd><p><var>tdb</var>: The trust storage
 </p>
 <p><var>cstore</var>: The commitment storage function
@@ -5647,7 +5655,7 @@ ssize_t (*gnutls_vec_push_func) (gnutls_transport_ptr_t, const giovec_t * iov, i
 <a name="gnutls_005furl_005fis_005fsupported-1"></a>
 <h4 class="subheading">gnutls_url_is_supported</h4>
 <a name="gnutls_005furl_005fis_005fsupported"></a><dl>
-<dt><a name="index-gnutls_005furl_005fis_005fsupported-1"></a>Function: <em>int</em> <strong>gnutls_url_is_supported</strong> <em>(const char* <var>url</var>)</em></dt>
+<dt><a name="index-gnutls_005furl_005fis_005fsupported-1"></a>Function: <em>int</em> <strong>gnutls_url_is_supported</strong> <em>(const char * <var>url</var>)</em></dt>
 <dd><p><var>url</var>: A PKCS 11 url
 </p>
 <p>Check whether url is supported.  Depending on the system libraries
@@ -5662,7 +5670,7 @@ it is not known.
 <a name="gnutls_005fverify_005fstored_005fpubkey-1"></a>
 <h4 class="subheading">gnutls_verify_stored_pubkey</h4>
 <a name="gnutls_005fverify_005fstored_005fpubkey"></a><dl>
-<dt><a name="index-gnutls_005fverify_005fstored_005fpubkey-1"></a>Function: <em>int</em> <strong>gnutls_verify_stored_pubkey</strong> <em>(const char* <var>db_name</var>, gnutls_tdb_t <var>tdb</var>, const char* <var>host</var>, const char* <var>service</var>, gnutls_certificate_type_t <var>cert_type</var>, const gnutls_datum_t * <var>cert</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fverify_005fstored_005fpubkey-1"></a>Function: <em>int</em> <strong>gnutls_verify_stored_pubkey</strong> <em>(const char * <var>db_name</var>, gnutls_tdb_t <var>tdb</var>, const char * <var>host</var>, const char * <var>service</var>, gnutls_certificate_type_t <var>cert_type</var>, const gnutls_datum_t * <var>cert</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>db_name</var>: A file specifying the stored keys (use NULL for the default)
 </p>
 <p><var>tdb</var>: A storage structure or NULL to use the default

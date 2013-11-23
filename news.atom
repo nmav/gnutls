@@ -3,12 +3,12 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2013-11-23T11:18:05+00:00</updated>
+<updated>2013-11-23T16:25:42+00:00</updated>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2013-11-23</id>
     <link rel='alternate' href='http://www.gnutls.org/news.html#2013-11-23'/>
-    <title>GnuTLS 3.1.17</title>
+    <title>GnuTLS 3.2.7 and 3.1.17</title>
     <updated>2013-11-23T00:00:00+00:00</updated>
     <author>
       <name>Nikos Mavrogiannopoulos</name>
@@ -17,9 +17,9 @@
     <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-11-23.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
 
 <p>
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7108">GnuTLS
-3.1.17</a>, was released. This is a bug-fix release on the current stable
-branch.
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7109">GnuTLS
+3.2.7</a>, and <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7108">GnuTLS
+3.1.17</a>, were released. 
 </p>
 
     </div>

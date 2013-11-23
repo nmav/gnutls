@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: Certificate verification</title>
+<title>GnuTLS 3.2.7: Certificate verification</title>
 
-<meta name="description" content="GnuTLS 3.2.6: Certificate verification">
-<meta name="keywords" content="GnuTLS 3.2.6: Certificate verification">
+<meta name="description" content="GnuTLS 3.2.7: Certificate verification">
+<meta name="keywords" content="GnuTLS 3.2.7: Certificate verification">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Advanced-topics.html#Advanced-topics" rel="up" title="Advanced topics">
 <link href="Parameter-generation.html#Parameter-generation" rel="next" title="Parameter generation">
-<link href="Session-resumption.html#Session-resumption" rel="prev" title="Session resumption">
+<link href="Session-resumption.html#Session-resumption" rel="previous" title="Session resumption">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="Certificate-verification"></a>
 <div class="header">
 <p>
-Next: <a href="Parameter-generation.html#Parameter-generation" accesskey="n" rel="next">Parameter generation</a>, Previous: <a href="Session-resumption.html#Session-resumption" accesskey="p" rel="prev">Session resumption</a>, Up: <a href="Advanced-topics.html#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Parameter-generation.html#Parameter-generation" accesskey="n" rel="next">Parameter generation</a>, Previous: <a href="Session-resumption.html#Session-resumption" accesskey="p" rel="previous">Session resumption</a>, Up: <a href="Advanced-topics.html#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Certificate-verification-1"></a>
@@ -185,7 +185,7 @@ The available functions to store and verify public keys are listed below.
 
 
 <dl>
-<dt><a name="index-gnutls_005fverify_005fstored_005fpubkey"></a>Function: <em>int</em> <strong>gnutls_verify_stored_pubkey</strong> <em>(const char* <var>db_name</var>, gnutls_tdb_t <var>tdb</var>, const char* <var>host</var>, const char* <var>service</var>, gnutls_certificate_type_t <var>cert_type</var>, const gnutls_datum_t * <var>cert</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fverify_005fstored_005fpubkey"></a>Function: <em>int</em> <strong>gnutls_verify_stored_pubkey</strong> <em>(const char * <var>db_name</var>, gnutls_tdb_t <var>tdb</var>, const char * <var>host</var>, const char * <var>service</var>, gnutls_certificate_type_t <var>cert_type</var>, const gnutls_datum_t * <var>cert</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>db_name</var>: A file specifying the stored keys (use NULL for the default)
 </p>
 <p><var>tdb</var>: A storage structure or NULL to use the default
@@ -229,7 +229,7 @@ or a negative error value on other errors.
 
 
 <dl>
-<dt><a name="index-gnutls_005fstore_005fpubkey"></a>Function: <em>int</em> <strong>gnutls_store_pubkey</strong> <em>(const char* <var>db_name</var>, gnutls_tdb_t <var>tdb</var>, const char* <var>host</var>, const char* <var>service</var>, gnutls_certificate_type_t <var>cert_type</var>, const gnutls_datum_t * <var>cert</var>, time_t <var>expiration</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fstore_005fpubkey"></a>Function: <em>int</em> <strong>gnutls_store_pubkey</strong> <em>(const char * <var>db_name</var>, gnutls_tdb_t <var>tdb</var>, const char * <var>host</var>, const char * <var>service</var>, gnutls_certificate_type_t <var>cert_type</var>, const gnutls_datum_t * <var>cert</var>, time_t <var>expiration</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>db_name</var>: A file specifying the stored keys (use NULL for the default)
 </p>
 <p><var>tdb</var>: A storage structure or NULL to use the default
@@ -270,7 +270,7 @@ not yet active.
 
 
 <dl>
-<dt><a name="index-gnutls_005fstore_005fcommitment"></a>Function: <em>int</em> <strong>gnutls_store_commitment</strong> <em>(const char* <var>db_name</var>, gnutls_tdb_t <var>tdb</var>, const char* <var>host</var>, const char* <var>service</var>, gnutls_digest_algorithm_t <var>hash_algo</var>, const gnutls_datum_t* <var>hash</var>, time_t <var>expiration</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fstore_005fcommitment"></a>Function: <em>int</em> <strong>gnutls_store_commitment</strong> <em>(const char * <var>db_name</var>, gnutls_tdb_t <var>tdb</var>, const char * <var>host</var>, const char * <var>service</var>, gnutls_digest_algorithm_t <var>hash_algo</var>, const gnutls_datum_t * <var>hash</var>, time_t <var>expiration</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>db_name</var>: A file specifying the stored keys (use NULL for the default)
 </p>
 <p><var>tdb</var>: A storage structure or NULL to use the default
@@ -308,11 +308,11 @@ text file based back-end, or another back-end may be specified. That
 should contain storage and retrieval functions and specified as below.
 </p>
 <dl compact="compact">
-<dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005ftdb_005finit">gnutls_tdb_init</a> (gnutls_tdb_t* <var>tdb</var>)</code></dt>
+<dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005ftdb_005finit">gnutls_tdb_init</a> (gnutls_tdb_t * <var>tdb</var>)</code></dt>
 <dt><code><var>void</var> <a href="Core-TLS-API.html#gnutls_005ftdb_005fdeinit">gnutls_tdb_deinit</a> (gnutls_tdb_t <var>tdb</var>)</code></dt>
 <dt><code><var>void</var> <a href="Core-TLS-API.html#gnutls_005ftdb_005fset_005fverify_005ffunc">gnutls_tdb_set_verify_func</a> (gnutls_tdb_t <var>tdb</var>, gnutls_tdb_verify_func <var>verify</var>)</code></dt>
 <dt><code><var>void</var> <a href="Core-TLS-API.html#gnutls_005ftdb_005fset_005fstore_005ffunc">gnutls_tdb_set_store_func</a> (gnutls_tdb_t <var>tdb</var>, gnutls_tdb_store_func <var>store</var>)</code></dt>
-<dt><code><var>void</var> <a href="Core-TLS-API.html#gnutls_005ftdb_005fset_005fstore_005fcommitment_005ffunc">gnutls_tdb_set_store_commitment_func</a> (gnutls_tdb_t <var>tdb</var>, gnutls_tdb_store_commitment_func <var>cstore</var>)</code></dt>
+<dt><code><var>void</var> <a href="Core-TLS-API.html#gnutls_005ftdb_005fset_005fstore_005fcommitment_005ffunc">gnutls_tdb_set_store_commitment_func</a> (gnutls_tdb_t <var>tdb</var>, gnutls_tdb_store_commitment_func        <var>cstore</var>)</code></dt>
 </dl>
 
 <a name="DANE-verification"></a>
@@ -417,7 +417,7 @@ you may use danetool (see <a href="danetool-Invocation.html#danetool-Invocation"
 <hr>
 <div class="header">
 <p>
-Next: <a href="Parameter-generation.html#Parameter-generation" accesskey="n" rel="next">Parameter generation</a>, Previous: <a href="Session-resumption.html#Session-resumption" accesskey="p" rel="prev">Session resumption</a>, Up: <a href="Advanced-topics.html#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Parameter-generation.html#Parameter-generation" accesskey="n" rel="next">Parameter generation</a>, Previous: <a href="Session-resumption.html#Session-resumption" accesskey="p" rel="previous">Session resumption</a>, Up: <a href="Advanced-topics.html#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

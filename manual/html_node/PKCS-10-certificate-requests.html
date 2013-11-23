@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 February 2013 for version
-3.2.6 of GnuTLS.
+<!-- This manual is last updated 10 November 2013 for version
+3.2.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.6: PKCS 10 certificate requests</title>
+<title>GnuTLS 3.2.7: PKCS 10 certificate requests</title>
 
-<meta name="description" content="GnuTLS 3.2.6: PKCS 10 certificate requests">
-<meta name="keywords" content="GnuTLS 3.2.6: PKCS 10 certificate requests">
+<meta name="description" content="GnuTLS 3.2.7: PKCS 10 certificate requests">
+<meta name="keywords" content="GnuTLS 3.2.7: PKCS 10 certificate requests">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="More-on-certificate-authentication.html#More-on-certificate-authentication" rel="up" title="More on certificate authentication">
 <link href="PKIX-certificate-revocation-lists.html#PKIX-certificate-revocation-lists" rel="next" title="PKIX certificate revocation lists">
-<link href="More-on-certificate-authentication.html#More-on-certificate-authentication" rel="prev" title="More on certificate authentication">
+<link href="More-on-certificate-authentication.html#More-on-certificate-authentication" rel="previous" title="More on certificate authentication">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -181,7 +181,7 @@ possession of the private key.
 </p>
 <dl compact="compact">
 <dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrq_005fset_005fversion">gnutls_x509_crq_set_version</a> (gnutls_x509_crq_t <var>crq</var>, unsigned int <var>version</var>)</code></dt>
-<dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrq_005fset_005fdn">gnutls_x509_crq_set_dn</a> (gnutls_x509_crq_t <var>crq</var>, const char * <var>dn</var>, const char** <var>err</var>)</code></dt>
+<dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrq_005fset_005fdn">gnutls_x509_crq_set_dn</a> (gnutls_x509_crq_t <var>crq</var>, const char * <var>dn</var>, const char ** <var>err</var>)</code></dt>
 <dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrq_005fset_005fdn_005fby_005foid">gnutls_x509_crq_set_dn_by_oid</a> (gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, unsigned int <var>raw_flag</var>, const void * <var>data</var>, unsigned int <var>sizeof_data</var>)</code></dt>
 <dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrq_005fset_005fkey_005fusage">gnutls_x509_crq_set_key_usage</a> (gnutls_x509_crq_t <var>crq</var>, unsigned int <var>usage</var>)</code></dt>
 <dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrq_005fset_005fkey_005fpurpose_005foid">gnutls_x509_crq_set_key_purpose_oid</a> (gnutls_x509_crq_t <var>crq</var>, const void * <var>oid</var>, unsigned int <var>critical</var>)</code></dt>
@@ -259,73 +259,77 @@ which should return a signed certificate.
  * request.
  */
 
-int
-main (void)
+int main(void)
 {
-  gnutls_x509_crq_t crq;
-  gnutls_x509_privkey_t key;
-  unsigned char buffer[10 * 1024];
-  size_t buffer_size = sizeof (buffer);
-  unsigned int bits;
+        gnutls_x509_crq_t crq;
+        gnutls_x509_privkey_t key;
+        unsigned char buffer[10 * 1024];
+        size_t buffer_size = sizeof(buffer);
+        unsigned int bits;
 
-  gnutls_global_init ();
+        gnutls_global_init();
 
-  /* Initialize an empty certificate request, and
-   * an empty private key.
-   */
-  gnutls_x509_crq_init (&amp;crq);
+        /* Initialize an empty certificate request, and
+         * an empty private key.
+         */
+        gnutls_x509_crq_init(&amp;crq);
 
-  gnutls_x509_privkey_init (&amp;key);
+        gnutls_x509_privkey_init(&amp;key);
 
-  /* Generate an RSA key of moderate security.
-   */
-  bits = gnutls_sec_param_to_pk_bits (GNUTLS_PK_RSA, GNUTLS_SEC_PARAM_NORMAL);
-  gnutls_x509_privkey_generate (key, GNUTLS_PK_RSA, bits, 0);
+        /* Generate an RSA key of moderate security.
+         */
+        bits =
+            gnutls_sec_param_to_pk_bits(GNUTLS_PK_RSA,
+                                        GNUTLS_SEC_PARAM_NORMAL);
+        gnutls_x509_privkey_generate(key, GNUTLS_PK_RSA, bits, 0);
 
-  /* Add stuff to the distinguished name
-   */
-  gnutls_x509_crq_set_dn_by_oid (crq, GNUTLS_OID_X520_COUNTRY_NAME,
-                                 0, &quot;GR&quot;, 2);
+        /* Add stuff to the distinguished name
+         */
+        gnutls_x509_crq_set_dn_by_oid(crq, GNUTLS_OID_X520_COUNTRY_NAME,
+                                      0, &quot;GR&quot;, 2);
 
-  gnutls_x509_crq_set_dn_by_oid (crq, GNUTLS_OID_X520_COMMON_NAME,
-                                 0, &quot;Nikos&quot;, strlen (&quot;Nikos&quot;));
+        gnutls_x509_crq_set_dn_by_oid(crq, GNUTLS_OID_X520_COMMON_NAME,
+                                      0, &quot;Nikos&quot;, strlen(&quot;Nikos&quot;));
 
-  /* Set the request version.
-   */
-  gnutls_x509_crq_set_version (crq, 1);
+        /* Set the request version.
+         */
+        gnutls_x509_crq_set_version(crq, 1);
 
-  /* Set a challenge password.
-   */
-  gnutls_x509_crq_set_challenge_password (crq, &quot;something to remember here&quot;);
+        /* Set a challenge password.
+         */
+        gnutls_x509_crq_set_challenge_password(crq,
+                                               &quot;something to remember here&quot;);
 
-  /* Associate the request with the private key
-   */
-  gnutls_x509_crq_set_key (crq, key);
+        /* Associate the request with the private key
+         */
+        gnutls_x509_crq_set_key(crq, key);
 
-  /* Self sign the certificate request.
-   */
-  gnutls_x509_crq_sign2 (crq, key, GNUTLS_DIG_SHA1, 0);
+        /* Self sign the certificate request.
+         */
+        gnutls_x509_crq_sign2(crq, key, GNUTLS_DIG_SHA1, 0);
 
-  /* Export the PEM encoded certificate request, and
-   * display it.
-   */
-  gnutls_x509_crq_export (crq, GNUTLS_X509_FMT_PEM, buffer, &amp;buffer_size);
+        /* Export the PEM encoded certificate request, and
+         * display it.
+         */
+        gnutls_x509_crq_export(crq, GNUTLS_X509_FMT_PEM, buffer,
+                               &amp;buffer_size);
 
-  printf (&quot;Certificate Request: \n%s&quot;, buffer);
+        printf(&quot;Certificate Request: \n%s&quot;, buffer);
 
 
-  /* Export the PEM encoded private key, and
-   * display it.
-   */
-  buffer_size = sizeof (buffer);
-  gnutls_x509_privkey_export (key, GNUTLS_X509_FMT_PEM, buffer, &amp;buffer_size);
+        /* Export the PEM encoded private key, and
+         * display it.
+         */
+        buffer_size = sizeof(buffer);
+        gnutls_x509_privkey_export(key, GNUTLS_X509_FMT_PEM, buffer,
+                                   &amp;buffer_size);
 
-  printf (&quot;\n\nPrivate key: \n%s&quot;, buffer);
+        printf(&quot;\n\nPrivate key: \n%s&quot;, buffer);
 
-  gnutls_x509_crq_deinit (crq);
-  gnutls_x509_privkey_deinit (key);
+        gnutls_x509_crq_deinit(crq);
+        gnutls_x509_privkey_deinit(key);
 
-  return 0;
+        return 0;
 
 }
 </pre>
