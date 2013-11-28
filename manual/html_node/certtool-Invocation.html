@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 November 2013 for version
-3.2.7 of GnuTLS.
+<!-- This manual is last updated 28 November 2013 for version
+3.2.8 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.7: certtool Invocation</title>
+<title>GnuTLS 3.2.8: certtool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.2.7: certtool Invocation">
-<meta name="keywords" content="GnuTLS 3.2.7: certtool Invocation">
+<meta name="description" content="GnuTLS 3.2.8: certtool Invocation">
+<meta name="keywords" content="GnuTLS 3.2.8: certtool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -211,7 +211,6 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
                                 - prohibits the option 'infile'
    -e, --verify-chain         Verify a PEM encoded certificate chain
        --verify               Verify a PEM encoded certificate chain using a trusted list
-                                - requires the option 'load-ca-certificate'
        --verify-crl           Verify a CRL using a trusted list
                                 - requires the option 'load-ca-certificate'
        --generate-dh-params   Generate PKCS #3 encoded Diffie-Hellman parameters
@@ -246,23 +245,23 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
                                 - requires the option 'load-certificate'
        --to-p8                Generate a PKCS #8 structure
    -8, --pkcs8                Use PKCS #8 format for private keys
-       --rsa                  Generate RSA key
-       --dsa                  Generate DSA key
-       --ecc                  Generate ECC (ECDSA) key
-       --ecdsa                an alias for the 'ecc' option
-       --hash=str             Hash algorithm to use for signing
-       --inder                Use DER format for input certificates, private keys, and DH parameters
+   -!, --rsa                  Generate RSA key
+   -&quot;, --dsa                  Generate DSA key
+   -#, --ecc                  Generate ECC (ECDSA) key
+   -$, --ecdsa                an alias for the 'ecc' option
+   -%, --hash=str             Hash algorithm to use for signing
+   -&amp;, --inder                Use DER format for input certificates, private keys, and DH parameters
                                 - disabled as '--no-inder'
-       --inraw                an alias for the 'inder' option
-       --outder               Use DER format for output certificates, private keys, and DH parameters
+   -', --inraw                an alias for the 'inder' option
+   -(, --outder               Use DER format for output certificates, private keys, and DH parameters
                                 - disabled as '--no-outder'
-       --outraw               an alias for the 'outder' option
-       --bits=num             Specify the number of bits for key generate
-       --sec-param=str        Specify the security level [low, legacy, normal, high, ultra]
-       --disable-quick-random  No effect
-       --template=file        Template file to use for non-interactive operation
+   -), --outraw               an alias for the 'outder' option
+   -*, --bits=num             Specify the number of bits for key generate
+   -+, --sec-param=str        Specify the security level [low, legacy, normal, high, ultra]
+   -,, --disable-quick-random  No effect
+   --, --template=file        Template file to use for non-interactive operation
                                 - file must pre-exist
-       --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
+   -., --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
    -!, --more-help            extended usage information passed thru pager
@@ -274,7 +273,7 @@ Tool to parse and generate X.509 certificates, requests and private keys.
 It can be used interactively or non interactively by specifying the
 template command line option.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
+Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
 </pre></div>
 
 <a name="certtool-debug"></a><a name="debug-option-_0028_002dd_0029"></a>
@@ -304,14 +303,8 @@ The last certificate in the chain must be a self signed one.
 <h4 class="subsubheading">verify option</h4>
 
 <p>This is the &ldquo;verify a pem encoded certificate chain using a trusted list&rdquo; option.
-</p>
-<p>This option has some usage constraints.  It:
-</p><ul>
-<li> must appear in combination with the following options:
-load-ca-certificate.
-</li></ul>
-
-<p>The trusted certificate list must be loaded with &ndash;load-ca-certificate.
+The trusted certificate list can be loaded with &ndash;load-ca-certificate. If no
+certificate list is provided, then the system&rsquo;s certificate list is used.
 <a name="certtool-verify_002dcrl"></a></p><a name="verify_002dcrl-option"></a>
 <h4 class="subsubheading">verify-crl option</h4>
 

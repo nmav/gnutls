@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 November 2013 for version
-3.2.7 of GnuTLS.
+<!-- This manual is last updated 28 November 2013 for version
+3.2.8 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.7</title>
+<title>GnuTLS 3.2.8</title>
 
-<meta name="description" content="GnuTLS 3.2.7">
-<meta name="keywords" content="GnuTLS 3.2.7">
+<meta name="description" content="GnuTLS 3.2.8">
+<meta name="keywords" content="GnuTLS 3.2.8">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.2.7</h1>
+<h1 class="settitle" align="center">GnuTLS 3.2.8</h1>
 
 
 
@@ -462,8 +462,8 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <a name="GnuTLS"></a>
 <h1 class="top">GnuTLS</h1>
 
-<p>This manual is last updated 10 November 2013 for version
-3.2.7 of GnuTLS.
+<p>This manual is last updated 28 November 2013 for version
+3.2.8 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -550,10 +550,8 @@ in [<em>STEVENS</em>], to public key infrastructure in [<em>GUTPKI</em>]
 and to security engineering in [<em>ANDERSON</em>].
 </p>
 <p>Updated versions of the <acronym>GnuTLS</acronym> software and this document
-will be available from <a href="http://www.gnutls.org/">http://www.gnutls.org/</a> and
-<a href="http://www.gnu.org/software/gnutls/">http://www.gnu.org/software/gnutls/</a>.
+will be available from <a href="http://www.gnutls.org/">http://www.gnutls.org/</a>.
 </p>
-
 <hr>
 <a name="Introduction-to-GnuTLS"></a>
 <div class="header">
@@ -3931,7 +3929,6 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
                                 - prohibits the option 'infile'
    -e, --verify-chain         Verify a PEM encoded certificate chain
        --verify               Verify a PEM encoded certificate chain using a trusted list
-                                - requires the option 'load-ca-certificate'
        --verify-crl           Verify a CRL using a trusted list
                                 - requires the option 'load-ca-certificate'
        --generate-dh-params   Generate PKCS #3 encoded Diffie-Hellman parameters
@@ -3966,23 +3963,23 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
                                 - requires the option 'load-certificate'
        --to-p8                Generate a PKCS #8 structure
    -8, --pkcs8                Use PKCS #8 format for private keys
-       --rsa                  Generate RSA key
-       --dsa                  Generate DSA key
-       --ecc                  Generate ECC (ECDSA) key
-       --ecdsa                an alias for the 'ecc' option
-       --hash=str             Hash algorithm to use for signing
-       --inder                Use DER format for input certificates, private keys, and DH parameters
+   -!, --rsa                  Generate RSA key
+   -&quot;, --dsa                  Generate DSA key
+   -#, --ecc                  Generate ECC (ECDSA) key
+   -$, --ecdsa                an alias for the 'ecc' option
+   -%, --hash=str             Hash algorithm to use for signing
+   -&amp;, --inder                Use DER format for input certificates, private keys, and DH parameters
                                 - disabled as '--no-inder'
-       --inraw                an alias for the 'inder' option
-       --outder               Use DER format for output certificates, private keys, and DH parameters
+   -', --inraw                an alias for the 'inder' option
+   -(, --outder               Use DER format for output certificates, private keys, and DH parameters
                                 - disabled as '--no-outder'
-       --outraw               an alias for the 'outder' option
-       --bits=num             Specify the number of bits for key generate
-       --sec-param=str        Specify the security level [low, legacy, normal, high, ultra]
-       --disable-quick-random  No effect
-       --template=file        Template file to use for non-interactive operation
+   -), --outraw               an alias for the 'outder' option
+   -*, --bits=num             Specify the number of bits for key generate
+   -+, --sec-param=str        Specify the security level [low, legacy, normal, high, ultra]
+   -,, --disable-quick-random  No effect
+   --, --template=file        Template file to use for non-interactive operation
                                 - file must pre-exist
-       --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
+   -., --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
    -!, --more-help            extended usage information passed thru pager
@@ -3994,7 +3991,7 @@ Tool to parse and generate X.509 certificates, requests and private keys.
 It can be used interactively or non interactively by specifying the
 template command line option.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
+Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
 </pre></div>
 
 <a name="certtool-debug"></a><a name="debug-option-_0028_002dd_0029"></a>
@@ -4024,14 +4021,8 @@ The last certificate in the chain must be a self signed one.
 <h4 class="subsubheading">verify option</h4>
 
 <p>This is the &ldquo;verify a pem encoded certificate chain using a trusted list&rdquo; option.
-</p>
-<p>This option has some usage constraints.  It:
-</p><ul>
-<li> must appear in combination with the following options:
-load-ca-certificate.
-</li></ul>
-
-<p>The trusted certificate list must be loaded with &ndash;load-ca-certificate.
+The trusted certificate list can be loaded with &ndash;load-ca-certificate. If no
+certificate list is provided, then the system&rsquo;s certificate list is used.
 <a name="certtool-verify_002dcrl"></a></p><a name="verify_002dcrl-option"></a>
 <h4 class="subsubheading">verify-crl option</h4>
 
@@ -4599,7 +4590,7 @@ hyphen and the flag character.
 Ocsptool is a program that can parse and print information about OCSP
 requests/responses, generate requests and verify responses.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
+Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
 </pre></div>
 
 <a name="ocsptool-debug"></a><a name="debug-option-_0028_002dd_0029-1"></a>
@@ -4852,7 +4843,7 @@ hyphen and the flag character.
 
 Tool to generate and check DNS resource records for the DANE protocol.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
+Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
 </pre></div>
 
 <a name="danetool-debug"></a><a name="debug-option-_0028_002dd_0029-2"></a>
@@ -5237,7 +5228,7 @@ In brief, to use SRP you need to create two files.  These are the password
 file that holds the users and the verifiers associated with them and the
 configuration file to hold the group parameters (called tpasswd.conf).
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
+Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
 </pre></div>
 
 <a name="srptool-debug"></a><a name="debug-option-_0028_002dd_0029-3"></a>
@@ -5422,7 +5413,7 @@ hyphen and the flag character.
 Program that generates random keys for use with TLS-PSK.  The keys are
 stored in hexadecimal format in a key file.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
+Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
 </pre></div>
 
 <a name="psktool-debug"></a><a name="debug-option-_0028_002dd_0029-4"></a>
@@ -6161,9 +6152,12 @@ Next: <a href="#Accessing-objects-that-require-a-PIN" accesskey="n" rel="next">A
 </div>
 <a name="Initialization-1"></a>
 <h4 class="subsection">5.2.1 Initialization</h4>
-<p>To allow all the  <acronym>GnuTLS</acronym> applications to access <acronym>PKCS</acronym> #11 tokens
-you can use a configuration per module, stored in <code>/etc/pkcs11/modules/</code>. 
-These are the configuration files of <acronym>p11-kit</acronym><a name="DOCF8" href="#FOOT8"><sup>8</sup></a>.
+<p>To allow all <acronym>GnuTLS</acronym> applications to transparently access smard cards
+and tokens, <acronym>PKCS</acronym> #11 is automatically initialized during the global 
+initialization (see <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>). The initialization function, to select
+which modules to load reads certain module configuration files.
+Those are stored in <code>/etc/pkcs11/modules/</code> and 
+are the configuration files of <acronym>p11-kit</acronym><a name="DOCF8" href="#FOOT8"><sup>8</sup></a>.
 For example a file that will load the <acronym>OpenSC</acronym> module, could be named
 <code>/etc/pkcs11/modules/opensc</code> and contain the following:
 </p>
@@ -6171,15 +6165,17 @@ For example a file that will load the <acronym>OpenSC</acronym> module, could be
 <pre class="example">module: /usr/lib/opensc-pkcs11.so
 </pre></div>
 
-<p>If you use this file, then there is no need for other initialization in
+<p>If you use these configuration files, then there is no need for other initialization in
 <acronym>GnuTLS</acronym>, except for the PIN and token functions (see next section).  
 In several cases, however, it is desirable to limit badly behaving modules 
 (e.g., modules that add an unacceptable delay on initialization)
 to single applications. That can be done using the &ldquo;enable-in:&rdquo; option
 followed by the base name of applications that this module should be used.
 </p>
-<p>In all cases, you may also manually initialize the PKCS #11 subsystem if the 
-default settings are not desirable.
+<p>In all cases, you can also manually initialize the PKCS #11 subsystem if the 
+default settings are not desirable. To completely disable PKCS #11 support you
+need to call <a href="#gnutls_005fpkcs11_005finit">gnutls_pkcs11_init</a> with the flag <code>GNUTLS_PKCS11_FLAG_MANUAL</code>
+prior to <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>.
 </p>
 
 
@@ -6674,7 +6670,7 @@ Usage:  p11tool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;]
        --outder               Use DER format for output certificates, private keys, and DH parameters
                                 - disabled as '--no-outder'
        --outraw               an alias for the 'outder' option
-       --provider=file        Specify the PKCS #11 provider library
+   -!, --provider=file        Specify the PKCS #11 provider library
                                 - file must pre-exist
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
@@ -6695,7 +6691,7 @@ configuration files have to be setup.
 To provide the PIN for all the operations below use the environment
 variable GNUTLS_PIN.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
+Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
 </pre></div>
 
 <a name="p11tool-debug"></a><a name="debug-option-_0028_002dd_0029-5"></a>
@@ -7184,7 +7180,7 @@ hyphen and the flag character.
 
 Program that allows handling cryptographic data from the TPM chip.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
+Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
 </pre></div>
 
 <a name="tpmtool-debug"></a><a name="debug-option-_0028_002dd_0029-6"></a>
@@ -7577,6 +7573,10 @@ int main()
 }
 </pre></div>
 
+<p>Note that <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a> is itself not thread safe. It is also not recommended
+to initialize it on every available thread, but if need to, it should be protected using
+mutex locks.
+</p>
 
 
 
@@ -7681,9 +7681,11 @@ Next: <a href="#Version-check" accesskey="n" rel="next">Version check</a>, Previ
 
 <p>GnuTLS must be initialized before it can be used.  The library is
 initialized by calling <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>. That call
-typically enables CPU-specific acceleration, and performs any requires
-precalculations needed by the library. The resources
-allocated by the initialization process can be released if the
+typically enables CPU-specific acceleration, performs any required
+precalculations needed, and initializes subsystems that could be
+used later (e.g., PKCS #11 &ndash; see <a href="#PKCS11-Initialization">PKCS11 Initialization</a>).
+</p>
+<p>The resources allocated by the initialization process can be released if the
 application no longer has a need to call GnuTLS functions, this is
 done by calling <a href="#gnutls_005fglobal_005fdeinit">gnutls_global_deinit</a>.
 </p>
@@ -14655,13 +14657,13 @@ Usage:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&g
        --alpn=str             Application layer protocol
                                 - may appear multiple times
    -b, --heartbeat            Activate heartbeat support
-       --recordsize=num       The maximum record size to advertize
+   -!, --recordsize=num       The maximum record size to advertize
                                 - it must be in the range:
                                   0 to 4096
-       --disable-sni          Do not send a Server Name Indication (SNI)
-       --disable-extensions   Disable all the TLS extensions
-       --inline-commands      Inline commands of the form ^&lt;cmd&gt;^
-       --inline-commands-prefix=str Change the default (^) used as a delimiter for inline commands.  The
+   -&quot;, --disable-sni          Do not send a Server Name Indication (SNI)
+   -#, --disable-extensions   Disable all the TLS extensions
+   -$, --inline-commands      Inline commands of the form ^&lt;cmd&gt;^
+   -%, --inline-commands-prefix=str Change the default (^) used as a delimiter for inline commands.  The
 value is a single US-ASCII character (octets 0 - 127).
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
@@ -14675,7 +14677,7 @@ Simple client program to set up a TLS connection to some other computer.  It
 sets up a TLS connection and forwards data from the standard input to the
 secured socket and vice versa.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
+Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
 </pre></div>
 
 <a name="gnutls_002dcli-debug"></a><a name="debug-option-_0028_002dd_0029-7"></a>
@@ -14996,7 +14998,7 @@ hyphen and the flag character.
 
 Server program that listens to incoming TLS connections.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
+Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
 </pre></div>
 
 <a name="gnutls_002dserv-debug"></a><a name="debug-option-_0028_002dd_0029-8"></a>
@@ -15277,7 +15279,7 @@ to a TLS server, performs tests and print the server's capabilities.  If
 called with the `-v' parameter more checks will be performed.  Can be used
 to check for servers with special needs or bugs.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
+Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
 </pre></div>
 
 <a name="gnutls_002dcli_002ddebug-debug"></a><a name="debug-option-_0028_002dd_0029-9"></a>
@@ -16058,14 +16060,14 @@ Next: <a href="#Commercial-Support" accesskey="n" rel="next">Commercial Support<
 <h3 class="section">B.1 Getting Help</h3>
 
 <p>A mailing list where users may help each other exists, and you can
-reach it by sending e-mail to <a href="mailto:help-gnutls@gnu.org">help-gnutls@gnu.org</a>.  Archives
+reach it by sending e-mail to <a href="mailto:gnutls-help@gnutls.org">gnutls-help@gnutls.org</a>.  Archives
 of the mailing list discussions, and an interface to manage
 subscriptions, is available through the World Wide Web at
-<a href="http://lists.gnu.org/mailman/listinfo/help-gnutls">http://lists.gnu.org/mailman/listinfo/help-gnutls</a>.
+<a href="http://lists.gnutls.org/pipermail/gnutls-help/">http://lists.gnutls.org/pipermail/gnutls-help/</a>.
 </p>
 <p>A mailing list for developers are also available, see
-<a href="http://www.gnu.org/software/gnutls/lists.html">http://www.gnu.org/software/gnutls/lists.html</a>.
-Bug reports should be sent to <a href="mailto:bug-gnutls@gnu.org">bug-gnutls@gnu.org</a>, see
+<a href="http://www.gnutls.org/lists.html">http://www.gnutls.org/lists.html</a>.
+Bug reports should be sent to <a href="mailto:bugs@gnutls.org">bugs@gnutls.org</a>, see
 <a href="#Bug-Reports">Bug Reports</a>.
 </p>
 <hr>
@@ -16151,7 +16153,7 @@ note.
 </p>
 <p>Send your bug report to:
 </p>
-<div align="center">&lsquo;<samp>bug-gnutls@gnu.org</samp>&rsquo;
+<div align="center">&lsquo;<samp>bugs@gnutls.org</samp>&rsquo;
 </div>
 <hr>
 <a name="Contributing"></a>
@@ -25178,6 +25180,9 @@ are no data in the current index. On success 0 is returned.
 <p>This function will return the time this Certificate was or will be
 expired.
 </p>
+<p>The no well defined expiration time can be checked against with the
+<code>GNUTLS_X509_NO_WELL_DEFINED_EXPIRATION</code>  macro.
+</p>
 <p><strong>Returns:</strong> expiration time, or (time_t)-1 on error.
 </p></dd></dl>
 
@@ -26391,8 +26396,8 @@ negative error value.
 <p><var>exp_time</var>: The actual time
 </p>
 <p>This function will set the time this Certificate will expire.
-Setting an expiration time of (time_t)-1 will set to the
-no well-defined expiration date value. 
+Setting an expiration time to (time_t)-1 or to <code>GNUTLS_X509_NO_WELL_DEFINED_EXPIRATION</code> 
+will set to the no well-defined expiration date value. 
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 10 November 2013 for version
-3.2.7 of GnuTLS.
+<!-- This manual is last updated 28 November 2013 for version
+3.2.8 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.7: X509 certificate API</title>
+<title>GnuTLS 3.2.8: X509 certificate API</title>
 
-<meta name="description" content="GnuTLS 3.2.7: X509 certificate API">
-<meta name="keywords" content="GnuTLS 3.2.7: X509 certificate API">
+<meta name="description" content="GnuTLS 3.2.8: X509 certificate API">
+<meta name="keywords" content="GnuTLS 3.2.8: X509 certificate API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -2546,6 +2546,9 @@ are no data in the current index. On success 0 is returned.
 <p>This function will return the time this Certificate was or will be
 expired.
 </p>
+<p>The no well defined expiration time can be checked against with the
+<code>GNUTLS_X509_NO_WELL_DEFINED_EXPIRATION</code>  macro.
+</p>
 <p><strong>Returns:</strong> expiration time, or (time_t)-1 on error.
 </p></dd></dl>
 
@@ -3759,8 +3762,8 @@ negative error value.
 <p><var>exp_time</var>: The actual time
 </p>
 <p>This function will set the time this Certificate will expire.
-Setting an expiration time of (time_t)-1 will set to the
-no well-defined expiration date value. 
+Setting an expiration time to (time_t)-1 or to <code>GNUTLS_X509_NO_WELL_DEFINED_EXPIRATION</code> 
+will set to the no well-defined expiration date value. 
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.

@@ -6271,6 +6271,10 @@ are no data in the current index. On success 0 is returned.</td>
 This function will return the time this Certificate was or will be
 expired.
 </p>
+<p>
+The no well defined expiration time can be checked against with the
+<code class="literal">GNUTLS_X509_NO_WELL_DEFINED_EXPIRATION</code> macro.
+</p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
 <col align="left" valign="top">
@@ -8644,8 +8648,8 @@ negative error value.</td>
                                                          <em class="parameter"><code><span class="type">time_t</span> exp_time</code></em>);</pre>
 <p>
 This function will set the time this Certificate will expire.
-Setting an expiration time of (time_t)-1 will set to the
-no well-defined expiration date value.
+Setting an expiration time to (time_t)-1 or to <code class="literal">GNUTLS_X509_NO_WELL_DEFINED_EXPIRATION</code>
+will set to the no well-defined expiration date value.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
