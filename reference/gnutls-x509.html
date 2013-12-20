@@ -1384,7 +1384,7 @@ Enumeration of different certificate verify flags.
 <tr>
 <td><p><a name="GNUTLS-VERIFY-DISABLE-CA-SIGN:CAPS"></a><span class="term"><code class="literal">GNUTLS_VERIFY_DISABLE_CA_SIGN</code></span></p></td>
 <td>If set a signer does not have to be
-  a certificate authority. This flag should normaly be disabled,
+  a certificate authority. This flag should normally be disabled,
   unless you know what this means.
 </td>
 </tr>
@@ -11580,6 +11580,13 @@ negative error value.</td>
 This function will remove the given certificate authorities
 from the trusted list.
 </p>
+<p>
+Note that this function can accept certificates and authorities
+not yet known. In that case they will be kept in a separate
+black list that will be used during certificate verification.
+Unlike <a class="link" href="gnutls-x509.html#gnutls-x509-trust-list-add-cas" title="gnutls_x509_trust_list_add_cas ()"><code class="function">gnutls_x509_trust_list_add_cas()</code></a> there is no deinitialization
+restriction for  certificate list provided in this function.
+</p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
 <col align="left" valign="top">
@@ -11614,9 +11621,13 @@ from the trusted list.
                                                          <em class="parameter"><code>const <span class="type">char</span> *ca_file</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> type</code></em>);</pre>
 <p>
-This function will add the given certificate authorities
-to the trusted list. pkcs11 URLs are also accepted, instead
+This function will remove the given certificate authorities
+from the trusted list, and add them into a black list when needed. 
+PKCS 11 URLs are also accepted, instead
 of files, by this function.
+</p>
+<p>
+See also <a class="link" href="gnutls-x509.html#gnutls-x509-trust-list-remove-cas" title="gnutls_x509_trust_list_remove_cas ()"><code class="function">gnutls_x509_trust_list_remove_cas()</code></a>.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -11652,8 +11663,11 @@ of files, by this function.
                                                          <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *cas</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> type</code></em>);</pre>
 <p>
-This function will add the given certificate authorities
-to the trusted list.
+This function will remove the provided certificate authorities
+from the trusted list, and add them into a black list when needed. 
+</p>
+<p>
+See also <a class="link" href="gnutls-x509.html#gnutls-x509-trust-list-remove-cas" title="gnutls_x509_trust_list_remove_cas ()"><code class="function">gnutls_x509_trust_list_remove_cas()</code></a>.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -11675,7 +11689,7 @@ to the trusted list.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>The number of added elements is returned.</td>
+<td>The number of removed elements is returned.</td>
 </tr>
 </tbody>
 </table></div>

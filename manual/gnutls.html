@@ -656,7 +656,7 @@ p11-kit from <a href="http://p11-glue.freedesktop.org/">http://p11-glue.freedesk
 They disable or enable particular features,
 to create a smaller library with only the required features.
 Note however, that although a smaller library is generated, the
-included programs are not guarranteed to compile if some of these
+included programs are not guaranteed to compile if some of these
 options are given.
 </p>
 <pre class="verbatim">--disable-srp-authentication
@@ -999,7 +999,7 @@ record MAC&rsquo;, or both, on the GnuTLS server side.
 <p>If compatibility with such devices is a concern, not sending length-hidden messages
 solves the problem by using minimal padding.
 </p>
-<p>If you implement an application that have a configuration file, we
+<p>If you implement an application that has a configuration file, we
 recommend that you make it possible for users or administrators to
 specify a GnuTLS protocol priority string, which is used by your
 application via <a href="#gnutls_005fpriority_005fset">gnutls_priority_set</a>.  To allow the best
@@ -1295,8 +1295,8 @@ Next: <a href="#HeartBeat" accesskey="n" rel="next">HeartBeat</a>, Previous: <a 
 <a name="index-session-tickets"></a>
 <a name="index-tickets"></a>
 
-<p>To resume a TLS session the server normally store session parameters.  This
-complicates deployment, and could be avoiding by delegating the storage
+<p>To resume a TLS session, the server normally stores session parameters.  This
+complicates deployment, and can be avoided by delegating the storage
 to the client. Because session parameters are sensitive they are encrypted
 and authenticated with a key only known to the server and then sent to the
 client. The Session Tickets extension is described in RFC 5077 [<em>TLSTKT</em>].
@@ -1358,7 +1358,7 @@ For example one server could forward all renegotiation traffic to an other
 server who will see this traffic as an initial negotiation attempt.
 </p>
 <p>This might be seen as a valid design decision, but it seems it was
-not widely known or understood, thus today some application protocols the TLS
+not widely known or understood, thus today some application protocols use the TLS
 renegotiation feature in a manner that enables a malicious server to insert
 content of his choice in the beginning of a TLS session.
 </p>
@@ -2510,7 +2510,7 @@ flags are part of the enumeration
 <dl compact="compact">
 <dt><code>GNUTLS_VERIFY_DISABLE_CA_SIGN</code></dt>
 <dd><p>If set a signer does not have to be
-a certificate authority. This flag should normaly be disabled,
+a certificate authority. This flag should normally be disabled,
 unless you know what this means.
 </p></dd>
 <dt><code>GNUTLS_VERIFY_ALLOW_X509_V1_CA_CRT</code></dt>
@@ -3943,7 +3943,7 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --load-ca-certificate=str Loads the certificate authority's certificate file
        --password=str         Password to use
        --hex-numbers          Print big number in an easier format to parse
-       --cprint               In certain operations it prints the information is C-friendly format
+       --cprint               In certain operations it prints the information in C-friendly format
        --null-password        Enforce a NULL password
    -i, --certificate-info     Print information on the given certificate
        --certificate-pubkey   Print certificate's public key
@@ -4074,8 +4074,8 @@ This can be either a file or a PKCS #11 URL
 <a name="certtool-cprint"></a></p><a name="cprint-option"></a>
 <h4 class="subsubheading">cprint option</h4>
 
-<p>This is the &ldquo;in certain operations it prints the information is c-friendly format&rdquo; option.
-In certain operations it prints the information is C-friendly format, suitable for including into C programs.
+<p>This is the &ldquo;in certain operations it prints the information in c-friendly format&rdquo; option.
+In certain operations it prints the information in C-friendly format, suitable for including into C programs.
 <a name="certtool-null_002dpassword"></a></p><a name="null_002dpassword-option"></a>
 <h4 class="subsubheading">null-password option</h4>
 
@@ -4386,6 +4386,7 @@ cn = &quot;Cindy Lauper&quot;
 #dn = &quot;cn=Nik,st=Attiki,C=GR,surName=Mavrogiannopoulos,2.5.4.9=Arkadias&quot;
 
 # The serial number of the certificate
+# Comment the field for a time-based serial number.
 serial = 007
 
 # In how many days, counting from today, this certificate will expire.
@@ -6159,7 +6160,7 @@ which modules to load reads certain module configuration files.
 Those are stored in <code>/etc/pkcs11/modules/</code> and 
 are the configuration files of <acronym>p11-kit</acronym><a name="DOCF8" href="#FOOT8"><sup>8</sup></a>.
 For example a file that will load the <acronym>OpenSC</acronym> module, could be named
-<code>/etc/pkcs11/modules/opensc</code> and contain the following:
+<code>/etc/pkcs11/modules/opensc.module</code> and contain the following:
 </p>
 <div class="example">
 <pre class="example">module: /usr/lib/opensc-pkcs11.so
@@ -6863,6 +6864,9 @@ accessing them. That is very similar to the operation of a <acronym>PKCS</acrony
 The chip allows for storage and usage of RSA keys, but has quite some 
 operational differences from <acronym>PKCS</acronym> #11 module, and thus require different handling. 
 The basic TPM operations supported and used by GnuTLS, are key generation and signing. 
+</p>
+<p>The next sections assume that the TPM chip in the system is already initialized and
+in a operational state.
 </p>
 <p>In GnuTLS the TPM functionality is available in <code>gnutls/tpm.h</code>.
 </p>
@@ -9040,7 +9044,7 @@ should be called to check for data in the network buffers.
 <p>This function checks if there are unread data
 in the gnutls buffers. If the return value is
 non-zero the next call to <code>gnutls_record_recv()</code> 
-is guarranteed not to block.
+is guaranteed not to block.
 </p>
 <p><strong>Returns:</strong> Returns the size of the data or zero.
 </p></dd></dl>
@@ -9150,6 +9154,11 @@ data. If the <code>GNUTLS_RECORD_WAIT</code>  flag is specified then this
 function will block until the data is sent or a fatal error
 occurs (i.e., the function will retry on <code>GNUTLS_E_AGAIN</code>  and
 <code>GNUTLS_E_INTERRUPTED</code> ).
+</p>
+<p>If the flag <code>GNUTLS_RECORD_WAIT</code>  is not specified and the function
+is interrupted then the <code>GNUTLS_E_AGAIN</code>  or <code>GNUTLS_E_INTERRUPTED</code> 
+errors will be returned. To obtain the data left in the corked
+buffer use <code>gnutls_record_check_corked()</code> .
 </p>
 <p><strong>Returns:</strong> On success the number of transmitted data is returned, or 
 otherwise a negative error code. 
@@ -9621,7 +9630,7 @@ Next: <a href="#Certificate-verification" accesskey="n" rel="next">Certificate v
 
 <p>To reduce time and roundtrips spent in a handshake the client can   
 request session resumption from a server that previously shared
-a session with. For that the client has to retrieve and store
+a session with the client. For that the client has to retrieve and store
 the session parameters. Before establishing a new session to the same 
 server the parameters must be re-associated with the GnuTLS session
 using <a href="#gnutls_005fsession_005fset_005fdata">gnutls_session_set_data</a>.
@@ -15058,7 +15067,7 @@ use <code>gnutls-serv</code> as a simple HTTPS server.
 <p>The most basic server can be started as:
 </p>
 <div class="example">
-<pre class="example">gnutls-serv --http
+<pre class="example">gnutls-serv --http --priority &quot;NORMAL:+ANON-ECDH:+ANON-DH&quot;
 </pre></div>
 
 <p>It will only support anonymous ciphersuites, which many TLS clients
@@ -19146,7 +19155,7 @@ there is a man-in-the-middle attack being performed.
 <p><var>allow</var>: is an integer (0 or 1)
 </p>
 <p>This function will enable or disable the use of private cipher
-suites (the ones that start with 0xFF).  By default or if  <code>allow</code> is 0 then these cipher suites will not be advertized nor used.
+suites (the ones that start with 0xFF).  By default or if  <code>allow</code> is 0 then these cipher suites will not be advertised nor used.
 </p>
 <p>Currently GnuTLS does not include such cipher-suites or
 compression algorithms.
@@ -20479,6 +20488,20 @@ message you are trying to send.
 padding, false (0) if the current session does not.
 </p></dd></dl>
 
+<a name="gnutls_005frecord_005fcheck_005fcorked-1"></a>
+<h4 class="subheading">gnutls_record_check_corked</h4>
+<a name="gnutls_005frecord_005fcheck_005fcorked"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fcheck_005fcorked"></a>Function: <em>size_t</em> <strong>gnutls_record_check_corked</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p>This function checks if there pending corked
+data in the gnutls buffers &ndash;see <code>gnutls_cork()</code> . 
+</p>
+<p><strong>Returns:</strong> Returns the size of the corked data or zero.
+</p>
+<p><strong>Since:</strong> 3.2.8
+</p></dd></dl>
+
 <a name="gnutls_005frecord_005fcheck_005fpending-1"></a>
 <h4 class="subheading">gnutls_record_check_pending</h4>
 <a name="gnutls_005frecord_005fcheck_005fpending"></a><dl>
@@ -20488,7 +20511,7 @@ padding, false (0) if the current session does not.
 <p>This function checks if there are unread data
 in the gnutls buffers. If the return value is
 non-zero the next call to <code>gnutls_record_recv()</code> 
-is guarranteed not to block.
+is guaranteed not to block.
 </p>
 <p><strong>Returns:</strong> Returns the size of the data or zero.
 </p></dd></dl>
@@ -20759,6 +20782,11 @@ data. If the <code>GNUTLS_RECORD_WAIT</code>  flag is specified then this
 function will block until the data is sent or a fatal error
 occurs (i.e., the function will retry on <code>GNUTLS_E_AGAIN</code>  and
 <code>GNUTLS_E_INTERRUPTED</code> ).
+</p>
+<p>If the flag <code>GNUTLS_RECORD_WAIT</code>  is not specified and the function
+is interrupted then the <code>GNUTLS_E_AGAIN</code>  or <code>GNUTLS_E_INTERRUPTED</code> 
+errors will be returned. To obtain the data left in the corked
+buffer use <code>gnutls_record_check_corked()</code> .
 </p>
 <p><strong>Returns:</strong> On success the number of transmitted data is returned, or 
 otherwise a negative error code. 
@@ -27848,7 +27876,13 @@ negative error value.
 <p><var>clist_size</var>: The length of the CA list
 </p>
 <p>This function will remove the given certificate authorities
-from the trusted list. 
+from the trusted list.
+</p>
+<p>Note that this function can accept certificates and authorities
+not yet known. In that case they will be kept in a separate
+black list that will be used during certificate verification.
+Unlike <code>gnutls_x509_trust_list_add_cas()</code>  there is no deinitialization
+restriction for  certificate list provided in this function.
 </p>
 <p><strong>Returns:</strong> The number of removed elements is returned.
 </p>
@@ -27865,9 +27899,12 @@ from the trusted list.
 </p>
 <p><var>type</var>: The format of the certificates
 </p>
-<p>This function will add the given certificate authorities
-to the trusted list. pkcs11 URLs are also accepted, instead
+<p>This function will remove the given certificate authorities
+from the trusted list, and add them into a black list when needed. 
+PKCS 11 URLs are also accepted, instead
 of files, by this function.
+</p>
+<p>See also <code>gnutls_x509_trust_list_remove_cas()</code> .
 </p>
 <p><strong>Returns:</strong> The number of added elements is returned.
 </p>
@@ -27884,10 +27921,12 @@ of files, by this function.
 </p>
 <p><var>type</var>: The format of the certificates
 </p>
-<p>This function will add the given certificate authorities
-to the trusted list. 
+<p>This function will remove the provided certificate authorities
+from the trusted list, and add them into a black list when needed. 
 </p>
-<p><strong>Returns:</strong> The number of added elements is returned.
+<p>See also <code>gnutls_x509_trust_list_remove_cas()</code> .
+</p>
+<p><strong>Returns:</strong> The number of removed elements is returned.
 </p>
 <p><strong>Since:</strong> 3.1.10
 </p></dd></dl>
@@ -35778,6 +35817,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frandom_005fart"><code>gnutls_random_art</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frange_005fsplit"><code>gnutls_range_split</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fcan_005fuse_005flength_005fhiding"><code>gnutls_record_can_use_length_hiding</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fcheck_005fcorked"><code>gnutls_record_check_corked</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fcheck_005fpending"><code>gnutls_record_check_pending</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Data-transfer-and-termination">Data transfer and termination</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fcheck_005fpending-1"><code>gnutls_record_check_pending</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005fcork"><code>gnutls_record_cork</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Buffered-data-transfer">Buffered data transfer</a></td></tr>

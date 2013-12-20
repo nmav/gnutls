@@ -225,7 +225,7 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --load-ca-certificate=str Loads the certificate authority's certificate file
        --password=str         Password to use
        --hex-numbers          Print big number in an easier format to parse
-       --cprint               In certain operations it prints the information is C-friendly format
+       --cprint               In certain operations it prints the information in C-friendly format
        --null-password        Enforce a NULL password
    -i, --certificate-info     Print information on the given certificate
        --certificate-pubkey   Print certificate's public key
@@ -356,8 +356,8 @@ This can be either a file or a PKCS #11 URL
 <a name="certtool-cprint"></a></p><a name="cprint-option"></a>
 <h4 class="subsubheading">cprint option</h4>
 
-<p>This is the &ldquo;in certain operations it prints the information is c-friendly format&rdquo; option.
-In certain operations it prints the information is C-friendly format, suitable for including into C programs.
+<p>This is the &ldquo;in certain operations it prints the information in c-friendly format&rdquo; option.
+In certain operations it prints the information in C-friendly format, suitable for including into C programs.
 <a name="certtool-null_002dpassword"></a></p><a name="null_002dpassword-option"></a>
 <h4 class="subsubheading">null-password option</h4>
 
@@ -668,6 +668,7 @@ cn = &quot;Cindy Lauper&quot;
 #dn = &quot;cn=Nik,st=Attiki,C=GR,surName=Mavrogiannopoulos,2.5.4.9=Arkadias&quot;
 
 # The serial number of the certificate
+# Comment the field for a time-based serial number.
 serial = 007
 
 # In how many days, counting from today, this certificate will expire.

@@ -2546,7 +2546,7 @@ there is a man-in-the-middle attack being performed.
 <p><var>allow</var>: is an integer (0 or 1)
 </p>
 <p>This function will enable or disable the use of private cipher
-suites (the ones that start with 0xFF).  By default or if  <code>allow</code> is 0 then these cipher suites will not be advertized nor used.
+suites (the ones that start with 0xFF).  By default or if  <code>allow</code> is 0 then these cipher suites will not be advertised nor used.
 </p>
 <p>Currently GnuTLS does not include such cipher-suites or
 compression algorithms.
@@ -3879,6 +3879,20 @@ message you are trying to send.
 padding, false (0) if the current session does not.
 </p></dd></dl>
 
+<a name="gnutls_005frecord_005fcheck_005fcorked-1"></a>
+<h4 class="subheading">gnutls_record_check_corked</h4>
+<a name="gnutls_005frecord_005fcheck_005fcorked"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fcheck_005fcorked"></a>Function: <em>size_t</em> <strong>gnutls_record_check_corked</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p>This function checks if there pending corked
+data in the gnutls buffers &ndash;see <code>gnutls_cork()</code> . 
+</p>
+<p><strong>Returns:</strong> Returns the size of the corked data or zero.
+</p>
+<p><strong>Since:</strong> 3.2.8
+</p></dd></dl>
+
 <a name="gnutls_005frecord_005fcheck_005fpending-1"></a>
 <h4 class="subheading">gnutls_record_check_pending</h4>
 <a name="gnutls_005frecord_005fcheck_005fpending"></a><dl>
@@ -3888,7 +3902,7 @@ padding, false (0) if the current session does not.
 <p>This function checks if there are unread data
 in the gnutls buffers. If the return value is
 non-zero the next call to <code>gnutls_record_recv()</code> 
-is guarranteed not to block.
+is guaranteed not to block.
 </p>
 <p><strong>Returns:</strong> Returns the size of the data or zero.
 </p></dd></dl>
@@ -4159,6 +4173,11 @@ data. If the <code>GNUTLS_RECORD_WAIT</code>  flag is specified then this
 function will block until the data is sent or a fatal error
 occurs (i.e., the function will retry on <code>GNUTLS_E_AGAIN</code>  and
 <code>GNUTLS_E_INTERRUPTED</code> ).
+</p>
+<p>If the flag <code>GNUTLS_RECORD_WAIT</code>  is not specified and the function
+is interrupted then the <code>GNUTLS_E_AGAIN</code>  or <code>GNUTLS_E_INTERRUPTED</code> 
+errors will be returned. To obtain the data left in the corked
+buffer use <code>gnutls_record_check_corked()</code> .
 </p>
 <p><strong>Returns:</strong> On success the number of transmitted data is returned, or 
 otherwise a negative error code. 

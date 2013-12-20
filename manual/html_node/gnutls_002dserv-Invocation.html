@@ -308,7 +308,7 @@ use <code>gnutls-serv</code> as a simple HTTPS server.
 <p>The most basic server can be started as:
 </p>
 <div class="example">
-<pre class="example">gnutls-serv --http
+<pre class="example">gnutls-serv --http --priority &quot;NORMAL:+ANON-ECDH:+ANON-DH&quot;
 </pre></div>
 
 <p>It will only support anonymous ciphersuites, which many TLS clients

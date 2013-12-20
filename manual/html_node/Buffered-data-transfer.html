@@ -201,6 +201,11 @@ function will block until the data is sent or a fatal error
 occurs (i.e., the function will retry on <code>GNUTLS_E_AGAIN</code>  and
 <code>GNUTLS_E_INTERRUPTED</code> ).
 </p>
+<p>If the flag <code>GNUTLS_RECORD_WAIT</code>  is not specified and the function
+is interrupted then the <code>GNUTLS_E_AGAIN</code>  or <code>GNUTLS_E_INTERRUPTED</code> 
+errors will be returned. To obtain the data left in the corked
+buffer use <code>gnutls_record_check_corked()</code> .
+</p>
 <p><strong>Returns:</strong> On success the number of transmitted data is returned, or 
 otherwise a negative error code. 
 </p>
