@@ -10,7 +10,7 @@ WMLFLAGS=-DTABLE_BGCOLOR="\#e5e5e5" -DTABLE_HDCOLOR="\#ccbcbc" \
 	-DSTABLE_NEXT_VER="3.2" -DSTABLE_VER="3.1" 
 #-DSTABLE_OLD_VER="3.0"
 COMMON=common.wml bottom.wml head.wml rawnews.wml
-OUTPUT=index.html contrib.html devel.html lists.html	\
+OUTPUT=index.html contrib.html devel.html support.html	\
  download.html gnutls-logo.html news.html future.html	\
  documentation.html help.html openpgp.html \
  security.html commercial.html soc.html faq.html \

@@ -105,6 +105,8 @@ a:hover{ color: red; }
 
 #content { background-color: #fff;  padding-bottom: 1.8em;  margin-top: 0.5em; text-align: left; }
 
+#header { background-color: #fff; text-align: left; }
+
 #content .home { margin-bottom: 10px; }
 
 #content:lang(ar), #content:lang(fa), #searcher:lang(he) {text-align: right;}

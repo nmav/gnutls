@@ -19,21 +19,6 @@ $(extra_head)
  
 <link rel="stylesheet" href="css/print.css" media="print" /> 
 <!-- end of head-include-2.html --> 
-
-<!-- flattr code 
-<script type="text/javascript">
-/* <![CDATA[ */
-    (function() {
-        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
-        t.parentNode.insertBefore(s, t);
-    })();
-/* ]]> */
-</script>
-   end of flattr --> 
 </head> 
 <body> 
-<!-- <body bgcolor="#ffffff" text="#000000" link="#1f00ff" alink="#ff0000" vlink="#9900dd" /> -->
 
