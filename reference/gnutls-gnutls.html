@@ -334,7 +334,7 @@ enum                <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.2.8"
+<pre class="programlisting">#define GNUTLS_VERSION "3.2.9"
 </pre>
 <p>
 </p>
@@ -358,7 +358,7 @@ enum                <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030208
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030209
 </pre>
 <p>
 </p>
@@ -366,7 +366,7 @@ enum                <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 8
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 9
 </pre>
 <p>
 </p>
@@ -580,8 +580,8 @@ Enumeration of different TLS alerts.
 <pre class="programlisting"><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="returnvalue">gnutls_alert_description_t</span></a> gnutls_alert_get             (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>
 This function will return the last alert number received.  This
-function should be called when <code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code> or
-<code class="literal">GNUTLS_E_FATAL_ALERT_RECEIVED</code> errors are returned by a gnutls
+function should be called when <a href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a> or
+<a href="gnutls-gnutls.html#GNUTLS-E-FATAL-ALERT-RECEIVED:CAPS"><code class="literal">GNUTLS_E_FATAL_ALERT_RECEIVED</code></a> errors are returned by a gnutls
 function.  The peer may send alerts if he encounters an error.
 If no alert has been received the returned value is undefined.
 </p>
@@ -609,7 +609,7 @@ If no alert has been received the returned value is undefined.
 <pre class="programlisting">const <span class="returnvalue">char</span> *        gnutls_alert_get_name               (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="type">gnutls_alert_description_t</span></a> alert</code></em>);</pre>
 <p>
 This function will return a string that describes the given alert
-number, or <code class="literal">NULL</code>.  See <a class="link" href="gnutls-gnutls.html#gnutls-alert-get" title="gnutls_alert_get ()"><code class="function">gnutls_alert_get()</code></a>.
+number, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.  See <a class="link" href="gnutls-gnutls.html#gnutls-alert-get" title="gnutls_alert_get ()"><code class="function">gnutls_alert_get()</code></a>.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -697,8 +697,8 @@ connection, otherwise he may ignore the alert and continue.
 </p>
 <p>
 The error code of the underlying record send function will be
-returned, so you may also receive <code class="literal">GNUTLS_E_INTERRUPTED</code> or
-<code class="literal">GNUTLS_E_AGAIN</code> as well.
+returned, so you may also receive <a href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS"><code class="literal">GNUTLS_E_INTERRUPTED</code></a> or
+<a href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></a> as well.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -720,7 +720,7 @@ returned, so you may also receive <code class="literal">GNUTLS_E_INTERRUPTED</co
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise
 an error code is returned.</td>
 </tr>
 </tbody>
@@ -737,11 +737,11 @@ a gnutls function. This function will call <a class="link" href="gnutls-gnutls.h
 to determine the appropriate alert to send.
 </p>
 <p>
-This function may also return <code class="literal">GNUTLS_E_AGAIN</code>, or
-<code class="literal">GNUTLS_E_INTERRUPTED</code>.
+This function may also return <a href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></a>, or
+<a href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS"><code class="literal">GNUTLS_E_INTERRUPTED</code></a>.
 </p>
 <p>
-If the return value is <code class="literal">GNUTLS_E_INVALID_REQUEST</code>, then no alert has
+If the return value is <a href="gnutls-gnutls.html#GNUTLS-E-INVALID-REQUEST:CAPS"><code class="literal">GNUTLS_E_INVALID_REQUEST</code></a>, then no alert has
 been sent to the peer.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
@@ -760,7 +760,7 @@ been sent to the peer.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise
 an error code is returned.</td>
 </tr>
 </tbody>
@@ -797,8 +797,8 @@ distinguishing between a malicious party prematurely terminating
 the connection and normal termination. 
 </p>
 <p>
-This function may also return <code class="literal">GNUTLS_E_AGAIN</code> or
-<code class="literal">GNUTLS_E_INTERRUPTED</code>; cf.  <code class="function">gnutls_record_get_direction()</code>.
+This function may also return <a href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></a> or
+<a href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS"><code class="literal">GNUTLS_E_INTERRUPTED</code></a>; cf.  <a href="gnutls-gnutls.html#gnutls-record-get-direction"><code class="function">gnutls_record_get_direction()</code></a>.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -817,7 +817,7 @@ This function may also return <code class="literal">GNUTLS_E_AGAIN</code> or
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<code class="literal">GNUTLS_E_SUCCESS</code> on success, or an error code, see
+<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, or an error code, see
 function documentation for entire semantics.</td>
 </tr>
 </tbody>
@@ -1086,7 +1086,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-certificate-type-t" ti
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a string that contains the name of the specified
-certificate type, or <code class="literal">NULL</code> in case of unknown types.</td>
+certificate type, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> in case of unknown types.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1434,7 +1434,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-cipher-algorithm-t" ti
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a pointer to a string that contains the name of the
-specified cipher, or <code class="literal">NULL</code>.</td>
+specified cipher, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1495,25 +1495,25 @@ idx=1 and so on until the function returns NULL.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>kx</code></em> :</span></p></td>
-<td>output variable indicating key exchange algorithm, or <code class="literal">NULL</code>.</td>
+<td>output variable indicating key exchange algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>cipher</code></em> :</span></p></td>
-<td>output variable indicating cipher, or <code class="literal">NULL</code>.</td>
+<td>output variable indicating cipher, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>mac</code></em> :</span></p></td>
-<td>output variable indicating MAC algorithm, or <code class="literal">NULL</code>.</td>
+<td>output variable indicating MAC algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>min_version</code></em> :</span></p></td>
-<td>output variable indicating TLS protocol version, or <code class="literal">NULL</code>.</td>
+<td>output variable indicating TLS protocol version, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>the name of <em class="parameter"><code>idx</code></em> cipher suite, and set the information
 about the cipher suite in the output variables.  If <em class="parameter"><code>idx</code></em> is out of
-bounds, <code class="literal">NULL</code> is returned.</td>
+bounds, <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> is returned.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1618,7 +1618,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-compression-method-t" 
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a pointer to a string that contains the name of the
-specified compression algorithm, or <code class="literal">NULL</code>.</td>
+specified compression algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1895,7 +1895,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-ecc-curve-t" title="en
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a string that contains the name of the specified
-curve or <code class="literal">NULL</code>.</td>
+curve or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2062,7 +2062,7 @@ on fatal error codes.</td>
 <p>
 Get an alert depending on the error code returned by a gnutls
 function.  All alerts sent by this function should be considered
-fatal.  The only exception is when <em class="parameter"><code>err</code></em> is <code class="literal">GNUTLS_E_REHANDSHAKE</code>,
+fatal.  The only exception is when <em class="parameter"><code>err</code></em> is <a href="gnutls-gnutls.html#GNUTLS-E-REHANDSHAKE:CAPS"><code class="literal">GNUTLS_E_REHANDSHAKE</code></a>,
 where a warning alert should be sent to the peer indicating that no
 renegotiation will be performed.
 </p>
@@ -2106,19 +2106,19 @@ has asked to resume a session, but the server couldn't, then a
 full handshake will be performed.
 </p>
 <p>
-The non-fatal errors such as <code class="literal">GNUTLS_E_AGAIN</code> and
-<code class="literal">GNUTLS_E_INTERRUPTED</code> interrupt the handshake procedure, which
+The non-fatal errors such as <a href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS"><code class="literal">GNUTLS_E_AGAIN</code></a> and
+<a href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS"><code class="literal">GNUTLS_E_INTERRUPTED</code></a> interrupt the handshake procedure, which
 should be resumed later.  Call this function again, until it
-returns 0; cf.  <code class="function">gnutls_record_get_direction()</code> and
+returns 0; cf.  <a href="gnutls-gnutls.html#gnutls-record-get-direction"><code class="function">gnutls_record_get_direction()</code></a> and
 <a class="link" href="gnutls-gnutls.html#gnutls-error-is-fatal" title="gnutls_error_is_fatal ()"><code class="function">gnutls_error_is_fatal()</code></a>.
 </p>
 <p>
 If this function is called by a server after a rehandshake request
-then <code class="literal">GNUTLS_E_GOT_APPLICATION_DATA</code> or
-<code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code> may be returned.  Note that these
+then <a href="gnutls-gnutls.html#GNUTLS-E-GOT-APPLICATION-DATA:CAPS"><code class="literal">GNUTLS_E_GOT_APPLICATION_DATA</code></a> or
+<a href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a> may be returned.  Note that these
 are non fatal errors, only in the specific case of a rehandshake.
 Their meaning is that the client rejected the rehandshake request or
-in the case of <code class="literal">GNUTLS_E_GOT_APPLICATION_DATA</code> it might also mean that
+in the case of <a href="gnutls-gnutls.html#GNUTLS-E-GOT-APPLICATION-DATA:CAPS"><code class="literal">GNUTLS_E_GOT_APPLICATION_DATA</code></a> it might also mean that
 some data were pending.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
@@ -2134,7 +2134,7 @@ some data were pending.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<code class="literal">GNUTLS_E_SUCCESS</code> on success, otherwise a negative error code.</td>
+<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, otherwise a negative error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2387,7 +2387,7 @@ This function should not be used when resuming a session.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<code class="literal">GNUTLS_E_SUCCESS</code> on success, or an error code.
+<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, or an error code.
 Since 3.1.9</td>
 </tr>
 </tbody>
@@ -2466,7 +2466,7 @@ and timeouts manually.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<code class="literal">GNUTLS_E_SUCCESS</code> on success, otherwise a negative error code.</td>
+<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, otherwise a negative error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2497,7 +2497,7 @@ This function replies to a ping by sending a pong to the peer.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<code class="literal">GNUTLS_E_SUCCESS</code> on success, otherwise a negative error code.</td>
+<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, otherwise a negative error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2512,7 +2512,7 @@ This function replies to a ping by sending a pong to the peer.
 This function initializes the current session to null. Every
 session must be initialized before use, so internal structures can
 be allocated.  This function allocates structures which can only
-be free'd by calling <a class="link" href="gnutls-gnutls.html#gnutls-deinit" title="gnutls_deinit ()"><code class="function">gnutls_deinit()</code></a>.  Returns <code class="literal">GNUTLS_E_SUCCESS</code> (0) on success.
+be free'd by calling <a class="link" href="gnutls-gnutls.html#gnutls-deinit" title="gnutls_deinit ()"><code class="function">gnutls_deinit()</code></a>.  Returns <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success.
 </p>
 <p>
 <em class="parameter"><code>flags</code></em> can be one of <a class="link" href="gnutls-gnutls.html#GNUTLS-CLIENT:CAPS" title="GNUTLS_CLIENT"><code class="literal">GNUTLS_CLIENT</code></a> and <a class="link" href="gnutls-gnutls.html#GNUTLS-SERVER:CAPS" title="GNUTLS_SERVER"><code class="literal">GNUTLS_SERVER</code></a>. For a DTLS
@@ -2548,7 +2548,7 @@ flag.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<code class="literal">GNUTLS_E_SUCCESS</code> on success, or an error code.</td>
+<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, or an error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2738,7 +2738,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-kx-algorithm-t" title=
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a pointer to a string that contains the name of the
-specified key exchange algorithm, or <code class="literal">NULL</code>.</td>
+specified key exchange algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -3049,7 +3049,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title=
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a string that contains the name of the specified public
-key algorithm, or <code class="literal">NULL</code>.</td>
+key algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -3182,7 +3182,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-pk-algorithm-t" title=
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a pointer to a string that contains the name of the
-specified public key algorithm, or <code class="literal">NULL</code>.</td>
+specified public key algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -3486,7 +3486,7 @@ parameters.
 <p>
 Since TLS is full duplex some application data might have been
 sent during peer's processing of this message. In that case
-one should call <code class="function">gnutls_record_recv()</code> until GNUTLS_E_REHANDSHAKE
+one should call <a href="gnutls-gnutls.html#gnutls-record-recv"><code class="function">gnutls_record_recv()</code></a> until GNUTLS_E_REHANDSHAKE
 is returned to clear any pending data. Care must be taken if
 rehandshake is mandatory to terminate if it does not start after
 some threshold.
@@ -3494,7 +3494,7 @@ some threshold.
 <p>
 If the client does not wish to renegotiate parameters he will
 should with an alert message, thus the return code will be
-<code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code> and the alert will be
+<a href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a> and the alert will be
 <a class="link" href="gnutls-gnutls.html#GNUTLS-A-NO-RENEGOTIATION:CAPS"><code class="literal">GNUTLS_A_NO_RENEGOTIATION</code></a>.  A client may also choose to ignore
 this message.
 </p>
@@ -3511,7 +3511,7 @@ this message.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
-<code class="literal">GNUTLS_E_SUCCESS</code> on success, otherwise a negative error code.</td>
+<a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, otherwise a negative error code.</td>
 </tr>
 </tbody>
 </table></div>
@@ -3544,7 +3544,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-sec-param-t" title="en
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a pointer to a string that contains the name of the
-specified security level, or <code class="literal">NULL</code>.</td>
+specified security level, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -3735,9 +3735,9 @@ session by the client to sign data.
 <p>
 Returns the signature algorithm specified by index that was
 requested by the peer. If the specified index has no data available
-this function returns <code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>.  If
+this function returns <a href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a>.  If
 the negotiated TLS version does not support signature algorithms
-then <code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> will be returned even
+then <a href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a> will be returned even
 for the first index.  The first index is 0.
 </p>
 <p>
@@ -3764,7 +3764,7 @@ to assist in selecting the correct certificate.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise
+<td>On success, <a href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise
 an error code is returned.</td>
 </tr>
 </tbody>
@@ -3975,7 +3975,7 @@ Convert a <a class="link" href="gnutls-gnutls.html#gnutls-sign-algorithm-t" titl
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a string that contains the name of the specified sign
-algorithm, or <code class="literal">NULL</code>.</td>
+algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -4053,7 +4053,7 @@ integers indicating the available ciphers.</td>
 <p>
 This function is similar to strerror.  The difference is that it
 accepts an error number returned by a gnutls function; In case of
-an unknown error a descriptive string is sent instead of <code class="literal">NULL</code>.
+an unknown error a descriptive string is sent instead of <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
 </p>
 <p>
 Error codes are always a negative error code.

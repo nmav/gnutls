@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 28 November 2013 for version
-3.2.8 of GnuTLS.
+<!-- This manual is last updated 1 January 2014 for version
+3.2.9 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.1, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.8: PKCS 11 API</title>
+<title>GnuTLS 3.2.9: PKCS 11 API</title>
 
-<meta name="description" content="GnuTLS 3.2.8: PKCS 11 API">
-<meta name="keywords" content="GnuTLS 3.2.8: PKCS 11 API">
+<meta name="description" content="GnuTLS 3.2.9: PKCS 11 API">
+<meta name="keywords" content="GnuTLS 3.2.9: PKCS 11 API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="API-reference.html#API-reference" rel="up" title="API reference">
 <link href="TPM-API.html#TPM-API" rel="next" title="TPM API">
-<link href="PKCS-12-API.html#PKCS-12-API" rel="previous" title="PKCS 12 API">
+<link href="PKCS-12-API.html#PKCS-12-API" rel="prev" title="PKCS 12 API">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,7 +158,7 @@ dl {
 <a name="PKCS-11-API"></a>
 <div class="header">
 <p>
-Next: <a href="TPM-API.html#TPM-API" accesskey="n" rel="next">TPM API</a>, Previous: <a href="PKCS-12-API.html#PKCS-12-API" accesskey="p" rel="previous">PKCS 12 API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="TPM-API.html#TPM-API" accesskey="n" rel="next">TPM API</a>, Previous: <a href="PKCS-12-API.html#PKCS-12-API" accesskey="p" rel="prev">PKCS 12 API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Hardware-token-via-PKCS-11-API"></a>
@@ -307,10 +307,12 @@ negative error value.
 </p>
 <p><var>fmt</var>: The format of the exported issuer.
 </p>
-<p><var>flags</var>: Use zero.
+<p><var>flags</var>: Use zero or flags from <code>GNUTLS_PKCS11_OBJ_FLAG</code> .
 </p>
 <p>This function will return the issuer of a given certificate, if it
-is stored in the token. 
+is stored in the token. By default only marked as trusted issuers
+are retuned. If any issuer should be returned specify
+<code>GNUTLS_PKCS11_OBJ_FLAG_RETRIEVE_ANY</code>  in  <code>flags</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -1003,7 +1005,7 @@ negative error value.
 <hr>
 <div class="header">
 <p>
-Next: <a href="TPM-API.html#TPM-API" accesskey="n" rel="next">TPM API</a>, Previous: <a href="PKCS-12-API.html#PKCS-12-API" accesskey="p" rel="previous">PKCS 12 API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="TPM-API.html#TPM-API" accesskey="n" rel="next">TPM API</a>, Previous: <a href="PKCS-12-API.html#PKCS-12-API" accesskey="p" rel="prev">PKCS 12 API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 
