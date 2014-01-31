@@ -3,7 +3,29 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-01-24T19:27:11+00:00</updated>
+<updated>2014-01-31T17:35:39+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-01-31</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-01-31'/>
+    <title>GnuTLS 3.2.10 and 3.1.20</title>
+    <updated>2014-01-31T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-01-31.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7250">GnuTLS
+3.2.10</a> which is a bugfix release in the current stable branch;
+<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7251">GnuTLS
+3.1.20</a>, is a bug-fix release on the previous stable branch. 
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-01-24</id>
@@ -419,25 +441,6 @@ the priority string NORMAL. This release restores it to the previous level.
 <p>
 <a href="security.html#GNUTLS-SA-2013-1">Security advisory GNUTLS-SA-2013-1</a> is issued.
 </p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2013-01-05</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2013-01-05'/>
-    <title>GnuTLS 2.12.22</title>
-    <updated>2013-01-05T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-01-05.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6518">
-GnuTLS 2.12.22</a> was released.  This is a bug-fix release on the previous
-stable branch.
 
     </div>
     </content>

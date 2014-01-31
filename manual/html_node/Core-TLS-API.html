@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 1 January 2014 for version
-3.2.9 of GnuTLS.
+3.2.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.9: Core TLS API</title>
+<title>GnuTLS 3.2.10: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.2.9: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.2.9: Core TLS API">
+<meta name="description" content="GnuTLS 3.2.10: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.2.10: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -1149,10 +1149,14 @@ private keys are supported. However,
 only password based security, and the same password for all
 operations, are supported.
 </p>
-<p>PKCS<code>12</code>  file may contain many keys and/or certificates, and there
-is no way to identify which key/certificate pair you want.  You
-should make sure the PKCS<code>12</code>  file only contain one key/certificate
-pair and/or one CRL.
+<p>PKCS<code>12</code>  file may contain many keys and/or certificates, and this
+function will try to auto-detect based on the key ID the certificate
+and key pair to use. If the PKCS<code>12</code>  file contain the issuer of
+the selected certificate, it will be appended to the certificate
+to form a chain.
+</p>
+<p>If more than one private keys are stored in the PKCS<code>12</code>  file,
+then only one key will be read (and it is undefined which one).
 </p>
 <p>It is believed that the limitations of this function is acceptable
 for most usage, and that any more flexibility would introduce
@@ -1183,10 +1187,14 @@ for the server).
 only password based security, and the same password for all
 operations, are supported.
 </p>
-<p>PKCS<code>12</code>  file may contain many keys and/or certificates, and there
-is no way to identify which key/certificate pair you want.  You
-should make sure the PKCS<code>12</code>  file only contain one key/certificate
-pair and/or one CRL.
+<p>PKCS<code>12</code>  file may contain many keys and/or certificates, and this
+function will try to auto-detect based on the key ID the certificate
+and key pair to use. If the PKCS<code>12</code>  file contain the issuer of
+the selected certificate, it will be appended to the certificate
+to form a chain.
+</p>
+<p>If more than one private keys are stored in the PKCS<code>12</code>  file,
+then only one key will be read (and it is undefined which one).
 </p>
 <p>It is believed that the limitations of this function is acceptable
 for most usage, and that any more flexibility would introduce
@@ -1662,6 +1670,16 @@ expired or 0 otherwise.
 It can be used for database entry expiration.
 </p>
 <p><strong>Returns:</strong> The time this entry was created, or zero on error.
+</p></dd></dl>
+
+<a name="gnutls_005fdb_005fget_005fdefault_005fcache_005fexpiration-1"></a>
+<h4 class="subheading">gnutls_db_get_default_cache_expiration</h4>
+<a name="gnutls_005fdb_005fget_005fdefault_005fcache_005fexpiration"></a><dl>
+<dt><a name="index-gnutls_005fdb_005fget_005fdefault_005fcache_005fexpiration"></a>Function: <em>unsigned</em> <strong>gnutls_db_get_default_cache_expiration</strong> <em>( <var>void</var>)</em></dt>
+<dd>
+<p><strong>Returns:</strong> the expiration time (in seconds) of stored sessions for resumption. 
+</p>
+<p>Since 3.2.10
 </p></dd></dl>
 
 <a name="gnutls_005fdb_005fget_005fptr-1"></a>

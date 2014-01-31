@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 1 January 2014 for version
-3.2.9 of GnuTLS.
+3.2.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.9: High level TLS API</title>
+<title>GnuTLS 3.2.10: High level TLS API</title>
 
-<meta name="description" content="GnuTLS 3.2.9: High level TLS API">
-<meta name="keywords" content="GnuTLS 3.2.9: High level TLS API">
+<meta name="description" content="GnuTLS 3.2.10: High level TLS API">
+<meta name="keywords" content="GnuTLS 3.2.10: High level TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -264,18 +264,6 @@ is left intact.
 <p><strong>Since:</strong> 3.1.7
 </p></dd></dl>
 
-<a name="xssl_005fget_005fsession-1"></a>
-<h4 class="subheading">xssl_get_session</h4>
-<a name="xssl_005fget_005fsession"></a><dl>
-<dt><a name="index-xssl_005fget_005fsession"></a>Function: <em>gnutls_session_t</em> <strong>xssl_get_session</strong> <em>(xssl_t <var>sb</var>)</em></dt>
-<dd><p><var>sb</var>: is a <code>xssl_t</code>  structure.
-</p>
-
-<p><strong>Returns:</strong> The associated session or <code>NULL</code> .
-</p>
-<p><strong>Since:</strong> 3.1.7
-</p></dd></dl>
-
 <a name="xssl_005fgetdelim-1"></a>
 <h4 class="subheading">xssl_getdelim</h4>
 <a name="xssl_005fgetdelim"></a><dl>
@@ -297,6 +285,18 @@ necessary.
 </p>
 <p>Returns the number of characters read (not including
 the null terminator), or a negative error code on error. 
+</p>
+<p><strong>Since:</strong> 3.1.7
+</p></dd></dl>
+
+<a name="xssl_005fget_005fsession-1"></a>
+<h4 class="subheading">xssl_get_session</h4>
+<a name="xssl_005fget_005fsession"></a><dl>
+<dt><a name="index-xssl_005fget_005fsession"></a>Function: <em>gnutls_session_t</em> <strong>xssl_get_session</strong> <em>(xssl_t <var>sb</var>)</em></dt>
+<dd><p><var>sb</var>: is a <code>xssl_t</code>  structure.
+</p>
+
+<p><strong>Returns:</strong> The associated session or <code>NULL</code> .
 </p>
 <p><strong>Since:</strong> 3.1.7
 </p></dd></dl>
