@@ -20,7 +20,7 @@ all: $(OUTPUT) news.atom
 	@for i in news-entries/*.xml;do X=0; if ! test -e $$i.tweet;then X=1;fi;done;if test "$$X" = "1";then echo "There are unsubmitted news. Use 'make tweet'.";fi
 #	cvs commit -m "Generated." .
 
-.PHONY: clean manual/index.html tweet stats
+.PHONY: clean manual/index.html tweet stats security.html
 
 all-logs:
 	mkdir -p logs && cd logs && rsync -av trithemius.gnupg.org:/var/log/boa/www.gnutls.org-access* .
