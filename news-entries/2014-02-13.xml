@@ -1,7 +1,6 @@
 <title>GnuTLS 3.2.11 and 3.1.21</title>
 <p>
-Added <a href="security.html#GNUTLS-SA-2014-1">security advisory
-GNUTLS-SA-2014-1</a>.
+Added security advisory <a href="security.html#GNUTLS-SA-2014-1">GNUTLS-SA-2014-1</a>.
 </p>
 <p>
 Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7300">GnuTLS
