@@ -1,0 +1,12 @@
+    <td><!--<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-4466">
+	CVE-2013-4466</a>-->
+      </td>
+    <td>Certificate verification</td>
+    <td>This vulnerability affects the certificate verification functions of gnutls 3.1.x and
+gnutls 3.2.x. A version 1 intermediate certificate will be considered as
+a CA certificate by default (something that deviates from the documented
+behavior).<br>
+
+      <b>Recommendation:</b> Apply <a
+href="https://www.gitorious.org/gnutls/gnutls/commit/b1abfe3d182d68539900092eb42fc62cf1bb7e7c">this
+patch</a> (a new release is pending)</td>

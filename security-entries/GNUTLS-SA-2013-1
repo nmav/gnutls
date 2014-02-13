@@ -3,7 +3,7 @@
 	TLS CBC padding timing attack</a><br>
       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1619">
 	CVE-2013-1619</a>
-      </div></td>
+      </td>
     <td>Possible plaintext recovery</td>
     <td><p>
 Nadhem Alfardan and Kenny Paterson devised an attack that recovers
