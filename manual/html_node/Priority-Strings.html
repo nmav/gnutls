@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 1 January 2014 for version
-3.2.10 of GnuTLS.
+3.2.11 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.10: Priority Strings</title>
+<title>GnuTLS 3.2.11: Priority Strings</title>
 
-<meta name="description" content="GnuTLS 3.2.10: Priority Strings">
-<meta name="keywords" content="GnuTLS 3.2.10: Priority Strings">
+<meta name="description" content="GnuTLS 3.2.11: Priority Strings">
+<meta name="keywords" content="GnuTLS 3.2.11: Priority Strings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -165,12 +165,11 @@ Next: <a href="Selecting-cryptographic-key-sizes.html#Selecting-cryptographic-ke
 <h3 class="section">6.10 Priority strings</h3>
 <a name="index-Priority-strings"></a>
 
-<p>In order to specify cipher suite preferences on a TLS session
-there are priority functions that accept a string
-specifying the enabled for the handshake algorithms.
-That string may contain a single initial keyword such as
-in <a href="#tab_003aprio_002dkeywords">Table 6.2</a> and may be followed by
-additional algorithm or special keywords.
+<p>The GnuTLS priority string specifies the TLS session&rsquo;s handshake
+algorithms and options in a compact, easy-to-use format.  That string
+may contain a single initial keyword such as in
+<a href="#tab_003aprio_002dkeywords">Table 6.2</a> and may be followed by additional algorithm or
+special keywords.
 </p>
 <dl compact="compact">
 <dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fpriority_005fset_005fdirect">gnutls_priority_set_direct</a> (gnutls_session_t <var>session</var>, const char * <var>priorities</var>, const char ** <var>err_pos</var>)</code></dt>
@@ -185,7 +184,10 @@ limited to 128 bit ciphers and sorted by terms of speed
 performance. The message authenticity security level is of 64 bits or more.</td></tr>
 <tr><td width="20%">NORMAL</td><td width="70%">Means all the known to be secure ciphersuites. The ciphers are sorted by security
 margin, although the 256-bit ciphers are included as a fallback only.
-The message authenticity security level is of 64 bits or more.</td></tr>
+The message authenticity security level is of 64 bits or more.
+
+<p>This priority string implicitly enables DHE and ECDHE.
+</p></td></tr>
 <tr><td width="20%">PFS</td><td width="70%">Means all the known to be secure ciphersuites that support perfect forward
 secrecy. The ciphers are sorted by security
 margin, although the 256-bit ciphers are included as a fallback only.
@@ -260,7 +262,10 @@ priority.</td></tr>
 <tr><td width="20%">Key exchange</td><td width="70%">RSA, DHE-RSA, DHE-DSS, SRP, SRP-RSA, SRP-DSS,
 PSK, DHE-PSK, ECDHE-RSA, ANON-ECDH, ANON-DH. The
 Catch all name is KX-ALL which will add all the algorithms from NORMAL
-priority.</td></tr>
+priority.
+
+<p>Add <code>!DHE-RSA:!DHE-DSS</code> to the priority string to disable DHE.
+</p></td></tr>
 <tr><td width="20%">MAC</td><td width="70%">MD5, SHA1, SHA256, AEAD (used with
 GCM ciphers only). All algorithms from NORMAL priority can be accessed with MAC-ALL.</td></tr>
 <tr><td width="20%">Compression algorithms</td><td width="70%">COMP-NULL, COMP-DEFLATE. Catch all is COMP-ALL.</td></tr>

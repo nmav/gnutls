@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 1 January 2014 for version
-3.2.10 of GnuTLS.
+3.2.11 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.10</title>
+<title>GnuTLS 3.2.11</title>
 
-<meta name="description" content="GnuTLS 3.2.10">
-<meta name="keywords" content="GnuTLS 3.2.10">
+<meta name="description" content="GnuTLS 3.2.11">
+<meta name="keywords" content="GnuTLS 3.2.11">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.2.10</h1>
+<h1 class="settitle" align="center">GnuTLS 3.2.11</h1>
 
 
 
@@ -463,7 +463,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 1 January 2014 for version
-3.2.10 of GnuTLS.
+3.2.11 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -3979,7 +3979,8 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
    -,, --disable-quick-random  No effect
    --, --template=file        Template file to use for non-interactive operation
                                 - file must pre-exist
-   -., --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
+   -., --ask-pass             Enable interaction for entering password when in batch mode.
+   -/, --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
    -!, --more-help            extended usage information passed thru pager
@@ -4167,6 +4168,11 @@ see <a href="#certtool-outder">the outder option documentation</a>.
 <p>This is the &ldquo;specify the security level [low, legacy, normal, high, ultra]&rdquo; option.
 This option takes a string argument <samp>Security parameter</samp>.
 This is alternative to the bits option.
+<a name="certtool-ask_002dpass"></a></p><a name="ask_002dpass-option"></a>
+<h4 class="subsubheading">ask-pass option</h4>
+
+<p>This is the &ldquo;enable interaction for entering password when in batch mode.&rdquo; option.
+This option will enable interaction to enter password when in batch mode. That is useful when the template option has been specified.
 <a name="certtool-pkcs_002dcipher"></a></p><a name="pkcs_002dcipher-option"></a>
 <h4 class="subsubheading">pkcs-cipher option</h4>
 
@@ -9317,12 +9323,11 @@ Next: <a href="#Selecting-cryptographic-key-sizes" accesskey="n" rel="next">Sele
 <h3 class="section">6.10 Priority strings</h3>
 <a name="index-Priority-strings"></a>
 
-<p>In order to specify cipher suite preferences on a TLS session
-there are priority functions that accept a string
-specifying the enabled for the handshake algorithms.
-That string may contain a single initial keyword such as
-in <a href="#tab_003aprio_002dkeywords">Table 6.2</a> and may be followed by
-additional algorithm or special keywords.
+<p>The GnuTLS priority string specifies the TLS session&rsquo;s handshake
+algorithms and options in a compact, easy-to-use format.  That string
+may contain a single initial keyword such as in
+<a href="#tab_003aprio_002dkeywords">Table 6.2</a> and may be followed by additional algorithm or
+special keywords.
 </p>
 <dl compact="compact">
 <dt><code><var>int</var> <a href="#gnutls_005fpriority_005fset_005fdirect">gnutls_priority_set_direct</a> (gnutls_session_t <var>session</var>, const char * <var>priorities</var>, const char ** <var>err_pos</var>)</code></dt>
@@ -9337,7 +9342,10 @@ limited to 128 bit ciphers and sorted by terms of speed
 performance. The message authenticity security level is of 64 bits or more.</td></tr>
 <tr><td width="20%">NORMAL</td><td width="70%">Means all the known to be secure ciphersuites. The ciphers are sorted by security
 margin, although the 256-bit ciphers are included as a fallback only.
-The message authenticity security level is of 64 bits or more.</td></tr>
+The message authenticity security level is of 64 bits or more.
+
+<p>This priority string implicitly enables DHE and ECDHE.
+</p></td></tr>
 <tr><td width="20%">PFS</td><td width="70%">Means all the known to be secure ciphersuites that support perfect forward
 secrecy. The ciphers are sorted by security
 margin, although the 256-bit ciphers are included as a fallback only.
@@ -9412,7 +9420,10 @@ priority.</td></tr>
 <tr><td width="20%">Key exchange</td><td width="70%">RSA, DHE-RSA, DHE-DSS, SRP, SRP-RSA, SRP-DSS,
 PSK, DHE-PSK, ECDHE-RSA, ANON-ECDH, ANON-DH. The
 Catch all name is KX-ALL which will add all the algorithms from NORMAL
-priority.</td></tr>
+priority.
+
+<p>Add <code>!DHE-RSA:!DHE-DSS</code> to the priority string to disable DHE.
+</p></td></tr>
 <tr><td width="20%">MAC</td><td width="70%">MD5, SHA1, SHA256, AEAD (used with
 GCM ciphers only). All algorithms from NORMAL priority can be accessed with MAC-ALL.</td></tr>
 <tr><td width="20%">Compression algorithms</td><td width="70%">COMP-NULL, COMP-DEFLATE. Catch all is COMP-ALL.</td></tr>
@@ -31112,7 +31123,8 @@ needs to be inserted to continue PKCS 11 operations.
 <p><var>flags</var>: The output flags (GNUTLS_PKCS11_TOKEN_*)
 </p>
 <p>This function will return information about the PKCS 11 token flags.
-The flags from the <code>gnutls_pkcs11_token_info_t</code>  enumeration.
+</p>
+<p>The supported flags are: <code>GNUTLS_PKCS11_TOKEN_HW</code>  and <code>GNUTLS_PKCS11_TOKEN_TRUSTED</code> .
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success or a negative error code on error.
 </p>

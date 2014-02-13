@@ -1607,7 +1607,9 @@ on error.</td>
                                                          <em class="parameter"><code>unsigned <span class="type">int</span> *flags</code></em>);</pre>
 <p>
 This function will return information about the PKCS 11 token flags.
-The flags from the <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-token-info-t" title="enum gnutls_pkcs11_token_info_t"><code class="literal">gnutls_pkcs11_token_info_t</code></a> enumeration.
+</p>
+<p>
+The supported flags are: <a class="link" href="gnutls-pkcs11.html#GNUTLS-PKCS11-TOKEN-HW:CAPS" title="GNUTLS_PKCS11_TOKEN_HW"><code class="literal">GNUTLS_PKCS11_TOKEN_HW</code></a> and <code class="literal">GNUTLS_PKCS11_TOKEN_TRUSTED</code>.
 </p>
 <div class="variablelist"><table border="0" class="variablelist">
 <colgroup>
@@ -1758,7 +1760,7 @@ exceeds the available tokens, otherwise a negative error value.</td>
 	GNUTLS_PKCS11_TOKEN_LABEL,
 	GNUTLS_PKCS11_TOKEN_SERIAL,
 	GNUTLS_PKCS11_TOKEN_MANUFACTURER,
-	GNUTLS_PKCS11_TOKEN_MODEL
+	GNUTLS_PKCS11_TOKEN_MODEL,
 } gnutls_pkcs11_token_info_t;
 </pre>
 <p>
@@ -1772,22 +1774,22 @@ Enumeration of types for retrieving token information.
 <tbody>
 <tr>
 <td><p><a name="GNUTLS-PKCS11-TOKEN-LABEL:CAPS"></a><span class="term"><code class="literal">GNUTLS_PKCS11_TOKEN_LABEL</code></span></p></td>
-<td>The token's label
+<td>The token's label (string)
 </td>
 </tr>
 <tr>
 <td><p><a name="GNUTLS-PKCS11-TOKEN-SERIAL:CAPS"></a><span class="term"><code class="literal">GNUTLS_PKCS11_TOKEN_SERIAL</code></span></p></td>
-<td>The token's serial number
+<td>The token's serial number (string)
 </td>
 </tr>
 <tr>
 <td><p><a name="GNUTLS-PKCS11-TOKEN-MANUFACTURER:CAPS"></a><span class="term"><code class="literal">GNUTLS_PKCS11_TOKEN_MANUFACTURER</code></span></p></td>
-<td>The token's manufacturer
+<td>The token's manufacturer (string)
 </td>
 </tr>
 <tr>
 <td><p><a name="GNUTLS-PKCS11-TOKEN-MODEL:CAPS"></a><span class="term"><code class="literal">GNUTLS_PKCS11_TOKEN_MODEL</code></span></p></td>
-<td>The token's model
+<td>The token's model (string)
 </td>
 </tr>
 </tbody>
