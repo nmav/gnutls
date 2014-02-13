@@ -2,12 +2,25 @@
 	CVE-2013-4466</a>-->
       </td>
     <td>Certificate verification</td>
-    <td>This vulnerability affects the certificate verification functions of gnutls 3.1.x and
-gnutls 3.2.x. A version 1 intermediate certificate will be considered as
+    <td><p>Suman Jana reported a vulnerability that affects the certificate verification 
+functions of gnutls 3.1.x and gnutls 3.2.x. A version 1 intermediate certificate will be considered as
 a CA certificate by default (something that deviates from the documented
-behavior). This issue can be exploited if there are trusted CAs that
-issue X.509 version 1 certificates.<br>
+behavior).
+</p>
 
-      <b>Recommendation:</b> Apply <a
+<p>
+<b>Who is affected by this attack?</b>
+<ul>
+<li>Anyone who has a CA that issues X.509 version 1 certificates in his
+trusted list.</li>
+</ul>
+</p><p>
+<b>How to mitigate the attack?</b>
+<ul>
+<li>Apply <a
 href="https://www.gitorious.org/gnutls/gnutls/commit/b1abfe3d182d68539900092eb42fc62cf1bb7e7c">this
-patch</a> or upgrade to GnuTLS 3.1.21 or 3.2.11.</td>
+patch</a> or upgrade to the latest GnuTLS version (3.2.11 or 3.1.21).</li>
+</ul>
+
+</p>
+
