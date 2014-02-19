@@ -1,6 +1,7 @@
 #include 'common.wml' page="Development"
 
-<p>To report a bug please use the <a href="mailto:$(EMAIL)">bug report address</a> or the <a href="$(path)lists.html">mailing lists</a>.
+<p>To report a bug please use the <a href="mailto:$(EMAIL)">bug report address</a>, the <a href="$(path)lists.html">mailing lists</a>
+or <a href="https://gitorious.org/projects/gnutls/issues/">our issue tracker</a>.
 </p>
 
 <p>To browse the source code a web interface exists at <a href="https://gitorious.org/gnutls/gnutls">gitorious.org</a>.
