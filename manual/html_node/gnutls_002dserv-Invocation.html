@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 1 January 2014 for version
-3.2.11 of GnuTLS.
+3.2.12 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.11: gnutls-serv Invocation</title>
+<title>GnuTLS 3.2.12: gnutls-serv Invocation</title>
 
-<meta name="description" content="GnuTLS 3.2.11: gnutls-serv Invocation">
-<meta name="keywords" content="GnuTLS 3.2.11: gnutls-serv Invocation">
+<meta name="description" content="GnuTLS 3.2.12: gnutls-serv Invocation">
+<meta name="keywords" content="GnuTLS 3.2.12: gnutls-serv Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -269,7 +269,7 @@ Regularly ping client via heartbeat extension messages
 This option takes a string argument.
 TLS algorithms and protocols to enable. You can
 use predefined sets of ciphersuites such as PERFORMANCE,
-NORMAL, SECURE128, SECURE256.
+NORMAL, SECURE128, SECURE256. The default is NORMAL.
 </p>
 <p>Check  the  GnuTLS  manual  on  section  &ldquo;Priority strings&rdquo; for more
 information on allowed keywords
@@ -426,7 +426,7 @@ gpg -a --export-secret-keys 5D1D14D8 &gt; openpgp-server-key.txt
 <p>Let&rsquo;s start the server with support for OpenPGP credentials:
 </p>
 <div class="example">
-<pre class="example">gnutls-serv --http \
+<pre class="example">gnutls-serv --http --priority NORMAL:+CTYPE-OPENPGP \
             --pgpkeyfile openpgp-server-key.txt \
             --pgpcertfile openpgp-server.txt
 </pre></div>
@@ -436,7 +436,7 @@ an SRP password file created with <code>srptool</code>.
 To start the server with SRP support:
 </p>
 <div class="example">
-<pre class="example">gnutls-serv --http \
+<pre class="example">gnutls-serv --http --priority NORMAL:+SRP-RSA:+SRP \
             --srppasswdconf srp-tpasswd.conf \
             --srppasswd srp-passwd.txt
 </pre></div>
@@ -445,7 +445,7 @@ To start the server with SRP support:
 a password file created with <code>psktool</code>.
 </p>
 <div class="example">
-<pre class="example">gnutls-serv --http \
+<pre class="example">gnutls-serv --http --priority NORMAL:+ECDHE-PSK:+PSK \
             --pskpasswd psk-passwd.txt
 </pre></div>
 
@@ -453,7 +453,7 @@ a password file created with <code>psktool</code>.
 get this command:
 </p>
 <div class="example">
-<pre class="example">gnutls-serv --http \
+<pre class="example">gnutls-serv --http --priority NORMAL:+PSK:+SRP:+CTYPE-OPENPGP \
             --x509cafile x509-ca.pem \
             --x509keyfile x509-server-key.pem \
             --x509certfile x509-server.pem \

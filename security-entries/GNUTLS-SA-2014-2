@@ -1,0 +1,27 @@
+    <td><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0092">
+	CVE-2014-0092</a>
+      </td>
+    <td>Certificate verification issue</td>
+    <td><p>A vulnerability was discovered that affects the certificate verification 
+functions of all gnutls versions. A specially crafted certificate could
+bypass certificate validation checks. The vulnerability was discovered
+during an audit of GnuTLS for Red Hat.
+</p>
+
+<p>
+<b>Who is affected by this attack?</b>
+<ul>
+<li>Anyone using certificate authentication in any version of GnuTLS.</li>
+</ul>
+</p><p>
+<b>How to mitigate the attack?</b>
+<ul>
+<li>Upgrade to the latest GnuTLS version (3.2.12 or 3.1.22), or
+apply the patches for <a
+href="https://www.gitorious.org/gnutls/gnutls/commit/b1abfe3d182d68539900092eb42fc62cf1bb7e7c">GnuTLS
+2.8.x</a>, and <a href="https://www.gitorious.org/gnutls/gnutls/commit/b1abfe3d182d68539900092eb42fc62cf1bb7e7c">GnuTLS 2.12.x</a>.
+</li>
+</ul>
+
+</p>
+

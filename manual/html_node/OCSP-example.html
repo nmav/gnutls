@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 1 January 2014 for version
-3.2.11 of GnuTLS.
+3.2.12 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.11: OCSP example</title>
+<title>GnuTLS 3.2.12: OCSP example</title>
 
-<meta name="description" content="GnuTLS 3.2.11: OCSP example">
-<meta name="keywords" content="GnuTLS 3.2.11: OCSP example">
+<meta name="description" content="GnuTLS 3.2.12: OCSP example">
+<meta name="keywords" content="GnuTLS 3.2.12: OCSP example">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -191,10 +191,10 @@ static gnutls_x509_crt_t load_cert(const char *cert_file);
 static void _response_info(const gnutls_datum_t * data);
 static void
 _generate_request(gnutls_datum_t * rdata, gnutls_x509_crt_t cert,
-                  gnutls_x509_crt_t issuer);
+                  gnutls_x509_crt_t issuer, gnutls_datum_t *nonce);
 static int
 _verify_response(gnutls_datum_t * data, gnutls_x509_crt_t cert,
-                 gnutls_x509_crt_t signer);
+                 gnutls_x509_crt_t signer, gnutls_datum_t *nonce);
 
 /* This program queries an OCSP server.
    It expects three files. argv[1] containing the certificate to
@@ -220,11 +220,17 @@ int main(int argc, char *argv[])
         const char *issuer_file = argv[2];
         const char *signer_file = argv[3];
         char *hostname = NULL;
+        unsigned char noncebuf[23];
+        gnutls_datum_t nonce = { noncebuf, sizeof(noncebuf) };
 
         gnutls_global_init();
 
         if (argc &gt; 4)
                 hostname = argv[4];
+
+        ret = gnutls_rnd(GNUTLS_RND_NONCE, nonce.data, nonce.size);
+        if (ret &lt; 0)
+                exit(1);
 
         cert = load_cert(cert_file);
         issuer = load_cert(issuer_file);
@@ -272,7 +278,7 @@ int main(int argc, char *argv[])
         memset(&amp;ud, 0, sizeof(ud));
         fprintf(stderr, &quot;Connecting to %s\n&quot;, hostname);
 
-        _generate_request(&amp;req, cert, issuer);
+        _generate_request(&amp;req, cert, issuer, &amp;nonce);
 
 #ifndef NO_LIBCURL
         curl_global_init(CURL_GLOBAL_ALL);
@@ -303,7 +309,7 @@ int main(int argc, char *argv[])
 
         _response_info(&amp;ud);
 
-        v = _verify_response(&amp;ud, cert, signer);
+        v = _verify_response(&amp;ud, cert, signer, &amp;nonce);
 
         gnutls_x509_crt_deinit(cert);
         gnutls_x509_crt_deinit(issuer);
@@ -369,27 +375,21 @@ static gnutls_x509_crt_t load_cert(const char *cert_file)
 
 static void
 _generate_request(gnutls_datum_t * rdata, gnutls_x509_crt_t cert,
-                  gnutls_x509_crt_t issuer)
+                  gnutls_x509_crt_t issuer, gnutls_datum_t *nonce)
 {
         gnutls_ocsp_req_t req;
         int ret;
-        unsigned char noncebuf[23];
-        gnutls_datum_t nonce = { noncebuf, sizeof(noncebuf) };
 
         ret = gnutls_ocsp_req_init(&amp;req);
         if (ret &lt; 0)
                 exit(1);
 
-
         ret = gnutls_ocsp_req_add_cert(req, GNUTLS_DIG_SHA1, issuer, cert);
         if (ret &lt; 0)
                 exit(1);
 
-        ret = gnutls_rnd(GNUTLS_RND_RANDOM, nonce.data, nonce.size);
-        if (ret &lt; 0)
-                exit(1);
 
-        ret = gnutls_ocsp_req_set_nonce(req, 0, &amp;nonce);
+        ret = gnutls_ocsp_req_set_nonce(req, 0, nonce);
         if (ret &lt; 0)
                 exit(1);
 
@@ -404,11 +404,12 @@ _generate_request(gnutls_datum_t * rdata, gnutls_x509_crt_t cert,
 
 static int
 _verify_response(gnutls_datum_t * data, gnutls_x509_crt_t cert,
-                 gnutls_x509_crt_t signer)
+                 gnutls_x509_crt_t signer, gnutls_datum_t *nonce)
 {
         gnutls_ocsp_resp_t resp;
         int ret;
         unsigned verify;
+        gnutls_datum_t rnonce;
 
         ret = gnutls_ocsp_resp_init(&amp;resp);
         if (ret &lt; 0)
@@ -421,6 +422,15 @@ _verify_response(gnutls_datum_t * data, gnutls_x509_crt_t cert,
         ret = gnutls_ocsp_resp_check_crt(resp, 0, cert);
         if (ret &lt; 0)
                 exit(1);
+
+	ret = gnutls_ocsp_resp_get_nonce(resp, NULL, &amp;rnonce);
+	if (ret &lt; 0)
+		exit(1);
+
+	if (rnonce.size != nonce-&gt;size || memcmp(nonce-&gt;data, rnonce.data,
+		nonce-&gt;size) != 0) {
+		exit(1);
+	}
 
         ret = gnutls_ocsp_resp_verify_direct(resp, signer, &amp;verify, 0);
         if (ret &lt; 0)
@@ -453,6 +463,7 @@ _verify_response(gnutls_datum_t * data, gnutls_x509_crt_t cert,
         if (verify &amp; GNUTLS_OCSP_VERIFY_CERT_EXPIRED)
                 printf(&quot;Signer cert expired\n&quot;);
 
+        gnutls_free(rnonce.data);
         gnutls_ocsp_resp_deinit(resp);
 
         return verify;

@@ -3,7 +3,34 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-02-13T20:00:33+00:00</updated>
+<updated>2014-03-03T07:23:58+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-03-03</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-03-03'/>
+    <title>GnuTLS 3.2.12 and 3.1.22</title>
+    <updated>2014-03-03T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-03-03.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Added important security advisory <a
+href="security.html#GNUTLS-SA-2014-2">GNUTLS-SA-2014-2</a>.
+</p>
+<p>
+Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7341">GnuTLS
+3.2.12</a> which is a bugfix release in the current stable branch;
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7340">GnuTLS
+3.1.22</a>, is a bug-fix release on the previous stable branch.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-02-13</id>
@@ -420,28 +447,6 @@ was updated</a> for version 3.1.10.
 <p>
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6669">GnuTLS 3.1.9</a> was released. This is bug fix release on the current
 stable branch. 
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2013-02-10</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2013-02-10'/>
-    <title>GnuTLS 3.1.8</title>
-    <updated>2013-02-10T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-02-10.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6623">GnuTLS
-3.1.8</a> was released. This is bug fix release on the current
-stable branch. GnuTLS 3.1.7 inadvertently increased the security level of
-the priority string NORMAL. This release restores it to the previous level.
 </p>
 
     </div>

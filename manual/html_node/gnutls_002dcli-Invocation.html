@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 1 January 2014 for version
-3.2.11 of GnuTLS.
+3.2.12 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.11: gnutls-cli Invocation</title>
+<title>GnuTLS 3.2.12: gnutls-cli Invocation</title>
 
-<meta name="description" content="GnuTLS 3.2.11: gnutls-cli Invocation">
-<meta name="keywords" content="GnuTLS 3.2.11: gnutls-cli Invocation">
+<meta name="description" content="GnuTLS 3.2.12: gnutls-cli Invocation">
+<meta name="keywords" content="GnuTLS 3.2.12: gnutls-cli Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -199,6 +199,8 @@ Usage:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&g
                                 - may appear multiple times
        --tofu                 Enable trust on first use authentication
                                 - disabled as '--no-tofu'
+       --strict-tofu          Fail to connect if a known certificate has changed
+                                - disabled as '--no-strict-tofu'
        --dane                 Enable DANE certificate verification (DNSSEC)
                                 - disabled as '--no-dane'
        --local-dns            Use the local DNS server for DNSSEC resolving
@@ -247,16 +249,16 @@ Usage:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&g
    -l, --list                 Print a list of the supported algorithms and modes
        --noticket             Don't allow session tickets
        --srtp-profiles=str    Offer SRTP profiles
-       --alpn=str             Application layer protocol
+   -!, --alpn=str             Application layer protocol
                                 - may appear multiple times
    -b, --heartbeat            Activate heartbeat support
-   -!, --recordsize=num       The maximum record size to advertize
+   -&quot;, --recordsize=num       The maximum record size to advertize
                                 - it must be in the range:
                                   0 to 4096
-   -&quot;, --disable-sni          Do not send a Server Name Indication (SNI)
-   -#, --disable-extensions   Disable all the TLS extensions
-   -$, --inline-commands      Inline commands of the form ^&lt;cmd&gt;^
-   -%, --inline-commands-prefix=str Change the default (^) used as a delimiter for inline commands.  The
+   -#, --disable-sni          Do not send a Server Name Indication (SNI)
+   -$, --disable-extensions   Disable all the TLS extensions
+   -%, --inline-commands      Inline commands of the form ^&lt;cmd&gt;^
+   -&amp;, --inline-commands-prefix=str Change the default (^) used as a delimiter for inline commands.  The
 value is a single US-ASCII character (octets 0 - 127).
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
@@ -290,6 +292,17 @@ Specifies the debug level.
 </li></ul>
 
 <p>This option will, in addition to certificate authentication, perform authentication based on previously seen public keys, a model similar to SSH authentication.
+<a name="gnutls_002dcli-strict_002dtofu"></a></p><a name="strict_002dtofu-option"></a>
+<h4 class="subheading">strict-tofu option</h4>
+
+<p>This is the &ldquo;fail to connect if a known certificate has changed&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-strict-tofu.
+</li></ul>
+
+<p>This option will perform authentication as with option &ndash;tofu; however, while &ndash;tofu asks whether to trust a changed certificate, this option will fail in case of certificate changes.
 <a name="gnutls_002dcli-dane"></a></p><a name="dane-option"></a>
 <h4 class="subheading">dane option</h4>
 
@@ -366,7 +379,7 @@ This option sets the minimum number of bits allowed for a Diffie-Hellman key exc
 This option takes a string argument.
 TLS algorithms and protocols to enable. You can
 use predefined sets of ciphersuites such as PERFORMANCE,
-NORMAL, SECURE128, SECURE256.
+NORMAL, SECURE128, SECURE256. The default is NORMAL.
 </p>
 <p>Check  the  GnuTLS  manual  on  section  &ldquo;Priority strings&rdquo; for more
 information on allowed keywords

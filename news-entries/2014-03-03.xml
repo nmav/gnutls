@@ -1,0 +1,12 @@
+<title>GnuTLS 3.2.12 and 3.1.22</title>
+<p>
+Added important security advisory <a
+href="security.html#GNUTLS-SA-2014-2">GNUTLS-SA-2014-2</a>.
+</p>
+<p>
+Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7341">GnuTLS
+3.2.12</a> which is a bugfix release in the current stable branch;
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7340">GnuTLS
+3.1.22</a>, is a bug-fix release on the previous stable branch.
+</p>
