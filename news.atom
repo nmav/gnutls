@@ -3,7 +3,27 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-03-03T07:23:58+00:00</updated>
+<updated>2014-03-04T20:47:17+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-03-04</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-03-04'/>
+    <title>GnuTLS 3.2.12.1</title>
+    <updated>2014-03-04T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-03-04.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7343">GnuTLS
+3.2.12.1</a> which reverts an ABI change in the previous release.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-03-03</id>
@@ -427,26 +447,6 @@ and <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/669
 LGPLv2.1, and the <a
 href="http://www.lulu.com/shop/nikos-mavrogiannopoulos-and-simon-josefsson/the-gnutls-manual/paperback/product-20935513.html">paperback manual
 was updated</a> for version 3.1.10.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2013-02-27</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2013-02-27'/>
-    <title>GnuTLS 3.1.9</title>
-    <updated>2013-02-27T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-02-27.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6669">GnuTLS 3.1.9</a> was released. This is bug fix release on the current
-stable branch. 
 </p>
 
     </div>

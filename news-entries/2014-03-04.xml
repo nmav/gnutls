@@ -1,0 +1,5 @@
+<title>GnuTLS 3.2.12.1</title>
+<p>
+Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7343">GnuTLS
+3.2.12.1</a> which reverts an ABI change in the previous release.
+</p>
