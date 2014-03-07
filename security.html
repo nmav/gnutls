@@ -95,6 +95,12 @@ during an audit of GnuTLS for Red Hat.
 <li>Anyone using certificate authentication in any version of GnuTLS.</li>
 </ul>
 </p><p>
+<b>How are past sessions affected?</b>
+<ul>
+<li>The vulnerability to be exploited it requires an active man-in-the-middle attacker.
+Past sessions are not affected unless they were under such an attack.</li>
+</ul>
+</p><p>
 <b>How to mitigate the attack?</b>
 <ul>
 <li>Upgrade to the latest GnuTLS version (<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7341">3.2.12</a> or 3.1.22), or

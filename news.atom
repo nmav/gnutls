@@ -3,7 +3,28 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-03-04T20:47:17+00:00</updated>
+<updated>2014-03-07T08:57:45+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-03-07</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-03-07'/>
+    <title>Audit competition</title>
+    <updated>2014-03-07T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-03-07.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Announced a <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7361">GnuTLS audit
+competition</a>. Pick a task and join us.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-03-04</id>
@@ -423,30 +444,6 @@ and UMAC</a> as used in GnuTLS 3.2.0.
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6723">GnuTLS
 3.1.11</a>, and <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6725">GnuTLS
 3.2.0</a> were released.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2013-03-22</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2013-03-22'/>
-    <title>GnuTLS 3.0.29 and 3.1.10</title>
-    <updated>2013-03-22T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-03-22.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6693">GnuTLS 3.0.29</a> 
-and <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6694">GnuTLS
-3.1.10</a> were released. The license of GnuTLS 3.1.10 was changed to
-LGPLv2.1, and the <a
-href="http://www.lulu.com/shop/nikos-mavrogiannopoulos-and-simon-josefsson/the-gnutls-manual/paperback/product-20935513.html">paperback manual
-was updated</a> for version 3.1.10.
 </p>
 
     </div>
