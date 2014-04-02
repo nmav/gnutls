@@ -18,7 +18,7 @@
     <ul>
       <li>Support for <a href="http://tools.ietf.org/html/rfc5247">TLS 1.2</a>, TLS 1.1, TLS 1.0, and SSL 3.0 protocols</li>
       <li>Support for <a href="http://tools.ietf.org/html/rfc6347">DTLS 1.2</a>, and DTLS 1.0,  protocols</li>
-      <li>Support for certificate path validation, as well as <a href="http://www.gnutls.org/manual/html_node/Verifying-a-certificate-using-DANE-_0028DNSSEC_0029.html">DANE</a> and <a href="http://www.gnutls.org/manual/html_node/Verifying-a-certificate-using-trust-on-first-use-authentication.html#Verifying-a-certificate-using-trust-on-first-use-authentication">trust on first use</a>.</li>
+      <li>Support for certificate path validation, as well as <a href="http://www.gnutls.org/manual/html_node/Verifying-a-certificate-using-DANE.html#Verifying-a-certificate-using-DANE">DANE</a> and <a href="http://www.gnutls.org/manual/html_node/Verifying-a-certificate-using-trust-on-first-use-authentication.html#Verifying-a-certificate-using-trust-on-first-use-authentication">trust on first use</a>.</li>
       <li>Support for the <a href="http://www.gnutls.org/manual/html_node/OCSP-certificate-status-checking.html">Online Certificate Status Protocol (OCSP)</a>.</li>
       <li>Support for multiple certificate types including X.509 and <a href="openpgp.html">OpenPGP</a> certificates.</li>
       <li>Support for public key methods, including RSA and Elliptic curves, as well as password and key authentication methods such as <a href="http://www.gnutls.org/manual/html_node/Authentication-using-SRP.html#Authentication-using-SRP">SRP</a> and <a href="http://www.gnutls.org/manual/html_node/Authentication-using-PSK.html#Authentication-using-PSK">PSK</a> protocols.</li>
