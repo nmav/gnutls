@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 1 January 2014 for version
-3.2.12 of GnuTLS.
+3.2.13 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.12: Priority Strings</title>
+<title>GnuTLS 3.2.13: Priority Strings</title>
 
-<meta name="description" content="GnuTLS 3.2.12: Priority Strings">
-<meta name="keywords" content="GnuTLS 3.2.12: Priority Strings">
+<meta name="description" content="GnuTLS 3.2.13: Priority Strings">
+<meta name="keywords" content="GnuTLS 3.2.13: Priority Strings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -295,8 +295,10 @@ and <a href="#tab_003aprio_002dspecial2">Table 6.5</a>.
 <tr><td width="45%">%COMPAT</td><td width="45%">will enable compatibility mode. It might mean that violations
 of the protocols are allowed as long as maximum compatibility with
 problematic clients and servers is achieved. More specifically this
-string would disable TLS record random padding and tolerate packets
-over the maximum allowed TLS record.</td></tr>
+string would disable TLS record random padding, tolerate packets
+over the maximum allowed TLS record, and add a padding to TLS Client
+Hello packet to prevent it being in the 256-512 range which is known
+to be causing issues with a commonly used firewall.</td></tr>
 <tr><td width="45%">%DUMBFW</td><td width="45%">will add a private extension with bogus data that make the client
 hello exceed 512 bytes. This avoids a black hole behavior in some
 firewalls. This is a non-standard TLS extension, use with care.</td></tr>

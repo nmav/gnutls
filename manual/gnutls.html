@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 1 January 2014 for version
-3.2.12 of GnuTLS.
+3.2.13 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.12</title>
+<title>GnuTLS 3.2.13</title>
 
-<meta name="description" content="GnuTLS 3.2.12">
-<meta name="keywords" content="GnuTLS 3.2.12">
+<meta name="description" content="GnuTLS 3.2.13">
+<meta name="keywords" content="GnuTLS 3.2.13">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.2.12</h1>
+<h1 class="settitle" align="center">GnuTLS 3.2.13</h1>
 
 
 
@@ -463,7 +463,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 1 January 2014 for version
-3.2.12 of GnuTLS.
+3.2.13 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -3947,6 +3947,7 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --hex-numbers          Print big number in an easier format to parse
        --cprint               In certain operations it prints the information in C-friendly format
        --null-password        Enforce a NULL password
+       --empty-password       Enforce an empty password
    -i, --certificate-info     Print information on the given certificate
        --certificate-pubkey   Print certificate's public key
        --pgp-certificate-info  Print information on the given OpenPGP certificate
@@ -3963,26 +3964,26 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --v1                   Generate an X.509 version 1 certificate (with no extensions)
        --to-p12               Generate a PKCS #12 structure
                                 - requires the option 'load-certificate'
-       --to-p8                Generate a PKCS #8 structure
+   -!, --to-p8                Generate a PKCS #8 structure
    -8, --pkcs8                Use PKCS #8 format for private keys
-   -!, --rsa                  Generate RSA key
-   -&quot;, --dsa                  Generate DSA key
-   -#, --ecc                  Generate ECC (ECDSA) key
-   -$, --ecdsa                an alias for the 'ecc' option
-   -%, --hash=str             Hash algorithm to use for signing
-   -&amp;, --inder                Use DER format for input certificates, private keys, and DH parameters
+   -&quot;, --rsa                  Generate RSA key
+   -#, --dsa                  Generate DSA key
+   -$, --ecc                  Generate ECC (ECDSA) key
+   -%, --ecdsa                an alias for the 'ecc' option
+   -&amp;, --hash=str             Hash algorithm to use for signing
+   -', --inder                Use DER format for input certificates, private keys, and DH parameters
                                 - disabled as '--no-inder'
-   -', --inraw                an alias for the 'inder' option
-   -(, --outder               Use DER format for output certificates, private keys, and DH parameters
+   -(, --inraw                an alias for the 'inder' option
+   -), --outder               Use DER format for output certificates, private keys, and DH parameters
                                 - disabled as '--no-outder'
-   -), --outraw               an alias for the 'outder' option
-   -*, --bits=num             Specify the number of bits for key generate
-   -+, --sec-param=str        Specify the security level [low, legacy, normal, high, ultra]
-   -,, --disable-quick-random  No effect
-   --, --template=file        Template file to use for non-interactive operation
+   -*, --outraw               an alias for the 'outder' option
+   -+, --bits=num             Specify the number of bits for key generate
+   -,, --sec-param=str        Specify the security level [low, legacy, normal, high, ultra]
+   --, --disable-quick-random  No effect
+   -., --template=file        Template file to use for non-interactive operation
                                 - file must pre-exist
-   -., --ask-pass             Enable interaction for entering password when in batch mode.
-   -/, --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
+   -/, --ask-pass             Enable interaction for entering password when in batch mode.
+   -0, --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
    -!, --more-help            extended usage information passed thru pager
@@ -4074,6 +4075,12 @@ This can be either a file or a PKCS #11 URL
 <p>This is the &ldquo;loads the certificate authority&rsquo;s certificate file&rdquo; option.
 This option takes a string argument.
 This can be either a file or a PKCS #11 URL
+<a name="certtool-password"></a></p><a name="password-option"></a>
+<h4 class="subsubheading">password option</h4>
+
+<p>This is the &ldquo;password to use&rdquo; option.
+This option takes a string argument.
+You can use this option to specify the password in the command line instead of reading it from the tty. Note, that the command line arguments are available for view in others in the system. Specifying password as &rdquo; is the same as specifying no password.
 <a name="certtool-cprint"></a></p><a name="cprint-option"></a>
 <h4 class="subsubheading">cprint option</h4>
 
@@ -4083,7 +4090,12 @@ In certain operations it prints the information in C-friendly format, suitable f
 <h4 class="subsubheading">null-password option</h4>
 
 <p>This is the &ldquo;enforce a null password&rdquo; option.
-This option enforces a NULL password. This may be different than the empty password in some schemas.
+This option enforces a NULL password. This is different than the empty or no password in schemas like PKCS #8.
+<a name="certtool-empty_002dpassword"></a></p><a name="empty_002dpassword-option"></a>
+<h4 class="subsubheading">empty-password option</h4>
+
+<p>This is the &ldquo;enforce an empty password&rdquo; option.
+This option enforces an empty password. This is different than the NULL or no password in schemas like PKCS #8.
 <a name="certtool-pubkey_002dinfo"></a></p><a name="pubkey_002dinfo-option"></a>
 <h4 class="subsubheading">pubkey-info option</h4>
 
@@ -5475,13 +5487,17 @@ Previous: <a href="#PSK-authentication" accesskey="p" rel="prev">PSK authenticat
 indication of the peer&rsquo;s identity.  This kind of authentication
 is vulnerable to a man in the middle attack, but can be
 used even if there is no prior communication or shared trusted parties 
-with the peer. Nevertheless it is useful when complete anonymity is required. 
+with the peer. It is useful to establish a session over which certificate
+authentication will occur in order to hide the indentities of the participants
+from passive eavesdroppers.
 </p>
-<p>Unless in the above case, it is not recommended to use anonymous authentication. An alternative
-with better properties is trust on first use (see <a href="#Verifying-a-certificate-using-trust-on-first-use-authentication">Verifying a certificate using trust on first use authentication</a>).
+<p>Unless in the above case, it is not recommended to use anonymous authentication. 
+In the cases where there is no prior communication with the peers, 
+an alternative with better properties, such as key continuity, is trust on first use
+(see <a href="#Verifying-a-certificate-using-trust-on-first-use-authentication">Verifying a certificate using trust on first use authentication</a>).
 </p>
 <p>The available key exchange algorithms for anonymous authentication are
-shown below, but note that few public servers support them. They typically
+shown below, but note that few public servers support them, and they 
 have to be explicitly enabled.
 </p>
 <dl compact="compact">
@@ -9455,8 +9471,10 @@ and <a href="#tab_003aprio_002dspecial2">Table 6.5</a>.
 <tr><td width="45%">%COMPAT</td><td width="45%">will enable compatibility mode. It might mean that violations
 of the protocols are allowed as long as maximum compatibility with
 problematic clients and servers is achieved. More specifically this
-string would disable TLS record random padding and tolerate packets
-over the maximum allowed TLS record.</td></tr>
+string would disable TLS record random padding, tolerate packets
+over the maximum allowed TLS record, and add a padding to TLS Client
+Hello packet to prevent it being in the 256-512 range which is known
+to be causing issues with a commonly used firewall.</td></tr>
 <tr><td width="45%">%DUMBFW</td><td width="45%">will add a private extension with bogus data that make the client
 hello exceed 512 bytes. This avoids a black hole behavior in some
 firewalls. This is a non-standard TLS extension, use with care.</td></tr>

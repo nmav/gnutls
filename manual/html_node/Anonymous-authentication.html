@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 1 January 2014 for version
-3.2.12 of GnuTLS.
+3.2.13 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.12: Anonymous authentication</title>
+<title>GnuTLS 3.2.13: Anonymous authentication</title>
 
-<meta name="description" content="GnuTLS 3.2.12: Anonymous authentication">
-<meta name="keywords" content="GnuTLS 3.2.12: Anonymous authentication">
+<meta name="description" content="GnuTLS 3.2.13: Anonymous authentication">
+<meta name="keywords" content="GnuTLS 3.2.13: Anonymous authentication">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -169,13 +169,17 @@ Previous: <a href="PSK-authentication.html#PSK-authentication" accesskey="p" rel
 indication of the peer&rsquo;s identity.  This kind of authentication
 is vulnerable to a man in the middle attack, but can be
 used even if there is no prior communication or shared trusted parties 
-with the peer. Nevertheless it is useful when complete anonymity is required. 
+with the peer. It is useful to establish a session over which certificate
+authentication will occur in order to hide the indentities of the participants
+from passive eavesdroppers.
 </p>
-<p>Unless in the above case, it is not recommended to use anonymous authentication. An alternative
-with better properties is trust on first use (see <a href="Verifying-a-certificate-using-trust-on-first-use-authentication.html#Verifying-a-certificate-using-trust-on-first-use-authentication">Verifying a certificate using trust on first use authentication</a>).
+<p>Unless in the above case, it is not recommended to use anonymous authentication. 
+In the cases where there is no prior communication with the peers, 
+an alternative with better properties, such as key continuity, is trust on first use
+(see <a href="Verifying-a-certificate-using-trust-on-first-use-authentication.html#Verifying-a-certificate-using-trust-on-first-use-authentication">Verifying a certificate using trust on first use authentication</a>).
 </p>
 <p>The available key exchange algorithms for anonymous authentication are
-shown below, but note that few public servers support them. They typically
+shown below, but note that few public servers support them, and they 
 have to be explicitly enabled.
 </p>
 <dl compact="compact">
