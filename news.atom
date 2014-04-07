@@ -3,7 +3,31 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-03-27T17:53:42+00:00</updated>
+<updated>2014-04-07T22:02:16+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-04-07</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-04-07'/>
+    <title>GnuTLS 3.2.13 and 3.1.23</title>
+    <updated>2014-04-07T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-04-07.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7414">GnuTLS
+3.2.13</a> which is a bugfix release in the current stable branch;
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7415">GnuTLS
+3.1.23</a>, is a bug-fix release on the previous stable branch. 
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-03-27</id>
@@ -424,26 +448,6 @@ paperback manual</a> was updated.
     <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-05-29.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
 <a href="http://www.gnutls.org/security.html#GNUTLS-SA-2013-2">Posted a security advisory</a> on a vulnerability
 on gnutls 2.12.23.
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2013-05-16</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2013-05-16'/>
-    <title>The addition of salsa20 and UMAC in GnuTLS</title>
-    <updated>2013-05-16T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-05-16.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-We are planning into pushing forward the standardization of
-<a
-href="http://nmav.gnutls.org/2013/05/salsa20-and-umac-in-tls.html">Salsa20
-and UMAC</a> as used in GnuTLS 3.2.0.
 
     </div>
     </content>

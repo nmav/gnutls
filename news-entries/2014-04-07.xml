@@ -1,0 +1,9 @@
+<title>GnuTLS 3.2.13 and 3.1.23</title>
+<p>
+Released <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7414">GnuTLS
+3.2.13</a> which is a bugfix release in the current stable branch;
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7415">GnuTLS
+3.1.23</a>, is a bug-fix release on the previous stable branch. 
+</p>
