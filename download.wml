@@ -54,6 +54,7 @@ print " <tr>
 	ftp://ftp.gnutls.org/gcrypt/gnutls/v${version}</a> (<a href=\"http://www.gnupg.org/download/mirrors.en.html\">mirror list</a>)</td>
   </tr>\n" if ("${version}" ne "");
 }
+return;
 }
 </perl>
 
