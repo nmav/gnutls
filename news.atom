@@ -3,7 +3,28 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-04-07T22:02:16+00:00</updated>
+<updated>2014-04-10T20:31:23+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-04-10</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-04-10'/>
+    <title>GnuTLS 3.3.0</title>
+    <updated>2014-04-10T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-04-10.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7418">GnuTLS
+3.3.0</a> which is the next stable branch.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-04-07</id>
@@ -432,23 +453,6 @@ were released.
 <a href="http://www.lulu.com/shop/nikos-mavrogiannopoulos-and-simon-josefsson/the-gnutls-manual/paperback/product-21048042.html">The
 paperback manual</a> was updated.
 </p>
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2013-05-29</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2013-05-29'/>
-    <title>News 2013-05-29</title>
-    <updated>2013-05-29T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-05-29.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-<a href="http://www.gnutls.org/security.html#GNUTLS-SA-2013-2">Posted a security advisory</a> on a vulnerability
-on gnutls 2.12.23.
-
     </div>
     </content>
   </entry>
