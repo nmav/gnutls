@@ -3,7 +3,28 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-04-10T20:33:25+00:00</updated>
+<updated>2014-04-19T13:17:24+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-04-19</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-04-19'/>
+    <title>GnuTLS 3.3.1</title>
+    <updated>2014-04-19T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-04-19.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7443">GnuTLS
+3.3.1</a> which is a bug fix release on the next stable branch of GnuTLS.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-04-10</id>
@@ -428,31 +449,6 @@ and
 were released.
 </p>
 
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2013-06-01</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2013-06-01'/>
-    <title>GnuTLS 3.0.30, 3.1.12 and 3.2.1</title>
-    <updated>2013-06-01T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-06-01.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6775">GnuTLS 3.0.30</a>, 
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6776">GnuTLS 3.1.12</a>, and 
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6774">GnuTLS 3.2.1</a> 
-were released.
-</p>
-<p>
-<a href="http://www.lulu.com/shop/nikos-mavrogiannopoulos-and-simon-josefsson/the-gnutls-manual/paperback/product-21048042.html">The
-paperback manual</a> was updated.
-</p>
     </div>
     </content>
   </entry>
