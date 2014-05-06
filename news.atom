@@ -3,7 +3,35 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-04-19T13:17:24+00:00</updated>
+<updated>2014-05-06T21:52:15+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-05-06</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-05-06'/>
+    <title>GnuTLS 3.3.2, 3.2.14 and 3.1.24</title>
+    <updated>2014-05-06T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-05-06.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a
+href="http://lists.gnutls.org/pipermail/gnutls-help/2014-May/003468.html">GnuTLS
+3.3.2</a>,
+<a
+href="http://lists.gnutls.org/pipermail/gnutls-help/2014-May/003467.html">GnuTLS
+3.2.14</a>,
+<a
+href="http://lists.gnutls.org/pipermail/gnutls-help/2014-May/003466.html">GnuTLS
+3.1.24</a>, which are bug-fix releases on the next, current and previous stable
+branches respectively. 
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-04-19</id>
@@ -425,28 +453,6 @@ stable branch.
 3.2.2</a>,
 was released. This release adds features and fixes bugs in the current
 stable branch.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2013-07-13</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2013-07-13'/>
-    <title>GnuTLS 3.0.31 and 3.1.13</title>
-    <updated>2013-07-13T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-07-13.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6837">GnuTLS 3.0.31</a>,
-and
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6836">GnuTLS 3.1.13</a>, 
-were released.
 </p>
 
     </div>
