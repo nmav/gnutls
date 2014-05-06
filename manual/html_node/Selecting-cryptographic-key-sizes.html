@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 1 January 2014 for version
-3.2.13 of GnuTLS.
+<!-- This manual is last updated 5 April 2014 for version
+3.3.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.13: Selecting cryptographic key sizes</title>
+<title>GnuTLS 3.3.2: Selecting cryptographic key sizes</title>
 
-<meta name="description" content="GnuTLS 3.2.13: Selecting cryptographic key sizes">
-<meta name="keywords" content="GnuTLS 3.2.13: Selecting cryptographic key sizes">
+<meta name="description" content="GnuTLS 3.3.2: Selecting cryptographic key sizes">
+<meta name="keywords" content="GnuTLS 3.3.2: Selecting cryptographic key sizes">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -177,11 +177,12 @@ authentication.
 <table>
 <thead><tr><th width="10%">Security bits</th><th width="12%">RSA, DH and SRP parameter size</th><th width="10%">ECC key size</th><th width="20%">Security parameter</th><th width="32%">Description</th></tr></thead>
 <tr><td width="10%">&lt;72</td><td width="12%">&lt;1008</td><td width="10%">&lt;160</td><td width="20%"><code>INSECURE</code></td><td width="32%">Considered to be insecure</td></tr>
+<tr><td width="10%">64</td><td width="12%">768</td><td width="10%">128</td><td width="20%"><code>VERY WEAK</code></td><td width="32%">Short term protection against individuals</td></tr>
 <tr><td width="10%">72</td><td width="12%">1008</td><td width="10%">160</td><td width="20%"><code>WEAK</code></td><td width="32%">Short term protection against small organizations</td></tr>
-<tr><td width="10%">80</td><td width="12%">1248</td><td width="10%">160</td><td width="20%"><code>LOW</code></td><td width="32%">Very short term protection against agencies</td></tr>
+<tr><td width="10%">80</td><td width="12%">1024</td><td width="10%">160</td><td width="20%"><code>LOW</code></td><td width="32%">Very short term protection against agencies (corresponds to ENISA legacy level)</td></tr>
 <tr><td width="10%">96</td><td width="12%">1776</td><td width="10%">192</td><td width="20%"><code>LEGACY</code></td><td width="32%">Legacy standard level</td></tr>
-<tr><td width="10%">112</td><td width="12%">2432</td><td width="10%">224</td><td width="20%"><code>NORMAL</code></td><td width="32%">Medium-term protection</td></tr>
-<tr><td width="10%">128</td><td width="12%">3248</td><td width="10%">256</td><td width="20%"><code>HIGH</code></td><td width="32%">Long term protection</td></tr>
+<tr><td width="10%">112</td><td width="12%">2048</td><td width="10%">224</td><td width="20%"><code>MEDIUM</code></td><td width="32%">Medium-term protection</td></tr>
+<tr><td width="10%">128</td><td width="12%">3072</td><td width="10%">256</td><td width="20%"><code>HIGH</code></td><td width="32%">Long term protection</td></tr>
 <tr><td width="10%">256</td><td width="12%">15424</td><td width="10%">512</td><td width="20%"><code>ULTRA</code></td><td width="32%">Foreseeable future</td></tr>
 </table>
 

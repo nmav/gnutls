@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 1 January 2014 for version
-3.2.13 of GnuTLS.
+<!-- This manual is last updated 5 April 2014 for version
+3.3.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.13: Verifying a certificate in the context of TLS session</title>
+<title>GnuTLS 3.3.2: Verifying a certificate in the context of TLS session</title>
 
-<meta name="description" content="GnuTLS 3.2.13: Verifying a certificate in the context of TLS session">
-<meta name="keywords" content="GnuTLS 3.2.13: Verifying a certificate in the context of TLS session">
+<meta name="description" content="GnuTLS 3.3.2: Verifying a certificate in the context of TLS session">
+<meta name="keywords" content="GnuTLS 3.3.2: Verifying a certificate in the context of TLS session">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -162,7 +162,7 @@ Previous: <a href="Verifying-X_002e509-certificate-paths.html#Verifying-X_002e50
 </div>
 <hr>
 <a name="Verifying-a-certificate-in-the-context-of-TLS-session-1"></a>
-<h4 class="subsubsection">4.1.1.6 Verifying a certificate in the context of TLS session</h4>
+<h4 class="subsubsection">4.1.1.7 Verifying a certificate in the context of TLS session</h4>
 <a name="index-verifying-certificate-paths-1"></a>
 <a name="index-gnutls_005fcertificate_005fverify_005fflags"></a>
 
@@ -174,10 +174,13 @@ authority list may also be set using:
 <dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fx509_005fsystem_005ftrust">gnutls_certificate_set_x509_system_trust</a> (gnutls_certificate_credentials_t       <var>cred</var>)</code></dt>
 </dl>
 
-<p>Then it is not required to setup a trusted list as above.
-The function <a href="Core-TLS-API.html#gnutls_005fcertificate_005fverify_005fpeers3">gnutls_certificate_verify_peers3</a> 
-may then be used to verify the peer&rsquo;s certificate chain and identity. The flags
+<p>In that case it is not required to setup a trusted list as above, and 
+the function <a href="Core-TLS-API.html#gnutls_005fcertificate_005fverify_005fpeers3">gnutls_certificate_verify_peers3</a> 
+may be used to verify the peer&rsquo;s certificate chain and identity. The flags
 are set similarly to the verification functions in the previous section.
+Note that in certain cases it is required to check the marked purpose of
+the end certificate (e.g. <code>GNUTLS_KP_TLS_WWW_SERVER</code>); in these case
+<a href="Core-TLS-API.html#gnutls_005fcertificate_005fverify_005fpeers">gnutls_certificate_verify_peers</a> should be used instead.
 </p>
 <p>There is also the possibility to pass some input to the verification
 functions in the form of flags. For <a href="X509-certificate-API.html#gnutls_005fx509_005ftrust_005flist_005fverify_005fcrt">gnutls_x509_trust_list_verify_crt</a> the
@@ -196,12 +199,6 @@ flags are part of the enumeration
 a certificate authority. This flag should normally be disabled,
 unless you know what this means.
 </p></dd>
-<dt><code>GNUTLS_VERIFY_ALLOW_X509_V1_CA_CRT</code></dt>
-<dd><p>Allow trusted CA certificates
-with version 1. This is safer than <code>GNUTLS_VERIFY_ALLOW_ANY_X509_V1_CA_CRT</code> ,
-and should be used instead. That way only signers in your trusted list
-will be allowed to have certificates of version 1. This is the default.
-</p></dd>
 <dt><code>GNUTLS_VERIFY_DO_NOT_ALLOW_SAME</code></dt>
 <dd><p>If a certificate is not signed by
 anyone trusted but exists in the trusted CA list do not treat it
@@ -211,8 +208,7 @@ as trusted.
 <dd><p>Allow CA certificates that
 have version 1 (both root and intermediate). This might be
 dangerous since those haven&rsquo;t the basicConstraints
-extension. Must be used in combination with
-<code>GNUTLS_VERIFY_ALLOW_X509_V1_CA_CRT</code> .
+extension. 
 </p></dd>
 <dt><code>GNUTLS_VERIFY_ALLOW_SIGN_RSA_MD2</code></dt>
 <dd><p>Allow certificates to be signed
@@ -248,6 +244,10 @@ default since GnuTLS 3.1.4.
 <dt><code>GNUTLS_VERIFY_DO_NOT_ALLOW_UNSORTED_CHAIN</code></dt>
 <dd><p>Do not tolerate an unsorted
 certificate chain.
+</p></dd>
+<dt><code>GNUTLS_VERIFY_DO_NOT_ALLOW_WILDCARDS</code></dt>
+<dd><p>When including a hostname
+check in the verification, do not consider any wildcards.
 </p></dd>
 </dl>
 

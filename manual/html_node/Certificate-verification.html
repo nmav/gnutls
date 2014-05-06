@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 1 January 2014 for version
-3.2.13 of GnuTLS.
+<!-- This manual is last updated 5 April 2014 for version
+3.3.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.13: Certificate verification</title>
+<title>GnuTLS 3.3.2: Certificate verification</title>
 
-<meta name="description" content="GnuTLS 3.2.13: Certificate verification">
-<meta name="keywords" content="GnuTLS 3.2.13: Certificate verification">
+<meta name="description" content="GnuTLS 3.3.2: Certificate verification">
+<meta name="keywords" content="GnuTLS 3.3.2: Certificate verification">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -200,8 +200,8 @@ The available functions to store and verify public keys are listed below.
 </p>
 <p><var>flags</var>: should be 0.
 </p>
-<p>This function will try to verify the provided certificate using
-a list of stored public keys.  The  <code>service</code> field if non-NULL should
+<p>This function will try to verify the provided (raw or DER-encoded) certificate 
+using a list of stored public keys.  The  <code>service</code> field if non-NULL should
 be a port number.
 </p>
 <p>The  <code>retrieve</code> variable if non-null specifies a custom backend for
@@ -222,7 +222,7 @@ is found but does not match <code>GNUTLS_E_CERTIFICATE_KEY_MISMATCH</code>
 is returned. On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, 
 or a negative error value on other errors.
 </p>
-<p><strong>Since:</strong> 3.0
+<p><strong>Since:</strong> 3.0.13
 </p></dd></dl>
 
 
@@ -246,7 +246,7 @@ or a negative error value on other errors.
 </p>
 <p><var>flags</var>: should be 0.
 </p>
-<p>This function will store the provided certificate to 
+<p>This function will store the provided (raw or DER-encoded) certificate to 
 the list of stored public keys. The key will be considered valid until 
 the provided expiration time.
 </p>
@@ -257,7 +257,7 @@ default file backend will be used.
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
 </p>
-<p><strong>Since:</strong> 3.0
+<p><strong>Since:</strong> 3.0.13
 </p></dd></dl>
 
 <p>In addition to the above the <a href="Core-TLS-API.html#gnutls_005fstore_005fcommitment">gnutls_store_commitment</a> can be 
@@ -398,13 +398,13 @@ indicate the status of the verification.
 
 <dl compact="compact">
 <dt><code>DANE_VERIFY_CA_CONSTRAINTS_VIOLATED</code></dt>
-<dd><p>The CA constrains was violated.
+<dd><p>The CA constraints were violated.
 </p></dd>
 <dt><code>DANE_VERIFY_CERT_DIFFERS</code></dt>
 <dd><p>The certificate obtained via DNS differs.
 </p></dd>
-<dt><code>DANE_VERIFY_NO_DANE_INFO</code></dt>
-<dd><p>No DANE data were found in the DNS record.
+<dt><code>DANE_VERIFY_UNKNOWN_DANE_INFO</code></dt>
+<dd><p>No known DANE data was found in the DNS record.
 </p></dd>
 </dl>
 

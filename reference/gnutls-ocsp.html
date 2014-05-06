@@ -375,8 +375,8 @@
 <pre class="programlisting"><span class="returnvalue">int</span>
 gnutls_ocsp_req_add_cert (<em class="parameter"><code><a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> req</code></em>,
                           <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-digest-algorithm-t" title="enum gnutls_digest_algorithm_t"><span class="type">gnutls_digest_algorithm_t</span></a> digest</code></em>,
-                          <em class="parameter"><code><span class="type">gnutls_x509_crt_t</span> issuer</code></em>,
-                          <em class="parameter"><code><span class="type">gnutls_x509_crt_t</span> cert</code></em>);</pre>
+                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> issuer</code></em>,
+                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> cert</code></em>);</pre>
 <p>This function will add another request to the OCSP request for a
 particular certificate.  The issuer name hash, issuer key hash, and
 serial number fields is populated as follows.  The issuer name and
@@ -421,7 +421,7 @@ certificate</p></td>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.2.6"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.</p>
 <p></p>
 </div>
@@ -502,7 +502,7 @@ hashed using <em class="parameter"><code>digest</code></em>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.3.8"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.</p>
 <p></p>
 </div>
@@ -644,9 +644,9 @@ that the caller is not interested in that value.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.6.8"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.  If you have reached the last
-CertID available <code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> will be
+CertID available <a class="link" href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS" title="GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a> will be
 returned.</p>
 <p></p>
 </div>
@@ -669,7 +669,7 @@ will be stored as a string.  Any of <em class="parameter"><code>oid</code></em>
  may
 be NULL which means that the caller is not interested in getting
 that information back.</p>
-<p>The caller needs to deallocate memory by calling <code class="function">gnutls_free()</code> on
+<p>The caller needs to deallocate memory by calling <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a> on
 <em class="parameter"><code>oid-&gt;data</code></em>
  and <em class="parameter"><code>data-&gt;data</code></em>
 .</p>
@@ -712,9 +712,9 @@ that information back.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.7.7"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.  If you have reached the last
-extension available <code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> will
+extension available <a class="link" href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS" title="GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a> will
 be returned.</p>
 <p></p>
 </div>
@@ -727,7 +727,7 @@ gnutls_ocsp_req_get_nonce (<em class="parameter"><code><a class="link" href="gnu
                            <em class="parameter"><code>unsigned <span class="type">int</span> *critical</code></em>,
                            <em class="parameter"><code><span class="type">gnutls_datum_t</span> *nonce</code></em>);</pre>
 <p>This function will return the OCSP request nonce extension data.</p>
-<p>The caller needs to deallocate memory by calling <code class="function">gnutls_free()</code> on
+<p>The caller needs to deallocate memory by calling <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a> on
 <em class="parameter"><code>nonce-&gt;data</code></em>
 .</p>
 <div class="refsect3">
@@ -759,7 +759,7 @@ gnutls_ocsp_req_get_nonce (<em class="parameter"><code><a class="link" href="gnu
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.8.7"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.</p>
 <p></p>
 </div>
@@ -826,7 +826,7 @@ the native <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnut
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.10.6"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 <p></p>
 </div>
@@ -854,7 +854,7 @@ gnutls_ocsp_req_init (<em class="parameter"><code><a class="link" href="gnutls-o
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.11.6"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 <p></p>
 </div>
@@ -871,7 +871,7 @@ display to a human.</p>
 <p>If the format is <a class="link" href="gnutls-ocsp.html#GNUTLS-OCSP-PRINT-FULL:CAPS"><code class="literal">GNUTLS_OCSP_PRINT_FULL</code></a> then all fields of the
 request will be output, on multiple lines.</p>
 <p>The output <em class="parameter"><code>out-&gt;data</code></em>
- needs to be deallocate using <code class="function">gnutls_free()</code>.</p>
+ needs to be deallocate using <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.11.7.12.7"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -901,7 +901,7 @@ request will be output, on multiple lines.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.12.8"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 <p></p>
 </div>
@@ -930,7 +930,7 @@ request with a newly generated random value.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.13.6"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.</p>
 <p></p>
 </div>
@@ -980,7 +980,7 @@ from earlier calls.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.14.6"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.</p>
 <p></p>
 </div>
@@ -1024,7 +1024,7 @@ earlier calls.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.15.6"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.</p>
 <p></p>
 </div>
@@ -1035,7 +1035,7 @@ negative error code is returned.</p>
 <pre class="programlisting"><span class="returnvalue">int</span>
 gnutls_ocsp_resp_check_crt (<em class="parameter"><code><a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> resp</code></em>,
                             <em class="parameter"><code>unsigned <span class="type">int</span> indx</code></em>,
-                            <em class="parameter"><code><span class="type">gnutls_x509_crt_t</span> crt</code></em>);</pre>
+                            <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>);</pre>
 <p>This function will check whether the OCSP response
 is about the provided certificate.</p>
 <div class="refsect3">
@@ -1067,7 +1067,7 @@ is about the provided certificate.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.16.6"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.  </p>
 <p></p>
 </div>
@@ -1136,7 +1136,7 @@ returned, and 0 on success.</p>
 <a name="gnutls-ocsp-resp-get-certs"></a><h3>gnutls_ocsp_resp_get_certs ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>
 gnutls_ocsp_resp_get_certs (<em class="parameter"><code><a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> resp</code></em>,
-                            <em class="parameter"><code><span class="type">gnutls_x509_crt_t</span> **certs</code></em>,
+                            <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> **certs</code></em>,
                             <em class="parameter"><code><span class="type">size_t</span> *ncerts</code></em>);</pre>
 <p>This function will extract the X.509 certificates found in the
 Basic OCSP Response.  The <em class="parameter"><code>certs</code></em>
@@ -1144,7 +1144,7 @@ Basic OCSP Response.  The <em class="parameter"><code>certs</code></em>
 allocated zero-terminated array with X.509 certificates.</p>
 <p>Every certificate in the array needs to be de-allocated with
 <a class="link" href="gnutls-x509.html#gnutls-x509-crt-deinit" title="gnutls_x509_crt_deinit ()"><code class="function">gnutls_x509_crt_deinit()</code></a> and the array itself must be freed using
-<code class="function">gnutls_free()</code>.</p>
+<a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p>
 <p>Both the <em class="parameter"><code>certs</code></em>
  and <em class="parameter"><code>ncerts</code></em>
  variables may be NULL.  Then the
@@ -1167,7 +1167,7 @@ only, or to just get the certificate array without its size.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>certs</p></td>
-<td class="parameter_description"><p>newly allocated array with <span class="type">gnutls_x509_crt_t</span> certificates</p></td>
+<td class="parameter_description"><p>newly allocated array with <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> certificates</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1180,7 +1180,7 @@ only, or to just get the certificate array without its size.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.19.8"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 <p></p>
 </div>
@@ -1203,7 +1203,7 @@ will be stored as a string.  Any of <em class="parameter"><code>oid</code></em>
  may
 be NULL which means that the caller is not interested in getting
 that information back.</p>
-<p>The caller needs to deallocate memory by calling <code class="function">gnutls_free()</code> on
+<p>The caller needs to deallocate memory by calling <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a> on
 <em class="parameter"><code>oid-&gt;data</code></em>
  and <em class="parameter"><code>data-&gt;data</code></em>
 .</p>
@@ -1246,9 +1246,9 @@ that information back.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.20.7"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.  If you have reached the last
-extension available <code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> will
+extension available <a class="link" href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS" title="GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a> will
 be returned.</p>
 <p></p>
 </div>
@@ -1262,7 +1262,7 @@ gnutls_ocsp_resp_get_nonce (<em class="parameter"><code><a class="link" href="gn
                             <em class="parameter"><code><span class="type">gnutls_datum_t</span> *nonce</code></em>);</pre>
 <p>This function will return the Basic OCSP Response nonce extension
 data.</p>
-<p>The caller needs to deallocate memory by calling <code class="function">gnutls_free()</code> on
+<p>The caller needs to deallocate memory by calling <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a> on
 <em class="parameter"><code>nonce-&gt;data</code></em>
 .</p>
 <div class="refsect3">
@@ -1294,7 +1294,7 @@ data.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.21.7"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.</p>
 <p></p>
 </div>
@@ -1337,7 +1337,7 @@ gnutls_ocsp_resp_get_responder (<em class="parameter"><code><a class="link" href
 the provided buffer. The name will be in the form
 "C=xxxx,O=yyyy,CN=zzzz" as described in RFC2253. The output string
 will be ASCII or UTF-8 encoded, depending on the certificate data.</p>
-<p>The caller needs to deallocate memory by calling <code class="function">gnutls_free()</code> on
+<p>The caller needs to deallocate memory by calling <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a> on
 <em class="parameter"><code>dn-&gt;data</code></em>
 .</p>
 <div class="refsect3">
@@ -1364,7 +1364,7 @@ will be ASCII or UTF-8 encoded, depending on the certificate data.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.23.7"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.</p>
 <p></p>
 </div>
@@ -1416,7 +1416,7 @@ response part and the caller need not worry about that aspect.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.24.7"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 <p></p>
 </div>
@@ -1452,7 +1452,7 @@ gnutls_ocsp_resp_get_signature (<em class="parameter"><code><a class="link" href
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.25.6"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 <p></p>
 </div>
@@ -1581,9 +1581,9 @@ is <a class="link" href="gnutls-ocsp.html#GNUTLS-OCSP-CERT-REVOKED:CAPS"><code c
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.27.7"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.  If you have reached the last
-CertID available <code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> will be
+CertID available <a class="link" href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS" title="GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a> will be
 returned.</p>
 <p></p>
 </div>
@@ -1680,7 +1680,7 @@ OCSP Response part, if any.  The output will be stored in <em class="parameter">
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.30.6"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 <p></p>
 </div>
@@ -1708,7 +1708,7 @@ gnutls_ocsp_resp_init (<em class="parameter"><code><a class="link" href="gnutls-
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.31.6"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 <p></p>
 </div>
@@ -1725,7 +1725,7 @@ display to a human.</p>
 <p>If the format is <a class="link" href="gnutls-ocsp.html#GNUTLS-OCSP-PRINT-FULL:CAPS"><code class="literal">GNUTLS_OCSP_PRINT_FULL</code></a> then all fields of the
 response will be output, on multiple lines.</p>
 <p>The output <em class="parameter"><code>out-&gt;data</code></em>
- needs to be deallocate using <code class="function">gnutls_free()</code>.</p>
+ needs to be deallocate using <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.11.7.32.7"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -1755,7 +1755,7 @@ response will be output, on multiple lines.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.32.8"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 <p></p>
 </div>
@@ -1784,8 +1784,8 @@ set.</p>
  variable will hold verification status codes
 (e.g., <a class="link" href="gnutls-ocsp.html#GNUTLS-OCSP-VERIFY-SIGNER-NOT-FOUND:CAPS"><code class="literal">GNUTLS_OCSP_VERIFY_SIGNER_NOT_FOUND</code></a>,
 <a class="link" href="gnutls-ocsp.html#GNUTLS-OCSP-VERIFY-INSECURE-ALGORITHM:CAPS"><code class="literal">GNUTLS_OCSP_VERIFY_INSECURE_ALGORITHM</code></a>) which are only valid if the
-function returned <code class="literal">GNUTLS_E_SUCCESS</code>.</p>
-<p>Note that the function returns <code class="literal">GNUTLS_E_SUCCESS</code> even when
+function returned <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a>.</p>
+<p>Note that the function returns <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> even when
 verification failed.  The caller must always inspect the <em class="parameter"><code>verify</code></em>
 
 variable to find out the verification status.</p>
@@ -1825,7 +1825,7 @@ variable to find out the verification status.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.33.9"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 <p></p>
 </div>
@@ -1835,7 +1835,7 @@ negative error value.</p>
 <a name="gnutls-ocsp-resp-verify-direct"></a><h3>gnutls_ocsp_resp_verify_direct ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>
 gnutls_ocsp_resp_verify_direct (<em class="parameter"><code><a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> resp</code></em>,
-                                <em class="parameter"><code><span class="type">gnutls_x509_crt_t</span> issuer</code></em>,
+                                <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> issuer</code></em>,
                                 <em class="parameter"><code>unsigned <span class="type">int</span> *verify</code></em>,
                                 <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
 <p>Verify signature of the Basic OCSP Response against the public key
@@ -1845,8 +1845,8 @@ in the <em class="parameter"><code>issuer</code></em>
  variable will hold verification status codes
 (e.g., <a class="link" href="gnutls-ocsp.html#GNUTLS-OCSP-VERIFY-SIGNER-NOT-FOUND:CAPS"><code class="literal">GNUTLS_OCSP_VERIFY_SIGNER_NOT_FOUND</code></a>,
 <a class="link" href="gnutls-ocsp.html#GNUTLS-OCSP-VERIFY-INSECURE-ALGORITHM:CAPS"><code class="literal">GNUTLS_OCSP_VERIFY_INSECURE_ALGORITHM</code></a>) which are only valid if the
-function returned <code class="literal">GNUTLS_E_SUCCESS</code>.</p>
-<p>Note that the function returns <code class="literal">GNUTLS_E_SUCCESS</code> even when
+function returned <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a>.</p>
+<p>Note that the function returns <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> even when
 verification failed.  The caller must always inspect the <em class="parameter"><code>verify</code></em>
 
 variable to find out the verification status.</p>
@@ -1886,7 +1886,7 @@ variable to find out the verification status.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.11.7.34.9"></a><h4>Returns</h4>
-<p> On success, <code class="literal">GNUTLS_E_SUCCESS</code> (0) is returned, otherwise a
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 <p></p>
 </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 1 January 2014 for version
-3.2.13 of GnuTLS.
+<!-- This manual is last updated 5 April 2014 for version
+3.3.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.13: Simple client example with X.509 certificate support</title>
+<title>GnuTLS 3.3.2: Simple client example with X.509 certificate support</title>
 
-<meta name="description" content="GnuTLS 3.2.13: Simple client example with X.509 certificate support">
-<meta name="keywords" content="GnuTLS 3.2.13: Simple client example with X.509 certificate support">
+<meta name="description" content="GnuTLS 3.3.2: Simple client example with X.509 certificate support">
+<meta name="keywords" content="GnuTLS 3.3.2: Simple client example with X.509 certificate support">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -205,6 +205,11 @@ int main(void)
         const char *err;
         gnutls_certificate_credentials_t xcred;
 
+        if (gnutls_check_version(&quot;3.1.4&quot;) == NULL) {
+                fprintf(stderr, &quot;GnuTLS 3.1.4 is required for this example\n&quot;);
+                exit(1);
+        }
+
         gnutls_global_init();
 
         /* X509 stuff */
@@ -234,7 +239,8 @@ int main(void)
                                strlen(&quot;my_host_name&quot;));
 
         /* Use default priorities */
-        ret = gnutls_priority_set_direct(session, &quot;NORMAL&quot;, &amp;err);
+        ret = gnutls_priority_set_direct(session, 
+                                         &quot;NORMAL&quot;, &amp;err);
         if (ret &lt; 0) {
                 if (ret == GNUTLS_E_INVALID_REQUEST) {
                         fprintf(stderr, &quot;Syntax error at: %s\n&quot;, err);
@@ -325,7 +331,29 @@ static int _verify_certificate_callback(gnutls_session_t session)
         /* This verification function uses the trusted CAs in the credentials
          * structure. So you must have installed one or more CA certificates.
          */
-        ret = gnutls_certificate_verify_peers3(session, hostname, &amp;status);
+
+         /* The following demonstrate two different verification functions,
+          * the more flexible gnutls_certificate_verify_peers(), as well
+          * as the old gnutls_certificate_verify_peers3(). */
+#if 1
+        {
+        gnutls_typed_vdata_st data[2];
+
+        memset(data, 0, sizeof(data));
+
+        data[0].type = GNUTLS_DT_DNS_HOSTNAME;
+        data[0].data = (void*)hostname;
+
+        data[1].type = GNUTLS_DT_KEY_PURPOSE_OID;
+        data[1].data = (void*)GNUTLS_KP_TLS_WWW_SERVER;
+
+        ret = gnutls_certificate_verify_peers(session, data, 2,
+					      &amp;status);
+        }
+#else
+        ret = gnutls_certificate_verify_peers3(session, hostname,
+					       &amp;status);
+#endif
         if (ret &lt; 0) {
                 printf(&quot;Error\n&quot;);
                 return GNUTLS_E_CERTIFICATE_ERROR;

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 1 January 2014 for version
-3.2.13 of GnuTLS.
+<!-- This manual is last updated 5 April 2014 for version
+3.3.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.13: Core TLS API</title>
+<title>GnuTLS 3.3.2: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.2.13: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.2.13: Core TLS API">
+<meta name="description" content="GnuTLS 3.3.2: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.3.2: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -26,7 +26,7 @@ Documentation License". -->
 <link href="Function-and-Data-Index.html#Function-and-Data-Index" rel="index" title="Function and Data Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="API-reference.html#API-reference" rel="up" title="API reference">
-<link href="High-level-TLS-API.html#High-level-TLS-API" rel="next" title="High level TLS API">
+<link href="Datagram-TLS-API.html#Datagram-TLS-API" rel="next" title="Datagram TLS API">
 <link href="API-reference.html#API-reference" rel="prev" title="API reference">
 <style type="text/css">
 <!--
@@ -158,7 +158,7 @@ dl {
 <a name="Core-TLS-API"></a>
 <div class="header">
 <p>
-Next: <a href="High-level-TLS-API.html#High-level-TLS-API" accesskey="n" rel="next">High level TLS API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Datagram-TLS-API.html#Datagram-TLS-API" accesskey="n" rel="next">Datagram TLS API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Core-TLS-API-1"></a>
@@ -496,8 +496,7 @@ helper function is provided in order to allocate it.
 <p>Get whether client certificate is requested or not.
 </p>
 <p><strong>Returns:</strong> 0 if the peer (server) did not request client
-authentication or 1 otherwise, or a negative error code in case of
-error.
+authentication or 1 otherwise.
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fexpiration_005ftime_005fpeers-1"></a>
@@ -727,7 +726,7 @@ must not deallocate the parameters before the certificate is deallocated.
 <h4 class="subheading">gnutls_certificate_set_ocsp_status_request_file</h4>
 <a name="gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffile"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffile"></a>Function: <em>int</em> <strong>gnutls_certificate_set_ocsp_status_request_file</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>, const char * <var>response_file</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>sc</var>: &ndash; undescribed &ndash;
+<dd><p><var>sc</var>: is a credentials structure.
 </p>
 <p><var>response_file</var>: a filename of the OCSP response
 </p>
@@ -986,6 +985,9 @@ the server.  For clients that wants to send more than their own end
 entity certificate (e.g., also an intermediate CA cert) then put
 the certificate chain in  <code>cert_list</code> .
 </p>
+<p>Note that the certificates and keys provided, can be safely deinitialized
+after this function is called.
+</p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p>
 <p><strong>Since:</strong> 2.4.0
@@ -1221,7 +1223,7 @@ is returned.
 <p><strong>Returns:</strong> the number of certificates processed or a negative error code
 on error.
 </p>
-<p><strong>Since:</strong> 3.0
+<p><strong>Since:</strong> 3.0.20
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fset_005fx509_005ftrust-1"></a>
@@ -1373,6 +1375,42 @@ negative error value.
 <p><strong>Since:</strong> 3.1.4
 </p></dd></dl>
 
+<a name="gnutls_005fcertificate_005fverify_005fpeers-1"></a>
+<h4 class="subheading">gnutls_certificate_verify_peers</h4>
+<a name="gnutls_005fcertificate_005fverify_005fpeers"></a><dl>
+<dt><a name="index-gnutls_005fcertificate_005fverify_005fpeers"></a>Function: <em>int</em> <strong>gnutls_certificate_verify_peers</strong> <em>(gnutls_session_t <var>session</var>, gnutls_typed_vdata_st * <var>data</var>, unsigned int <var>elements</var>, unsigned int * <var>status</var>)</em></dt>
+<dd><p><var>session</var>: is a gnutls session
+</p>
+<p><var>data</var>: an array of typed data
+</p>
+<p><var>elements</var>: the number of data elements
+</p>
+<p><var>status</var>: is the output of the verification
+</p>
+<p>This function will verify the peer&rsquo;s certificate and store the
+status in the  <code>status</code> variable as a bitwise or&rsquo;d gnutls_certificate_status_t
+values or zero if the certificate is trusted. Note that value in  <code>status</code> is set only when the return value of this function is success (i.e, failure 
+to trust a certificate does not imply a negative return value).
+The default verification flags used by this function can be overriden
+using <code>gnutls_certificate_set_verify_flags()</code> . See the documentation
+of <code>gnutls_certificate_verify_peers2()</code>  for details in the verification process.
+</p>
+<p>The acceptable data types are <code>GNUTLS_DT_DNS_HOSTNAME</code>  and <code>GNUTLS_DT_KEY_PURPOSE_OID</code> .
+If a DNS hostname is provided then this function will compare
+the hostname in the certificate against the given. The comparison will
+be accurate for ascii names; non-ascii names are compared byte-by-byte. 
+If names do not match the <code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
+</p>
+<p>If a key purpose OID is provided and the end-certificate contains the extended key
+usage PKIX extension, it will be required to be have the provided key purpose 
+(e.g., <code>GNUTLS_KP_TLS_WWW_SERVER</code> ), or be marked for any purpose, otherwise 
+verification will fail with <code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code>  status.
+</p>
+<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0) on success.
+</p>
+<p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
 <a name="gnutls_005fcertificate_005fverify_005fpeers2-1"></a>
 <h4 class="subheading">gnutls_certificate_verify_peers2</h4>
 <a name="gnutls_005fcertificate_005fverify_005fpeers2"></a><dl>
@@ -1385,9 +1423,12 @@ negative error value.
 the status in the  <code>status</code> variable as a bitwise or&rsquo;d gnutls_certificate_status_t
 values or zero if the certificate is trusted. Note that value in  <code>status</code> is set only when the return value of this function is success (i.e, failure 
 to trust a certificate does not imply a negative return value).
+The default verification flags used by this function can be overriden
+using <code>gnutls_certificate_set_verify_flags()</code> .
 </p>
-<p>If available the OCSP Certificate Status extension will be
-utilized by this function.
+<p>This function will take into account the OCSP Certificate Status TLS extension,
+as well as the following X.509 certificate extensions: Name Constraints,
+Key Usage, and Basic Constraints (pathlen).
 </p>
 <p>To avoid denial of service attacks some
 default upper limits regarding the certificate key size and chain
@@ -1414,17 +1455,17 @@ or use <code>gnutls_certificate_verify_peers3()</code> .
 status in the  <code>status</code> variable as a bitwise or&rsquo;d gnutls_certificate_status_t
 values or zero if the certificate is trusted. Note that value in  <code>status</code> is set only when the return value of this function is success (i.e, failure 
 to trust a certificate does not imply a negative return value).
+The default verification flags used by this function can be overriden
+using <code>gnutls_certificate_set_verify_flags()</code> . See the documentation
+of <code>gnutls_certificate_verify_peers2()</code>  for details in the verification process.
 </p>
 <p>If the  <code>hostname</code> provided is non-NULL then this function will compare
-the hostname in the certificate against the given. If they do not match 
-the <code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
+the hostname in the certificate against the given. The comparison will
+be accurate for ascii names; non-ascii names are compared byte-by-byte. 
+If names do not match the <code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
 </p>
-<p>If available the OCSP Certificate Status extension will be
-utilized by this function.
-</p>
-<p>To avoid denial of service attacks some
-default upper limits regarding the certificate key size and chain
-size are set. To override them use <code>gnutls_certificate_set_verify_limits()</code> .
+<p>In order to verify the purpose of the end-certificate (by checking the extended
+key usage), use <code>gnutls_certificate_verify_peers()</code> .
 </p>
 <p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 </p>
@@ -1677,9 +1718,7 @@ It can be used for database entry expiration.
 <a name="gnutls_005fdb_005fget_005fdefault_005fcache_005fexpiration"></a><dl>
 <dt><a name="index-gnutls_005fdb_005fget_005fdefault_005fcache_005fexpiration"></a>Function: <em>unsigned</em> <strong>gnutls_db_get_default_cache_expiration</strong> <em>( <var>void</var>)</em></dt>
 <dd>
-<p><strong>Returns:</strong> the expiration time (in seconds) of stored sessions for resumption. 
-</p>
-<p>Since 3.2.10
+<p>Returns the expiration time (in seconds) of stored sessions for resumption. 
 </p></dd></dl>
 
 <a name="gnutls_005fdb_005fget_005fptr-1"></a>
@@ -1970,8 +2009,8 @@ otherwise a negative error code is returned.
 <a name="gnutls_005fdh_005fparams_005fgenerate2-1"></a>
 <h4 class="subheading">gnutls_dh_params_generate2</h4>
 <a name="gnutls_005fdh_005fparams_005fgenerate2"></a><dl>
-<dt><a name="index-gnutls_005fdh_005fparams_005fgenerate2"></a>Function: <em>int</em> <strong>gnutls_dh_params_generate2</strong> <em>(gnutls_dh_params_t <var>params</var>, unsigned int <var>bits</var>)</em></dt>
-<dd><p><var>params</var>: Is the structure that the DH parameters will be stored
+<dt><a name="index-gnutls_005fdh_005fparams_005fgenerate2"></a>Function: <em>int</em> <strong>gnutls_dh_params_generate2</strong> <em>(gnutls_dh_params_t <var>dparams</var>, unsigned int <var>bits</var>)</em></dt>
+<dd><p><var>dparams</var>: Is the structure that the DH parameters will be stored
 </p>
 <p><var>bits</var>: is the prime&rsquo;s number of bits
 </p>
@@ -2254,6 +2293,18 @@ function.
 an error code is returned.
 </p></dd></dl>
 
+<a name="gnutls_005ffips140_005fmode_005fenabled-1"></a>
+<h4 class="subheading">gnutls_fips140_mode_enabled</h4>
+<a name="gnutls_005ffips140_005fmode_005fenabled"></a><dl>
+<dt><a name="index-gnutls_005ffips140_005fmode_005fenabled"></a>Function: <em>int</em> <strong>gnutls_fips140_mode_enabled</strong> <em>( <var>void</var>)</em></dt>
+<dd>
+<p>Checks whether this library is in FIPS140 mode.
+</p>
+<p><strong>Returns:</strong> return non-zero if true or zero if false.
+</p>
+<p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
 <a name="gnutls_005fglobal_005fdeinit-1"></a>
 <h4 class="subheading">gnutls_global_deinit</h4>
 <a name="gnutls_005fglobal_005fdeinit"></a><dl>
@@ -2261,9 +2312,6 @@ an error code is returned.
 <dd>
 <p>This function deinitializes the global data, that were initialized
 using <code>gnutls_global_init()</code> .
-</p>
-<p>Note!  This function is not thread safe.  See the discussion for
-<code>gnutls_global_init()</code>  for more information.
 </p></dd></dl>
 
 <a name="gnutls_005fglobal_005finit-1"></a>
@@ -2284,12 +2332,9 @@ GnuTLS is used by more than one library in an application.  This
 function can be called many times, but will only do something the
 first time.
 </p>
-<p>Note!  This function is not thread safe.  If two threads call this
-function simultaneously, they can cause a race between checking
-the global counter and incrementing it, causing both threads to
-execute the library initialization code.  That could lead to a
-memory leak or even a crash.  To handle this, your application should 
-invoke this function after aquiring a thread mutex.  
+<p>Since GnuTLS 3.3.0 this function is only required in systems that
+do not support library constructors and static linking. This
+function also became thread safe.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
@@ -2332,7 +2377,7 @@ void (*gnutls_log_func)( int level, const char*);
 <h4 class="subheading">gnutls_global_set_log_level</h4>
 <a name="gnutls_005fglobal_005fset_005flog_005flevel"></a><dl>
 <dt><a name="index-gnutls_005fglobal_005fset_005flog_005flevel"></a>Function: <em>void</em> <strong>gnutls_global_set_log_level</strong> <em>(int <var>level</var>)</em></dt>
-<dd><p><var>level</var>: it&rsquo;s an integer from 0 to 9.
+<dd><p><var>level</var>: it&rsquo;s an integer from 0 to 99.
 </p>
 <p>This is the function that allows you to set the log level.  The
 level is an integer between 0 and 9.  Higher values mean more
@@ -2340,30 +2385,6 @@ verbosity. The default value is 0.  Larger values should only be
 used with care, since they may reveal sensitive information.
 </p>
 <p>Use a log level over 10 to enable all debugging options.
-</p></dd></dl>
-
-<a name="gnutls_005fglobal_005fset_005fmem_005ffunctions-1"></a>
-<h4 class="subheading">gnutls_global_set_mem_functions</h4>
-<a name="gnutls_005fglobal_005fset_005fmem_005ffunctions"></a><dl>
-<dt><a name="index-gnutls_005fglobal_005fset_005fmem_005ffunctions"></a>Function: <em>void</em> <strong>gnutls_global_set_mem_functions</strong> <em>(gnutls_alloc_function <var>alloc_func</var>, gnutls_alloc_function <var>secure_alloc_func</var>, gnutls_is_secure_function <var>is_secure_func</var>, gnutls_realloc_function <var>realloc_func</var>, gnutls_free_function <var>free_func</var>)</em></dt>
-<dd><p><var>alloc_func</var>: it&rsquo;s the default memory allocation function. Like <code>malloc()</code> .
-</p>
-<p><var>secure_alloc_func</var>: This is the memory allocation function that will be used for sensitive data.
-</p>
-<p><var>is_secure_func</var>: a function that returns 0 if the memory given is not secure. May be NULL.
-</p>
-<p><var>realloc_func</var>: A realloc function
-</p>
-<p><var>free_func</var>: The function that frees allocated data. Must accept a NULL pointer.
-</p>
-<p>This is the function where you set the memory allocation functions
-gnutls is going to use. By default the libc&rsquo;s allocation functions
-(<code>malloc()</code> , <code>free()</code> ), are used by gnutls, to allocate both sensitive
-and not sensitive data.  This function is provided to set the
-memory allocation functions to something other than the defaults
-</p>
-<p>This function must be called before <code>gnutls_global_init()</code>  is called.
-This function is not thread safe.
 </p></dd></dl>
 
 <a name="gnutls_005fglobal_005fset_005fmutex-1"></a>
@@ -2607,9 +2628,7 @@ will select automatically a random value for the handshake.
 to the provided value. Use an  <code>ms</code> value of zero to disable
 timeout.
 </p>
-<p>Note that in order for the timeout to be enforced
-<code>gnutls_transport_set_pull_timeout_function()</code>  must be set
-(it is set by default in most systems).
+<p><strong>Since:</strong> 3.1.0
 </p></dd></dl>
 
 <a name="gnutls_005fheartbeat_005fallowed-1"></a>
@@ -2637,8 +2656,11 @@ to be sent or received in this session.
 <p><var>type</var>: one of the GNUTLS_HB_* flags
 </p>
 <p>If this function is called with the <code>GNUTLS_HB_PEER_ALLOWED_TO_SEND</code> 
-GnuTLS will allow heartbeat messages to be received. Moreover it also
+ <code>type</code> , GnuTLS will allow heartbeat messages to be received. Moreover it also
 request the peer to accept heartbeat messages.
+</p>
+<p>If the  <code>type</code> used is <code>GNUTLS_HB_LOCAL_ALLOWED_TO_SEND</code> , then the peer
+will be asked to accept heartbeat messages but not send ones.
 </p>
 <p>The function <code>gnutls_heartbeat_allowed()</code>  can be used to test Whether
 locally generated heartbeat messages can be accepted by the peer.
@@ -3409,12 +3431,16 @@ separated list of the cipher priorities to enable.
 Some keywords are defined to provide quick access
 to common preferences.
 </p>
-<p>Unless there is a special need, using &quot;NORMAL&quot; or &quot;NORMAL:<code>COMPAT</code> &quot; for compatibility 
-is recommended.
+<p>Unless there is a special need, use the &quot;NORMAL&quot; keyword to
+apply a reasonable security level, or &quot;NORMAL:<code>COMPAT</code> &quot; for compatibility.
 </p>
 <p>&quot;PERFORMANCE&quot; means all the &quot;secure&quot; ciphersuites are enabled,
 limited to 128 bit ciphers and sorted by terms of speed
 performance.
+</p>
+<p>&quot;LEGACY&quot; the NORMAL settings for GnuTLS 3.2.x or earlier. There is
+no verification profile set, and the allowed DH primes are considered
+weak today.
 </p>
 <p>&quot;NORMAL&quot; means all &quot;secure&quot; ciphersuites. The 256-bit ciphers are
 included as a fallback only.  The ciphers are sorted by security
@@ -3441,6 +3467,13 @@ low-security 40 bit ciphers.
 </p>
 <p>&quot;NONE&quot; means nothing is enabled.  This disables even protocols and
 compression methods.
+</p>
+<p>&quot; <code>KEYWORD</code> &quot; The system administrator imposed settings. The provided keywords
+will be expanded from a configuration-time provided file - default is:
+/etc/gnutls/default-priorities. Any keywords that follow it, will 
+be appended to the expanded string. If there is no system string,
+then the function will fail. The system file should be formatted
+as &quot;KEYWORD=VALUE&quot;, e.g., &quot;SYSTEM=NORMAL:-ARCFOUR-128&quot;.
 </p>
 <p>Special keywords are &quot;!&quot;, &quot;-&quot; and &quot;+&quot;.
 &quot;!&quot; or &quot;-&quot; appended with an algorithm will remove this algorithm.
@@ -3935,6 +3968,8 @@ is guaranteed not to block.
 All queued records will be sent when <code>gnutls_uncork()</code>  is called, or
 when the maximum record size is reached.
 </p>
+<p>This function is safe to use with DTLS after GnuTLS 3.3.0.
+</p>
 <p><strong>Since:</strong> 3.1.9
 </p></dd></dl>
 
@@ -4069,21 +4104,25 @@ received might be less than  <code>data_size</code> .
 difference is that it accepts a GnuTLS session, and uses different
 error codes.
 Note that if the send buffer is full, <code>send()</code>  will block this
-function.  See the <code>send()</code>  documentation for full information.  You
-can replace the default push function by using
-<code>gnutls_transport_set_ptr2()</code>  with a call to <code>send()</code>  with a
-MSG_DONTWAIT flag if blocking is a problem.
-If the EINTR is returned by the internal push function (the
-default is <code>send()</code> ) then <code>GNUTLS_E_INTERRUPTED</code>  will be returned. If
+function.  See the <code>send()</code>  documentation for more information.  
+</p>
+<p>You can replace the default push function which is <code>send()</code> , by using
+<code>gnutls_transport_set_push_function()</code> .
+</p>
+<p>If the EINTR is returned by the internal push function 
+then <code>GNUTLS_E_INTERRUPTED</code>  will be returned. If
 <code>GNUTLS_E_INTERRUPTED</code>  or <code>GNUTLS_E_AGAIN</code>  is returned, you must
-call this function again, with the same parameters; alternatively
+call this function again, with the exact same parameters; alternatively
 you could provide a <code>NULL</code>  pointer for data, and 0 for
 size. cf. <code>gnutls_record_get_direction()</code> . 
 </p>
 <p>Note that in DTLS this function will return the <code>GNUTLS_E_LARGE_PACKET</code> 
 error code if the send data exceed the data MTU value - as returned
 by <code>gnutls_dtls_get_data_mtu()</code> . The errno value EMSGSIZE
-also maps to <code>GNUTLS_E_LARGE_PACKET</code> .
+also maps to <code>GNUTLS_E_LARGE_PACKET</code> . 
+Note that since 3.2.13 this function can be called under cork in DTLS
+mode, and will refuse to send data over the MTU size by returning
+<code>GNUTLS_E_LARGE_PACKET</code> .
 </p>
 <p><strong>Returns:</strong> The number of bytes sent, or a negative error code.  The
 number of bytes sent might be less than  <code>data_size</code> .  The maximum
@@ -4171,10 +4210,6 @@ otherwise a negative error code is returned.
 to the provided value. Use an  <code>ms</code> value of zero to disable
 timeout (the default).
 </p>
-<p>Note that in order for the timeout to be enforced
-<code>gnutls_transport_set_pull_timeout_function()</code>  must be set
-(it is set by default in most systems).
-</p>
 <p><strong>Since:</strong> 3.1.7
 </p></dd></dl>
 
@@ -4226,8 +4261,8 @@ is returned to clear any pending data. Care must be taken if
 rehandshake is mandatory to terminate if it does not start after
 some threshold.
 </p>
-<p>If the client does not wish to renegotiate parameters he will
-should with an alert message, thus the return code will be
+<p>If the client does not wish to renegotiate parameters he 
+should reply with an alert message, thus the return code will be
 <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code>  and the alert will be
 <code>GNUTLS_A_NO_RENEGOTIATION</code> .  A client may also choose to ignore
 this message.
@@ -4281,6 +4316,20 @@ appropriate size for the specific algorithm.
 <p><strong>Returns:</strong> The number of bits, or (0).
 </p>
 <p><strong>Since:</strong> 2.12.0
+</p></dd></dl>
+
+<a name="gnutls_005fsec_005fparam_005fto_005fsymmetric_005fbits-1"></a>
+<h4 class="subheading">gnutls_sec_param_to_symmetric_bits</h4>
+<a name="gnutls_005fsec_005fparam_005fto_005fsymmetric_005fbits"></a><dl>
+<dt><a name="index-gnutls_005fsec_005fparam_005fto_005fsymmetric_005fbits"></a>Function: <em>unsigned int</em> <strong>gnutls_sec_param_to_symmetric_bits</strong> <em>(gnutls_sec_param_t <var>param</var>)</em></dt>
+<dd><p><var>param</var>: is a security parameter
+</p>
+<p>This function will return the number of bits that correspond to
+symmetric cipher strength for the given security parameter.
+</p>
+<p><strong>Returns:</strong> The number of bits, or (0).
+</p>
+<p><strong>Since:</strong> 3.3.0
 </p></dd></dl>
 
 <a name="gnutls_005fserver_005fname_005fget-1"></a>
@@ -5079,17 +5128,52 @@ gnutls_datum_t* prime);
 The  <code>salt</code> ,  <code>verifier</code> ,  <code>generator</code> and  <code>prime</code> must be filled
 in using the <code>gnutls_malloc()</code> . For convenience  <code>prime</code> and  <code>generator</code> may also be one of the static parameters defined in gnutls.h.
 </p>
-<p>In case the callback returned a negative number then gnutls will
-assume that the username does not exist.
-</p>
 <p>In order to prevent attackers from guessing valid usernames,
 if a user does not exist, g and n values should be filled in
 using a random user&rsquo;s parameters. In that case the callback must
 return the special value (1).
+See <code>gnutls_srp_set_server_fake_salt_seed</code>  too.
+If this is not required for your application, return a negative
+number from the callback to abort the handshake.
 </p>
 <p>The callback function will only be called once per handshake.
 The callback function should return 0 on success, while
 -1 indicates an error.
+</p></dd></dl>
+
+<a name="gnutls_005fsrp_005fset_005fserver_005ffake_005fsalt_005fseed-1"></a>
+<h4 class="subheading">gnutls_srp_set_server_fake_salt_seed</h4>
+<a name="gnutls_005fsrp_005fset_005fserver_005ffake_005fsalt_005fseed"></a><dl>
+<dt><a name="index-gnutls_005fsrp_005fset_005fserver_005ffake_005fsalt_005fseed"></a>Function: <em>void</em> <strong>gnutls_srp_set_server_fake_salt_seed</strong> <em>(gnutls_srp_server_credentials_t <var>cred</var>, const gnutls_datum_t * <var>seed</var>, unsigned int <var>salt_length</var>)</em></dt>
+<dd><p><var>cred</var>: is a <code>gnutls_srp_server_credentials_t</code>  structure
+</p>
+<p><var>seed</var>: is the seed data, only needs to be valid until the function
+returns; size of the seed must be greater than zero
+</p>
+<p><var>salt_length</var>: is the length of the generated fake salts
+</p>
+<p>This function sets the seed that is used to generate salts for
+invalid (non-existent) usernames.
+</p>
+<p>In order to prevent attackers from guessing valid usernames,
+when a user does not exist gnutls generates a salt and a verifier
+and proceeds with the protocol as usual.
+The authentication will ultimately fail, but the client cannot tell
+whether the username is valid (exists) or invalid.
+</p>
+<p>If an attacker learns the seed, given a salt (which is part of the
+handshake) which was generated when the seed was in use, it can tell
+whether or not the authentication failed because of an unknown username.
+This seed cannot be used to reveal application data or passwords.
+</p>
+<p><code>salt_length</code> should represent the salt length your application uses.
+Generating fake salts longer than 20 bytes is not supported.
+</p>
+<p>By default the seed is a random value, different each time a
+<code>gnutls_srp_server_credentials_t</code>  is allocated and fake salts are
+16 bytes long.
+</p>
+<p><strong>Since:</strong> 3.3.0
 </p></dd></dl>
 
 <a name="gnutls_005fsrp_005fverifier-1"></a>
@@ -5324,7 +5408,7 @@ negative error value.
 </p>
 <p><var>flags</var>: should be 0.
 </p>
-<p>This function will store the provided certificate to 
+<p>This function will store the provided (raw or DER-encoded) certificate to 
 the list of stored public keys. The key will be considered valid until 
 the provided expiration time.
 </p>
@@ -5335,7 +5419,7 @@ default file backend will be used.
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
 </p>
-<p><strong>Since:</strong> 3.0
+<p><strong>Since:</strong> 3.0.13
 </p></dd></dl>
 
 <a name="gnutls_005fstrerror-1"></a>
@@ -5722,8 +5806,8 @@ it is not known.
 </p>
 <p><var>flags</var>: should be 0.
 </p>
-<p>This function will try to verify the provided certificate using
-a list of stored public keys.  The  <code>service</code> field if non-NULL should
+<p>This function will try to verify the provided (raw or DER-encoded) certificate 
+using a list of stored public keys.  The  <code>service</code> field if non-NULL should
 be a port number.
 </p>
 <p>The  <code>retrieve</code> variable if non-null specifies a custom backend for
@@ -5744,14 +5828,14 @@ is found but does not match <code>GNUTLS_E_CERTIFICATE_KEY_MISMATCH</code>
 is returned. On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, 
 or a negative error value on other errors.
 </p>
-<p><strong>Since:</strong> 3.0
+<p><strong>Since:</strong> 3.0.13
 </p></dd></dl>
 
 
 <hr>
 <div class="header">
 <p>
-Next: <a href="High-level-TLS-API.html#High-level-TLS-API" accesskey="n" rel="next">High level TLS API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Datagram-TLS-API.html#Datagram-TLS-API" accesskey="n" rel="next">Datagram TLS API</a>, Up: <a href="API-reference.html#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

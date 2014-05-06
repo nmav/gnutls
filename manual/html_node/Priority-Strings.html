@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 1 January 2014 for version
-3.2.13 of GnuTLS.
+<!-- This manual is last updated 5 April 2014 for version
+3.3.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.13: Priority Strings</title>
+<title>GnuTLS 3.3.2: Priority Strings</title>
 
-<meta name="description" content="GnuTLS 3.2.13: Priority Strings">
-<meta name="keywords" content="GnuTLS 3.2.13: Priority Strings">
+<meta name="description" content="GnuTLS 3.3.2: Priority Strings">
+<meta name="keywords" content="GnuTLS 3.3.2: Priority Strings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -165,11 +165,14 @@ Next: <a href="Selecting-cryptographic-key-sizes.html#Selecting-cryptographic-ke
 <h3 class="section">6.10 Priority strings</h3>
 <a name="index-Priority-strings"></a>
 
-<p>The GnuTLS priority string specifies the TLS session&rsquo;s handshake
+<p>The GnuTLS priority strings specify the TLS session&rsquo;s handshake
 algorithms and options in a compact, easy-to-use format.  That string
 may contain a single initial keyword such as in
 <a href="#tab_003aprio_002dkeywords">Table 6.2</a> and may be followed by additional algorithm or
-special keywords.
+special keywords. Note that their description is intentionally avoiding
+specific algorithm details, as the priority strings are not constant between
+gnutls versions (they are periodically updated to account for cryptographic
+advances while providing compatibility with old clients and servers).
 </p>
 <dl compact="compact">
 <dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fpriority_005fset_005fdirect">gnutls_priority_set_direct</a> (gnutls_session_t <var>session</var>, const char * <var>priorities</var>, const char ** <var>err_pos</var>)</code></dt>
@@ -179,33 +182,51 @@ special keywords.
 <div class="float"><a name="tab_003aprio_002dkeywords"></a>
 <table>
 <thead><tr><th width="20%">Keyword</th><th width="70%">Description</th></tr></thead>
+<tr><td width="20%">@KEYWORD</td><td width="70%">Means that a compile-time specified system configuration file<a name="DOCF11" href="#FOOT11"><sup>11</sup></a> 
+will be used to expand the provided keyword. That is used to impose system-specific policies.
+It may be followed by additional options that will be appended to the
+system string (e.g., &quot;@SYSTEM:+SRP&quot;). The system file should have the
+format &rsquo;KEYWORD=VALUE&rsquo;, e.g., &rsquo;SYSTEM=NORMAL:-ARCFOUR-128&rsquo;.</td></tr>
 <tr><td width="20%">PERFORMANCE</td><td width="70%">All the known to be secure ciphersuites are enabled,
 limited to 128 bit ciphers and sorted by terms of speed
-performance. The message authenticity security level is of 64 bits or more.</td></tr>
+performance. The message authenticity security level is of 64 bits or more,
+and the certificate verification profile is set to GNUTLS_PROFILE_LOW (80-bits).</td></tr>
 <tr><td width="20%">NORMAL</td><td width="70%">Means all the known to be secure ciphersuites. The ciphers are sorted by security
 margin, although the 256-bit ciphers are included as a fallback only.
-The message authenticity security level is of 64 bits or more.
+The message authenticity security level is of 64 bits or more,
+and the certificate verification profile is set to GNUTLS_PROFILE_LOW (80-bits).
 
-<p>This priority string implicitly enables DHE and ECDHE.
+<p>This priority string implicitly enables ECDHE and DHE. The ECDHE ciphersuites
+are placed first in the priority order, but due to compatibility 
+issues with the DHE ciphersuites they are placed last in the priority order,
+after the plain RSA ciphersuites.
 </p></td></tr>
+<tr><td width="20%">LEGACY</td><td width="70%">This sets the NORMAL settings that were used for GnuTLS 3.2.x or earlier. There is
+no verification profile set, and the allowed DH primes are considered
+weak today (but are often used by misconfigured servers).</td></tr>
 <tr><td width="20%">PFS</td><td width="70%">Means all the known to be secure ciphersuites that support perfect forward
-secrecy. The ciphers are sorted by security
+secrecy (ECDHE and DHE). The ciphers are sorted by security
 margin, although the 256-bit ciphers are included as a fallback only.
-The message authenticity security level is of 64 bits or more. This
-option is available since 3.2.4 or later.</td></tr>
+The message authenticity security level is of 80 bits or more,
+and the certificate verification profile is set to GNUTLS_PROFILE_LOW (80-bits).
+This option is available since 3.2.4 or later.</td></tr>
 <tr><td width="20%">SECURE128</td><td width="70%">Means all known to be secure ciphersuites that offer a 
-security level 128-bit or more and a message authenticity
-security level of 80 bits or more.</td></tr>
+security level 128-bit or more.
+The message authenticity security level is of 80 bits or more,
+and the certificate verification profile is set to GNUTLS_PROFILE_LOW (80-bits).</td></tr>
 <tr><td width="20%">SECURE192</td><td width="70%">Means all the known to be secure ciphersuites that offer a 
-security level 192-bit or more and a message authenticity
-security level of 128 bits or more.</td></tr>
+security level 192-bit or more.
+The message authenticity security level is of 128 bits or more,
+and the certificate verification profile is set to GNUTLS_PROFILE_HIGH (128-bits).</td></tr>
 <tr><td width="20%">SECURE256</td><td width="70%">Currently alias for SECURE192.</td></tr>
 <tr><td width="20%">SUITEB128</td><td width="70%">Means all the NSA Suite B cryptography (RFC5430) ciphersuites
-with an 128 bit security level.</td></tr>
+with an 128 bit security level, as well as the enabling of the corresponding
+verification profile.</td></tr>
 <tr><td width="20%">SUITEB192</td><td width="70%">Means all the NSA Suite B cryptography (RFC5430) ciphersuites
-with an 192 bit security level.</td></tr>
-<tr><td width="20%">EXPORT</td><td width="70%">Means all ciphersuites are enabled, including the
-low-security 40 bit ciphers.</td></tr>
+with an 192 bit security level, as well as the enabling of the corresponding
+verification profile.</td></tr>
+<tr><td width="20%">EXPORT</td><td width="70%">This priority string should be treated as deprecated. 
+GnuTLS no longer negotiates 40-bit ciphers.</td></tr>
 <tr><td width="20%">NONE</td><td width="70%">Means nothing is enabled.  This disables even protocols and
 compression methods. It should be followed by the
 algorithms to be enabled.</td></tr>
@@ -281,7 +302,7 @@ is SIGN-ALL. This is only valid for TLS 1.2 and later.</td></tr>
 
 <div class="float-caption"><p><strong>Table 6.3: </strong>The supported algorithm keywords in priority strings.</p></div></div>
 <p>Note that the DHE key exchange methods are generally
-slower<a name="DOCF11" href="#FOOT11"><sup>11</sup></a> than their elliptic curves counterpart
+slower<a name="DOCF12" href="#FOOT12"><sup>12</sup></a> than their elliptic curves counterpart
 (ECDHE). Moreover the plain Diffie-Hellman key exchange
 requires parameters to be generated and associated with a credentials
 structure by the server (see <a href="Parameter-generation.html#Parameter-generation">Parameter generation</a>). 
@@ -321,6 +342,8 @@ help to mitigate attacks when compression is used but an attacker
 is in control of input data. This has to be used only when the
 data that are possibly controlled by an attacker are placed in
 separate records.</td></tr>
+<tr><td width="45%">%DISABLE_WILDCARDS</td><td width="45%">will disable matching wildcards when comparing hostnames
+in certificates.</td></tr>
 <tr><td width="45%">%DISABLE_SAFE_RENEGOTIATION</td><td width="45%">will completely disable safe renegotiation
 completely.  Do not use unless you know what you are doing.</td></tr>
 <tr><td width="45%">%UNSAFE_RENEGOTIATION</td><td width="45%">will allow handshakes and re-handshakes
@@ -340,6 +363,10 @@ causes interoperability problems, but is required for full protection.</td></tr>
 <tr><td width="45%">%VERIFY_ALLOW_SIGN_RSA_MD5</td><td width="45%">will allow RSA-MD5 signatures in certificate chains.</td></tr>
 <tr><td width="45%">%VERIFY_DISABLE_CRL_CHECKS</td><td width="45%">will disable CRL or OCSP checks in the verification of the certificate chain.</td></tr>
 <tr><td width="45%">%VERIFY_ALLOW_X509_V1_CA_CRT</td><td width="45%">will allow V1 CAs in chains.</td></tr>
+<tr><td width="45%">%PROFILE_(LOW|LEGACY|MEDIUM|HIGH|ULTRA)</td><td width="45%">require a certificate verification profile the corresponds to the specified
+security level, see <a href="Selecting-cryptographic-key-sizes.html#tab_003akey_002dsizes">Table 6.6</a> for the mappings to values.</td></tr>
+<tr><td width="45%">%PROFILE_(SUITEB128|SUITEB192)</td><td width="45%">require a certificate verification profile the corresponds to SUITEB. Note
+that an initial keyword that enables SUITEB automatically sets the profile.</td></tr>
 </table>
 
 <div class="float-caption"><p><strong>Table 6.5: </strong>More priority string keywords.</p></div></div>
@@ -349,7 +376,10 @@ or by using the priority functions as in <a href="Listing-the-ciphersuites-in-a-
 </p>
 <p>Example priority strings are:
 </p><div class="example">
-<pre class="example">The default priority without the HMAC-MD5:
+<pre class="example">The system imposed security level:
+    &quot;SYSTEM&quot;
+
+The default priority without the HMAC-MD5:
     &quot;NORMAL:-MD5&quot;
 
 Specifying RSA with AES-128-CBC:
@@ -371,6 +401,8 @@ except TLS 1.2:
 <h4 class="footnotes-heading">Footnotes</h4>
 
 <h3><a name="FOOT11" href="#DOCF11">(11)</a></h3>
+<p>The default is <code>/etc/gnutls/default-priorities</code>.</p>
+<h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
 <p>It depends on the group used.  Primes with
 lesser bits are always faster, but also easier to break.  See <a href="Selecting-cryptographic-key-sizes.html#Selecting-cryptographic-key-sizes">Selecting cryptographic key sizes</a>
 for the acceptable security levels.</p>

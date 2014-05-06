@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 1 January 2014 for version
-3.2.13 of GnuTLS.
+<!-- This manual is last updated 5 April 2014 for version
+3.3.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.13: Parameter generation</title>
+<title>GnuTLS 3.3.2: Parameter generation</title>
 
-<meta name="description" content="GnuTLS 3.2.13: Parameter generation">
-<meta name="keywords" content="GnuTLS 3.2.13: Parameter generation">
+<meta name="description" content="GnuTLS 3.3.2: Parameter generation">
+<meta name="keywords" content="GnuTLS 3.3.2: Parameter generation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -177,7 +177,7 @@ The parameters can be used in a <acronym>TLS</acronym> session by calling
 <a href="Core-TLS-API.html#gnutls_005fanon_005fset_005fserver_005fdh_005fparams">gnutls_anon_set_server_dh_params</a> for anonymous sessions.
 </p>
 <dl compact="compact">
-<dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fdh_005fparams_005fgenerate2">gnutls_dh_params_generate2</a> (gnutls_dh_params_t <var>params</var>, unsigned int <var>bits</var>)</code></dt>
+<dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fdh_005fparams_005fgenerate2">gnutls_dh_params_generate2</a> (gnutls_dh_params_t <var>dparams</var>, unsigned int <var>bits</var>)</code></dt>
 <dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fdh_005fparams_005fimport_005fpkcs3">gnutls_dh_params_import_pkcs3</a> (gnutls_dh_params_t <var>params</var>, const gnutls_datum_t * <var>pkcs3_params</var>, gnutls_x509_crt_fmt_t <var>format</var>)</code></dt>
 <dt><code><var>void</var> <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fdh_005fparams">gnutls_certificate_set_dh_params</a> (gnutls_certificate_credentials_t <var>res</var>, gnutls_dh_params_t <var>dh_params</var>)</code></dt>
 <dt><code><var>void</var> <a href="Core-TLS-API.html#gnutls_005fanon_005fset_005fserver_005fdh_005fparams">gnutls_anon_set_server_dh_params</a> (gnutls_anon_server_credentials_t <var>res</var>, gnutls_dh_params_t <var>dh_params</var>)</code></dt>

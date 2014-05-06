@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 1 January 2014 for version
-3.2.13 of GnuTLS.
+<!-- This manual is last updated 5 April 2014 for version
+3.3.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.13: PKCS11 Initialization</title>
+<title>GnuTLS 3.3.2: PKCS11 Initialization</title>
 
-<meta name="description" content="GnuTLS 3.2.13: PKCS11 Initialization">
-<meta name="keywords" content="GnuTLS 3.2.13: PKCS11 Initialization">
+<meta name="description" content="GnuTLS 3.3.2: PKCS11 Initialization">
+<meta name="keywords" content="GnuTLS 3.3.2: PKCS11 Initialization">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -194,7 +194,7 @@ prior to <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_in
 
 <dl>
 <dt><a name="index-gnutls_005fpkcs11_005finit"></a>Function: <em>int</em> <strong>gnutls_pkcs11_init</strong> <em>(unsigned int <var>flags</var>, const char * <var>deprecated_config_file</var>)</em></dt>
-<dd><p><var>flags</var>: <code>GNUTLS_PKCS11_FLAG_MANUAL</code>  or <code>GNUTLS_PKCS11_FLAG_AUTO</code> 
+<dd><p><var>flags</var>: An ORed sequence of <code>GNUTLS_PKCS11_FLAG_</code> *
 </p>
 <p><var>deprecated_config_file</var>: either NULL or the location of a deprecated
 configuration file
@@ -205,8 +205,9 @@ you to independently load PKCS 11 modules using <code>gnutls_pkcs11_add_provider
 if <code>GNUTLS_PKCS11_FLAG_MANUAL</code>  is specified.
 </p>
 <p>Normally you don&rsquo;t need to call this function since it is being called
-by <code>gnutls_global_init()</code>  using the <code>GNUTLS_PKCS11_FLAG_AUTO</code> . If other option
-is required then it must be called before it.
+when the first PKCS 11 operation is requested using the <code>GNUTLS_PKCS11_FLAG_AUTO</code> 
+flag. If another flags are required then it must be called independently
+prior to any PKCS 11 operation.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -215,26 +216,10 @@ negative error value.
 </p></dd></dl>
 
 <p>Note that PKCS #11 modules must be reinitialized on the child processes
-after a <code>fork</code>. <acronym>GnuTLS</acronym> provides <a href="PKCS-11-API.html#gnutls_005fpkcs11_005freinit">gnutls_pkcs11_reinit</a>
-to be called for this purpose.
+after a <code>fork</code>. In older versions of <acronym>GnuTLS</acronym> it was
+required to call <a href="PKCS-11-API.html#gnutls_005fpkcs11_005freinit">gnutls_pkcs11_reinit</a>; since 3.3.0 this is no
+longer required, as reinitialization occurs automatically.
 </p>
-
-
-
-
-<dl>
-<dt><a name="index-gnutls_005fpkcs11_005freinit"></a>Function: <em>int</em> <strong>gnutls_pkcs11_reinit</strong> <em>( <var>void</var>)</em></dt>
-<dd>
-<p>This function will reinitialize the PKCS 11 subsystem in gnutls. 
-This is required by PKCS 11 when an application uses <code>fork()</code> . The
-reinitialization function must be called on the child.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p>
-<p><strong>Since:</strong> 3.0
-</p></dd></dl>
-
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 1 January 2014 for version
-3.2.13 of GnuTLS.
+<!-- This manual is last updated 5 April 2014 for version
+3.3.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.13: gnutls-cli Invocation</title>
+<title>GnuTLS 3.3.2: gnutls-cli Invocation</title>
 
-<meta name="description" content="GnuTLS 3.2.13: gnutls-cli Invocation">
-<meta name="keywords" content="GnuTLS 3.2.13: gnutls-cli Invocation">
+<meta name="description" content="GnuTLS 3.3.2: gnutls-cli Invocation">
+<meta name="keywords" content="GnuTLS 3.3.2: gnutls-cli Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -249,16 +249,16 @@ Usage:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&g
    -l, --list                 Print a list of the supported algorithms and modes
        --noticket             Don't allow session tickets
        --srtp-profiles=str    Offer SRTP profiles
-   -!, --alpn=str             Application layer protocol
+       --alpn=str             Application layer protocol
                                 - may appear multiple times
    -b, --heartbeat            Activate heartbeat support
-   -&quot;, --recordsize=num       The maximum record size to advertize
+       --recordsize=num       The maximum record size to advertize
                                 - it must be in the range:
                                   0 to 4096
-   -#, --disable-sni          Do not send a Server Name Indication (SNI)
-   -$, --disable-extensions   Disable all the TLS extensions
-   -%, --inline-commands      Inline commands of the form ^&lt;cmd&gt;^
-   -&amp;, --inline-commands-prefix=str Change the default (^) used as a delimiter for inline commands.  The
+       --disable-sni          Do not send a Server Name Indication (SNI)
+       --disable-extensions   Disable all the TLS extensions
+       --inline-commands      Inline commands of the form ^&lt;cmd&gt;^
+       --inline-commands-prefix=str Change the default (^) used as a delimiter for inline commands.  The
 value is a single US-ASCII character (octets 0 - 127).
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
@@ -272,7 +272,7 @@ Simple client program to set up a TLS connection to some other computer.  It
 sets up a TLS connection and forwards data from the standard input to the
 secured socket and vice versa.
 
-Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
+Please send bug reports to:  &lt;bugs@gnutls.org&gt;
 </pre></div>
 
 <a name="gnutls_002dcli-debug"></a><a name="debug-option-_0028_002dd_0029-7"></a>
@@ -291,7 +291,10 @@ Specifies the debug level.
 <li> can be disabled with &ndash;no-tofu.
 </li></ul>
 
-<p>This option will, in addition to certificate authentication, perform authentication based on previously seen public keys, a model similar to SSH authentication.
+<p>This option will, in addition to certificate authentication, perform authentication
+based on previously seen public keys, a model similar to SSH authentication. Note that when tofu 
+is specified (PKI) and DANE authentication will become advisory to assist the public key acceptance
+process.
 <a name="gnutls_002dcli-strict_002dtofu"></a></p><a name="strict_002dtofu-option"></a>
 <h4 class="subheading">strict-tofu option</h4>
 
@@ -302,7 +305,7 @@ Specifies the debug level.
 <li> can be disabled with &ndash;no-strict-tofu.
 </li></ul>
 
-<p>This option will perform authentication as with option &ndash;tofu; however, while &ndash;tofu asks whether to trust a changed certificate, this option will fail in case of certificate changes.
+<p>This option will perform authentication as with option &ndash;tofu; however, while &ndash;tofu asks whether to trust a changed public key, this option will fail in case of public key changes.
 <a name="gnutls_002dcli-dane"></a></p><a name="dane-option"></a>
 <h4 class="subheading">dane option</h4>
 
@@ -379,15 +382,15 @@ This option sets the minimum number of bits allowed for a Diffie-Hellman key exc
 This option takes a string argument.
 TLS algorithms and protocols to enable. You can
 use predefined sets of ciphersuites such as PERFORMANCE,
-NORMAL, SECURE128, SECURE256. The default is NORMAL.
+NORMAL, PFS, SECURE128, SECURE256. The default is NORMAL.
 </p>
 <p>Check  the  GnuTLS  manual  on  section  &ldquo;Priority strings&rdquo; for more
-information on allowed keywords
+information on the allowed keywords
 <a name="gnutls_002dcli-ranges"></a></p><a name="ranges-option"></a>
 <h4 class="subheading">ranges option</h4>
 
 <p>This is the &ldquo;use length-hiding padding to prevent traffic analysis&rdquo; option.
-When possible (e.g., when %NEW_PADDING is specified), use length-hiding padding to prevent traffic analysis.
+When possible (e.g., when using CBC ciphersuites), use length-hiding padding to prevent traffic analysis.
 <a name="gnutls_002dcli-list"></a></p><a name="list-option-_0028_002dl_0029"></a>
 <h4 class="subheading">list option (-l)</h4>
 
@@ -422,6 +425,12 @@ Enable inline commands of the form ^&lt;cmd&gt;^. The inline commands are expect
 				the value is a single us-ascii character (octets 0 - 127).&rdquo; option.
 This option takes a string argument.
 Change the default (^) delimiter used for inline commands. The delimiter is expected to be a single US-ASCII character (octets 0 - 127). This option is only relevant if inline commands are enabled via the inline-commands option
+<a name="gnutls_002dcli-provider"></a></p><a name="provider-option-2"></a>
+<h4 class="subheading">provider option</h4>
+
+<p>This is the &ldquo;specify the pkcs #11 provider library&rdquo; option.
+This option takes a file argument.
+This will override the default options in /etc/gnutls/pkcs11.conf
 <a name="gnutls_002dcli-exit-status"></a></p><a name="gnutls_002dcli-exit-status-1"></a>
 <h4 class="subheading">gnutls-cli exit status</h4>
 

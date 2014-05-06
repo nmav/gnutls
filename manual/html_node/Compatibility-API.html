@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 1 January 2014 for version
-3.2.13 of GnuTLS.
+<!-- This manual is last updated 5 April 2014 for version
+3.3.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.13: Compatibility API</title>
+<title>GnuTLS 3.3.2: Compatibility API</title>
 
-<meta name="description" content="GnuTLS 3.2.13: Compatibility API">
-<meta name="keywords" content="GnuTLS 3.2.13: Compatibility API">
+<meta name="description" content="GnuTLS 3.3.2: Compatibility API">
+<meta name="keywords" content="GnuTLS 3.3.2: Compatibility API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -162,7 +162,7 @@ Previous: <a href="Cryptographic-API.html#Cryptographic-API" accesskey="p" rel="
 </div>
 <hr>
 <a name="Compatibility-API-1"></a>
-<h3 class="section">E.13 Compatibility API</h3>
+<h3 class="section">E.12 Compatibility API</h3>
 
 <p>The following functions are carried over from old GnuTLS released. They might be removed at a later version.
 Their prototypes lie in <samp>gnutls/compat.h</samp>.
@@ -300,6 +300,34 @@ NULL. Other compression algorithms are to be considered as gnutls
 extensions.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
+</p></dd></dl>
+
+<a name="gnutls_005fglobal_005fset_005fmem_005ffunctions-1"></a>
+<h4 class="subheading">gnutls_global_set_mem_functions</h4>
+<a name="gnutls_005fglobal_005fset_005fmem_005ffunctions"></a><dl>
+<dt><a name="index-gnutls_005fglobal_005fset_005fmem_005ffunctions"></a>Function: <em>void</em> <strong>gnutls_global_set_mem_functions</strong> <em>(gnutls_alloc_function <var>alloc_func</var>, gnutls_alloc_function <var>secure_alloc_func</var>, gnutls_is_secure_function <var>is_secure_func</var>, gnutls_realloc_function <var>realloc_func</var>, gnutls_free_function <var>free_func</var>)</em></dt>
+<dd><p><var>alloc_func</var>: it&rsquo;s the default memory allocation function. Like <code>malloc()</code> .
+</p>
+<p><var>secure_alloc_func</var>: This is the memory allocation function that will be used for sensitive data.
+</p>
+<p><var>is_secure_func</var>: a function that returns 0 if the memory given is not secure. May be NULL.
+</p>
+<p><var>realloc_func</var>: A realloc function
+</p>
+<p><var>free_func</var>: The function that frees allocated data. Must accept a NULL pointer.
+</p>
+
+<p><strong>Deprecated:</strong> since 3.3.0 it is no longer possible to replace the internally used 
+memory allocation functions
+</p>
+<p>This is the function where you set the memory allocation functions
+gnutls is going to use. By default the libc&rsquo;s allocation functions
+(<code>malloc()</code> , <code>free()</code> ), are used by gnutls, to allocate both sensitive
+and not sensitive data.  This function is provided to set the
+memory allocation functions to something other than the defaults
+</p>
+<p>This function must be called before <code>gnutls_global_init()</code>  is called.
+This function is not thread safe.
 </p></dd></dl>
 
 <a name="gnutls_005fkx_005fset_005fpriority-1"></a>

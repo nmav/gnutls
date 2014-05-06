@@ -152,7 +152,7 @@ gnutls_dtls_cookie_send (<em class="parameter"><code><span class="type">gnutls_d
                          <em class="parameter"><code><span class="type">size_t</span> client_data_size</code></em>,
                          <em class="parameter"><code><span class="type">gnutls_dtls_prestate_st</span> *prestate</code></em>,
                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-transport-ptr-t" title="gnutls_transport_ptr_t"><span class="type">gnutls_transport_ptr_t</span></a> ptr</code></em>,
-                         <em class="parameter"><code><span class="type">gnutls_push_func</span> push_func</code></em>);</pre>
+                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-push-func" title="gnutls_push_func ()"><span class="type">gnutls_push_func</span></a> push_func</code></em>);</pre>
 <p>This function can be used to prevent denial of service
 attacks to a DTLS server by requiring the client to
 reply using a cookie sent by this function. That way
@@ -271,7 +271,7 @@ it should be associated with the session using
 </div>
 <div class="refsect3">
 <a name="id-1.2.12.7.3.7"></a><h4>Returns</h4>
-<p> <code class="literal">GNUTLS_E_SUCCESS</code> (0) on success, or a negative error code.  </p>
+<p> <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success, or a negative error code.  </p>
 <p></p>
 </div>
 <p class="since">Since 3.0</p>
@@ -443,7 +443,7 @@ the maximum MTU of your transport layer.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.12.7.8.7"></a><h4>Returns</h4>
-<p> <code class="literal">GNUTLS_E_SUCCESS</code> (0) on success, or a negative error code.</p>
+<p> <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success, or a negative error code.</p>
 <p></p>
 </div>
 <p class="since">Since 3.1</p>
@@ -494,11 +494,11 @@ gnutls_dtls_set_timeouts (<em class="parameter"><code><a class="link" href="gnut
 protocol. The retransmission timeout is the time after which a
 message from the peer is not received, the previous messages will
 be retransmitted. The total timeout is the time after which the
-handshake will be aborted with <code class="literal">GNUTLS_E_TIMEDOUT</code>.</p>
+handshake will be aborted with <a class="link" href="gnutls-gnutls.html#GNUTLS-E-TIMEDOUT:CAPS" title="GNUTLS_E_TIMEDOUT"><code class="literal">GNUTLS_E_TIMEDOUT</code></a>.</p>
 <p>The DTLS protocol recommends the values of 1 sec and 60 seconds
 respectively.</p>
 <p>If the retransmission timeout is zero then the handshake will operate
-in a non-blocking way, i.e., return <code class="literal">GNUTLS_E_AGAIN</code>.</p>
+in a non-blocking way, i.e., return <a class="link" href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS" title="GNUTLS_E_AGAIN"><code class="literal">GNUTLS_E_AGAIN</code></a>.</p>
 <p>To disable retransmissions set a <em class="parameter"><code>retrans_timeout</code></em>
  larger than the <em class="parameter"><code>total_timeout</code></em>
 .</p>

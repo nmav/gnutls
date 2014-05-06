@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 1 January 2014 for version
-3.2.13 of GnuTLS.
+<!-- This manual is last updated 5 April 2014 for version
+3.3.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.13: p11tool Invocation</title>
+<title>GnuTLS 3.3.2: p11tool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.2.13: p11tool Invocation">
-<meta name="keywords" content="GnuTLS 3.2.13: p11tool Invocation">
+<meta name="description" content="GnuTLS 3.3.2: p11tool Invocation">
+<meta name="keywords" content="GnuTLS 3.3.2: p11tool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -245,13 +245,13 @@ Usage:  p11tool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;]
    -8, --pkcs8                Use PKCS #8 format for private keys
        --bits=num             Specify the number of bits for key generate
        --sec-param=str        Specify the security level
-   -!, --inder                Use DER/RAW format for input
+       --inder                Use DER/RAW format for input
                                 - disabled as '--no-inder'
-   -&quot;, --inraw                an alias for the 'inder' option
-   -#, --outder               Use DER format for output certificates, private keys, and DH parameters
+       --inraw                an alias for the 'inder' option
+       --outder               Use DER format for output certificates, private keys, and DH parameters
                                 - disabled as '--no-outder'
-   -$, --outraw               an alias for the 'outder' option
-   -%, --provider=file        Specify the PKCS #11 provider library
+       --outraw               an alias for the 'outder' option
+       --provider=file        Specify the PKCS #11 provider library
                                 - file must pre-exist
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
@@ -272,7 +272,7 @@ configuration files have to be setup.
 To provide the PIN for all the operations below use the environment
 variable GNUTLS_PIN.
 
-Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
+Please send bug reports to:  &lt;bugs@gnutls.org&gt;
 </pre></div>
 
 <a name="p11tool-debug"></a><a name="debug-option-_0028_002dd_0029-5"></a>
@@ -398,7 +398,7 @@ see <a href="#p11tool-inder">the inder option documentation</a>.
 <p>This is an alias for the <code>outder</code> option,
 see <a href="#p11tool-outder">the outder option documentation</a>.
 </p>
-<a name="p11tool-provider"></a><a name="provider-option"></a>
+<a name="p11tool-provider"></a><a name="provider-option-1"></a>
 <h4 class="subsubheading">provider option</h4>
 
 <p>This is the &ldquo;specify the pkcs #11 provider library&rdquo; option.

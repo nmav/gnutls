@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 1 January 2014 for version
-3.2.13 of GnuTLS.
+<!-- This manual is last updated 5 April 2014 for version
+3.3.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.13: Initialization</title>
+<title>GnuTLS 3.3.2: Initialization</title>
 
-<meta name="description" content="GnuTLS 3.2.13: Initialization">
-<meta name="keywords" content="GnuTLS 3.2.13: Initialization">
+<meta name="description" content="GnuTLS 3.3.2: Initialization">
+<meta name="keywords" content="GnuTLS 3.3.2: Initialization">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -169,6 +169,9 @@ initialized by calling <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gn
 typically enables CPU-specific acceleration, performs any required
 precalculations needed, and initializes subsystems that could be
 used later (e.g., PKCS #11 &ndash; see <a href="PKCS11-Initialization.html#PKCS11-Initialization">PKCS11 Initialization</a>).
+Note that since GnuTLS 3.3.0 it is no longer required to call
+<a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a> in systems that support library constructors
+(i.e, ELF systems and Windows).
 </p>
 <p>The resources allocated by the initialization process can be released if the
 application no longer has a need to call GnuTLS functions, this is

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 1 January 2014 for version
-3.2.13 of GnuTLS.
+<!-- This manual is last updated 5 April 2014 for version
+3.3.2 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.2.13: Abstract key API</title>
+<title>GnuTLS 3.3.2: Abstract key API</title>
 
-<meta name="description" content="GnuTLS 3.2.13: Abstract key API">
-<meta name="keywords" content="GnuTLS 3.2.13: Abstract key API">
+<meta name="description" content="GnuTLS 3.3.2: Abstract key API">
+<meta name="keywords" content="GnuTLS 3.3.2: Abstract key API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -162,7 +162,7 @@ Next: <a href="DANE-API.html#DANE-API" accesskey="n" rel="next">DANE API</a>, Pr
 </div>
 <hr>
 <a name="Abstract-key-API-1"></a>
-<h3 class="section">E.10 Abstract key API</h3>
+<h3 class="section">E.9 Abstract key API</h3>
 
 <p>The following functions are to be used for abstract key handling.
 Their prototypes lie in <samp>gnutls/abstract.h</samp>.
@@ -399,6 +399,112 @@ negative error value.
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
 
+<a name="gnutls_005fprivkey_005fexport_005fdsa_005fraw-1"></a>
+<h4 class="subheading">gnutls_privkey_export_dsa_raw</h4>
+<a name="gnutls_005fprivkey_005fexport_005fdsa_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fexport_005fdsa_005fraw"></a>Function: <em>int</em> <strong>gnutls_privkey_export_dsa_raw</strong> <em>(gnutls_privkey_t <var>key</var>, gnutls_datum_t * <var>p</var>, gnutls_datum_t * <var>q</var>, gnutls_datum_t * <var>g</var>, gnutls_datum_t * <var>y</var>, gnutls_datum_t * <var>x</var>)</em></dt>
+<dd><p><var>key</var>: Holds the public key
+</p>
+<p><var>p</var>: will hold the p
+</p>
+<p><var>q</var>: will hold the q
+</p>
+<p><var>g</var>: will hold the g
+</p>
+<p><var>y</var>: will hold the y
+</p>
+<p><var>x</var>: will hold the x
+</p>
+<p>This function will export the DSA private key&rsquo;s parameters found
+in the given structure. The new parameters will be allocated using
+<code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p>
+<p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fexport_005fecc_005fraw-1"></a>
+<h4 class="subheading">gnutls_privkey_export_ecc_raw</h4>
+<a name="gnutls_005fprivkey_005fexport_005fecc_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fexport_005fecc_005fraw"></a>Function: <em>int</em> <strong>gnutls_privkey_export_ecc_raw</strong> <em>(gnutls_privkey_t <var>key</var>, gnutls_ecc_curve_t * <var>curve</var>, gnutls_datum_t * <var>x</var>, gnutls_datum_t * <var>y</var>, gnutls_datum_t * <var>k</var>)</em></dt>
+<dd><p><var>key</var>: Holds the public key
+</p>
+<p><var>curve</var>: will hold the curve
+</p>
+<p><var>x</var>: will hold the x coordinate
+</p>
+<p><var>y</var>: will hold the y coordinate
+</p>
+<p><var>k</var>: will hold the private key
+</p>
+<p>This function will export the ECC private key&rsquo;s parameters found
+in the given structure. The new parameters will be allocated using
+<code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p>
+<p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fexport_005frsa_005fraw-1"></a>
+<h4 class="subheading">gnutls_privkey_export_rsa_raw</h4>
+<a name="gnutls_005fprivkey_005fexport_005frsa_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fexport_005frsa_005fraw"></a>Function: <em>int</em> <strong>gnutls_privkey_export_rsa_raw</strong> <em>(gnutls_privkey_t <var>key</var>, gnutls_datum_t * <var>m</var>, gnutls_datum_t * <var>e</var>, gnutls_datum_t * <var>d</var>, gnutls_datum_t * <var>p</var>, gnutls_datum_t * <var>q</var>, gnutls_datum_t * <var>u</var>, gnutls_datum_t * <var>e1</var>, gnutls_datum_t * <var>e2</var>)</em></dt>
+<dd><p><var>key</var>: Holds the certificate
+</p>
+<p><var>m</var>: will hold the modulus
+</p>
+<p><var>e</var>: will hold the public exponent
+</p>
+<p><var>d</var>: will hold the private exponent
+</p>
+<p><var>p</var>: will hold the first prime (p)
+</p>
+<p><var>q</var>: will hold the second prime (q)
+</p>
+<p><var>u</var>: will hold the coefficient
+</p>
+<p><var>e1</var>: will hold e1 = d mod (p-1)
+</p>
+<p><var>e2</var>: will hold e2 = d mod (q-1)
+</p>
+<p>This function will export the RSA private key&rsquo;s parameters found
+in the given structure. The new parameters will be allocated using
+<code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p>
+<p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fgenerate-1"></a>
+<h4 class="subheading">gnutls_privkey_generate</h4>
+<a name="gnutls_005fprivkey_005fgenerate"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fgenerate"></a>Function: <em>int</em> <strong>gnutls_privkey_generate</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_pk_algorithm_t <var>algo</var>, unsigned int <var>bits</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>pkey</var>: The private key
+</p>
+<p><var>algo</var>: is one of the algorithms in <code>gnutls_pk_algorithm_t</code> .
+</p>
+<p><var>bits</var>: the size of the modulus
+</p>
+<p><var>flags</var>: unused for now.  Must be 0.
+</p>
+<p>This function will generate a random private key. Note that this
+function must be called on an empty private key.
+</p>
+<p>Note that when generating an elliptic curve key, the curve
+can be substituted in the place of the bits parameter using the
+<code>GNUTLS_CURVE_TO_BITS()</code>  macro.
+</p>
+<p>Do not set the number of bits directly, use <code>gnutls_sec_param_to_pk_bits()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
 <a name="gnutls_005fprivkey_005fget_005fpk_005falgorithm-1"></a>
 <h4 class="subheading">gnutls_privkey_get_pk_algorithm</h4>
 <a name="gnutls_005fprivkey_005fget_005fpk_005falgorithm"></a><dl>
@@ -430,6 +536,54 @@ actually the type of the subsystem used to set this private key.
 success, or a negative error code on error.
 </p>
 <p><strong>Since:</strong> 2.12.0
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fimport_005fdsa_005fraw-1"></a>
+<h4 class="subheading">gnutls_privkey_import_dsa_raw</h4>
+<a name="gnutls_005fprivkey_005fimport_005fdsa_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fimport_005fdsa_005fraw"></a>Function: <em>int</em> <strong>gnutls_privkey_import_dsa_raw</strong> <em>(gnutls_privkey_t <var>key</var>, const gnutls_datum_t * <var>p</var>, const gnutls_datum_t * <var>q</var>, const gnutls_datum_t * <var>g</var>, const gnutls_datum_t * <var>y</var>, const gnutls_datum_t * <var>x</var>)</em></dt>
+<dd><p><var>key</var>: The structure to store the parsed key
+</p>
+<p><var>p</var>: holds the p
+</p>
+<p><var>q</var>: holds the q
+</p>
+<p><var>g</var>: holds the g
+</p>
+<p><var>y</var>: holds the y
+</p>
+<p><var>x</var>: holds the x
+</p>
+<p>This function will convert the given DSA raw parameters to the
+native <code>gnutls_privkey_t</code>  format.  The output will be stored
+in  <code>key</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fimport_005fecc_005fraw-1"></a>
+<h4 class="subheading">gnutls_privkey_import_ecc_raw</h4>
+<a name="gnutls_005fprivkey_005fimport_005fecc_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fimport_005fecc_005fraw"></a>Function: <em>int</em> <strong>gnutls_privkey_import_ecc_raw</strong> <em>(gnutls_privkey_t <var>key</var>, gnutls_ecc_curve_t <var>curve</var>, const gnutls_datum_t * <var>x</var>, const gnutls_datum_t * <var>y</var>, const gnutls_datum_t * <var>k</var>)</em></dt>
+<dd><p><var>key</var>: The structure to store the parsed key
+</p>
+<p><var>curve</var>: holds the curve
+</p>
+<p><var>x</var>: holds the x
+</p>
+<p><var>y</var>: holds the y
+</p>
+<p><var>k</var>: holds the k
+</p>
+<p>This function will convert the given elliptic curve parameters to the
+native <code>gnutls_privkey_t</code>  format.  The output will be stored
+in  <code>key</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.0
 </p></dd></dl>
 
 <a name="gnutls_005fprivkey_005fimport_005fext-1"></a>
@@ -583,6 +737,36 @@ structure.
 negative error value.
 </p>
 <p><strong>Since:</strong> 3.1.0
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fimport_005frsa_005fraw-1"></a>
+<h4 class="subheading">gnutls_privkey_import_rsa_raw</h4>
+<a name="gnutls_005fprivkey_005fimport_005frsa_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fimport_005frsa_005fraw"></a>Function: <em>int</em> <strong>gnutls_privkey_import_rsa_raw</strong> <em>(gnutls_privkey_t <var>key</var>, const gnutls_datum_t * <var>m</var>, const gnutls_datum_t * <var>e</var>, const gnutls_datum_t * <var>d</var>, const gnutls_datum_t * <var>p</var>, const gnutls_datum_t * <var>q</var>, const gnutls_datum_t * <var>u</var>, const gnutls_datum_t * <var>e1</var>, const gnutls_datum_t * <var>e2</var>)</em></dt>
+<dd><p><var>key</var>: The structure to store the parsed key
+</p>
+<p><var>m</var>: holds the modulus
+</p>
+<p><var>e</var>: holds the public exponent
+</p>
+<p><var>d</var>: holds the private exponent
+</p>
+<p><var>p</var>: holds the first prime (p)
+</p>
+<p><var>q</var>: holds the second prime (q)
+</p>
+<p><var>u</var>: holds the coefficient (optional)
+</p>
+<p><var>e1</var>: holds e1 = d mod (p-1) (optional)
+</p>
+<p><var>e2</var>: holds e2 = d mod (q-1) (optional)
+</p>
+<p>This function will convert the given RSA raw parameters to the
+native <code>gnutls_privkey_t</code>  format.  The output will be stored in
+ <code>key</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
 </p></dd></dl>
 
 <a name="gnutls_005fprivkey_005fimport_005ftpm_005fraw-1"></a>
@@ -824,6 +1008,20 @@ holding the private key is still available (inserted), and zero otherwise.
 <p><strong>Since:</strong> 3.1.10
 </p></dd></dl>
 
+<a name="gnutls_005fprivkey_005fverify_005fparams-1"></a>
+<h4 class="subheading">gnutls_privkey_verify_params</h4>
+<a name="gnutls_005fprivkey_005fverify_005fparams"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fverify_005fparams"></a>Function: <em>int</em> <strong>gnutls_privkey_verify_params</strong> <em>(gnutls_privkey_t <var>key</var>)</em></dt>
+<dd><p><var>key</var>: should contain a <code>gnutls_privkey_t</code>  structure
+</p>
+<p>This function will verify the private key parameters.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
 <a name="gnutls_005fpubkey_005fdeinit-1"></a>
 <h4 class="subheading">gnutls_pubkey_deinit</h4>
 <a name="gnutls_005fpubkey_005fdeinit"></a><dl>
@@ -909,6 +1107,88 @@ of &quot;BEGIN CERTIFICATE&quot;.
 returned, and 0 on success.
 </p>
 <p><strong>Since:</strong> 3.1.3
+</p></dd></dl>
+
+<a name="gnutls_005fpubkey_005fexport_005fdsa_005fraw-1"></a>
+<h4 class="subheading">gnutls_pubkey_export_dsa_raw</h4>
+<a name="gnutls_005fpubkey_005fexport_005fdsa_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fpubkey_005fexport_005fdsa_005fraw"></a>Function: <em>int</em> <strong>gnutls_pubkey_export_dsa_raw</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>p</var>, gnutls_datum_t * <var>q</var>, gnutls_datum_t * <var>g</var>, gnutls_datum_t * <var>y</var>)</em></dt>
+<dd><p><var>key</var>: Holds the public key
+</p>
+<p><var>p</var>: will hold the p
+</p>
+<p><var>q</var>: will hold the q
+</p>
+<p><var>g</var>: will hold the g
+</p>
+<p><var>y</var>: will hold the y
+</p>
+<p>This function will export the DSA public key&rsquo;s parameters found in
+the given certificate.  The new parameters will be allocated using
+<code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p>
+<p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
+<a name="gnutls_005fpubkey_005fexport_005fecc_005fraw-1"></a>
+<h4 class="subheading">gnutls_pubkey_export_ecc_raw</h4>
+<a name="gnutls_005fpubkey_005fexport_005fecc_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fpubkey_005fexport_005fecc_005fraw"></a>Function: <em>int</em> <strong>gnutls_pubkey_export_ecc_raw</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_ecc_curve_t * <var>curve</var>, gnutls_datum_t * <var>x</var>, gnutls_datum_t * <var>y</var>)</em></dt>
+<dd><p><var>key</var>: Holds the public key
+</p>
+<p><var>curve</var>: will hold the curve
+</p>
+<p><var>x</var>: will hold x
+</p>
+<p><var>y</var>: will hold y
+</p>
+<p>This function will export the ECC public key&rsquo;s parameters found in
+the given certificate.  The new parameters will be allocated using
+<code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p>
+<p><strong>Since:</strong> 3.0
+</p></dd></dl>
+
+<a name="gnutls_005fpubkey_005fexport_005fecc_005fx962-1"></a>
+<h4 class="subheading">gnutls_pubkey_export_ecc_x962</h4>
+<a name="gnutls_005fpubkey_005fexport_005fecc_005fx962"></a><dl>
+<dt><a name="index-gnutls_005fpubkey_005fexport_005fecc_005fx962"></a>Function: <em>int</em> <strong>gnutls_pubkey_export_ecc_x962</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>parameters</var>, gnutls_datum_t * <var>ecpoint</var>)</em></dt>
+<dd><p><var>key</var>: Holds the public key
+</p>
+<p><var>parameters</var>: DER encoding of an ANSI X9.62 parameters
+</p>
+<p><var>ecpoint</var>: DER encoding of ANSI X9.62 ECPoint
+</p>
+<p>This function will export the ECC public key&rsquo;s parameters found in
+the given certificate.  The new parameters will be allocated using
+<code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p>
+<p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
+<a name="gnutls_005fpubkey_005fexport_005frsa_005fraw-1"></a>
+<h4 class="subheading">gnutls_pubkey_export_rsa_raw</h4>
+<a name="gnutls_005fpubkey_005fexport_005frsa_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fpubkey_005fexport_005frsa_005fraw"></a>Function: <em>int</em> <strong>gnutls_pubkey_export_rsa_raw</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>m</var>, gnutls_datum_t * <var>e</var>)</em></dt>
+<dd><p><var>key</var>: Holds the certificate
+</p>
+<p><var>m</var>: will hold the modulus
+</p>
+<p><var>e</var>: will hold the public exponent
+</p>
+<p>This function will export the RSA public key&rsquo;s parameters found in
+the given structure.  The new parameters will be allocated using
+<code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p>
+<p><strong>Since:</strong> 3.3.0
 </p></dd></dl>
 
 <a name="gnutls_005fpubkey_005fget_005fkey_005fid-1"></a>
@@ -1001,88 +1281,6 @@ the security parameter of the key.
 </p>
 <p><strong>Returns:</strong> a member of the <code>gnutls_pk_algorithm_t</code>  enumeration on
 success, or a negative error code on error.
-</p>
-<p><strong>Since:</strong> 2.12.0
-</p></dd></dl>
-
-<a name="gnutls_005fpubkey_005fget_005fpk_005fdsa_005fraw-1"></a>
-<h4 class="subheading">gnutls_pubkey_get_pk_dsa_raw</h4>
-<a name="gnutls_005fpubkey_005fget_005fpk_005fdsa_005fraw"></a><dl>
-<dt><a name="index-gnutls_005fpubkey_005fget_005fpk_005fdsa_005fraw"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_pk_dsa_raw</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>p</var>, gnutls_datum_t * <var>q</var>, gnutls_datum_t * <var>g</var>, gnutls_datum_t * <var>y</var>)</em></dt>
-<dd><p><var>key</var>: Holds the public key
-</p>
-<p><var>p</var>: will hold the p
-</p>
-<p><var>q</var>: will hold the q
-</p>
-<p><var>g</var>: will hold the g
-</p>
-<p><var>y</var>: will hold the y
-</p>
-<p>This function will export the DSA public key&rsquo;s parameters found in
-the given certificate.  The new parameters will be allocated using
-<code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
-</p>
-<p><strong>Since:</strong> 2.12.0
-</p></dd></dl>
-
-<a name="gnutls_005fpubkey_005fget_005fpk_005fecc_005fraw-1"></a>
-<h4 class="subheading">gnutls_pubkey_get_pk_ecc_raw</h4>
-<a name="gnutls_005fpubkey_005fget_005fpk_005fecc_005fraw"></a><dl>
-<dt><a name="index-gnutls_005fpubkey_005fget_005fpk_005fecc_005fraw"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_pk_ecc_raw</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_ecc_curve_t * <var>curve</var>, gnutls_datum_t * <var>x</var>, gnutls_datum_t * <var>y</var>)</em></dt>
-<dd><p><var>key</var>: Holds the public key
-</p>
-<p><var>curve</var>: will hold the curve
-</p>
-<p><var>x</var>: will hold x
-</p>
-<p><var>y</var>: will hold y
-</p>
-<p>This function will export the ECC public key&rsquo;s parameters found in
-the given certificate.  The new parameters will be allocated using
-<code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
-</p>
-<p><strong>Since:</strong> 3.0
-</p></dd></dl>
-
-<a name="gnutls_005fpubkey_005fget_005fpk_005fecc_005fx962-1"></a>
-<h4 class="subheading">gnutls_pubkey_get_pk_ecc_x962</h4>
-<a name="gnutls_005fpubkey_005fget_005fpk_005fecc_005fx962"></a><dl>
-<dt><a name="index-gnutls_005fpubkey_005fget_005fpk_005fecc_005fx962"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_pk_ecc_x962</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>parameters</var>, gnutls_datum_t * <var>ecpoint</var>)</em></dt>
-<dd><p><var>key</var>: Holds the public key
-</p>
-<p><var>parameters</var>: DER encoding of an ANSI X9.62 parameters
-</p>
-<p><var>ecpoint</var>: DER encoding of ANSI X9.62 ECPoint
-</p>
-<p>This function will export the ECC public key&rsquo;s parameters found in
-the given certificate.  The new parameters will be allocated using
-<code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
-</p>
-<p><strong>Since:</strong> 3.0
-</p></dd></dl>
-
-<a name="gnutls_005fpubkey_005fget_005fpk_005frsa_005fraw-1"></a>
-<h4 class="subheading">gnutls_pubkey_get_pk_rsa_raw</h4>
-<a name="gnutls_005fpubkey_005fget_005fpk_005frsa_005fraw"></a><dl>
-<dt><a name="index-gnutls_005fpubkey_005fget_005fpk_005frsa_005fraw"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_pk_rsa_raw</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>m</var>, gnutls_datum_t * <var>e</var>)</em></dt>
-<dd><p><var>key</var>: Holds the certificate
-</p>
-<p><var>m</var>: will hold the modulus
-</p>
-<p><var>e</var>: will hold the public exponent
-</p>
-<p>This function will export the RSA public key&rsquo;s parameters found in
-the given structure.  The new parameters will be allocated using
-<code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p>
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
@@ -1636,6 +1834,20 @@ parameters from the public key.
 is returned, and zero or positive code on success.
 </p>
 <p><strong>Since:</strong> 3.0
+</p></dd></dl>
+
+<a name="gnutls_005fpubkey_005fverify_005fparams-1"></a>
+<h4 class="subheading">gnutls_pubkey_verify_params</h4>
+<a name="gnutls_005fpubkey_005fverify_005fparams"></a><dl>
+<dt><a name="index-gnutls_005fpubkey_005fverify_005fparams"></a>Function: <em>int</em> <strong>gnutls_pubkey_verify_params</strong> <em>(gnutls_pubkey_t <var>key</var>)</em></dt>
+<dd><p><var>key</var>: should contain a <code>gnutls_pubkey_t</code>  structure
+</p>
+<p>This function will verify the private key parameters.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.3.0
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrl_005fprivkey_005fsign-1"></a>
