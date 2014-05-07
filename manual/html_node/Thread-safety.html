@@ -173,16 +173,13 @@ If, however, an object needs to be shared across threads then access must be
 protected with a mutex. Read-only access to objects, for example the
 credentials holding structures, is also thread-safe. 
 </p>
-<p>The random generator of the cryptographic back-end, is not thread safe and requires
-mutex locks which are setup by <acronym>GnuTLS</acronym>.
-Applications can either call <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a> which will initialize the default
-operating system provided locks (i.e. <code>pthreads</code> on GNU/Linux and
-<code>CriticalSection</code> on Windows), or manually specify the locking system using
-the function <a href="Core-TLS-API.html#gnutls_005fglobal_005fset_005fmutex">gnutls_global_set_mutex</a> before calling <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a>. 
-Setting mutexes manually is recommended
-only for applications that have full control of the underlying libraries. If this
-is not the case, the use of the operating system defaults is recommended. An example of 
-non-native thread usage is shown below.
+<p>The random generator of the cryptographic back-end, utilizes mutex locks (e.g., pthreads on GNU/Linux and CriticalSection on Windows)
+which are setup by <acronym>GnuTLS</acronym> on library initialization. Prior to version 3.3.0
+they were setup by calling <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a>. On special systems
+you could manually specify the locking system using
+the function <a href="Core-TLS-API.html#gnutls_005fglobal_005fset_005fmutex">gnutls_global_set_mutex</a> before calling any other
+GnuTLS function. Setting mutexes manually is not recommended.
+An example of non-native thread usage is shown below.
 </p>
 <div class="example">
 <pre class="example">#include &lt;gnutls/gnutls.h&gt;
@@ -194,14 +191,9 @@ int main()
     */
    gnutls_global_set_mutex (mutex_init, mutex_deinit, 
                             mutex_lock, mutex_unlock);
-   gnutls_global_init();
 }
 </pre></div>
 
-<p>Note that <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a> is itself not thread safe. It is also not recommended
-to initialize it on every available thread, but if need to, it should be protected using
-mutex locks.
-</p>
 
 
 

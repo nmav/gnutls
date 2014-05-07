@@ -7671,16 +7671,13 @@ If, however, an object needs to be shared across threads then access must be
 protected with a mutex. Read-only access to objects, for example the
 credentials holding structures, is also thread-safe. 
 </p>
-<p>The random generator of the cryptographic back-end, is not thread safe and requires
-mutex locks which are setup by <acronym>GnuTLS</acronym>.
-Applications can either call <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a> which will initialize the default
-operating system provided locks (i.e. <code>pthreads</code> on GNU/Linux and
-<code>CriticalSection</code> on Windows), or manually specify the locking system using
-the function <a href="#gnutls_005fglobal_005fset_005fmutex">gnutls_global_set_mutex</a> before calling <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>. 
-Setting mutexes manually is recommended
-only for applications that have full control of the underlying libraries. If this
-is not the case, the use of the operating system defaults is recommended. An example of 
-non-native thread usage is shown below.
+<p>The random generator of the cryptographic back-end, utilizes mutex locks (e.g., pthreads on GNU/Linux and CriticalSection on Windows)
+which are setup by <acronym>GnuTLS</acronym> on library initialization. Prior to version 3.3.0
+they were setup by calling <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>. On special systems
+you could manually specify the locking system using
+the function <a href="#gnutls_005fglobal_005fset_005fmutex">gnutls_global_set_mutex</a> before calling any other
+GnuTLS function. Setting mutexes manually is not recommended.
+An example of non-native thread usage is shown below.
 </p>
 <div class="example">
 <pre class="example">#include &lt;gnutls/gnutls.h&gt;
@@ -7692,14 +7689,9 @@ int main()
     */
    gnutls_global_set_mutex (mutex_init, mutex_deinit, 
                             mutex_lock, mutex_unlock);
-   gnutls_global_init();
 }
 </pre></div>
 
-<p>Note that <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a> is itself not thread safe. It is also not recommended
-to initialize it on every available thread, but if need to, it should be protected using
-mutex locks.
-</p>
 
 
 
@@ -7803,22 +7795,15 @@ Next: <a href="#Version-check" accesskey="n" rel="next">Version check</a>, Previ
 <h4 class="subsection">6.2.2 Initialization</h4>
 
 <p>GnuTLS must be initialized before it can be used.  The library is
-initialized by calling <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>. That call
-typically enables CPU-specific acceleration, performs any required
-precalculations needed, and initializes subsystems that could be
-used later (e.g., PKCS #11 &ndash; see <a href="#PKCS11-Initialization">PKCS11 Initialization</a>).
-Note that since GnuTLS 3.3.0 it is no longer required to call
-<a href="#gnutls_005fglobal_005finit">gnutls_global_init</a> in systems that support library constructors
-(i.e, ELF systems and Windows).
+initialized on load; prior to 3.3.0 was initialized by calling <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>. 
+The initialization typically enables CPU-specific acceleration, performs any required
+precalculations needed, opens any required system devices (e.g., /dev/urandom on Linux)
+and initializes subsystems that could be used later.
 </p>
-<p>The resources allocated by the initialization process can be released if the
-application no longer has a need to call GnuTLS functions, this is
-done by calling <a href="#gnutls_005fglobal_005fdeinit">gnutls_global_deinit</a>.
+<p>The resources allocated by the initialization process will be released 
+on library deinitialization, or explictly by calling <a href="#gnutls_005fglobal_005fdeinit">gnutls_global_deinit</a>.
 </p>
-<p>In order to take advantage of the internationalization features in
-GnuTLS, such as translated error messages, the application must set
-the current locale using <code>setlocale</code> before initializing GnuTLS.
-</p>
+
 <hr>
 <a name="Version-check"></a>
 <div class="header">
@@ -7902,7 +7887,7 @@ specifying both options to <code>pkg-config</code>:
 line or similar can be used to detect the presence of GnuTLS.
 </p>
 <div class="example">
-<pre class="example">PKG_CHECK_MODULES([LIBGNUTLS], [gnutls &gt;= 3.0.0])
+<pre class="example">PKG_CHECK_MODULES([LIBGNUTLS], [gnutls &gt;= 3.3.0])
 
 AC_SUBST([LIBGNUTLS_CFLAGS])
 AC_SUBST([LIBGNUTLS_LIBS])

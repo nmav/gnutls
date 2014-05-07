@@ -165,22 +165,15 @@ Next: <a href="Version-check.html#Version-check" accesskey="n" rel="next">Versio
 <h4 class="subsection">6.2.2 Initialization</h4>
 
 <p>GnuTLS must be initialized before it can be used.  The library is
-initialized by calling <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a>. That call
-typically enables CPU-specific acceleration, performs any required
-precalculations needed, and initializes subsystems that could be
-used later (e.g., PKCS #11 &ndash; see <a href="PKCS11-Initialization.html#PKCS11-Initialization">PKCS11 Initialization</a>).
-Note that since GnuTLS 3.3.0 it is no longer required to call
-<a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a> in systems that support library constructors
-(i.e, ELF systems and Windows).
+initialized on load; prior to 3.3.0 was initialized by calling <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a>. 
+The initialization typically enables CPU-specific acceleration, performs any required
+precalculations needed, opens any required system devices (e.g., /dev/urandom on Linux)
+and initializes subsystems that could be used later.
 </p>
-<p>The resources allocated by the initialization process can be released if the
-application no longer has a need to call GnuTLS functions, this is
-done by calling <a href="Core-TLS-API.html#gnutls_005fglobal_005fdeinit">gnutls_global_deinit</a>.
+<p>The resources allocated by the initialization process will be released 
+on library deinitialization, or explictly by calling <a href="Core-TLS-API.html#gnutls_005fglobal_005fdeinit">gnutls_global_deinit</a>.
 </p>
-<p>In order to take advantage of the internationalization features in
-GnuTLS, such as translated error messages, the application must set
-the current locale using <code>setlocale</code> before initializing GnuTLS.
-</p>
+
 
 
 
