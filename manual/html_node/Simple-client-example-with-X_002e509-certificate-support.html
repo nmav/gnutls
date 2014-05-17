@@ -238,7 +238,10 @@ int main(void)
         gnutls_server_name_set(session, GNUTLS_NAME_DNS, &quot;my_host_name&quot;,
                                strlen(&quot;my_host_name&quot;));
 
-        /* Use default priorities */
+        /* use default priorities */
+        gnutls_set_default_priority(session);
+#if 0
+	/* if more fine-graned control is required */
         ret = gnutls_priority_set_direct(session, 
                                          &quot;NORMAL&quot;, &amp;err);
         if (ret &lt; 0) {
@@ -247,6 +250,7 @@ int main(void)
                 }
                 exit(1);
         }
+#endif
 
         /* put the x509 credentials to the current session
          */

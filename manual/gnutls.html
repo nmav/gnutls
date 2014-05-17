@@ -4287,7 +4287,7 @@ Cipher may be one of 3des, 3des-pkcs12, aes-128, aes-192, aes-256, rc2-40, arcfo
 <h4 class="subsubheading">provider option</h4>
 
 <p>This is the &ldquo;specify the pkcs #11 provider library&rdquo; option.
-This option takes a file argument.
+This option takes a string argument.
 This will override the default options in /etc/gnutls/pkcs11.conf
 <a name="certtool-exit-status"></a></p><a name="certtool-exit-status-1"></a>
 <h4 class="subsubheading">certtool exit status</h4>
@@ -7709,10 +7709,11 @@ int main()
 <p>With this function you are allowed to override the default mutex
 locks used in some parts of gnutls and dependent libraries. This function
 should be used if you have complete control of your program and libraries.
-Do not call this function from a library. Instead only initialize gnutls and
-the default OS mutex locks will be used.
+Do not call this function from a library, or preferrably from any application
+unless really needed to. GnuTLS will use the appropriate locks for the running
+system.
 </p>
-<p>This function must be called before <code>gnutls_global_init()</code> .
+<p>This function must be called prior to any other gnutls function.
 </p>
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
@@ -8157,12 +8158,12 @@ algorithm preferences. To get those preferences use
 <dt><code><var>void</var> <a href="#gnutls_005fcertificate_005fset_005fretrieve_005ffunction2">gnutls_certificate_set_retrieve_function2</a> (gnutls_certificate_credentials_t <var>cred</var>, gnutls_certificate_retrieve_function2 * <var>func</var>)</code></dt>
 <dt><code><var>int</var> <a href="#gnutls_005fsign_005falgorithm_005fget_005frequested">gnutls_sign_algorithm_get_requested</a> (gnutls_session_t <var>session</var>, size_t <var>indx</var>, gnutls_sign_algorithm_t * <var>algo</var>)</code></dt>
 </dl>
-
-<p>The functions above do not handle the requested server name automatically.
+<p>c
+The functions above do not handle the requested server name automatically.
 A server would need to check the name requested by the client
 using <a href="#gnutls_005fserver_005fname_005fget">gnutls_server_name_get</a>, and serve the appropriate
 certificate. Note that some of these functions require the <code>gnutls_pcert_st</code> structure to be
-filled in. Helper functions to make the required structures are listed below.
+filled in. Helper functions to fill in the structure are listed below.
 </p>
 <pre class="verbatim">typedef struct gnutls_pcert_st
 {
@@ -8286,7 +8287,7 @@ functions discussed in <a href="#X_002e509-certificates">X.509 certificates</a>.
 status in the  <code>status</code> variable as a bitwise or&rsquo;d gnutls_certificate_status_t
 values or zero if the certificate is trusted. Note that value in  <code>status</code> is set only when the return value of this function is success (i.e, failure 
 to trust a certificate does not imply a negative return value).
-The default verification flags used by this function can be overriden
+The default verification flags used by this function can be overridden
 using <code>gnutls_certificate_set_verify_flags()</code> . See the documentation
 of <code>gnutls_certificate_verify_peers2()</code>  for details in the verification process.
 </p>
@@ -10101,7 +10102,8 @@ is set. If a DNSSEC signature is not available for the DANE
 record then the verify flag <code>DANE_VERIFY_NO_DNSSEC_DATA</code>  is set.
 </p>
 <p>Note that the CA constraint only applies for the directly certifying CA
-and does not account for long CA chains.
+and does not account for long CA chains. Moreover this function does not
+validate the provided chain.
 </p>
 <p>Due to the many possible options of DANE, there is no single threat
 model countered. When notifying the user about DANE verification results
@@ -10510,7 +10512,10 @@ int main(void)
         gnutls_server_name_set(session, GNUTLS_NAME_DNS, &quot;my_host_name&quot;,
                                strlen(&quot;my_host_name&quot;));
 
-        /* Use default priorities */
+        /* use default priorities */
+        gnutls_set_default_priority(session);
+#if 0
+	/* if more fine-graned control is required */
         ret = gnutls_priority_set_direct(session, 
                                          &quot;NORMAL&quot;, &amp;err);
         if (ret &lt; 0) {
@@ -10519,6 +10524,7 @@ int main(void)
                 }
                 exit(1);
         }
+#endif
 
         /* put the x509 credentials to the current session
          */
@@ -15028,6 +15034,11 @@ Please send bug reports to:  &lt;bugs@gnutls.org&gt;
 <p>This is the &ldquo;enable debugging&rdquo; option.
 This option takes a number argument.
 Specifies the debug level.
+<a name="gnutls_002dserv-verify_002dclient_002dcert"></a></p><a name="verify_002dclient_002dcert-option"></a>
+<h4 class="subheading">verify-client-cert option</h4>
+
+<p>This is the &ldquo;if a client certificate is sent then verify it.&rdquo; option.
+Do not require, but if a client certificate is sent then verify it and close the connection if invalid.
 <a name="gnutls_002dserv-heartbeat"></a></p><a name="heartbeat-option-_0028_002db_0029"></a>
 <h4 class="subheading">heartbeat option (-b)</h4>
 
@@ -17260,7 +17271,7 @@ was used.
 <dt><a name="index-gnutls_005fcertificate_005fget_005fpeers"></a>Function: <em>const gnutls_datum_t *</em> <strong>gnutls_certificate_get_peers</strong> <em>(gnutls_session_t          <var>session</var>, unsigned int * <var>list_size</var>)</em></dt>
 <dd><p><var>session</var>: is a gnutls session
 </p>
-<p><var>list_size</var>: is the length of the certificate list
+<p><var>list_size</var>: is the length of the certificate list (may be <code>NULL</code> )
 </p>
 <p>Get the peer&rsquo;s raw certificate (chain) as sent by the peer.  These
 certificates are in raw format (DER encoded for X.509).  In case of
@@ -18010,7 +18021,7 @@ negative error value.
 status in the  <code>status</code> variable as a bitwise or&rsquo;d gnutls_certificate_status_t
 values or zero if the certificate is trusted. Note that value in  <code>status</code> is set only when the return value of this function is success (i.e, failure 
 to trust a certificate does not imply a negative return value).
-The default verification flags used by this function can be overriden
+The default verification flags used by this function can be overridden
 using <code>gnutls_certificate_set_verify_flags()</code> . See the documentation
 of <code>gnutls_certificate_verify_peers2()</code>  for details in the verification process.
 </p>
@@ -18042,7 +18053,7 @@ verification will fail with <code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code> 
 the status in the  <code>status</code> variable as a bitwise or&rsquo;d gnutls_certificate_status_t
 values or zero if the certificate is trusted. Note that value in  <code>status</code> is set only when the return value of this function is success (i.e, failure 
 to trust a certificate does not imply a negative return value).
-The default verification flags used by this function can be overriden
+The default verification flags used by this function can be overridden
 using <code>gnutls_certificate_set_verify_flags()</code> .
 </p>
 <p>This function will take into account the OCSP Certificate Status TLS extension,
@@ -18074,7 +18085,7 @@ or use <code>gnutls_certificate_verify_peers3()</code> .
 status in the  <code>status</code> variable as a bitwise or&rsquo;d gnutls_certificate_status_t
 values or zero if the certificate is trusted. Note that value in  <code>status</code> is set only when the return value of this function is success (i.e, failure 
 to trust a certificate does not imply a negative return value).
-The default verification flags used by this function can be overriden
+The default verification flags used by this function can be overridden
 using <code>gnutls_certificate_set_verify_flags()</code> . See the documentation
 of <code>gnutls_certificate_verify_peers2()</code>  for details in the verification process.
 </p>
@@ -18269,6 +18280,33 @@ integers indicating the available compression methods.
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
 </p>
 <p>Clears all the credentials previously set in this session.
+</p></dd></dl>
+
+<a name="gnutls_005fcredentials_005fget-1"></a>
+<h4 class="subheading">gnutls_credentials_get</h4>
+<a name="gnutls_005fcredentials_005fget"></a><dl>
+<dt><a name="index-gnutls_005fcredentials_005fget"></a>Function: <em>int</em> <strong>gnutls_credentials_get</strong> <em>(gnutls_session_t <var>session</var>, gnutls_credentials_type_t <var>type</var>, void ** <var>cred</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>type</var>: is the type of the credentials to return
+</p>
+<p><var>cred</var>: will contain the pointer to the credentials structure.
+</p>
+<p>Returns the previously provided credentials structures.
+</p>
+<p>For <code>GNUTLS_CRD_ANON</code> ,  <code>cred</code> will be
+<code>gnutls_anon_client_credentials_t</code>  in case of a client.  In case of
+a server it should be <code>gnutls_anon_server_credentials_t</code> .
+</p>
+<p>For <code>GNUTLS_CRD_SRP</code> ,  <code>cred</code> will be <code>gnutls_srp_client_credentials_t</code> 
+in case of a client, and <code>gnutls_srp_server_credentials_t</code> , in case
+of a server.
+</p>
+<p>For <code>GNUTLS_CRD_CERTIFICATE</code> ,  <code>cred</code> will be
+<code>gnutls_certificate_credentials_t</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
+otherwise a negative error code is returned.
 </p></dd></dl>
 
 <a name="gnutls_005fcredentials_005fset-1"></a>
@@ -18955,6 +18993,9 @@ first time.
 do not support library constructors and static linking. This
 function also became thread safe.
 </p>
+<p>A subsequent call of this function if the initial has failed will
+return the same error code.
+</p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
 </p></dd></dl>
@@ -19021,10 +19062,11 @@ used with care, since they may reveal sensitive information.
 <p>With this function you are allowed to override the default mutex
 locks used in some parts of gnutls and dependent libraries. This function
 should be used if you have complete control of your program and libraries.
-Do not call this function from a library. Instead only initialize gnutls and
-the default OS mutex locks will be used.
+Do not call this function from a library, or preferrably from any application
+unless really needed to. GnuTLS will use the appropriate locks for the running
+system.
 </p>
-<p>This function must be called before <code>gnutls_global_init()</code> .
+<p>This function must be called prior to any other gnutls function.
 </p>
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
@@ -20198,6 +20240,8 @@ macs and compression methods.  This function avoids keeping a
 priority cache and is used to directly set string priorities to a
 TLS session.  For documentation check the <code>gnutls_priority_init()</code> .
 </p>
+<p>To simply use a reasonable default, consider using <code>gnutls_set_default_priority()</code> .
+</p>
 <p><strong>Returns:</strong> On syntax error <code>GNUTLS_E_INVALID_REQUEST</code>  is returned,
 <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
 </p></dd></dl>
@@ -21355,9 +21399,8 @@ error code.
 <p>Sets some default priority on the ciphers, key exchange methods,
 macs and compression methods.
 </p>
-<p>This is the same as calling:
-</p>
-<p>gnutls_priority_set_direct (session, &quot;NORMAL&quot;, NULL);
+<p>This typically sets a default priority that is considered
+sufficiently secure to establish encrypted sessions.
 </p>
 <p>This function is kept around for backwards compatibility, but
 because of its wide use it is still fully supported.  If you wish
@@ -34603,7 +34646,8 @@ is set. If a DNSSEC signature is not available for the DANE
 record then the verify flag <code>DANE_VERIFY_NO_DNSSEC_DATA</code>  is set.
 </p>
 <p>Note that the CA constraint only applies for the directly certifying CA
-and does not account for long CA chains.
+and does not account for long CA chains. Moreover this function does not
+validate the provided chain.
 </p>
 <p>Due to the many possible options of DANE, there is no single threat
 model countered. When notifying the user about DANE verification results
@@ -34672,13 +34716,17 @@ negative error value.
 </p>
 <p><var>sflags</var>: Flags for the the initialization of  <code>s</code> (if NULL)
 </p>
-<p><var>vflags</var>: Verification flags; should be zero
+<p><var>vflags</var>: Verification flags; an OR&rsquo;ed list of <code>dane_verify_flags_t</code> .
 </p>
 <p><var>verify</var>: An OR&rsquo;ed list of <code>dane_verify_status_t</code> .
 </p>
 <p>This function will verify session&rsquo;s certificate chain against the
 CA constrains and/or the certificate available via DANE.
 See <code>dane_verify_crt()</code>  for more information.
+</p>
+<p>This will not verify the chain for validity; unless the DANE
+verification is restricted to end certificates, this has to
+be performed separately using <code>gnutls_certificate_verify_peers3()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -36794,6 +36842,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcompression_005flist"><code>gnutls_compression_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcompression_005fset_005fpriority"><code>gnutls_compression_set_priority</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compatibility-API">Compatibility API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcredentials_005fclear"><code>gnutls_credentials_clear</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fcredentials_005fget"><code>gnutls_credentials_get</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcredentials_005fset"><code>gnutls_credentials_set</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Session-initialization">Session initialization</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcredentials_005fset-1"><code>gnutls_credentials_set</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fdb_005fcheck_005fentry"><code>gnutls_db_check_entry</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>

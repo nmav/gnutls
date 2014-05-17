@@ -7512,9 +7512,10 @@ gnutls_global_set_mutex (<em class="parameter"><code><a class="link" href="gnutl
 <p>With this function you are allowed to override the default mutex
 locks used in some parts of gnutls and dependent libraries. This function
 should be used if you have complete control of your program and libraries.
-Do not call this function from a library. Instead only initialize gnutls and
-the default OS mutex locks will be used.</p>
-<p>This function must be called before <a class="link" href="gnutls-gnutls.html#gnutls-global-init" title="gnutls_global_init ()"><code class="function">gnutls_global_init()</code></a>.</p>
+Do not call this function from a library, or preferrably from any application
+unless really needed to. GnuTLS will use the appropriate locks for the running
+system.</p>
+<p>This function must be called prior to any other gnutls function.</p>
 <div class="refsect3">
 <a name="id-1.2.4.7.125.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -9750,8 +9751,9 @@ gnutls_priority_set_direct (<em class="parameter"><code><a class="link" href="gn
 macs and compression methods.  This function avoids keeping a
 priority cache and is used to directly set string priorities to a
 TLS session.  For documentation check the <a class="link" href="gnutls-gnutls.html#gnutls-priority-init" title="gnutls_priority_init ()"><code class="function">gnutls_priority_init()</code></a>.</p>
+<p>To simply use a reasonable default, consider using <a class="link" href="gnutls-gnutls.html#gnutls-set-default-priority" title="gnutls_set_default_priority ()"><code class="function">gnutls_set_default_priority()</code></a>.</p>
 <div class="refsect3">
-<a name="id-1.2.4.7.184.5"></a><h4>Parameters</h4>
+<a name="id-1.2.4.7.184.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -9778,7 +9780,7 @@ TLS session.  For documentation check the <a class="link" href="gnutls-gnutls.ht
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.4.7.184.6"></a><h4>Returns</h4>
+<a name="id-1.2.4.7.184.7"></a><h4>Returns</h4>
 <p> On syntax error <a class="link" href="gnutls-gnutls.html#GNUTLS-E-INVALID-REQUEST:CAPS" title="GNUTLS_E_INVALID_REQUEST"><code class="literal">GNUTLS_E_INVALID_REQUEST</code></a> is returned,
 <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, or an error code.</p>
 <p></p>
@@ -11753,15 +11755,15 @@ error code.</p>
 gnutls_set_default_priority (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>Sets some default priority on the ciphers, key exchange methods,
 macs and compression methods.</p>
-<p>This is the same as calling:</p>
-<p>gnutls_priority_set_direct (session, "NORMAL", NULL);</p>
+<p>This typically sets a default priority that is considered
+sufficiently secure to establish encrypted sessions.</p>
 <p>This function is kept around for backwards compatibility, but
 because of its wide use it is still fully supported.  If you wish
 to allow users to provide a string that specify which ciphers to
 use (which is recommended), you should use
 <a class="link" href="gnutls-gnutls.html#gnutls-priority-set-direct" title="gnutls_priority_set_direct ()"><code class="function">gnutls_priority_set_direct()</code></a> or <a class="link" href="gnutls-gnutls.html#gnutls-priority-set" title="gnutls_priority_set ()"><code class="function">gnutls_priority_set()</code></a> instead.</p>
 <div class="refsect3">
-<a name="id-1.2.4.7.239.8"></a><h4>Parameters</h4>
+<a name="id-1.2.4.7.239.7"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -11776,7 +11778,7 @@ use (which is recommended), you should use
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.4.7.239.9"></a><h4>Returns</h4>
+<a name="id-1.2.4.7.239.8"></a><h4>Returns</h4>
 <p> <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, or an error code.</p>
 <p></p>
 </div>

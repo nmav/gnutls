@@ -408,7 +408,8 @@ is set. If a DNSSEC signature is not available for the DANE
 record then the verify flag <code>DANE_VERIFY_NO_DNSSEC_DATA</code>  is set.
 </p>
 <p>Note that the CA constraint only applies for the directly certifying CA
-and does not account for long CA chains.
+and does not account for long CA chains. Moreover this function does not
+validate the provided chain.
 </p>
 <p>Due to the many possible options of DANE, there is no single threat
 model countered. When notifying the user about DANE verification results
@@ -477,13 +478,17 @@ negative error value.
 </p>
 <p><var>sflags</var>: Flags for the the initialization of  <code>s</code> (if NULL)
 </p>
-<p><var>vflags</var>: Verification flags; should be zero
+<p><var>vflags</var>: Verification flags; an OR&rsquo;ed list of <code>dane_verify_flags_t</code> .
 </p>
 <p><var>verify</var>: An OR&rsquo;ed list of <code>dane_verify_status_t</code> .
 </p>
 <p>This function will verify session&rsquo;s certificate chain against the
 CA constrains and/or the certificate available via DANE.
 See <code>dane_verify_crt()</code>  for more information.
+</p>
+<p>This will not verify the chain for validity; unless the DANE
+verification is restricted to end certificates, this has to
+be performed separately using <code>gnutls_certificate_verify_peers3()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.

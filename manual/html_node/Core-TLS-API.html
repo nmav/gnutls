@@ -641,7 +641,7 @@ was used.
 <dt><a name="index-gnutls_005fcertificate_005fget_005fpeers"></a>Function: <em>const gnutls_datum_t *</em> <strong>gnutls_certificate_get_peers</strong> <em>(gnutls_session_t          <var>session</var>, unsigned int * <var>list_size</var>)</em></dt>
 <dd><p><var>session</var>: is a gnutls session
 </p>
-<p><var>list_size</var>: is the length of the certificate list
+<p><var>list_size</var>: is the length of the certificate list (may be <code>NULL</code> )
 </p>
 <p>Get the peer&rsquo;s raw certificate (chain) as sent by the peer.  These
 certificates are in raw format (DER encoded for X.509).  In case of
@@ -1391,7 +1391,7 @@ negative error value.
 status in the  <code>status</code> variable as a bitwise or&rsquo;d gnutls_certificate_status_t
 values or zero if the certificate is trusted. Note that value in  <code>status</code> is set only when the return value of this function is success (i.e, failure 
 to trust a certificate does not imply a negative return value).
-The default verification flags used by this function can be overriden
+The default verification flags used by this function can be overridden
 using <code>gnutls_certificate_set_verify_flags()</code> . See the documentation
 of <code>gnutls_certificate_verify_peers2()</code>  for details in the verification process.
 </p>
@@ -1423,7 +1423,7 @@ verification will fail with <code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code> 
 the status in the  <code>status</code> variable as a bitwise or&rsquo;d gnutls_certificate_status_t
 values or zero if the certificate is trusted. Note that value in  <code>status</code> is set only when the return value of this function is success (i.e, failure 
 to trust a certificate does not imply a negative return value).
-The default verification flags used by this function can be overriden
+The default verification flags used by this function can be overridden
 using <code>gnutls_certificate_set_verify_flags()</code> .
 </p>
 <p>This function will take into account the OCSP Certificate Status TLS extension,
@@ -1455,7 +1455,7 @@ or use <code>gnutls_certificate_verify_peers3()</code> .
 status in the  <code>status</code> variable as a bitwise or&rsquo;d gnutls_certificate_status_t
 values or zero if the certificate is trusted. Note that value in  <code>status</code> is set only when the return value of this function is success (i.e, failure 
 to trust a certificate does not imply a negative return value).
-The default verification flags used by this function can be overriden
+The default verification flags used by this function can be overridden
 using <code>gnutls_certificate_set_verify_flags()</code> . See the documentation
 of <code>gnutls_certificate_verify_peers2()</code>  for details in the verification process.
 </p>
@@ -1650,6 +1650,33 @@ integers indicating the available compression methods.
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
 </p>
 <p>Clears all the credentials previously set in this session.
+</p></dd></dl>
+
+<a name="gnutls_005fcredentials_005fget-1"></a>
+<h4 class="subheading">gnutls_credentials_get</h4>
+<a name="gnutls_005fcredentials_005fget"></a><dl>
+<dt><a name="index-gnutls_005fcredentials_005fget"></a>Function: <em>int</em> <strong>gnutls_credentials_get</strong> <em>(gnutls_session_t <var>session</var>, gnutls_credentials_type_t <var>type</var>, void ** <var>cred</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>type</var>: is the type of the credentials to return
+</p>
+<p><var>cred</var>: will contain the pointer to the credentials structure.
+</p>
+<p>Returns the previously provided credentials structures.
+</p>
+<p>For <code>GNUTLS_CRD_ANON</code> ,  <code>cred</code> will be
+<code>gnutls_anon_client_credentials_t</code>  in case of a client.  In case of
+a server it should be <code>gnutls_anon_server_credentials_t</code> .
+</p>
+<p>For <code>GNUTLS_CRD_SRP</code> ,  <code>cred</code> will be <code>gnutls_srp_client_credentials_t</code> 
+in case of a client, and <code>gnutls_srp_server_credentials_t</code> , in case
+of a server.
+</p>
+<p>For <code>GNUTLS_CRD_CERTIFICATE</code> ,  <code>cred</code> will be
+<code>gnutls_certificate_credentials_t</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
+otherwise a negative error code is returned.
 </p></dd></dl>
 
 <a name="gnutls_005fcredentials_005fset-1"></a>
@@ -2336,6 +2363,9 @@ first time.
 do not support library constructors and static linking. This
 function also became thread safe.
 </p>
+<p>A subsequent call of this function if the initial has failed will
+return the same error code.
+</p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
 </p></dd></dl>
@@ -2402,10 +2432,11 @@ used with care, since they may reveal sensitive information.
 <p>With this function you are allowed to override the default mutex
 locks used in some parts of gnutls and dependent libraries. This function
 should be used if you have complete control of your program and libraries.
-Do not call this function from a library. Instead only initialize gnutls and
-the default OS mutex locks will be used.
+Do not call this function from a library, or preferrably from any application
+unless really needed to. GnuTLS will use the appropriate locks for the running
+system.
 </p>
-<p>This function must be called before <code>gnutls_global_init()</code> .
+<p>This function must be called prior to any other gnutls function.
 </p>
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
@@ -3579,6 +3610,8 @@ macs and compression methods.  This function avoids keeping a
 priority cache and is used to directly set string priorities to a
 TLS session.  For documentation check the <code>gnutls_priority_init()</code> .
 </p>
+<p>To simply use a reasonable default, consider using <code>gnutls_set_default_priority()</code> .
+</p>
 <p><strong>Returns:</strong> On syntax error <code>GNUTLS_E_INVALID_REQUEST</code>  is returned,
 <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
 </p></dd></dl>
@@ -4736,9 +4769,8 @@ error code.
 <p>Sets some default priority on the ciphers, key exchange methods,
 macs and compression methods.
 </p>
-<p>This is the same as calling:
-</p>
-<p>gnutls_priority_set_direct (session, &quot;NORMAL&quot;, NULL);
+<p>This typically sets a default priority that is considered
+sufficiently secure to establish encrypted sessions.
 </p>
 <p>This function is kept around for backwards compatibility, but
 because of its wide use it is still fully supported.  If you wish
