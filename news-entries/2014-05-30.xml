@@ -1,0 +1,17 @@
+<title>GnuTLS 3.3.3, 3.2.15 and 3.1.25</title>
+<p>
+Released <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7494">GnuTLS
+3.3.3</a>,
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7493">GnuTLS
+3.2.15</a>,
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7492">GnuTLS
+3.1.25</a>, which are bug-fix releases on the next, current and previous stable
+branches respectively. 
+</p>
+<p>
+<a href="http://www.gnutls.org/security.html#GNUTLS-SA-2014-3">Posted a security advisory</a> on a vulnerability
+on the client side of the gnutls library.
+</p>

@@ -3,7 +3,39 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-05-06T21:52:15+00:00</updated>
+<updated>2014-05-30T07:32:46+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-05-30</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-05-30'/>
+    <title>GnuTLS 3.3.3, 3.2.15 and 3.1.25</title>
+    <updated>2014-05-30T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-05-30.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7494">GnuTLS
+3.3.3</a>,
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7493">GnuTLS
+3.2.15</a>,
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7492">GnuTLS
+3.1.25</a>, which are bug-fix releases on the next, current and previous stable
+branches respectively. 
+</p>
+<p>
+<a href="http://www.gnutls.org/security.html#GNUTLS-SA-2014-3">Posted a security advisory</a> on a vulnerability
+on the client side of the gnutls library.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-05-06</id>
@@ -430,28 +462,6 @@ purpose.
 href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6915">GnuTLS
 3.2.3</a>,
 was released. This is a bug-fix release in the current
-stable branch.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2013-07-14</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2013-07-14'/>
-    <title>GnuTLS 3.2.2</title>
-    <updated>2013-07-14T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-07-14.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6838">GnuTLS
-3.2.2</a>,
-was released. This release adds features and fixes bugs in the current
 stable branch.
 </p>
 
