@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 5 April 2014 for version
-3.3.2 of GnuTLS.
+3.3.3 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.2: X509 certificate API</title>
+<title>GnuTLS 3.3.3: X509 certificate API</title>
 
-<meta name="description" content="GnuTLS 3.3.2: X509 certificate API">
-<meta name="keywords" content="GnuTLS 3.3.2: X509 certificate API">
+<meta name="description" content="GnuTLS 3.3.3: X509 certificate API">
+<meta name="keywords" content="GnuTLS 3.3.3: X509 certificate API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -2972,7 +2972,7 @@ GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE will be returned.
 </p>
 <p><var>data</var>: a pointer to a structure to hold the data (may be null)
 </p>
-<p><var>sizeof_data</var>: initially holds the size of  <code>oid</code> 
+<p><var>sizeof_data</var>: initially holds the size of  <code>data</code> 
 </p>
 <p>This function will return the requested extension data in the
 certificate.  The extension data will be stored in the
@@ -3629,12 +3629,12 @@ negative error value.
 <a name="gnutls_005fx509_005fcrt_005fget_005fsignature-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_signature</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fsignature"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fsignature"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_signature</strong> <em>(gnutls_x509_crt_t <var>cert</var>, char * <var>sig</var>, size_t * <var>sizeof_sig</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fsignature"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_signature</strong> <em>(gnutls_x509_crt_t <var>cert</var>, char * <var>sig</var>, size_t * <var>sig_size</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
 </p>
 <p><var>sig</var>: a pointer where the signature part will be copied (may be null).
 </p>
-<p><var>sizeof_sig</var>: initially holds the size of  <code>sig</code> 
+<p><var>sig_size</var>: initially holds the size of  <code>sig</code> 
 </p>
 <p>This function will extract the signature field of a certificate.
 </p>

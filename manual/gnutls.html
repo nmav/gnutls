@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 5 April 2014 for version
-3.3.2 of GnuTLS.
+3.3.3 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.2</title>
+<title>GnuTLS 3.3.3</title>
 
-<meta name="description" content="GnuTLS 3.3.2">
-<meta name="keywords" content="GnuTLS 3.3.2">
+<meta name="description" content="GnuTLS 3.3.3">
+<meta name="keywords" content="GnuTLS 3.3.3">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.3.2</h1>
+<h1 class="settitle" align="center">GnuTLS 3.3.3</h1>
 
 
 
@@ -458,7 +458,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 5 April 2014 for version
-3.3.2 of GnuTLS.
+3.3.3 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -4028,8 +4028,7 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --dh-info              Print information PKCS #3 encoded Diffie-Hellman parameters
        --load-privkey=str     Loads a private key file
        --load-pubkey=str      Loads a public key file
-       --load-request=file    Loads a certificate request file
-                                - file must pre-exist
+       --load-request=str     Loads a certificate request file
        --load-certificate=str Loads a certificate file
        --load-ca-privkey=str  Loads the certificate authority's private key file
        --load-ca-certificate=str Loads the certificate authority's certificate file
@@ -4054,26 +4053,26 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --v1                   Generate an X.509 version 1 certificate (with no extensions)
        --to-p12               Generate a PKCS #12 structure
                                 - requires the option 'load-certificate'
-       --to-p8                Generate a PKCS #8 structure
+   -!, --to-p8                Generate a PKCS #8 structure
    -8, --pkcs8                Use PKCS #8 format for private keys
-       --rsa                  Generate RSA key
-       --dsa                  Generate DSA key
-       --ecc                  Generate ECC (ECDSA) key
-       --ecdsa                an alias for the 'ecc' option
-       --hash=str             Hash algorithm to use for signing
-       --inder                Use DER format for input certificates, private keys, and DH parameters
+   -&quot;, --rsa                  Generate RSA key
+   -#, --dsa                  Generate DSA key
+   -$, --ecc                  Generate ECC (ECDSA) key
+   -%, --ecdsa                an alias for the 'ecc' option
+   -&amp;, --hash=str             Hash algorithm to use for signing
+   -', --inder                Use DER format for input certificates, private keys, and DH parameters
                                 - disabled as '--no-inder'
-       --inraw                an alias for the 'inder' option
-       --outder               Use DER format for output certificates, private keys, and DH parameters
+   -(, --inraw                an alias for the 'inder' option
+   -), --outder               Use DER format for output certificates, private keys, and DH parameters
                                 - disabled as '--no-outder'
-       --outraw               an alias for the 'outder' option
-       --bits=num             Specify the number of bits for key generate
-       --sec-param=str        Specify the security level [low, legacy, normal, high, ultra]
-       --disable-quick-random  No effect
-       --template=file        Template file to use for non-interactive operation
-                                - file must pre-exist
-       --ask-pass             Enable interaction for entering password when in batch mode.
-       --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
+   -*, --outraw               an alias for the 'outder' option
+   -+, --bits=num             Specify the number of bits for key generate
+   -,, --sec-param=str        Specify the security level [low, legacy, medium, high, ultra]
+   --, --disable-quick-random  No effect
+   -., --template=str         Template file to use for non-interactive operation
+   -/, --ask-pass             Enable interaction for entering password when in batch mode.
+   -0, --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
+   -1, --provider=str         Specify the PKCS #11 provider library
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
    -!, --more-help            extended usage information passed thru pager
@@ -4085,7 +4084,6 @@ Tool to parse and generate X.509 certificates, requests and private keys.
 It can be used interactively or non interactively by specifying the
 template command line option.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
 </pre></div>
 
 <a name="certtool-debug"></a><a name="debug-option-_0028_002dd_0029"></a>
@@ -4392,7 +4390,7 @@ To work around that problem in the tool, you can use the
 <h4 class="subsubheading">Diffie-Hellman parameter generation</h4>
 <p>To generate parameters for Diffie-Hellman key exchange, use the command:
 </p><div class="example">
-<pre class="example">$ certtool --generate-dh-params --outfile dh.pem --sec-param normal
+<pre class="example">$ certtool --generate-dh-params --outfile dh.pem --sec-param medium
 </pre></div>
 
 <a name="Proxy-certificate-generation"></a>
@@ -4724,7 +4722,6 @@ hyphen and the flag character.
 Ocsptool is a program that can parse and print information about OCSP
 requests/responses, generate requests and verify responses.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
 </pre></div>
 
 <a name="ocsptool-debug"></a><a name="debug-option-_0028_002dd_0029-1"></a>
@@ -4931,53 +4928,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">danetool - GnuTLS DANE tool
-Usage:  danetool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
-
-   -d, --debug=num            Enable debugging
-                                - it must be in the range:
-                                  0 to 9999
-   -V, --verbose              More verbose output
-                                - may appear multiple times
-       --infile=file          Input file
-                                - file must pre-exist
-       --outfile=str          Output file
-       --load-pubkey=str      Loads a public key file
-       --load-certificate=str Loads a certificate file
-       --dlv=str              Sets a DLV file
-       --hash=str             Hash algorithm to use for signing
-       --check=str            Check a host's DANE TLSA entry
-       --check-ee             Check only the end-entity's certificate
-       --check-ca             Check only the CA's certificate
-       --insecure             Do not verify any DNSSEC signature
-       --local-dns            Use the local DNS server for DNSSEC resolving
-                                - disabled as '--no-local-dns'
-       --inder                Use DER format for input certificates and private keys
-                                - disabled as '--no-inder'
-       --inraw                an alias for the 'inder' option
-       --tlsa-rr              Print the DANE RR data on a certificate or public key
-                                - requires the option 'host'
-       --host=str             Specify the hostname to be used in the DANE RR
-       --proto=str            The protocol set for DANE data (tcp, udp etc.)
-       --port=num             Specify the port number for the DANE data
-       --ca                   Whether the provided certificate or public key is a Certificate
-Authority
-       --x509                 Use the hash of the X.509 certificate, rather than the public key
-       --local                an alias for the 'domain' option
-                                - enabled by default
-       --domain               The provided certificate or public key is issued by the local domain
-                                - disabled as '--no-domain'
-                                - enabled by default
-   -v, --version[=arg]        output version information and exit
-   -h, --help                 display extended usage information and exit
-   -!, --more-help            extended usage information passed thru pager
-
-Options are specified by doubled hyphens and their name or by a single
-hyphen and the flag character.
-
-Tool to generate and check DNS resource records for the DANE protocol.
-
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
+<pre class="example">danetool is unavailable - no --help
 </pre></div>
 
 <a name="danetool-debug"></a><a name="debug-option-_0028_002dd_0029-2"></a>
@@ -5362,7 +5313,6 @@ In brief, to use SRP you need to create two files.  These are the password
 file that holds the users and the verifiers associated with them and the
 configuration file to hold the group parameters (called tpasswd.conf).
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
 </pre></div>
 
 <a name="srptool-debug"></a><a name="debug-option-_0028_002dd_0029-3"></a>
@@ -5547,7 +5497,6 @@ hyphen and the flag character.
 Program that generates random keys for use with TLS-PSK.  The keys are
 stored in hexadecimal format in a key file.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
 </pre></div>
 
 <a name="psktool-debug"></a><a name="debug-option-_0028_002dd_0029-4"></a>
@@ -6062,7 +6011,9 @@ is returned, and zero or positive code on success.
 <p><var>signature</var>: contains the signature
 </p>
 <p>This function will verify the given signed digest, using the
-parameters from the public key.
+parameters from the public key. Note that unlike <code>gnutls_privkey_sign_hash()</code> ,
+this function accepts a signature algorithm instead of a digest algorithm.
+You can use <code>gnutls_pk_to_sign()</code>  to get the appropriate value.
 </p>
 <p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
 is returned, and zero or positive code on success.
@@ -6792,13 +6743,13 @@ Usage:  p11tool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;]
    -8, --pkcs8                Use PKCS #8 format for private keys
        --bits=num             Specify the number of bits for key generate
        --sec-param=str        Specify the security level
-       --inder                Use DER/RAW format for input
+   -!, --inder                Use DER/RAW format for input
                                 - disabled as '--no-inder'
-       --inraw                an alias for the 'inder' option
-       --outder               Use DER format for output certificates, private keys, and DH parameters
+   -&quot;, --inraw                an alias for the 'inder' option
+   -#, --outder               Use DER format for output certificates, private keys, and DH parameters
                                 - disabled as '--no-outder'
-       --outraw               an alias for the 'outder' option
-       --provider=file        Specify the PKCS #11 provider library
+   -$, --outraw               an alias for the 'outder' option
+   -%, --provider=file        Specify the PKCS #11 provider library
                                 - file must pre-exist
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
@@ -6819,7 +6770,6 @@ configuration files have to be setup.
 To provide the PIN for all the operations below use the environment
 variable GNUTLS_PIN.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
 </pre></div>
 
 <a name="p11tool-debug"></a><a name="debug-option-_0028_002dd_0029-5"></a>
@@ -6910,7 +6860,7 @@ see <a href="#p11tool-so_002dlogin">the so-login option documentation</a>.
 
 <p>This is the &ldquo;specify the security level&rdquo; option.
 This option takes a string argument <samp>Security parameter</samp>.
-This is alternative to the bits option. Available options are [low, legacy, normal, high, ultra].
+This is alternative to the bits option. Available options are [low, legacy, medium, high, ultra].
 <a name="p11tool-inder"></a></p><a name="inder-option-2"></a>
 <h4 class="subsubheading">inder option</h4>
 
@@ -7330,7 +7280,7 @@ Usage:  tpmtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;]
        --pubkey=str           Prints the public key of the provided key
        --list                 Lists all stored keys in the TPM
        --delete=str           Delete the key identified by the given URL (UUID).
-       --sec-param=str        Specify the security level [low, legacy, normal, high, ultra].
+       --sec-param=str        Specify the security level [low, legacy, medium, high, ultra].
        --bits=num             Specify the number of bits for key generate
        --inder                Use the DER format for keys.
                                 - disabled as '--no-inder'
@@ -7345,7 +7295,6 @@ hyphen and the flag character.
 
 Program that allows handling cryptographic data from the TPM chip.
 
-Please send bug reports to:  &lt;@PACKAGE_BUGREPORT@&gt;
 </pre></div>
 
 <a name="tpmtool-debug"></a><a name="debug-option-_0028_002dd_0029-6"></a>
@@ -7392,7 +7341,7 @@ user.
 <a name="tpmtool-sec_002dparam"></a></p><a name="sec_002dparam-option-2"></a>
 <h4 class="subsubheading">sec-param option</h4>
 
-<p>This is the &ldquo;specify the security level [low, legacy, normal, high, ultra].&rdquo; option.
+<p>This is the &ldquo;specify the security level [low, legacy, medium, high, ultra].&rdquo; option.
 This option takes a string argument <samp>Security parameter</samp>.
 This is alternative to the bits option. Note however that the
 values allowed by the TPM chip are quantized and given values may be rounded up.
@@ -14643,90 +14592,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-cli - GnuTLS client
-Usage:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [hostname]
-
-   -d, --debug=num            Enable debugging
-                                - it must be in the range:
-                                  0 to 9999
-   -V, --verbose              More verbose output
-                                - may appear multiple times
-       --tofu                 Enable trust on first use authentication
-                                - disabled as '--no-tofu'
-       --strict-tofu          Fail to connect if a known certificate has changed
-                                - disabled as '--no-strict-tofu'
-       --dane                 Enable DANE certificate verification (DNSSEC)
-                                - disabled as '--no-dane'
-       --local-dns            Use the local DNS server for DNSSEC resolving
-                                - disabled as '--no-local-dns'
-       --ca-verification      Disable CA certificate verification
-                                - disabled as '--no-ca-verification'
-                                - enabled by default
-       --ocsp                 Enable OCSP certificate verification
-                                - disabled as '--no-ocsp'
-   -r, --resume               Establish a session and resume
-   -e, --rehandshake          Establish a session and rehandshake
-   -s, --starttls             Connect, establish a plain session and start TLS
-   -u, --udp                  Use DTLS (datagram TLS) over UDP
-       --mtu=num              Set MTU for datagram TLS
-                                - it must be in the range:
-                                  0 to 17000
-       --crlf                 Send CR LF instead of LF
-       --x509fmtder           Use DER format for certificates to read from
-   -f, --fingerprint          Send the openpgp fingerprint, instead of the key
-       --print-cert           Print peer's certificate in PEM format
-       --dh-bits=num          The minimum number of bits allowed for DH
-       --priority=str         Priorities string
-       --x509cafile=str       Certificate file or PKCS #11 URL to use
-       --x509crlfile=file     CRL file to use
-                                - file must pre-exist
-       --pgpkeyfile=file      PGP Key file to use
-                                - file must pre-exist
-       --pgpkeyring=file      PGP Key ring file to use
-                                - file must pre-exist
-       --pgpcertfile=file     PGP Public Key (certificate) file to use
-                                - file must pre-exist
-       --x509keyfile=str      X.509 key file or PKCS #11 URL to use
-       --x509certfile=str     X.509 Certificate file or PKCS #11 URL to use
-       --pgpsubkey=str        PGP subkey to use (hex or auto)
-       --srpusername=str      SRP username to use
-       --srppasswd=str        SRP password to use
-       --pskusername=str      PSK username to use
-       --pskkey=str           PSK key (in hex) to use
-   -p, --port=str             The port or service to connect to
-       --insecure             Don't abort program if server certificate can't be validated
-       --ranges               Use length-hiding padding to prevent traffic analysis
-       --benchmark-ciphers    Benchmark individual ciphers
-       --benchmark-soft-ciphers  Benchmark individual software ciphers (no hw acceleration)
-       --benchmark-tls-kx     Benchmark TLS key exchange methods
-       --benchmark-tls-ciphers  Benchmark TLS ciphers
-   -l, --list                 Print a list of the supported algorithms and modes
-       --noticket             Don't allow session tickets
-       --srtp-profiles=str    Offer SRTP profiles
-       --alpn=str             Application layer protocol
-                                - may appear multiple times
-   -b, --heartbeat            Activate heartbeat support
-       --recordsize=num       The maximum record size to advertize
-                                - it must be in the range:
-                                  0 to 4096
-       --disable-sni          Do not send a Server Name Indication (SNI)
-       --disable-extensions   Disable all the TLS extensions
-       --inline-commands      Inline commands of the form ^&lt;cmd&gt;^
-       --inline-commands-prefix=str Change the default (^) used as a delimiter for inline commands.  The
-value is a single US-ASCII character (octets 0 - 127).
-   -v, --version[=arg]        output version information and exit
-   -h, --help                 display extended usage information and exit
-   -!, --more-help            extended usage information passed thru pager
-
-Options are specified by doubled hyphens and their name or by a single
-hyphen and the flag character.
-Operands and options may be intermixed.  They will be reordered.
-
-Simple client program to set up a TLS connection to some other computer.  It
-sets up a TLS connection and forwards data from the standard input to the
-secured socket and vice versa.
-
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
+<pre class="example">gnutls-cli is unavailable - no --help
 </pre></div>
 
 <a name="gnutls_002dcli-debug"></a><a name="debug-option-_0028_002dd_0029-7"></a>
@@ -15026,6 +14892,7 @@ Usage:  gnutls-serv [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&
        --srtp-profiles=str    Offer SRTP profiles
    -a, --disable-client-cert  Do not request a client certificate
    -r, --require-client-cert  Require a client certificate
+       --verify-client-cert   If a client certificate is sent then verify it.
    -b, --heartbeat            Activate heartbeat support
        --x509fmtder           Use DER format for certificates to read from
        --priority=str         Priorities string
@@ -15067,7 +14934,6 @@ hyphen and the flag character.
 
 Server program that listens to incoming TLS connections.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
 </pre></div>
 
 <a name="gnutls_002dserv-debug"></a><a name="debug-option-_0028_002dd_0029-8"></a>
@@ -15353,7 +15219,6 @@ to a TLS server, performs tests and print the server's capabilities.  If
 called with the `-v' parameter more checks will be performed.  Can be used
 to check for servers with special needs or bugs.
 
-Please send bug reports to:  &lt;bugs@gnutls.org&gt;
 </pre></div>
 
 <a name="gnutls_002dcli_002ddebug-debug"></a><a name="debug-option-_0028_002dd_0029-9"></a>
@@ -25575,7 +25440,7 @@ GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE will be returned.
 </p>
 <p><var>data</var>: a pointer to a structure to hold the data (may be null)
 </p>
-<p><var>sizeof_data</var>: initially holds the size of  <code>oid</code> 
+<p><var>sizeof_data</var>: initially holds the size of  <code>data</code> 
 </p>
 <p>This function will return the requested extension data in the
 certificate.  The extension data will be stored in the
@@ -26232,12 +26097,12 @@ negative error value.
 <a name="gnutls_005fx509_005fcrt_005fget_005fsignature-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_signature</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fsignature"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fsignature"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_signature</strong> <em>(gnutls_x509_crt_t <var>cert</var>, char * <var>sig</var>, size_t * <var>sizeof_sig</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fsignature"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_signature</strong> <em>(gnutls_x509_crt_t <var>cert</var>, char * <var>sig</var>, size_t * <var>sig_size</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
 </p>
 <p><var>sig</var>: a pointer where the signature part will be copied (may be null).
 </p>
-<p><var>sizeof_sig</var>: initially holds the size of  <code>sig</code> 
+<p><var>sig_size</var>: initially holds the size of  <code>sig</code> 
 </p>
 <p>This function will extract the signature field of a certificate.
 </p>
@@ -34300,7 +34165,9 @@ is returned, and zero or positive code on success.
 <p><var>signature</var>: contains the signature
 </p>
 <p>This function will verify the given signed digest, using the
-parameters from the public key.
+parameters from the public key. Note that unlike <code>gnutls_privkey_sign_hash()</code> ,
+this function accepts a signature algorithm instead of a digest algorithm.
+You can use <code>gnutls_pk_to_sign()</code>  to get the appropriate value.
 </p>
 <p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
 is returned, and zero or positive code on success.
