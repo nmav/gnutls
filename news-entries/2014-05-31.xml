@@ -1,0 +1,6 @@
+<title>GnuTLS 3.3.4</title>
+<p>
+Released <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7494">GnuTLS
+3.3.4</a>, which fixes an issue in the hardware acceleration on certain CPUs. 
+</p>

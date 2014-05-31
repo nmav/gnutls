@@ -3,7 +3,28 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-05-30T07:32:46+00:00</updated>
+<updated>2014-05-31T10:43:49+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-05-31</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-05-31'/>
+    <title>GnuTLS 3.3.4</title>
+    <updated>2014-05-31T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-05-31.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7494">GnuTLS
+3.3.4</a>, which fixes an issue in the hardware acceleration on certain CPUs. 
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-05-30</id>
@@ -440,29 +461,6 @@ were released.
 <p>
 <a href="download.html">A naming scheme is introduced</a> on the releases to properly show their intended
 purpose.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2013-07-30</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2013-07-30'/>
-    <title>GnuTLS 3.2.3</title>
-    <updated>2013-07-30T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-07-30.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-<a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6915">GnuTLS
-3.2.3</a>,
-was released. This is a bug-fix release in the current
-stable branch.
 </p>
 
     </div>
