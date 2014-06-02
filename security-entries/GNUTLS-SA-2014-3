@@ -6,7 +6,7 @@
 sends a specially crafted ServerHello could corrupt the memory of a requesting client.<br>
 
 <a href="http://radare.today/technical-analysis-of-the-gnutls-hello-vulnerability/">
-	Write-up at radare.today</a><br>
+	Analysis at radare.today</a><br>
 
       <b>Recommendation:</b> Upgrade to the latest gnutls version (3.1.25, 3.2.15
 or 3.3.4)</td>
