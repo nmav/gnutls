@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 5 April 2014 for version
-3.3.4 of GnuTLS.
+3.3.5 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.4: Application Layer Protocol Negotiation (ALPN)</title>
+<title>GnuTLS 3.3.5: Application Layer Protocol Negotiation (ALPN)</title>
 
-<meta name="description" content="GnuTLS 3.3.4: Application Layer Protocol Negotiation (ALPN)">
-<meta name="keywords" content="GnuTLS 3.3.4: Application Layer Protocol Negotiation (ALPN)">
+<meta name="description" content="GnuTLS 3.3.5: Application Layer Protocol Negotiation (ALPN)">
+<meta name="keywords" content="GnuTLS 3.3.5: Application Layer Protocol Negotiation (ALPN)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -178,10 +178,10 @@ string. To enable, use the following functions.
 <dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005falpn_005fget_005fselected_005fprotocol">gnutls_alpn_get_selected_protocol</a> (gnutls_session_t <var>session</var>, gnutls_datum_t * <var>protocol</var>)</code></dt>
 </dl>
 
-<p>Note that you can use these functions with protocols that are
-registered in the Application Layer Protocol Negotiation IANA registry.
-If you wish to use them for other custom protocols then prefix them
-with the 3 characters &lsquo;exp&rsquo; (lower-case).
+<p>Note that these functions are intended to be used with protocols that are
+registered in the Application Layer Protocol Negotiation IANA registry. While
+you can use them for other protocols (at the risk of collisions), it is preferable
+to register them.
 </p>
 
 

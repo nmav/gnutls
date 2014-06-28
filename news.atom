@@ -3,7 +3,28 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-05-31T10:43:49+00:00</updated>
+<updated>2014-06-28T13:54:40+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-06-26</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-06-26'/>
+    <title>GnuTLS 3.3.5</title>
+    <updated>2014-06-26T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-06-26.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7542">GnuTLS
+3.3.5</a>, which adds new features and fixes bugs in the next stable release. 
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-05-31</id>
@@ -441,26 +462,6 @@ questions</a>.
 and
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/6966">GnuTLS 3.0.32</a>,
 were released.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2013-08-02</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2013-08-02'/>
-    <title>Version naming change</title>
-    <updated>2013-08-02T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-08-02.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-<a href="download.html">A naming scheme is introduced</a> on the releases to properly show their intended
-purpose.
 </p>
 
     </div>

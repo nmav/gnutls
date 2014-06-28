@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 5 April 2014 for version
-3.3.4 of GnuTLS.
+3.3.5 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.4: Core TLS API</title>
+<title>GnuTLS 3.3.5: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.3.4: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.3.4: Core TLS API">
+<meta name="description" content="GnuTLS 3.3.5: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.3.5: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -2547,7 +2547,7 @@ available handshake descriptions.
 handshake message has been received or generated. This is a
 generalization of <code>gnutls_handshake_set_post_client_hello_function()</code> .
 </p>
-<p>To call the hook function prior to the message being sent/generation use 
+<p>To call the hook function prior to the message being sent/generated use
 <code>GNUTLS_HOOK_PRE</code>  as  <code>post</code> parameter, <code>GNUTLS_HOOK_POST</code>  to call
 after, and <code>GNUTLS_HOOK_BOTH</code>  for both cases.
 </p>
@@ -2560,8 +2560,6 @@ terminate the handshake.
 handshake based on client input unless you know what you are
 doing. Before the handshake is finished there is no way to know if
 there is a man-in-the-middle attack being performed.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
 </p></dd></dl>
 
 <a name="gnutls_005fhandshake_005fset_005fmax_005fpacket_005flength-1"></a>
@@ -2600,6 +2598,11 @@ the hello message is parsed).
 </p>
 <p>This callback must return 0 on success or a gnutls error code to
 terminate the handshake.
+</p>
+<p>Since GnuTLS 3.3.5 the callback is
+allowed to return <code>GNUTLS_E_AGAIN</code>  or <code>GNUTLS_E_INTERRUPTED</code>  to
+put the handshake on hold. In that case <code>gnutls_handshake()</code> 
+will return <code>GNUTLS_E_INTERRUPTED</code>  and can be resumed when needed.
 </p>
 <p><strong>Warning:</strong> You should not use this function to terminate the
 handshake based on client input unless you know what you are
@@ -3084,6 +3087,34 @@ or sent and was invalid.
 instead of the key in the initial handshake procedure. This should
 be used with care and only when there is indication or knowledge
 that the server can obtain the client&rsquo;s key.
+</p></dd></dl>
+
+<a name="gnutls_005fpacket_005fdeinit-1"></a>
+<h4 class="subheading">gnutls_packet_deinit</h4>
+<a name="gnutls_005fpacket_005fdeinit"></a><dl>
+<dt><a name="index-gnutls_005fpacket_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_packet_deinit</strong> <em>(gnutls_packet_t <var>packet</var>)</em></dt>
+<dd><p><var>packet</var>: is a pointer to a <code>gnutls_packet_st</code>  structure.
+</p>
+<p>This function will deinitialize all data associated with
+the received packet.
+</p>
+<p><strong>Since:</strong> 3.3.5
+</p></dd></dl>
+
+<a name="gnutls_005fpacket_005fget-1"></a>
+<h4 class="subheading">gnutls_packet_get</h4>
+<a name="gnutls_005fpacket_005fget"></a><dl>
+<dt><a name="index-gnutls_005fpacket_005fget"></a>Function: <em>void</em> <strong>gnutls_packet_get</strong> <em>(gnutls_packet_t <var>packet</var>, gnutls_datum_t * <var>data</var>, unsigned char * <var>sequence</var>)</em></dt>
+<dd><p><var>packet</var>: is a <code>gnutls_packet_t</code>  structure.
+</p>
+<p><var>data</var>: will contain the data present in the  <code>packet</code> structure (may be <code>NULL</code> )
+</p>
+<p><var>sequence</var>: the 8-bytes of the packet sequence number (may be <code>NULL</code> )
+</p>
+<p>This function returns the data and sequence number associated with
+the received packet.
+</p>
+<p><strong>Since:</strong> 3.3.5
 </p></dd></dl>
 
 <a name="gnutls_005fpem_005fbase64_005fdecode-1"></a>
@@ -4095,6 +4126,29 @@ handshake or terminate the connection.
 <p><strong>Returns:</strong> The number of bytes received and zero on EOF (for stream
 connections).  A negative error code is returned in case of an error.  
 The number of bytes received might be less than the requested  <code>data_size</code> .
+</p></dd></dl>
+
+<a name="gnutls_005frecord_005frecv_005fpacket-1"></a>
+<h4 class="subheading">gnutls_record_recv_packet</h4>
+<a name="gnutls_005frecord_005frecv_005fpacket"></a><dl>
+<dt><a name="index-gnutls_005frecord_005frecv_005fpacket"></a>Function: <em>ssize_t</em> <strong>gnutls_record_recv_packet</strong> <em>(gnutls_session_t <var>session</var>, gnutls_packet_t * <var>packet</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+</p>
+<p><var>packet</var>: the structure that will hold the packet data
+</p>
+<p>This is a lower-level function thatn <code>gnutls_record_recv()</code>  and allows
+to directly receive the whole decrypted packet. That avoids a
+memory copy, and is mostly applicable to applications seeking high
+performance.
+</p>
+<p>The received packet is accessed using <code>gnutls_packet_get()</code>  and 
+must be deinitialized using <code>gnutls_packet_deinit()</code> . The returned
+packet will be <code>NULL</code>  if the return value is zero (EOF).
+</p>
+<p><strong>Returns:</strong> The number of bytes received and zero on EOF (for stream
+connections).  A negative error code is returned in case of an error.  
+</p>
+<p><strong>Since:</strong> 3.3.5
 </p></dd></dl>
 
 <a name="gnutls_005frecord_005frecv_005fseq-1"></a>

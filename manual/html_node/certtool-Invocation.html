@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 5 April 2014 for version
-3.3.4 of GnuTLS.
+3.3.5 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.4: certtool Invocation</title>
+<title>GnuTLS 3.3.5: certtool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.3.4: certtool Invocation">
-<meta name="keywords" content="GnuTLS 3.3.4: certtool Invocation">
+<meta name="description" content="GnuTLS 3.3.5: certtool Invocation">
+<meta name="keywords" content="GnuTLS 3.3.5: certtool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -243,26 +243,25 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --v1                   Generate an X.509 version 1 certificate (with no extensions)
        --to-p12               Generate a PKCS #12 structure
                                 - requires the option 'load-certificate'
-   -!, --to-p8                Generate a PKCS #8 structure
+       --to-p8                Generate a PKCS #8 structure
    -8, --pkcs8                Use PKCS #8 format for private keys
-   -&quot;, --rsa                  Generate RSA key
-   -#, --dsa                  Generate DSA key
-   -$, --ecc                  Generate ECC (ECDSA) key
-   -%, --ecdsa                an alias for the 'ecc' option
-   -&amp;, --hash=str             Hash algorithm to use for signing
-   -', --inder                Use DER format for input certificates, private keys, and DH parameters
+       --rsa                  Generate RSA key
+       --dsa                  Generate DSA key
+       --ecc                  Generate ECC (ECDSA) key
+       --ecdsa                an alias for the 'ecc' option
+       --hash=str             Hash algorithm to use for signing
+       --inder                Use DER format for input certificates, private keys, and DH parameters
                                 - disabled as '--no-inder'
-   -(, --inraw                an alias for the 'inder' option
-   -), --outder               Use DER format for output certificates, private keys, and DH parameters
+       --inraw                an alias for the 'inder' option
+       --outder               Use DER format for output certificates, private keys, and DH parameters
                                 - disabled as '--no-outder'
-   -*, --outraw               an alias for the 'outder' option
-   -+, --bits=num             Specify the number of bits for key generate
-   -,, --sec-param=str        Specify the security level [low, legacy, medium, high, ultra]
-   --, --disable-quick-random  No effect
-   -., --template=str         Template file to use for non-interactive operation
-   -/, --ask-pass             Enable interaction for entering password when in batch mode.
-   -0, --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
-   -1, --provider=str         Specify the PKCS #11 provider library
+       --outraw               an alias for the 'outder' option
+       --bits=num             Specify the number of bits for key generate
+       --sec-param=str        Specify the security level [low, legacy, normal, high, ultra]
+       --disable-quick-random  No effect
+       --template=str         Template file to use for non-interactive operation
+       --ask-pass             Enable interaction for entering password when in batch mode.
+       --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
    -!, --more-help            extended usage information passed thru pager
@@ -359,11 +358,6 @@ This can be either a file or a PKCS #11 URL
 <p>This is the &ldquo;password to use&rdquo; option.
 This option takes a string argument.
 You can use this option to specify the password in the command line instead of reading it from the tty. Note, that the command line arguments are available for view in others in the system. Specifying password as &rdquo; is the same as specifying no password.
-<a name="certtool-cprint"></a></p><a name="cprint-option"></a>
-<h4 class="subsubheading">cprint option</h4>
-
-<p>This is the &ldquo;in certain operations it prints the information in c-friendly format&rdquo; option.
-In certain operations it prints the information in C-friendly format, suitable for including into C programs.
 <a name="certtool-null_002dpassword"></a></p><a name="null_002dpassword-option"></a>
 <h4 class="subsubheading">null-password option</h4>
 
@@ -374,6 +368,17 @@ This option enforces a NULL password. This is different than the empty or no pas
 
 <p>This is the &ldquo;enforce an empty password&rdquo; option.
 This option enforces an empty password. This is different than the NULL or no password in schemas like PKCS #8.
+<a name="certtool-cprint"></a></p><a name="cprint-option"></a>
+<h4 class="subsubheading">cprint option</h4>
+
+<p>This is the &ldquo;in certain operations it prints the information in c-friendly format&rdquo; option.
+In certain operations it prints the information in C-friendly format, suitable for including into C programs.
+<a name="certtool-p12_002dname"></a></p><a name="p12_002dname-option"></a>
+<h4 class="subsubheading">p12-name option</h4>
+
+<p>This is the &ldquo;the pkcs #12 friendly name to use&rdquo; option.
+This option takes a string argument.
+The name to be used for the primary certificate and private key in a PKCS #12 file.
 <a name="certtool-pubkey_002dinfo"></a></p><a name="pubkey_002dinfo-option"></a>
 <h4 class="subsubheading">pubkey-info option</h4>
 

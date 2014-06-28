@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 5 April 2014 for version
-3.3.4 of GnuTLS.
+3.3.5 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.4: X509 certificate API</title>
+<title>GnuTLS 3.3.5: X509 certificate API</title>
 
-<meta name="description" content="GnuTLS 3.3.4: X509 certificate API">
-<meta name="keywords" content="GnuTLS 3.3.4: X509 certificate API">
+<meta name="description" content="GnuTLS 3.3.5: X509 certificate API">
+<meta name="keywords" content="GnuTLS 3.3.5: X509 certificate API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -710,7 +710,7 @@ and false (0) if not.
 <h4 class="subheading">gnutls_x509_crl_deinit</h4>
 <a name="gnutls_005fx509_005fcrl_005fdeinit"></a><dl>
 <dt><a name="index-gnutls_005fx509_005fcrl_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_x509_crl_deinit</strong> <em>(gnutls_x509_crl_t <var>crl</var>)</em></dt>
-<dd><p><var>crl</var>: The structure to be initialized
+<dd><p><var>crl</var>: The structure to be deinitialized
 </p>
 <p>This function will deinitialize a CRL structure.
 </p></dd></dl>
@@ -916,6 +916,9 @@ given CRL.
 </p>
 <p>This function will retrieve the serial number of the specified, by
 the index, revoked certificate.
+</p>
+<p>Note that this function will have performance issues in large sequences
+of revoked certificates. In that case use <code>gnutls_x509_crl_iter_crt_serial()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value. and a negative error code on error.
@@ -1260,6 +1263,43 @@ authority&rsquo;s private key.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrl_005fiter_005fcrt_005fserial-1"></a>
+<h4 class="subheading">gnutls_x509_crl_iter_crt_serial</h4>
+<a name="gnutls_005fx509_005fcrl_005fiter_005fcrt_005fserial"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrl_005fiter_005fcrt_005fserial"></a>Function: <em>int</em> <strong>gnutls_x509_crl_iter_crt_serial</strong> <em>(gnutls_x509_crl_t <var>crl</var>, gnutls_x509_crl_iter_t * <var>iter</var>, unsigned char * <var>serial</var>, size_t * <var>serial_size</var>, time_t * <var>t</var>)</em></dt>
+<dd><p><var>crl</var>: should contain a <code>gnutls_x509_crl_t</code>  structure
+</p>
+<p><var>iter</var>: A pointer to an iterator (initially the iterator should be <code>NULL</code> )
+</p>
+<p><var>serial</var>: where the serial number will be copied
+</p>
+<p><var>serial_size</var>: initially holds the size of serial
+</p>
+<p><var>t</var>: if non null, will hold the time this certificate was revoked
+</p>
+<p>This function performs the same as <code>gnutls_x509_crl_get_crt_serial()</code> ,
+but reads sequentially and keeps state in the iterator 
+between calls. That allows it to provide better performance in sequences 
+with many elements (50000+).
+</p>
+<p>When past the last element is accessed <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> 
+is returned and the iterator is reset.
+</p>
+<p>After use, the iterator must be deinitialized using <code>gnutls_x509_crl_iter_deinit()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value. and a negative error code on error.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrl_005fiter_005fdeinit-1"></a>
+<h4 class="subheading">gnutls_x509_crl_iter_deinit</h4>
+<a name="gnutls_005fx509_005fcrl_005fiter_005fdeinit"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrl_005fiter_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_x509_crl_iter_deinit</strong> <em>(gnutls_x509_crl_iter_t <var>iter</var>)</em></dt>
+<dd><p><var>iter</var>: The iterator structure to be deinitialized
+</p>
+<p>This function will deinitialize an iterator structure.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrl_005flist_005fimport-1"></a>
