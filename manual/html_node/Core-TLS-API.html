@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 5 April 2014 for version
-3.3.5 of GnuTLS.
+3.3.6 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.5: Core TLS API</title>
+<title>GnuTLS 3.3.6: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.3.5: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.3.5: Core TLS API">
+<meta name="description" content="GnuTLS 3.3.6: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.3.6: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -1252,6 +1252,26 @@ on error.
 <p><strong>Since:</strong> 2.4.0
 </p></dd></dl>
 
+<a name="gnutls_005fcertificate_005fset_005fx509_005ftrust_005fdir-1"></a>
+<h4 class="subheading">gnutls_certificate_set_x509_trust_dir</h4>
+<a name="gnutls_005fcertificate_005fset_005fx509_005ftrust_005fdir"></a><dl>
+<dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005ftrust_005fdir"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_trust_dir</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, const char * <var>ca_dir</var>, gnutls_x509_crt_fmt_t <var>type</var>)</em></dt>
+<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+</p>
+<p><var>ca_dir</var>: is a directory containing the list of trusted CAs (DER or PEM list)
+</p>
+<p><var>type</var>: is PEM or DER
+</p>
+<p>This function adds the trusted CAs present in the directory in order to 
+verify client or server certificates. This function is identical
+to <code>gnutls_certificate_set_x509_trust_file()</code>  but loads all certificates
+in a directory.
+</p>
+<p><strong>Returns:</strong> the number of certificates processed
+</p>
+<p><strong>Since:</strong> 3.3.6
+</p></dd></dl>
+
 <a name="gnutls_005fcertificate_005fset_005fx509_005ftrust_005ffile-1"></a>
 <h4 class="subheading">gnutls_certificate_set_x509_trust_file</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005ftrust_005ffile"></a><dl>
@@ -1276,8 +1296,7 @@ using <code>gnutls_certificate_send_x509_rdn_sequence()</code> .
 will import all certificates that are marked as trusted. Note
 that the supported URLs are the ones indicated by <code>gnutls_url_is_supported()</code> .
 </p>
-<p><strong>Returns:</strong> number of certificates processed, or a negative error code on
-error.
+<p><strong>Returns:</strong> the number of certificates processed
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fset_005fx509_005ftrust_005fmem-1"></a>
@@ -5207,12 +5226,17 @@ error code.
 SRP credentials.  The callback&rsquo;s function form is:
 </p>
 <p>int (*callback)(gnutls_session_t, const char* username,
-gnutls_datum_t* salt, gnutls_datum_t *verifier, gnutls_datum_t* generator,
-gnutls_datum_t* prime);
+gnutls_datum_t *salt, gnutls_datum_t *verifier, gnutls_datum_t *generator,
+gnutls_datum_t *prime);
 </p>
 <p><code>username</code> contains the actual username.
 The  <code>salt</code> ,  <code>verifier</code> ,  <code>generator</code> and  <code>prime</code> must be filled
 in using the <code>gnutls_malloc()</code> . For convenience  <code>prime</code> and  <code>generator</code> may also be one of the static parameters defined in gnutls.h.
+</p>
+<p>Initially, the data field is NULL in every <code>gnutls_datum_t</code> 
+structure that the callback has to fill in. When the
+callback is done GnuTLS deallocates all of those buffers
+which are non-NULL, regardless of the return value.
 </p>
 <p>In order to prevent attackers from guessing valid usernames,
 if a user does not exist, g and n values should be filled in

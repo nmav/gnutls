@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 5 April 2014 for version
-3.3.5 of GnuTLS.
+3.3.6 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.5: Upgrading from previous versions</title>
+<title>GnuTLS 3.3.6: Upgrading from previous versions</title>
 
-<meta name="description" content="GnuTLS 3.3.5: Upgrading from previous versions">
-<meta name="keywords" content="GnuTLS 3.3.5: Upgrading from previous versions">
+<meta name="description" content="GnuTLS 3.3.6: Upgrading from previous versions">
+<meta name="keywords" content="GnuTLS 3.3.6: Upgrading from previous versions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -235,6 +235,18 @@ functions have been deprecated and are listed below.
 <thead><tr><th width="30%">Old function</th><th width="60%">Replacement</th></tr></thead>
 <tr><td width="30%"><code>gnutls_privkey_sign_raw_data</code></td><td width="60%">The function <a href="Abstract-key-API.html#gnutls_005fprivkey_005fsign_005fhash">gnutls_privkey_sign_hash</a> is equivalent
 when the flag <code>GNUTLS_PRIVKEY_SIGN_FLAG_TLS1_RSA</code> is specified.</td></tr>
+</table>
+
+<a name="Upgrading-to-3_002e3_002ex-from-3_002e2_002ex"></a>
+<h3 class="heading">Upgrading to 3.3.x from 3.2.x</h3>
+
+<p>GnuTLS 3.3.x is source and binary compatible with GnuTLS 3.2.x releases;
+however there few changes in semantics which are listed below.
+</p>
+<table>
+<thead><tr><th width="30%">Old function</th><th width="60%">Replacement</th></tr></thead>
+<tr><td width="30%"><code>gnutls_global_init</code></td><td width="60%">No longer required. The library is initialized using a constructor.</td></tr>
+<tr><td width="30%"><code>gnutls_global_deinit</code></td><td width="60%">No longer required. The library is deinitialized using a destructor.</td></tr>
 </table>
 
 

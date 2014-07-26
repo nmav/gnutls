@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 5 April 2014 for version
-3.3.5 of GnuTLS.
+3.3.6 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.5: X509 certificate API</title>
+<title>GnuTLS 3.3.6: X509 certificate API</title>
 
-<meta name="description" content="GnuTLS 3.3.5: X509 certificate API">
-<meta name="keywords" content="GnuTLS 3.3.5: X509 certificate API">
+<meta name="description" content="GnuTLS 3.3.6: X509 certificate API">
+<meta name="keywords" content="GnuTLS 3.3.6: X509 certificate API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -802,7 +802,7 @@ be replaced by the actual size of parameters)
 of &quot;BEGIN X509 CRL&quot;.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value. and a negative error code on failure.
+negative error value.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrl_005fexport2-1"></a>
@@ -823,7 +823,7 @@ negative error value. and a negative error code on failure.
 of &quot;BEGIN X509 CRL&quot;.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value. and a negative error code on failure.
+negative error value.
 </p>
 <p>Since 3.1.3
 </p></dd></dl>
@@ -921,7 +921,7 @@ the index, revoked certificate.
 of revoked certificates. In that case use <code>gnutls_x509_crl_iter_crt_serial()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value. and a negative error code on error.
+negative error value.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrl_005fget_005fdn_005foid-1"></a>
@@ -1089,7 +1089,7 @@ described in RFC4514. The output string will be ASCII or UTF-8
 encoded, depending on the certificate data.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value. and a negative error code on error.
+negative error value.
 </p>
 <p><strong>Since:</strong> 3.1.10
 </p></dd></dl>
@@ -1192,7 +1192,7 @@ and the length.
 <p>This function will extract the signature field of a CRL.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value. and a negative error code on error.
+negative error value. 
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrl_005fget_005fsignature_005falgorithm-1"></a>
@@ -1290,7 +1290,7 @@ is returned and the iterator is reset.
 <p>After use, the iterator must be deinitialized using <code>gnutls_x509_crl_iter_deinit()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value. and a negative error code on error.
+negative error value.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrl_005fiter_005fdeinit-1"></a>
@@ -2503,11 +2503,7 @@ the given hostname.  This is a basic implementation of the matching
 described in RFC2818 (HTTPS), which takes into account wildcards,
 and the DNSName/IPAddress subject alternative name PKIX extension.
 </p>
-<p>The comparison may have false-negatives as it is done byte by byte in 
-non-ascii names.
-</p>
-<p>Wildcards are only considered if the domain name consists of three
-components or more, and the wildcard starts at the leftmost position.
+<p>For details see also <code>gnutls_x509_crt_check_hostname2()</code> .
 </p>
 <p><strong>Returns:</strong> non-zero for a successful match, and zero on failure.
 </p></dd></dl>
@@ -2527,8 +2523,15 @@ the given hostname.  This is a basic implementation of the matching
 described in RFC2818 (HTTPS), which takes into account wildcards,
 and the DNSName/IPAddress subject alternative name PKIX extension.
 </p>
-<p>The comparison may have false-negatives as it is done byte by byte in 
-non-ascii names.
+<p>IPv4 addresses are accepted by this function in the dotted-decimal
+format (e.g, ddd.ddd.ddd.ddd), and IPv6 addresses in the hexadecimal
+x:x:x:x:x:x:x:x format. For them the IPAddress subject alternative
+name extension is consulted, as well as the DNSNames in case of a non-match.
+The latter fallback exists due to misconfiguration of many servers
+which place an IPAddress inside the DNSName extension.
+</p>
+<p>The comparison of dns names may have false-negatives as it is done byte 
+by byte in non-ascii names.
 </p>
 <p>When the flag <code>GNUTLS_VERIFY_DO_NOT_ALLOW_WILDCARDS</code>  is specified no
 wildcards are considered. Otherwise they are only considered if the
@@ -6381,6 +6384,31 @@ this function returns <code>GNUTLS_E_UNIMPLEMENTED_FEATURE</code> .
 <p><strong>Returns:</strong> The number of added elements or a negative error code on error.
 </p>
 <p><strong>Since:</strong> 3.1
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005ftrust_005flist_005fadd_005ftrust_005fdir-1"></a>
+<h4 class="subheading">gnutls_x509_trust_list_add_trust_dir</h4>
+<a name="gnutls_005fx509_005ftrust_005flist_005fadd_005ftrust_005fdir"></a><dl>
+<dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fadd_005ftrust_005fdir"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_add_trust_dir</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const char * <var>ca_dir</var>, const char * <var>crl_dir</var>, gnutls_x509_crt_fmt_t <var>type</var>, unsigned int <var>tl_flags</var>, unsigned int <var>tl_vflags</var>)</em></dt>
+<dd><p><var>list</var>: The structure of the list
+</p>
+<p><var>ca_dir</var>: A directory containing the CAs (optional)
+</p>
+<p><var>crl_dir</var>: A directory containing a list of CRLs (optional)
+</p>
+<p><var>type</var>: The format of the certificates
+</p>
+<p><var>tl_flags</var>: GNUTLS_TL_*
+</p>
+<p><var>tl_vflags</var>: gnutls_certificate_verify_flags if flags specifies GNUTLS_TL_VERIFY_CRL
+</p>
+<p>This function will add the given certificate authorities
+to the trusted list. Only directories are accepted by
+this function.
+</p>
+<p><strong>Returns:</strong> The number of added elements is returned.
+</p>
+<p><strong>Since:</strong> 3.3.6
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005ftrust_005flist_005fadd_005ftrust_005ffile-1"></a>

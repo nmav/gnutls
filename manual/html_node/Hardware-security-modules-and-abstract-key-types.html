@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 5 April 2014 for version
-3.3.5 of GnuTLS.
+3.3.6 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.5: Hardware security modules and abstract key types</title>
+<title>GnuTLS 3.3.6: Hardware security modules and abstract key types</title>
 
-<meta name="description" content="GnuTLS 3.3.5: Hardware security modules and abstract key types">
-<meta name="keywords" content="GnuTLS 3.3.5: Hardware security modules and abstract key types">
+<meta name="description" content="GnuTLS 3.3.6: Hardware security modules and abstract key types">
+<meta name="keywords" content="GnuTLS 3.3.6: Hardware security modules and abstract key types">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -173,8 +173,29 @@ perfect forward secrecy offering ciphersuite are also to be assumed compromised.
 <p>If such threats need to be addressed, then it may be wise storing the keys in a security
 module such as a smart card, an HSM or the TPM chip. Those modules ensure the
 protection of the cryptographic keys by only allowing operations on them and
-preventing their extraction.
+preventing their extraction. The purpose of the abstract key API is to provide
+an API that will allow the handle of keys in memory and files, as well as keys
+stored in such modules.
 </p>
+<p>In GnuTLS the approach is to handle all keys transparently by the high level API, e.g.,
+the API that loads a key or certificate from a file.
+The high-level API will accept URIs in addition to files that specify keys on an HSM or in TPM,
+and a callback function will be used to obtain any required keys. The URI format is defined in 
+[<em>TPMURI</em>] and [<em>PKCS11URI</em>], and is in the process of being standardized across systems.
+</p>
+<p>More information on the API is provided in the next sections. Examples of a URI of a certificate 
+stored in an HSM, as well as a key stored in the TPM chip are shown below. To discover the URIs 
+of the objects the <code>p11tool</code> (see <a href="p11tool-Invocation.html#p11tool-Invocation">p11tool Invocation</a>),
+or <code>tpmtool</code> (see <a href="tpmtool-Invocation.html#tpmtool-Invocation">tpmtool Invocation</a>) may be used.
+</p>
+<div class="example">
+<pre class="example">pkcs11:token=Nikos;serial=307521161601031;model=PKCS%2315; \
+manufacturer=EnterSafe;object=test1;objecttype=cert
+
+tpmkey:uuid=42309df8-d101-11e1-a89a-97bb33c23ad1;storage=user
+</pre></div>
+
+
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="Abstract-key-types.html#Abstract-key-types" accesskey="1">Abstract key types</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -184,6 +205,11 @@ preventing their extraction.
 </td></tr>
 </table>
 
+<hr>
+<div class="header">
+<p>
+Next: <a href="How-to-use-GnuTLS-in-applications.html#How-to-use-GnuTLS-in-applications" accesskey="n" rel="next">How to use GnuTLS in applications</a>, Previous: <a href="Authentication-methods.html#Authentication-methods" accesskey="p" rel="prev">Authentication methods</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 
