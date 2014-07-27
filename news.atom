@@ -3,7 +3,7 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-07-23T18:08:01+00:00</updated>
+<updated>2014-07-27T14:15:03+00:00</updated>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-07-23</id>
@@ -21,7 +21,7 @@ Released <a
 href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7582">GnuTLS
 3.3.6</a>,
 and <a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7481">GnuTLS
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7581">GnuTLS
 3.2.16</a>,
 which are bug-fix releases on the next, and current stable
 branches respectively. 
