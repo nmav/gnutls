@@ -3,7 +3,28 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-07-27T14:15:03+00:00</updated>
+<updated>2014-07-29T22:02:09+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-07-29</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-07-29'/>
+    <title>Plan for GnuTLS 3.4</title>
+    <updated>2014-07-29T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-07-29.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+The development plans for GnuTLS 3.4 are 
+<a href="https://www.gitorious.org/gnutls/pages/Plan3_4">posted on the wiki
+pages</a> on gitorious.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-07-23</id>
@@ -440,32 +461,6 @@ has been updated.
     <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-10-24.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
 <a href="http://www.gnutls.org/security.html#GNUTLS-SA-2013-3">Posted a security advisory</a> on a vulnerability
 of the DANE library in gnutls 3.1.x and 3.2.x.
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2013-10-23</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2013-10-23'/>
-    <title>GnuTLS 3.2.5 and 3.1.15</title>
-    <updated>2013-10-23T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-10-23.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7050">GnuTLS 3.2.5</a>
-and
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7049">GnuTLS 3.1.15</a>, 
-were released.
-</p>
-<p>
-Added <a href="http://www.gnutls.org/faq.html">answers to frequently asked
-questions</a>.
-</p>
 
     </div>
     </content>
