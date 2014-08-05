@@ -63,12 +63,12 @@ but offers a small and insecure DH group. This means that any connection data
 could be decrypted in weeks or even hours by a determined adversary. For that
 reason GnuTLS will refuse to communicate such servers. To work around the issue disable Diffie-Hellman
 ciphersuites on the client (by using "NORMAL:-DHE-RSA" as a priority string);
-this will allow connecting using the plain RSA ciphersuites, at the cost
+this will force connecting using the plain RSA ciphersuites, at the cost
 of losing perfect forward secrecy.
   </p>
   <p>
 Note that currently in the NORMAL priority string, the minimum acceptable
-size of DH group is set to be at 728 bits. This is a very low size for
+size of DH group is set to be at 768 bits. This is a very low size for
 today's threats but unfortunately there are many popular Internet servers
 providing such a weak security level. To increase the security level use
 the SECURE128 or better priority strings, at the risk of a failed connection
