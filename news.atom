@@ -3,7 +3,35 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-07-29T22:02:09+00:00</updated>
+<updated>2014-08-24T10:06:29+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-08-24</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-08-24'/>
+    <title>GnuTLS 3.3.7, 3.2.17 and 3.1.26</title>
+    <updated>2014-08-24T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-08-24.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7610">GnuTLS
+3.3.7</a>,
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7609">GnuTLS
+3.2.17</a>,
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7608">GnuTLS
+3.1.26</a>, which are bug-fix releases on the next, current and previous stable
+branches respectively. 
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-07-29</id>
@@ -444,23 +472,6 @@ paperback manual</a> has been updated.
 The <a href="http://www.gnutls.org/security.html#GNUTLS-SA-2013-3">GNUTLS-SA-2013-3</a> security advisory
 has been updated.
 </p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2013-10-24</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2013-10-24'/>
-    <title>News 2013-10-24</title>
-    <updated>2013-10-24T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2013-10-24.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-<a href="http://www.gnutls.org/security.html#GNUTLS-SA-2013-3">Posted a security advisory</a> on a vulnerability
-of the DANE library in gnutls 3.1.x and 3.2.x.
 
     </div>
     </content>
