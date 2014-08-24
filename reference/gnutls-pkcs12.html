@@ -1102,32 +1102,32 @@ gnutls_pkcs12_simple_parse (<em class="parameter"><code><a class="link" href="gn
                             <em class="parameter"><code>unsigned <span class="type">int</span> *extra_certs_len</code></em>,
                             <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> *crl</code></em>,
                             <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
-<p>This function parses a PKCS12 blob in <em class="parameter"><code>p12blob</code></em>
+<p>This function parses a PKCS12 structure in <em class="parameter"><code>pkcs12</code></em>
  and extracts the
-private key, the corresponding certificate chain, and any additional
+private key, the corresponding certificate chain, any additional
 certificates and a CRL.</p>
-<p>The <em class="parameter"><code>extra_certs_ret</code></em>
+<p>The <em class="parameter"><code>extra_certs</code></em>
  and <em class="parameter"><code>extra_certs_len</code></em>
  parameters are optional
 and both may be set to <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. If either is non-<a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>, then both must
-be set.</p>
-<p>Encrypted PKCS12 bags and PKCS8 private keys are supported.  However,
-only password based security, and the same password for all
-operations, are supported.</p>
-<p>A PKCS12 file may contain many keys and/or certificates, and there
-is no way to identify which key/certificate pair you want.  You
-should make sure the PKCS12 file only contain one key/certificate
-pair and/or one CRL.</p>
-<p>It is believed that the limitations of this function are acceptable
-for common usage, and that any more flexibility would introduce
-complexity that would make it harder to use this functionality at
-all.</p>
+be set. The value for <em class="parameter"><code>extra_certs</code></em>
+ is allocated
+using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+<p>Encrypted PKCS12 bags and PKCS8 private keys are supported, but
+only with password based security and the same password for all
+operations.</p>
+<p>Note that a PKCS12 structure may contain many keys and/or certificates,
+and there is no way to identify which key/certificate pair you want.
+For this reason this function is useful for PKCS12 files that contain 
+only one key/certificate pair and/or one CRL.</p>
 <p>If the provided structure has encrypted fields but no password
 is provided then this function returns <a class="link" href="gnutls-gnutls.html#GNUTLS-E-DECRYPTION-FAILED:CAPS" title="GNUTLS_E_DECRYPTION_FAILED"><code class="literal">GNUTLS_E_DECRYPTION_FAILED</code></a>.</p>
 <p>Note that normally the chain constructed does not include self signed
 certificates, to comply with TLS' requirements. If, however, the flag 
 <a class="link" href="gnutls-pkcs12.html#GNUTLS-PKCS12-SP-INCLUDE-SELF-SIGNED:CAPS" title="GNUTLS_PKCS12_SP_INCLUDE_SELF_SIGNED"><code class="literal">GNUTLS_PKCS12_SP_INCLUDE_SELF_SIGNED</code></a> is specified then
 self signed certificates will be included in the chain.</p>
+<p>Prior to using this function the PKCS <span class="type">12</span> structure integrity must
+be verified using <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-verify-mac" title="gnutls_pkcs12_verify_mac ()"><code class="function">gnutls_pkcs12_verify_mac()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.10.7.23.11"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -1138,13 +1138,8 @@ self signed certificates will be included in the chain.</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="parameter_name"><p>p12</p></td>
-<td class="parameter_description"><p>the PKCS12 blob.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
 <td class="parameter_name"><p>password</p></td>
-<td class="parameter_description"><p>optional password used to decrypt PKCS12 blob, bags and keys.</p></td>
+<td class="parameter_description"><p>optional password used to decrypt the structure, bags and keys.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1165,7 +1160,7 @@ self signed certificates will be included in the chain.</p>
 <tr>
 <td class="parameter_name"><p>extra_certs</p></td>
 <td class="parameter_description"><p>optional pointer to receive an array of additional
-certificates found in the PKCS12 blob (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>).</p></td>
+certificates found in the PKCS12 structure (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>).</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1193,7 +1188,7 @@ certs (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NU
 negative error value.</p>
 <p></p>
 </div>
-<p class="since">Since 3.1</p>
+<p class="since">Since 3.1.0</p>
 </div>
 <hr>
 <div class="refsect2">
@@ -1338,6 +1333,7 @@ negative error value.</p>
 <a name="gnutls-pkcs12-int"></a><h3>gnutls_pkcs12_int</h3>
 <pre class="programlisting">typedef struct {
 	ASN1_TYPE pkcs12;
+	unsigned expanded;
 } gnutls_pkcs12_int;
 </pre>
 <p>

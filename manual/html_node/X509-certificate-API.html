@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 5 April 2014 for version
-3.3.6 of GnuTLS.
+<!-- This manual is last updated 29 July 2014 for version
+3.3.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.6: X509 certificate API</title>
+<title>GnuTLS 3.3.7: X509 certificate API</title>
 
-<meta name="description" content="GnuTLS 3.3.6: X509 certificate API">
-<meta name="keywords" content="GnuTLS 3.3.6: X509 certificate API">
+<meta name="description" content="GnuTLS 3.3.7: X509 certificate API">
+<meta name="keywords" content="GnuTLS 3.3.7: X509 certificate API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -2671,7 +2671,7 @@ activated.
 </p>
 <p><var>data</var>: output data to be freed with <code>gnutls_free()</code> .
 </p>
-<p><var>critical</var>: pointer to output integer that is set to non-0 if the extension is marked as critical (may be <code>NULL</code> )
+<p><var>critical</var>: pointer to output integer that is set to non-zero if the extension is marked as critical (may be <code>NULL</code> )
 </p>
 <p>Note that a simpler API to access the authority info data is provided
 by <code>gnutls_x509_aia_get()</code>  and <code>gnutls_x509_ext_import_aia()</code> .
@@ -4541,6 +4541,27 @@ a big-endian positive number (i.e. it&rsquo;s leftmost bit should be zero).
 negative error value.
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_subject_alternative_name</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_alternative_name</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_subject_alt_name_t           <var>type</var>, const char * <var>data_string</var>)</em></dt>
+<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>type</var>: is one of the gnutls_x509_subject_alt_name_t enumerations
+</p>
+<p><var>data_string</var>: The data to be set, a (0) terminated string
+</p>
+<p>This function will set the subject alternative name certificate
+extension. This function assumes that data can be expressed as a null
+terminated string.
+</p>
+<p>The name of the function is unfortunate since it is incosistent with
+<code>gnutls_x509_crt_get_subject_alt_name()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname-1"></a>
 <h4 class="subheading">gnutls_x509_crt_set_subject_alt_name</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname"></a><dl>
@@ -4562,27 +4583,6 @@ extension. It can set the following types:
 negative error value.
 </p>
 <p><strong>Since:</strong> 2.6.0
-</p></dd></dl>
-
-<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname-1"></a>
-<h4 class="subheading">gnutls_x509_crt_set_subject_alternative_name</h4>
-<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_alternative_name</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_subject_alt_name_t           <var>type</var>, const char * <var>data_string</var>)</em></dt>
-<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
-</p>
-<p><var>type</var>: is one of the gnutls_x509_subject_alt_name_t enumerations
-</p>
-<p><var>data_string</var>: The data to be set, a (0) terminated string
-</p>
-<p>This function will set the subject alternative name certificate
-extension. This function assumes that data can be expressed as a null
-terminated string.
-</p>
-<p>The name of the function is unfortunate since it is incosistent with
-<code>gnutls_x509_crt_get_subject_alt_name()</code> .
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005fkey_005fid-1"></a>

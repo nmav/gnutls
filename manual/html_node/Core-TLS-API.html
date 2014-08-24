@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 5 April 2014 for version
-3.3.6 of GnuTLS.
+<!-- This manual is last updated 29 July 2014 for version
+3.3.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.6: Core TLS API</title>
+<title>GnuTLS 3.3.7: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.3.6: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.3.6: Core TLS API">
+<meta name="description" content="GnuTLS 3.3.7: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.3.7: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -2487,9 +2487,12 @@ return a negative error code. In case of a client, if the client
 has asked to resume a session, but the server couldn&rsquo;t, then a
 full handshake will be performed.
 </p>
-<p>The non-fatal errors such as <code>GNUTLS_E_AGAIN</code>  and
-<code>GNUTLS_E_INTERRUPTED</code>  interrupt the handshake procedure, which
-should be resumed later.  Call this function again, until it
+<p>The non-fatal errors expected by this function are:
+<code>GNUTLS_E_INTERRUPTED</code> , <code>GNUTLS_E_AGAIN</code> , and <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> .
+The former two interrupt the handshake procedure due to the lower
+layer being interrupted, and the latter because of an alert that
+may be sent by a server (it is always a good idea to check any
+received alerts). On these errors call this function again, until it
 returns 0; cf.  <code>gnutls_record_get_direction()</code>  and
 <code>gnutls_error_is_fatal()</code> .
 </p>
@@ -2679,7 +2682,8 @@ will select automatically a random value for the handshake.
 </p>
 <p>This function sets the timeout for the handshake process
 to the provided value. Use an  <code>ms</code> value of zero to disable
-timeout.
+timeout, or <code>GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT</code>  for a reasonable
+default value.
 </p>
 <p><strong>Since:</strong> 3.1.0
 </p></dd></dl>
@@ -3332,7 +3336,7 @@ to signature algorithms.
 </p>
 <p><var>label</var>: label used in PRF computation, typically a short string.
 </p>
-<p><var>server_random_first</var>: non-0 if server random field should be first in seed
+<p><var>server_random_first</var>: non-zero if server random field should be first in seed
 </p>
 <p><var>extra_size</var>: length of the  <code>extra</code> variable.
 </p>
@@ -3349,7 +3353,7 @@ as specified in RFC5705.
 <p>The  <code>label</code> variable usually contains a string denoting the purpose
 for the generated data.  The  <code>server_random_first</code> indicates whether
 the client random field or the server random field should be first
-in the seed.  Non-0 indicates that the server random field is first,
+in the seed.  Non-zero indicates that the server random field is first,
 0 that the client random field is first.
 </p>
 <p>The  <code>extra</code> variable can be used to add more data to the seed, after
@@ -3502,7 +3506,7 @@ Once the last available index is crossed then
 </p>
 <p><var>priorities</var>: is a string describing priorities
 </p>
-<p><var>err_pos</var>: In case of an error this will have the position in the string the error occured
+<p><var>err_pos</var>: In case of an error this will have the position in the string the error occurred
 </p>
 <p>Sets priorities for the ciphers, key exchange methods, macs and
 compression methods.

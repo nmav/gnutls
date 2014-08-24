@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 5 April 2014 for version
-3.3.6 of GnuTLS.
+<!-- This manual is last updated 29 July 2014 for version
+3.3.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.6: Managing encrypted keys</title>
+<title>GnuTLS 3.3.7: Managing encrypted keys</title>
 
-<meta name="description" content="GnuTLS 3.3.6: Managing encrypted keys">
-<meta name="keywords" content="GnuTLS 3.3.6: Managing encrypted keys">
+<meta name="description" content="GnuTLS 3.3.7: Managing encrypted keys">
+<meta name="keywords" content="GnuTLS 3.3.7: Managing encrypted keys">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -353,26 +353,22 @@ certs (may be <code>NULL</code> ).
 <p><var>flags</var>: should be zero or one of GNUTLS_PKCS12_SP_*
 </p>
 <p>This function parses a PKCS12 blob in  <code>p12blob</code> and extracts the
-private key, the corresponding certificate chain, and any additional
+private key, the corresponding certificate chain, any additional
 certificates and a CRL.
 </p>
-<p>The  <code>extra_certs_ret</code> and  <code>extra_certs_len</code> parameters are optional
+<p>The  <code>extra_certs</code> and  <code>extra_certs_len</code> parameters are optional
 and both may be set to <code>NULL</code> . If either is non-<code>NULL</code> , then both must
-be set.
+be set. The value for  <code>extra_certs</code> is allocated
+using <code>gnutls_malloc()</code> .
 </p>
-<p>Encrypted PKCS12 bags and PKCS8 private keys are supported.  However,
-only password based security, and the same password for all
-operations, are supported.
+<p>Encrypted PKCS12 bags and PKCS8 private keys are supported, but
+only with password based security and the same password for all
+operations.
 </p>
-<p>A PKCS12 file may contain many keys and/or certificates, and there
-is no way to identify which key/certificate pair you want.  You
-should make sure the PKCS12 file only contain one key/certificate
-pair and/or one CRL.
-</p>
-<p>It is believed that the limitations of this function are acceptable
-for common usage, and that any more flexibility would introduce
-complexity that would make it harder to use this functionality at
-all.
+<p>Note that a PKCS12 file may contain many keys and/or certificates,
+and there is no way to identify which key/certificate pair you want.
+For this reason this function is useful for PKCS12 files that contain 
+only one key/certificate pair and/or one CRL.
 </p>
 <p>If the provided structure has encrypted fields but no password
 is provided then this function returns <code>GNUTLS_E_DECRYPTION_FAILED</code> .
@@ -385,7 +381,7 @@ self signed certificates will be included in the chain.
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
 </p>
-<p><strong>Since:</strong> 3.1
+<p><strong>Since:</strong> 3.1.0
 </p></dd></dl>
 <dl compact="compact">
 <dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fget_005fdata">gnutls_pkcs12_bag_get_data</a> (gnutls_pkcs12_bag_t <var>bag</var>, int <var>indx</var>, gnutls_datum_t * <var>data</var>)</code></dt>

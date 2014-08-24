@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 5 April 2014 for version
-3.3.6 of GnuTLS.
+<!-- This manual is last updated 29 July 2014 for version
+3.3.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.6: Cryptographic Backend</title>
+<title>GnuTLS 3.3.7: Cryptographic Backend</title>
 
-<meta name="description" content="GnuTLS 3.3.6: Cryptographic Backend">
-<meta name="keywords" content="GnuTLS 3.3.6: Cryptographic Backend">
+<meta name="description" content="GnuTLS 3.3.7: Cryptographic Backend">
+<meta name="keywords" content="GnuTLS 3.3.7: Cryptographic Backend">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -188,7 +188,7 @@ an efficient way.
 <h4 class="subheading">Cryptographic library layer</h4>
 <p>The Cryptographic library layer, currently supports only
 libnettle. Older versions of GnuTLS used to support libgcrypt,
-but it was switched with nettle mainly for performance reasons<a name="DOCF15" href="#FOOT15"><sup>15</sup></a>
+but it was switched with nettle mainly for performance reasons<a name="DOCF16" href="#FOOT16"><sup>16</sup></a>
 and secondary because it is a simpler library to use.
 In the future other cryptographic libraries might be supported as well.
 </p>
@@ -198,7 +198,7 @@ In the future other cryptographic libraries might be supported as well.
 kernel drivers to utilize the operations from software. For this reason 
 GnuTLS provides a layer where each individual algorithm used can be replaced
 by another implementation, i.e., the one provided by the driver. The
-FreeBSD, OpenBSD and Linux kernels<a name="DOCF16" href="#FOOT16"><sup>16</sup></a> include already 
+FreeBSD, OpenBSD and Linux kernels<a name="DOCF17" href="#FOOT17"><sup>17</sup></a> include already 
 a number of hardware assisted implementations, and also provide an interface 
 to access them, called <code>/dev/crypto</code>.
 GnuTLS will take advantage of this interface if compiled with special
@@ -266,10 +266,10 @@ big number operations so either none or both of them should be overridden.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT15" href="#DOCF15">(15)</a></h3>
+<h3><a name="FOOT16" href="#DOCF16">(16)</a></h3>
 <p>See
 <a href="http://lists.gnu.org/archive/html/gnutls-devel/2011-02/msg00079.html">http://lists.gnu.org/archive/html/gnutls-devel/2011-02/msg00079.html</a>.</p>
-<h3><a name="FOOT16" href="#DOCF16">(16)</a></h3>
+<h3><a name="FOOT17" href="#DOCF17">(17)</a></h3>
 <p>Check <a href="http://home.gna.org/cryptodev-linux/">http://home.gna.org/cryptodev-linux/</a> 
 for the Linux kernel implementation of <code>/dev/crypto</code>.</p>
 </div>

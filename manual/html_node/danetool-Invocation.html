@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 5 April 2014 for version
-3.3.6 of GnuTLS.
+<!-- This manual is last updated 29 July 2014 for version
+3.3.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.6: danetool Invocation</title>
+<title>GnuTLS 3.3.7: danetool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.3.6: danetool Invocation">
-<meta name="keywords" content="GnuTLS 3.3.6: danetool Invocation">
+<meta name="description" content="GnuTLS 3.3.7: danetool Invocation">
+<meta name="keywords" content="GnuTLS 3.3.7: danetool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -271,7 +271,7 @@ Available hash functions are SHA1, RMD160, SHA256, SHA384, SHA512.
 
 <p>This is the &ldquo;check a host&rsquo;s dane tlsa entry&rdquo; option.
 This option takes a string argument.
-Obtains the DANE TLSA entry from the given hostname and prints information. Note that the actual certificate of the host has to be provided using &ndash;load-certificate.
+Obtains the DANE TLSA entry from the given hostname and prints information. Note that the actual certificate of the host can be provided using &ndash;load-certificate, otherwise danetool will connect to the server to obtain it. The exit code on verification success will be zero.
 <a name="danetool-check_002dee"></a></p><a name="check_002dee-option"></a>
 <h4 class="subsubheading">check-ee option</h4>
 
@@ -282,11 +282,64 @@ Checks the end-entity&rsquo;s certificate only. Trust anchors or CAs are not con
 
 <p>This is the &ldquo;check only the ca&rsquo;s certificate&rdquo; option.
 Checks the trust anchor&rsquo;s and CA&rsquo;s certificate only. End-entities are not considered.
-<a name="danetool-insecure"></a></p><a name="insecure-option"></a>
-<h4 class="subsubheading">insecure option</h4>
+<a name="danetool-tlsa_002drr"></a></p><a name="tlsa_002drr-option"></a>
+<h4 class="subsubheading">tlsa-rr option</h4>
 
-<p>This is the &ldquo;do not verify any dnssec signature&rdquo; option.
-Ignores any DNSSEC signature verification results.
+<p>This is the &ldquo;print the dane rr data on a certificate or public key&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> must appear in combination with the following options:
+host.
+</li></ul>
+
+<p>This command prints the DANE RR data needed to enable DANE on a DNS server.
+<a name="danetool-host"></a></p><a name="host-option"></a>
+<h4 class="subsubheading">host option</h4>
+
+<p>This is the &ldquo;specify the hostname to be used in the dane rr&rdquo; option.
+This option takes a string argument <samp>Hostname</samp>.
+This command sets the hostname for the DANE RR.
+<a name="danetool-proto"></a></p><a name="proto-option"></a>
+<h4 class="subsubheading">proto option</h4>
+
+<p>This is the &ldquo;the protocol set for dane data (tcp, udp etc.)&rdquo; option.
+This option takes a string argument <samp>Protocol</samp>.
+This command specifies the protocol for the service set in the DANE data.
+<a name="danetool-app_002dproto"></a></p><a name="app_002dproto-option"></a>
+<h4 class="subsubheading">app-proto option</h4>
+
+<p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, smtp, imap)&rdquo; option.
+This option takes a string argument.
+When the server&rsquo;s certificate isn&rsquo;t provided danetool will connect to the server to obtain the certificate. In that case it is required to known the protocol to talk with the server prior to initiating the TLS handshake.
+<a name="danetool-ca"></a></p><a name="ca-option"></a>
+<h4 class="subsubheading">ca option</h4>
+
+<p>This is the &ldquo;whether the provided certificate or public key is a certificate authority&rdquo; option.
+Marks the DANE RR as a CA certificate if specified.
+<a name="danetool-x509"></a></p><a name="x509-option"></a>
+<h4 class="subsubheading">x509 option</h4>
+
+<p>This is the &ldquo;use the hash of the x.509 certificate, rather than the public key&rdquo; option.
+This option forces the generated record to contain the hash of the full X.509 certificate. By default only the hash of the public key is used.
+<a name="danetool-local"></a></p><a name="local-option"></a>
+<h4 class="subsubheading">local option</h4>
+
+<p>This is an alias for the <code>domain</code> option,
+see <a href="#danetool-domain">the domain option documentation</a>.
+</p>
+<a name="danetool-domain"></a><a name="domain-option"></a>
+<h4 class="subsubheading">domain option</h4>
+
+<p>This is the &ldquo;the provided certificate or public key is issued by the local domain&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-domain.
+</li><li> It is enabled by default.
+</li></ul>
+
+<p>DANE distinguishes certificates and public keys offered via the DNSSEC to trusted and local entities. This flag indicates that this is a domain-issued certificate, meaning that there could be no CA involved.
 <a name="danetool-local_002ddns"></a></p><a name="local_002ddns-option"></a>
 <h4 class="subsubheading">local-dns option</h4>
 
@@ -299,6 +352,11 @@ Ignores any DNSSEC signature verification results.
 
 <p>This option will use the local DNS server for DNSSEC.
 This is disabled by default due to many servers not allowing DNSSEC.
+<a name="danetool-insecure"></a></p><a name="insecure-option"></a>
+<h4 class="subsubheading">insecure option</h4>
+
+<p>This is the &ldquo;do not verify any dnssec signature&rdquo; option.
+Ignores any DNSSEC signature verification results.
 <a name="danetool-inder"></a></p><a name="inder-option-1"></a>
 <h4 class="subsubheading">inder option</h4>
 
@@ -329,58 +387,11 @@ see <a href="#danetool-inder">the inder option documentation</a>.
 </li></ul>
 
 <p>This option will print the received DANE data.
-<a name="danetool-tlsa_002drr"></a></p><a name="tlsa_002drr-option"></a>
-<h4 class="subsubheading">tlsa-rr option</h4>
+<a name="danetool-quiet"></a></p><a name="quiet-option"></a>
+<h4 class="subsubheading">quiet option</h4>
 
-<p>This is the &ldquo;print the dane rr data on a certificate or public key&rdquo; option.
-</p>
-<p>This option has some usage constraints.  It:
-</p><ul>
-<li> must appear in combination with the following options:
-host.
-</li></ul>
-
-<p>This command prints the DANE RR data needed to enable DANE on a DNS server.
-<a name="danetool-host"></a></p><a name="host-option"></a>
-<h4 class="subsubheading">host option</h4>
-
-<p>This is the &ldquo;specify the hostname to be used in the dane rr&rdquo; option.
-This option takes a string argument <samp>Hostname</samp>.
-This command sets the hostname for the DANE RR.
-<a name="danetool-proto"></a></p><a name="proto-option"></a>
-<h4 class="subsubheading">proto option</h4>
-
-<p>This is the &ldquo;the protocol set for dane data (tcp, udp etc.)&rdquo; option.
-This option takes a string argument <samp>Protocol</samp>.
-This command specifies the protocol for the service set in the DANE data.
-<a name="danetool-ca"></a></p><a name="ca-option"></a>
-<h4 class="subsubheading">ca option</h4>
-
-<p>This is the &ldquo;whether the provided certificate or public key is a certificate authority&rdquo; option.
-Marks the DANE RR as a CA certificate if specified.
-<a name="danetool-x509"></a></p><a name="x509-option"></a>
-<h4 class="subsubheading">x509 option</h4>
-
-<p>This is the &ldquo;use the hash of the x.509 certificate, rather than the public key&rdquo; option.
-This option forces the generated record to contain the hash of the full X.509 certificate. By default only the hash of the public key is used.
-<a name="danetool-local"></a></p><a name="local-option"></a>
-<h4 class="subsubheading">local option</h4>
-
-<p>This is an alias for the <code>domain</code> option,
-see <a href="#danetool-domain">the domain option documentation</a>.
-</p>
-<a name="danetool-domain"></a><a name="domain-option"></a>
-<h4 class="subsubheading">domain option</h4>
-
-<p>This is the &ldquo;the provided certificate or public key is issued by the local domain&rdquo; option.
-</p>
-<p>This option has some usage constraints.  It:
-</p><ul>
-<li> can be disabled with &ndash;no-domain.
-</li><li> It is enabled by default.
-</li></ul>
-
-<p>DANE distinguishes certificates and public keys offered via the DNSSEC to trusted and local entities. This flag indicates that this is a domain-issued certificate, meaning that there could be no CA involved.
+<p>This is the &ldquo;suppress several informational messages&rdquo; option.
+In that case on the exit code can be used as an indication of verification success
 <a name="danetool-exit-status"></a></p><a name="danetool-exit-status-1"></a>
 <h4 class="subsubheading">danetool exit status</h4>
 

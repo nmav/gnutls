@@ -7210,9 +7210,7 @@ layer handling functions).</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.4.7.115.8"></a><h4>Returns</h4>
-<p> zero on non fatal errors or positive <em class="parameter"><code>error</code></em>
-values. Non-zero
-on fatal error codes.</p>
+<p> Non-zero value on fatal errors or zero on non-fatal.</p>
 <p></p>
 </div>
 </div>
@@ -7585,9 +7583,12 @@ initializes the TLS connection.</p>
 return a negative error code. In case of a client, if the client
 has asked to resume a session, but the server couldn't, then a
 full handshake will be performed.</p>
-<p>The non-fatal errors such as <a class="link" href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS" title="GNUTLS_E_AGAIN"><code class="literal">GNUTLS_E_AGAIN</code></a> and
-<a class="link" href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS" title="GNUTLS_E_INTERRUPTED"><code class="literal">GNUTLS_E_INTERRUPTED</code></a> interrupt the handshake procedure, which
-should be resumed later.  Call this function again, until it
+<p>The non-fatal errors expected by this function are:
+<a class="link" href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS" title="GNUTLS_E_INTERRUPTED"><code class="literal">GNUTLS_E_INTERRUPTED</code></a>, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS" title="GNUTLS_E_AGAIN"><code class="literal">GNUTLS_E_AGAIN</code></a>, and <a class="link" href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS" title="GNUTLS_E_WARNING_ALERT_RECEIVED"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a>.
+The former two interrupt the handshake procedure due to the lower
+layer being interrupted, and the latter because of an alert that
+may be sent by a server (it is always a good idea to check any
+received alerts). On these errors call this function again, until it
 returns 0; cf.  <a class="link" href="gnutls-gnutls.html#gnutls-record-get-direction" title="gnutls_record_get_direction ()"><code class="function">gnutls_record_get_direction()</code></a> and
 <a class="link" href="gnutls-gnutls.html#gnutls-error-is-fatal" title="gnutls_error_is_fatal ()"><code class="function">gnutls_error_is_fatal()</code></a>.</p>
 <p>If this function is called by a server after a rehandshake request
@@ -7825,7 +7826,8 @@ gnutls_handshake_set_timeout (<em class="parameter"><code><a class="link" href="
 <p>This function sets the timeout for the handshake process
 to the provided value. Use an <em class="parameter"><code>ms</code></em>
  value of zero to disable
-timeout.</p>
+timeout, or <a class="link" href="gnutls-gnutls.html#GNUTLS-DEFAULT-HANDSHAKE-TIMEOUT:CAPS" title="GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT"><code class="literal">GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT</code></a> for a reasonable
+default value.</p>
 <div class="refsect3">
 <a name="id-1.2.4.7.134.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -9276,7 +9278,7 @@ as specified in RFC5705.</p>
 for the generated data.  The <em class="parameter"><code>server_random_first</code></em>
  indicates whether
 the client random field or the server random field should be first
-in the seed.  Non-0 indicates that the server random field is first,
+in the seed.  Non-zero indicates that the server random field is first,
 0 that the client random field is first.</p>
 <p>The <em class="parameter"><code>extra</code></em>
  variable can be used to add more data to the seed, after
@@ -9312,7 +9314,7 @@ variable.</p></td>
 </tr>
 <tr>
 <td class="parameter_name"><p>server_random_first</p></td>
-<td class="parameter_description"><p>non-0 if server random field should be first in seed</p></td>
+<td class="parameter_description"><p>non-zero if server random field should be first in seed</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -15361,7 +15363,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.3.6"
+<pre class="programlisting">#define GNUTLS_VERSION "3.3.7"
 </pre>
 <p>
 </p>
@@ -15385,7 +15387,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030306
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030307
 </pre>
 <p>
 </p>
@@ -15393,7 +15395,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 6
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 7
 </pre>
 <p>
 </p>
@@ -17818,6 +17820,7 @@ to be used by callbacks.</p>
 <pre class="programlisting">typedef struct {
 	ASN1_TYPE crl;
 
+	unsigned expanded;
 	/* This is used to optimize reads by gnutls_x509_crl_get_crt_serial2() */
 	ASN1_TYPE rcache;
 	unsigned rcache_idx;
@@ -17922,6 +17925,7 @@ to be used by callbacks.</p>
 	gnutls_pk_params_st params;
 
 	gnutls_pk_algorithm_t pk_algorithm;
+	unsigned expanded;
 
 	ASN1_TYPE key;
 } gnutls_x509_privkey_int;

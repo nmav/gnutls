@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 5 April 2014 for version
-3.3.6 of GnuTLS.
+<!-- This manual is last updated 29 July 2014 for version
+3.3.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.6: TLS handshake</title>
+<title>GnuTLS 3.3.7: TLS handshake</title>
 
-<meta name="description" content="GnuTLS 3.3.6: TLS handshake">
-<meta name="keywords" content="GnuTLS 3.3.6: TLS handshake">
+<meta name="description" content="GnuTLS 3.3.7: TLS handshake">
+<meta name="keywords" content="GnuTLS 3.3.7: TLS handshake">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -184,9 +184,12 @@ return a negative error code. In case of a client, if the client
 has asked to resume a session, but the server couldn&rsquo;t, then a
 full handshake will be performed.
 </p>
-<p>The non-fatal errors such as <code>GNUTLS_E_AGAIN</code>  and
-<code>GNUTLS_E_INTERRUPTED</code>  interrupt the handshake procedure, which
-should be resumed later.  Call this function again, until it
+<p>The non-fatal errors expected by this function are:
+<code>GNUTLS_E_INTERRUPTED</code> , <code>GNUTLS_E_AGAIN</code> , and <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> .
+The former two interrupt the handshake procedure due to the lower
+layer being interrupted, and the latter because of an alert that
+may be sent by a server (it is always a good idea to check any
+received alerts). On these errors call this function again, until it
 returns 0; cf.  <code>gnutls_record_get_direction()</code>  and
 <code>gnutls_error_is_fatal()</code> .
 </p>
@@ -213,7 +216,8 @@ some data were pending.
 </p>
 <p>This function sets the timeout for the handshake process
 to the provided value. Use an  <code>ms</code> value of zero to disable
-timeout.
+timeout, or <code>GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT</code>  for a reasonable
+default value.
 </p>
 <p><strong>Since:</strong> 3.1.0
 </p></dd></dl>

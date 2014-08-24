@@ -6628,7 +6628,7 @@ is non-critical, as required by RFC 5280.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>critical</p></td>
-<td class="parameter_description"><p>pointer to output integer that is set to non-0 if the extension is marked as critical (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>)</p></td>
+<td class="parameter_description"><p>pointer to output integer that is set to non-zero if the extension is marked as critical (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>)</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
@@ -13752,6 +13752,7 @@ and <code class="literal">gnutls_certificate_verification_profiles_t</code>.</p>
 <a name="gnutls-pkcs7-int"></a><h3>gnutls_pkcs7_int</h3>
 <pre class="programlisting">typedef struct {
 	ASN1_TYPE pkcs7;
+	unsigned expanded;
 } gnutls_pkcs7_int;
 </pre>
 <p>

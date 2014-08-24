@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 5 April 2014 for version
-3.3.6 of GnuTLS.
+<!-- This manual is last updated 29 July 2014 for version
+3.3.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.6: p11tool Invocation</title>
+<title>GnuTLS 3.3.7: p11tool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.3.6: p11tool Invocation">
-<meta name="keywords" content="GnuTLS 3.3.6: p11tool Invocation">
+<meta name="description" content="GnuTLS 3.3.7: p11tool Invocation">
+<meta name="keywords" content="GnuTLS 3.3.7: p11tool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -161,8 +161,9 @@ dl {
 Previous: <a href="Using-a-PKCS11-token-with-TLS.html#Using-a-PKCS11-token-with-TLS" accesskey="p" rel="prev">Using a PKCS11 token with TLS</a>, Up: <a href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" accesskey="u" rel="up">Smart cards and HSMs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
+<h4 class="node-heading">p11tool Invocation</h4>
 <a name="Invoking-p11tool"></a>
-<h4 class="subsection">5.2.6 Invoking p11tool</h4>
+<h4 class="subsubheading">Invoking p11tool</h4>
 <a name="index-p11tool"></a>
 
 
@@ -275,7 +276,7 @@ variable GNUTLS_PIN.
 
 </pre></div>
 
-<a name="p11tool-debug"></a><a name="debug-option-_0028_002dd_0029-5"></a>
+<a name="p11tool-debug"></a><a name="debug-option-_0028_002dd_0029-4"></a>
 <h4 class="subsubheading">debug option (-d)</h4>
 
 <p>This is the &ldquo;enable debugging&rdquo; option.
@@ -329,19 +330,75 @@ Generates an RSA private-public key pair on the specified token.
 
 <p>This is the &ldquo;generate an rsa private-public key pair&rdquo; option.
 Generates an RSA private-public key pair on the specified token.
-<a name="p11tool-private"></a></p><a name="private-option"></a>
-<h4 class="subsubheading">private option</h4>
+<a name="p11tool-export_002dpubkey"></a></p><a name="export_002dpubkey-option"></a>
+<h4 class="subsubheading">export-pubkey option</h4>
+
+<p>This is the &ldquo;export the public key for a private key&rdquo; option.
+Exports the public key for the specified private key
+<a name="p11tool-mark_002dwrap"></a></p><a name="mark_002dwrap-option"></a>
+<h4 class="subsubheading">mark-wrap option</h4>
+
+<p>This is the &ldquo;marks the generated key to be a wrapping key&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-mark-wrap.
+</li></ul>
+
+<p>Marks the generated key with the CKA_WRAP flag.
+<a name="p11tool-mark_002dtrusted"></a></p><a name="mark_002dtrusted-option"></a>
+<h4 class="subsubheading">mark-trusted option</h4>
+
+<p>This is the &ldquo;marks the object to be written as trusted&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-mark-trusted.
+</li></ul>
+
+<p>Marks the object to be generated/copied with the CKA_TRUST flag.
+<a name="p11tool-mark_002dca"></a></p><a name="mark_002dca-option"></a>
+<h4 class="subsubheading">mark-ca option</h4>
+
+<p>This is the &ldquo;marks the object to be written as a ca&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-mark-ca.
+</li></ul>
+
+<p>Marks the object to be generated/copied with the CKA_CERTIFICATE_CATEGORY as CA.
+<a name="p11tool-mark_002dprivate"></a></p><a name="mark_002dprivate-option"></a>
+<h4 class="subsubheading">mark-private option</h4>
 
 <p>This is the &ldquo;marks the object to be written as private&rdquo; option.
 </p>
 <p>This option has some usage constraints.  It:
 </p><ul>
-<li> can be disabled with &ndash;no-private.
+<li> can be disabled with &ndash;no-mark-private.
 </li><li> It is enabled by default.
 </li></ul>
 
-<p>The written object will require a PIN to be used.
-<a name="p11tool-so_002dlogin"></a></p><a name="so_002dlogin-option"></a>
+<p>Marks the object to be generated/copied with the CKA_PRIVATE flag. The written object will require a PIN to be used.
+<a name="p11tool-trusted"></a></p><a name="trusted-option"></a>
+<h4 class="subsubheading">trusted option</h4>
+
+<p>This is an alias for the <code>mark-trusted</code> option,
+see <a href="#p11tool-mark_002dtrusted">the mark-trusted option documentation</a>.
+</p>
+<a name="p11tool-ca"></a><a name="ca-option-1"></a>
+<h4 class="subsubheading">ca option</h4>
+
+<p>This is an alias for the <code>mark-ca</code> option,
+see <a href="#p11tool-mark_002dca">the mark-ca option documentation</a>.
+</p>
+<a name="p11tool-private"></a><a name="private-option"></a>
+<h4 class="subsubheading">private option</h4>
+
+<p>This is an alias for the <code>mark-private</code> option,
+see <a href="#p11tool-mark_002dprivate">the mark-private option documentation</a>.
+</p>
+<a name="p11tool-so_002dlogin"></a><a name="so_002dlogin-option"></a>
 <h4 class="subsubheading">so-login option</h4>
 
 <p>This is the &ldquo;force security officer login to token&rdquo; option.

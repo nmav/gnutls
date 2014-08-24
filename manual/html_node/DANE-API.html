@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 5 April 2014 for version
-3.3.6 of GnuTLS.
+<!-- This manual is last updated 29 July 2014 for version
+3.3.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.6: DANE API</title>
+<title>GnuTLS 3.3.7: DANE API</title>
 
-<meta name="description" content="GnuTLS 3.3.6: DANE API">
-<meta name="keywords" content="GnuTLS 3.3.6: DANE API">
+<meta name="description" content="GnuTLS 3.3.7: DANE API">
+<meta name="keywords" content="GnuTLS 3.3.7: DANE API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -303,10 +303,10 @@ validation failed or the domain queried has no security info
 <p>This function will provide the DANE data from the query
 response.
 </p>
-<p>The pointers dane_data and dane_data_len are allocated with <code>malloc()</code> 
-to contain a copy of the data from the query result structure (individual
-rdata items are not allocated separately). The query result structure can
-be safely deinitialized after calling this function.
+<p>The pointers dane_data and dane_data_len are allocated with <code>gnutls_malloc()</code> 
+to contain the data from the query result structure (individual
+ <code>dane_data</code> items simply point to the original data and are not allocated separately).
+The returned  <code>dane_data</code> are only valid during the lifetime of  <code>q</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -333,7 +333,8 @@ validation failed or the domain queried has no security info
 and the result is due to a security failure, bogus is true.
 </p>
 <p>This function will fill in the TLSA (DANE) structure from
-the given raw DNS record data.
+the given raw DNS record data. The  <code>dane_data</code> must be valid
+during the lifetime of the query.
 </p>
 <p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.

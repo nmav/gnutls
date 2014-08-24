@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 5 April 2014 for version
-3.3.6 of GnuTLS.
+<!-- This manual is last updated 29 July 2014 for version
+3.3.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.6: Encryption algorithms used in the record layer</title>
+<title>GnuTLS 3.3.7: Encryption algorithms used in the record layer</title>
 
-<meta name="description" content="GnuTLS 3.3.6: Encryption algorithms used in the record layer">
-<meta name="keywords" content="GnuTLS 3.3.6: Encryption algorithms used in the record layer">
+<meta name="description" content="GnuTLS 3.3.7: Encryption algorithms used in the record layer">
+<meta name="keywords" content="GnuTLS 3.3.7: Encryption algorithms used in the record layer">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -193,11 +193,6 @@ be extremely fast on CPUs that support hardware acceleration.</td></tr>
 <tr><td width="20%">CAMELLIA_CBC</td><td width="70%">This is an 128-bit block cipher developed by Mitsubishi and NTT. It
 is one of the approved ciphers of the European NESSIE and Japanese
 CRYPTREC projects.</td></tr>
-<tr><td width="20%">SALSA20_256</td><td width="70%">SALSA20_256 is a fast stream cipher. This is currently a GnuTLS
-extension.</td></tr>
-<tr><td width="20%">ESTREAM_SALSA20_256</td><td width="70%">ESTREAM_SALSA20_256 is a faster variant of SALSA20, and is one of the 
-selected ciphers of the ESTREAM competition. This is currently a GnuTLS
-extension.</td></tr>
 </table>
 
 <div class="float-caption"><p><strong>Table 3.1: </strong>Supported ciphers.</p></div></div>
@@ -210,8 +205,6 @@ by Ron Rivest. Outputs 128 bits of data.</td></tr>
 <tr><td width="20%">MAC_SHA1</td><td width="70%">An HMAC based on the SHA1 cryptographic hash algorithm 
 designed by NSA. Outputs 160 bits of data.</td></tr>
 <tr><td width="20%">MAC_SHA256</td><td width="70%">An HMAC based on SHA256. Outputs 256 bits of data.</td></tr>
-<tr><td width="20%">MAC_UMAC</td><td width="70%">This is a very fast MAC algorithm based on universal hashing, described in
-[<em>RFC4418</em>]. This is currently a GnuTLS extension.</td></tr>
 <tr><td width="20%">MAC_AEAD</td><td width="70%">This indicates that an authenticated encryption algorithm, such as
 GCM, is in use.</td></tr>
 </table>

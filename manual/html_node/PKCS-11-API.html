@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 5 April 2014 for version
-3.3.6 of GnuTLS.
+<!-- This manual is last updated 29 July 2014 for version
+3.3.7 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.6: PKCS 11 API</title>
+<title>GnuTLS 3.3.7: PKCS 11 API</title>
 
-<meta name="description" content="GnuTLS 3.3.6: PKCS 11 API">
-<meta name="keywords" content="GnuTLS 3.3.6: PKCS 11 API">
+<meta name="description" content="GnuTLS 3.3.7: PKCS 11 API">
+<meta name="keywords" content="GnuTLS 3.3.7: PKCS 11 API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -477,11 +477,44 @@ negative error value.
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
 
+<a name="gnutls_005fpkcs11_005fobj_005fflags_005fget_005fstr-1"></a>
+<h4 class="subheading">gnutls_pkcs11_obj_flags_get_str</h4>
+<a name="gnutls_005fpkcs11_005fobj_005fflags_005fget_005fstr"></a><dl>
+<dt><a name="index-gnutls_005fpkcs11_005fobj_005fflags_005fget_005fstr"></a>Function: <em>char *</em> <strong>gnutls_pkcs11_obj_flags_get_str</strong> <em>(unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>flags</var>: holds the flags
+</p>
+<p>This function given an or-sequence of <code>GNUTLS_PKCS11_OBJ_FLAG_MARK</code> ,
+will return an allocated string with its description. The string
+needs to be deallocated using <code>gnutls_free()</code> .
+</p>
+<p><strong>Returns:</strong> If flags is zero <code>NULL</code>  is returned, otherwise an allocated string.
+</p>
+<p><strong>Since:</strong> 3.3.7
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs11_005fobj_005fget_005fflags-1"></a>
+<h4 class="subheading">gnutls_pkcs11_obj_get_flags</h4>
+<a name="gnutls_005fpkcs11_005fobj_005fget_005fflags"></a><dl>
+<dt><a name="index-gnutls_005fpkcs11_005fobj_005fget_005fflags"></a>Function: <em>int</em> <strong>gnutls_pkcs11_obj_get_flags</strong> <em>(gnutls_pkcs11_obj_t <var>obj</var>, unsigned int * <var>oflags</var>)</em></dt>
+<dd><p><var>obj</var>: The structure that holds the object
+</p>
+<p><var>oflags</var>: Will hold the output flags
+</p>
+<p>This function will return the flags of the object being
+stored in the structure. The  <code>oflags</code> are the <code>GNUTLS_PKCS11_OBJ_FLAG_MARK</code> 
+flags.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.3.7
+</p></dd></dl>
+
 <a name="gnutls_005fpkcs11_005fobj_005fget_005finfo-1"></a>
 <h4 class="subheading">gnutls_pkcs11_obj_get_info</h4>
 <a name="gnutls_005fpkcs11_005fobj_005fget_005finfo"></a><dl>
-<dt><a name="index-gnutls_005fpkcs11_005fobj_005fget_005finfo-1"></a>Function: <em>int</em> <strong>gnutls_pkcs11_obj_get_info</strong> <em>(gnutls_pkcs11_obj_t <var>crt</var>, gnutls_pkcs11_obj_info_t <var>itype</var>, void * <var>output</var>, size_t * <var>output_size</var>)</em></dt>
-<dd><p><var>crt</var>: should contain a <code>gnutls_pkcs11_obj_t</code>  structure
+<dt><a name="index-gnutls_005fpkcs11_005fobj_005fget_005finfo-1"></a>Function: <em>int</em> <strong>gnutls_pkcs11_obj_get_info</strong> <em>(gnutls_pkcs11_obj_t <var>obj</var>, gnutls_pkcs11_obj_info_t <var>itype</var>, void * <var>output</var>, size_t * <var>output_size</var>)</em></dt>
+<dd><p><var>obj</var>: should contain a <code>gnutls_pkcs11_obj_t</code>  structure
 </p>
 <p><var>itype</var>: Denotes the type of information requested
 </p>
@@ -505,10 +538,10 @@ although  <code>output_size</code> contains the size of the actual data only.
 <dt><a name="index-gnutls_005fpkcs11_005fobj_005fget_005ftype"></a>Function: <em>gnutls_pkcs11_obj_type_t</em> <strong>gnutls_pkcs11_obj_get_type</strong> <em>(gnutls_pkcs11_obj_t <var>obj</var>)</em></dt>
 <dd><p><var>obj</var>: Holds the PKCS 11 object
 </p>
-<p>This function will return the type of the certificate being
+<p>This function will return the type of the object being
 stored in the structure.
 </p>
-<p><strong>Returns:</strong> The type of the certificate.
+<p><strong>Returns:</strong> The type of the object
 </p>
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
@@ -521,7 +554,7 @@ stored in the structure.
 </p>
 <p><var>url</var>: a PKCS 11 url identifying the key
 </p>
-<p><var>flags</var>: One of GNUTLS_PKCS11_OBJ_* flags
+<p><var>flags</var>: Or sequence of GNUTLS_PKCS11_OBJ_* flags
 </p>
 <p>This function will &quot;import&quot; a PKCS 11 URL identifying an object (e.g. certificate)
 to the <code>gnutls_pkcs11_obj_t</code>  structure. This does not involve any
@@ -560,7 +593,7 @@ negative error value.
 </p>
 <p><var>attrs</var>: Attributes of type <code>gnutls_pkcs11_obj_attr_t</code>  that can be used to limit output
 </p>
-<p><var>flags</var>: One of GNUTLS_PKCS11_OBJ_* flags
+<p><var>flags</var>: Or sequence of GNUTLS_PKCS11_OBJ_* flags
 </p>
 <p>This function will initialize and set values to an object list
 by using all objects identified by a PKCS 11 URL.
@@ -583,7 +616,7 @@ negative error value.
 </p>
 <p><var>attrs</var>: Attributes of type <code>gnutls_pkcs11_obj_attr_t</code>  that can be used to limit output
 </p>
-<p><var>flags</var>: One of GNUTLS_PKCS11_OBJ_* flags
+<p><var>flags</var>: Or sequence of GNUTLS_PKCS11_OBJ_* flags
 </p>
 <p>This function will initialize and set values to an object list
 by using all objects identified by the PKCS 11 URL. The output
@@ -619,6 +652,29 @@ set using <code>gnutls_pkcs11_set_pin_function()</code> .
 <dd><p><var>key</var>: The structure to be initialized
 </p>
 <p>This function will deinitialize a private key structure.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs11_005fprivkey_005fexport_005fpubkey-1"></a>
+<h4 class="subheading">gnutls_pkcs11_privkey_export_pubkey</h4>
+<a name="gnutls_005fpkcs11_005fprivkey_005fexport_005fpubkey"></a><dl>
+<dt><a name="index-gnutls_005fpkcs11_005fprivkey_005fexport_005fpubkey"></a>Function: <em>int</em> <strong>gnutls_pkcs11_privkey_export_pubkey</strong> <em>(gnutls_pkcs11_privkey_t <var>pkey</var>, gnutls_x509_crt_fmt_t <var>fmt</var>, gnutls_datum_t * <var>data</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>pkey</var>: The private key
+</p>
+<p><var>fmt</var>: the format of output params. PEM or DER.
+</p>
+<p><var>data</var>: will hold the public key
+</p>
+<p><var>flags</var>: should be zero
+</p>
+<p>This function will extract the public key (modulus and public
+exponent) from the private key specified by the  <code>url</code> private key.
+This public key will be stored in  <code>pubkey</code> in the format specified
+by  <code>fmt</code> .  <code>pubkey</code> should be deinitialized using <code>gnutls_free()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.3.7
 </p></dd></dl>
 
 <a name="gnutls_005fpkcs11_005fprivkey_005fexport_005furl-1"></a>
@@ -677,13 +733,17 @@ negative error value.
 </p>
 <p><var>pubkey</var>: will hold the public key (may be <code>NULL</code> )
 </p>
-<p><var>flags</var>: should be zero
+<p><var>flags</var>: zero or an OR&rsquo;ed sequence of <code>GNUTLS_PKCS11_OBJ_FLAGs</code> 
 </p>
 <p>This function will generate a private key in the specified
 by the  <code>url</code> token. The private key will be generate within
 the token and will not be exportable. This function will
 store the DER-encoded public key in the SubjectPublicKeyInfo format 
 in  <code>pubkey</code> . The  <code>pubkey</code> should be deinitialized using <code>gnutls_free()</code> .
+</p>
+<p>Note that when generating an elliptic curve key, the curve
+can be substituted in the place of the bits parameter using the
+<code>GNUTLS_CURVE_TO_BITS()</code>  macro.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -734,7 +794,7 @@ success, or a negative error code on error.
 </p>
 <p><var>url</var>: a PKCS 11 url identifying the key
 </p>
-<p><var>flags</var>: sequence of GNUTLS_PKCS_PRIVKEY_*
+<p><var>flags</var>: Or sequence of GNUTLS_PKCS11_OBJ_* flags
 </p>
 <p>This function will &quot;import&quot; a PKCS 11 URL identifying a private
 key to the <code>gnutls_pkcs11_privkey_t</code>  structure. In reality since
