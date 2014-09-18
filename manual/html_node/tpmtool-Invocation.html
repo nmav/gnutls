@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.7 of GnuTLS.
+3.3.8 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.7: tpmtool Invocation</title>
+<title>GnuTLS 3.3.8: tpmtool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.3.7: tpmtool Invocation">
-<meta name="keywords" content="GnuTLS 3.3.7: tpmtool Invocation">
+<meta name="description" content="GnuTLS 3.3.8: tpmtool Invocation">
+<meta name="keywords" content="GnuTLS 3.3.8: tpmtool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -161,9 +161,8 @@ dl {
 Previous: <a href="Using-keys.html#Using-keys" accesskey="p" rel="prev">Using keys</a>, Up: <a href="Trusted-Platform-Module.html#Trusted-Platform-Module" accesskey="u" rel="up">Trusted Platform Module</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h4 class="node-heading">tpmtool Invocation</h4>
 <a name="Invoking-tpmtool"></a>
-<h4 class="subsubheading">Invoking tpmtool</h4>
+<h4 class="subsection">5.3.4 Invoking tpmtool</h4>
 <a name="index-tpmtool"></a>
 
 
@@ -175,7 +174,7 @@ This software is released under the GNU General Public License, version 3 or lat
 </p>
 
 <a name="tpmtool-usage"></a><a name="tpmtool-help_002fusage-_0028_002d_002dhelp_0029"></a>
-<h4 class="subsubheading">tpmtool help/usage (<samp>--help</samp>)</h4>
+<h4 class="subsection">5.3.5 tpmtool help/usage (<samp>--help</samp>)</h4>
 <a name="index-tpmtool-help"></a>
 
 <p>This is the automatically generated usage text for tpmtool.
@@ -189,24 +188,65 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">tpmtool is unavailable - no --help
+<pre class="example">tpmtool - GnuTLS TPM tool
+Usage:  tpmtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+
+   -d, --debug=num            Enable debugging
+                                - it must be in the range:
+                                  0 to 9999
+       --infile=file          Input file
+                                - file must pre-exist
+       --outfile=str          Output file
+       --generate-rsa         Generate an RSA private-public key pair
+       --register             Any generated key will be registered in the TPM
+                                - requires the option 'generate-rsa'
+       --signing              Any generated key will be a signing key
+                                - requires the option 'generate-rsa'
+                                -- and prohibits the option 'legacy'
+       --legacy               Any generated key will be a legacy key
+                                - requires the option 'generate-rsa'
+                                -- and prohibits the option 'signing'
+       --user                 Any registered key will be a user key
+                                - requires the option 'register'
+                                -- and prohibits the option 'system'
+       --system               Any registred key will be a system key
+                                - requires the option 'register'
+                                -- and prohibits the option 'user'
+       --pubkey=str           Prints the public key of the provided key
+       --list                 Lists all stored keys in the TPM
+       --delete=str           Delete the key identified by the given URL (UUID).
+       --sec-param=str        Specify the security level [low, legacy, medium, high, ultra].
+       --bits=num             Specify the number of bits for key generate
+       --inder                Use the DER format for keys.
+                                - disabled as '--no-inder'
+       --outder               Use DER format for output keys
+                                - disabled as '--no-outder'
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+
+Program that allows handling cryptographic data from the TPM chip.
+
 </pre></div>
 
-<a name="tpmtool-debug"></a><a name="debug-option-_0028_002dd_0029-5"></a>
-<h4 class="subsubheading">debug option (-d)</h4>
+<a name="tpmtool-debug"></a><a name="debug-option-_0028_002dd_0029-1"></a>
+<h4 class="subsection">5.3.6 debug option (-d)</h4>
 
 <p>This is the &ldquo;enable debugging&rdquo; option.
 This option takes a number argument.
 Specifies the debug level.
 <a name="tpmtool-generate_002drsa"></a></p><a name="generate_002drsa-option-1"></a>
-<h4 class="subsubheading">generate-rsa option</h4>
+<h4 class="subsection">5.3.7 generate-rsa option</h4>
 
 <p>This is the &ldquo;generate an rsa private-public key pair&rdquo; option.
 Generates an RSA private-public key pair in the TPM chip. 
 The key may be stored in filesystem and protected by a PIN, or stored (registered)
 in the TPM chip flash.
 <a name="tpmtool-user"></a></p><a name="user-option"></a>
-<h4 class="subsubheading">user option</h4>
+<h4 class="subsection">5.3.8 user option</h4>
 
 <p>This is the &ldquo;any registered key will be a user key&rdquo; option.
 </p>
@@ -220,7 +260,7 @@ system.
 
 <p>The generated key will be stored in a user specific persistent storage.
 <a name="tpmtool-system"></a></p><a name="system-option"></a>
-<h4 class="subsubheading">system option</h4>
+<h4 class="subsection">5.3.9 system option</h4>
 
 <p>This is the &ldquo;any registred key will be a system key&rdquo; option.
 </p>
@@ -233,15 +273,15 @@ user.
 </li></ul>
 
 <p>The generated key will be stored in system persistent storage.
-<a name="tpmtool-sec_002dparam"></a></p><a name="sec_002dparam-option-2"></a>
-<h4 class="subsubheading">sec-param option</h4>
+<a name="tpmtool-sec_002dparam"></a></p><a name="sec_002dparam-option-1"></a>
+<h4 class="subsection">5.3.10 sec-param option</h4>
 
 <p>This is the &ldquo;specify the security level [low, legacy, medium, high, ultra].&rdquo; option.
 This option takes a string argument <samp>Security parameter</samp>.
 This is alternative to the bits option. Note however that the
 values allowed by the TPM chip are quantized and given values may be rounded up.
-<a name="tpmtool-inder"></a></p><a name="inder-option-3"></a>
-<h4 class="subsubheading">inder option</h4>
+<a name="tpmtool-inder"></a></p><a name="inder-option-1"></a>
+<h4 class="subsection">5.3.11 inder option</h4>
 
 <p>This is the &ldquo;use the der format for keys.&rdquo; option.
 </p>
@@ -253,8 +293,8 @@ values allowed by the TPM chip are quantized and given values may be rounded up.
 <p>The input files will be assumed to be in the portable
 DER format of TPM. The default format is a custom format used by various
 TPM tools
-<a name="tpmtool-outder"></a></p><a name="outder-option-2"></a>
-<h4 class="subsubheading">outder option</h4>
+<a name="tpmtool-outder"></a></p><a name="outder-option-1"></a>
+<h4 class="subsection">5.3.12 outder option</h4>
 
 <p>This is the &ldquo;use der format for output keys&rdquo; option.
 </p>
@@ -265,7 +305,7 @@ TPM tools
 
 <p>The output will be in the TPM portable DER format.
 <a name="tpmtool-exit-status"></a></p><a name="tpmtool-exit-status-1"></a>
-<h4 class="subsubheading">tpmtool exit status</h4>
+<h4 class="subsection">5.3.13 tpmtool exit status</h4>
 
 <p>One of the following exit values will be returned:
 </p><dl compact="compact">
@@ -277,10 +317,10 @@ TPM tools
 </p></dd>
 </dl>
 <a name="tpmtool-See-Also"></a><a name="tpmtool-See-Also-1"></a>
-<h4 class="subsubheading">tpmtool See Also</h4>
+<h4 class="subsection">5.3.14 tpmtool See Also</h4>
 <p>p11tool (1), certtool (1)
 <a name="tpmtool-Examples"></a></p><a name="tpmtool-Examples-1"></a>
-<h4 class="subsubheading">tpmtool Examples</h4>
+<h4 class="subsection">5.3.15 tpmtool Examples</h4>
 <p>To generate a key that is to be stored in filesystem use:
 </p><div class="example">
 <pre class="example">$ tpmtool --generate-rsa --bits 2048 --outfile tpmkey.pem

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.7 of GnuTLS.
+3.3.8 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.7: OpenPGP certificates</title>
+<title>GnuTLS 3.3.8: OpenPGP certificates</title>
 
-<meta name="description" content="GnuTLS 3.3.7: OpenPGP certificates">
-<meta name="keywords" content="GnuTLS 3.3.7: OpenPGP certificates">
+<meta name="description" content="GnuTLS 3.3.8: OpenPGP certificates">
+<meta name="keywords" content="GnuTLS 3.3.8: OpenPGP certificates">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -205,7 +205,7 @@ in a certificate.</td></tr>
 <tr><td width="20%">public subkey expiration</td><td width="70%">The expiration time of the subkey.</td></tr>
 </table>
 
-<div class="float-caption"><p><strong>Table 4.4: </strong>OpenPGP certificate fields.</p></div></div>
+<div class="float-caption"><p><strong>Table 4.5: </strong>OpenPGP certificate fields.</p></div></div>
 
 <a name="OpenPGP-certificate-structure"></a>
 <h4 class="subsubsection">4.1.2.1 <acronym>OpenPGP</acronym> certificate structure</h4>
@@ -215,7 +215,7 @@ in a certificate.</td></tr>
 A typical certificate contains the user ID, which is an RFC 2822
 mail and name address, a public key, possibly a number of additional
 public keys (called subkeys), and a number of signatures. The various
-fields are shown in <a href="#tab_003aopenpgp_002dcertificate">Table 4.4</a>.
+fields are shown in <a href="#tab_003aopenpgp_002dcertificate">Table 4.5</a>.
 </p>
 <p>The additional subkeys may provide key for various different purposes,
 e.g. one key to encrypt mail, and another to sign a TLS key exchange.
@@ -223,7 +223,7 @@ Each subkey is identified by a unique key ID.
 The keys that are to be used in a TLS key exchange that requires
 signatures are called authentication keys in the OpenPGP jargon.
 The mapping of TLS key exchange methods to public keys is shown in
-<a href="#tab_003aopenpgp_002dkey_002dexchange">Table 4.5</a>.
+<a href="#tab_003aopenpgp_002dkey_002dexchange">Table 4.6</a>.
 </p>
 <div class="float"><a name="tab_003aopenpgp_002dkey_002dexchange"></a>
 <table>
@@ -234,7 +234,7 @@ The mapping of TLS key exchange methods to public keys is shown in
 <tr><td width="20%">DHE_DSS</td><td width="70%">A DSA public key that is marked for authentication.</td></tr>
 </table>
 
-<div class="float-caption"><p><strong>Table 4.5: </strong>The types of (sub)keys required for the various TLS key exchange methods.</p></div></div>
+<div class="float-caption"><p><strong>Table 4.6: </strong>The types of (sub)keys required for the various TLS key exchange methods.</p></div></div>
 <p>The corresponding private keys are stored in the
 <code>gnutls_openpgp_privkey_t</code> type. All the prototypes for the key
 handling functions can be found in <samp>gnutls/openpgp.h</samp>.

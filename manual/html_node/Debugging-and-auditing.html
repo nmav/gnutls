@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.7 of GnuTLS.
+3.3.8 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.7: Debugging and auditing</title>
+<title>GnuTLS 3.3.8: Debugging and auditing</title>
 
-<meta name="description" content="GnuTLS 3.3.7: Debugging and auditing">
-<meta name="keywords" content="GnuTLS 3.3.7: Debugging and auditing">
+<meta name="description" content="GnuTLS 3.3.8: Debugging and auditing">
+<meta name="keywords" content="GnuTLS 3.3.8: Debugging and auditing">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -177,8 +177,30 @@ verbose information on the <acronym>GnuTLS</acronym> functions internal flow.
 
 <p>Alternatively the environment variable <code>GNUTLS_DEBUG_LEVEL</code> can be
 set to a logging level and GnuTLS will output debugging output to standard
-error.
+error. Other available environment variables are shown in <a href="#tab_003aenvironment">Table 6.1</a>.
 </p>
+<div class="float"><a name="tab_003aenvironment"></a>
+<table>
+<thead><tr><th width="30%">Variable</th><th width="70%">Purpose</th></tr></thead>
+<tr><td width="30%"><code>GNUTLS_DEBUG_LEVEL</code></td><td width="70%">When set to a numeric value, it sets the default debugging level for GnuTLS applications.</td></tr>
+<tr><td width="30%"><code>GNUTLS_CPUID_OVERRIDE</code></td><td width="70%">That environment variable can be used to
+explicitly enable/disable the use of certain CPU capabilities. Note that CPU
+detection cannot be overriden, i.e., VIA options cannot be enabled on an Intel
+CPU. The currently available options are:
+<ul>
+<li> 0x1: Disable all run-time detected optimizations
+</li><li> 0x2: Enable AES-NI
+</li><li> 0x4: Enable SSSE3
+</li><li> 0x8: Enable PCLMUL
+</li><li> 0x100000: Enable VIA padlock
+</li><li> 0x200000: Enable VIA PHE
+</li><li> 0x400000: Enable VIA PHE SHA512
+</li></ul></td></tr>
+<tr><td width="30%"><code>GNUTLS_FORCE_FIPS_MODE</code></td><td width="70%">In setups where GnuTLS is compiled with support for FIPS140-2 (see &ndash;enable-fips140-mode in configure), that option if set to one enforces the FIPS140 mode.</td></tr>
+</table>
+
+<div class="float-caption"><p><strong>Table 6.1: </strong>Environment variables used by the library.</p></div></div>
+
 <p>When debugging is not required, important issues, such as detected
 attacks on the protocol still need to be logged. This is provided
 by the logging function set by
@@ -207,6 +229,11 @@ void (*gnutls_audit_log_func)( gnutls_session_t, const char*);
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
 
+<hr>
+<div class="header">
+<p>
+Next: <a href="Thread-safety.html#Thread-safety" accesskey="n" rel="next">Thread safety</a>, Previous: <a href="Common-types.html#Common-types" accesskey="p" rel="prev">Common types</a>, Up: <a href="Introduction-to-the-library.html#Introduction-to-the-library" accesskey="u" rel="up">Introduction to the library</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

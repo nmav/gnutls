@@ -3874,7 +3874,7 @@ list, suitable for display to a human.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>out</p></td>
-<td class="parameter_description"><p>Newly allocated datum with (0) terminated string.</p></td>
+<td class="parameter_description"><p>Newly allocated datum with null terminated string.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
@@ -5607,7 +5607,7 @@ display to a human.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>out</p></td>
-<td class="parameter_description"><p>Newly allocated datum with (0) terminated string.</p></td>
+<td class="parameter_description"><p>Newly allocated datum with null terminated string.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
@@ -6220,7 +6220,7 @@ gnutls_x509_crt_check_hostname (<em class="parameter"><code><a class="link" href
                                 <em class="parameter"><code>const <span class="type">char</span> *hostname</code></em>);</pre>
 <p>This function will check if the given certificate's subject matches
 the given hostname.  This is a basic implementation of the matching
-described in RFC2818 (HTTPS), which takes into account wildcards,
+described in RFC6125, and takes into account wildcards,
 and the DNSName/IPAddress subject alternative name PKIX extension.</p>
 <p>IPv4 addresses are accepted by this function in the dotted-decimal
 format (e.g, ddd.ddd.ddd.ddd), and IPv6 addresses in the hexadecimal
@@ -6874,9 +6874,11 @@ pathLenConstraint field too.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.6.7.103.7"></a><h4>Returns</h4>
-<p> A negative error code may be returned in case of parsing error.
-If the certificate does not contain the basicConstraints extension
-<a class="link" href="gnutls-gnutls.html#GNUTLS-E-REQUESTED-DATA-NOT-AVAILABLE:CAPS" title="GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE"><code class="literal">GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code></a> will be returned.</p>
+<p> If the certificate is a CA a positive value will be
+returned, or (0) if the certificate does not have CA flag set.  A
+negative error code may be returned in case of errors.  If the
+certificate does not contain the basicConstraints extension
+GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE will be returned.</p>
 <p></p>
 </div>
 </div>
@@ -9298,7 +9300,7 @@ selected fields, which is useful for logging purposes.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>out</p></td>
-<td class="parameter_description"><p>Newly allocated datum with (0) terminated string.</p></td>
+<td class="parameter_description"><p>Newly allocated datum with null terminated string.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
@@ -9641,8 +9643,11 @@ gnutls_x509_crt_set_crq (<em class="parameter"><code><a class="link" href="gnutl
 <p>This function will set the name and public parameters as well as
 the extensions from the given certificate request to the certificate. 
 Only RSA keys are currently supported.</p>
+<p>Note that this function will only set the <em class="parameter"><code>crq</code></em>
+ if it is self
+signed and the signature is correct. See <a class="link" href="gnutls-x509.html#gnutls-x509-crq-sign2" title="gnutls_x509_crq_sign2 ()"><code class="function">gnutls_x509_crq_sign2()</code></a>.</p>
 <div class="refsect3">
-<a name="id-1.2.6.7.156.5"></a><h4>Parameters</h4>
+<a name="id-1.2.6.7.156.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -9664,7 +9669,7 @@ Only RSA keys are currently supported.</p>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.6.7.156.6"></a><h4>Returns</h4>
+<a name="id-1.2.6.7.156.7"></a><h4>Returns</h4>
 <p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 <p></p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.7 of GnuTLS.
+3.3.8 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.7: Verification using PKCS11</title>
+<title>GnuTLS 3.3.8: Verification using PKCS11</title>
 
-<meta name="description" content="GnuTLS 3.3.7: Verification using PKCS11">
-<meta name="keywords" content="GnuTLS 3.3.7: Verification using PKCS11">
+<meta name="description" content="GnuTLS 3.3.8: Verification using PKCS11">
+<meta name="keywords" content="GnuTLS 3.3.8: Verification using PKCS11">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -166,21 +166,54 @@ Previous: <a href="Verifying-a-certificate-in-the-context-of-TLS-session.html#Ve
 <a name="index-verifying-certificate-with-pkcs11"></a>
 
 <p>Some systems provide a system wide trusted certificate storage accessible using
-PKCS #11. That is, the trusted certificates are queried and accessed using the
-PKCS #11 API. One example is the p11-kit trust module<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>.
+the PKCS #11 API. That is, the trusted certificates are queried and accessed using the
+PKCS #11 API, and trusted certificate properties, such as purpose, are marked using
+attached extensions. One example is the p11-kit trust module<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>.
 </p>
 <p>These special PKCS #11 modules can be used for GnuTLS certificate verification if marked as trust 
 policy modules, i.e., with <code>trust-policy: yes</code> in the p11-kit module file.
 The way to use them is by specifying to the file verification function (e.g., <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fx509_005ftrust_005ffile">gnutls_certificate_set_x509_trust_file</a>),
 a pkcs11 URL, or simply <code>pkcs11:</code> to use all the marked with trust policy modules.
 </p>
+<p>The trust modules of p11-kit assign a purpose to trusted authorities using the extended
+key usage object identifiers. The common purposes are shown in <a href="#tab_003apurposes">Table 4.4</a>. Note
+that typically according to [<em>RFC5280</em>] the extended key usage object identifiers apply to end certificates. Their
+application to CA certificates is an extension used by the trust modules.
+</p>
+<div class="float"><a name="tab_003apurposes"></a>
+<table>
+<thead><tr><th width="20%">Purpose</th><th width="20%">OID</th><th width="60%">Description</th></tr></thead>
+<tr><td width="20%">GNUTLS_KP_TLS_WWW_SERVER</td><td width="20%">1.3.6.1.5.5.7.3.1</td><td width="60%">The certificate is to be used for TLS WWW authentication. When in a CA certificate, it
+indicates that the CA is allowed to sign certificates for TLS WWW authentication.</td></tr>
+<tr><td width="20%">GNUTLS_KP_TLS_WWW_CLIENT</td><td width="20%">1.3.6.1.5.5.7.3.2</td><td width="60%">The certificate is to be used for TLS WWW client authentication. When in a CA certificate, it
+indicates that the CA is allowed to sign certificates for TLS WWW client authentication.</td></tr>
+<tr><td width="20%">GNUTLS_KP_CODE_SIGNING</td><td width="20%">1.3.6.1.5.5.7.3.3</td><td width="60%">The certificate is to be used for code signing. When in a CA certificate, it
+indicates that the CA is allowed to sign certificates for code signing.</td></tr>
+<tr><td width="20%">GNUTLS_KP_EMAIL_PROTECTION</td><td width="20%">1.3.6.1.5.5.7.3.4</td><td width="60%">The certificate is to be used for email protection. When in a CA certificate, it
+indicates that the CA is allowed to sign certificates for email users.</td></tr>
+<tr><td width="20%">GNUTLS_KP_OCSP_SIGNING</td><td width="20%">1.3.6.1.5.5.7.3.9</td><td width="60%">The certificate is to be used for signing OCSP responses. When in a CA certificate, it
+indicates that the CA is allowed to sign certificates which sign OCSP reponses.</td></tr>
+<tr><td width="20%">GNUTLS_KP_ANY</td><td width="20%">2.5.29.37.0</td><td width="60%">The certificate is to be used for any purpose. When in a CA certificate, it
+indicates that the CA is allowed to sign any kind of certificates.</td></tr>
+</table>
 
+<div class="float-caption"><p><strong>Table 4.4: </strong>Key purpose object identifiers.</p></div></div>
+<p>With such modules, it is recommended to use the verification functions <a href="X509-certificate-API.html#gnutls_005fx509_005ftrust_005flist_005fverify_005fcrt2">gnutls_x509_trust_list_verify_crt2</a>,
+or <a href="Core-TLS-API.html#gnutls_005fcertificate_005fverify_005fpeers">gnutls_certificate_verify_peers</a>, which allow to explicitly specify the key purpose. The
+other verification functions which do not allow setting a purpose, would operate as if
+<code>GNUTLS_KP_TLS_WWW_SERVER</code> was requested from the trusted authorities.
+</p>
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
 <h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
 <p>see <a href="http://p11-glue.freedesktop.org/trust-module.html">http://p11-glue.freedesktop.org/trust-module.html</a>.</p>
+</div>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Verifying-a-certificate-in-the-context-of-TLS-session.html#Verifying-a-certificate-in-the-context-of-TLS-session" accesskey="p" rel="prev">Verifying a certificate in the context of TLS session</a>, Up: <a href="X_002e509-certificates.html#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

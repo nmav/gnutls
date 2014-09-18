@@ -10459,7 +10459,7 @@ gnutls_random_art (<em class="parameter"><code><a class="link" href="gnutls-gnut
                    <em class="parameter"><code><span class="type">size_t</span> fpr_size</code></em>,
                    <em class="parameter"><code><span class="type">gnutls_datum_t</span> *art</code></em>);</pre>
 <p>This function will convert a given fingerprint to an "artistic"
-image. The returned image is allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a></p>
+image. The returned image is allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.4.7.207.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -10471,7 +10471,7 @@ image. The returned image is allocated using <a class="link" href="gnutls-gnutls
 <tbody>
 <tr>
 <td class="parameter_name"><p>type</p></td>
-<td class="parameter_description"><p>The type of the random art</p></td>
+<td class="parameter_description"><p>The type of the random art (for now only <a class="link" href="gnutls-gnutls.html#GNUTLS-RANDOM-ART-OPENSSH:CAPS"><code class="literal">GNUTLS_RANDOM_ART_OPENSSH</code></a> is supported)</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -15363,7 +15363,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.3.7"
+<pre class="programlisting">#define GNUTLS_VERSION "3.3.8"
 </pre>
 <p>
 </p>
@@ -15387,7 +15387,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030307
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030308
 </pre>
 <p>
 </p>
@@ -15395,7 +15395,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 7
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 8
 </pre>
 <p>
 </p>
@@ -17825,6 +17825,8 @@ to be used by callbacks.</p>
 	ASN1_TYPE rcache;
 	unsigned rcache_idx;
 	int use_extensions;
+
+	gnutls_datum_t der;
 	gnutls_datum_t raw_issuer_dn;
 } gnutls_x509_crl_int;
 </pre>
@@ -17900,7 +17902,9 @@ to be used by callbacks.</p>
 	 * get_raw_*_dn(). */
 	gnutls_datum_t raw_dn;
 	gnutls_datum_t raw_issuer_dn;
+	gnutls_datum_t raw_spki;
 
+	gnutls_datum_t der;
 	struct pin_info_st pin;
 } gnutls_x509_crt_int;
 </pre>

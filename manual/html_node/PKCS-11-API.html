@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.7 of GnuTLS.
+3.3.8 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.7: PKCS 11 API</title>
+<title>GnuTLS 3.3.8: PKCS 11 API</title>
 
-<meta name="description" content="GnuTLS 3.3.7: PKCS 11 API">
-<meta name="keywords" content="GnuTLS 3.3.7: PKCS 11 API">
+<meta name="description" content="GnuTLS 3.3.8: PKCS 11 API">
+<meta name="keywords" content="GnuTLS 3.3.8: PKCS 11 API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -271,7 +271,7 @@ negative error value.
 </p>
 <p>This function will check whether the provided certificate is stored
 in the specified token. This is useful in combination with 
-<code>GNUTLS_PKCS11_OBJ_FLAG_RETRIEVE_TRUSTED</code>  or 
+<code>GNUTLS_PKCS11_OBJ_FLAG_RETRIEVE_TRUSTED</code>  or
 <code>GNUTLS_PKCS11_OBJ_FLAG_RETRIEVE_DISTRUSTED</code> ,
 to check whether a CA is present or a certificate is blacklisted in
 a trust PKCS <code>11</code>  module.
@@ -339,7 +339,7 @@ negative error value.
 </p>
 <p><var>cert</var>: is the certificate to find issuer for
 </p>
-<p><var>issuer</var>: Will hold the issuer if any in an allocated buffer. 
+<p><var>issuer</var>: Will hold the issuer if any in an allocated buffer.
 </p>
 <p><var>fmt</var>: The format of the exported issuer.
 </p>
@@ -492,6 +492,27 @@ needs to be deallocated using <code>gnutls_free()</code> .
 <p><strong>Since:</strong> 3.3.7
 </p></dd></dl>
 
+<a name="gnutls_005fpkcs11_005fobj_005fget_005fexts-1"></a>
+<h4 class="subheading">gnutls_pkcs11_obj_get_exts</h4>
+<a name="gnutls_005fpkcs11_005fobj_005fget_005fexts"></a><dl>
+<dt><a name="index-gnutls_005fpkcs11_005fobj_005fget_005fexts"></a>Function: <em>int</em> <strong>gnutls_pkcs11_obj_get_exts</strong> <em>(gnutls_pkcs11_obj_t <var>obj</var>, gnutls_x509_ext_st ** <var>exts</var>, unsigned int * <var>exts_size</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>obj</var>: should contain a <code>gnutls_pkcs11_obj_t</code>  structure
+</p>
+<p><var>exts</var>: an allocated list of pointers to <code>gnutls_x509_ext_st</code> 
+</p>
+<p><var>exts_size</var>: the number of  <code>exts</code> 
+</p>
+<p><var>flags</var>: Or sequence of <code>GNUTLS_PKCS11_OBJ_</code> * flags 
+</p>
+<p>This function will return information about attached extensions
+that associate to the provided object (which should be a certificate).
+The extensions are the attached p11-kit trust module extensions.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success or a negative error code on error.
+</p>
+<p><strong>Since:</strong> 3.3.8
+</p></dd></dl>
+
 <a name="gnutls_005fpkcs11_005fobj_005fget_005fflags-1"></a>
 <h4 class="subheading">gnutls_pkcs11_obj_get_flags</h4>
 <a name="gnutls_005fpkcs11_005fobj_005fget_005fflags"></a><dl>
@@ -621,6 +642,9 @@ negative error value.
 <p>This function will initialize and set values to an object list
 by using all objects identified by the PKCS 11 URL. The output
 is stored in  <code>p_list</code> , which will be initialized.
+</p>
+<p>All returned objects must be deinitialized using <code>gnutls_pkcs11_obj_deinit()</code> ,
+and  <code>p_list</code> must be free&rsquo;d using <code>gnutls_free()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.7 of GnuTLS.
+3.3.8 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.7: X509 certificate API</title>
+<title>GnuTLS 3.3.8: X509 certificate API</title>
 
-<meta name="description" content="GnuTLS 3.3.7: X509 certificate API">
-<meta name="keywords" content="GnuTLS 3.3.7: X509 certificate API">
+<meta name="description" content="GnuTLS 3.3.8: X509 certificate API">
+<meta name="keywords" content="GnuTLS 3.3.8: X509 certificate API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -606,16 +606,17 @@ the  <code>aia</code> structure.
 </p>
 <p><var>seq</var>: The index of the name to get
 </p>
-<p><var>san_type</var>: Will hold the type of the name (of <code>gnutls_subject_alt_names_t</code> ), may be null
+<p><var>san_type</var>: Will hold the type of the name (of <code>gnutls_subject_alt_names_t</code> )
 </p>
-<p><var>san</var>: The alternative name data (may be null and should be treated as constant)
+<p><var>san</var>: The alternative name data
 </p>
-<p><var>othername_oid</var>: The object identifier if  <code>san_type</code> is <code>GNUTLS_SAN_OTHERNAME</code>  (should be treated as constant)
+<p><var>othername_oid</var>: The object identifier if  <code>san_type</code> is <code>GNUTLS_SAN_OTHERNAME</code> 
 </p>
-<p><var>serial</var>: The authorityCertSerialNumber number (may be null)
+<p><var>serial</var>: The authorityCertSerialNumber number
 </p>
 <p>This function will return a specific authorityCertIssuer name as stored in
-the  <code>aki</code> structure, as well as the authorityCertSerialNumber.
+the  <code>aki</code> structure, as well as the authorityCertSerialNumber. All the returned
+values should be treated as constant, and may be set to <code>NULL</code>  when are not required.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> 
 if the index is out of bounds, otherwise a negative error value.
@@ -632,7 +633,7 @@ if the index is out of bounds, otherwise a negative error value.
 <p><var>id</var>: Will hold the identifier
 </p>
 <p>This function will return the key identifier as stored in
-the  <code>aki</code> structure.
+the  <code>aki</code> structure. The identifier should be treated as constant.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> 
 if the index is out of bounds, otherwise a negative error value.
@@ -1361,7 +1362,7 @@ CRL&quot;.
 </p>
 <p><var>format</var>: Indicate the format to use
 </p>
-<p><var>out</var>: Newly allocated datum with (0) terminated string.
+<p><var>out</var>: Newly allocated datum with null terminated string.
 </p>
 <p>This function will pretty print a X.509 certificate revocation
 list, suitable for display to a human.
@@ -1856,6 +1857,33 @@ contain the specified extension
 <p><strong>Since:</strong> 2.8.0
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid2-1"></a>
+<h4 class="subheading">gnutls_x509_crq_get_extension_by_oid2</h4>
+<a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid2"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid2"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_by_oid2</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, gnutls_datum_t * <var>output</var>, unsigned int * <var>critical</var>)</em></dt>
+<dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
+</p>
+<p><var>oid</var>: holds an Object Identifier in a null terminated string
+</p>
+<p><var>indx</var>: In case multiple same OIDs exist in the extensions, this
+specifies which to get. Use (0) to get the first one.
+</p>
+<p><var>output</var>: will hold the allocated extension data
+</p>
+<p><var>critical</var>: will be non-zero if the extension is marked as critical
+</p>
+<p>This function will return the extension specified by the OID in
+the certificate.  The extensions will be returned as binary data
+DER encoded, in the provided buffer.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error code in case of an error.  If the certificate does not
+contain the specified extension
+<code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  will be returned.
+</p>
+<p><strong>Since:</strong> 3.3.8
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fdata-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_extension_data</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fdata"></a><dl>
@@ -2204,7 +2232,7 @@ negative error value.
 </p>
 <p><var>format</var>: Indicate the format to use
 </p>
-<p><var>out</var>: Newly allocated datum with (0) terminated string.
+<p><var>out</var>: Newly allocated datum with null terminated string.
 </p>
 <p>This function will pretty print a certificate request, suitable for
 display to a human.
@@ -2500,7 +2528,7 @@ is returned, and zero or positive code on success.
 </p>
 <p>This function will check if the given certificate&rsquo;s subject matches
 the given hostname.  This is a basic implementation of the matching
-described in RFC2818 (HTTPS), which takes into account wildcards,
+described in RFC6125, and takes into account wildcards,
 and the DNSName/IPAddress subject alternative name PKIX extension.
 </p>
 <p>For details see also <code>gnutls_x509_crt_check_hostname2()</code> .
@@ -2520,7 +2548,7 @@ and the DNSName/IPAddress subject alternative name PKIX extension.
 </p>
 <p>This function will check if the given certificate&rsquo;s subject matches
 the given hostname.  This is a basic implementation of the matching
-described in RFC2818 (HTTPS), which takes into account wildcards,
+described in RFC6125, and takes into account wildcards,
 and the DNSName/IPAddress subject alternative name PKIX extension.
 </p>
 <p>IPv4 addresses are accepted by this function in the dotted-decimal
@@ -2829,9 +2857,11 @@ does not have CA flag set.
 <p>Use <code>gnutls_x509_crt_get_basic_constraints()</code>  if you want to read the
 pathLenConstraint field too.
 </p>
-<p><strong>Returns:</strong> A negative error code may be returned in case of parsing error.
-If the certificate does not contain the basicConstraints extension
-<code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  will be returned.
+<p><strong>Returns:</strong> If the certificate is a CA a positive value will be
+returned, or (0) if the certificate does not have CA flag set.  A
+negative error code may be returned in case of errors.  If the
+certificate does not contain the basicConstraints extension
+GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE will be returned.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fget_005fcrl_005fdist_005fpoints-1"></a>
@@ -3003,6 +3033,32 @@ encoded, in the provided buffer.
 otherwise a negative error code is returned. If the certificate does not
 contain the specified extension
 GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE will be returned.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid2-1"></a>
+<h4 class="subheading">gnutls_x509_crt_get_extension_by_oid2</h4>
+<a name="gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid2"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid2"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_extension_by_oid2</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, int <var>indx</var>, gnutls_datum_t * <var>output</var>, unsigned int * <var>critical</var>)</em></dt>
+<dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
+</p>
+<p><var>oid</var>: holds an Object Identified in null terminated string
+</p>
+<p><var>indx</var>: In case multiple same OIDs exist in the extensions, this specifies which to send. Use (0) to get the first one.
+</p>
+<p><var>output</var>: will hold the allocated extension data
+</p>
+<p><var>critical</var>: will be non-zero if the extension is marked as critical
+</p>
+<p>This function will return the extension specified by the OID in the
+certificate.  The extensions will be returned as binary data DER
+encoded, in the provided buffer.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
+otherwise a negative error code is returned. If the certificate does not
+contain the specified extension
+GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE will be returned.
+</p>
+<p><strong>Since:</strong> 3.3.8
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fget_005fextension_005fdata-1"></a>
@@ -4011,7 +4067,7 @@ negative error value.
 </p>
 <p><var>format</var>: Indicate the format to use
 </p>
-<p><var>out</var>: Newly allocated datum with (0) terminated string.
+<p><var>out</var>: Newly allocated datum with null terminated string.
 </p>
 <p>This function will pretty print a X.509 certificate, suitable for
 display to a human.
@@ -4170,6 +4226,9 @@ negative error value.
 <p>This function will set the name and public parameters as well as
 the extensions from the given certificate request to the certificate. 
 Only RSA keys are currently supported.
+</p>
+<p>Note that this function will only set the  <code>crq</code> if it is self
+signed and the signature is correct. See <code>gnutls_x509_crq_sign2()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -4541,27 +4600,6 @@ a big-endian positive number (i.e. it&rsquo;s leftmost bit should be zero).
 negative error value.
 </p></dd></dl>
 
-<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname-1"></a>
-<h4 class="subheading">gnutls_x509_crt_set_subject_alternative_name</h4>
-<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_alternative_name</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_subject_alt_name_t           <var>type</var>, const char * <var>data_string</var>)</em></dt>
-<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
-</p>
-<p><var>type</var>: is one of the gnutls_x509_subject_alt_name_t enumerations
-</p>
-<p><var>data_string</var>: The data to be set, a (0) terminated string
-</p>
-<p>This function will set the subject alternative name certificate
-extension. This function assumes that data can be expressed as a null
-terminated string.
-</p>
-<p>The name of the function is unfortunate since it is incosistent with
-<code>gnutls_x509_crt_get_subject_alt_name()</code> .
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname-1"></a>
 <h4 class="subheading">gnutls_x509_crt_set_subject_alt_name</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname"></a><dl>
@@ -4583,6 +4621,27 @@ extension. It can set the following types:
 negative error value.
 </p>
 <p><strong>Since:</strong> 2.6.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_subject_alternative_name</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_alternative_name</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_subject_alt_name_t           <var>type</var>, const char * <var>data_string</var>)</em></dt>
+<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>type</var>: is one of the gnutls_x509_subject_alt_name_t enumerations
+</p>
+<p><var>data_string</var>: The data to be set, a (0) terminated string
+</p>
+<p>This function will set the subject alternative name certificate
+extension. This function assumes that data can be expressed as a null
+terminated string.
+</p>
+<p>The name of the function is unfortunate since it is incosistent with
+<code>gnutls_x509_crt_get_subject_alt_name()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005fkey_005fid-1"></a>
@@ -4850,6 +4909,17 @@ found.
 <p><strong>Returns:</strong> A null terminated string or NULL otherwise.
 </p>
 <p><strong>Since:</strong> 3.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fext_005fdeinit-1"></a>
+<h4 class="subheading">gnutls_x509_ext_deinit</h4>
+<a name="gnutls_005fx509_005fext_005fdeinit"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fext_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_x509_ext_deinit</strong> <em>(gnutls_x509_ext_st * <var>ext</var>)</em></dt>
+<dd><p><var>ext</var>: The extensions structure
+</p>
+<p>This function will deinitialize an extensions structure.
+</p>
+<p><strong>Since:</strong> 3.3.8
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fext_005fexport_005faia-1"></a>
@@ -5284,6 +5354,7 @@ field and the actual value, -1 indicate that the field is absent.
 </p>
 <p>This function will return the information from a proxy certificate
 extension. It reads the ProxyCertInfo X.509 extension (1.3.6.1.5.5.7.1.14).
+The  <code>policyLanguage</code> and  <code>policy</code> values must be deinitialized using <code>gnutls_free()</code>  after use.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -5331,6 +5402,27 @@ if the extension is not present, otherwise a negative error value.
 <p><strong>Since:</strong> 3.3.0
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fext_005fprint-1"></a>
+<h4 class="subheading">gnutls_x509_ext_print</h4>
+<a name="gnutls_005fx509_005fext_005fprint"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fext_005fprint"></a>Function: <em>int</em> <strong>gnutls_x509_ext_print</strong> <em>(gnutls_x509_ext_st * <var>exts</var>, unsigned int <var>exts_size</var>, gnutls_certificate_print_formats_t <var>format</var>, gnutls_datum_t * <var>out</var>)</em></dt>
+<dd><p><var>exts</var>: The structures to be printed
+</p>
+<p><var>exts_size</var>: the number of available structures
+</p>
+<p><var>format</var>: Indicate the format to use
+</p>
+<p><var>out</var>: Newly allocated datum with null terminated string.
+</p>
+<p>This function will pretty print X.509 certificate extensions, 
+suitable for display to a human.
+</p>
+<p>The output  <code>out</code> needs to be deallocated using <code>gnutls_free()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fkey_005fpurpose_005fdeinit-1"></a>
 <h4 class="subheading">gnutls_x509_key_purpose_deinit</h4>
 <a name="gnutls_005fx509_005fkey_005fpurpose_005fdeinit"></a><dl>
@@ -5353,7 +5445,7 @@ if the extension is not present, otherwise a negative error value.
 <p><var>oid</var>: Will hold the object identifier of the key purpose (to be treated as constant)
 </p>
 <p>This function will retrieve the specified by the index key purpose in the
-purposes structure.
+purposes structure. The object identifier will be a null terminated string.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> 
 if the index is out of bounds, otherwise a negative error value.
@@ -5539,6 +5631,26 @@ if the extension is not present, otherwise a negative error value.
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a negative error value.
 </p>
 <p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fothername_005fto_005fvirtual-1"></a>
+<h4 class="subheading">gnutls_x509_othername_to_virtual</h4>
+<a name="gnutls_005fx509_005fothername_005fto_005fvirtual"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fothername_005fto_005fvirtual"></a>Function: <em>int</em> <strong>gnutls_x509_othername_to_virtual</strong> <em>(const char * <var>oid</var>, const gnutls_datum_t * <var>othername</var>, unsigned int * <var>virt_type</var>, gnutls_datum_t * <var>virt</var>)</em></dt>
+<dd><p><var>oid</var>: The othername object identifier
+</p>
+<p><var>othername</var>: &ndash; undescribed &ndash;
+</p>
+<p><var>virt_type</var>: GNUTLS_SAN_OTHERNAME_XXX
+</p>
+<p><var>virt</var>: allocated printable data
+</p>
+<p>This function will parse and convert the othername data to a virtual
+type supported by gnutls.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a negative error value.
+</p>
+<p><strong>Since:</strong> 3.3.8
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fpolicies_005fdeinit-1"></a>
@@ -6608,6 +6720,52 @@ flags.
 negative error value.
 </p>
 <p><strong>Since:</strong> 3.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005ftrust_005flist_005fverify_005fcrt2-1"></a>
+<h4 class="subheading">gnutls_x509_trust_list_verify_crt2</h4>
+<a name="gnutls_005fx509_005ftrust_005flist_005fverify_005fcrt2"></a><dl>
+<dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fverify_005fcrt2-1"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_verify_crt2</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, gnutls_x509_crt_t * <var>cert_list</var>, unsigned int <var>cert_list_size</var>, gnutls_typed_vdata_st * <var>data</var>, unsigned int <var>elements</var>, unsigned int <var>flags</var>, unsigned int * <var>voutput</var>, gnutls_verify_output_function <var>func</var>)</em></dt>
+<dd><p><var>list</var>: The structure of the list
+</p>
+<p><var>cert_list</var>: is the certificate list to be verified
+</p>
+<p><var>cert_list_size</var>: is the certificate list size
+</p>
+<p><var>data</var>: an array of typed data
+</p>
+<p><var>elements</var>: the number of data elements
+</p>
+<p><var>flags</var>: Flags that may be used to change the verification algorithm. Use OR of the gnutls_certificate_verify_flags enumerations.
+</p>
+<p><var>voutput</var>: will hold the certificate verification output.
+</p>
+<p><var>func</var>: If non-null will be called on each chain element verification with the output.
+</p>
+<p>This function will try to verify the given certificate and return
+its status. The  <code>verify</code> parameter will hold an OR&rsquo;ed sequence of
+<code>gnutls_certificate_status_t</code>  flags.
+</p>
+<p>Additionally a certificate verification profile can be specified
+from the ones in <code>gnutls_certificate_verification_profiles_t</code>  by
+ORing the result of <code>GNUTLS_PROFILE_TO_VFLAGS()</code>  to the verification
+flags.
+</p>
+<p>The acceptable  <code>data</code> types are <code>GNUTLS_DT_DNS_HOSTNAME</code>  and <code>GNUTLS_DT_KEY_PURPOSE_OID</code> .
+The former accepts as data a null-terminated hostname, and the latter a null-terminated
+object identifier (e.g., <code>GNUTLS_KP_TLS_WWW_SERVER</code> ).
+If a DNS hostname is provided then this function will compare
+the hostname in the certificate against the given. If names do not match the 
+<code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
+If a key purpose OID is provided and the end-certificate contains the extended key
+usage PKIX extension, it will be required to be have the provided key purpose 
+or be marked for any purpose, otherwise verification will fail with <code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code>  status.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value. Note that verification failure will not result to an
+error code, only  <code>voutput</code> will be updated.
+</p>
+<p><strong>Since:</strong> 3.3.8
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005ftrust_005flist_005fverify_005fnamed_005fcrt-1"></a>
