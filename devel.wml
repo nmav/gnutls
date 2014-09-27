@@ -25,7 +25,7 @@ $ make check
 README-alpha</a>.
 </p>
 
-<p>If you wish to contribute, you may read more about our coding style in
+<p>If you wish to contribute, you may read more about 
 <a href="http://gitorious.org/gnutls/gnutls/blobs/master/doc/README.CODING_STYLE">
 our coding style</a>. 
 Note that when contributing code that is not assigned to FSF, you will need to
