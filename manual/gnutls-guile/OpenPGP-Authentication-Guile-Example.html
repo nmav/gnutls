@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is last updated 5 March 2014 for version
+3.4.0 of GnuTLS.
+
+Copyright (C) 2001-2012, 2014 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License". -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GnuTLS-Guile 3.4.0: OpenPGP Authentication Guile Example</title>
+
+<meta name="description" content="GnuTLS-Guile 3.4.0: OpenPGP Authentication Guile Example">
+<meta name="keywords" content="GnuTLS-Guile 3.4.0: OpenPGP Authentication Guile Example">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Procedure-Index.html#Procedure-Index" rel="index" title="Procedure Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Guile-Examples.html#Guile-Examples" rel="up" title="Guile Examples">
+<link href="Importing-OpenPGP-Keys-Guile-Example.html#Importing-OpenPGP-Keys-Guile-Example" rel="next" title="Importing OpenPGP Keys Guile Example">
+<link href="Anonymous-Authentication-Guile-Example.html#Anonymous-Authentication-Guile-Example" rel="prev" title="Anonymous Authentication Guile Example">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="OpenPGP-Authentication-Guile-Example"></a>
+<div class="header">
+<p>
+Next: <a href="Importing-OpenPGP-Keys-Guile-Example.html#Importing-OpenPGP-Keys-Guile-Example" accesskey="n" rel="next">Importing OpenPGP Keys Guile Example</a>, Previous: <a href="Anonymous-Authentication-Guile-Example.html#Anonymous-Authentication-Guile-Example" accesskey="p" rel="prev">Anonymous Authentication Guile Example</a>, Up: <a href="Guile-Examples.html#Guile-Examples" accesskey="u" rel="up">Guile Examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Procedure-Index.html#Procedure-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="OpenPGP-Authentication-Guile-Example-1"></a>
+<h3 class="section">4.2 OpenPGP Authentication Guile Example</h3>
+
+<p>GnuTLS allows users to authenticate using OpenPGP certificates.
+Using OpenPGP-based authentication is not more complicated than using
+anonymous authentication.  It requires a bit of extra work, though, to
+import the OpenPGP public and private key of the client/server.  Key
+import is omitted here and is left as an exercise to the reader
+(see <a href="Importing-OpenPGP-Keys-Guile-Example.html#Importing-OpenPGP-Keys-Guile-Example">Importing OpenPGP Keys Guile Example</a>).
+</p>
+<p>Assuming <var>some-socket</var> is bound to an open socket port and
+<var>pub</var> and <var>sec</var> are bound to the client&rsquo;s OpenPGP public and
+secret key, respectively, client-side code would look like this:
+</p>
+<a name="index-certificate_002dtype_002fopenpgp"></a>
+
+<div class="example">
+<pre class="example">;; Client-side.
+
+(define %certs (list certificate-type/openpgp))
+
+(let ((client (make-session connection-end/client))
+      (cred   (make-certificate-credentials)))
+  (set-session-default-priority! client)
+
+  ;; Choose OpenPGP certificates.
+  (set-session-certificate-type-priority! client %certs)
+
+  ;; Prepare appropriate client credentials.
+  (set-certificate-credentials-openpgp-keys! cred pub sec)
+  (set-session-credentials! client cred)
+
+  ;; Specify the underlying transport socket.
+  (set-session-transport-fd! client (fileno some-socket))
+
+  (handshake client)
+  (write &quot;hello, world!&quot; (session-record-port client))
+  (bye client close-request/rdwr))
+</pre></div>
+
+<p>Similarly, server-side code would be along these lines:
+</p>
+<div class="example">
+<pre class="example">;; Server-side.
+
+(define %certs (list certificate-type/openpgp))
+
+(let ((server (make-session connection-end/server))
+      (rsa    (make-rsa-parameters 1024))
+      (dh     (make-dh-parameters 1024)))
+  (set-session-default-priority! server)
+
+  ;; Choose OpenPGP certificates.
+  (set-session-certificate-type-priority! server %certs)
+
+  (let ((cred (make-certificate-credentials)))
+    ;; Prepare credentials with RSA and Diffie-Hellman parameters.
+    (set-certificate-credentials-dh-parameters! cred dh)
+    (set-certificate-credentials-rsa-export-parameters! cred rsa)
+    (set-certificate-credentials-openpgp-keys! cred pub sec)
+    (set-session-credentials! server cred))
+
+  (set-session-transport-fd! server (fileno some-socket))
+
+  (handshake server)
+  (let ((msg (read (session-record-port server))))
+    (format #t &quot;received: ~a~%&quot; msg)
+
+    (bye server close-request/rdwr)))
+</pre></div>
+
+<p>In practice, generating RSA parameters (and Diffie-Hellman parameters)
+can time a long time.  Thus, you may want to generate them once and
+store them in a file for future re-use (see <a href="Guile-Reference.html#Guile-Reference"><code>pkcs1-export-rsa-parameters</code> and <code>pkcs1-import-rsa-parameters</code></a>).
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Importing-OpenPGP-Keys-Guile-Example.html#Importing-OpenPGP-Keys-Guile-Example" accesskey="n" rel="next">Importing OpenPGP Keys Guile Example</a>, Previous: <a href="Anonymous-Authentication-Guile-Example.html#Anonymous-Authentication-Guile-Example" accesskey="p" rel="prev">Anonymous Authentication Guile Example</a>, Up: <a href="Guile-Examples.html#Guile-Examples" accesskey="u" rel="up">Guile Examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Procedure-Index.html#Procedure-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
