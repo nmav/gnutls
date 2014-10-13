@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.8 of GnuTLS.
+3.3.9 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.8</title>
+<title>GnuTLS 3.3.9</title>
 
-<meta name="description" content="GnuTLS 3.3.8">
-<meta name="keywords" content="GnuTLS 3.3.8">
+<meta name="description" content="GnuTLS 3.3.9">
+<meta name="keywords" content="GnuTLS 3.3.9">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.3.8</h1>
+<h1 class="settitle" align="center">GnuTLS 3.3.9</h1>
 
 
 
@@ -502,7 +502,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 29 July 2014 for version
-3.3.8 of GnuTLS.
+3.3.9 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -2520,8 +2520,11 @@ negative error value.
 <p><var>tl_vflags</var>: gnutls_certificate_verify_flags if flags specifies GNUTLS_TL_VERIFY_CRL
 </p>
 <p>This function will add the given certificate authorities
-to the trusted list. pkcs11 URLs are also accepted, instead
-of files, by this function.
+to the trusted list. PKCS <code>11</code>  URLs are also accepted, instead
+of files, by this function. A PKCS <code>11</code>  URL implies a trust
+database (a specially marked module in p11-kit); the URL &quot;pkcs11:&quot;
+implies all trust databases in the system. Only a single URL specifying
+trust databases can be set; they cannot be stacked with multiple calls.
 </p>
 <p><strong>Returns:</strong> The number of added elements is returned.
 </p>
@@ -2565,8 +2568,10 @@ to the trusted list.
 <p><var>tl_vflags</var>: gnutls_certificate_verify_flags if flags specifies GNUTLS_TL_VERIFY_CRL
 </p>
 <p>This function adds the system&rsquo;s default trusted certificate
-authorities to the trusted list. Note that on unsupported system
+authorities to the trusted list. Note that on unsupported systems
 this function returns <code>GNUTLS_E_UNIMPLEMENTED_FEATURE</code> .
+</p>
+<p>This function implies the flag <code>GNUTLS_TL_NO_DUPLICATES</code> .
 </p>
 <p><strong>Returns:</strong> The number of added elements or a negative error code on error.
 </p>
@@ -5073,7 +5078,57 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">danetool is unavailable - no --help
+<pre class="example">danetool - GnuTLS DANE tool
+Usage:  danetool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+
+   -d, --debug=num            Enable debugging
+                                - it must be in the range:
+                                  0 to 9999
+   -V, --verbose              More verbose output
+                                - may appear multiple times
+       --infile=file          Input file
+                                - file must pre-exist
+       --outfile=str          Output file
+       --load-pubkey=str      Loads a public key file
+       --load-certificate=str Loads a certificate file
+       --dlv=str              Sets a DLV file
+       --hash=str             Hash algorithm to use for signing
+       --check=str            Check a host's DANE TLSA entry
+       --check-ee             Check only the end-entity's certificate
+       --check-ca             Check only the CA's certificate
+       --tlsa-rr              Print the DANE RR data on a certificate or public key
+                                - requires the option 'host'
+       --host=str             Specify the hostname to be used in the DANE RR
+       --proto=str            The protocol set for DANE data (tcp, udp etc.)
+       --port=num             Specify the port number for the DANE data
+       --app-proto=str        The application protocol to be used to obtain the server's certificate
+(https, smtp, imap)
+       --ca                   Whether the provided certificate or public key is a Certificate
+Authority
+       --x509                 Use the hash of the X.509 certificate, rather than the public key
+       --local                an alias for the 'domain' option
+                                - enabled by default
+       --domain               The provided certificate or public key is issued by the local domain
+                                - disabled as '--no-domain'
+                                - enabled by default
+       --local-dns            Use the local DNS server for DNSSEC resolving
+                                - disabled as '--no-local-dns'
+       --insecure             Do not verify any DNSSEC signature
+       --inder                Use DER format for input certificates and private keys
+                                - disabled as '--no-inder'
+       --inraw                an alias for the 'inder' option
+       --print-raw            Print the received DANE data in raw format
+                                - disabled as '--no-print-raw'
+       --quiet                Suppress several informational messages
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+
+Tool to generate and check DNS resource records for the DANE protocol.
+
 </pre></div>
 
 <a name="danetool-debug"></a><a name="debug-option-_0028_002dd_0029-4"></a>
@@ -7526,48 +7581,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">tpmtool - GnuTLS TPM tool
-Usage:  tpmtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
-
-   -d, --debug=num            Enable debugging
-                                - it must be in the range:
-                                  0 to 9999
-       --infile=file          Input file
-                                - file must pre-exist
-       --outfile=str          Output file
-       --generate-rsa         Generate an RSA private-public key pair
-       --register             Any generated key will be registered in the TPM
-                                - requires the option 'generate-rsa'
-       --signing              Any generated key will be a signing key
-                                - requires the option 'generate-rsa'
-                                -- and prohibits the option 'legacy'
-       --legacy               Any generated key will be a legacy key
-                                - requires the option 'generate-rsa'
-                                -- and prohibits the option 'signing'
-       --user                 Any registered key will be a user key
-                                - requires the option 'register'
-                                -- and prohibits the option 'system'
-       --system               Any registred key will be a system key
-                                - requires the option 'register'
-                                -- and prohibits the option 'user'
-       --pubkey=str           Prints the public key of the provided key
-       --list                 Lists all stored keys in the TPM
-       --delete=str           Delete the key identified by the given URL (UUID).
-       --sec-param=str        Specify the security level [low, legacy, medium, high, ultra].
-       --bits=num             Specify the number of bits for key generate
-       --inder                Use the DER format for keys.
-                                - disabled as '--no-inder'
-       --outder               Use DER format for output keys
-                                - disabled as '--no-outder'
-   -v, --version[=arg]        output version information and exit
-   -h, --help                 display extended usage information and exit
-   -!, --more-help            extended usage information passed thru pager
-
-Options are specified by doubled hyphens and their name or by a single
-hyphen and the flag character.
-
-Program that allows handling cryptographic data from the TPM chip.
-
+<pre class="example">tpmtool is unavailable - no --help
 </pre></div>
 
 <a name="tpmtool-debug"></a><a name="debug-option-_0028_002dd_0029-1"></a>
@@ -14706,7 +14720,8 @@ Next: <a href="#Other-included-programs" accesskey="n" rel="next">Other included
 it does not provide access to basic cryptographic primitives. However
 it abstracts the internal cryptographic back-end (see <a href="#Cryptographic-Backend">Cryptographic Backend</a>),
 providing symmetric crypto, hash and HMAC algorithms, as well access
-to the random number generation.
+to the random number generation. For a low-level crypto API the usage of nettle
+<a name="DOCF15" href="#FOOT15"><sup>15</sup></a> library is recommended.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Symmetric-algorithms" accesskey="1">Symmetric algorithms</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -15375,6 +15390,12 @@ If the client requested an OCSP response, return data from this file to the clie
 
 <p>This is the &ldquo;print a list of the supported algorithms and modes&rdquo; option.
 Print a list of the supported algorithms and modes. If a priority string is given then only the enabled ciphersuites are shown.
+<a name="gnutls_002dserv-provider"></a></p><a name="provider-option-3"></a>
+<h4 class="subheading">provider option</h4>
+
+<p>This is the &ldquo;specify the pkcs #11 provider library&rdquo; option.
+This option takes a file argument.
+This will override the default options in /etc/gnutls/pkcs11.conf
 <a name="gnutls_002dserv-exit-status"></a></p><a name="gnutls_002dserv-exit-status-1"></a>
 <h4 class="subheading">gnutls-serv exit status</h4>
 
@@ -15805,7 +15826,7 @@ authentication method needs to implement the functions shown below.
 <p>Those functions are responsible for the
 interpretation of the handshake protocol messages. It is common for such
 functions to read data from one or more <code>credentials_t</code>
-structures<a name="DOCF15" href="#FOOT15"><sup>15</sup></a> and write data,
+structures<a name="DOCF16" href="#FOOT16"><sup>16</sup></a> and write data,
 such as certificates, usernames etc. to <code>auth_info_t</code> structures.
 </p>
 
@@ -16213,7 +16234,7 @@ an efficient way.
 <h4 class="subheading">Cryptographic library layer</h4>
 <p>The Cryptographic library layer, currently supports only
 libnettle. Older versions of GnuTLS used to support libgcrypt,
-but it was switched with nettle mainly for performance reasons<a name="DOCF16" href="#FOOT16"><sup>16</sup></a>
+but it was switched with nettle mainly for performance reasons<a name="DOCF17" href="#FOOT17"><sup>17</sup></a>
 and secondary because it is a simpler library to use.
 In the future other cryptographic libraries might be supported as well.
 </p>
@@ -16223,7 +16244,7 @@ In the future other cryptographic libraries might be supported as well.
 kernel drivers to utilize the operations from software. For this reason 
 GnuTLS provides a layer where each individual algorithm used can be replaced
 by another implementation, i.e., the one provided by the driver. The
-FreeBSD, OpenBSD and Linux kernels<a name="DOCF17" href="#FOOT17"><sup>17</sup></a> include already 
+FreeBSD, OpenBSD and Linux kernels<a name="DOCF18" href="#FOOT18"><sup>18</sup></a> include already 
 a number of hardware assisted implementations, and also provide an interface 
 to access them, called <code>/dev/crypto</code>.
 GnuTLS will take advantage of this interface if compiled with special
@@ -16689,8 +16710,6 @@ expressions.
 <tr><td width="15%">-99</td><td width="40%">GNUTLS_E_INVALID_PASSWORD</td><td width="37%">The given password contains invalid characters.</td></tr>
 <tr><td width="15%">-100</td><td width="40%">GNUTLS_E_MAC_VERIFY_FAILED</td><td width="37%">The Message Authentication Code verification failed.</td></tr>
 <tr><td width="15%">-101</td><td width="40%">GNUTLS_E_CONSTRAINT_ERROR</td><td width="37%">Some constraint limits were reached.</td></tr>
-<tr><td width="15%">-102</td><td width="40%">GNUTLS_E_WARNING_IA_IPHF_RECEIVED</td><td width="37%">Received a TLS/IA Intermediate Phase Finished message</td></tr>
-<tr><td width="15%">-103</td><td width="40%">GNUTLS_E_WARNING_IA_FPHF_RECEIVED</td><td width="37%">Received a TLS/IA Final Phase Finished message</td></tr>
 <tr><td width="15%">-104</td><td width="40%">GNUTLS_E_IA_VERIFY_FAILED</td><td width="37%">Verifying TLS/IA phase checksum failed</td></tr>
 <tr><td width="15%">-105</td><td width="40%">GNUTLS_E_UNKNOWN_ALGORITHM</td><td width="37%">The specified algorithm or protocol is unknown.</td></tr>
 <tr><td width="15%">-106</td><td width="40%">GNUTLS_E_UNSUPPORTED_SIGNATURE_ALGORITHM</td><td width="37%">The signature algorithm is not supported.</td></tr>
@@ -29455,8 +29474,10 @@ negative error value.
 <p><var>tl_vflags</var>: gnutls_certificate_verify_flags if flags specifies GNUTLS_TL_VERIFY_CRL
 </p>
 <p>This function adds the system&rsquo;s default trusted certificate
-authorities to the trusted list. Note that on unsupported system
+authorities to the trusted list. Note that on unsupported systems
 this function returns <code>GNUTLS_E_UNIMPLEMENTED_FEATURE</code> .
+</p>
+<p>This function implies the flag <code>GNUTLS_TL_NO_DUPLICATES</code> .
 </p>
 <p><strong>Returns:</strong> The number of added elements or a negative error code on error.
 </p>
@@ -29505,8 +29526,11 @@ this function.
 <p><var>tl_vflags</var>: gnutls_certificate_verify_flags if flags specifies GNUTLS_TL_VERIFY_CRL
 </p>
 <p>This function will add the given certificate authorities
-to the trusted list. pkcs11 URLs are also accepted, instead
-of files, by this function.
+to the trusted list. PKCS <code>11</code>  URLs are also accepted, instead
+of files, by this function. A PKCS <code>11</code>  URL implies a trust
+database (a specially marked module in p11-kit); the URL &quot;pkcs11:&quot;
+implies all trust databases in the system. Only a single URL specifying
+trust databases can be set; they cannot be stacked with multiple calls.
 </p>
 <p><strong>Returns:</strong> The number of added elements is returned.
 </p>
@@ -29563,10 +29587,13 @@ want to prevent them from being deinitialized by this function.
 </p>
 <p><var>issuer</var>: Will hold the issuer if any. Should be treated as constant.
 </p>
-<p><var>flags</var>: Use zero.
+<p><var>flags</var>: Use zero or <code>GNUTLS_TL_GET_COPY</code> 
 </p>
-<p>This function will attempt to find the issuer of the
-given certificate.
+<p>This function will find the issuer of the given certificate.
+If the flag <code>GNUTLS_TL_GET_COPY</code>  is specified a copy of the issuer
+will be returned which must be freed using <code>gnutls_x509_crt_deinit()</code> .
+Note that the flag <code>GNUTLS_TL_GET_COPY</code>  is required for this function
+to work with PKCS <code>11</code>  trust lists in a thread-safe way.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -38840,12 +38867,14 @@ It is open to any interested individual.</p>
 lesser bits are always faster, but also easier to break.  See <a href="#Selecting-cryptographic-key-sizes">Selecting cryptographic key sizes</a>
 for the acceptable security levels.</p>
 <h3><a name="FOOT15" href="#DOCF15">(15)</a></h3>
+<p>See <a href="http://www.lysator.liu.se/~nisse/nettle/">http://www.lysator.liu.se/~nisse/nettle/</a>.</p>
+<h3><a name="FOOT16" href="#DOCF16">(16)</a></h3>
 <p>such as the
 <code>gnutls_certificate_credentials_t</code> structures</p>
-<h3><a name="FOOT16" href="#DOCF16">(16)</a></h3>
+<h3><a name="FOOT17" href="#DOCF17">(17)</a></h3>
 <p>See
 <a href="http://lists.gnu.org/archive/html/gnutls-devel/2011-02/msg00079.html">http://lists.gnu.org/archive/html/gnutls-devel/2011-02/msg00079.html</a>.</p>
-<h3><a name="FOOT17" href="#DOCF17">(17)</a></h3>
+<h3><a name="FOOT18" href="#DOCF18">(18)</a></h3>
 <p>Check <a href="http://home.gna.org/cryptodev-linux/">http://home.gna.org/cryptodev-linux/</a> 
 for the Linux kernel implementation of <code>/dev/crypto</code>.</p>
 </div>

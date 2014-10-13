@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 5 March 2014 for version
-3.4.0 of GnuTLS.
+<!-- This manual is last updated 29 July 2014 for version
+3.3.9 of GnuTLS.
 
 Copyright (C) 2001-2012, 2014 Free Software Foundation, Inc.
 
@@ -13,10 +13,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS-Guile 3.4.0</title>
+<title>GnuTLS-Guile 3.3.9</title>
 
-<meta name="description" content="GnuTLS-Guile 3.4.0">
-<meta name="keywords" content="GnuTLS-Guile 3.4.0">
+<meta name="description" content="GnuTLS-Guile 3.3.9">
+<meta name="keywords" content="GnuTLS-Guile 3.3.9">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -152,7 +152,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS-Guile 3.4.0</h1>
+<h1 class="settitle" align="center">GnuTLS-Guile 3.3.9</h1>
 
 
 
@@ -198,8 +198,8 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <a name="GnuTLS_002dGuile"></a>
 <h1 class="top">GnuTLS-Guile</h1>
 
-<p>This manual is last updated 5 March 2014 for version
-3.4.0 of GnuTLS.
+<p>This manual is last updated 29 July 2014 for version
+3.3.9 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2012, 2014 Free Software Foundation, Inc.
 </p>
@@ -242,8 +242,7 @@ Next: <a href="#Guile-Preparations" accesskey="n" rel="next">Guile Preparations<
 <a name="Preface-1"></a>
 <h2 class="chapter">1 Preface</h2>
 
-<p>This manual describes the <a href="http://www.gnu.org/software/guile/">GNU Guile</a> Scheme programming interface to GnuTLS, which is distributed
-as part of <a href="http://gnutls.org">GnuTLS</a>.  The reader is
+<p>This manual describes the <a href="http://www.gnu.org/software/guile/">GNU Guile</a> Scheme programming interface to GnuTLS.  The reader is
 assumed to have basic knowledge of the protocol and library.  Details
 missing from this chapter may be found in Function reference,
 of the C API reference.
@@ -341,7 +340,7 @@ print the version number of the loaded library as follows:
 <pre class="example">$ guile
 guile&gt; (use-modules (gnutls))
 guile&gt; (gnutls-version)
-&quot;3.4.0&quot;
+&quot;3.3.9&quot;
 guile&gt; 
 </pre></div>
 
@@ -1483,11 +1482,6 @@ GNU Guile Reference Manual</cite>).
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-server_002dname_002dtype_002d_003estring"></a>Scheme Procedure: <strong>server-name-type-&gt;string</strong> <em>enumval</em></dt>
-<dd><p>Return a string describing <var>enumval</var>, a <code>server-name-type</code> value.
-</p></dd></dl>
-
-<dl>
 <dt><a name="index-sign_002dalgorithm_002d_003estring"></a>Scheme Procedure: <strong>sign-algorithm-&gt;string</strong> <em>enumval</em></dt>
 <dd><p>Return a string describing <var>enumval</var>, a <code>sign-algorithm</code> value.
 </p></dd></dl>
@@ -2217,7 +2211,6 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-rsa_002dparameters_003f"><code>rsa-parameters?</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Guile-Reference">Guile Reference</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Procedure-Index_fn_letter-S">S</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-server_002dname_002dtype_002d_003estring"><code>server-name-type-&gt;string</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Guile-Reference">Guile Reference</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-server_002dsession_002dpsk_002dusername"><code>server-session-psk-username</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Guile-Reference">Guile Reference</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-session_002dauthentication_002dtype"><code>session-authentication-type</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Guile-Reference">Guile Reference</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-session_002dcertificate_002dtype"><code>session-certificate-type</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Guile-Reference">Guile Reference</a></td></tr>
