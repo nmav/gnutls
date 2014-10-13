@@ -4249,7 +4249,10 @@ gnutls_certificate_get_issuer (<em class="parameter"><code><span class="type">gn
                                <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> cert</code></em>,
                                <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> *issuer</code></em>,
                                <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
-<p>This function will return the issuer of a given certificate.</p>
+<p>This function will return the issuer of a given certificate.
+As with <a class="link" href="gnutls-x509.html#gnutls-x509-trust-list-get-issuer" title="gnutls_x509_trust_list_get_issuer ()"><code class="function">gnutls_x509_trust_list_get_issuer()</code></a> this function requires
+the <code class="literal">GNUTLS_TL_GET_COPY</code> flag in order to operate with PKCS <span class="type">11</span> trust
+lists. In that case the issuer must be freed using <a class="link" href="gnutls-x509.html#gnutls-x509-crt-deinit" title="gnutls_x509_crt_deinit ()"><code class="function">gnutls_x509_crt_deinit()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.4.7.35.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -4276,7 +4279,7 @@ gnutls_certificate_get_issuer (<em class="parameter"><code><span class="type">gn
 </tr>
 <tr>
 <td class="parameter_name"><p>flags</p></td>
-<td class="parameter_description"><p>Use zero.</p></td>
+<td class="parameter_description"><p>Use zero or <code class="literal">GNUTLS_TL_GET_COPY</code></p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
@@ -4358,7 +4361,7 @@ format.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.4.7.37.7"></a><h4>Returns</h4>
-<p> a pointer to a <span class="type">gnutls_datum_t</span> containing our
+<p> a pointer to a <span class="type">gnutls_datum_t</span> containing the peer's
 certificates, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> in case of an error or if no certificate
 was used.</p>
 <p></p>
@@ -7584,13 +7587,16 @@ return a negative error code. In case of a client, if the client
 has asked to resume a session, but the server couldn't, then a
 full handshake will be performed.</p>
 <p>The non-fatal errors expected by this function are:
-<a class="link" href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS" title="GNUTLS_E_INTERRUPTED"><code class="literal">GNUTLS_E_INTERRUPTED</code></a>, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS" title="GNUTLS_E_AGAIN"><code class="literal">GNUTLS_E_AGAIN</code></a>, and <a class="link" href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS" title="GNUTLS_E_WARNING_ALERT_RECEIVED"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a>.
+<a class="link" href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS" title="GNUTLS_E_INTERRUPTED"><code class="literal">GNUTLS_E_INTERRUPTED</code></a>, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS" title="GNUTLS_E_AGAIN"><code class="literal">GNUTLS_E_AGAIN</code></a>, 
+and <a class="link" href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS" title="GNUTLS_E_WARNING_ALERT_RECEIVED"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a>.
 The former two interrupt the handshake procedure due to the lower
 layer being interrupted, and the latter because of an alert that
 may be sent by a server (it is always a good idea to check any
 received alerts). On these errors call this function again, until it
 returns 0; cf.  <a class="link" href="gnutls-gnutls.html#gnutls-record-get-direction" title="gnutls_record_get_direction ()"><code class="function">gnutls_record_get_direction()</code></a> and
-<a class="link" href="gnutls-gnutls.html#gnutls-error-is-fatal" title="gnutls_error_is_fatal ()"><code class="function">gnutls_error_is_fatal()</code></a>.</p>
+<a class="link" href="gnutls-gnutls.html#gnutls-error-is-fatal" title="gnutls_error_is_fatal ()"><code class="function">gnutls_error_is_fatal()</code></a>. In DTLS sessions the non-fatal error
+<a class="link" href="gnutls-gnutls.html#GNUTLS-E-LARGE-PACKET:CAPS" title="GNUTLS_E_LARGE_PACKET"><code class="literal">GNUTLS_E_LARGE_PACKET</code></a> is also possible, and indicates that
+the MTU should be adjusted.</p>
 <p>If this function is called by a server after a rehandshake request
 then <a class="link" href="gnutls-gnutls.html#GNUTLS-E-GOT-APPLICATION-DATA:CAPS" title="GNUTLS_E_GOT_APPLICATION_DATA"><code class="literal">GNUTLS_E_GOT_APPLICATION_DATA</code></a> or
 <a class="link" href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS" title="GNUTLS_E_WARNING_ALERT_RECEIVED"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a> may be returned.  Note that these
@@ -15363,7 +15369,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.3.8"
+<pre class="programlisting">#define GNUTLS_VERSION "3.3.9"
 </pre>
 <p>
 </p>
@@ -15387,7 +15393,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030308
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030309
 </pre>
 <p>
 </p>
@@ -15395,7 +15401,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 8
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 9
 </pre>
 <p>
 </p>

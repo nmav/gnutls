@@ -7,8 +7,9 @@
 WML=wml
 WMLFLAGS=-DTABLE_BGCOLOR="\#e5e5e5" -DTABLE_HDCOLOR="\#ccbcbc" \
 	-DTABLE_BGCOLOR2="\#e0d7d7" -DWHITE="\#ffffff" -DEMAIL=\"bugs@gnutls.org\" \
-	-DSTABLE_VER="3.2" -DSTABLE_OLD_VER="3.1" \
-	-DSTABLE_NEXT_VER="3.3" 
+	-DSTABLE_VER="3.3" -DSTABLE_OLD_VER="3.2"
+
+#	-DSTABLE_NEXT_VER="3.3" 
 COMMON=common.wml bottom.wml head.wml rawnews.wml
 OUTPUT=index.html contrib.html devel.html support.html	\
  download.html gnutls-logo.html news.html future.html	\

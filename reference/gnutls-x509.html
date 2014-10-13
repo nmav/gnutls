@@ -12759,10 +12759,11 @@ gnutls_x509_trust_list_add_system_trust
                                 <em class="parameter"><code>unsigned <span class="type">int</span> tl_flags</code></em>,
                                 <em class="parameter"><code>unsigned <span class="type">int</span> tl_vflags</code></em>);</pre>
 <p>This function adds the system's default trusted certificate
-authorities to the trusted list. Note that on unsupported system
+authorities to the trusted list. Note that on unsupported systems
 this function returns <a class="link" href="gnutls-gnutls.html#GNUTLS-E-UNIMPLEMENTED-FEATURE:CAPS" title="GNUTLS_E_UNIMPLEMENTED_FEATURE"><code class="literal">GNUTLS_E_UNIMPLEMENTED_FEATURE</code></a>.</p>
+<p>This function implies the flag <code class="literal">GNUTLS_TL_NO_DUPLICATES</code>.</p>
 <div class="refsect3">
-<a name="id-1.2.6.7.219.5"></a><h4>Parameters</h4>
+<a name="id-1.2.6.7.219.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -12789,7 +12790,7 @@ this function returns <a class="link" href="gnutls-gnutls.html#GNUTLS-E-UNIMPLEM
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.6.7.219.6"></a><h4>Returns</h4>
+<a name="id-1.2.6.7.219.7"></a><h4>Returns</h4>
 <p> The number of added elements or a negative error code on error.</p>
 <p></p>
 </div>
@@ -12806,8 +12807,11 @@ gnutls_x509_trust_list_add_trust_file (<em class="parameter"><code><a class="lin
                                        <em class="parameter"><code>unsigned <span class="type">int</span> tl_flags</code></em>,
                                        <em class="parameter"><code>unsigned <span class="type">int</span> tl_vflags</code></em>);</pre>
 <p>This function will add the given certificate authorities
-to the trusted list. pkcs11 URLs are also accepted, instead
-of files, by this function.</p>
+to the trusted list. PKCS <span class="type">11</span> URLs are also accepted, instead
+of files, by this function. A PKCS <span class="type">11</span> URL implies a trust
+database (a specially marked module in p11-kit); the URL "pkcs11:"
+implies all trust databases in the system. Only a single URL specifying
+trust databases can be set; they cannot be stacked with multiple calls.</p>
 <div class="refsect3">
 <a name="id-1.2.6.7.220.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -12961,8 +12965,11 @@ gnutls_x509_trust_list_get_issuer (<em class="parameter"><code><a class="link" h
                                    <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> cert</code></em>,
                                    <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> *issuer</code></em>,
                                    <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
-<p>This function will attempt to find the issuer of the
-given certificate.</p>
+<p>This function will find the issuer of the given certificate.
+If the flag <code class="literal">GNUTLS_TL_GET_COPY</code> is specified a copy of the issuer
+will be returned which must be freed using <a class="link" href="gnutls-x509.html#gnutls-x509-crt-deinit" title="gnutls_x509_crt_deinit ()"><code class="function">gnutls_x509_crt_deinit()</code></a>.
+Note that the flag <code class="literal">GNUTLS_TL_GET_COPY</code> is required for this function
+to work with PKCS <span class="type">11</span> trust lists in a thread-safe way.</p>
 <div class="refsect3">
 <a name="id-1.2.6.7.223.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -12989,7 +12996,7 @@ given certificate.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>flags</p></td>
-<td class="parameter_description"><p>Use zero.</p></td>
+<td class="parameter_description"><p>Use zero or <code class="literal">GNUTLS_TL_GET_COPY</code></p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
