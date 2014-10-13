@@ -3,7 +3,7 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-10-13T08:56:17+00:00</updated>
+<updated>2014-10-13T08:57:46+00:00</updated>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-10-13</id>
@@ -21,12 +21,11 @@ Released <a
 href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7728">GnuTLS
 3.3.9</a>,
 <a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7727">GnuTLS
-3.2.19</a>, and
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7727">3.2.19</a>, and
 <a
 href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7726">3.1.17</a>,
 which are bug-fix releases on the current and old stable
-branches respectively. The GnuTLS branch 3.3.x is now the new
+branches respectively. The GnuTLS branch 3.3.x is the new
 stable branch.
 </p>
 
