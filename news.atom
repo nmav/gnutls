@@ -3,7 +3,27 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-10-13T08:57:46+00:00</updated>
+<updated>2014-10-16T20:51:17+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-10-16</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-10-16'/>
+    <title>POODLE attack</title>
+    <updated>2014-10-16T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-10-16.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+<a href="http://www.gnutls.org/security.html#GNUTLS-SA-2014-4">Posted a security advisory</a> on 
+the POODLE attack.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-10-13</id>
@@ -453,28 +473,6 @@ Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.deve
 3.2.10</a> which is a bugfix release in the current stable branch;
 <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7251">GnuTLS
 3.1.20</a>, is a bug-fix release on the previous stable branch. 
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2014-01-24</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-01-24'/>
-    <title>GnuTLS 3.2.9 and 3.1.19</title>
-    <updated>2014-01-24T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-01-24.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7241">GnuTLS
-3.2.9</a> which is a bugfix release in the current stable branch;
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7242">GnuTLS
-3.1.19</a>, is a bug-fix release on the previous stable branch. 
 </p>
 
     </div>
