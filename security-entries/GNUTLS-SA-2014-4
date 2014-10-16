@@ -8,7 +8,7 @@
     standard TLS handshake as documented by GnuTLS are not affected.<br>
 
 <a href="http://nmav.gnutls.org/2014/10/what-about-poodle.html">
-	Analysis by Nikos</a><br>
+	Write-up by Nikos</a><br>
 
       <b>Recommendation:</b> For clients using the documented
 handshake process no action is required. Clients that use the non-standard insecure
