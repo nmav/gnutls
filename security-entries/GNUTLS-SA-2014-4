@@ -1,8 +1,8 @@
     <td><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3566">
 	CVE-2014-3566</a>
       </td>
-    <td>SSL 3.0 vulnerability (POODLE)</td>
-    <td>This is a vulnerability on the SSL 3.0 protocol, which can be
+    <td>Possible plaintext recovery</td>
+    <td>This is a vulnerability on the SSL 3.0 protocol (called POODLE), which can be
     exploited when TLS clients use a non-standard insecure protocol
     negotiation (it affects mostly browsers). Clients performing the
     standard TLS handshake as documented by GnuTLS are not affected.<br>
