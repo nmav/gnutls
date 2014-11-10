@@ -1,0 +1,11 @@
+    <td><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8564">
+	CVE-2014-8564</a>
+      </td>
+    <td>Denial of service</td>
+    <td>Sean Burford reported that the encoding of elliptic curves parameters
+    GnuTLS 3 is vulnerable to a denial of service (heap
+    corruption). It affects clients and servers which print information about
+    the peer's certificate, e.g., the key ID, and can be exploited via
+    a specially crafted X.509 certificate.<br>
+
+      <b>Recommendation:</b> Upgrade to GnuTLS 3.3.10, 3.2.20 or 3.1.28.</td>
