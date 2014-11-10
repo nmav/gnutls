@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.9 of GnuTLS.
+3.3.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.9: Selecting an appropriate authentication method</title>
+<title>GnuTLS 3.3.10: Selecting an appropriate authentication method</title>
 
-<meta name="description" content="GnuTLS 3.3.9: Selecting an appropriate authentication method">
-<meta name="keywords" content="GnuTLS 3.3.9: Selecting an appropriate authentication method">
+<meta name="description" content="GnuTLS 3.3.10: Selecting an appropriate authentication method">
+<meta name="keywords" content="GnuTLS 3.3.10: Selecting an appropriate authentication method">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -170,7 +170,7 @@ methods in <acronym>GnuTLS</acronym> in various scenarios.
 <a name="Two-peers-with-an-out_002dof_002dband-channel"></a>
 <h4 class="subsection">4.4.1 Two peers with an out-of-band channel</h4>
 
-<p>Let&rsquo;s consider two peers need to communicate over an untrusted channel
+<p>Let&rsquo;s consider two peers who need to communicate over an untrusted channel
 (the Internet), but have an out-of-band channel available. The latter
 channel is considered safe from eavesdropping and message modification and thus
 can be used for an initial bootstrapping of the protocol. The options 
@@ -181,7 +181,7 @@ client communicate a shared randomly generated key over the trusted
 channel and use it to negotiate further sessions over the untrusted channel.
 
 </li><li> Passwords (see <a href="SRP-authentication.html#SRP-authentication">SRP authentication</a>). The client communicates
-to the server his username and password of choice and uses it to
+to the server its username and password of choice and uses it to
 negotiate further sessions over the untrusted channel.
 
 </li><li> Public keys (see <a href="Certificate-authentication.html#Certificate-authentication">Certificate authentication</a>). The client 
@@ -238,7 +238,7 @@ the client provided over the initial server-authenticated channel. The
 available options are:
 </p><ul>
 <li> Passwords (see <a href="SRP-authentication.html#SRP-authentication">SRP authentication</a>). The client communicates
-to the server his username and password of choice on the initial
+to the server its username and password of choice on the initial
 server-authenticated connection and uses it to negotiate further sessions. 
 This is possible because the SRP protocol allows for the server to be 
 authenticated using a certificate and the client using the

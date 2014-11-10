@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.9 of GnuTLS.
+3.3.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.9: Upward negotiation</title>
+<title>GnuTLS 3.3.10: Upward negotiation</title>
 
-<meta name="description" content="GnuTLS 3.3.9: Upward negotiation">
-<meta name="keywords" content="GnuTLS 3.3.9: Upward negotiation">
+<meta name="description" content="GnuTLS 3.3.10: Upward negotiation">
+<meta name="keywords" content="GnuTLS 3.3.10: Upward negotiation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -172,7 +172,7 @@ have a &ldquo;STARTTLS&rdquo; request, whose purpose it to start the TLS
 protocols just after the client requests it.  This approach
 does not require any extra port to be reserved.
 There is even an extension to HTTP protocol to support 
-that method [<em>RFC2817</em>].
+this method [<em>RFC2817</em>].
 </p>
 <p>The tricky part, in this method, is that the &ldquo;STARTTLS&rdquo; request is
 sent in the clear, thus is vulnerable to modifications.  A typical
@@ -196,7 +196,7 @@ See a typical conversation of a hypothetical protocol:
 <p>CLIENT: HERE ARE SOME CONFIDENTIAL DATA
 </p></blockquote>
 
-<p>And see an example of a conversation where someone is acting
+<p>And an example of a conversation where someone is acting
 in between:
 </p>
 <blockquote>
@@ -215,12 +215,13 @@ in between:
 <p>CLIENT: HERE ARE SOME CONFIDENTIAL DATA
 </p></blockquote>
 
-<p>As you can see above the client was fooled, and was dummy enough to
-send the confidential data in the clear.
+<p>As you can see above the client was fooled, and was na&iuml;ve enough to
+send the confidential data in the clear, despite the server telling the
+client that it does not support &ldquo;STARTTLS&rdquo;.
 </p>
-<p>How to avoid the above attack? As you may have already noticed this
-one is easy to avoid. The client has to ask the user before it
-connects whether the user requests <acronym>TLS</acronym> or not. If the user
+<p>How do we avoid the above attack? As you may have already noticed this
+situation is easy to avoid.  The client has to ask the user before it
+connects whether the user requests <acronym>TLS</acronym> or not.  If the user
 answered that he certainly wants the secure layer the last
 conversation should be:
 </p>

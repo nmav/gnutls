@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.9 of GnuTLS.
+3.3.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.9: Session resumption</title>
+<title>GnuTLS 3.3.10: Session resumption</title>
 
-<meta name="description" content="GnuTLS 3.3.9: Session resumption">
-<meta name="keywords" content="GnuTLS 3.3.9: Session resumption">
+<meta name="description" content="GnuTLS 3.3.10: Session resumption">
+<meta name="keywords" content="GnuTLS 3.3.10: Session resumption">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -228,7 +228,9 @@ for expiration.
 <p>A server utilizing tickets should generate ticket encryption
 and authentication keys using <a href="Core-TLS-API.html#gnutls_005fsession_005fticket_005fkey_005fgenerate">gnutls_session_ticket_key_generate</a>.
 Those keys should be associated with the GnuTLS session using
-<a href="Core-TLS-API.html#gnutls_005fsession_005fticket_005fenable_005fserver">gnutls_session_ticket_enable_server</a>.
+<a href="Core-TLS-API.html#gnutls_005fsession_005fticket_005fenable_005fserver">gnutls_session_ticket_enable_server</a>, and should be rotated regularly
+(e.g., every few hours), to prevent them from becoming long-term keys which
+if revealed could be used to decrypt all previous sessions.
 </p>
 
 

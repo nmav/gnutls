@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.9 of GnuTLS.
+3.3.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.9: Core TLS API</title>
+<title>GnuTLS 3.3.10: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.3.9: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.3.9: Core TLS API">
+<meta name="description" content="GnuTLS 3.3.10: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.3.10: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -269,7 +269,7 @@ only valid during the session life.
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
 </p>
-<p>Since 3.1.11
+<p>Since 3.2.0
 </p></dd></dl>
 
 <a name="gnutls_005falpn_005fset_005fprotocols-1"></a>
@@ -285,7 +285,7 @@ otherwise a negative error code is returned.
 <p><var>flags</var>: zero or <code>GNUTLS_ALPN_</code> *
 </p>
 <p>This function is to be used by both clients and servers, to declare
-the supported ALPN protocols, which are used during peer negotiation.
+the supported ALPN protocols, which are used during negotiation with peer.
 </p>
 <p>If <code>GNUTLS_ALPN_MAND</code>  is specified the connection will be aborted
 if no matching ALPN protocol is found.
@@ -293,7 +293,7 @@ if no matching ALPN protocol is found.
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
 </p>
-<p>Since 3.1.11
+<p>Since 3.2.0
 </p></dd></dl>
 
 <a name="gnutls_005fanon_005fallocate_005fclient_005fcredentials-1"></a>
@@ -610,9 +610,12 @@ is returned.
 </p>
 <p><var>issuer</var>: Will hold the issuer if any. Should be treated as constant.
 </p>
-<p><var>flags</var>: Use zero.
+<p><var>flags</var>: Use zero or <code>GNUTLS_TL_GET_COPY</code> 
 </p>
 <p>This function will return the issuer of a given certificate.
+As with <code>gnutls_x509_trust_list_get_issuer()</code>  this function requires
+the <code>GNUTLS_TL_GET_COPY</code>  flag in order to operate with PKCS <code>11</code>  trust
+lists. In that case the issuer must be freed using <code>gnutls_x509_crt_deinit()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -652,7 +655,7 @@ issuer&rsquo;s certificate, then the issuer&rsquo;s issuer etc.
 <p>In case of OpenPGP keys a single key will be returned in raw
 format.
 </p>
-<p><strong>Returns:</strong> a pointer to a <code>gnutls_datum_t</code>  containing our
+<p><strong>Returns:</strong> a pointer to a <code>gnutls_datum_t</code>  containing the peer&rsquo;s
 certificates, or <code>NULL</code>  in case of an error or if no certificate
 was used.
 </p></dd></dl>
@@ -1414,16 +1417,15 @@ The default verification flags used by this function can be overridden
 using <code>gnutls_certificate_set_verify_flags()</code> . See the documentation
 of <code>gnutls_certificate_verify_peers2()</code>  for details in the verification process.
 </p>
-<p>The acceptable data types are <code>GNUTLS_DT_DNS_HOSTNAME</code>  and <code>GNUTLS_DT_KEY_PURPOSE_OID</code> .
+<p>The acceptable  <code>data</code> types are <code>GNUTLS_DT_DNS_HOSTNAME</code>  and <code>GNUTLS_DT_KEY_PURPOSE_OID</code> .
+The former accepts as data a null-terminated hostname, and the latter a null-terminated
+object identifier (e.g., <code>GNUTLS_KP_TLS_WWW_SERVER</code> ).
 If a DNS hostname is provided then this function will compare
-the hostname in the certificate against the given. The comparison will
-be accurate for ascii names; non-ascii names are compared byte-by-byte. 
-If names do not match the <code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
-</p>
-<p>If a key purpose OID is provided and the end-certificate contains the extended key
+the hostname in the certificate against the given. If names do not match the 
+<code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
+If a key purpose OID is provided and the end-certificate contains the extended key
 usage PKIX extension, it will be required to be have the provided key purpose 
-(e.g., <code>GNUTLS_KP_TLS_WWW_SERVER</code> ), or be marked for any purpose, otherwise 
-verification will fail with <code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code>  status.
+or be marked for any purpose, otherwise verification will fail with <code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code>  status.
 </p>
 <p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 </p>
@@ -2264,8 +2266,7 @@ a rehandshake request) may be fatal for your program.
 functions that relate to a TLS session (e.g., record layer or handshake 
 layer handling functions).
 </p>
-<p><strong>Returns:</strong> zero on non fatal errors or positive  <code>error</code> values. Non-zero
-on fatal error codes.
+<p><strong>Returns:</strong> Non-zero value on fatal errors or zero on non-fatal.
 </p></dd></dl>
 
 <a name="gnutls_005ferror_005fto_005falert-1"></a>
@@ -2488,13 +2489,16 @@ has asked to resume a session, but the server couldn&rsquo;t, then a
 full handshake will be performed.
 </p>
 <p>The non-fatal errors expected by this function are:
-<code>GNUTLS_E_INTERRUPTED</code> , <code>GNUTLS_E_AGAIN</code> , and <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> .
+<code>GNUTLS_E_INTERRUPTED</code> , <code>GNUTLS_E_AGAIN</code> , 
+and <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> .
 The former two interrupt the handshake procedure due to the lower
 layer being interrupted, and the latter because of an alert that
 may be sent by a server (it is always a good idea to check any
 received alerts). On these errors call this function again, until it
 returns 0; cf.  <code>gnutls_record_get_direction()</code>  and
-<code>gnutls_error_is_fatal()</code> .
+<code>gnutls_error_is_fatal()</code> . In DTLS sessions the non-fatal error
+<code>GNUTLS_E_LARGE_PACKET</code>  is also possible, and indicates that
+the MTU should be adjusted.
 </p>
 <p>If this function is called by a server after a rehandshake request
 then <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  or
@@ -3957,7 +3961,7 @@ should return <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 <h4 class="subheading">gnutls_random_art</h4>
 <a name="gnutls_005frandom_005fart"></a><dl>
 <dt><a name="index-gnutls_005frandom_005fart"></a>Function: <em>int</em> <strong>gnutls_random_art</strong> <em>(gnutls_random_art_t <var>type</var>, const char * <var>key_type</var>, unsigned int <var>key_size</var>, void * <var>fpr</var>, size_t <var>fpr_size</var>, gnutls_datum_t * <var>art</var>)</em></dt>
-<dd><p><var>type</var>: The type of the random art
+<dd><p><var>type</var>: The type of the random art (for now only <code>GNUTLS_RANDOM_ART_OPENSSH</code>  is supported)
 </p>
 <p><var>key_type</var>: The type of the key (RSA, DSA etc.)
 </p>
@@ -3970,7 +3974,7 @@ should return <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 <p><var>art</var>: The returned random art
 </p>
 <p>This function will convert a given fingerprint to an &quot;artistic&quot;
-image. The returned image is allocated using <code>gnutls_malloc()</code> 
+image. The returned image is allocated using <code>gnutls_malloc()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
@@ -5612,9 +5616,11 @@ negative error value.
 <p>This function will associate a commitment (hash) storage function with the
 trust storage structure. The function is of the following form.
 </p>
-<p>gnutls_tdb_store_commitment_func(const char* db_name, const char* host,
+<p>int gnutls_tdb_store_commitment_func(const char* db_name, const char* host,
 const char* service, time_t expiration,
 gnutls_digest_algorithm_t, const gnutls_datum_t* hash);
+</p>
+<p>The  <code>db_name</code> should be used to pass any private data to this function.
 </p></dd></dl>
 
 <a name="gnutls_005ftdb_005fset_005fstore_005ffunc-1"></a>
@@ -5628,9 +5634,11 @@ gnutls_digest_algorithm_t, const gnutls_datum_t* hash);
 <p>This function will associate a storage function with the
 trust storage structure. The function is of the following form.
 </p>
-<p>gnutls_tdb_store_func(const char* db_name, const char* host,
+<p>int gnutls_tdb_store_func(const char* db_name, const char* host,
 const char* service, time_t expiration,
 const gnutls_datum_t* pubkey);
+</p>
+<p>The  <code>db_name</code> should be used to pass any private data to this function.
 </p></dd></dl>
 
 <a name="gnutls_005ftdb_005fset_005fverify_005ffunc-1"></a>
@@ -5644,8 +5652,13 @@ const gnutls_datum_t* pubkey);
 <p>This function will associate a retrieval function with the
 trust storage structure. The function is of the following form.
 </p>
-<p>gnutls_tdb_verify_func(const char* db_name, const char* host,
+<p>int gnutls_tdb_verify_func(const char* db_name, const char* host,
 const char* service, const gnutls_datum_t* pubkey);
+</p>
+<p>The verify function should return zero on a match, <code>GNUTLS_E_CERTIFICATE_KEY_MISMATCH</code> 
+if there is a mismatch and any other negative error code otherwise.
+</p>
+<p>The  <code>db_name</code> should be used to pass any private data to this function.
 </p></dd></dl>
 
 <a name="gnutls_005ftransport_005fget_005fint-1"></a>
@@ -5717,7 +5730,7 @@ and PULL).  These should have been set using
 <p><var>err</var>: error value to store in session-specific errno variable.
 </p>
 <p>Store  <code>err</code> in the session-specific errno variable.  Useful values
-for  <code>err</code> is EAGAIN and EINTR, other values are treated will be
+for  <code>err</code> are EINTR, EAGAIN and EMSGSIZE, other values are treated will be
 treated as real errors in the push/pull function.
 </p>
 <p>This function is useful in replacement push and pull functions set by

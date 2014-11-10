@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.9 of GnuTLS.
+3.3.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.9: OCSP certificate status checking</title>
+<title>GnuTLS 3.3.10: OCSP certificate status checking</title>
 
-<meta name="description" content="GnuTLS 3.3.9: OCSP certificate status checking">
-<meta name="keywords" content="GnuTLS 3.3.9: OCSP certificate status checking">
+<meta name="description" content="GnuTLS 3.3.10: OCSP certificate status checking">
+<meta name="keywords" content="GnuTLS 3.3.10: OCSP certificate status checking">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -176,14 +176,14 @@ revocation checking, however, several problems with CRLs have been
 identified [<em>RIVESTCRL</em>].
 </p>
 <p>The Online Certificate Status Protocol, or <acronym>OCSP</acronym> [<em>RFC2560</em>], 
-is a widely implemented protocol to perform certificate revocation status
+is a widely implemented protocol which performs certificate revocation status
 checking.  An application that wish to verify the
 identity of a peer will verify the certificate against a set of
 trusted certificates and then check whether the certificate is listed
 in a CRL and/or perform an OCSP check for the certificate.
 </p>
 <p>Note that in the context of a TLS session the server may provide an
-OCSP response that will used during the TLS certificate verification 
+OCSP response that will be used during the TLS certificate verification
 (see <a href="Core-TLS-API.html#gnutls_005fcertificate_005fverify_005fpeers2">gnutls_certificate_verify_peers2</a>).
 You may obtain this response using <a href="Core-TLS-API.html#gnutls_005focsp_005fstatus_005frequest_005fget">gnutls_ocsp_status_request_get</a>.
 </p>
@@ -201,8 +201,8 @@ extracts this information from a certificate.
 
 <p>There are several functions in GnuTLS for creating and manipulating
 OCSP requests and responses.  The general idea is that a client
-application create an OCSP request object, store some information
-about the certificate to check in the request, and then export the
+application creates an OCSP request object, stores some information
+about the certificate to check in the request, and then exports the
 request in DER format.  The request will then need to be sent to the
 OCSP responder, which needs to be done by the application (GnuTLS does
 not send and receive OCSP packets).  Normally an OCSP response is

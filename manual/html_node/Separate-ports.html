@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.9 of GnuTLS.
+3.3.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.9: Separate ports</title>
+<title>GnuTLS 3.3.10: Separate ports</title>
 
-<meta name="description" content="GnuTLS 3.3.9: Separate ports">
-<meta name="keywords" content="GnuTLS 3.3.9: Separate ports">
+<meta name="description" content="GnuTLS 3.3.10: Separate ports">
+<meta name="keywords" content="GnuTLS 3.3.10: Separate ports">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -165,15 +165,15 @@ Next: <a href="Upward-negotiation.html#Upward-negotiation" accesskey="n" rel="ne
 <h4 class="subsection">3.7.1 Separate ports</h4>
 
 <p>Traditionally <acronym>SSL</acronym> was used in application protocols by
-assigning a new port number for the secure services. That way two
-separate ports were assigned, one for the non secure sessions, and one
-for the secured ones. This has the benefit that if a user requests a
-secure session then the client will try to connect to the secure port
-and fail otherwise. The only possible attack with this method is a
-denial of service one. The most famous example of this method is the
-famous &ldquo;HTTP over TLS&rdquo; or <acronym>HTTPS</acronym> protocol [<em>RFC2818</em>].
+assigning a new port number for the secure services. By doing this two
+separate ports were assigned, one for the non-secure sessions, and one
+for the secure sessions. This method ensures that if a user requests a
+secure session then the client will attempt to connect to the secure port
+and fail otherwise. The only possible attack with this method is to perform
+a denial of service attack. The most famous example of this method is
+&ldquo;HTTP over TLS&rdquo; or <acronym>HTTPS</acronym> protocol [<em>RFC2818</em>].
 </p>
-<p>Despite its wide use, this method is not as good as it seems.  This
+<p>Despite its wide use, this method has several issues. This
 approach starts the <acronym>TLS</acronym> Handshake procedure just after the
 client connects on the &mdash;so called&mdash; secure port.  That way the
 <acronym>TLS</acronym> protocol does not know anything about the client, and
@@ -185,7 +185,7 @@ cannot possibly know which certificate to use.
 <p>Other than that it requires two separate ports to run a single
 service, which is unnecessary complication. Due to the fact that there
 is a limitation on the available privileged ports, this approach was
-soon obsoleted.
+soon deprecated in favor of upward negotiation.
 </p>
 <div class="footnote">
 <hr>

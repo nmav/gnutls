@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.9 of GnuTLS.
+3.3.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.9: Error codes</title>
+<title>GnuTLS 3.3.10: Error codes</title>
 
-<meta name="description" content="GnuTLS 3.3.9: Error codes">
-<meta name="keywords" content="GnuTLS 3.3.9: Error codes">
+<meta name="description" content="GnuTLS 3.3.10: Error codes">
+<meta name="keywords" content="GnuTLS 3.3.10: Error codes">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -166,7 +166,7 @@ Next: <a href="Supported-ciphersuites.html#Supported-ciphersuites" accesskey="n"
 <a name="index-error-codes"></a>
 
 <p>The error codes used throughout the library are described below.  The
-return code <code>GNUTLS_E_SUCCESS</code> indicate successful operation, and
+return code <code>GNUTLS_E_SUCCESS</code> indicates a successful operation, and
 is guaranteed to have the value 0, so you can use it in logical
 expressions.
 </p>
@@ -175,7 +175,7 @@ expressions.
 <tr><td width="15%">-3</td><td width="40%">GNUTLS_E_UNKNOWN_COMPRESSION_ALGORITHM</td><td width="37%">Could not negotiate a supported compression method.</td></tr>
 <tr><td width="15%">-6</td><td width="40%">GNUTLS_E_UNKNOWN_CIPHER_TYPE</td><td width="37%">The cipher type is unsupported.</td></tr>
 <tr><td width="15%">-7</td><td width="40%">GNUTLS_E_LARGE_PACKET</td><td width="37%">The transmitted packet is too large (EMSGSIZE).</td></tr>
-<tr><td width="15%">-8</td><td width="40%">GNUTLS_E_UNSUPPORTED_VERSION_PACKET</td><td width="37%">A record packet with illegal version was received.</td></tr>
+<tr><td width="15%">-8</td><td width="40%">GNUTLS_E_UNSUPPORTED_VERSION_PACKET</td><td width="37%">A packet with illegal or unsupported version was received.</td></tr>
 <tr><td width="15%">-9</td><td width="40%">GNUTLS_E_UNEXPECTED_PACKET_LENGTH</td><td width="37%">A TLS packet with unexpected length was received.</td></tr>
 <tr><td width="15%">-10</td><td width="40%">GNUTLS_E_INVALID_SESSION</td><td width="37%">The specified session has been invalidated for some reason.</td></tr>
 <tr><td width="15%">-12</td><td width="40%">GNUTLS_E_FATAL_ALERT_RECEIVED</td><td width="37%">A TLS fatal alert has been received.</td></tr>
