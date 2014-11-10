@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.9 of GnuTLS.
+3.3.10 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.9</title>
+<title>GnuTLS 3.3.10</title>
 
-<meta name="description" content="GnuTLS 3.3.9">
-<meta name="keywords" content="GnuTLS 3.3.9">
+<meta name="description" content="GnuTLS 3.3.10">
+<meta name="keywords" content="GnuTLS 3.3.10">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.3.9</h1>
+<h1 class="settitle" align="center">GnuTLS 3.3.10</h1>
 
 
 
@@ -502,7 +502,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 29 July 2014 for version
-3.3.9 of GnuTLS.
+3.3.10 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -1325,6 +1325,12 @@ to the client. Because session parameters are sensitive they are encrypted
 and authenticated with a key only known to the server and then sent to the
 client. The Session Tickets extension is described in RFC 5077 [<em>TLSTKT</em>].
 </p>
+<p>A disadvantage of session tickets is that they eliminate the effects of
+forward secrecy when a server uses the same key for long time. That is,
+the secrecy of all sessions on a server using tickets depends on the ticket
+key being kept secret. For that reason server keys should be rotated and discarded
+regularly.
+</p>
 <p>Since version 3.1.3 GnuTLS clients transparently support session tickets.
 </p>
 <hr>
@@ -1626,7 +1632,7 @@ Next: <a href="#On-SSL-2-and-older-protocols" accesskey="n" rel="next">On SSL 2 
 <a name="How-to-use-TLS-in-application-protocols-1"></a>
 <h3 class="section">3.7 How to use <acronym>TLS</acronym> in application protocols</h3>
 
-<p>This chapter is intended to provide some hints on how to use the
+<p>This chapter is intended to provide some hints on how to use
 <acronym>TLS</acronym> over simple custom made application protocols.  The
 discussion below mainly refers to the <acronym>TCP/IP</acronym> transport layer
 but may be extended to other ones too.
@@ -1648,15 +1654,15 @@ Next: <a href="#Upward-negotiation" accesskey="n" rel="next">Upward negotiation<
 <h4 class="subsection">3.7.1 Separate ports</h4>
 
 <p>Traditionally <acronym>SSL</acronym> was used in application protocols by
-assigning a new port number for the secure services. That way two
-separate ports were assigned, one for the non secure sessions, and one
-for the secured ones. This has the benefit that if a user requests a
-secure session then the client will try to connect to the secure port
-and fail otherwise. The only possible attack with this method is a
-denial of service one. The most famous example of this method is the
-famous &ldquo;HTTP over TLS&rdquo; or <acronym>HTTPS</acronym> protocol [<em>RFC2818</em>].
+assigning a new port number for the secure services. By doing this two
+separate ports were assigned, one for the non-secure sessions, and one
+for the secure sessions. This method ensures that if a user requests a
+secure session then the client will attempt to connect to the secure port
+and fail otherwise. The only possible attack with this method is to perform
+a denial of service attack. The most famous example of this method is
+&ldquo;HTTP over TLS&rdquo; or <acronym>HTTPS</acronym> protocol [<em>RFC2818</em>].
 </p>
-<p>Despite its wide use, this method is not as good as it seems.  This
+<p>Despite its wide use, this method has several issues. This
 approach starts the <acronym>TLS</acronym> Handshake procedure just after the
 client connects on the &mdash;so called&mdash; secure port.  That way the
 <acronym>TLS</acronym> protocol does not know anything about the client, and
@@ -1668,7 +1674,7 @@ cannot possibly know which certificate to use.
 <p>Other than that it requires two separate ports to run a single
 service, which is unnecessary complication. Due to the fact that there
 is a limitation on the available privileged ports, this approach was
-soon obsoleted.
+soon deprecated in favor of upward negotiation.
 </p>
 <hr>
 <a name="Upward-negotiation"></a>
@@ -1687,7 +1693,7 @@ have a &ldquo;STARTTLS&rdquo; request, whose purpose it to start the TLS
 protocols just after the client requests it.  This approach
 does not require any extra port to be reserved.
 There is even an extension to HTTP protocol to support 
-that method [<em>RFC2817</em>].
+this method [<em>RFC2817</em>].
 </p>
 <p>The tricky part, in this method, is that the &ldquo;STARTTLS&rdquo; request is
 sent in the clear, thus is vulnerable to modifications.  A typical
@@ -1711,7 +1717,7 @@ See a typical conversation of a hypothetical protocol:
 <p>CLIENT: HERE ARE SOME CONFIDENTIAL DATA
 </p></blockquote>
 
-<p>And see an example of a conversation where someone is acting
+<p>And an example of a conversation where someone is acting
 in between:
 </p>
 <blockquote>
@@ -1730,12 +1736,13 @@ in between:
 <p>CLIENT: HERE ARE SOME CONFIDENTIAL DATA
 </p></blockquote>
 
-<p>As you can see above the client was fooled, and was dummy enough to
-send the confidential data in the clear.
+<p>As you can see above the client was fooled, and was na&iuml;ve enough to
+send the confidential data in the clear, despite the server telling the
+client that it does not support &ldquo;STARTTLS&rdquo;.
 </p>
-<p>How to avoid the above attack? As you may have already noticed this
-one is easy to avoid. The client has to ask the user before it
-connects whether the user requests <acronym>TLS</acronym> or not. If the user
+<p>How do we avoid the above attack? As you may have already noticed this
+situation is easy to avoid.  The client has to ask the user before it
+connects whether the user requests <acronym>TLS</acronym> or not.  If the user
 answered that he certainly wants the secure layer the last
 conversation should be:
 </p>
@@ -3084,7 +3091,7 @@ used to preprocess the input to the signature algorithm. This works as
 long as it is difficult enough to generate two different messages with
 the same hash algorithm output. In that case the same signature could
 be used as a proof for both messages. Nobody wants to sign an innocent
-message of donating 1 euro to Greenpeace and find out that he
+message of donating 1 euro to Greenpeace and find out that they
 donated 1.000.000 euros to Bad Inc.
 </p>
 <p>For a hash algorithm to be called cryptographic the following three
@@ -3577,14 +3584,14 @@ revocation checking, however, several problems with CRLs have been
 identified [<em>RIVESTCRL</em>].
 </p>
 <p>The Online Certificate Status Protocol, or <acronym>OCSP</acronym> [<em>RFC2560</em>], 
-is a widely implemented protocol to perform certificate revocation status
+is a widely implemented protocol which performs certificate revocation status
 checking.  An application that wish to verify the
 identity of a peer will verify the certificate against a set of
 trusted certificates and then check whether the certificate is listed
 in a CRL and/or perform an OCSP check for the certificate.
 </p>
 <p>Note that in the context of a TLS session the server may provide an
-OCSP response that will used during the TLS certificate verification 
+OCSP response that will be used during the TLS certificate verification
 (see <a href="#gnutls_005fcertificate_005fverify_005fpeers2">gnutls_certificate_verify_peers2</a>).
 You may obtain this response using <a href="#gnutls_005focsp_005fstatus_005frequest_005fget">gnutls_ocsp_status_request_get</a>.
 </p>
@@ -3602,8 +3609,8 @@ extracts this information from a certificate.
 
 <p>There are several functions in GnuTLS for creating and manipulating
 OCSP requests and responses.  The general idea is that a client
-application create an OCSP request object, store some information
-about the certificate to check in the request, and then export the
+application creates an OCSP request object, stores some information
+about the certificate to check in the request, and then exports the
 request in DER format.  The request will then need to be sent to the
 OCSP responder, which needs to be done by the application (GnuTLS does
 not send and receive OCSP packets).  Normally an OCSP response is
@@ -5811,7 +5818,7 @@ methods in <acronym>GnuTLS</acronym> in various scenarios.
 <a name="Two-peers-with-an-out_002dof_002dband-channel"></a>
 <h4 class="subsection">4.4.1 Two peers with an out-of-band channel</h4>
 
-<p>Let&rsquo;s consider two peers need to communicate over an untrusted channel
+<p>Let&rsquo;s consider two peers who need to communicate over an untrusted channel
 (the Internet), but have an out-of-band channel available. The latter
 channel is considered safe from eavesdropping and message modification and thus
 can be used for an initial bootstrapping of the protocol. The options 
@@ -5822,7 +5829,7 @@ client communicate a shared randomly generated key over the trusted
 channel and use it to negotiate further sessions over the untrusted channel.
 
 </li><li> Passwords (see <a href="#SRP-authentication">SRP authentication</a>). The client communicates
-to the server his username and password of choice and uses it to
+to the server its username and password of choice and uses it to
 negotiate further sessions over the untrusted channel.
 
 </li><li> Public keys (see <a href="#Certificate-authentication">Certificate authentication</a>). The client 
@@ -5879,7 +5886,7 @@ the client provided over the initial server-authenticated channel. The
 available options are:
 </p><ul>
 <li> Passwords (see <a href="#SRP-authentication">SRP authentication</a>). The client communicates
-to the server his username and password of choice on the initial
+to the server its username and password of choice on the initial
 server-authenticated connection and uses it to negotiate further sessions. 
 This is possible because the SRP protocol allows for the server to be 
 authenticated using a certificate and the client using the
@@ -8095,14 +8102,18 @@ Next: <a href="#Version-check" accesskey="n" rel="next">Version check</a>, Previ
 <a name="Initialization-2"></a>
 <h4 class="subsection">6.2.2 Initialization</h4>
 
-<p>GnuTLS must be initialized before it can be used.  The library is
-initialized on load; prior to 3.3.0 was initialized by calling <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>. 
+<p>The GnuTLS library is initialized on load; prior to 3.3.0 was initialized by calling <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>. 
 The initialization typically enables CPU-specific acceleration, performs any required
 precalculations needed, opens any required system devices (e.g., /dev/urandom on Linux)
 and initializes subsystems that could be used later.
 </p>
 <p>The resources allocated by the initialization process will be released 
 on library deinitialization, or explictly by calling <a href="#gnutls_005fglobal_005fdeinit">gnutls_global_deinit</a>.
+</p>
+<p>Note that during initialization file descriptors may be kept open by
+GnuTLS (e.g. /dev/urandom) on library load. Applications closing all unknown file
+descriptors must immediately call <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>, after that, to
+ensure they don&rsquo;t disrupt GnuTLS&rsquo; operation.
 </p>
 
 <hr>
@@ -9015,7 +9026,7 @@ value instead of setting <code>errno</code> directly.
 <p><var>err</var>: error value to store in session-specific errno variable.
 </p>
 <p>Store  <code>err</code> in the session-specific errno variable.  Useful values
-for  <code>err</code> is EAGAIN and EINTR, other values are treated will be
+for  <code>err</code> are EINTR, EAGAIN and EMSGSIZE, other values are treated will be
 treated as real errors in the push/pull function.
 </p>
 <p>This function is useful in replacement push and pull functions set by
@@ -9245,13 +9256,16 @@ has asked to resume a session, but the server couldn&rsquo;t, then a
 full handshake will be performed.
 </p>
 <p>The non-fatal errors expected by this function are:
-<code>GNUTLS_E_INTERRUPTED</code> , <code>GNUTLS_E_AGAIN</code> , and <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> .
+<code>GNUTLS_E_INTERRUPTED</code> , <code>GNUTLS_E_AGAIN</code> , 
+and <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> .
 The former two interrupt the handshake procedure due to the lower
 layer being interrupted, and the latter because of an alert that
 may be sent by a server (it is always a good idea to check any
 received alerts). On these errors call this function again, until it
 returns 0; cf.  <code>gnutls_record_get_direction()</code>  and
-<code>gnutls_error_is_fatal()</code> .
+<code>gnutls_error_is_fatal()</code> . In DTLS sessions the non-fatal error
+<code>GNUTLS_E_LARGE_PACKET</code>  is also possible, and indicates that
+the MTU should be adjusted.
 </p>
 <p>If this function is called by a server after a rehandshake request
 then <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  or
@@ -9405,8 +9419,7 @@ a rehandshake request) may be fatal for your program.
 functions that relate to a TLS session (e.g., record layer or handshake 
 layer handling functions).
 </p>
-<p><strong>Returns:</strong> zero on non fatal errors or positive  <code>error</code> values. Non-zero
-on fatal error codes.
+<p><strong>Returns:</strong> Non-zero value on fatal errors or zero on non-fatal.
 </p></dd></dl>
 
 <p>Although, in the TLS protocol the receive function can be called
@@ -9951,7 +9964,7 @@ authentication.
 <div class="float"><a name="tab_003akey_002dsizes"></a>
 <table>
 <thead><tr><th width="10%">Security bits</th><th width="12%">RSA, DH and SRP parameter size</th><th width="10%">ECC key size</th><th width="20%">Security parameter</th><th width="32%">Description</th></tr></thead>
-<tr><td width="10%">&lt;72</td><td width="12%">&lt;1008</td><td width="10%">&lt;160</td><td width="20%"><code>INSECURE</code></td><td width="32%">Considered to be insecure</td></tr>
+<tr><td width="10%">&lt;64</td><td width="12%">&lt;768</td><td width="10%">&lt;128</td><td width="20%"><code>INSECURE</code></td><td width="32%">Considered to be insecure</td></tr>
 <tr><td width="10%">64</td><td width="12%">768</td><td width="10%">128</td><td width="20%"><code>VERY WEAK</code></td><td width="32%">Short term protection against individuals</td></tr>
 <tr><td width="10%">72</td><td width="12%">1008</td><td width="10%">160</td><td width="20%"><code>WEAK</code></td><td width="32%">Short term protection against small organizations</td></tr>
 <tr><td width="10%">80</td><td width="12%">1024</td><td width="10%">160</td><td width="20%"><code>LOW</code></td><td width="32%">Very short term protection against agencies (corresponds to ENISA legacy level)</td></tr>
@@ -10142,7 +10155,9 @@ for expiration.
 <p>A server utilizing tickets should generate ticket encryption
 and authentication keys using <a href="#gnutls_005fsession_005fticket_005fkey_005fgenerate">gnutls_session_ticket_key_generate</a>.
 Those keys should be associated with the GnuTLS session using
-<a href="#gnutls_005fsession_005fticket_005fenable_005fserver">gnutls_session_ticket_enable_server</a>.
+<a href="#gnutls_005fsession_005fticket_005fenable_005fserver">gnutls_session_ticket_enable_server</a>, and should be rotated regularly
+(e.g., every few hours), to prevent them from becoming long-term keys which
+if revealed could be used to decrypt all previous sessions.
 </p>
 
 
@@ -13539,7 +13554,7 @@ Previous: <a href="#Echo-server-with-anonymous-authentication" accesskey="p" rel
  */
 
 #define MAX_BUFFER 1024
-#define PORT 5556
+#define PORT 5557
 
 typedef struct {
         gnutls_session_t session;
@@ -15131,7 +15146,14 @@ When possible (e.g., when using CBC ciphersuites), use length-hiding padding to 
 <h4 class="subheading">list option (-l)</h4>
 
 <p>This is the &ldquo;print a list of the supported algorithms and modes&rdquo; option.
-Print a list of the supported algorithms and modes. If a priority string is given then only the enabled ciphersuites are shown.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> must not appear in combination with any of the following options:
+port.
+</li></ul>
+
+<p>Print a list of the supported algorithms and modes. If a priority string is given then only the enabled ciphersuites are shown.
 <a name="gnutls_002dcli-alpn"></a></p><a name="alpn-option"></a>
 <h4 class="subheading">alpn option</h4>
 
@@ -16621,7 +16643,7 @@ Next: <a href="#Supported-ciphersuites" accesskey="n" rel="next">Supported ciphe
 <a name="index-error-codes"></a>
 
 <p>The error codes used throughout the library are described below.  The
-return code <code>GNUTLS_E_SUCCESS</code> indicate successful operation, and
+return code <code>GNUTLS_E_SUCCESS</code> indicates a successful operation, and
 is guaranteed to have the value 0, so you can use it in logical
 expressions.
 </p>
@@ -16630,7 +16652,7 @@ expressions.
 <tr><td width="15%">-3</td><td width="40%">GNUTLS_E_UNKNOWN_COMPRESSION_ALGORITHM</td><td width="37%">Could not negotiate a supported compression method.</td></tr>
 <tr><td width="15%">-6</td><td width="40%">GNUTLS_E_UNKNOWN_CIPHER_TYPE</td><td width="37%">The cipher type is unsupported.</td></tr>
 <tr><td width="15%">-7</td><td width="40%">GNUTLS_E_LARGE_PACKET</td><td width="37%">The transmitted packet is too large (EMSGSIZE).</td></tr>
-<tr><td width="15%">-8</td><td width="40%">GNUTLS_E_UNSUPPORTED_VERSION_PACKET</td><td width="37%">A record packet with illegal version was received.</td></tr>
+<tr><td width="15%">-8</td><td width="40%">GNUTLS_E_UNSUPPORTED_VERSION_PACKET</td><td width="37%">A packet with illegal or unsupported version was received.</td></tr>
 <tr><td width="15%">-9</td><td width="40%">GNUTLS_E_UNEXPECTED_PACKET_LENGTH</td><td width="37%">A TLS packet with unexpected length was received.</td></tr>
 <tr><td width="15%">-10</td><td width="40%">GNUTLS_E_INVALID_SESSION</td><td width="37%">The specified session has been invalidated for some reason.</td></tr>
 <tr><td width="15%">-12</td><td width="40%">GNUTLS_E_FATAL_ALERT_RECEIVED</td><td width="37%">A TLS fatal alert has been received.</td></tr>
@@ -17240,7 +17262,7 @@ only valid during the session life.
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
 </p>
-<p>Since 3.1.11
+<p>Since 3.2.0
 </p></dd></dl>
 
 <a name="gnutls_005falpn_005fset_005fprotocols-1"></a>
@@ -17256,7 +17278,7 @@ otherwise a negative error code is returned.
 <p><var>flags</var>: zero or <code>GNUTLS_ALPN_</code> *
 </p>
 <p>This function is to be used by both clients and servers, to declare
-the supported ALPN protocols, which are used during peer negotiation.
+the supported ALPN protocols, which are used during negotiation with peer.
 </p>
 <p>If <code>GNUTLS_ALPN_MAND</code>  is specified the connection will be aborted
 if no matching ALPN protocol is found.
@@ -17264,7 +17286,7 @@ if no matching ALPN protocol is found.
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
 </p>
-<p>Since 3.1.11
+<p>Since 3.2.0
 </p></dd></dl>
 
 <a name="gnutls_005fanon_005fallocate_005fclient_005fcredentials-1"></a>
@@ -17581,9 +17603,12 @@ is returned.
 </p>
 <p><var>issuer</var>: Will hold the issuer if any. Should be treated as constant.
 </p>
-<p><var>flags</var>: Use zero.
+<p><var>flags</var>: Use zero or <code>GNUTLS_TL_GET_COPY</code> 
 </p>
 <p>This function will return the issuer of a given certificate.
+As with <code>gnutls_x509_trust_list_get_issuer()</code>  this function requires
+the <code>GNUTLS_TL_GET_COPY</code>  flag in order to operate with PKCS <code>11</code>  trust
+lists. In that case the issuer must be freed using <code>gnutls_x509_crt_deinit()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -17623,7 +17648,7 @@ issuer&rsquo;s certificate, then the issuer&rsquo;s issuer etc.
 <p>In case of OpenPGP keys a single key will be returned in raw
 format.
 </p>
-<p><strong>Returns:</strong> a pointer to a <code>gnutls_datum_t</code>  containing our
+<p><strong>Returns:</strong> a pointer to a <code>gnutls_datum_t</code>  containing the peer&rsquo;s
 certificates, or <code>NULL</code>  in case of an error or if no certificate
 was used.
 </p></dd></dl>
@@ -18385,16 +18410,15 @@ The default verification flags used by this function can be overridden
 using <code>gnutls_certificate_set_verify_flags()</code> . See the documentation
 of <code>gnutls_certificate_verify_peers2()</code>  for details in the verification process.
 </p>
-<p>The acceptable data types are <code>GNUTLS_DT_DNS_HOSTNAME</code>  and <code>GNUTLS_DT_KEY_PURPOSE_OID</code> .
+<p>The acceptable  <code>data</code> types are <code>GNUTLS_DT_DNS_HOSTNAME</code>  and <code>GNUTLS_DT_KEY_PURPOSE_OID</code> .
+The former accepts as data a null-terminated hostname, and the latter a null-terminated
+object identifier (e.g., <code>GNUTLS_KP_TLS_WWW_SERVER</code> ).
 If a DNS hostname is provided then this function will compare
-the hostname in the certificate against the given. The comparison will
-be accurate for ascii names; non-ascii names are compared byte-by-byte. 
-If names do not match the <code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
-</p>
-<p>If a key purpose OID is provided and the end-certificate contains the extended key
+the hostname in the certificate against the given. If names do not match the 
+<code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
+If a key purpose OID is provided and the end-certificate contains the extended key
 usage PKIX extension, it will be required to be have the provided key purpose 
-(e.g., <code>GNUTLS_KP_TLS_WWW_SERVER</code> ), or be marked for any purpose, otherwise 
-verification will fail with <code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code>  status.
+or be marked for any purpose, otherwise verification will fail with <code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code>  status.
 </p>
 <p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 </p>
@@ -19235,8 +19259,7 @@ a rehandshake request) may be fatal for your program.
 functions that relate to a TLS session (e.g., record layer or handshake 
 layer handling functions).
 </p>
-<p><strong>Returns:</strong> zero on non fatal errors or positive  <code>error</code> values. Non-zero
-on fatal error codes.
+<p><strong>Returns:</strong> Non-zero value on fatal errors or zero on non-fatal.
 </p></dd></dl>
 
 <a name="gnutls_005ferror_005fto_005falert-1"></a>
@@ -19459,13 +19482,16 @@ has asked to resume a session, but the server couldn&rsquo;t, then a
 full handshake will be performed.
 </p>
 <p>The non-fatal errors expected by this function are:
-<code>GNUTLS_E_INTERRUPTED</code> , <code>GNUTLS_E_AGAIN</code> , and <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> .
+<code>GNUTLS_E_INTERRUPTED</code> , <code>GNUTLS_E_AGAIN</code> , 
+and <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> .
 The former two interrupt the handshake procedure due to the lower
 layer being interrupted, and the latter because of an alert that
 may be sent by a server (it is always a good idea to check any
 received alerts). On these errors call this function again, until it
 returns 0; cf.  <code>gnutls_record_get_direction()</code>  and
-<code>gnutls_error_is_fatal()</code> .
+<code>gnutls_error_is_fatal()</code> . In DTLS sessions the non-fatal error
+<code>GNUTLS_E_LARGE_PACKET</code>  is also possible, and indicates that
+the MTU should be adjusted.
 </p>
 <p>If this function is called by a server after a rehandshake request
 then <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  or
@@ -20928,7 +20954,7 @@ should return <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 <h4 class="subheading">gnutls_random_art</h4>
 <a name="gnutls_005frandom_005fart"></a><dl>
 <dt><a name="index-gnutls_005frandom_005fart"></a>Function: <em>int</em> <strong>gnutls_random_art</strong> <em>(gnutls_random_art_t <var>type</var>, const char * <var>key_type</var>, unsigned int <var>key_size</var>, void * <var>fpr</var>, size_t <var>fpr_size</var>, gnutls_datum_t * <var>art</var>)</em></dt>
-<dd><p><var>type</var>: The type of the random art
+<dd><p><var>type</var>: The type of the random art (for now only <code>GNUTLS_RANDOM_ART_OPENSSH</code>  is supported)
 </p>
 <p><var>key_type</var>: The type of the key (RSA, DSA etc.)
 </p>
@@ -20941,7 +20967,7 @@ should return <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 <p><var>art</var>: The returned random art
 </p>
 <p>This function will convert a given fingerprint to an &quot;artistic&quot;
-image. The returned image is allocated using <code>gnutls_malloc()</code> 
+image. The returned image is allocated using <code>gnutls_malloc()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
@@ -22583,9 +22609,11 @@ negative error value.
 <p>This function will associate a commitment (hash) storage function with the
 trust storage structure. The function is of the following form.
 </p>
-<p>gnutls_tdb_store_commitment_func(const char* db_name, const char* host,
+<p>int gnutls_tdb_store_commitment_func(const char* db_name, const char* host,
 const char* service, time_t expiration,
 gnutls_digest_algorithm_t, const gnutls_datum_t* hash);
+</p>
+<p>The  <code>db_name</code> should be used to pass any private data to this function.
 </p></dd></dl>
 
 <a name="gnutls_005ftdb_005fset_005fstore_005ffunc-1"></a>
@@ -22599,9 +22627,11 @@ gnutls_digest_algorithm_t, const gnutls_datum_t* hash);
 <p>This function will associate a storage function with the
 trust storage structure. The function is of the following form.
 </p>
-<p>gnutls_tdb_store_func(const char* db_name, const char* host,
+<p>int gnutls_tdb_store_func(const char* db_name, const char* host,
 const char* service, time_t expiration,
 const gnutls_datum_t* pubkey);
+</p>
+<p>The  <code>db_name</code> should be used to pass any private data to this function.
 </p></dd></dl>
 
 <a name="gnutls_005ftdb_005fset_005fverify_005ffunc-1"></a>
@@ -22615,8 +22645,13 @@ const gnutls_datum_t* pubkey);
 <p>This function will associate a retrieval function with the
 trust storage structure. The function is of the following form.
 </p>
-<p>gnutls_tdb_verify_func(const char* db_name, const char* host,
+<p>int gnutls_tdb_verify_func(const char* db_name, const char* host,
 const char* service, const gnutls_datum_t* pubkey);
+</p>
+<p>The verify function should return zero on a match, <code>GNUTLS_E_CERTIFICATE_KEY_MISMATCH</code> 
+if there is a mismatch and any other negative error code otherwise.
+</p>
+<p>The  <code>db_name</code> should be used to pass any private data to this function.
 </p></dd></dl>
 
 <a name="gnutls_005ftransport_005fget_005fint-1"></a>
@@ -22688,7 +22723,7 @@ and PULL).  These should have been set using
 <p><var>err</var>: error value to store in session-specific errno variable.
 </p>
 <p>Store  <code>err</code> in the session-specific errno variable.  Useful values
-for  <code>err</code> is EAGAIN and EINTR, other values are treated will be
+for  <code>err</code> are EINTR, EAGAIN and EMSGSIZE, other values are treated will be
 treated as real errors in the push/pull function.
 </p>
 <p>This function is useful in replacement push and pull functions set by

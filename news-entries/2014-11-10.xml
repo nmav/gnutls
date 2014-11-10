@@ -1,0 +1,17 @@
+<title>GnuTLS 3.3.10, 3.2.20 and 3.1.28</title>
+<p>
+Released <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7779">GnuTLS
+3.3.10</a>,
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7778">GnuTLS
+3.2.20</a>,
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7777">GnuTLS
+3.1.28</a>, which are bug-fix releases on the next, current and previous stable
+branches respectively. 
+</p>
+<p>
+<a href="http://www.gnutls.org/security.html#GNUTLS-SA-2014-5">Posted a security advisory</a> on a vulnerability
+of the gnutls library.
+</p>

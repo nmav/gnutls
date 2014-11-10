@@ -3,7 +3,39 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-10-16T20:51:17+00:00</updated>
+<updated>2014-11-10T08:54:38+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-11-10</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-11-10'/>
+    <title>GnuTLS 3.3.10, 3.2.20 and 3.1.28</title>
+    <updated>2014-11-10T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-11-10.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7779">GnuTLS
+3.3.10</a>,
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7778">GnuTLS
+3.2.20</a>,
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7777">GnuTLS
+3.1.28</a>, which are bug-fix releases on the next, current and previous stable
+branches respectively. 
+</p>
+<p>
+<a href="http://www.gnutls.org/security.html#GNUTLS-SA-2014-5">Posted a security advisory</a> on a vulnerability
+of the gnutls library.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-10-16</id>
@@ -451,28 +483,6 @@ Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.deve
 <a
 href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7301">GnuTLS
 3.1.21</a>, is a bug-fix release on the previous stable branch.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2014-01-31</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-01-31'/>
-    <title>GnuTLS 3.2.10 and 3.1.20</title>
-    <updated>2014-01-31T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-01-31.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7250">GnuTLS
-3.2.10</a> which is a bugfix release in the current stable branch;
-<a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7251">GnuTLS
-3.1.20</a>, is a bug-fix release on the previous stable branch. 
 </p>
 
     </div>
