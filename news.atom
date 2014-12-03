@@ -3,7 +3,27 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-11-11T18:59:50+00:00</updated>
+<updated>2014-12-03T18:39:50+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-12-03</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-12-03'/>
+    <title>GnuTLS 3.3.10, 3.2.20 and 3.1.28</title>
+    <updated>2014-12-03T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-12-03.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+<a href="http://nmav.gnutls.org/2014/12/a-quick-overview-of-gnutls-development.html">Posted a
+quick overview of GnuTLS development for 2014.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-11-10</id>
@@ -457,32 +477,6 @@ Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.deve
 <a
 href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7340">GnuTLS
 3.1.22</a>, is a bug-fix release on the previous stable branch.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2014-02-13</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-02-13'/>
-    <title>GnuTLS 3.2.11 and 3.1.21</title>
-    <updated>2014-02-13T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-02-13.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Added security advisory <a href="security.html#GNUTLS-SA-2014-1">GNUTLS-SA-2014-1</a>.
-</p>
-<p>
-Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7300">GnuTLS
-3.2.11</a> which is a bugfix release in the current stable branch;
-<a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7301">GnuTLS
-3.1.21</a>, is a bug-fix release on the previous stable branch.
 </p>
 
     </div>
