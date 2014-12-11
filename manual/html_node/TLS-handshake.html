@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.10 of GnuTLS.
+3.3.11 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.10: TLS handshake</title>
+<title>GnuTLS 3.3.11: TLS handshake</title>
 
-<meta name="description" content="GnuTLS 3.3.10: TLS handshake">
-<meta name="keywords" content="GnuTLS 3.3.10: TLS handshake">
+<meta name="description" content="GnuTLS 3.3.11: TLS handshake">
+<meta name="keywords" content="GnuTLS 3.3.11: TLS handshake">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -186,8 +186,10 @@ full handshake will be performed.
 </p>
 <p>The non-fatal errors expected by this function are:
 <code>GNUTLS_E_INTERRUPTED</code> , <code>GNUTLS_E_AGAIN</code> , 
-and <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> .
-The former two interrupt the handshake procedure due to the lower
+<code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> , and <code>GNUTLS_GOT_APPLICATION_DATA</code> ,
+the latter only in a case of rehandshake.
+</p>
+<p>The former two interrupt the handshake procedure due to the lower
 layer being interrupted, and the latter because of an alert that
 may be sent by a server (it is always a good idea to check any
 received alerts). On these errors call this function again, until it
@@ -201,7 +203,7 @@ then <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  or
 <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code>  may be returned.  Note that these
 are non fatal errors, only in the specific case of a rehandshake.
 Their meaning is that the client rejected the rehandshake request or
-in the case of <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  it might also mean that
+in the case of <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  it could also mean that
 some data were pending.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.

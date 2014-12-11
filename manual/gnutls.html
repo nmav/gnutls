@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.10 of GnuTLS.
+3.3.11 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.10</title>
+<title>GnuTLS 3.3.11</title>
 
-<meta name="description" content="GnuTLS 3.3.10">
-<meta name="keywords" content="GnuTLS 3.3.10">
+<meta name="description" content="GnuTLS 3.3.11">
+<meta name="keywords" content="GnuTLS 3.3.11">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.3.10</h1>
+<h1 class="settitle" align="center">GnuTLS 3.3.11</h1>
 
 
 
@@ -502,7 +502,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 29 July 2014 for version
-3.3.10 of GnuTLS.
+3.3.11 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -9257,8 +9257,10 @@ full handshake will be performed.
 </p>
 <p>The non-fatal errors expected by this function are:
 <code>GNUTLS_E_INTERRUPTED</code> , <code>GNUTLS_E_AGAIN</code> , 
-and <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> .
-The former two interrupt the handshake procedure due to the lower
+<code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> , and <code>GNUTLS_GOT_APPLICATION_DATA</code> ,
+the latter only in a case of rehandshake.
+</p>
+<p>The former two interrupt the handshake procedure due to the lower
 layer being interrupted, and the latter because of an alert that
 may be sent by a server (it is always a good idea to check any
 received alerts). On these errors call this function again, until it
@@ -9272,7 +9274,7 @@ then <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  or
 <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code>  may be returned.  Note that these
 are non fatal errors, only in the specific case of a rehandshake.
 Their meaning is that the client rejected the rehandshake request or
-in the case of <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  it might also mean that
+in the case of <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  it could also mean that
 some data were pending.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
@@ -17984,6 +17986,9 @@ the certificate chain in  <code>cert_list</code> .
 <p>Note that the certificates and keys provided, can be safely deinitialized
 after this function is called.
 </p>
+<p>If that function fails to load the  <code>res</code> structure is at an undefined state, it must
+not be reused to load other keys or certificates.
+</p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p>
 <p><strong>Since:</strong> 2.4.0
@@ -18019,6 +18024,9 @@ that the supported URLs are the ones indicated by <code>gnutls_url_is_supported(
 </p>
 <p>In case the  <code>certfile</code> is provided as a PKCS <code>11</code>  URL, then the certificate, and its
 present issuers in the token are are imported (i.e., the required trust chain).
+</p>
+<p>If that function fails to load the  <code>res</code> structure is at an undefined state, it must
+not be reused to load other keys or certificates.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p></dd></dl>
@@ -18057,6 +18065,9 @@ that the supported URLs are the ones indicated by <code>gnutls_url_is_supported(
 </p>
 <p>In case the  <code>certfile</code> is provided as a PKCS <code>11</code>  URL, then the certificate, and its
 present issuers in the token are are imported (i.e., the required trust chain).
+</p>
+<p>If that function fails to load the  <code>res</code> structure is at an undefined state, it must
+not be reused to load other keys or certificates.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p></dd></dl>
@@ -19483,8 +19494,10 @@ full handshake will be performed.
 </p>
 <p>The non-fatal errors expected by this function are:
 <code>GNUTLS_E_INTERRUPTED</code> , <code>GNUTLS_E_AGAIN</code> , 
-and <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> .
-The former two interrupt the handshake procedure due to the lower
+<code>GNUTLS_E_WARNING_ALERT_RECEIVED</code> , and <code>GNUTLS_GOT_APPLICATION_DATA</code> ,
+the latter only in a case of rehandshake.
+</p>
+<p>The former two interrupt the handshake procedure due to the lower
 layer being interrupted, and the latter because of an alert that
 may be sent by a server (it is always a good idea to check any
 received alerts). On these errors call this function again, until it
@@ -19498,7 +19511,7 @@ then <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  or
 <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code>  may be returned.  Note that these
 are non fatal errors, only in the specific case of a rehandshake.
 Their meaning is that the client rejected the rehandshake request or
-in the case of <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  it might also mean that
+in the case of <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  it could also mean that
 some data were pending.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.

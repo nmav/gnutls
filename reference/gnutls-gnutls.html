@@ -4961,8 +4961,11 @@ the certificate chain in <em class="parameter"><code>cert_list</code></em>
 .</p>
 <p>Note that the certificates and keys provided, can be safely deinitialized
 after this function is called.</p>
+<p>If that function fails to load the <em class="parameter"><code>res</code></em>
+ structure is at an undefined state, it must
+not be reused to load other keys or certificates.</p>
 <div class="refsect3">
-<a name="id-1.2.4.6.53.6"></a><h4>Parameters</h4>
+<a name="id-1.2.4.6.53.7"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -4994,7 +4997,7 @@ after this function is called.</p>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.4.6.53.7"></a><h4>Returns</h4>
+<a name="id-1.2.4.6.53.8"></a><h4>Returns</h4>
 <p> <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success, or a negative error code.</p>
 <p></p>
 </div>
@@ -5026,8 +5029,11 @@ that the supported URLs are the ones indicated by <a class="link" href="gnutls-g
 <p>In case the <em class="parameter"><code>certfile</code></em>
  is provided as a PKCS <span class="type">11</span> URL, then the certificate, and its
 present issuers in the token are are imported (i.e., the required trust chain).</p>
+<p>If that function fails to load the <em class="parameter"><code>res</code></em>
+ structure is at an undefined state, it must
+not be reused to load other keys or certificates.</p>
 <div class="refsect3">
-<a name="id-1.2.4.6.54.8"></a><h4>Parameters</h4>
+<a name="id-1.2.4.6.54.9"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -5060,7 +5066,7 @@ the specified private key, in PKCS7 format, or a list of certificates</p></td>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.4.6.54.9"></a><h4>Returns</h4>
+<a name="id-1.2.4.6.54.10"></a><h4>Returns</h4>
 <p> <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success, or a negative error code.</p>
 <p></p>
 </div>
@@ -7582,8 +7588,9 @@ has asked to resume a session, but the server couldn't, then a
 full handshake will be performed.</p>
 <p>The non-fatal errors expected by this function are:
 <a class="link" href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS" title="GNUTLS_E_INTERRUPTED"><code class="literal">GNUTLS_E_INTERRUPTED</code></a>, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS" title="GNUTLS_E_AGAIN"><code class="literal">GNUTLS_E_AGAIN</code></a>, 
-and <a class="link" href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS" title="GNUTLS_E_WARNING_ALERT_RECEIVED"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a>.
-The former two interrupt the handshake procedure due to the lower
+<a class="link" href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS" title="GNUTLS_E_WARNING_ALERT_RECEIVED"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a>, and <code class="literal">GNUTLS_GOT_APPLICATION_DATA</code>,
+the latter only in a case of rehandshake.</p>
+<p>The former two interrupt the handshake procedure due to the lower
 layer being interrupted, and the latter because of an alert that
 may be sent by a server (it is always a good idea to check any
 received alerts). On these errors call this function again, until it
@@ -7596,10 +7603,10 @@ then <a class="link" href="gnutls-gnutls.html#GNUTLS-E-GOT-APPLICATION-DATA:CAPS
 <a class="link" href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS" title="GNUTLS_E_WARNING_ALERT_RECEIVED"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a> may be returned.  Note that these
 are non fatal errors, only in the specific case of a rehandshake.
 Their meaning is that the client rejected the rehandshake request or
-in the case of <a class="link" href="gnutls-gnutls.html#GNUTLS-E-GOT-APPLICATION-DATA:CAPS" title="GNUTLS_E_GOT_APPLICATION_DATA"><code class="literal">GNUTLS_E_GOT_APPLICATION_DATA</code></a> it might also mean that
+in the case of <a class="link" href="gnutls-gnutls.html#GNUTLS-E-GOT-APPLICATION-DATA:CAPS" title="GNUTLS_E_GOT_APPLICATION_DATA"><code class="literal">GNUTLS_E_GOT_APPLICATION_DATA</code></a> it could also mean that
 some data were pending.</p>
 <div class="refsect3">
-<a name="id-1.2.4.6.127.8"></a><h4>Parameters</h4>
+<a name="id-1.2.4.6.127.9"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -7614,7 +7621,7 @@ some data were pending.</p>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.4.6.127.9"></a><h4>Returns</h4>
+<a name="id-1.2.4.6.127.10"></a><h4>Returns</h4>
 <p> <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, otherwise a negative error code.</p>
 <p></p>
 </div>
@@ -15363,7 +15370,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.3.9"
+<pre class="programlisting">#define GNUTLS_VERSION "3.3.10"
 </pre>
 <p>
 </p>
@@ -15387,7 +15394,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030309
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x03030a
 </pre>
 <p>
 </p>
@@ -15395,7 +15402,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 9
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 10
 </pre>
 <p>
 </p>
