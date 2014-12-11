@@ -3,7 +3,32 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2014-12-04T01:12:54+00:00</updated>
+<updated>2014-12-11T09:14:39+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2014-12-11</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-12-11'/>
+    <title>GnuTLS 3.3.11, 3.2.21</title>
+    <updated>2014-12-11T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-12-11.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7837">GnuTLS
+3.3.11</a>, and
+<a
+href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7836">3.2.21</a>,
+which are bug-fix releases on the current and old stable
+branches respectively.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2014-12-03</id>
@@ -450,33 +475,6 @@ competition</a>. Pick a task and join us.
 <p>
 Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7343">GnuTLS
 3.2.12.1</a> which reverts an ABI change in the previous release.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2014-03-03</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-03-03'/>
-    <title>GnuTLS 3.2.12 and 3.1.22</title>
-    <updated>2014-03-03T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-03-03.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Added important security advisory <a
-href="security.html#GNUTLS-SA-2014-2">GNUTLS-SA-2014-2</a>.
-</p>
-<p>
-Released <a href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7341">GnuTLS
-3.2.12</a> which is a bugfix release in the current stable branch;
-<a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7340">GnuTLS
-3.1.22</a>, is a bug-fix release on the previous stable branch.
 </p>
 
     </div>
