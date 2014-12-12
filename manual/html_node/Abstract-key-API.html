@@ -195,6 +195,9 @@ the certificate chain in  <code>pcert_list</code> .
 structure and must not be deallocated. They will be automatically deallocated 
 when the  <code>res</code> structure is deinitialized.
 </p>
+<p>If that function fails to load the  <code>res</code> structure is at an undefined state, it must
+not be reused to load other keys or certificates.
+</p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p>
 <p><strong>Since:</strong> 3.0
@@ -1688,7 +1691,7 @@ negative error value.
 </p>
 <p><var>format</var>: Indicate the format to use
 </p>
-<p><var>out</var>: Newly allocated datum with (0) terminated string.
+<p><var>out</var>: Newly allocated datum with null terminated string.
 </p>
 <p>This function will pretty print public key information, suitable for
 display to a human.

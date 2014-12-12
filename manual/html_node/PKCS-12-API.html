@@ -530,9 +530,9 @@ negative error value.
 <h4 class="subheading">gnutls_pkcs12_simple_parse</h4>
 <a name="gnutls_005fpkcs12_005fsimple_005fparse"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005fsimple_005fparse-1"></a>Function: <em>int</em> <strong>gnutls_pkcs12_simple_parse</strong> <em>(gnutls_pkcs12_t <var>p12</var>, const char * <var>password</var>, gnutls_x509_privkey_t * <var>key</var>, gnutls_x509_crt_t ** <var>chain</var>, unsigned int * <var>chain_len</var>, gnutls_x509_crt_t ** <var>extra_certs</var>, unsigned int * <var>extra_certs_len</var>, gnutls_x509_crl_t * <var>crl</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>p12</var>: the PKCS12 blob.
+<dd><p><var>p12</var>: should contain a gnutls_pkcs12_t structure
 </p>
-<p><var>password</var>: optional password used to decrypt PKCS12 blob, bags and keys.
+<p><var>password</var>: optional password used to decrypt the structure, bags and keys.
 </p>
 <p><var>key</var>: a structure to store the parsed private key.
 </p>
@@ -541,7 +541,7 @@ negative error value.
 <p><var>chain_len</var>: will be updated with the number of additional (may be <code>NULL</code> )
 </p>
 <p><var>extra_certs</var>: optional pointer to receive an array of additional
-certificates found in the PKCS12 blob (may be <code>NULL</code> ).
+certificates found in the PKCS12 structure (may be <code>NULL</code> ).
 </p>
 <p><var>extra_certs_len</var>: will be updated with the number of additional
 certs (may be <code>NULL</code> ).
@@ -550,7 +550,7 @@ certs (may be <code>NULL</code> ).
 </p>
 <p><var>flags</var>: should be zero or one of GNUTLS_PKCS12_SP_*
 </p>
-<p>This function parses a PKCS12 blob in  <code>p12blob</code> and extracts the
+<p>This function parses a PKCS12 structure in  <code>pkcs12</code> and extracts the
 private key, the corresponding certificate chain, any additional
 certificates and a CRL.
 </p>
@@ -563,7 +563,7 @@ using <code>gnutls_malloc()</code> .
 only with password based security and the same password for all
 operations.
 </p>
-<p>Note that a PKCS12 file may contain many keys and/or certificates,
+<p>Note that a PKCS12 structure may contain many keys and/or certificates,
 and there is no way to identify which key/certificate pair you want.
 For this reason this function is useful for PKCS12 files that contain 
 only one key/certificate pair and/or one CRL.
@@ -575,6 +575,9 @@ is provided then this function returns <code>GNUTLS_E_DECRYPTION_FAILED</code> .
 certificates, to comply with TLS&rsquo; requirements. If, however, the flag 
 <code>GNUTLS_PKCS12_SP_INCLUDE_SELF_SIGNED</code>  is specified then
 self signed certificates will be included in the chain.
+</p>
+<p>Prior to using this function the PKCS <code>12</code>  structure integrity must
+be verified using <code>gnutls_pkcs12_verify_mac()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.

@@ -15370,7 +15370,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.3.10"
+<pre class="programlisting">#define GNUTLS_VERSION "3.3.11"
 </pre>
 <p>
 </p>
@@ -15394,7 +15394,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x03030a
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x03030b
 </pre>
 <p>
 </p>
@@ -15402,7 +15402,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 10
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 11
 </pre>
 <p>
 </p>
@@ -15629,7 +15629,10 @@ or a negative error value on other errors.</p>
 </tr>
 <tr>
 <td class="enum_member_name"><p><a name="GNUTLS-A-NO-APPLICATION-PROTOCOL:CAPS"></a>GNUTLS_A_NO_APPLICATION_PROTOCOL</p></td>
-<td class="enum_member_description"> </td>
+<td class="enum_member_description">
+<p>The ALPN protocol requested is
+  not supported by the peer.</p>
+</td>
 <td class="enum_member_annotations"> </td>
 </tr>
 </tbody>
@@ -16078,12 +16081,16 @@ certificate verification.</p>
 </tr>
 <tr>
 <td class="enum_member_name"><p><a name="GNUTLS-CIPHER-SALSA20-256:CAPS"></a>GNUTLS_CIPHER_SALSA20_256</p></td>
-<td class="enum_member_description"> </td>
+<td class="enum_member_description">
+<p>Salsa20 with 256-bit keys.</p>
+</td>
 <td class="enum_member_annotations"> </td>
 </tr>
 <tr>
 <td class="enum_member_name"><p><a name="GNUTLS-CIPHER-ESTREAM-SALSA20-256:CAPS"></a>GNUTLS_CIPHER_ESTREAM_SALSA20_256</p></td>
-<td class="enum_member_description"> </td>
+<td class="enum_member_description">
+<p>Estream's Salsa20 variant with 256-bit keys.</p>
+</td>
 <td class="enum_member_annotations"> </td>
 </tr>
 <tr>
@@ -17667,12 +17674,16 @@ to be used by callbacks.</p>
 </tr>
 <tr>
 <td class="enum_member_name"><p><a name="GNUTLS-SIGN-DSA-SHA384:CAPS"></a>GNUTLS_SIGN_DSA_SHA384</p></td>
-<td class="enum_member_description"> </td>
+<td class="enum_member_description">
+<p>Digital signature algorithm DSA with SHA-384</p>
+</td>
 <td class="enum_member_annotations"> </td>
 </tr>
 <tr>
 <td class="enum_member_name"><p><a name="GNUTLS-SIGN-DSA-SHA512:CAPS"></a>GNUTLS_SIGN_DSA_SHA512</p></td>
-<td class="enum_member_description"> </td>
+<td class="enum_member_description">
+<p>Digital signature algorithm DSA with SHA-512</p>
+</td>
 <td class="enum_member_annotations"> </td>
 </tr>
 </tbody>
