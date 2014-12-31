@@ -1,25 +1,13 @@
 #include 'common.wml' page="Authors"
 
-<p>  GnuTLS is available because of the efforts of many people. The main authors are: 
+<p>  GnuTLS is available because of the efforts of many people. The current maintainer is
+<a href="http://nikmav.blogspot.com">Nikos Mavrogiannopoulos</a>, reachable at
+<a href="mailto:nmav@gnutls.org">nmav@gnutls.org</a>.
 </p>
 
-<center>
-<table class="news" border="0" cellspacing="1" width="70%">
-  <tr><th>Name</th><th>Email</th></tr>
-
-  <tr><td><a href="http://nikmav.blogspot.com">Nikos Mavrogiannopoulos</a></td>
-      <td><a href="mailto:nmav@gnutls.org">nmav@gnutls.org</a></td>
-  </tr>
-
-  <tr><td><a href="http://josefsson.org/">Simon Josefsson</a></td>
-      <td><a href="mailto:simon@josefsson.org">simon@josefsson.org</a></td>
-  </tr>
-
-</table>
-</center>
-
+<p>
 <a href="http://gitorious.org/gnutls/gnutls/blobs/master/AUTHORS">
-[Other people who have contributed to gnutls]</a>
+[People who have contributed to gnutls]</a>
 &nbsp;
 <a href="http://gitorious.org/gnutls/gnutls/blobs/master/THANKS">
 [People we would like to thank]</a>
