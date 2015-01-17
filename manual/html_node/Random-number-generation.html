@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.11 of GnuTLS.
+3.3.12 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.11: Random number generation</title>
+<title>GnuTLS 3.3.12: Random number generation</title>
 
-<meta name="description" content="GnuTLS 3.3.11: Random number generation">
-<meta name="keywords" content="GnuTLS 3.3.11: Random number generation">
+<meta name="description" content="GnuTLS 3.3.12: Random number generation">
+<meta name="keywords" content="GnuTLS 3.3.12: Random number generation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -200,7 +200,9 @@ Fatal in session if broken.
 <p>This function will generate random data and store it to output
 buffer.
 </p>
-<p><strong>Returns:</strong> Zero or a negative error code on error.
+<p>This function is thread-safe and also fork-safe.
+</p>
+<p><strong>Returns:</strong> Zero on success, or a negative error code on error.
 </p>
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>

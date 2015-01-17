@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.11 of GnuTLS.
+3.3.12 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.11: gnutls-cli Invocation</title>
+<title>GnuTLS 3.3.12: gnutls-cli Invocation</title>
 
-<meta name="description" content="GnuTLS 3.3.11: gnutls-cli Invocation">
-<meta name="keywords" content="GnuTLS 3.3.11: gnutls-cli Invocation">
+<meta name="description" content="GnuTLS 3.3.12: gnutls-cli Invocation">
+<meta name="keywords" content="GnuTLS 3.3.12: gnutls-cli Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -370,6 +370,18 @@ Connect, establish a session and rehandshake immediately.
 
 <p>This is the &ldquo;connect, establish a plain session and start tls&rdquo; option.
 The TLS session will be initiated when EOF or a SIGALRM is received.
+<a name="gnutls_002dcli-app_002dproto"></a></p><a name="app_002dproto-option-1"></a>
+<h4 class="subheading">app-proto option</h4>
+
+<p>This is an alias for the <code>starttls-proto</code> option,
+see <a href="#gnutls_002dcli-starttls_002dproto">the starttls-proto option documentation</a>.
+</p>
+<a name="gnutls_002dcli-starttls_002dproto"></a><a name="starttls_002dproto-option"></a>
+<h4 class="subheading">starttls-proto option</h4>
+
+<p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, smtp, imap)&rdquo; option.
+This option takes a string argument.
+Specify the application layer protocol for STARTTLS. If the protocol is supported, gnutls-cli will proceed to the TLS negotiation.
 <a name="gnutls_002dcli-dh_002dbits"></a></p><a name="dh_002dbits-option"></a>
 <h4 class="subheading">dh-bits option</h4>
 
@@ -429,10 +441,9 @@ Enable inline commands of the form ^&lt;cmd&gt;^. The inline commands are expect
 <a name="gnutls_002dcli-inline_002dcommands_002dprefix"></a></p><a name="inline_002dcommands_002dprefix-option"></a>
 <h4 class="subheading">inline-commands-prefix option</h4>
 
-<p>This is the &ldquo;change the default (^) used as a delimiter for inline commands.
-				the value is a single us-ascii character (octets 0 - 127).&rdquo; option.
+<p>This is the &ldquo;change the default delimiter for inline commands.&rdquo; option.
 This option takes a string argument.
-Change the default (^) delimiter used for inline commands. The delimiter is expected to be a single US-ASCII character (octets 0 - 127). This option is only relevant if inline commands are enabled via the inline-commands option
+Change the default delimiter (^) used for inline commands. The delimiter is expected to be a single US-ASCII character (octets 0 - 127). This option is only relevant if inline commands are enabled via the inline-commands option
 <a name="gnutls_002dcli-provider"></a></p><a name="provider-option-2"></a>
 <h4 class="subheading">provider option</h4>
 

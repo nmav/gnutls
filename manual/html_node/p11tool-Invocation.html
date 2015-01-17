@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.11 of GnuTLS.
+3.3.12 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.11: p11tool Invocation</title>
+<title>GnuTLS 3.3.12: p11tool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.3.11: p11tool Invocation">
-<meta name="keywords" content="GnuTLS 3.3.11: p11tool Invocation">
+<meta name="description" content="GnuTLS 3.3.12: p11tool Invocation">
+<meta name="keywords" content="GnuTLS 3.3.12: p11tool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -430,14 +430,20 @@ see <a href="#p11tool-mark_002dprivate">the mark-private option documentation</a
 <p>This is an alias for the <code>so-login</code> option,
 see <a href="#p11tool-so_002dlogin">the so-login option documentation</a>.
 </p>
-<a name="p11tool-sec_002dparam"></a><a name="sec_002dparam-option"></a>
-<h4 class="subsection">5.2.28 sec-param option</h4>
+<a name="p11tool-curve"></a><a name="curve-option"></a>
+<h4 class="subsection">5.2.28 curve option</h4>
+
+<p>This is the &ldquo;specify the curve used for ec key generation&rdquo; option.
+This option takes a string argument.
+Supported values are secp192r1, secp224r1, secp256r1, secp384r1 and secp521r1.
+<a name="p11tool-sec_002dparam"></a></p><a name="sec_002dparam-option"></a>
+<h4 class="subsection">5.2.29 sec-param option</h4>
 
 <p>This is the &ldquo;specify the security level&rdquo; option.
 This option takes a string argument <samp>Security parameter</samp>.
 This is alternative to the bits option. Available options are [low, legacy, medium, high, ultra].
 <a name="p11tool-inder"></a></p><a name="inder-option"></a>
-<h4 class="subsection">5.2.29 inder option</h4>
+<h4 class="subsection">5.2.30 inder option</h4>
 
 <p>This is the &ldquo;use der/raw format for input&rdquo; option.
 </p>
@@ -448,13 +454,13 @@ This is alternative to the bits option. Available options are [low, legacy, medi
 
 <p>Use DER/RAW format for input certificates and private keys.
 <a name="p11tool-inraw"></a></p><a name="inraw-option"></a>
-<h4 class="subsection">5.2.30 inraw option</h4>
+<h4 class="subsection">5.2.31 inraw option</h4>
 
 <p>This is an alias for the <code>inder</code> option,
 see <a href="#p11tool-inder">the inder option documentation</a>.
 </p>
 <a name="p11tool-outder"></a><a name="outder-option"></a>
-<h4 class="subsection">5.2.31 outder option</h4>
+<h4 class="subsection">5.2.32 outder option</h4>
 
 <p>This is the &ldquo;use der format for output certificates, private keys, and dh parameters&rdquo; option.
 </p>
@@ -465,31 +471,31 @@ see <a href="#p11tool-inder">the inder option documentation</a>.
 
 <p>The output will be in DER or RAW format.
 <a name="p11tool-outraw"></a></p><a name="outraw-option"></a>
-<h4 class="subsection">5.2.32 outraw option</h4>
+<h4 class="subsection">5.2.33 outraw option</h4>
 
 <p>This is an alias for the <code>outder</code> option,
 see <a href="#p11tool-outder">the outder option documentation</a>.
 </p>
 <a name="p11tool-set_002dpin"></a><a name="set_002dpin-option"></a>
-<h4 class="subsection">5.2.33 set-pin option</h4>
+<h4 class="subsection">5.2.34 set-pin option</h4>
 
 <p>This is the &ldquo;specify the pin to use on token initialization&rdquo; option.
 This option takes a string argument.
 Alternatively the GNUTLS_PIN environment variable may be used.
 <a name="p11tool-set_002dso_002dpin"></a></p><a name="set_002dso_002dpin-option"></a>
-<h4 class="subsection">5.2.34 set-so-pin option</h4>
+<h4 class="subsection">5.2.35 set-so-pin option</h4>
 
 <p>This is the &ldquo;specify the security officer&rsquo;s pin to use on token initialization&rdquo; option.
 This option takes a string argument.
 Alternatively the GNUTLS_SO_PIN environment variable may be used.
 <a name="p11tool-provider"></a></p><a name="provider-option"></a>
-<h4 class="subsection">5.2.35 provider option</h4>
+<h4 class="subsection">5.2.36 provider option</h4>
 
 <p>This is the &ldquo;specify the pkcs #11 provider library&rdquo; option.
 This option takes a file argument.
 This will override the default options in /etc/gnutls/pkcs11.conf
 <a name="p11tool-exit-status"></a></p><a name="p11tool-exit-status-1"></a>
-<h4 class="subsection">5.2.36 p11tool exit status</h4>
+<h4 class="subsection">5.2.37 p11tool exit status</h4>
 
 <p>One of the following exit values will be returned:
 </p><dl compact="compact">
@@ -501,10 +507,10 @@ This will override the default options in /etc/gnutls/pkcs11.conf
 </p></dd>
 </dl>
 <a name="p11tool-See-Also"></a><a name="p11tool-See-Also-1"></a>
-<h4 class="subsection">5.2.37 p11tool See Also</h4>
+<h4 class="subsection">5.2.38 p11tool See Also</h4>
 <p>certtool (1)
 <a name="p11tool-Examples"></a></p><a name="p11tool-Examples-1"></a>
-<h4 class="subsection">5.2.38 p11tool Examples</h4>
+<h4 class="subsection">5.2.39 p11tool Examples</h4>
 <p>To view all tokens in your system use:
 </p><div class="example">
 <pre class="example">$ p11tool --list-tokens

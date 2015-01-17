@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.11 of GnuTLS.
+3.3.12 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.11</title>
+<title>GnuTLS 3.3.12</title>
 
-<meta name="description" content="GnuTLS 3.3.11">
-<meta name="keywords" content="GnuTLS 3.3.11">
+<meta name="description" content="GnuTLS 3.3.12">
+<meta name="keywords" content="GnuTLS 3.3.12">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.3.11</h1>
+<h1 class="settitle" align="center">GnuTLS 3.3.12</h1>
 
 
 
@@ -320,17 +320,18 @@ dl {
       <li><a name="toc-private-option" href="#private-option">5.2.25 private option</a></li>
       <li><a name="toc-so_002dlogin-option" href="#so_002dlogin-option">5.2.26 so-login option</a></li>
       <li><a name="toc-admin_002dlogin-option" href="#admin_002dlogin-option">5.2.27 admin-login option</a></li>
-      <li><a name="toc-sec_002dparam-option" href="#sec_002dparam-option">5.2.28 sec-param option</a></li>
-      <li><a name="toc-inder-option" href="#inder-option">5.2.29 inder option</a></li>
-      <li><a name="toc-inraw-option" href="#inraw-option">5.2.30 inraw option</a></li>
-      <li><a name="toc-outder-option" href="#outder-option">5.2.31 outder option</a></li>
-      <li><a name="toc-outraw-option" href="#outraw-option">5.2.32 outraw option</a></li>
-      <li><a name="toc-set_002dpin-option" href="#set_002dpin-option">5.2.33 set-pin option</a></li>
-      <li><a name="toc-set_002dso_002dpin-option" href="#set_002dso_002dpin-option">5.2.34 set-so-pin option</a></li>
-      <li><a name="toc-provider-option" href="#provider-option">5.2.35 provider option</a></li>
-      <li><a name="toc-p11tool-exit-status-1" href="#p11tool-exit-status-1">5.2.36 p11tool exit status</a></li>
-      <li><a name="toc-p11tool-See-Also-1" href="#p11tool-See-Also-1">5.2.37 p11tool See Also</a></li>
-      <li><a name="toc-p11tool-Examples-1" href="#p11tool-Examples-1">5.2.38 p11tool Examples</a></li>
+      <li><a name="toc-curve-option" href="#curve-option">5.2.28 curve option</a></li>
+      <li><a name="toc-sec_002dparam-option" href="#sec_002dparam-option">5.2.29 sec-param option</a></li>
+      <li><a name="toc-inder-option" href="#inder-option">5.2.30 inder option</a></li>
+      <li><a name="toc-inraw-option" href="#inraw-option">5.2.31 inraw option</a></li>
+      <li><a name="toc-outder-option" href="#outder-option">5.2.32 outder option</a></li>
+      <li><a name="toc-outraw-option" href="#outraw-option">5.2.33 outraw option</a></li>
+      <li><a name="toc-set_002dpin-option" href="#set_002dpin-option">5.2.34 set-pin option</a></li>
+      <li><a name="toc-set_002dso_002dpin-option" href="#set_002dso_002dpin-option">5.2.35 set-so-pin option</a></li>
+      <li><a name="toc-provider-option" href="#provider-option">5.2.36 provider option</a></li>
+      <li><a name="toc-p11tool-exit-status-1" href="#p11tool-exit-status-1">5.2.37 p11tool exit status</a></li>
+      <li><a name="toc-p11tool-See-Also-1" href="#p11tool-See-Also-1">5.2.38 p11tool See Also</a></li>
+      <li><a name="toc-p11tool-Examples-1" href="#p11tool-Examples-1">5.2.39 p11tool Examples</a></li>
     </ul></li>
     <li><a name="toc-Trusted-Platform-Module-_0028TPM_0029" href="#Trusted-Platform-Module">5.3 Trusted Platform Module (TPM)</a>
     <ul class="no-bullet">
@@ -502,7 +503,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 29 July 2014 for version
-3.3.11 of GnuTLS.
+3.3.12 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -4424,7 +4425,13 @@ see <a href="#certtool-inder">the inder option documentation</a>.
 <p>This is an alias for the <code>outder</code> option,
 see <a href="#certtool-outder">the outder option documentation</a>.
 </p>
-<a name="certtool-sec_002dparam"></a><a name="sec_002dparam-option-2"></a>
+<a name="certtool-curve"></a><a name="curve-option-1"></a>
+<h4 class="subsubheading">curve option</h4>
+
+<p>This is the &ldquo;specify the curve used for ec key generation&rdquo; option.
+This option takes a string argument.
+Supported values are secp192r1, secp224r1, secp256r1, secp384r1 and secp521r1.
+<a name="certtool-sec_002dparam"></a></p><a name="sec_002dparam-option-2"></a>
 <h4 class="subsubheading">sec-param option</h4>
 
 <p>This is the &ldquo;specify the security level [low, legacy, medium, high, ultra]&rdquo; option.
@@ -7181,14 +7188,20 @@ see <a href="#p11tool-mark_002dprivate">the mark-private option documentation</a
 <p>This is an alias for the <code>so-login</code> option,
 see <a href="#p11tool-so_002dlogin">the so-login option documentation</a>.
 </p>
-<a name="p11tool-sec_002dparam"></a><a name="sec_002dparam-option"></a>
-<h4 class="subsection">5.2.28 sec-param option</h4>
+<a name="p11tool-curve"></a><a name="curve-option"></a>
+<h4 class="subsection">5.2.28 curve option</h4>
+
+<p>This is the &ldquo;specify the curve used for ec key generation&rdquo; option.
+This option takes a string argument.
+Supported values are secp192r1, secp224r1, secp256r1, secp384r1 and secp521r1.
+<a name="p11tool-sec_002dparam"></a></p><a name="sec_002dparam-option"></a>
+<h4 class="subsection">5.2.29 sec-param option</h4>
 
 <p>This is the &ldquo;specify the security level&rdquo; option.
 This option takes a string argument <samp>Security parameter</samp>.
 This is alternative to the bits option. Available options are [low, legacy, medium, high, ultra].
 <a name="p11tool-inder"></a></p><a name="inder-option"></a>
-<h4 class="subsection">5.2.29 inder option</h4>
+<h4 class="subsection">5.2.30 inder option</h4>
 
 <p>This is the &ldquo;use der/raw format for input&rdquo; option.
 </p>
@@ -7199,13 +7212,13 @@ This is alternative to the bits option. Available options are [low, legacy, medi
 
 <p>Use DER/RAW format for input certificates and private keys.
 <a name="p11tool-inraw"></a></p><a name="inraw-option"></a>
-<h4 class="subsection">5.2.30 inraw option</h4>
+<h4 class="subsection">5.2.31 inraw option</h4>
 
 <p>This is an alias for the <code>inder</code> option,
 see <a href="#p11tool-inder">the inder option documentation</a>.
 </p>
 <a name="p11tool-outder"></a><a name="outder-option"></a>
-<h4 class="subsection">5.2.31 outder option</h4>
+<h4 class="subsection">5.2.32 outder option</h4>
 
 <p>This is the &ldquo;use der format for output certificates, private keys, and dh parameters&rdquo; option.
 </p>
@@ -7216,31 +7229,31 @@ see <a href="#p11tool-inder">the inder option documentation</a>.
 
 <p>The output will be in DER or RAW format.
 <a name="p11tool-outraw"></a></p><a name="outraw-option"></a>
-<h4 class="subsection">5.2.32 outraw option</h4>
+<h4 class="subsection">5.2.33 outraw option</h4>
 
 <p>This is an alias for the <code>outder</code> option,
 see <a href="#p11tool-outder">the outder option documentation</a>.
 </p>
 <a name="p11tool-set_002dpin"></a><a name="set_002dpin-option"></a>
-<h4 class="subsection">5.2.33 set-pin option</h4>
+<h4 class="subsection">5.2.34 set-pin option</h4>
 
 <p>This is the &ldquo;specify the pin to use on token initialization&rdquo; option.
 This option takes a string argument.
 Alternatively the GNUTLS_PIN environment variable may be used.
 <a name="p11tool-set_002dso_002dpin"></a></p><a name="set_002dso_002dpin-option"></a>
-<h4 class="subsection">5.2.34 set-so-pin option</h4>
+<h4 class="subsection">5.2.35 set-so-pin option</h4>
 
 <p>This is the &ldquo;specify the security officer&rsquo;s pin to use on token initialization&rdquo; option.
 This option takes a string argument.
 Alternatively the GNUTLS_SO_PIN environment variable may be used.
 <a name="p11tool-provider"></a></p><a name="provider-option"></a>
-<h4 class="subsection">5.2.35 provider option</h4>
+<h4 class="subsection">5.2.36 provider option</h4>
 
 <p>This is the &ldquo;specify the pkcs #11 provider library&rdquo; option.
 This option takes a file argument.
 This will override the default options in /etc/gnutls/pkcs11.conf
 <a name="p11tool-exit-status"></a></p><a name="p11tool-exit-status-1"></a>
-<h4 class="subsection">5.2.36 p11tool exit status</h4>
+<h4 class="subsection">5.2.37 p11tool exit status</h4>
 
 <p>One of the following exit values will be returned:
 </p><dl compact="compact">
@@ -7252,10 +7265,10 @@ This will override the default options in /etc/gnutls/pkcs11.conf
 </p></dd>
 </dl>
 <a name="p11tool-See-Also"></a><a name="p11tool-See-Also-1"></a>
-<h4 class="subsection">5.2.37 p11tool See Also</h4>
+<h4 class="subsection">5.2.38 p11tool See Also</h4>
 <p>certtool (1)
 <a name="p11tool-Examples"></a></p><a name="p11tool-Examples-1"></a>
-<h4 class="subsection">5.2.38 p11tool Examples</h4>
+<h4 class="subsection">5.2.39 p11tool Examples</h4>
 <p>To view all tokens in your system use:
 </p><div class="example">
 <pre class="example">$ p11tool --list-tokens
@@ -14888,7 +14901,9 @@ Fatal in session if broken.
 <p>This function will generate random data and store it to output
 buffer.
 </p>
-<p><strong>Returns:</strong> Zero or a negative error code on error.
+<p>This function is thread-safe and also fork-safe.
+</p>
+<p><strong>Returns:</strong> Zero on success, or a negative error code on error.
 </p>
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
@@ -15130,6 +15145,18 @@ Connect, establish a session and rehandshake immediately.
 
 <p>This is the &ldquo;connect, establish a plain session and start tls&rdquo; option.
 The TLS session will be initiated when EOF or a SIGALRM is received.
+<a name="gnutls_002dcli-app_002dproto"></a></p><a name="app_002dproto-option-1"></a>
+<h4 class="subheading">app-proto option</h4>
+
+<p>This is an alias for the <code>starttls-proto</code> option,
+see <a href="#gnutls_002dcli-starttls_002dproto">the starttls-proto option documentation</a>.
+</p>
+<a name="gnutls_002dcli-starttls_002dproto"></a><a name="starttls_002dproto-option"></a>
+<h4 class="subheading">starttls-proto option</h4>
+
+<p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, smtp, imap)&rdquo; option.
+This option takes a string argument.
+Specify the application layer protocol for STARTTLS. If the protocol is supported, gnutls-cli will proceed to the TLS negotiation.
 <a name="gnutls_002dcli-dh_002dbits"></a></p><a name="dh_002dbits-option"></a>
 <h4 class="subheading">dh-bits option</h4>
 
@@ -15189,10 +15216,9 @@ Enable inline commands of the form ^&lt;cmd&gt;^. The inline commands are expect
 <a name="gnutls_002dcli-inline_002dcommands_002dprefix"></a></p><a name="inline_002dcommands_002dprefix-option"></a>
 <h4 class="subheading">inline-commands-prefix option</h4>
 
-<p>This is the &ldquo;change the default (^) used as a delimiter for inline commands.
-				the value is a single us-ascii character (octets 0 - 127).&rdquo; option.
+<p>This is the &ldquo;change the default delimiter for inline commands.&rdquo; option.
 This option takes a string argument.
-Change the default (^) delimiter used for inline commands. The delimiter is expected to be a single US-ASCII character (octets 0 - 127). This option is only relevant if inline commands are enabled via the inline-commands option
+Change the default delimiter (^) used for inline commands. The delimiter is expected to be a single US-ASCII character (octets 0 - 127). This option is only relevant if inline commands are enabled via the inline-commands option
 <a name="gnutls_002dcli-provider"></a></p><a name="provider-option-2"></a>
 <h4 class="subheading">provider option</h4>
 
@@ -36044,7 +36070,9 @@ and reset the state of the MAC.
 <p>This function will generate random data and store it to output
 buffer.
 </p>
-<p><strong>Returns:</strong> Zero or a negative error code on error.
+<p>This function is thread-safe and also fork-safe.
+</p>
+<p><strong>Returns:</strong> Zero on success, or a negative error code on error.
 </p>
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
