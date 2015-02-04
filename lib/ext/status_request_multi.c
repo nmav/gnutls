@@ -69,7 +69,7 @@ client_send(gnutls_session_t session,
 	    gnutls_buffer_st *extdata, status_request_ext_st *priv)
 {
 	int ret, ret_len;
-	unsigned spos;
+	unsigned spos, spos2, spos3;
 	size_t i;
 
 	spos = extdata->length;
@@ -81,9 +81,15 @@ client_send(gnutls_session_t session,
 	if (ret < 0)
 		return gnutls_assert_val(ret);
 
+	spos2 = extdata->length;
 	ret =
-	    _gnutls_buffer_append_prefix(extdata, 16,
-					 priv->responder_id_size);
+	    _gnutls_buffer_append_prefix(extdata, 16, 0);
+	if (ret < 0)
+		return gnutls_assert_val(ret);
+
+	spos3 = extdata->length;
+	ret =
+	    _gnutls_buffer_append_prefix(extdata, 16, 0);
 	if (ret < 0)
 		return gnutls_assert_val(ret);
 
@@ -102,6 +108,9 @@ client_send(gnutls_session_t session,
 			return gnutls_assert_val(ret);
 	}
 
+	ret_len = extdata->length - spos3;
+	_gnutls_write_uint16(ret_len-2, &extdata->data[spos3]);
+
 	ret = _gnutls_buffer_append_data_prefix(extdata, 16,
 						priv->request_extensions.
 						data,
@@ -109,6 +118,9 @@ client_send(gnutls_session_t session,
 						size);
 	if (ret < 0)
 		return gnutls_assert_val(ret);
+
+	ret_len = extdata->length - spos2;
+	_gnutls_write_uint16(ret_len-2, &extdata->data[spos2]);
 
 	ret_len = extdata->length - spos;
 	_gnutls_write_uint16(ret_len-2, &extdata->data[spos]);
