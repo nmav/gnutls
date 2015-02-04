@@ -764,7 +764,7 @@ gnutls_ocsp_status_request_is_checked(gnutls_session_t session,
 	gnutls_datum_t data;
 
 	if (flags & GNUTLS_OCSP_SR_IS_AVAIL) {
-		ret = gnutls_ocsp_status_request_get(session, &data);
+		ret = gnutls_ocsp_status_request_get_multi(session, &data, 0);
 		if (ret < 0)
 			return gnutls_assert_val(0);
 
