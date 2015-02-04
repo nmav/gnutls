@@ -247,6 +247,9 @@ gnutls_ocsp_status_request_get_multi(gnutls_session_t session,
 					   GNUTLS_EXTENSION_STATUS_REQUEST_V2,
 					   &epriv);
 	if (ret < 0) {
+		if (idx > 0)
+			return gnutls_assert_val(GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE);
+
 		ret = _gnutls_ext_get_session_data(session,
 					   GNUTLS_EXTENSION_STATUS_REQUEST,
 					   &epriv);
