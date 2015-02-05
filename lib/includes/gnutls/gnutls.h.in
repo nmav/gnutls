@@ -1483,6 +1483,8 @@ gnutls_ocsp_status_request_get_multi(gnutls_session_t session,
 			       gnutls_datum_t * response, unsigned idx);
 
 #define GNUTLS_OCSP_SR_IS_AVAIL 1
+#define GNUTLS_OCSP_SR_SET_IDX(x) ((x+1)<<24)
+#define GNUTLS_OCSP_SR_GET_IDX(x) ((x>>24)-1)
 int gnutls_ocsp_status_request_is_checked(gnutls_session_t session,
 					  unsigned int flags);
 

@@ -749,6 +749,13 @@ int gnutls_load_file(const char *filename, gnutls_datum_t * data)
  * OCSP validity check on the peer's certificate. Should be called after
  * any of gnutls_certificate_verify_peers*() are called.
  *
+ * In case the peer provided multiple certificate status responses
+ * (e.g., via the RFC6961 extension), you can specify the index of the
+ * response to check, by using the GNUTLS_OCSP_SR_SET_IDX() macro in flags. 
+ * The available status responses should correspond with the number of certificates
+ * sent by the server. Otherwise if multiple certificates are available, this
+ * function will return non-zero if all responses were valid.
+ *
  * If the flag %GNUTLS_OCSP_SR_IS_AVAIL is specified, the return
  * value of the function indicates whether an OCSP status response have
  * been received (even if invalid).
@@ -761,10 +768,17 @@ gnutls_ocsp_status_request_is_checked(gnutls_session_t session,
 				      unsigned int flags)
 {
 	int ret;
+	int idx = 0, multi = 0;
+	unsigned i;
 	gnutls_datum_t data;
 
+	if ((flags >> 24) != 0)
+		idx = GNUTLS_OCSP_SR_GET_IDX(flags);
+	else
+		multi = 1;
+
 	if (flags & GNUTLS_OCSP_SR_IS_AVAIL) {
-		ret = gnutls_ocsp_status_request_get_multi(session, &data, 0);
+		ret = gnutls_ocsp_status_request_get_multi(session, &data, idx);
 		if (ret < 0)
 			return gnutls_assert_val(0);
 
@@ -772,7 +786,21 @@ gnutls_ocsp_status_request_is_checked(gnutls_session_t session,
 			return gnutls_assert_val(0);
 		return 1;
 	}
-	return session->internals.ocsp_check_ok;
+
+	if (multi) {
+		ret = 0;
+		for (i=0;i<session->internals.ocsp_check_size;i++) {
+			if (session->internals.ocsp_check_ok[i] == 0)
+				return 0;
+		}
+		if (session->internals.ocsp_check_size > 0)
+			return 1;
+		return 0;
+	} else {
+		if (idx > session->internals.ocsp_check_size)
+			return 0;
+		return session->internals.ocsp_check_ok[idx];
+	}
 }
 
 #define DESC_SIZE 64

@@ -60,7 +60,7 @@
 /* If the certificate is revoked status will be GNUTLS_CERT_REVOKED.
  * 
  * Returns:
- *  Zero on success, a negative error code otherwise.
+ *  Zero on success, one of the OCSP response was ignored, or a negative error code otherwise.
  */
 static int
 check_ocsp_response(gnutls_session_t session, gnutls_x509_crt_t cert,
@@ -157,8 +157,8 @@ check_ocsp_response(gnutls_session_t session, gnutls_x509_crt_t cert,
 
 	ret = 0;
       cleanup:
-	if (check_failed == 0)
-		session->internals.ocsp_check_ok = 1;
+	if (check_failed != 0 && ret == 0)
+		ret = 1;
 
 	gnutls_ocsp_resp_deinit(resp);
 
@@ -196,10 +196,10 @@ _gnutls_x509_cert_verify_peers(gnutls_session_t session,
 	gnutls_x509_crt_t issuer = NULL;
 	unsigned int ocsp_status = 0;
 	unsigned int verify_flags;
-	unsigned issuer_deinit = 0;
+	unsigned issuer_deinit;
 
 	/* No OCSP check so far */
-	session->internals.ocsp_check_ok = 0;
+	memset(session->internals.ocsp_check_ok, 0, sizeof(session->internals.ocsp_check_ok));
 
 	CHECK_AUTH(GNUTLS_CRD_CERTIFICATE, GNUTLS_E_INVALID_REQUEST);
 
@@ -263,32 +263,40 @@ _gnutls_x509_cert_verify_peers(gnutls_session_t session,
 	if (verify_flags & GNUTLS_VERIFY_DISABLE_CRL_CHECKS)
 		goto skip_ocsp;
 
-	ret = gnutls_ocsp_status_request_get(session, &resp);
-	if (ret < 0)
-		goto skip_ocsp;
+	session->internals.ocsp_check_size = 0;
+	i = 0;
+	while((ret = gnutls_ocsp_status_request_get_multi(session, &resp, i)) >= 0) {
+		if (resp.size > 0 && peer_certificate_list_size > i) {
+			if (peer_certificate_list_size > i+1) {
+				issuer = peer_certificate_list[i+1];
+				issuer_deinit = 0;
+			} else {
+				ret =
+				    gnutls_x509_trust_list_get_issuer(cred->tlist,
+								      peer_certificate_list[i], 
+								      &issuer, GNUTLS_TL_GET_COPY);
+				if (ret < 0) {
+					break;
+				}
+				issuer_deinit = 1;
+			}
 
-	if (peer_certificate_list_size > 1) {
-		issuer = peer_certificate_list[1];
-	} else {
-		ret =
-		    gnutls_x509_trust_list_get_issuer(cred->tlist,
-						      peer_certificate_list
-						      [0], &issuer, GNUTLS_TL_GET_COPY);
-		if (ret < 0) {
-			goto skip_ocsp;
+			ret =
+			    check_ocsp_response(session, peer_certificate_list[i], issuer,
+						&resp, &ocsp_status);
+			if (issuer_deinit != 0)
+				gnutls_x509_crt_deinit(issuer);
+
+			if (ret == 0 && i < sizeof(session->internals.ocsp_check_ok)/sizeof(session->internals.ocsp_check_ok[0]))
+				session->internals.ocsp_check_ok[i] = 1;
+
+			if (ret < 0) {
+				CLEAR_CERTS;
+				return gnutls_assert_val(ret);
+			}
 		}
-		issuer_deinit = 1;
-	}
-
-	ret =
-	    check_ocsp_response(session, peer_certificate_list[0], issuer,
-				&resp, &ocsp_status);
-	if (issuer_deinit != 0)
-		gnutls_x509_crt_deinit(issuer);
-
-	if (ret < 0) {
-		CLEAR_CERTS;
-		return gnutls_assert_val(ret);
+		i++;
+		session->internals.ocsp_check_size++;
 	}
 #endif
 
