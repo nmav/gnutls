@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.12 of GnuTLS.
+3.3.13 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.12</title>
+<title>GnuTLS 3.3.13</title>
 
-<meta name="description" content="GnuTLS 3.3.12">
-<meta name="keywords" content="GnuTLS 3.3.12">
+<meta name="description" content="GnuTLS 3.3.13">
+<meta name="keywords" content="GnuTLS 3.3.13">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.3.12</h1>
+<h1 class="settitle" align="center">GnuTLS 3.3.13</h1>
 
 
 
@@ -361,7 +361,8 @@ dl {
       <li><a name="toc-Common-types-1" href="#Common-types">6.1.3 Common types</a></li>
       <li><a name="toc-Debugging-and-auditing-1" href="#Debugging-and-auditing">6.1.4 Debugging and auditing</a></li>
       <li><a name="toc-Thread-safety-1" href="#Thread-safety">6.1.5 Thread safety</a></li>
-      <li><a name="toc-Callback-functions-1" href="#Callback-functions">6.1.6 Callback functions</a></li>
+      <li><a name="toc-Sessions-and-fork-1" href="#Sessions-and-fork">6.1.6 Sessions and fork</a></li>
+      <li><a name="toc-Callback-functions-1" href="#Callback-functions">6.1.7 Callback functions</a></li>
     </ul></li>
     <li><a name="toc-Preparation-1" href="#Preparation">6.2 Preparation</a>
     <ul class="no-bullet">
@@ -503,7 +504,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 29 July 2014 for version
-3.3.12 of GnuTLS.
+3.3.13 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -7784,7 +7785,9 @@ and the manpages is recommended.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Thread-safety" accesskey="5">Thread safety</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Callback-functions" accesskey="6">Callback functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Sessions-and-fork" accesskey="6">Sessions and fork</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Callback-functions" accesskey="7">Callback functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -7821,8 +7824,8 @@ and/or verify the indentity of the peer. The information stored in
 the credentials structures is initialized once and then can be 
 shared by many <acronym>TLS</acronym> sessions.
 </p>
-<p>A <acronym>GnuTLS</acronym> session contains all the required information
-to handle one secure connection. The session communicates with the
+<p>A <acronym>GnuTLS</acronym> session contains all the required state and 
+information to handle one secure connection. The session communicates with the
 peers using the provided functions of the transport layer.
 Every session has a unique session ID shared with the peer.
 </p>
@@ -7980,7 +7983,7 @@ void (*gnutls_audit_log_func)( gnutls_session_t, const char*);
 <a name="Thread-safety"></a>
 <div class="header">
 <p>
-Next: <a href="#Callback-functions" accesskey="n" rel="next">Callback functions</a>, Previous: <a href="#Debugging-and-auditing" accesskey="p" rel="prev">Debugging and auditing</a>, Up: <a href="#Introduction-to-the-library" accesskey="u" rel="up">Introduction to the library</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Sessions-and-fork" accesskey="n" rel="next">Sessions and fork</a>, Previous: <a href="#Debugging-and-auditing" accesskey="p" rel="prev">Debugging and auditing</a>, Up: <a href="#Introduction-to-the-library" accesskey="u" rel="up">Introduction to the library</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Thread-safety-1"></a>
 <h4 class="subsection">6.1.5 Thread safety</h4>
@@ -7993,6 +7996,13 @@ sufficient to support a server which handles several sessions per thread.
 If, however, an object needs to be shared across threads then access must be 
 protected with a mutex. Read-only access to objects, for example the
 credentials holding structures, is also thread-safe. 
+</p>
+<p>A <code>gnutls_session_t</code> object can be shared by two threads, one sending,
+the other receiving. In that case rehandshakes, if required,
+must only be handled by a single thread being active. The termination of a session 
+should be handled, either by a single thread being active, or by the sender thread 
+using <a href="#gnutls_005fbye">gnutls_bye</a> with <code>GNUTLS_SHUT_WR</code> and the receiving thread 
+waiting for a return value of zero.
 </p>
 <p>The random generator of the cryptographic back-end, utilizes mutex locks (e.g., pthreads on GNU/Linux and CriticalSection on Windows)
 which are setup by <acronym>GnuTLS</acronym> on library initialization. Prior to version 3.3.0
@@ -8042,13 +8052,30 @@ system.
 </p></dd></dl>
 
 <hr>
+<a name="Sessions-and-fork"></a>
+<div class="header">
+<p>
+Next: <a href="#Callback-functions" accesskey="n" rel="next">Callback functions</a>, Previous: <a href="#Thread-safety" accesskey="p" rel="prev">Thread safety</a>, Up: <a href="#Introduction-to-the-library" accesskey="u" rel="up">Introduction to the library</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Sessions-and-fork-1"></a>
+<h4 class="subsection">6.1.6 Sessions and fork</h4>
+<a name="index-fork"></a>
+
+<p>A <code>gnutls_session_t</code> object can be shared by two processes after a fork,
+one sending, the other receiving. In that case rehandshakes, 
+cannot and must not be performed. As with threads, the termination of a session should be
+handled by the sender process using <a href="#gnutls_005fbye">gnutls_bye</a> with <code>GNUTLS_SHUT_WR</code>
+and the receiving process waiting for a return value of zero.
+</p>
+
+<hr>
 <a name="Callback-functions"></a>
 <div class="header">
 <p>
-Previous: <a href="#Thread-safety" accesskey="p" rel="prev">Thread safety</a>, Up: <a href="#Introduction-to-the-library" accesskey="u" rel="up">Introduction to the library</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#Sessions-and-fork" accesskey="p" rel="prev">Sessions and fork</a>, Up: <a href="#Introduction-to-the-library" accesskey="u" rel="up">Introduction to the library</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Callback-functions-1"></a>
-<h4 class="subsection">6.1.6 Callback functions</h4>
+<h4 class="subsection">6.1.7 Callback functions</h4>
 <a name="index-callback-functions"></a>
 
 <p>There are several cases where <acronym>GnuTLS</acronym> may need out of
@@ -38757,6 +38784,7 @@ Previous: <a href="#Function-and-Data-Index" accesskey="p" rel="prev">Function a
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-F">F</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-FDL_002c-GNU-Free-Documentation-License">FDL, GNU Free Documentation License</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Copying-Information">Copying Information</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-fork">fork</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Sessions-and-fork">Sessions and fork</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-G">G</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-generating-parameters">generating parameters</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Parameter-generation">Parameter generation</a></td></tr>

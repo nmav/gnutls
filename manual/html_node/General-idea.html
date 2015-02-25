@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 29 July 2014 for version
-3.3.12 of GnuTLS.
+3.3.13 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.12: General idea</title>
+<title>GnuTLS 3.3.13: General idea</title>
 
-<meta name="description" content="GnuTLS 3.3.12: General idea">
-<meta name="keywords" content="GnuTLS 3.3.12: General idea">
+<meta name="description" content="GnuTLS 3.3.13: General idea">
+<meta name="keywords" content="GnuTLS 3.3.13: General idea">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -188,8 +188,8 @@ and/or verify the indentity of the peer. The information stored in
 the credentials structures is initialized once and then can be 
 shared by many <acronym>TLS</acronym> sessions.
 </p>
-<p>A <acronym>GnuTLS</acronym> session contains all the required information
-to handle one secure connection. The session communicates with the
+<p>A <acronym>GnuTLS</acronym> session contains all the required state and 
+information to handle one secure connection. The session communicates with the
 peers using the provided functions of the transport layer.
 Every session has a unique session ID shared with the peer.
 </p>

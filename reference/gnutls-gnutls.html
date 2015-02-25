@@ -10601,8 +10601,11 @@ tell you whether a file descriptor should be selected for either
 reading or writing, <a class="link" href="gnutls-gnutls.html#gnutls-record-get-direction" title="gnutls_record_get_direction ()"><code class="function">gnutls_record_get_direction()</code></a> returns 0 if the
 interrupted function was trying to read data, and 1 if it was
 trying to write data.</p>
+<p>This function's output is unreliable if you are using the
+<em class="parameter"><code>session</code></em>
+ in different threads, for sending and receiving.</p>
 <div class="refsect3">
-<a name="id-1.2.4.6.211.5"></a><h4>Parameters</h4>
+<a name="id-1.2.4.6.211.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -10617,7 +10620,7 @@ trying to write data.</p>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.4.6.211.6"></a><h4>Returns</h4>
+<a name="id-1.2.4.6.211.7"></a><h4>Returns</h4>
 <p> 0 if trying to read data, 1 if trying to write data.</p>
 <p></p>
 </div>
@@ -11208,7 +11211,8 @@ gnutls_session_get_data (<em class="parameter"><code><a class="link" href="gnutl
 <p>Returns all session parameters needed to be stored to support resumption.
 The client should call this, and store the returned session data. A session
 may be resumed later by calling <a class="link" href="gnutls-gnutls.html#gnutls-session-set-data" title="gnutls_session_set_data ()"><code class="function">gnutls_session_set_data()</code></a>.  
-This function must be called after a successful handshake.</p>
+This function must be called after a successful (full) handshake. It should
+not be used in resumed sessions --see <a class="link" href="gnutls-gnutls.html#gnutls-session-is-resumed" title="gnutls_session_is_resumed ()"><code class="function">gnutls_session_is_resumed()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.4.6.225.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -11252,11 +11256,12 @@ gnutls_session_get_data2 (<em class="parameter"><code><a class="link" href="gnut
 <p>Returns all session parameters needed to be stored to support resumption.
 The client should call this, and store the returned session data. A session
 may be resumed later by calling <a class="link" href="gnutls-gnutls.html#gnutls-session-set-data" title="gnutls_session_set_data ()"><code class="function">gnutls_session_set_data()</code></a>.  
-This function must be called after a successful handshake. 
-The returned <em class="parameter"><code>data</code></em>
+This function must be called after a successful (full) handshake. It should
+not be used in resumed sessions --see <a class="link" href="gnutls-gnutls.html#gnutls-session-is-resumed" title="gnutls_session_is_resumed ()"><code class="function">gnutls_session_is_resumed()</code></a>.</p>
+<p>The returned <em class="parameter"><code>data</code></em>
  are allocated and must be released using <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p>
 <div class="refsect3">
-<a name="id-1.2.4.6.226.5"></a><h4>Parameters</h4>
+<a name="id-1.2.4.6.226.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -11278,7 +11283,7 @@ The returned <em class="parameter"><code>data</code></em>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.4.6.226.6"></a><h4>Returns</h4>
+<a name="id-1.2.4.6.226.7"></a><h4>Returns</h4>
 <p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise
 an error code is returned.</p>
 <p></p>
@@ -15370,7 +15375,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.3.11"
+<pre class="programlisting">#define GNUTLS_VERSION "3.3.13"
 </pre>
 <p>
 </p>
@@ -15394,7 +15399,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x03030b
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x03030d
 </pre>
 <p>
 </p>
@@ -15402,7 +15407,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 11
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 13
 </pre>
 <p>
 </p>
