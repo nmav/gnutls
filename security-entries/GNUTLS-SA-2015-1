@@ -1,0 +1,12 @@
+    <td><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0282">
+	CVE-2015-0282</a>
+      </td>
+    <td>Signature forgery</td>
+    <td>This issue only affects versions of GnuTLS prior to 3.1.0 (released in 2012).
+    These versions don't verify the RSA PKCS #1 signature algorithm to
+    match the signature algorithm in the certificate, leading to a potential
+    downgrade to a disallowed algorithm, such as MD5, without detecting it.<br>
+
+      <b>Recommendation:</b> Upgrade to GnuTLS 3.1.0, or later.
+A patch will be included in gnutls_2_12_x branch for the users of that
+version that cannot upgrade.</td>

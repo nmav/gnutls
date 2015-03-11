@@ -3,7 +3,27 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2015-03-04T17:17:31+00:00</updated>
+<updated>2015-03-11T09:14:08+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2015-03-11</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2015-03-11'/>
+    <title>Signature forgery</title>
+    <updated>2015-03-11T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2015-03-11.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+<a href="http://www.gnutls.org/security.html#GNUTLS-SA-2015-1">Posted a security advisory</a> on 
+a signature forgery attack on old versions of GnuTLS.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2015-03-04</id>
@@ -452,30 +472,6 @@ href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7443">GnuT
 Released <a
 href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7418">GnuTLS
 3.3.0</a> which is the first release in the next stable branch of GnuTLS.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2014-04-07</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-04-07'/>
-    <title>GnuTLS 3.2.13 and 3.1.23</title>
-    <updated>2014-04-07T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-04-07.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Released <a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7414">GnuTLS
-3.2.13</a> which is a bugfix release in the current stable branch;
-<a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7415">GnuTLS
-3.1.23</a>, is a bug-fix release on the previous stable branch. 
 </p>
 
     </div>
