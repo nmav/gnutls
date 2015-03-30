@@ -1103,7 +1103,7 @@ certificates and a CRL.</p>
 <p>The <em class="parameter"><code>extra_certs</code></em>
  and <em class="parameter"><code>extra_certs_len</code></em>
  parameters are optional
-and both may be set to <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. If either is non-<a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>, then both must
+and both may be set to <code class="literal">NULL</code>. If either is non-<code class="literal">NULL</code>, then both must
 be set. The value for <em class="parameter"><code>extra_certs</code></em>
  is allocated
 using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
@@ -1148,29 +1148,29 @@ be verified using <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-verify-
 </tr>
 <tr>
 <td class="parameter_name"><p>chain</p></td>
-<td class="parameter_description"><p>the corresponding to key certificate chain (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>)</p></td>
+<td class="parameter_description"><p>the corresponding to key certificate chain (may be <code class="literal">NULL</code>)</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>chain_len</p></td>
-<td class="parameter_description"><p>will be updated with the number of additional (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>)</p></td>
+<td class="parameter_description"><p>will be updated with the number of additional (may be <code class="literal">NULL</code>)</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>extra_certs</p></td>
 <td class="parameter_description"><p>optional pointer to receive an array of additional
-certificates found in the PKCS12 structure (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>).</p></td>
+certificates found in the PKCS12 structure (may be <code class="literal">NULL</code>).</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>extra_certs_len</p></td>
 <td class="parameter_description"><p>will be updated with the number of additional
-certs (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>).</p></td>
+certs (may be <code class="literal">NULL</code>).</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>an optional structure to store the parsed CRL (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>).</p></td>
+<td class="parameter_description"><p>an optional structure to store the parsed CRL (may be <code class="literal">NULL</code>).</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 29 July 2014 for version
-3.3.13 of GnuTLS.
+<!-- This manual is last updated 23 March 2015 for version
+3.3.14 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.13: TLS Extension Handling</title>
+<title>GnuTLS 3.3.14: TLS Extension Handling</title>
 
-<meta name="description" content="GnuTLS 3.3.13: TLS Extension Handling">
-<meta name="keywords" content="GnuTLS 3.3.13: TLS Extension Handling">
+<meta name="description" content="GnuTLS 3.3.14: TLS Extension Handling">
+<meta name="keywords" content="GnuTLS 3.3.14: TLS Extension Handling">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -108,6 +108,7 @@ table {
   text-align: left;
   margin-left:auto;
   margin-right:auto;
+  border-spacing: 7px;
   width: 50%;
 }
 
@@ -391,6 +392,34 @@ is exported properly.
 forget to add <code>Since:</code> tags to indicate the GnuTLS version the
 API was introduced in.
 </p>
+<a name="Heartbeat-extension_002e"></a>
+<h4 class="subsubheading">Heartbeat extension.</h4>
+
+<p>One such extension is HeartBeat protocol (RFC6520:
+<a href="https://tools.ietf.org/html/rfc6520">https://tools.ietf.org/html/rfc6520</a>) implementation. To enable
+it use option &ndash;heartbeat with example client and server supplied with
+gnutls:
+</p>
+<div class="example">
+<pre class="example">./doc/credentials/gnutls-http-serv --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 \
+    --heartbeat --echo
+./src/gnutls-cli --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 localhost -p 5556 \
+    --insecure --heartbeat
+</pre></div>
+
+<p>After that pasting
+</p><div class="example">
+<pre class="example">**HEARTBEAT**
+</pre></div>
+<p>command into gnutls-cli will trigger corresponding command on the server and it will send HeartBeat Request with random length to client.
+</p>
+<p>Another way is to run capabilities check with:
+</p>
+<div class="example">
+<pre class="example">./doc/credentials/gnutls-http-serv -d 100 --heartbeat
+./src/gnutls-cli-debug localhost -p 5556
+</pre></div>
+
 <a name="Adding-a-new-Supplemental-Data-Handshake-Message"></a>
 <h4 class="subheading">Adding a new Supplemental Data Handshake Message</h4>
 
@@ -492,33 +521,6 @@ _foobar_supp_send_params(gnutls_session_t session, gnutls_buffer_st *buf)
 } gnutls_supplemental_data_format_type_t;
 </pre></div>
 
-<a name="Heartbeat-extension_002e"></a>
-<h4 class="subsubheading">Heartbeat extension.</h4>
-
-<p>One such extension is HeartBeat protocol (RFC6520:
-<a href="https://tools.ietf.org/html/rfc6520">https://tools.ietf.org/html/rfc6520</a>) implementation. To enable
-it use option &ndash;heartbeat with example client and server supplied with
-gnutls:
-</p>
-<div class="example">
-<pre class="example">./doc/credentials/gnutls-http-serv --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 \
-    --heartbeat --echo
-./src/gnutls-cli --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 localhost -p 5556 \
-    --insecure --heartbeat
-</pre></div>
-
-<p>After that pasting
-</p><div class="example">
-<pre class="example">**HEARTBEAT**
-</pre></div>
-<p>command into gnutls-cli will trigger corresponding command on the server and it will send HeartBeat Request with random length to client.
-</p>
-<p>Another way is to run capabilities check with:
-</p>
-<div class="example">
-<pre class="example">./doc/credentials/gnutls-http-serv -d 100 --heartbeat
-./src/gnutls-cli-debug localhost -p 5556
-</pre></div>
 
 <hr>
 <div class="header">

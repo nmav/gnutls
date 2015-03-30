@@ -3555,7 +3555,7 @@ If no alert has been received the returned value is undefined.</p>
 <pre class="programlisting">const <span class="returnvalue">char</span> *
 gnutls_alert_get_name (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-alert-description-t" title="enum gnutls_alert_description_t"><span class="type">gnutls_alert_description_t</span></a> alert</code></em>);</pre>
 <p>This function will return a string that describes the given alert
-number, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.  See <a class="link" href="gnutls-gnutls.html#gnutls-alert-get" title="gnutls_alert_get ()"><code class="function">gnutls_alert_get()</code></a>.</p>
+number, or <code class="literal">NULL</code>.  See <a class="link" href="gnutls-gnutls.html#gnutls-alert-get" title="gnutls_alert_get ()"><code class="function">gnutls_alert_get()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.4.6.11.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -4313,7 +4313,7 @@ list is being returned. Only the first certificate.</p>
 <div class="refsect3">
 <a name="id-1.2.4.6.36.6"></a><h4>Returns</h4>
 <p> a pointer to a <span class="type">gnutls_datum_t</span> containing our
-certificate, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> in case of an error or if no certificate
+certificate, or <code class="literal">NULL</code> in case of an error or if no certificate
 was used.</p>
 <p></p>
 </div>
@@ -4347,7 +4347,7 @@ format.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>list_size</p></td>
-<td class="parameter_description"><p>is the length of the certificate list (may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>)</p></td>
+<td class="parameter_description"><p>is the length of the certificate list (may be <code class="literal">NULL</code>)</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
@@ -4356,7 +4356,7 @@ format.</p>
 <div class="refsect3">
 <a name="id-1.2.4.6.37.7"></a><h4>Returns</h4>
 <p> a pointer to a <span class="type">gnutls_datum_t</span> containing the peer's
-certificates, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> in case of an error or if no certificate
+certificates, or <code class="literal">NULL</code> in case of an error or if no certificate
 was used.</p>
 <p></p>
 </div>
@@ -5089,7 +5089,7 @@ be used for ciphersuites that require encryption.</p>
 <p>If the certificate and the private key are given in PEM encoding
 then the strings that hold their values must be null terminated.</p>
 <p>The <em class="parameter"><code>key</code></em>
- may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if you are using a sign callback, see
+ may be <code class="literal">NULL</code> if you are using a sign callback, see
 <code class="function">gnutls_sign_callback_set()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.4.6.55.8"></a><h4>Parameters</h4>
@@ -5112,7 +5112,7 @@ then the strings that hold their values must be null terminated.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>is the private key, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a></p></td>
+<td class="parameter_description"><p>is the private key, or <code class="literal">NULL</code></p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5528,7 +5528,7 @@ gnutls_certificate_type_get_name (<em class="parameter"><code><a class="link" hr
 <div class="refsect3">
 <a name="id-1.2.4.6.64.6"></a><h4>Returns</h4>
 <p> a string that contains the name of the specified
-certificate type, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> in case of unknown types.</p>
+certificate type, or <code class="literal">NULL</code> in case of unknown types.</p>
 <p></p>
 </div>
 </div>
@@ -5690,7 +5690,7 @@ key usage), use <code class="function">gnutls_certificate_verify_peers()</code>.
 </tr>
 <tr>
 <td class="parameter_name"><p>hostname</p></td>
-<td class="parameter_description"><p>is the expected name of the peer; may be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a></p></td>
+<td class="parameter_description"><p>is the expected name of the peer; may be <code class="literal">NULL</code></p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5726,7 +5726,7 @@ gnutls_check_version (<em class="parameter"><code>const <span class="type">char<
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>req_version</p></td>
-<td class="parameter_description"><p>version string to compare with, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p></td>
+<td class="parameter_description"><p>version string to compare with, or <code class="literal">NULL</code>.</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -5736,8 +5736,8 @@ gnutls_check_version (<em class="parameter"><code>const <span class="type">char<
 <p> Check that the version of the library is at
 minimum the one given as a string in <em class="parameter"><code>req_version</code></em>
 and return the
-actual version string of the library; return <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if the
-condition is not met.  If <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> is passed to this function no
+actual version string of the library; return <code class="literal">NULL</code> if the
+condition is not met.  If <code class="literal">NULL</code> is passed to this function no
 check is done and only the version string is returned.</p>
 <p></p>
 </div>
@@ -5850,7 +5850,7 @@ gnutls_cipher_get_name (<em class="parameter"><code><a class="link" href="gnutls
 <div class="refsect3">
 <a name="id-1.2.4.6.73.6"></a><h4>Returns</h4>
 <p> a pointer to a string that contains the name of the
-specified cipher, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+specified cipher, or <code class="literal">NULL</code>.</p>
 <p></p>
 </div>
 </div>
@@ -5910,7 +5910,7 @@ SSL depending of the protocol in use.</p>
 <div class="refsect3">
 <a name="id-1.2.4.6.75.6"></a><h4>Returns</h4>
 <p> a string that contains the name of a TLS cipher suite,
-specified by the given algorithms, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+specified by the given algorithms, or <code class="literal">NULL</code>.</p>
 <p></p>
 </div>
 </div>
@@ -5949,22 +5949,22 @@ idx=1 and so on until the function returns NULL.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>kx</p></td>
-<td class="parameter_description"><p>output variable indicating key exchange algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p></td>
+<td class="parameter_description"><p>output variable indicating key exchange algorithm, or <code class="literal">NULL</code>.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>cipher</p></td>
-<td class="parameter_description"><p>output variable indicating cipher, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p></td>
+<td class="parameter_description"><p>output variable indicating cipher, or <code class="literal">NULL</code>.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>mac</p></td>
-<td class="parameter_description"><p>output variable indicating MAC algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p></td>
+<td class="parameter_description"><p>output variable indicating MAC algorithm, or <code class="literal">NULL</code>.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>min_version</p></td>
-<td class="parameter_description"><p>output variable indicating TLS protocol version, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p></td>
+<td class="parameter_description"><p>output variable indicating TLS protocol version, or <code class="literal">NULL</code>.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
@@ -5976,7 +5976,7 @@ idx=1 and so on until the function returns NULL.</p>
 cipher suite, and set the information
 about the cipher suite in the output variables.  If <em class="parameter"><code>idx</code></em>
 is out of
-bounds, <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> is returned.</p>
+bounds, <code class="literal">NULL</code> is returned.</p>
 <p></p>
 </div>
 </div>
@@ -6060,7 +6060,7 @@ gnutls_compression_get_name (<em class="parameter"><code><a class="link" href="g
 <div class="refsect3">
 <a name="id-1.2.4.6.79.6"></a><h4>Returns</h4>
 <p> a pointer to a string that contains the name of the
-specified compression algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+specified compression algorithm, or <code class="literal">NULL</code>.</p>
 <p></p>
 </div>
 </div>
@@ -7123,7 +7123,7 @@ gnutls_ecc_curve_get_name (<em class="parameter"><code><a class="link" href="gnu
 <div class="refsect3">
 <a name="id-1.2.4.6.111.6"></a><h4>Returns</h4>
 <p> a string that contains the name of the specified
-curve or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+curve or <code class="literal">NULL</code>.</p>
 <p></p>
 </div>
 <p class="since">Since 3.0</p>
@@ -7588,7 +7588,7 @@ has asked to resume a session, but the server couldn't, then a
 full handshake will be performed.</p>
 <p>The non-fatal errors expected by this function are:
 <a class="link" href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS" title="GNUTLS_E_INTERRUPTED"><code class="literal">GNUTLS_E_INTERRUPTED</code></a>, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS" title="GNUTLS_E_AGAIN"><code class="literal">GNUTLS_E_AGAIN</code></a>, 
-<a class="link" href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS" title="GNUTLS_E_WARNING_ALERT_RECEIVED"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a>, and <code class="literal">GNUTLS_GOT_APPLICATION_DATA</code>,
+<a class="link" href="gnutls-gnutls.html#GNUTLS-E-WARNING-ALERT-RECEIVED:CAPS" title="GNUTLS_E_WARNING_ALERT_RECEIVED"><code class="literal">GNUTLS_E_WARNING_ALERT_RECEIVED</code></a>, and <a class="link" href="gnutls-gnutls.html#GNUTLS-E-GOT-APPLICATION-DATA:CAPS" title="GNUTLS_E_GOT_APPLICATION_DATA"><code class="literal">GNUTLS_E_GOT_APPLICATION_DATA</code></a>,
 the latter only in a case of rehandshake.</p>
 <p>The former two interrupt the handshake procedure due to the lower
 layer being interrupted, and the latter because of an alert that
@@ -8420,7 +8420,7 @@ gnutls_kx_get_name (<em class="parameter"><code><a class="link" href="gnutls-gnu
 <div class="refsect3">
 <a name="id-1.2.4.6.149.6"></a><h4>Returns</h4>
 <p> a pointer to a string that contains the name of the
-specified key exchange algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+specified key exchange algorithm, or <code class="literal">NULL</code>.</p>
 <p></p>
 </div>
 </div>
@@ -8595,7 +8595,7 @@ gnutls_mac_get_name (<em class="parameter"><code><a class="link" href="gnutls-gn
 <div class="refsect3">
 <a name="id-1.2.4.6.156.6"></a><h4>Returns</h4>
 <p> a string that contains the name of the specified MAC
-algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+algorithm, or <code class="literal">NULL</code>.</p>
 <p></p>
 </div>
 </div>
@@ -9112,7 +9112,7 @@ gnutls_pk_algorithm_get_name (<em class="parameter"><code><a class="link" href="
 <div class="refsect3">
 <a name="id-1.2.4.6.168.6"></a><h4>Returns</h4>
 <p> a string that contains the name of the specified public
-key algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+key algorithm, or <code class="literal">NULL</code>.</p>
 <p></p>
 </div>
 </div>
@@ -9209,7 +9209,7 @@ gnutls_pk_get_name (<em class="parameter"><code><a class="link" href="gnutls-gnu
 <div class="refsect3">
 <a name="id-1.2.4.6.171.6"></a><h4>Returns</h4>
 <p> a pointer to a string that contains the name of the
-specified public key algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+specified public key algorithm, or <code class="literal">NULL</code>.</p>
 <p></p>
 </div>
 <p class="since">Since 2.6.0</p>
@@ -9645,8 +9645,11 @@ enabled, SSL3.0 is disabled, and libz compression enabled.</p>
 <p>"NONE:+VERS-TLS-ALL:+AES-128-CBC:+ECDHE-RSA:+SHA1:+COMP-NULL:+SIGN-RSA-SHA1:+CURVE-SECP256R1", </p>
 <p>"SECURE256:+SECURE128",</p>
 <p>Note that "NORMAL:<code class="literal">COMPAT</code>" is the most compatible mode.</p>
+<p>A <code class="literal">NULL</code> <em class="parameter"><code>priorities</code></em>
+ string indicates the default priorities to be
+used (this is available since GnuTLS 3.3.0).</p>
 <div class="refsect3">
-<a name="id-1.2.4.6.181.28"></a><h4>Parameters</h4>
+<a name="id-1.2.4.6.181.29"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -9661,7 +9664,7 @@ enabled, SSL3.0 is disabled, and libz compression enabled.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>priorities</p></td>
-<td class="parameter_description"><p>is a string describing priorities</p></td>
+<td class="parameter_description"><p>is a string describing priorities (may be <code class="literal">NULL</code>)</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -9673,7 +9676,7 @@ enabled, SSL3.0 is disabled, and libz compression enabled.</p>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.4.6.181.29"></a><h4>Returns</h4>
+<a name="id-1.2.4.6.181.30"></a><h4>Returns</h4>
 <p> On syntax error <a class="link" href="gnutls-gnutls.html#GNUTLS-E-INVALID-REQUEST:CAPS" title="GNUTLS_E_INVALID_REQUEST"><code class="literal">GNUTLS_E_INVALID_REQUEST</code></a> is returned,
 <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, or an error code.</p>
 <p></p>
@@ -9887,7 +9890,7 @@ gnutls_protocol_get_name (<em class="parameter"><code><a class="link" href="gnut
 <div class="refsect3">
 <a name="id-1.2.4.6.187.6"></a><h4>Returns</h4>
 <p> a string that contains the name of the specified TLS
-version (e.g., "TLS1.0"), or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+version (e.g., "TLS1.0"), or <code class="literal">NULL</code>.</p>
 <p></p>
 </div>
 </div>
@@ -10017,7 +10020,7 @@ authentication and in case of a client.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.4.6.192.6"></a><h4>Returns</h4>
-<p> the identity hint of the peer, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> in case of an error.</p>
+<p> the identity hint of the peer, or <code class="literal">NULL</code> in case of an error.</p>
 <p></p>
 </div>
 <p class="since">Since 2.4.0</p>
@@ -10092,7 +10095,7 @@ case of a server.</p>
 </div>
 <div class="refsect3">
 <a name="id-1.2.4.6.195.6"></a><h4>Returns</h4>
-<p> the username of the peer, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> in case of an error.</p>
+<p> the username of the peer, or <code class="literal">NULL</code> in case of an error.</p>
 <p></p>
 </div>
 </div>
@@ -10786,7 +10789,7 @@ function.  See the <code class="function">send()</code> documentation for more i
 then <a class="link" href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS" title="GNUTLS_E_INTERRUPTED"><code class="literal">GNUTLS_E_INTERRUPTED</code></a> will be returned. If
 <a class="link" href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS" title="GNUTLS_E_INTERRUPTED"><code class="literal">GNUTLS_E_INTERRUPTED</code></a> or <a class="link" href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS" title="GNUTLS_E_AGAIN"><code class="literal">GNUTLS_E_AGAIN</code></a> is returned, you must
 call this function again, with the exact same parameters; alternatively
-you could provide a <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> pointer for data, and 0 for
+you could provide a <code class="literal">NULL</code> pointer for data, and 0 for
 size. cf. <a class="link" href="gnutls-gnutls.html#gnutls-record-get-direction" title="gnutls_record_get_direction ()"><code class="function">gnutls_record_get_direction()</code></a>. </p>
 <p>Note that in DTLS this function will return the <a class="link" href="gnutls-gnutls.html#GNUTLS-E-LARGE-PACKET:CAPS" title="GNUTLS_E_LARGE_PACKET"><code class="literal">GNUTLS_E_LARGE_PACKET</code></a>
 error code if the send data exceed the data MTU value - as returned
@@ -10974,7 +10977,7 @@ gnutls_sec_param_get_name (<em class="parameter"><code><a class="link" href="gnu
 <div class="refsect3">
 <a name="id-1.2.4.6.219.6"></a><h4>Returns</h4>
 <p> a pointer to a string that contains the name of the
-specified security level, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+specified security level, or <code class="literal">NULL</code>.</p>
 <p></p>
 </div>
 <p class="since">Since 2.12.0</p>
@@ -11401,7 +11404,7 @@ gnutls_session_get_ptr (<em class="parameter"><code><a class="link" href="gnutls
 <div class="refsect3">
 <a name="id-1.2.4.6.229.6"></a><h4>Returns</h4>
 <p> the user given pointer from the session structure, or
-<a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if it was never set.</p>
+<code class="literal">NULL</code> if it was never set.</p>
 <p></p>
 </div>
 </div>
@@ -11770,17 +11773,11 @@ error code.</p>
 <a name="gnutls-set-default-priority"></a><h3>gnutls_set_default_priority ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>
 gnutls_set_default_priority (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
-<p>Sets some default priority on the ciphers, key exchange methods,
-macs and compression methods.</p>
-<p>This typically sets a default priority that is considered
-sufficiently secure to establish encrypted sessions.</p>
-<p>This function is kept around for backwards compatibility, but
-because of its wide use it is still fully supported.  If you wish
-to allow users to provide a string that specify which ciphers to
-use (which is recommended), you should use
-<a class="link" href="gnutls-gnutls.html#gnutls-priority-set-direct" title="gnutls_priority_set_direct ()"><code class="function">gnutls_priority_set_direct()</code></a> or <a class="link" href="gnutls-gnutls.html#gnutls-priority-set" title="gnutls_priority_set ()"><code class="function">gnutls_priority_set()</code></a> instead.</p>
+<p>Sets the default priority on the ciphers, key exchange methods,
+macs and compression methods. For more fine-tuning you could
+use <a class="link" href="gnutls-gnutls.html#gnutls-priority-set-direct" title="gnutls_priority_set_direct ()"><code class="function">gnutls_priority_set_direct()</code></a> or <a class="link" href="gnutls-gnutls.html#gnutls-priority-set" title="gnutls_priority_set ()"><code class="function">gnutls_priority_set()</code></a> instead.</p>
 <div class="refsect3">
-<a name="id-1.2.4.6.239.7"></a><h4>Parameters</h4>
+<a name="id-1.2.4.6.239.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -11795,7 +11792,7 @@ use (which is recommended), you should use
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.4.6.239.8"></a><h4>Returns</h4>
+<a name="id-1.2.4.6.239.6"></a><h4>Returns</h4>
 <p> <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> on success, or an error code.</p>
 <p></p>
 </div>
@@ -11960,7 +11957,7 @@ gnutls_sign_get_name (<em class="parameter"><code><a class="link" href="gnutls-g
 <div class="refsect3">
 <a name="id-1.2.4.6.244.6"></a><h4>Returns</h4>
 <p> a string that contains the name of the specified sign
-algorithm, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+algorithm, or <code class="literal">NULL</code>.</p>
 <p></p>
 </div>
 </div>
@@ -12668,7 +12665,7 @@ It requires the space of the key material to be pre-allocated (should be at leas
 
 and <em class="parameter"><code>server_salt</code></em>
  are convenience datums that point inside the key material. They may
-be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+be <code class="literal">NULL</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.4.6.263.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -13168,7 +13165,7 @@ negative error value.</p>
 gnutls_strerror (<em class="parameter"><code><span class="type">int</span> error</code></em>);</pre>
 <p>This function is similar to strerror.  The difference is that it
 accepts an error number returned by a gnutls function; In case of
-an unknown error a descriptive string is sent instead of <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+an unknown error a descriptive string is sent instead of <code class="literal">NULL</code>.</p>
 <p>Error codes are always a negative error code.</p>
 <div class="refsect3">
 <a name="id-1.2.4.6.274.6"></a><h4>Parameters</h4>
@@ -15375,7 +15372,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.3.13"
+<pre class="programlisting">#define GNUTLS_VERSION "3.3.14"
 </pre>
 <p>
 </p>
@@ -15399,7 +15396,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x03030d
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x03030e
 </pre>
 <p>
 </p>
@@ -15407,7 +15404,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 13
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 14
 </pre>
 <p>
 </p>

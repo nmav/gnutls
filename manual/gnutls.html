@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 29 July 2014 for version
-3.3.13 of GnuTLS.
+<!-- This manual is last updated 23 March 2015 for version
+3.3.14 of GnuTLS.
 
 Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.13</title>
+<title>GnuTLS 3.3.14</title>
 
-<meta name="description" content="GnuTLS 3.3.13">
-<meta name="keywords" content="GnuTLS 3.3.13">
+<meta name="description" content="GnuTLS 3.3.14">
+<meta name="keywords" content="GnuTLS 3.3.14">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -106,6 +106,7 @@ table {
   text-align: left;
   margin-left:auto;
   margin-right:auto;
+  border-spacing: 7px;
   width: 50%;
 }
 
@@ -153,7 +154,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.3.13</h1>
+<h1 class="settitle" align="center">GnuTLS 3.3.14</h1>
 
 
 
@@ -503,8 +504,8 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <a name="GnuTLS"></a>
 <h1 class="top">GnuTLS</h1>
 
-<p>This manual is last updated 29 July 2014 for version
-3.3.13 of GnuTLS.
+<p>This manual is last updated 23 March 2015 for version
+3.3.14 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
@@ -5222,7 +5223,7 @@ This command specifies the protocol for the service set in the DANE data.
 <a name="danetool-app_002dproto"></a></p><a name="app_002dproto-option"></a>
 <h4 class="subsubheading">app-proto option</h4>
 
-<p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, smtp, imap)&rdquo; option.
+<p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, ftp, smtp, imap)&rdquo; option.
 This option takes a string argument.
 When the server&rsquo;s certificate isn&rsquo;t provided danetool will connect to the server to obtain the certificate. In that case it is required to known the protocol to talk with the server prior to initiating the TLS handshake.
 <a name="danetool-ca"></a></p><a name="ca-option-1"></a>
@@ -9815,7 +9816,9 @@ and the certificate verification profile is set to GNUTLS_PROFILE_LOW (80-bits).
 security level 192-bit or more.
 The message authenticity security level is of 128 bits or more,
 and the certificate verification profile is set to GNUTLS_PROFILE_HIGH (128-bits).</td></tr>
-<tr><td width="20%">SECURE256</td><td width="70%">Currently alias for SECURE192.</td></tr>
+<tr><td width="20%">SECURE256</td><td width="70%">Currently alias for SECURE192. This option, will enable ciphers which use a
+256-bit key but, due to limitations of the TLS protocol, the overall security
+level will be 192-bits (the security level depends on more factors than cipher key size).</td></tr>
 <tr><td width="20%">SUITEB128</td><td width="70%">Means all the NSA Suite B cryptography (RFC5430) ciphersuites
 with an 128 bit security level, as well as the enabling of the corresponding
 verification profile.</td></tr>
@@ -15183,9 +15186,16 @@ see <a href="#gnutls_002dcli-starttls_002dproto">the starttls-proto option docum
 <a name="gnutls_002dcli-starttls_002dproto"></a><a name="starttls_002dproto-option"></a>
 <h4 class="subheading">starttls-proto option</h4>
 
-<p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, smtp, imap)&rdquo; option.
+<p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, ftp, smtp, imap)&rdquo; option.
 This option takes a string argument.
-Specify the application layer protocol for STARTTLS. If the protocol is supported, gnutls-cli will proceed to the TLS negotiation.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> must not appear in combination with any of the following options:
+starttls.
+</li></ul>
+
+<p>Specify the application layer protocol for STARTTLS. If the protocol is supported, gnutls-cli will proceed to the TLS negotiation.
 <a name="gnutls_002dcli-dh_002dbits"></a></p><a name="dh_002dbits-option"></a>
 <h4 class="subheading">dh-bits option</h4>
 
@@ -16159,6 +16169,34 @@ is exported properly.
 forget to add <code>Since:</code> tags to indicate the GnuTLS version the
 API was introduced in.
 </p>
+<a name="Heartbeat-extension_002e"></a>
+<h4 class="subsubheading">Heartbeat extension.</h4>
+
+<p>One such extension is HeartBeat protocol (RFC6520:
+<a href="https://tools.ietf.org/html/rfc6520">https://tools.ietf.org/html/rfc6520</a>) implementation. To enable
+it use option &ndash;heartbeat with example client and server supplied with
+gnutls:
+</p>
+<div class="example">
+<pre class="example">./doc/credentials/gnutls-http-serv --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 \
+    --heartbeat --echo
+./src/gnutls-cli --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 localhost -p 5556 \
+    --insecure --heartbeat
+</pre></div>
+
+<p>After that pasting
+</p><div class="example">
+<pre class="example">**HEARTBEAT**
+</pre></div>
+<p>command into gnutls-cli will trigger corresponding command on the server and it will send HeartBeat Request with random length to client.
+</p>
+<p>Another way is to run capabilities check with:
+</p>
+<div class="example">
+<pre class="example">./doc/credentials/gnutls-http-serv -d 100 --heartbeat
+./src/gnutls-cli-debug localhost -p 5556
+</pre></div>
+
 <a name="Adding-a-new-Supplemental-Data-Handshake-Message"></a>
 <h4 class="subheading">Adding a new Supplemental Data Handshake Message</h4>
 
@@ -16260,33 +16298,6 @@ _foobar_supp_send_params(gnutls_session_t session, gnutls_buffer_st *buf)
 } gnutls_supplemental_data_format_type_t;
 </pre></div>
 
-<a name="Heartbeat-extension_002e"></a>
-<h4 class="subsubheading">Heartbeat extension.</h4>
-
-<p>One such extension is HeartBeat protocol (RFC6520:
-<a href="https://tools.ietf.org/html/rfc6520">https://tools.ietf.org/html/rfc6520</a>) implementation. To enable
-it use option &ndash;heartbeat with example client and server supplied with
-gnutls:
-</p>
-<div class="example">
-<pre class="example">./doc/credentials/gnutls-http-serv --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 \
-    --heartbeat --echo
-./src/gnutls-cli --priority &quot;NORMAL:-CIPHER-ALL:+NULL&quot; -d 100 localhost -p 5556 \
-    --insecure --heartbeat
-</pre></div>
-
-<p>After that pasting
-</p><div class="example">
-<pre class="example">**HEARTBEAT**
-</pre></div>
-<p>command into gnutls-cli will trigger corresponding command on the server and it will send HeartBeat Request with random length to client.
-</p>
-<p>Another way is to run capabilities check with:
-</p>
-<div class="example">
-<pre class="example">./doc/credentials/gnutls-http-serv -d 100 --heartbeat
-./src/gnutls-cli-debug localhost -p 5556
-</pre></div>
 
 <hr>
 <a name="Cryptographic-Backend"></a>
@@ -16694,8 +16705,8 @@ specific product using the library, and typically in the case of software they a
 </li></ul>
 
 <p>Obtaining such a certification is an expensive and elaborate job that has no immediate value for a continuously developed free software library (as the certification is tied to the
-particular version tested), and in the case of algorithm verification of FIPS 140-2 it doesn&rsquo;t make much sense as the library is freely available and anyone can verify the correctness
-of algorithm implementation. As such we are not actively pursuing this kind of certification. If you are, nevertheless, interested, see <a href="#Commercial-Support">Commercial Support</a>.
+particular version tested). While, as a free software project, we are not actively pursuing this kind of certification, GnuTLS has been FIPS-140-2 certified in several systems by
+third parties. If you are, interested, see <a href="#Commercial-Support">Commercial Support</a>.
 </p>
 <hr>
 <a name="Error-codes"></a>
@@ -20577,7 +20588,7 @@ Once the last available index is crossed then
 <dt><a name="index-gnutls_005fpriority_005finit"></a>Function: <em>int</em> <strong>gnutls_priority_init</strong> <em>(gnutls_priority_t * <var>priority_cache</var>, const char * <var>priorities</var>, const char ** <var>err_pos</var>)</em></dt>
 <dd><p><var>priority_cache</var>: is a <code>gnutls_prioritity_t</code>  structure.
 </p>
-<p><var>priorities</var>: is a string describing priorities
+<p><var>priorities</var>: is a string describing priorities (may be <code>NULL</code> )
 </p>
 <p><var>err_pos</var>: In case of an error this will have the position in the string the error occurred
 </p>
@@ -20655,6 +20666,9 @@ enabled, SSL3.0 is disabled, and libz compression enabled.
 <p>&quot;SECURE256:+SECURE128&quot;,
 </p>
 <p>Note that &quot;NORMAL:<code>COMPAT</code> &quot; is the most compatible mode.
+</p>
+<p>A <code>NULL</code>   <code>priorities</code> string indicates the default priorities to be
+used (this is available since GnuTLS 3.3.0).
 </p>
 <p><strong>Returns:</strong> On syntax error <code>GNUTLS_E_INVALID_REQUEST</code>  is returned,
 <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
@@ -21921,17 +21935,9 @@ error code.
 <dt><a name="index-gnutls_005fset_005fdefault_005fpriority"></a>Function: <em>int</em> <strong>gnutls_set_default_priority</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
 </p>
-<p>Sets some default priority on the ciphers, key exchange methods,
-macs and compression methods.
-</p>
-<p>This typically sets a default priority that is considered
-sufficiently secure to establish encrypted sessions.
-</p>
-<p>This function is kept around for backwards compatibility, but
-because of its wide use it is still fully supported.  If you wish
-to allow users to provide a string that specify which ciphers to
-use (which is recommended), you should use
-<code>gnutls_priority_set_direct()</code>  or <code>gnutls_priority_set()</code>  instead.
+<p>Sets the default priority on the ciphers, key exchange methods,
+macs and compression methods. For more fine-tuning you could
+use <code>gnutls_priority_set_direct()</code>  or <code>gnutls_priority_set()</code>  instead.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
 </p></dd></dl>
