@@ -50,6 +50,11 @@
     <td>3.0.0</td>
     <td>Current stable release.</td>
   </tr>
+  <tr>
+    <td>3.4.x</td>
+    <td>3.4.0</td>
+    <td>Next stable release.</td>
+  </tr>
 </table>
 
 <h1>Downloading the GnuTLS library</h1>
