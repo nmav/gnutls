@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: TLS Extension Handling</title>
+<title>GnuTLS 3.4.0: TLS Extension Handling</title>
 
-<meta name="description" content="GnuTLS 3.3.14: TLS Extension Handling">
-<meta name="keywords" content="GnuTLS 3.3.14: TLS Extension Handling">
+<meta name="description" content="GnuTLS 3.4.0: TLS Extension Handling">
+<meta name="keywords" content="GnuTLS 3.4.0: TLS Extension Handling">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -189,7 +189,9 @@ using <code>_gnutls_ext_register</code> in
 the process to do so is not difficult.  Here are the steps you need to
 follow if you wish to do this yourself.  For sake of discussion, let&rsquo;s
 consider adding support for the hypothetical TLS extension
-<code>foobar</code>.
+<code>foobar</code>. The following section is about adding an extension to GnuTLS,
+for custom application extensions you should check the exported function
+<a href="Core-TLS-API.html#gnutls_005fext_005fregister">gnutls_ext_register</a>.
 </p>
 <a name="Add-configure-option-like-_002d_002denable_002dfoobar-or-_002d_002ddisable_002dfoobar_002e"></a>
 <h4 class="subsubheading">Add <code>configure</code> option like <code>--enable-foobar</code> or <code>--disable-foobar</code>.</h4>
@@ -427,12 +429,8 @@ gnutls:
 handshake messages [<em>RFC4680</em>]. This short section explains how to 
 implement a supplemental data handshake message for a given TLS extension.
 </p>
-<p>First of all, modify your extension <code>foobar</code> in the way, the that
-flags
-<code>session-&gt;security_parameters.do_send_supplemental</code>
-and
-<code>session-&gt;security_parameters.do_recv_supplemental</code>
-are set:
+<p>First of all, modify your extension <code>foobar</code> in the way, to instruct
+the handshake process to send and receive supplemental data, as shown below.
 </p>
 <div class="example">
 <pre class="example">int
@@ -440,7 +438,7 @@ _gnutls_foobar_recv_params (gnutls_session_t session, const opaque * data,
                                  size_t _data_size)
 {
    ...
-   session-&gt;security_parameters.do_recv_supplemental=1;
+   gnutls_supplemental_recv(session, 1);
    ...
 }
 
@@ -448,15 +446,25 @@ int
 _gnutls_foobar_send_params (gnutls_session_t session, gnutls_buffer_st *extdata)
 {
    ...
-   session-&gt;security_parameters.do_send_supplemental=1;
+   gnutls_supplemental_send(session, 1);
    ...
 }
 </pre></div>
 
-<p>Furthermore add the functions <code>_foobar_supp_recv_params</code>
-and <code>_foobar_supp_send_params</code> to <code>_foobar.h</code> and
-<code>_foobar.c</code>. The following example code shows how to send a
-&ldquo;Hello World&rdquo; string in the supplemental data handshake message:
+<p>Furthermore you&rsquo;ll need two new functions <code>_foobar_supp_recv_params</code>
+and <code>_foobar_supp_send_params</code>, which must conform to the following 
+prototypes.
+</p>
+<div class="example">
+<pre class="example">typedef int (*gnutls_supp_recv_func)(gnutls_session_t session,
+                                     const unsigned char *data,
+                                     size_t data_size);
+typedef int (*gnutls_supp_send_func)(gnutls_session_t session,
+                                     gnutls_buffer_t buf);
+</pre></div>
+
+<p>The following example code shows how to send a
+&ldquo;Hello World&rdquo; string in the supplemental data handshake message.
 </p>
 <div class="example">
 <pre class="example">int 
@@ -478,50 +486,20 @@ _foobar_supp_recv_params(gnutls_session_t session, const opaque *data, size_t _d
 }
 
 int 
-_foobar_supp_send_params(gnutls_session_t session, gnutls_buffer_st *buf)
+_foobar_supp_send_params(gnutls_session_t session, gnutls_buffer_t buf)
 {
    unsigned char *msg = &quot;hello world&quot;;
    int len = strlen(msg);
 
-   _gnutls_buffer_append_data_prefix(buf, 8, msg, len);
+   gnutls_buffer_append_data(buf, msg, len);
 
    return len;
 }
 </pre></div>
 
-<p>Afterwards, add the new supplemental data handshake message to
-<code>lib/gnutls_supplemental.c</code> by adding a new entry to the
-<code>_gnutls_supplemental[]</code> structure:
+<p>Afterwards, register the new supplemental data using <a href="Core-TLS-API.html#gnutls_005fsupplemental_005fregister">gnutls_supplemental_register</a>,
+at some point in your program.
 </p>
-<div class="example">
-<pre class="example">gnutls_supplemental_entry _gnutls_supplemental[] = 
-{
-  {&quot;foobar&quot;,
-   GNUTLS_SUPPLEMENTAL_FOOBAR_DATA,
-   _foobar_supp_recv_params,
-   _foobar_supp_send_params},
-  {0, 0, 0, 0}
-};
-</pre></div>
-
-<p>You have to include your <code>foobar.h</code> header file as well:
-</p>
-<div class="example">
-<pre class="example">#include &quot;foobar.h&quot;
-</pre></div>
-
-<p>Lastly, add the new supplemental data type to
-<code>lib/includes/gnutls/gnutls.h</code>:
-</p>
-<div class="example">
-<pre class="example">typedef enum
-{
-    GNUTLS_SUPPLEMENTAL_USER_MAPPING_DATA = 0,
-    GNUTLS_SUPPLEMENTAL_FOOBAR_DATA = 1
-} gnutls_supplemental_data_format_type_t;
-</pre></div>
-
-
 <hr>
 <div class="header">
 <p>

@@ -288,7 +288,7 @@ actual MTU which is set using <a class="link" href="gnutls-dtls.html#gnutls-dtls
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>session</p></td>
-<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> structure.</p></td>
+<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> type.</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -319,7 +319,7 @@ for that reason.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>session</p></td>
-<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> structure.</p></td>
+<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> type.</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -351,7 +351,7 @@ if no packets have been received.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>session</p></td>
-<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> structure.</p></td>
+<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> type.</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -424,7 +424,7 @@ the maximum MTU of your transport layer.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>session</p></td>
-<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> structure.</p></td>
+<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> type.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -464,7 +464,7 @@ would be 1500 - 40 (IPV6 header) - 8 (UDP header) = 1452.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>session</p></td>
-<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> structure.</p></td>
+<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> type.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -490,7 +490,7 @@ message from the peer is not received, the previous messages will
 be retransmitted. The total timeout is the time after which the
 handshake will be aborted with <a class="link" href="gnutls-gnutls.html#GNUTLS-E-TIMEDOUT:CAPS" title="GNUTLS_E_TIMEDOUT"><code class="literal">GNUTLS_E_TIMEDOUT</code></a>.</p>
 <p>The DTLS protocol recommends the values of 1 sec and 60 seconds
-respectively.</p>
+respectively, and these are the default values.</p>
 <p>If the retransmission timeout is zero then the handshake will operate
 in a non-blocking way, i.e., return <a class="link" href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS" title="GNUTLS_E_AGAIN"><code class="literal">GNUTLS_E_AGAIN</code></a>.</p>
 <p>To disable retransmissions set a <em class="parameter"><code>retrans_timeout</code></em>
@@ -507,7 +507,7 @@ in a non-blocking way, i.e., return <a class="link" href="gnutls-gnutls.html#GNU
 <tbody>
 <tr>
 <td class="parameter_name"><p>session</p></td>
-<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> structure.</p></td>
+<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> type.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -542,7 +542,7 @@ DTLS connection.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>session</p></td>
-<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> structure.</p></td>
+<td class="parameter_description"><p>is a <a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> type.</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>

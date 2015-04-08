@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: Priority Strings</title>
+<title>GnuTLS 3.4.0: Priority Strings</title>
 
-<meta name="description" content="GnuTLS 3.3.14: Priority Strings">
-<meta name="keywords" content="GnuTLS 3.3.14: Priority Strings">
+<meta name="description" content="GnuTLS 3.4.0: Priority Strings">
+<meta name="keywords" content="GnuTLS 3.4.0: Priority Strings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -183,11 +183,11 @@ advances while providing compatibility with old clients and servers).
 <div class="float"><a name="tab_003aprio_002dkeywords"></a>
 <table>
 <thead><tr><th width="20%">Keyword</th><th width="70%">Description</th></tr></thead>
-<tr><td width="20%">@KEYWORD</td><td width="70%">Means that a compile-time specified system configuration file<a name="DOCF13" href="#FOOT13"><sup>13</sup></a> 
+<tr><td width="20%">@KEYWORD</td><td width="70%">Means that a compile-time specified system configuration file<a name="DOCF15" href="#FOOT15"><sup>15</sup></a> 
 will be used to expand the provided keyword. That is used to impose system-specific policies.
 It may be followed by additional options that will be appended to the
 system string (e.g., &quot;@SYSTEM:+SRP&quot;). The system file should have the
-format &rsquo;KEYWORD=VALUE&rsquo;, e.g., &rsquo;SYSTEM=NORMAL:-ARCFOUR-128&rsquo;.</td></tr>
+format &rsquo;KEYWORD=VALUE&rsquo;, e.g., &rsquo;SYSTEM=NORMAL:+ARCFOUR-128&rsquo;.</td></tr>
 <tr><td width="20%">PERFORMANCE</td><td width="70%">All the known to be secure ciphersuites are enabled,
 limited to 128 bit ciphers and sorted by terms of speed
 performance. The message authenticity security level is of 64 bits or more,
@@ -228,8 +228,6 @@ verification profile.</td></tr>
 <tr><td width="20%">SUITEB192</td><td width="70%">Means all the NSA Suite B cryptography (RFC5430) ciphersuites
 with an 192 bit security level, as well as the enabling of the corresponding
 verification profile.</td></tr>
-<tr><td width="20%">EXPORT</td><td width="70%">This priority string should be treated as deprecated. 
-GnuTLS no longer negotiates 40-bit ciphers.</td></tr>
 <tr><td width="20%">NONE</td><td width="70%">Means nothing is enabled.  This disables even protocols and
 compression methods. It should be followed by the
 algorithms to be enabled.</td></tr>
@@ -237,7 +235,7 @@ algorithms to be enabled.</td></tr>
 
 <div class="float-caption"><p><strong>Table 6.3: </strong>Supported initial keywords.</p></div></div>
 <p>Unless the initial keyword is &quot;NONE&quot; the defaults (in preference
-order) are for TLS protocols TLS 1.2, TLS1.1, TLS1.0, SSL3.0; for
+order) are for TLS protocols TLS 1.2, TLS1.1, TLS1.0; for
 compression NULL; for certificate types X.509.
 In key exchange algorithms when in NORMAL or SECURE levels the
 perfect forward secrecy algorithms take precedence of the other
@@ -280,7 +278,7 @@ be prefixed with any of the following characters.
 <table>
 <thead><tr><th width="20%">Type</th><th width="70%">Keywords</th></tr></thead>
 <tr><td width="20%">Ciphers</td><td width="70%">AES-128-CBC, AES-256-CBC, AES-128-GCM, CAMELLIA-128-CBC,
-CAMELLIA-256-CBC, ARCFOUR-128, 3DES-CBC ARCFOUR-40. Catch all
+CAMELLIA-256-CBC, ARCFOUR-128, 3DES-CBC. Catch all
 name is CIPHER-ALL which will add all the algorithms from NORMAL
 priority.</td></tr>
 <tr><td width="20%">Key exchange</td><td width="70%">RSA, DHE-RSA, DHE-DSS, SRP, SRP-RSA, SRP-DSS,
@@ -293,9 +291,9 @@ priority.
 <tr><td width="20%">MAC</td><td width="70%">MD5, SHA1, SHA256, SHA384, AEAD (used with
 GCM ciphers only). All algorithms from NORMAL priority can be accessed with MAC-ALL.</td></tr>
 <tr><td width="20%">Compression algorithms</td><td width="70%">COMP-NULL, COMP-DEFLATE. Catch all is COMP-ALL.</td></tr>
-<tr><td width="20%">TLS versions</td><td width="70%">VERS-SSL3.0, VERS-TLS1.0, VERS-TLS1.1,
-VERS-TLS1.2, VERS-DTLS1.2, VERS-DTLS1.0. 
-Catch all is VERS-TLS-ALL and VERS-DTLS-ALL.</td></tr>
+<tr><td width="20%">TLS versions</td><td width="70%">VERS-TLS1.0, VERS-TLS1.1, VERS-TLS1.2,
+VERS-DTLS1.0, VERS-DTLS1.2. 
+Catch all are VERS-ALL, VERS-TLS-ALL and VERS-DTLS-ALL.</td></tr>
 <tr><td width="20%">Signature algorithms</td><td width="70%">SIGN-RSA-SHA1, SIGN-RSA-SHA224, 
 SIGN-RSA-SHA256, SIGN-RSA-SHA384, SIGN-RSA-SHA512, SIGN-DSA-SHA1, 
 SIGN-DSA-SHA224, SIGN-DSA-SHA256, SIGN-RSA-MD5. Catch all
@@ -305,7 +303,7 @@ is SIGN-ALL. This is only valid for TLS 1.2 and later.</td></tr>
 
 <div class="float-caption"><p><strong>Table 6.4: </strong>The supported algorithm keywords in priority strings.</p></div></div>
 <p>Note that the DHE key exchange methods are generally
-slower<a name="DOCF14" href="#FOOT14"><sup>14</sup></a> than their elliptic curves counterpart
+slower<a name="DOCF16" href="#FOOT16"><sup>16</sup></a> than their elliptic curves counterpart
 (ECDHE). Moreover the plain Diffie-Hellman key exchange
 requires parameters to be generated and associated with a credentials
 structure by the server (see <a href="Parameter-generation.html#Parameter-generation">Parameter generation</a>). 
@@ -329,6 +327,10 @@ firewalls. This is a non-standard TLS extension, use with care.</td></tr>
 <tr><td width="45%">%NO_EXTENSIONS</td><td width="45%">will prevent the sending of any TLS extensions in client side. Note
 that TLS 1.2 requires extensions to be used, as well as safe
 renegotiation thus this option must be used with care.</td></tr>
+<tr><td width="45%">%NO_TICKETS</td><td width="45%">will prevent the advertizing of the TLS session ticket extension.
+This is implied by the PFS keyword.</td></tr>
+<tr><td width="45%">%NO_SESSION_HASH</td><td width="45%">will prevent the advertizing the TLS extended master secret (session hash)
+extension.</td></tr>
 <tr><td width="45%">%SERVER_PRECEDENCE</td><td width="45%">The ciphersuite will be selected according to server priorities
 and not the client&rsquo;s.</td></tr>
 <tr><td width="45%">%SSL3_RECORD_VERSION</td><td width="45%">will use SSL3.0 record version in client hello.
@@ -347,6 +349,8 @@ data that are possibly controlled by an attacker are placed in
 separate records.</td></tr>
 <tr><td width="45%">%DISABLE_WILDCARDS</td><td width="45%">will disable matching wildcards when comparing hostnames
 in certificates.</td></tr>
+<tr><td width="45%">%NO_ETM</td><td width="45%">will disable the encrypt-then-mac TLS extension (RFC7366). This is
+implied by the %COMPAT keyword.</td></tr>
 <tr><td width="45%">%DISABLE_SAFE_RENEGOTIATION</td><td width="45%">will completely disable safe renegotiation
 completely.  Do not use unless you know what you are doing.</td></tr>
 <tr><td width="45%">%UNSAFE_RENEGOTIATION</td><td width="45%">will allow handshakes and re-handshakes
@@ -388,11 +392,11 @@ The default priority without the HMAC-MD5:
 Specifying RSA with AES-128-CBC:
     &quot;NONE:+VERS-TLS-ALL:+MAC-ALL:+RSA:+AES-128-CBC:+SIGN-ALL:+COMP-NULL&quot;
 
-Specifying the defaults except ARCFOUR-128:
-    &quot;NORMAL:-ARCFOUR-128&quot;
+Specifying the defaults plus ARCFOUR-128:
+    &quot;NORMAL:+ARCFOUR-128&quot;
 
-Enabling the 128-bit secure ciphers, while disabling SSL 3.0 and enabling compression:
-    &quot;SECURE128:-VERS-SSL3.0:+COMP-DEFLATE&quot;
+Enabling the 128-bit secure ciphers, while disabling TLS 1.0 and enabling compression:
+    &quot;SECURE128:-VERS-TLS1.0:+COMP-DEFLATE&quot;
 
 Enabling the 128-bit and 192-bit secure ciphers, while disabling all TLS versions 
 except TLS 1.2:
@@ -403,9 +407,9 @@ except TLS 1.2:
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT13" href="#DOCF13">(13)</a></h3>
+<h3><a name="FOOT15" href="#DOCF15">(15)</a></h3>
 <p>The default is <code>/etc/gnutls/default-priorities</code>.</p>
-<h3><a name="FOOT14" href="#DOCF14">(14)</a></h3>
+<h3><a name="FOOT16" href="#DOCF16">(16)</a></h3>
 <p>It depends on the group used.  Primes with
 lesser bits are always faster, but also easier to break.  See <a href="Selecting-cryptographic-key-sizes.html#Selecting-cryptographic-key-sizes">Selecting cryptographic key sizes</a>
 for the acceptable security levels.</p>

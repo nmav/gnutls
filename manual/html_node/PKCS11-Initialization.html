@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: PKCS11 Initialization</title>
+<title>GnuTLS 3.4.0: PKCS11 Initialization</title>
 
-<meta name="description" content="GnuTLS 3.3.14: PKCS11 Initialization">
-<meta name="keywords" content="GnuTLS 3.3.14: PKCS11 Initialization">
+<meta name="description" content="GnuTLS 3.4.0: PKCS11 Initialization">
+<meta name="keywords" content="GnuTLS 3.4.0: PKCS11 Initialization">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -163,13 +163,13 @@ Next: <a href="Accessing-objects-that-require-a-PIN.html#Accessing-objects-that-
 </div>
 <hr>
 <a name="Initialization-1"></a>
-<h4 class="subsection">5.2.1 Initialization</h4>
+<h4 class="subsection">5.3.1 Initialization</h4>
 <p>To allow all <acronym>GnuTLS</acronym> applications to transparently access smard cards
 and tokens, <acronym>PKCS</acronym> #11 is automatically initialized during the global 
 initialization (see <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a>). The initialization function, to select
 which modules to load reads certain module configuration files.
 Those are stored in <code>/etc/pkcs11/modules/</code> and 
-are the configuration files of <acronym>p11-kit</acronym><a name="DOCF10" href="#FOOT10"><sup>10</sup></a>.
+are the configuration files of <acronym>p11-kit</acronym><a name="DOCF12" href="#FOOT12"><sup>12</sup></a>.
 For example a file that will load the <acronym>OpenSC</acronym> module, could be named
 <code>/etc/pkcs11/modules/opensc.module</code> and contain the following:
 </p>
@@ -225,7 +225,7 @@ longer required, as reinitialization occurs automatically.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT10" href="#DOCF10">(10)</a></h3>
+<h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
 <p><a href="http://p11-glue.freedesktop.org/">http://p11-glue.freedesktop.org/</a></p>
 </div>
 <hr>

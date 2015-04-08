@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: Top</title>
+<title>GnuTLS 3.4.0: Top</title>
 
-<meta name="description" content="GnuTLS 3.3.14: Top">
-<meta name="keywords" content="GnuTLS 3.3.14: Top">
+<meta name="description" content="GnuTLS 3.4.0: Top">
+<meta name="keywords" content="GnuTLS 3.4.0: Top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -155,7 +155,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.3.14</h1>
+<h1 class="settitle" align="center">GnuTLS 3.4.0</h1>
 
 
 
@@ -184,7 +184,8 @@ dl {
   <li><a name="toc-Introduction-to-GnuTLS-1" href="Introduction-to-GnuTLS.html#Introduction-to-GnuTLS">2 Introduction to GnuTLS</a>
   <ul class="no-bullet">
     <li><a name="toc-Downloading-and-installing-1" href="Downloading-and-installing.html#Downloading-and-installing">2.1 Downloading and installing</a></li>
-    <li><a name="toc-Overview" href="Document-overview.html#Document-overview">2.2 Overview</a></li>
+    <li><a name="toc-Installing-for-a-software-distribution-1" href="Installing-for-a-software-distribution.html#Installing-for-a-software-distribution">2.2 Installing for a software distribution</a></li>
+    <li><a name="toc-Overview" href="Document-overview.html#Document-overview">2.3 Overview</a></li>
   </ul></li>
   <li><a name="toc-Introduction-to-TLS-and-DTLS" href="Introduction-to-TLS.html#Introduction-to-TLS">3 Introduction to <acronym>TLS</acronym> and <acronym>DTLS</acronym></a>
   <ul class="no-bullet">
@@ -285,7 +286,7 @@ dl {
       <li><a name="toc-Two-peers-and-a-trusted-third-party" href="Selecting-an-appropriate-authentication-method.html#Two-peers-and-a-trusted-third-party">4.4.3 Two peers and a trusted third party</a></li>
     </ul></li>
   </ul></li>
-  <li><a name="toc-Hardware-security-modules-and-abstract-key-types-1" href="Hardware-security-modules-and-abstract-key-types.html#Hardware-security-modules-and-abstract-key-types">5 Hardware security modules and abstract key types</a>
+  <li><a name="toc-Abstract-keys-types-and-Hardware-security-modules" href="Hardware-security-modules-and-abstract-key-types.html#Hardware-security-modules-and-abstract-key-types">5 Abstract keys types and Hardware security modules</a>
   <ul class="no-bullet">
     <li><a name="toc-Abstract-key-types-1" href="Abstract-key-types.html#Abstract-key-types">5.1 Abstract key types</a>
     <ul class="no-bullet">
@@ -293,65 +294,76 @@ dl {
       <li><a name="toc-Private-keys" href="Abstract-private-keys.html#Abstract-private-keys">5.1.2 Private keys</a></li>
       <li><a name="toc-Operations-1" href="Operations.html#Operations">5.1.3 Operations</a></li>
     </ul></li>
-    <li><a name="toc-Smart-cards-and-HSMs-1" href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs">5.2 Smart cards and HSMs</a>
+    <li><a name="toc-System-and-application_002dspecific-keys" href="Application_002dspecific-keys.html#Application_002dspecific-keys">5.2 System and application-specific keys</a>
     <ul class="no-bullet">
-      <li><a name="toc-Initialization-1" href="PKCS11-Initialization.html#PKCS11-Initialization">5.2.1 Initialization</a></li>
-      <li><a name="toc-Accessing-objects-that-require-a-PIN-1" href="Accessing-objects-that-require-a-PIN.html#Accessing-objects-that-require-a-PIN">5.2.2 Accessing objects that require a PIN</a></li>
-      <li><a name="toc-Reading-objects-1" href="Reading-objects.html#Reading-objects">5.2.3 Reading objects</a></li>
-      <li><a name="toc-Writing-objects-1" href="Writing-objects.html#Writing-objects">5.2.4 Writing objects</a></li>
-      <li><a name="toc-Using-a-PKCS-_002311-token-with-TLS" href="Using-a-PKCS11-token-with-TLS.html#Using-a-PKCS11-token-with-TLS">5.2.5 Using a <acronym>PKCS</acronym> #11 token with TLS</a></li>
-      <li><a name="toc-Invoking-p11tool" href="p11tool-Invocation.html#p11tool-Invocation">5.2.6 Invoking p11tool</a></li>
-      <li><a name="toc-p11tool-help_002fusage-_0028_002d_002dhelp_0029" href="p11tool-Invocation.html#p11tool-help_002fusage-_0028_002d_002dhelp_0029">5.2.7 p11tool help/usage (<samp>--help</samp>)</a></li>
-      <li><a name="toc-debug-option-_0028_002dd_0029" href="p11tool-Invocation.html#debug-option-_0028_002dd_0029">5.2.8 debug option (-d)</a></li>
-      <li><a name="toc-export_002dchain-option" href="p11tool-Invocation.html#export_002dchain-option">5.2.9 export-chain option</a></li>
-      <li><a name="toc-list_002dall_002dprivkeys-option" href="p11tool-Invocation.html#list_002dall_002dprivkeys-option">5.2.10 list-all-privkeys option</a></li>
-      <li><a name="toc-list_002dprivkeys-option" href="p11tool-Invocation.html#list_002dprivkeys-option">5.2.11 list-privkeys option</a></li>
-      <li><a name="toc-list_002dkeys-option" href="p11tool-Invocation.html#list_002dkeys-option">5.2.12 list-keys option</a></li>
-      <li><a name="toc-write-option" href="p11tool-Invocation.html#write-option">5.2.13 write option</a></li>
-      <li><a name="toc-generate_002drandom-option" href="p11tool-Invocation.html#generate_002drandom-option">5.2.14 generate-random option</a></li>
-      <li><a name="toc-generate_002drsa-option" href="p11tool-Invocation.html#generate_002drsa-option">5.2.15 generate-rsa option</a></li>
-      <li><a name="toc-generate_002ddsa-option" href="p11tool-Invocation.html#generate_002ddsa-option">5.2.16 generate-dsa option</a></li>
-      <li><a name="toc-generate_002decc-option" href="p11tool-Invocation.html#generate_002decc-option">5.2.17 generate-ecc option</a></li>
-      <li><a name="toc-export_002dpubkey-option" href="p11tool-Invocation.html#export_002dpubkey-option">5.2.18 export-pubkey option</a></li>
-      <li><a name="toc-mark_002dwrap-option" href="p11tool-Invocation.html#mark_002dwrap-option">5.2.19 mark-wrap option</a></li>
-      <li><a name="toc-mark_002dtrusted-option" href="p11tool-Invocation.html#mark_002dtrusted-option">5.2.20 mark-trusted option</a></li>
-      <li><a name="toc-mark_002dca-option" href="p11tool-Invocation.html#mark_002dca-option">5.2.21 mark-ca option</a></li>
-      <li><a name="toc-mark_002dprivate-option" href="p11tool-Invocation.html#mark_002dprivate-option">5.2.22 mark-private option</a></li>
-      <li><a name="toc-trusted-option" href="p11tool-Invocation.html#trusted-option">5.2.23 trusted option</a></li>
-      <li><a name="toc-ca-option" href="p11tool-Invocation.html#ca-option">5.2.24 ca option</a></li>
-      <li><a name="toc-private-option" href="p11tool-Invocation.html#private-option">5.2.25 private option</a></li>
-      <li><a name="toc-so_002dlogin-option" href="p11tool-Invocation.html#so_002dlogin-option">5.2.26 so-login option</a></li>
-      <li><a name="toc-admin_002dlogin-option" href="p11tool-Invocation.html#admin_002dlogin-option">5.2.27 admin-login option</a></li>
-      <li><a name="toc-curve-option" href="p11tool-Invocation.html#curve-option">5.2.28 curve option</a></li>
-      <li><a name="toc-sec_002dparam-option" href="p11tool-Invocation.html#sec_002dparam-option">5.2.29 sec-param option</a></li>
-      <li><a name="toc-inder-option" href="p11tool-Invocation.html#inder-option">5.2.30 inder option</a></li>
-      <li><a name="toc-inraw-option" href="p11tool-Invocation.html#inraw-option">5.2.31 inraw option</a></li>
-      <li><a name="toc-outder-option" href="p11tool-Invocation.html#outder-option">5.2.32 outder option</a></li>
-      <li><a name="toc-outraw-option" href="p11tool-Invocation.html#outraw-option">5.2.33 outraw option</a></li>
-      <li><a name="toc-set_002dpin-option" href="p11tool-Invocation.html#set_002dpin-option">5.2.34 set-pin option</a></li>
-      <li><a name="toc-set_002dso_002dpin-option" href="p11tool-Invocation.html#set_002dso_002dpin-option">5.2.35 set-so-pin option</a></li>
-      <li><a name="toc-provider-option" href="p11tool-Invocation.html#provider-option">5.2.36 provider option</a></li>
-      <li><a name="toc-p11tool-exit-status-1" href="p11tool-Invocation.html#p11tool-exit-status-1">5.2.37 p11tool exit status</a></li>
-      <li><a name="toc-p11tool-See-Also-1" href="p11tool-Invocation.html#p11tool-See-Also-1">5.2.38 p11tool See Also</a></li>
-      <li><a name="toc-p11tool-Examples-1" href="p11tool-Invocation.html#p11tool-Examples-1">5.2.39 p11tool Examples</a></li>
+      <li><a name="toc-System_002dspecific-keys" href="Application_002dspecific-keys.html#System_002dspecific-keys">5.2.1 System-specific keys</a></li>
+      <li><a name="toc-Application_002dspecific-keys-1" href="Application_002dspecific-keys.html#Application_002dspecific-keys-1">5.2.2 Application-specific keys</a></li>
     </ul></li>
-    <li><a name="toc-Trusted-Platform-Module-_0028TPM_0029" href="Trusted-Platform-Module.html#Trusted-Platform-Module">5.3 Trusted Platform Module (TPM)</a>
+    <li><a name="toc-Smart-cards-and-HSMs-1" href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs">5.3 Smart cards and HSMs</a>
     <ul class="no-bullet">
-      <li><a name="toc-Keys-in-TPM-1" href="Keys-in-TPM.html#Keys-in-TPM">5.3.1 Keys in TPM</a></li>
-      <li><a name="toc-Key-generation-1" href="Key-generation.html#Key-generation">5.3.2 Key generation</a></li>
-      <li><a name="toc-Using-keys-1" href="Using-keys.html#Using-keys">5.3.3 Using keys</a></li>
-      <li><a name="toc-Invoking-tpmtool" href="tpmtool-Invocation.html#tpmtool-Invocation">5.3.4 Invoking tpmtool</a></li>
-      <li><a name="toc-tpmtool-help_002fusage-_0028_002d_002dhelp_0029" href="tpmtool-Invocation.html#tpmtool-help_002fusage-_0028_002d_002dhelp_0029">5.3.5 tpmtool help/usage (<samp>--help</samp>)</a></li>
-      <li><a name="toc-debug-option-_0028_002dd_0029-1" href="tpmtool-Invocation.html#debug-option-_0028_002dd_0029-1">5.3.6 debug option (-d)</a></li>
-      <li><a name="toc-generate_002drsa-option-1" href="tpmtool-Invocation.html#generate_002drsa-option-1">5.3.7 generate-rsa option</a></li>
-      <li><a name="toc-user-option" href="tpmtool-Invocation.html#user-option">5.3.8 user option</a></li>
-      <li><a name="toc-system-option" href="tpmtool-Invocation.html#system-option">5.3.9 system option</a></li>
-      <li><a name="toc-sec_002dparam-option-1" href="tpmtool-Invocation.html#sec_002dparam-option-1">5.3.10 sec-param option</a></li>
-      <li><a name="toc-inder-option-1" href="tpmtool-Invocation.html#inder-option-1">5.3.11 inder option</a></li>
-      <li><a name="toc-outder-option-1" href="tpmtool-Invocation.html#outder-option-1">5.3.12 outder option</a></li>
-      <li><a name="toc-tpmtool-exit-status-1" href="tpmtool-Invocation.html#tpmtool-exit-status-1">5.3.13 tpmtool exit status</a></li>
-      <li><a name="toc-tpmtool-See-Also-1" href="tpmtool-Invocation.html#tpmtool-See-Also-1">5.3.14 tpmtool See Also</a></li>
-      <li><a name="toc-tpmtool-Examples-1" href="tpmtool-Invocation.html#tpmtool-Examples-1">5.3.15 tpmtool Examples</a></li>
+      <li><a name="toc-Initialization-1" href="PKCS11-Initialization.html#PKCS11-Initialization">5.3.1 Initialization</a></li>
+      <li><a name="toc-Accessing-objects-that-require-a-PIN-1" href="Accessing-objects-that-require-a-PIN.html#Accessing-objects-that-require-a-PIN">5.3.2 Accessing objects that require a PIN</a></li>
+      <li><a name="toc-Reading-objects-1" href="Reading-objects.html#Reading-objects">5.3.3 Reading objects</a></li>
+      <li><a name="toc-Writing-objects-1" href="Writing-objects.html#Writing-objects">5.3.4 Writing objects</a></li>
+      <li><a name="toc-Using-a-PKCS-_002311-token-with-TLS" href="Using-a-PKCS11-token-with-TLS.html#Using-a-PKCS11-token-with-TLS">5.3.5 Using a <acronym>PKCS</acronym> #11 token with TLS</a></li>
+      <li><a name="toc-Invoking-p11tool" href="p11tool-Invocation.html#p11tool-Invocation">5.3.6 Invoking p11tool</a></li>
+      <li><a name="toc-p11tool-help_002fusage-_0028_002d_002dhelp_0029" href="p11tool-Invocation.html#p11tool-help_002fusage-_0028_002d_002dhelp_0029">5.3.7 p11tool help/usage (<samp>--help</samp>)</a></li>
+      <li><a name="toc-debug-option-_0028_002dd_0029" href="p11tool-Invocation.html#debug-option-_0028_002dd_0029">5.3.8 debug option (-d)</a></li>
+      <li><a name="toc-export_002dchain-option" href="p11tool-Invocation.html#export_002dchain-option">5.3.9 export-chain option</a></li>
+      <li><a name="toc-list_002dall_002dprivkeys-option" href="p11tool-Invocation.html#list_002dall_002dprivkeys-option">5.3.10 list-all-privkeys option</a></li>
+      <li><a name="toc-list_002dprivkeys-option" href="p11tool-Invocation.html#list_002dprivkeys-option">5.3.11 list-privkeys option</a></li>
+      <li><a name="toc-list_002dkeys-option" href="p11tool-Invocation.html#list_002dkeys-option">5.3.12 list-keys option</a></li>
+      <li><a name="toc-test_002dsign-option" href="p11tool-Invocation.html#test_002dsign-option">5.3.13 test-sign option</a></li>
+      <li><a name="toc-write-option" href="p11tool-Invocation.html#write-option">5.3.14 write option</a></li>
+      <li><a name="toc-generate_002drandom-option" href="p11tool-Invocation.html#generate_002drandom-option">5.3.15 generate-random option</a></li>
+      <li><a name="toc-generate_002drsa-option" href="p11tool-Invocation.html#generate_002drsa-option">5.3.16 generate-rsa option</a></li>
+      <li><a name="toc-generate_002ddsa-option" href="p11tool-Invocation.html#generate_002ddsa-option">5.3.17 generate-dsa option</a></li>
+      <li><a name="toc-generate_002decc-option" href="p11tool-Invocation.html#generate_002decc-option">5.3.18 generate-ecc option</a></li>
+      <li><a name="toc-export_002dpubkey-option" href="p11tool-Invocation.html#export_002dpubkey-option">5.3.19 export-pubkey option</a></li>
+      <li><a name="toc-set_002did-option" href="p11tool-Invocation.html#set_002did-option">5.3.20 set-id option</a></li>
+      <li><a name="toc-set_002dlabel-option" href="p11tool-Invocation.html#set_002dlabel-option">5.3.21 set-label option</a></li>
+      <li><a name="toc-id-option" href="p11tool-Invocation.html#id-option">5.3.22 id option</a></li>
+      <li><a name="toc-mark_002dwrap-option" href="p11tool-Invocation.html#mark_002dwrap-option">5.3.23 mark-wrap option</a></li>
+      <li><a name="toc-mark_002dtrusted-option" href="p11tool-Invocation.html#mark_002dtrusted-option">5.3.24 mark-trusted option</a></li>
+      <li><a name="toc-mark_002ddecrypt-option" href="p11tool-Invocation.html#mark_002ddecrypt-option">5.3.25 mark-decrypt option</a></li>
+      <li><a name="toc-mark_002dsign-option" href="p11tool-Invocation.html#mark_002dsign-option">5.3.26 mark-sign option</a></li>
+      <li><a name="toc-mark_002dca-option" href="p11tool-Invocation.html#mark_002dca-option">5.3.27 mark-ca option</a></li>
+      <li><a name="toc-mark_002dprivate-option" href="p11tool-Invocation.html#mark_002dprivate-option">5.3.28 mark-private option</a></li>
+      <li><a name="toc-trusted-option" href="p11tool-Invocation.html#trusted-option">5.3.29 trusted option</a></li>
+      <li><a name="toc-ca-option" href="p11tool-Invocation.html#ca-option">5.3.30 ca option</a></li>
+      <li><a name="toc-private-option" href="p11tool-Invocation.html#private-option">5.3.31 private option</a></li>
+      <li><a name="toc-so_002dlogin-option" href="p11tool-Invocation.html#so_002dlogin-option">5.3.32 so-login option</a></li>
+      <li><a name="toc-admin_002dlogin-option" href="p11tool-Invocation.html#admin_002dlogin-option">5.3.33 admin-login option</a></li>
+      <li><a name="toc-curve-option" href="p11tool-Invocation.html#curve-option">5.3.34 curve option</a></li>
+      <li><a name="toc-sec_002dparam-option" href="p11tool-Invocation.html#sec_002dparam-option">5.3.35 sec-param option</a></li>
+      <li><a name="toc-inder-option" href="p11tool-Invocation.html#inder-option">5.3.36 inder option</a></li>
+      <li><a name="toc-inraw-option" href="p11tool-Invocation.html#inraw-option">5.3.37 inraw option</a></li>
+      <li><a name="toc-outder-option" href="p11tool-Invocation.html#outder-option">5.3.38 outder option</a></li>
+      <li><a name="toc-outraw-option" href="p11tool-Invocation.html#outraw-option">5.3.39 outraw option</a></li>
+      <li><a name="toc-set_002dpin-option" href="p11tool-Invocation.html#set_002dpin-option">5.3.40 set-pin option</a></li>
+      <li><a name="toc-set_002dso_002dpin-option" href="p11tool-Invocation.html#set_002dso_002dpin-option">5.3.41 set-so-pin option</a></li>
+      <li><a name="toc-provider-option" href="p11tool-Invocation.html#provider-option">5.3.42 provider option</a></li>
+      <li><a name="toc-p11tool-exit-status-1" href="p11tool-Invocation.html#p11tool-exit-status-1">5.3.43 p11tool exit status</a></li>
+      <li><a name="toc-p11tool-See-Also-1" href="p11tool-Invocation.html#p11tool-See-Also-1">5.3.44 p11tool See Also</a></li>
+      <li><a name="toc-p11tool-Examples-1" href="p11tool-Invocation.html#p11tool-Examples-1">5.3.45 p11tool Examples</a></li>
+    </ul></li>
+    <li><a name="toc-Trusted-Platform-Module-_0028TPM_0029" href="Trusted-Platform-Module.html#Trusted-Platform-Module">5.4 Trusted Platform Module (TPM)</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Keys-in-TPM-1" href="Keys-in-TPM.html#Keys-in-TPM">5.4.1 Keys in TPM</a></li>
+      <li><a name="toc-Key-generation-1" href="Key-generation.html#Key-generation">5.4.2 Key generation</a></li>
+      <li><a name="toc-Using-keys-1" href="Using-keys.html#Using-keys">5.4.3 Using keys</a></li>
+      <li><a name="toc-Invoking-tpmtool" href="tpmtool-Invocation.html#tpmtool-Invocation">5.4.4 Invoking tpmtool</a></li>
+      <li><a name="toc-tpmtool-help_002fusage-_0028_002d_002dhelp_0029" href="tpmtool-Invocation.html#tpmtool-help_002fusage-_0028_002d_002dhelp_0029">5.4.5 tpmtool help/usage (<samp>--help</samp>)</a></li>
+      <li><a name="toc-debug-option-_0028_002dd_0029-1" href="tpmtool-Invocation.html#debug-option-_0028_002dd_0029-1">5.4.6 debug option (-d)</a></li>
+      <li><a name="toc-generate_002drsa-option-1" href="tpmtool-Invocation.html#generate_002drsa-option-1">5.4.7 generate-rsa option</a></li>
+      <li><a name="toc-user-option" href="tpmtool-Invocation.html#user-option">5.4.8 user option</a></li>
+      <li><a name="toc-system-option" href="tpmtool-Invocation.html#system-option">5.4.9 system option</a></li>
+      <li><a name="toc-sec_002dparam-option-1" href="tpmtool-Invocation.html#sec_002dparam-option-1">5.4.10 sec-param option</a></li>
+      <li><a name="toc-inder-option-1" href="tpmtool-Invocation.html#inder-option-1">5.4.11 inder option</a></li>
+      <li><a name="toc-outder-option-1" href="tpmtool-Invocation.html#outder-option-1">5.4.12 outder option</a></li>
+      <li><a name="toc-tpmtool-exit-status-1" href="tpmtool-Invocation.html#tpmtool-exit-status-1">5.4.13 tpmtool exit status</a></li>
+      <li><a name="toc-tpmtool-See-Also-1" href="tpmtool-Invocation.html#tpmtool-See-Also-1">5.4.14 tpmtool See Also</a></li>
+      <li><a name="toc-tpmtool-Examples-1" href="tpmtool-Invocation.html#tpmtool-Examples-1">5.4.15 tpmtool Examples</a></li>
     </ul></li>
   </ul></li>
   <li><a name="toc-How-to-use-GnuTLS-in-applications-1" href="How-to-use-GnuTLS-in-applications.html#How-to-use-GnuTLS-in-applications">6 How to use <acronym>GnuTLS</acronym> in applications</a>
@@ -448,6 +460,7 @@ dl {
     <li><a name="toc-Public-key-algorithms-1" href="Public-key-algorithms.html#Public-key-algorithms">8.2 Public key algorithms</a></li>
     <li><a name="toc-Hash-and-HMAC-functions-1" href="Hash-and-HMAC-functions.html#Hash-and-HMAC-functions">8.3 Hash and HMAC functions</a></li>
     <li><a name="toc-Random-number-generation-1" href="Random-number-generation.html#Random-number-generation">8.4 Random number generation</a></li>
+    <li><a name="toc-Overriding-algorithms-1" href="Overriding-algorithms.html#Overriding-algorithms">8.5 Overriding algorithms</a></li>
   </ul></li>
   <li><a name="toc-Other-included-programs-1" href="Other-included-programs.html#Other-included-programs">9 Other included programs</a>
   <ul class="no-bullet">
@@ -506,11 +519,11 @@ Next: <a href="Preface.html#Preface" accesskey="n" rel="next">Preface</a>, Up: <
 <a name="GnuTLS"></a>
 <h1 class="top">GnuTLS</h1>
 
-<p>This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<p>This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 </p>
-<p>Copyright &copy; 2001-2013 Free Software Foundation, Inc.\\
-Copyright &copy; 2001-2013 Nikos Mavrogiannopoulos
+<p>Copyright &copy; 2001-2015 Free Software Foundation, Inc.\\
+Copyright &copy; 2001-2015 Nikos Mavrogiannopoulos
 </p>
 <blockquote>
 <p>Permission is granted to copy, distribute and/or modify this document

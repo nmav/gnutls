@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: p11tool Invocation</title>
+<title>GnuTLS 3.4.0: p11tool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.3.14: p11tool Invocation">
-<meta name="keywords" content="GnuTLS 3.3.14: p11tool Invocation">
+<meta name="description" content="GnuTLS 3.4.0: p11tool Invocation">
+<meta name="keywords" content="GnuTLS 3.4.0: p11tool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -163,7 +163,7 @@ Previous: <a href="Using-a-PKCS11-token-with-TLS.html#Using-a-PKCS11-token-with-
 </div>
 <hr>
 <a name="Invoking-p11tool"></a>
-<h4 class="subsection">5.2.6 Invoking p11tool</h4>
+<h4 class="subsection">5.3.6 Invoking p11tool</h4>
 <a name="index-p11tool"></a>
 
 
@@ -185,7 +185,7 @@ This software is released under the GNU General Public License, version 3 or lat
 </p>
 
 <a name="p11tool-usage"></a><a name="p11tool-help_002fusage-_0028_002d_002dhelp_0029"></a>
-<h4 class="subsection">5.2.7 p11tool help/usage (<samp>--help</samp>)</h4>
+<h4 class="subsection">5.3.7 p11tool help/usage (<samp>--help</samp>)</h4>
 <a name="index-p11tool-help"></a>
 
 <p>This is the automatically generated usage text for p11tool.
@@ -293,66 +293,105 @@ environment variables GNUTLS_PIN and GNUTLS_SO_PIN.
 </pre></div>
 
 <a name="p11tool-debug"></a><a name="debug-option-_0028_002dd_0029"></a>
-<h4 class="subsection">5.2.8 debug option (-d)</h4>
+<h4 class="subsection">5.3.8 debug option (-d)</h4>
 
 <p>This is the &ldquo;enable debugging&rdquo; option.
 This option takes a number argument.
 Specifies the debug level.
 <a name="p11tool-export_002dchain"></a></p><a name="export_002dchain-option"></a>
-<h4 class="subsection">5.2.9 export-chain option</h4>
+<h4 class="subsection">5.3.9 export-chain option</h4>
 
 <p>This is the &ldquo;export the certificate specified by the url and its chain of trust&rdquo; option.
 Exports the certificate specified by the URL and generates its chain of trust based on the stored certificates in the module.
 <a name="p11tool-list_002dall_002dprivkeys"></a></p><a name="list_002dall_002dprivkeys-option"></a>
-<h4 class="subsection">5.2.10 list-all-privkeys option</h4>
+<h4 class="subsection">5.3.10 list-all-privkeys option</h4>
 
 <p>This is the &ldquo;list all available private keys in a token&rdquo; option.
 Lists all the private keys in a token that match the specified URL.
 <a name="p11tool-list_002dprivkeys"></a></p><a name="list_002dprivkeys-option"></a>
-<h4 class="subsection">5.2.11 list-privkeys option</h4>
+<h4 class="subsection">5.3.11 list-privkeys option</h4>
 
 <p>This is an alias for the <code>list-all-privkeys</code> option,
 see <a href="#p11tool-list_002dall_002dprivkeys">the list-all-privkeys option documentation</a>.
 </p>
 <a name="p11tool-list_002dkeys"></a><a name="list_002dkeys-option"></a>
-<h4 class="subsection">5.2.12 list-keys option</h4>
+<h4 class="subsection">5.3.12 list-keys option</h4>
 
 <p>This is an alias for the <code>list-all-privkeys</code> option,
 see <a href="#p11tool-list_002dall_002dprivkeys">the list-all-privkeys option documentation</a>.
 </p>
-<a name="p11tool-write"></a><a name="write-option"></a>
-<h4 class="subsection">5.2.13 write option</h4>
+<a name="p11tool-test_002dsign"></a><a name="test_002dsign-option"></a>
+<h4 class="subsection">5.3.13 test-sign option</h4>
+
+<p>This is the &ldquo;tests the signature operation of the provided object&rdquo; option.
+It can be used to test the correct operation of the signature operation.
+If both a private and a public key are available this operation will sign and verify
+the signed data.
+<a name="p11tool-write"></a></p><a name="write-option"></a>
+<h4 class="subsection">5.3.14 write option</h4>
 
 <p>This is the &ldquo;writes the loaded objects to a pkcs #11 token&rdquo; option.
 It can be used to write private keys, certificates or secret keys to a token.
 <a name="p11tool-generate_002drandom"></a></p><a name="generate_002drandom-option"></a>
-<h4 class="subsection">5.2.14 generate-random option</h4>
+<h4 class="subsection">5.3.15 generate-random option</h4>
 
 <p>This is the &ldquo;generate random data&rdquo; option.
 This option takes a number argument.
 Asks the token to generate a number of bytes of random bytes.
 <a name="p11tool-generate_002drsa"></a></p><a name="generate_002drsa-option"></a>
-<h4 class="subsection">5.2.15 generate-rsa option</h4>
+<h4 class="subsection">5.3.16 generate-rsa option</h4>
 
 <p>This is the &ldquo;generate an rsa private-public key pair&rdquo; option.
 Generates an RSA private-public key pair on the specified token.
 <a name="p11tool-generate_002ddsa"></a></p><a name="generate_002ddsa-option"></a>
-<h4 class="subsection">5.2.16 generate-dsa option</h4>
+<h4 class="subsection">5.3.17 generate-dsa option</h4>
 
 <p>This is the &ldquo;generate an rsa private-public key pair&rdquo; option.
 Generates an RSA private-public key pair on the specified token.
 <a name="p11tool-generate_002decc"></a></p><a name="generate_002decc-option"></a>
-<h4 class="subsection">5.2.17 generate-ecc option</h4>
+<h4 class="subsection">5.3.18 generate-ecc option</h4>
 
 <p>This is the &ldquo;generate an rsa private-public key pair&rdquo; option.
 Generates an RSA private-public key pair on the specified token.
 <a name="p11tool-export_002dpubkey"></a></p><a name="export_002dpubkey-option"></a>
-<h4 class="subsection">5.2.18 export-pubkey option</h4>
+<h4 class="subsection">5.3.19 export-pubkey option</h4>
 
 <p>This is the &ldquo;export the public key for a private key&rdquo; option.
 Exports the public key for the specified private key
+<a name="p11tool-set_002did"></a></p><a name="set_002did-option"></a>
+<h4 class="subsection">5.3.20 set-id option</h4>
+
+<p>This is the &ldquo;set the cka_id (in hex) for the specified by the url object&rdquo; option.
+This option takes a string argument.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> must not appear in combination with any of the following options:
+write.
+</li></ul>
+
+<p>Modifies or sets the CKA_ID in the specified by the URL object. The ID should be specified in hexadecimal format without a &rsquo;0x&rsquo; prefix.
+<a name="p11tool-set_002dlabel"></a></p><a name="set_002dlabel-option"></a>
+<h4 class="subsection">5.3.21 set-label option</h4>
+
+<p>This is the &ldquo;set the cka_label for the specified by the url object&rdquo; option.
+This option takes a string argument.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> must not appear in combination with any of the following options:
+write, set-id.
+</li></ul>
+
+<p>Modifies or sets the CKA_LABEL in the specified by the URL object
+<a name="p11tool-id"></a></p><a name="id-option"></a>
+<h4 class="subsection">5.3.22 id option</h4>
+
+<p>This is the &ldquo;sets an id for the write operation&rdquo; option.
+This option takes a string argument.
+Sets the CKA_ID to be set by the write operation. The ID should be specified in hexadecimal format without a &rsquo;0x&rsquo; prefix.
 <a name="p11tool-mark_002dwrap"></a></p><a name="mark_002dwrap-option"></a>
-<h4 class="subsection">5.2.19 mark-wrap option</h4>
+<h4 class="subsection">5.3.23 mark-wrap option</h4>
 
 <p>This is the &ldquo;marks the generated key to be a wrapping key&rdquo; option.
 </p>
@@ -363,7 +402,7 @@ Exports the public key for the specified private key
 
 <p>Marks the generated key with the CKA_WRAP flag.
 <a name="p11tool-mark_002dtrusted"></a></p><a name="mark_002dtrusted-option"></a>
-<h4 class="subsection">5.2.20 mark-trusted option</h4>
+<h4 class="subsection">5.3.24 mark-trusted option</h4>
 
 <p>This is the &ldquo;marks the object to be written as trusted&rdquo; option.
 </p>
@@ -373,8 +412,30 @@ Exports the public key for the specified private key
 </li></ul>
 
 <p>Marks the object to be generated/copied with the CKA_TRUST flag.
+<a name="p11tool-mark_002ddecrypt"></a></p><a name="mark_002ddecrypt-option"></a>
+<h4 class="subsection">5.3.25 mark-decrypt option</h4>
+
+<p>This is the &ldquo;marks the object to be written for decryption&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-mark-decrypt.
+</li></ul>
+
+<p>Marks the object to be generated/copied with the CKA_DECRYPT flag set to true.
+<a name="p11tool-mark_002dsign"></a></p><a name="mark_002dsign-option"></a>
+<h4 class="subsection">5.3.26 mark-sign option</h4>
+
+<p>This is the &ldquo;marks the object to be written for signature generation&rdquo; option.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-mark-sign.
+</li></ul>
+
+<p>Marks the object to be generated/copied with the CKA_SIGN flag set to true.
 <a name="p11tool-mark_002dca"></a></p><a name="mark_002dca-option"></a>
-<h4 class="subsection">5.2.21 mark-ca option</h4>
+<h4 class="subsection">5.3.27 mark-ca option</h4>
 
 <p>This is the &ldquo;marks the object to be written as a ca&rdquo; option.
 </p>
@@ -385,7 +446,7 @@ Exports the public key for the specified private key
 
 <p>Marks the object to be generated/copied with the CKA_CERTIFICATE_CATEGORY as CA.
 <a name="p11tool-mark_002dprivate"></a></p><a name="mark_002dprivate-option"></a>
-<h4 class="subsection">5.2.22 mark-private option</h4>
+<h4 class="subsection">5.3.28 mark-private option</h4>
 
 <p>This is the &ldquo;marks the object to be written as private&rdquo; option.
 </p>
@@ -397,25 +458,25 @@ Exports the public key for the specified private key
 
 <p>Marks the object to be generated/copied with the CKA_PRIVATE flag. The written object will require a PIN to be used.
 <a name="p11tool-trusted"></a></p><a name="trusted-option"></a>
-<h4 class="subsection">5.2.23 trusted option</h4>
+<h4 class="subsection">5.3.29 trusted option</h4>
 
 <p>This is an alias for the <code>mark-trusted</code> option,
 see <a href="#p11tool-mark_002dtrusted">the mark-trusted option documentation</a>.
 </p>
 <a name="p11tool-ca"></a><a name="ca-option"></a>
-<h4 class="subsection">5.2.24 ca option</h4>
+<h4 class="subsection">5.3.30 ca option</h4>
 
 <p>This is an alias for the <code>mark-ca</code> option,
 see <a href="#p11tool-mark_002dca">the mark-ca option documentation</a>.
 </p>
 <a name="p11tool-private"></a><a name="private-option"></a>
-<h4 class="subsection">5.2.25 private option</h4>
+<h4 class="subsection">5.3.31 private option</h4>
 
 <p>This is an alias for the <code>mark-private</code> option,
 see <a href="#p11tool-mark_002dprivate">the mark-private option documentation</a>.
 </p>
 <a name="p11tool-so_002dlogin"></a><a name="so_002dlogin-option"></a>
-<h4 class="subsection">5.2.26 so-login option</h4>
+<h4 class="subsection">5.3.32 so-login option</h4>
 
 <p>This is the &ldquo;force security officer login to token&rdquo; option.
 </p>
@@ -426,25 +487,25 @@ see <a href="#p11tool-mark_002dprivate">the mark-private option documentation</a
 
 <p>Forces login to the token as security officer (admin).
 <a name="p11tool-admin_002dlogin"></a></p><a name="admin_002dlogin-option"></a>
-<h4 class="subsection">5.2.27 admin-login option</h4>
+<h4 class="subsection">5.3.33 admin-login option</h4>
 
 <p>This is an alias for the <code>so-login</code> option,
 see <a href="#p11tool-so_002dlogin">the so-login option documentation</a>.
 </p>
 <a name="p11tool-curve"></a><a name="curve-option"></a>
-<h4 class="subsection">5.2.28 curve option</h4>
+<h4 class="subsection">5.3.34 curve option</h4>
 
 <p>This is the &ldquo;specify the curve used for ec key generation&rdquo; option.
 This option takes a string argument.
 Supported values are secp192r1, secp224r1, secp256r1, secp384r1 and secp521r1.
 <a name="p11tool-sec_002dparam"></a></p><a name="sec_002dparam-option"></a>
-<h4 class="subsection">5.2.29 sec-param option</h4>
+<h4 class="subsection">5.3.35 sec-param option</h4>
 
 <p>This is the &ldquo;specify the security level&rdquo; option.
 This option takes a string argument <samp>Security parameter</samp>.
 This is alternative to the bits option. Available options are [low, legacy, medium, high, ultra].
 <a name="p11tool-inder"></a></p><a name="inder-option"></a>
-<h4 class="subsection">5.2.30 inder option</h4>
+<h4 class="subsection">5.3.36 inder option</h4>
 
 <p>This is the &ldquo;use der/raw format for input&rdquo; option.
 </p>
@@ -455,13 +516,13 @@ This is alternative to the bits option. Available options are [low, legacy, medi
 
 <p>Use DER/RAW format for input certificates and private keys.
 <a name="p11tool-inraw"></a></p><a name="inraw-option"></a>
-<h4 class="subsection">5.2.31 inraw option</h4>
+<h4 class="subsection">5.3.37 inraw option</h4>
 
 <p>This is an alias for the <code>inder</code> option,
 see <a href="#p11tool-inder">the inder option documentation</a>.
 </p>
 <a name="p11tool-outder"></a><a name="outder-option"></a>
-<h4 class="subsection">5.2.32 outder option</h4>
+<h4 class="subsection">5.3.38 outder option</h4>
 
 <p>This is the &ldquo;use der format for output certificates, private keys, and dh parameters&rdquo; option.
 </p>
@@ -472,31 +533,31 @@ see <a href="#p11tool-inder">the inder option documentation</a>.
 
 <p>The output will be in DER or RAW format.
 <a name="p11tool-outraw"></a></p><a name="outraw-option"></a>
-<h4 class="subsection">5.2.33 outraw option</h4>
+<h4 class="subsection">5.3.39 outraw option</h4>
 
 <p>This is an alias for the <code>outder</code> option,
 see <a href="#p11tool-outder">the outder option documentation</a>.
 </p>
 <a name="p11tool-set_002dpin"></a><a name="set_002dpin-option"></a>
-<h4 class="subsection">5.2.34 set-pin option</h4>
+<h4 class="subsection">5.3.40 set-pin option</h4>
 
 <p>This is the &ldquo;specify the pin to use on token initialization&rdquo; option.
 This option takes a string argument.
 Alternatively the GNUTLS_PIN environment variable may be used.
 <a name="p11tool-set_002dso_002dpin"></a></p><a name="set_002dso_002dpin-option"></a>
-<h4 class="subsection">5.2.35 set-so-pin option</h4>
+<h4 class="subsection">5.3.41 set-so-pin option</h4>
 
 <p>This is the &ldquo;specify the security officer&rsquo;s pin to use on token initialization&rdquo; option.
 This option takes a string argument.
 Alternatively the GNUTLS_SO_PIN environment variable may be used.
 <a name="p11tool-provider"></a></p><a name="provider-option"></a>
-<h4 class="subsection">5.2.36 provider option</h4>
+<h4 class="subsection">5.3.42 provider option</h4>
 
 <p>This is the &ldquo;specify the pkcs #11 provider library&rdquo; option.
 This option takes a file argument.
 This will override the default options in /etc/gnutls/pkcs11.conf
 <a name="p11tool-exit-status"></a></p><a name="p11tool-exit-status-1"></a>
-<h4 class="subsection">5.2.37 p11tool exit status</h4>
+<h4 class="subsection">5.3.43 p11tool exit status</h4>
 
 <p>One of the following exit values will be returned:
 </p><dl compact="compact">
@@ -508,10 +569,10 @@ This will override the default options in /etc/gnutls/pkcs11.conf
 </p></dd>
 </dl>
 <a name="p11tool-See-Also"></a><a name="p11tool-See-Also-1"></a>
-<h4 class="subsection">5.2.38 p11tool See Also</h4>
+<h4 class="subsection">5.3.44 p11tool See Also</h4>
 <p>certtool (1)
 <a name="p11tool-Examples"></a></p><a name="p11tool-Examples-1"></a>
-<h4 class="subsection">5.2.39 p11tool Examples</h4>
+<h4 class="subsection">5.3.45 p11tool Examples</h4>
 <p>To view all tokens in your system use:
 </p><div class="example">
 <pre class="example">$ p11tool --list-tokens

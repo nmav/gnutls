@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 19 January 2015 for version
+3.4.0 of GnuTLS.
 
 Copyright (C) 2001-2012, 2014 Free Software Foundation, Inc.
 
@@ -13,10 +13,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS-Guile 3.3.14: Representation of Binary Data</title>
+<title>GnuTLS-Guile 3.4.0: Representation of Binary Data</title>
 
-<meta name="description" content="GnuTLS-Guile 3.3.14: Representation of Binary Data">
-<meta name="keywords" content="GnuTLS-Guile 3.3.14: Representation of Binary Data">
+<meta name="description" content="GnuTLS-Guile 3.4.0: Representation of Binary Data">
+<meta name="keywords" content="GnuTLS-Guile 3.4.0: Representation of Binary Data">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -165,9 +165,7 @@ Next: <a href="Input-and-Output.html#Input-and-Output" accesskey="n" rel="next">
 <h3 class="section">3.3 Representation of Binary Data</h3>
 
 <p>Many procedures operate on binary data.  For instance,
-<code>pkcs3-import-dh-parameters</code> expects binary data as input and,
-similarly, procedures like <code>pkcs1-export-rsa-parameters</code> return
-binary data.
+<code>pkcs3-import-dh-parameters</code> expects binary data as input.
 </p>
 <a name="index-SRFI_002d4"></a>
 <a name="index-homogeneous-vector"></a>
@@ -177,19 +175,20 @@ vectors (see <a href="http://www.gnu.org/software/guile/manual/html_node/SRFI_00
 Although any type of homogeneous vector may be used, <code>u8vector</code>s
 (i.e., vectors of bytes) are highly recommended.
 </p>
-<p>As an example, generating and then exporting RSA parameters in the PEM
-format can be done as follows:
+<p>As an example, generating and then exporting Diffie-Hellman parameters
+in the PEM format can be done as follows:
 </p>
-<a name="index-make_002drsa_002dparameters"></a>
-<a name="index-pkcs1_002dexport_002drsa_002dparameters"></a>
+<a name="index-make_002ddh_002dparameters"></a>
+<a name="index-pkcs3_002dexport_002ddh_002dparameters"></a>
 <a name="index-x509_002dcertificate_002dformat_002fpem"></a>
 
 <div class="example">
-<pre class="example">(let* ((rsa-params (make-rsa-parameters 1024))
-       (raw-data
-        (pkcs1-export-rsa-parameters rsa-params
-                                     x509-certificate-format/pem)))
-  (uniform-vector-write raw-data (open-output-file &quot;some-file.pem&quot;)))
+<pre class="example">(let* ((dh  (make-dh-parameters 1024))
+       (pem (pkcs3-export-dh-parameters dh 
+                                        x509-certificate-format/pem)))
+  (call-with-output-file &quot;some-file.pem&quot;
+    (lambda (port)
+      (uniform-vector-write pem port))))
 </pre></div>
 
 <p>For an example of OpenPGP key import from a file, see <a href="Importing-OpenPGP-Keys-Guile-Example.html#Importing-OpenPGP-Keys-Guile-Example">Importing OpenPGP Keys Guile Example</a>.

@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: OpenPGP API</title>
+<title>GnuTLS 3.4.0: OpenPGP API</title>
 
-<meta name="description" content="GnuTLS 3.3.14: OpenPGP API">
-<meta name="keywords" content="GnuTLS 3.3.14: OpenPGP API">
+<meta name="description" content="GnuTLS 3.4.0: OpenPGP API">
+<meta name="keywords" content="GnuTLS 3.4.0: OpenPGP API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -171,18 +171,78 @@ certificate handling.  Their prototypes lie in
 <samp>gnutls/openpgp.h</samp>.
 </p>
 
+<a name="gnutls_005fcertificate_005fget_005fopenpgp_005fcrt-1"></a>
+<h4 class="subheading">gnutls_certificate_get_openpgp_crt</h4>
+<a name="gnutls_005fcertificate_005fget_005fopenpgp_005fcrt"></a><dl>
+<dt><a name="index-gnutls_005fcertificate_005fget_005fopenpgp_005fcrt"></a>Function: <em>int</em> <strong>gnutls_certificate_get_openpgp_crt</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, unsigned <var>index</var>, gnutls_openpgp_crt_t ** <var>crt_list</var>, unsigned * <var>crt_list_size</var>)</em></dt>
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
+</p>
+<p><var>index</var>: The index of the certificate list to obtain.
+</p>
+<p><var>crt_list</var>: Where to store the certificate list.
+</p>
+<p><var>crt_list_size</var>: &ndash; undescribed &ndash;
+</p>
+<p>Obtains a X.509 certificate list that has been stored in  <code>res</code> with one of
+<code>gnutls_certificate_set_openpgp_key()</code> ,
+<code>gnutls_certificate_set_openpgp_key_file()</code> ,
+<code>gnutls_certificate_set_openpgp_key_file2()</code> ,
+<code>gnutls_certificate_set_openpgp_key_mem()</code> , or
+<code>gnutls_certificate_set_openpgp_key_mem2()</code> .  Each certificate in the
+returned certificate list must be deallocated with
+<code>gnutls_openpgp_crt_deinit()</code> , and the list itself must be freed with
+<code>gnutls_free()</code> .
+</p>
+<p>If there is no certificate with the given index,
+<code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  is returned. If the certificate
+with the given index is not a X.509 certificate, <code>GNUTLS_E_INVALID_REQUEST</code> 
+is returned.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fcertificate_005fget_005fopenpgp_005fkey-1"></a>
+<h4 class="subheading">gnutls_certificate_get_openpgp_key</h4>
+<a name="gnutls_005fcertificate_005fget_005fopenpgp_005fkey"></a><dl>
+<dt><a name="index-gnutls_005fcertificate_005fget_005fopenpgp_005fkey"></a>Function: <em>int</em> <strong>gnutls_certificate_get_openpgp_key</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, unsigned <var>index</var>, gnutls_openpgp_privkey_t * <var>key</var>)</em></dt>
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
+</p>
+<p><var>index</var>: The index of the key to obtain.
+</p>
+<p><var>key</var>: Location to store the key.
+</p>
+<p>Obtains a OpenPGP private key that has been stored in  <code>res</code> with one of
+<code>gnutls_certificate_set_openpgp_key()</code> ,
+<code>gnutls_certificate_set_openpgp_key_file()</code> ,
+<code>gnutls_certificate_set_openpgp_key_file2()</code> ,
+<code>gnutls_certificate_set_openpgp_key_mem()</code> , or
+<code>gnutls_certificate_set_openpgp_key_mem2()</code> .
+The returned key must be deallocated with <code>gnutls_openpgp_privkey_deinit()</code> 
+when no longer needed.
+</p>
+<p>If there is no key with the given index,
+<code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  is returned. If the key with the
+given index is not a X.509 key, <code>GNUTLS_E_INVALID_REQUEST</code>  is returned.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
 <a name="gnutls_005fcertificate_005fset_005fopenpgp_005fkey-1"></a>
 <h4 class="subheading">gnutls_certificate_set_openpgp_key</h4>
 <a name="gnutls_005fcertificate_005fset_005fopenpgp_005fkey"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fopenpgp_005fkey"></a>Function: <em>int</em> <strong>gnutls_certificate_set_openpgp_key</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, gnutls_openpgp_crt_t <var>crt</var>, gnutls_openpgp_privkey_t <var>pkey</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>crt</var>: contains an openpgp public key
 </p>
 <p><var>pkey</var>: is an openpgp private key
 </p>
 <p>This function sets a certificate/private key pair in the
-gnutls_certificate_credentials_t structure.  This function may be
+gnutls_certificate_credentials_t type.  This function may be
 called more than once (in case multiple keys/certificates exist
 for the server).
 </p>
@@ -326,11 +386,27 @@ verification functions.
 negative error value.
 </p></dd></dl>
 
+<a name="gnutls_005fopenpgp_005fcrt_005fcheck_005femail-1"></a>
+<h4 class="subheading">gnutls_openpgp_crt_check_email</h4>
+<a name="gnutls_005fopenpgp_005fcrt_005fcheck_005femail"></a><dl>
+<dt><a name="index-gnutls_005fopenpgp_005fcrt_005fcheck_005femail"></a>Function: <em>int</em> <strong>gnutls_openpgp_crt_check_email</strong> <em>(gnutls_openpgp_crt_t <var>key</var>, const char * <var>email</var>, unsigned <var>flags</var>)</em></dt>
+<dd><p><var>key</var>: should contain a <code>gnutls_openpgp_crt_t</code>  type
+</p>
+<p><var>email</var>: A null terminated string that contains an RFC822 address (email)
+</p>
+<p><var>flags</var>: gnutls_certificate_verify_flags
+</p>
+<p>This function will check if the given key&rsquo;s owner matches the
+given email address. 
+</p>
+<p><strong>Returns:</strong> non-zero for a successful match, and zero on failure.
+</p></dd></dl>
+
 <a name="gnutls_005fopenpgp_005fcrt_005fcheck_005fhostname-1"></a>
 <h4 class="subheading">gnutls_openpgp_crt_check_hostname</h4>
 <a name="gnutls_005fopenpgp_005fcrt_005fcheck_005fhostname"></a><dl>
 <dt><a name="index-gnutls_005fopenpgp_005fcrt_005fcheck_005fhostname"></a>Function: <em>int</em> <strong>gnutls_openpgp_crt_check_hostname</strong> <em>(gnutls_openpgp_crt_t <var>key</var>, const char * <var>hostname</var>)</em></dt>
-<dd><p><var>key</var>: should contain a <code>gnutls_openpgp_crt_t</code>  structure
+<dd><p><var>key</var>: should contain a <code>gnutls_openpgp_crt_t</code>  type
 </p>
 <p><var>hostname</var>: A null terminated string that contains a DNS name
 </p>
@@ -345,7 +421,7 @@ described in RFC2818 (HTTPS), which takes into account wildcards.
 <h4 class="subheading">gnutls_openpgp_crt_check_hostname2</h4>
 <a name="gnutls_005fopenpgp_005fcrt_005fcheck_005fhostname2"></a><dl>
 <dt><a name="index-gnutls_005fopenpgp_005fcrt_005fcheck_005fhostname2"></a>Function: <em>int</em> <strong>gnutls_openpgp_crt_check_hostname2</strong> <em>(gnutls_openpgp_crt_t <var>key</var>, const char * <var>hostname</var>, unsigned <var>flags</var>)</em></dt>
-<dd><p><var>key</var>: should contain a <code>gnutls_openpgp_crt_t</code>  structure
+<dd><p><var>key</var>: should contain a <code>gnutls_openpgp_crt_t</code>  type
 </p>
 <p><var>hostname</var>: A null terminated string that contains a DNS name
 </p>
@@ -365,7 +441,7 @@ components or more, and the wildcard starts at the leftmost position.
 <h4 class="subheading">gnutls_openpgp_crt_deinit</h4>
 <a name="gnutls_005fopenpgp_005fcrt_005fdeinit"></a><dl>
 <dt><a name="index-gnutls_005fopenpgp_005fcrt_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_openpgp_crt_deinit</strong> <em>(gnutls_openpgp_crt_t <var>key</var>)</em></dt>
-<dd><p><var>key</var>: The structure to be initialized
+<dd><p><var>key</var>: A pointer to the type to be initialized
 </p>
 <p>This function will deinitialize a key structure.
 </p></dd></dl>
@@ -484,7 +560,7 @@ can be 16 or 20 bytes.
 <h4 class="subheading">gnutls_openpgp_crt_get_key_usage</h4>
 <a name="gnutls_005fopenpgp_005fcrt_005fget_005fkey_005fusage"></a><dl>
 <dt><a name="index-gnutls_005fopenpgp_005fcrt_005fget_005fkey_005fusage"></a>Function: <em>int</em> <strong>gnutls_openpgp_crt_get_key_usage</strong> <em>(gnutls_openpgp_crt_t <var>key</var>, unsigned int * <var>key_usage</var>)</em></dt>
-<dd><p><var>key</var>: should contain a gnutls_openpgp_crt_t structure
+<dd><p><var>key</var>: should contain a gnutls_openpgp_crt_t type
 </p>
 <p><var>key_usage</var>: where the key usage bits will be stored
 </p>
@@ -789,7 +865,7 @@ has not.
 <h4 class="subheading">gnutls_openpgp_crt_get_subkey_usage</h4>
 <a name="gnutls_005fopenpgp_005fcrt_005fget_005fsubkey_005fusage"></a><dl>
 <dt><a name="index-gnutls_005fopenpgp_005fcrt_005fget_005fsubkey_005fusage"></a>Function: <em>int</em> <strong>gnutls_openpgp_crt_get_subkey_usage</strong> <em>(gnutls_openpgp_crt_t <var>key</var>, unsigned int <var>idx</var>, unsigned int * <var>key_usage</var>)</em></dt>
-<dd><p><var>key</var>: should contain a gnutls_openpgp_crt_t structure
+<dd><p><var>key</var>: should contain a gnutls_openpgp_crt_t type
 </p>
 <p><var>idx</var>: the subkey index
 </p>
@@ -838,7 +914,7 @@ in &rsquo;key&rsquo;.
 <h4 class="subheading">gnutls_openpgp_crt_init</h4>
 <a name="gnutls_005fopenpgp_005fcrt_005finit"></a><dl>
 <dt><a name="index-gnutls_005fopenpgp_005fcrt_005finit"></a>Function: <em>int</em> <strong>gnutls_openpgp_crt_init</strong> <em>(gnutls_openpgp_crt_t * <var>key</var>)</em></dt>
-<dd><p><var>key</var>: The structure to be initialized
+<dd><p><var>key</var>: A pointer to the type to be initialized
 </p>
 <p>This function will initialize an OpenPGP key structure.
 </p>
@@ -946,7 +1022,7 @@ negative error code on failure.
 <h4 class="subheading">gnutls_openpgp_keyring_deinit</h4>
 <a name="gnutls_005fopenpgp_005fkeyring_005fdeinit"></a><dl>
 <dt><a name="index-gnutls_005fopenpgp_005fkeyring_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_openpgp_keyring_deinit</strong> <em>(gnutls_openpgp_keyring_t <var>keyring</var>)</em></dt>
-<dd><p><var>keyring</var>: The structure to be initialized
+<dd><p><var>keyring</var>: A pointer to the type to be initialized
 </p>
 <p>This function will deinitialize a keyring structure.
 </p></dd></dl>
@@ -959,7 +1035,7 @@ negative error code on failure.
 </p>
 <p><var>idx</var>: the index of the certificate to export
 </p>
-<p><var>cert</var>: An uninitialized <code>gnutls_openpgp_crt_t</code>  structure
+<p><var>cert</var>: An uninitialized <code>gnutls_openpgp_crt_t</code>  type
 </p>
 <p>This function will extract an OpenPGP certificate from the given
 keyring.  If the index given is out of range
@@ -1002,7 +1078,7 @@ stored in &rsquo;keyring&rsquo;.
 <h4 class="subheading">gnutls_openpgp_keyring_init</h4>
 <a name="gnutls_005fopenpgp_005fkeyring_005finit"></a><dl>
 <dt><a name="index-gnutls_005fopenpgp_005fkeyring_005finit"></a>Function: <em>int</em> <strong>gnutls_openpgp_keyring_init</strong> <em>(gnutls_openpgp_keyring_t * <var>keyring</var>)</em></dt>
-<dd><p><var>keyring</var>: The structure to be initialized
+<dd><p><var>keyring</var>: A pointer to the type to be initialized
 </p>
 <p>This function will initialize an keyring structure.
 </p>
@@ -1013,7 +1089,7 @@ stored in &rsquo;keyring&rsquo;.
 <h4 class="subheading">gnutls_openpgp_privkey_deinit</h4>
 <a name="gnutls_005fopenpgp_005fprivkey_005fdeinit"></a><dl>
 <dt><a name="index-gnutls_005fopenpgp_005fprivkey_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_openpgp_privkey_deinit</strong> <em>(gnutls_openpgp_privkey_t <var>key</var>)</em></dt>
-<dd><p><var>key</var>: The structure to be initialized
+<dd><p><var>key</var>: A pointer to the type to be initialized
 </p>
 <p>This function will deinitialize a key structure.
 </p></dd></dl>
@@ -1417,7 +1493,7 @@ stored in &rsquo;key&rsquo;.
 <h4 class="subheading">gnutls_openpgp_privkey_init</h4>
 <a name="gnutls_005fopenpgp_005fprivkey_005finit"></a><dl>
 <dt><a name="index-gnutls_005fopenpgp_005fprivkey_005finit"></a>Function: <em>int</em> <strong>gnutls_openpgp_privkey_init</strong> <em>(gnutls_openpgp_privkey_t * <var>key</var>)</em></dt>
-<dd><p><var>key</var>: The structure to be initialized
+<dd><p><var>key</var>: A pointer to the type to be initialized
 </p>
 <p>This function will initialize an OpenPGP key structure.
 </p>

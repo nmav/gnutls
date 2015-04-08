@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: Supported ciphersuites</title>
+<title>GnuTLS 3.4.0: Supported ciphersuites</title>
 
-<meta name="description" content="GnuTLS 3.3.14: Supported ciphersuites">
-<meta name="keywords" content="GnuTLS 3.3.14: Supported ciphersuites">
+<meta name="description" content="GnuTLS 3.4.0: Supported ciphersuites">
+<meta name="keywords" content="GnuTLS 3.4.0: Supported ciphersuites">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -188,8 +188,11 @@ Next: <a href="API-reference.html#API-reference" accesskey="n" rel="next">API re
 <tr><td width="60%">TLS_RSA_AES_256_GCM_SHA384</td><td width="20%">0x00 0x9D</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_RSA_CAMELLIA_128_GCM_SHA256</td><td width="20%">0xC0 0x7A</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_RSA_CAMELLIA_256_GCM_SHA384</td><td width="20%">0xC0 0x7B</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_RSA_SALSA20_256_SHA1</td><td width="20%">0xE4 0x11</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_RSA_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x10</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_RSA_CHACHA20_POLY1305</td><td width="20%">0xCC 0xA0</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_AES_128_CCM</td><td width="20%">0xC0 0x9C</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_AES_256_CCM</td><td width="20%">0xC0 0x9D</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_AES_128_CCM_8</td><td width="20%">0xC0 0xA0</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_AES_256_CCM_8</td><td width="20%">0xC0 0xA1</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_ARCFOUR_128_SHA1</td><td width="20%">0x00 0x66</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x13</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DHE_DSS_AES_128_CBC_SHA1</td><td width="20%">0x00 0x32</td><td width="20%">SSL3.0</td></tr>
@@ -217,6 +220,11 @@ Next: <a href="API-reference.html#API-reference" accesskey="n" rel="next">API re
 <tr><td width="60%">TLS_DHE_RSA_AES_256_GCM_SHA384</td><td width="20%">0x00 0x9F</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_CAMELLIA_128_GCM_SHA256</td><td width="20%">0xC0 0x7C</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_RSA_CAMELLIA_256_GCM_SHA384</td><td width="20%">0xC0 0x7D</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_RSA_CHACHA20_POLY1305</td><td width="20%">0xCC 0xA3</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_RSA_AES_128_CCM</td><td width="20%">0xC0 0x9E</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_RSA_AES_256_CCM</td><td width="20%">0xC0 0x9F</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_RSA_AES_128_CCM_8</td><td width="20%">0xC0 0xA2</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_RSA_AES_256_CCM_8</td><td width="20%">0xC0 0xA3</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_NULL_SHA1</td><td width="20%">0xC0 0x10</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x12</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x13</td><td width="20%">SSL3.0</td></tr>
@@ -243,10 +251,12 @@ Next: <a href="API-reference.html#API-reference" accesskey="n" rel="next">API re
 <tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_CBC_SHA384</td><td width="20%">0xC0 0x24</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_CAMELLIA_128_GCM_SHA256</td><td width="20%">0xC0 0x8A</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_RSA_CAMELLIA_256_GCM_SHA384</td><td width="20%">0xC0 0x8B</td><td width="20%">TLS1.2</td></tr>
-<tr><td width="60%">TLS_ECDHE_RSA_SALSA20_256_SHA1</td><td width="20%">0xE4 0x13</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_ECDSA_SALSA20_256_SHA1</td><td width="20%">0xE4 0x15</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_RSA_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x12</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_ECDSA_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x14</td><td width="20%">SSL3.0</td></tr>
+<tr><td width="60%">TLS_ECDHE_RSA_CHACHA20_POLY1305</td><td width="20%">0xCC 0xA1</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_CHACHA20_POLY1305</td><td width="20%">0xCC 0xA2</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_AES_128_CCM</td><td width="20%">0xC0 0xAC</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_CCM</td><td width="20%">0xC0 0xAD</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_AES_128_CCM_8</td><td width="20%">0xC0 0xAE</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_ECDSA_AES_256_CCM_8</td><td width="20%">0xC0 0xAF</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_3DES_EDE_CBC_SHA1</td><td width="20%">0xC0 0x34</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_AES_128_CBC_SHA1</td><td width="20%">0xC0 0x35</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_AES_256_CBC_SHA1</td><td width="20%">0xC0 0x36</td><td width="20%">SSL3.0</td></tr>
@@ -258,8 +268,6 @@ Next: <a href="API-reference.html#API-reference" accesskey="n" rel="next">API re
 <tr><td width="60%">TLS_ECDHE_PSK_NULL_SHA384</td><td width="20%">0xC0 0x3B</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_CAMELLIA_128_CBC_SHA256</td><td width="20%">0xC0 0x9A</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_ECDHE_PSK_CAMELLIA_256_CBC_SHA384</td><td width="20%">0xC0 0x9B</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_PSK_SALSA20_256_SHA1</td><td width="20%">0xE4 0x19</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_ECDHE_PSK_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x18</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_PSK_ARCFOUR_128_SHA1</td><td width="20%">0x00 0x8A</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_PSK_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x8B</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_PSK_AES_128_CBC_SHA1</td><td width="20%">0x00 0x8C</td><td width="20%">SSL3.0</td></tr>
@@ -273,8 +281,6 @@ Next: <a href="API-reference.html#API-reference" accesskey="n" rel="next">API re
 <tr><td width="60%">TLS_PSK_NULL_SHA256</td><td width="20%">0x00 0xB0</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_PSK_CAMELLIA_128_CBC_SHA256</td><td width="20%">0xC0 0x94</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_PSK_CAMELLIA_256_CBC_SHA384</td><td width="20%">0xC0 0x95</td><td width="20%">TLS1.0</td></tr>
-<tr><td width="60%">TLS_PSK_SALSA20_256_SHA1</td><td width="20%">0xE4 0x17</td><td width="20%">SSL3.0</td></tr>
-<tr><td width="60%">TLS_PSK_ESTREAM_SALSA20_256_SHA1</td><td width="20%">0xE4 0x16</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_PSK_AES_256_CBC_SHA384</td><td width="20%">0x00 0xAF</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_PSK_NULL_SHA384</td><td width="20%">0x00 0xB1</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_RSA_PSK_ARCFOUR_128_SHA1</td><td width="20%">0x00 0x92</td><td width="20%">TLS1.0</td></tr>
@@ -307,6 +313,18 @@ Next: <a href="API-reference.html#API-reference" accesskey="n" rel="next">API re
 <tr><td width="60%">TLS_DHE_PSK_CAMELLIA_256_CBC_SHA384</td><td width="20%">0xC0 0x97</td><td width="20%">TLS1.0</td></tr>
 <tr><td width="60%">TLS_DHE_PSK_CAMELLIA_128_GCM_SHA256</td><td width="20%">0xC0 0x90</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DHE_PSK_CAMELLIA_256_GCM_SHA384</td><td width="20%">0xC0 0x91</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_PSK_AES_128_CCM</td><td width="20%">0xC0 0xA4</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_PSK_AES_256_CCM</td><td width="20%">0xC0 0xA5</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_AES_128_CCM</td><td width="20%">0xC0 0xA6</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_AES_256_CCM</td><td width="20%">0xC0 0xA7</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_PSK_AES_128_CCM_8</td><td width="20%">0xC0 0xA8</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_PSK_AES_256_CCM_8</td><td width="20%">0xC0 0xA9</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_AES_128_CCM_8</td><td width="20%">0xC0 0xAA</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_AES_256_CCM_8</td><td width="20%">0xC0 0xAB</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_DHE_PSK_CHACHA20_POLY1305</td><td width="20%">0xCC 0xA4</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_ECDHE_PSK_CHACHA20_POLY1305</td><td width="20%">0xCC 0xA6</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_RSA_PSK_CHACHA20_POLY1305</td><td width="20%">0xCC 0xA7</td><td width="20%">TLS1.2</td></tr>
+<tr><td width="60%">TLS_PSK_CHACHA20_POLY1305</td><td width="20%">0xCC 0xA5</td><td width="20%">TLS1.2</td></tr>
 <tr><td width="60%">TLS_DH_ANON_ARCFOUR_128_MD5</td><td width="20%">0x00 0x18</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DH_ANON_3DES_EDE_CBC_SHA1</td><td width="20%">0x00 0x1B</td><td width="20%">SSL3.0</td></tr>
 <tr><td width="60%">TLS_DH_ANON_AES_128_CBC_SHA1</td><td width="20%">0x00 0x34</td><td width="20%">SSL3.0</td></tr>
@@ -365,17 +383,21 @@ Next: <a href="API-reference.html#API-reference" accesskey="n" rel="next">API re
 <dt><code>AES-128-CBC</code></dt>
 <dt><code>AES-128-GCM</code></dt>
 <dt><code>AES-256-GCM</code></dt>
+<dt><code>AES-128-CCM</code></dt>
+<dt><code>AES-256-CCM</code></dt>
+<dt><code>AES-128-CCM-8</code></dt>
+<dt><code>AES-256-CCM-8</code></dt>
 <dt><code>ARCFOUR-128</code></dt>
 <dt><code>ESTREAM-SALSA20-256</code></dt>
 <dt><code>SALSA20-256</code></dt>
 <dt><code>CAMELLIA-256-CBC</code></dt>
 <dt><code>CAMELLIA-192-CBC</code></dt>
 <dt><code>CAMELLIA-128-CBC</code></dt>
+<dt><code>CHACHA20-POLY1305</code></dt>
 <dt><code>CAMELLIA-128-GCM</code></dt>
 <dt><code>CAMELLIA-256-GCM</code></dt>
 <dt><code>3DES-CBC</code></dt>
 <dt><code>DES-CBC</code></dt>
-<dt><code>ARCFOUR-40</code></dt>
 <dt><code>RC2-40</code></dt>
 <dt><code>NULL</code></dt>
 </dl>

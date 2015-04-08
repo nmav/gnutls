@@ -2091,7 +2091,7 @@
 <a name="gnutls-pkcs7-deinit"></a><h3>gnutls_pkcs7_deinit ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 gnutls_pkcs7_deinit (<em class="parameter"><code><a class="link" href="gnutls-x509.html#gnutls-pkcs7-t" title="gnutls_pkcs7_t"><span class="type">gnutls_pkcs7_t</span></a> pkcs7</code></em>);</pre>
-<p>This function will deinitialize a PKCS7 structure.</p>
+<p>This function will deinitialize a PKCS7 type.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.2.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -2102,7 +2102,7 @@ gnutls_pkcs7_deinit (<em class="parameter"><code><a class="link" href="gnutls-x5
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>the type to be deinitialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -2127,7 +2127,7 @@ Index starts from 0. Returns 0 on success.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-x509.html#gnutls-pkcs7-t" title="gnutls_pkcs7_t"><span class="type">gnutls_pkcs7_t</span></a> structure</p></td>
+<td class="parameter_description"><p>The pkcs7 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2164,7 +2164,7 @@ certificate set.  Index starts from 0. Returns 0 on success.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>should contain a gnutls_pkcs7_t structure</p></td>
+<td class="parameter_description"><p>The pkcs7 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2208,7 +2208,7 @@ of "BEGIN PKCS7".</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>Holds the pkcs7 structure</p></td>
+<td class="parameter_description"><p>The pkcs7 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2245,7 +2245,7 @@ gnutls_pkcs7_export2 (<em class="parameter"><code><a class="link" href="gnutls-x
                       <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> format</code></em>,
                       <em class="parameter"><code><span class="type">gnutls_datum_t</span> *out</code></em>);</pre>
 <p>This function will export the pkcs7 structure to DER or PEM format.</p>
-<p>The output buffer is allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+<p>The output buffer is allocated using <code class="function">gnutls_malloc()</code>.</p>
 <p>If the structure is PEM encoded, it will have a header
 of "BEGIN PKCS7".</p>
 <div class="refsect3">
@@ -2259,7 +2259,7 @@ of "BEGIN PKCS7".</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>Holds the pkcs7 structure</p></td>
+<td class="parameter_description"><p>The pkcs7 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2300,7 +2300,7 @@ or RFC2630 crl set.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>should contain a gnutls_pkcs7_t structure</p></td>
+<td class="parameter_description"><p>The pkcs7 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -2332,7 +2332,7 @@ gnutls_pkcs7_get_crl_raw (<em class="parameter"><code><a class="link" href="gnut
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-x509.html#gnutls-pkcs7-t" title="gnutls_pkcs7_t"><span class="type">gnutls_pkcs7_t</span></a> structure</p></td>
+<td class="parameter_description"><p>The pkcs7 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2381,7 +2381,7 @@ or RFC2630 certificate set.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-x509.html#gnutls-pkcs7-t" title="gnutls_pkcs7_t"><span class="type">gnutls_pkcs7_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-x509.html#gnutls-pkcs7-t" title="gnutls_pkcs7_t"><span class="type">gnutls_pkcs7_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -2416,7 +2416,7 @@ certificate set.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>should contain a gnutls_pkcs7_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_pkcs7_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2471,7 +2471,7 @@ the native <a class="link" href="gnutls-x509.html#gnutls-pkcs7-t" title="gnutls_
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>The structure to store the parsed PKCS7.</p></td>
+<td class="parameter_description"><p>The data to store the parsed PKCS7.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2512,7 +2512,7 @@ revocation lists.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -2543,7 +2543,7 @@ set.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-x509.html#gnutls-pkcs7-t" title="gnutls_pkcs7_t"><span class="type">gnutls_pkcs7_t</span></a> structure</p></td>
+<td class="parameter_description"><p>The pkcs7 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2579,7 +2579,7 @@ gnutls_pkcs7_set_crl_raw (<em class="parameter"><code><a class="link" href="gnut
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-x509.html#gnutls-pkcs7-t" title="gnutls_pkcs7_t"><span class="type">gnutls_pkcs7_t</span></a> structure</p></td>
+<td class="parameter_description"><p>The pkcs7 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2617,7 +2617,7 @@ RFC2630 certificate set.  This is a wrapper function over
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-x509.html#gnutls-pkcs7-t" title="gnutls_pkcs7_t"><span class="type">gnutls_pkcs7_t</span></a> structure</p></td>
+<td class="parameter_description"><p>The pkcs7 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2654,7 +2654,7 @@ certificate set.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs7</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-x509.html#gnutls-pkcs7-t" title="gnutls_pkcs7_t"><span class="type">gnutls_pkcs7_t</span></a> structure</p></td>
+<td class="parameter_description"><p>The pkcs7 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2725,7 +2725,7 @@ gnutls_x509_crl_deinit (<em class="parameter"><code><a class="link" href="gnutls
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>The structure to be deinitialized</p></td>
+<td class="parameter_description"><p>The data to be deinitialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -2792,7 +2792,7 @@ gnutls_x509_crl_export2 (<em class="parameter"><code><a class="link" href="gnutl
                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> format</code></em>,
                          <em class="parameter"><code><span class="type">gnutls_datum_t</span> *out</code></em>);</pre>
 <p>This function will export the revocation list to DER or PEM format.</p>
-<p>The output buffer is allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+<p>The output buffer is allocated using <code class="function">gnutls_malloc()</code>.</p>
 <p>If the structure is PEM encoded, it will have a header
 of "BEGIN X509 CRL".</p>
 <div class="refsect3">
@@ -2861,7 +2861,7 @@ and serial number.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2935,7 +2935,7 @@ the name and serial number of the certificate. In that case
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2982,7 +2982,7 @@ given CRL.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -3017,7 +3017,7 @@ of revoked certificates. In that case use <code class="function">gnutls_x509_crl
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3072,7 +3072,7 @@ issuer, specified by the given index.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a gnutls_x509_crl_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_x509_crl_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3082,7 +3082,7 @@ issuer, specified by the given index.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>oid</p></td>
-<td class="parameter_description"><p>a pointer to a structure to hold the name (may be null)</p></td>
+<td class="parameter_description"><p>a pointer to store the OID (may be null)</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3127,7 +3127,7 @@ sequence.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3187,7 +3187,7 @@ returned.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3197,7 +3197,7 @@ returned.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>oid</p></td>
-<td class="parameter_description"><p>a pointer to a structure to hold the OID</p></td>
+<td class="parameter_description"><p>a pointer to store the OID</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3248,7 +3248,7 @@ buffer.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3258,7 +3258,7 @@ buffer.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>oid</p></td>
-<td class="parameter_description"><p>a pointer to a structure to hold the OID (may be null)</p></td>
+<td class="parameter_description"><p>a pointer to store the OID (may be null)</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3303,7 +3303,7 @@ encoded, depending on the certificate data.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a gnutls_x509_crl_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_x509_crl_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3359,7 +3359,7 @@ using <a class="link" href="gnutls-x509.html#gnutls-x509-dn-oid-known" title="gn
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a gnutls_x509_crl_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_x509_crl_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3417,7 +3417,7 @@ error instead.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -3449,7 +3449,7 @@ obtained by the CRL Number extension field (2.5.29.20).</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3498,7 +3498,7 @@ and the length.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a gnutls_x509_crl_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_x509_crl_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3535,7 +3535,7 @@ gnutls_x509_crl_get_signature (<em class="parameter"><code><a class="link" href=
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a gnutls_x509_crl_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_x509_crl_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3577,7 +3577,7 @@ enumeration that is the signature algorithm.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -3605,7 +3605,7 @@ gnutls_x509_crl_get_this_update (<em class="parameter"><code><a class="link" hre
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -3632,7 +3632,7 @@ gnutls_x509_crl_get_version (<em class="parameter"><code><a class="link" href="g
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title="gnutls_x509_crl_t"><span class="type">gnutls_x509_crl_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -3664,7 +3664,7 @@ to the native <a class="link" href="gnutls-gnutls.html#gnutls-x509-crl-t" title=
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>The structure to store the parsed CRL.</p></td>
+<td class="parameter_description"><p>The data to store the parsed CRL.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3707,7 +3707,7 @@ authority's private key.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -3744,7 +3744,7 @@ in <em class="parameter"><code>crls</code></em>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crls</p></td>
-<td class="parameter_description"><p>The structures to store the parsed CRLs. Must not be initialized.</p></td>
+<td class="parameter_description"><p>Indicates where the parsed CRLs will be copied to. Must not be initialized.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3803,7 +3803,7 @@ CRL".</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crls</p></td>
-<td class="parameter_description"><p>The structures to store the parsed crl list. Must not be initialized.</p></td>
+<td class="parameter_description"><p>Will contain the parsed crl list.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3846,7 +3846,7 @@ gnutls_x509_crl_print (<em class="parameter"><code><a class="link" href="gnutls-
 <p>This function will pretty print a X.509 certificate revocation
 list, suitable for display to a human.</p>
 <p>The output <em class="parameter"><code>out</code></em>
- needs to be deallocated using <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p>
+ needs to be deallocated using <code class="function">gnutls_free()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.42.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -3858,7 +3858,7 @@ list, suitable for display to a human.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>The structure to be printed</p></td>
+<td class="parameter_description"><p>The data to be printed</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3946,7 +3946,7 @@ gnutls_x509_crl_set_crt (<em class="parameter"><code><a class="link" href="gnutl
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a gnutls_x509_crl_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_x509_crl_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -3989,7 +3989,7 @@ gnutls_x509_crl_set_crt_serial (<em class="parameter"><code><a class="link" href
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a gnutls_x509_crl_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_x509_crl_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4035,7 +4035,7 @@ gnutls_x509_crl_set_next_update (<em class="parameter"><code><a class="link" hre
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a gnutls_x509_crl_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_x509_crl_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4116,7 +4116,7 @@ gnutls_x509_crl_set_this_update (<em class="parameter"><code><a class="link" hre
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a gnutls_x509_crl_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_x509_crl_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4154,7 +4154,7 @@ by gnutls should have a version number of 2.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a gnutls_x509_crl_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_x509_crl_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4196,7 +4196,7 @@ the previously set parameters are now signed.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crl</p></td>
-<td class="parameter_description"><p>should contain a gnutls_x509_crl_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_x509_crl_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4297,7 +4297,7 @@ structure.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>the type to be deinitialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -4330,7 +4330,7 @@ NEW CERTIFICATE REQUEST".</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4368,7 +4368,7 @@ gnutls_x509_crq_export2 (<em class="parameter"><code><a class="link" href="gnutl
                          <em class="parameter"><code><span class="type">gnutls_datum_t</span> *out</code></em>);</pre>
 <p>This function will export the certificate request to a PEM or DER
 encoded PKCS10 structure.</p>
-<p>The output buffer is allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+<p>The output buffer is allocated using <code class="function">gnutls_malloc()</code>.</p>
 <p>If the structure is PEM encoded, it will have a header of "BEGIN
 NEW CERTIFICATE REQUEST".</p>
 <div class="refsect3">
@@ -4382,7 +4382,7 @@ NEW CERTIFICATE REQUEST".</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4431,7 +4431,7 @@ appended to the request. Their interpretation depends on the CA policy.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4486,7 +4486,7 @@ sequence.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4545,7 +4545,7 @@ returned.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4601,7 +4601,7 @@ X.509 extension (2.5.29.19).</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4658,7 +4658,7 @@ revocation of the certificate.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4700,7 +4700,7 @@ data.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4750,7 +4750,7 @@ using <a class="link" href="gnutls-x509.html#gnutls-x509-dn-oid-known" title="gn
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a gnutls_x509_crq_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_x509_crq_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4807,7 +4807,7 @@ certificate request subject, specified by the given index.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a gnutls_x509_crq_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_x509_crq_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4862,7 +4862,7 @@ DER encoded, in the provided buffer.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4925,7 +4925,7 @@ sequence.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4985,7 +4985,7 @@ returned.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -4995,7 +4995,7 @@ returned.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>oid</p></td>
-<td class="parameter_description"><p>a pointer to a structure to hold the OID</p></td>
+<td class="parameter_description"><p>a pointer to store the OID</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5105,7 +5105,7 @@ human readable names.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5115,7 +5115,7 @@ human readable names.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>oid</p></td>
-<td class="parameter_description"><p>a pointer to a buffer to hold the OID (may be <code class="literal">NULL</code>)</p></td>
+<td class="parameter_description"><p>a pointer to store the OID (may be <code class="literal">NULL</code>)</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5151,7 +5151,7 @@ gnutls_x509_crq_get_key_rsa_raw (<em class="parameter"><code><a class="link" hre
                                  <em class="parameter"><code><span class="type">gnutls_datum_t</span> *e</code></em>);</pre>
 <p>This function will export the RSA public key's parameters found in
 the given structure.  The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.68.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -5212,7 +5212,7 @@ ORed values of the: <a class="link" href="gnutls-gnutls.html#GNUTLS-KEY-DIGITAL-
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5260,7 +5260,7 @@ For DSA the bits returned are of the public exponent.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5351,7 +5351,7 @@ not enough).</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5425,7 +5425,7 @@ the type as an enumerated element.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5481,7 +5481,7 @@ request.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -5501,7 +5501,7 @@ gnutls_x509_crq_import (<em class="parameter"><code><a class="link" href="gnutls
                         <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *data</code></em>,
                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> format</code></em>);</pre>
 <p>This function will convert the given DER or PEM encoded certificate
-request to a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure.  The output will be
+request to a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type.  The output will be
 stored in <em class="parameter"><code>crq</code></em>
 .</p>
 <p>If the Certificate is PEM encoded it should have a header of "NEW
@@ -5517,7 +5517,7 @@ CERTIFICATE REQUEST".</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>The structure to store the parsed certificate request.</p></td>
+<td class="parameter_description"><p>The data to store the parsed certificate request.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5557,7 +5557,7 @@ structure.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -5579,7 +5579,7 @@ gnutls_x509_crq_print (<em class="parameter"><code><a class="link" href="gnutls-
 <p>This function will pretty print a certificate request, suitable for
 display to a human.</p>
 <p>The output <em class="parameter"><code>out</code></em>
- needs to be deallocated using <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p>
+ needs to be deallocated using <code class="function">gnutls_free()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.77.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -5591,7 +5591,7 @@ display to a human.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>The structure to be printed</p></td>
+<td class="parameter_description"><p>The data to be printed</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5639,7 +5639,7 @@ appended to the request. Their interpretation depends on the CA policy.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5727,7 +5727,7 @@ revoking the request.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5773,7 +5773,7 @@ call this function with raw_flag set.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5826,7 +5826,7 @@ key to the request.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5871,7 +5871,7 @@ See the GNUTLS_KP_* definitions for human readable names.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>oid</p></td>
-<td class="parameter_description"><p>a pointer to a (0)-terminated string that holds the OID</p></td>
+<td class="parameter_description"><p>a pointer to a null-terminated string that holds the OID</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -5910,7 +5910,7 @@ key to the request. Only RSA keys are currently supported.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -6095,7 +6095,7 @@ version 1 requests this must be one.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -6138,7 +6138,7 @@ since all the previously set parameters are now signed.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crq</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crq-t" title="gnutls_x509_crq_t"><span class="type">gnutls_x509_crq_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -6222,14 +6222,12 @@ x:x:x:x:x:x:x:x format. For them the IPAddress subject alternative
 name extension is consulted, as well as the DNSNames in case of a non-match.
 The latter fallback exists due to misconfiguration of many servers
 which place an IPAddress inside the DNSName extension.</p>
-<p>The comparison of dns names may have false-negatives as it is done byte 
-by byte in non-ascii names.</p>
 <p>When the flag <a class="link" href="gnutls-x509.html#GNUTLS-VERIFY-DO-NOT-ALLOW-WILDCARDS:CAPS"><code class="literal">GNUTLS_VERIFY_DO_NOT_ALLOW_WILDCARDS</code></a> is specified no
 wildcards are considered. Otherwise they are only considered if the
 domain name consists of three components or more, and the wildcard
 starts at the leftmost position.</p>
 <div class="refsect3">
-<a name="id-1.2.6.6.91.8"></a><h4>Parameters</h4>
+<a name="id-1.2.6.6.91.7"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -6239,7 +6237,7 @@ starts at the leftmost position.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain an gnutls_x509_crt_t structure</p></td>
+<td class="parameter_description"><p>should contain an gnutls_x509_crt_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -6251,7 +6249,7 @@ starts at the leftmost position.</p>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.6.6.91.9"></a><h4>Returns</h4>
+<a name="id-1.2.6.6.91.8"></a><h4>Returns</h4>
 <p> non-zero for a successful match, and zero on failure.</p>
 <p></p>
 </div>
@@ -6318,12 +6316,12 @@ revoked.  It is assumed that the CRLs have been verified before.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>crl_list</p></td>
-<td class="parameter_description"><p>should contain a list of gnutls_x509_crl_t structures</p></td>
+<td class="parameter_description"><p>should contain a list of gnutls_x509_crl_t types</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -6395,7 +6393,7 @@ gnutls_x509_crt_deinit (<em class="parameter"><code><a class="link" href="gnutls
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>The structure to be deinitialized</p></td>
+<td class="parameter_description"><p>The data to be deinitialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -6463,7 +6461,7 @@ gnutls_x509_crt_export2 (<em class="parameter"><code><a class="link" href="gnutl
                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> format</code></em>,
                          <em class="parameter"><code><span class="type">gnutls_datum_t</span> *out</code></em>);</pre>
 <p>This function will export the certificate to DER or PEM format.
-The output buffer is allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+The output buffer is allocated using <code class="function">gnutls_malloc()</code>.</p>
 <p>If the structure is PEM encoded, it will have a header
 of "BEGIN CERTIFICATE".</p>
 <div class="refsect3">
@@ -6518,7 +6516,7 @@ activated.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -6625,7 +6623,7 @@ is non-critical, as required by RFC 5280.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>data</p></td>
-<td class="parameter_description"><p>output data to be freed with <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p></td>
+<td class="parameter_description"><p>output data to be freed with <code class="function">gnutls_free()</code>.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -6681,7 +6679,7 @@ and serial number.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -6756,7 +6754,7 @@ the name and serial number of the certificate. In that case
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -6806,7 +6804,7 @@ X.509 extension (2.5.29.19).</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -6863,7 +6861,7 @@ pathLenConstraint field too.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -6908,7 +6906,7 @@ Extensions.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -6967,7 +6965,7 @@ encoded, depending on the certificate data.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7029,7 +7027,7 @@ is not specified the output is always null terminated, although the
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7098,7 +7096,7 @@ account for the trailing null.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7149,7 +7147,7 @@ expired.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -7184,7 +7182,7 @@ encoded, in the provided buffer.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7251,7 +7249,7 @@ sequence.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7313,7 +7311,7 @@ returned. The <em class="parameter"><code>oid</code></em>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7376,7 +7374,7 @@ account for the trailing null.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7430,7 +7428,7 @@ data of the certificate.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7486,7 +7484,7 @@ deallocated.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7535,7 +7533,7 @@ AltName is recognized.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7604,7 +7602,7 @@ not enough).</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7682,7 +7680,7 @@ account for the trailing null.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7745,7 +7743,7 @@ will be ASCII or UTF-8 encoded, depending on the certificate data.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7807,7 +7805,7 @@ is not specified the output is always null terminated, although the
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -7876,7 +7874,7 @@ account for the trailing null.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8040,7 +8038,7 @@ account for the trailing null.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8100,7 +8098,7 @@ values of the: <a class="link" href="gnutls-gnutls.html#GNUTLS-KEY-DIGITAL-SIGNA
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8148,7 +8146,7 @@ exponent.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8177,7 +8175,7 @@ gnutls_x509_crt_get_pk_dsa_raw (<em class="parameter"><code><a class="link" href
                                 <em class="parameter"><code><span class="type">gnutls_datum_t</span> *y</code></em>);</pre>
 <p>This function will export the DSA public key's parameters found in
 the given certificate.  The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.126.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -8230,7 +8228,7 @@ gnutls_x509_crt_get_pk_rsa_raw (<em class="parameter"><code><a class="link" href
                                 <em class="parameter"><code><span class="type">gnutls_datum_t</span> *e</code></em>);</pre>
 <p>This function will export the RSA public key's parameters found in
 the given structure.  The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.127.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -8287,7 +8285,7 @@ specified by the given index. </p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crt</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8339,7 +8337,7 @@ the PKIX extension 2.5.29.16 being present.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8390,7 +8388,7 @@ reads the ProxyCertInfo X.509 extension (1.3.6.1.5.5.7.1.14).</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8437,7 +8435,7 @@ otherwise a negative error code is returned.</p>
 gnutls_x509_crt_get_raw_dn (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> cert</code></em>,
                             <em class="parameter"><code><span class="type">gnutls_datum_t</span> *start</code></em>);</pre>
 <p>This function will return a pointer to the DER encoded DN structure and
-the length. This points to allocated data that must be free'd using <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p>
+the length. This points to allocated data that must be free'd using <code class="function">gnutls_free()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.131.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -8448,7 +8446,7 @@ the length. This points to allocated data that must be free'd using <a class="li
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -8467,7 +8465,7 @@ negative error value. or a negative error code on error.</p>
 gnutls_x509_crt_get_raw_issuer_dn (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> cert</code></em>,
                                    <em class="parameter"><code><span class="type">gnutls_datum_t</span> *start</code></em>);</pre>
 <p>This function will return a pointer to the DER encoded DN structure
-and the length. This points to allocated data that must be free'd using <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p>
+and the length. This points to allocated data that must be free'd using <code class="function">gnutls_free()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.132.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -8478,7 +8476,7 @@ and the length. This points to allocated data that must be free'd using <a class
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -8512,7 +8510,7 @@ numbers, thus it may be wise to handle it as something uint8_t.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8554,7 +8552,7 @@ gnutls_x509_crt_get_signature (<em class="parameter"><code><a class="link" href=
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8591,7 +8589,7 @@ sign this certificate.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -8629,7 +8627,7 @@ deallocated.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8677,7 +8675,7 @@ recognized.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8745,7 +8743,7 @@ not enough).</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8822,7 +8820,7 @@ account for the trailing null.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8882,7 +8880,7 @@ extension field (2.5.29.14).</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -8972,7 +8970,7 @@ gnutls_x509_crt_get_version (<em class="parameter"><code><a class="link" href="g
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -9007,7 +9005,7 @@ CERTIFICATE", or "CERTIFICATE".</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>The structure to store the parsed certificate.</p></td>
+<td class="parameter_description"><p>The data to store the parsed certificate.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -9046,7 +9044,7 @@ gnutls_x509_crt_init (<em class="parameter"><code><a class="link" href="gnutls-g
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -9089,7 +9087,7 @@ CERTIFICATE", or "CERTIFICATE".</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>certs</p></td>
-<td class="parameter_description"><p>The structures to store the parsed certificate. Must not be initialized.</p></td>
+<td class="parameter_description"><p>Indicates where the parsed list will be copied to. Must not be initialized.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -9138,7 +9136,7 @@ in <em class="parameter"><code>certs</code></em>
 CERTIFICATE", or "CERTIFICATE".</p>
 <p>To deinitialize <em class="parameter"><code>certs</code></em>
 , you need to deinitialize each crt structure
-independently, and use <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a> at</p>
+independently, and use <code class="function">gnutls_free()</code> at</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.146.7"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -9150,7 +9148,7 @@ independently, and use <a class="link" href="gnutls-gnutls.html#gnutls-free" tit
 <tbody>
 <tr>
 <td class="parameter_name"><p>certs</p></td>
-<td class="parameter_description"><p>The structures to store the parsed certificate. Must not be initialized.</p></td>
+<td class="parameter_description"><p>Will hold the parsed certificate list.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -9196,11 +9194,9 @@ gnutls_x509_crt_list_verify (<em class="parameter"><code>const <a class="link" h
                              <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>,
                              <em class="parameter"><code>unsigned <span class="type">int</span> *verify</code></em>);</pre>
 <p>This function will try to verify the given certificate list and
-return its status.  If no flags are specified (0), this function
-will use the basicConstraints (2.5.29.19) PKIX extension. This
-means that only a certificate authority is allowed to sign a
-certificate.</p>
-<p>You must also check the peer's name in order to check if the verified
+return its status. The details of the verification are the same
+as in <code class="function">gnutls_x509_trust_list_verify_crt2()</code>.</p>
+<p>You must check the peer's name in order to check if the verified
 certificate belongs to the actual peer.</p>
 <p>The certificate verification output will be put in <em class="parameter"><code>verify</code></em>
  and will
@@ -9280,7 +9276,7 @@ certificate will be output, on multiple lines.  The
 <a class="link" href="gnutls-gnutls.html#GNUTLS-CRT-PRINT-ONELINE:CAPS"><code class="literal">GNUTLS_CRT_PRINT_ONELINE</code></a> format will generate one line with some
 selected fields, which is useful for logging purposes.</p>
 <p>The output <em class="parameter"><code>out</code></em>
- needs to be deallocated using <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p>
+ needs to be deallocated using <code class="function">gnutls_free()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.148.7"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -9292,7 +9288,7 @@ selected fields, which is useful for logging purposes.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>The structure to be printed</p></td>
+<td class="parameter_description"><p>The data to be printed</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -9394,7 +9390,7 @@ URI.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>data</p></td>
-<td class="parameter_description"><p>output data to be freed with <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p></td>
+<td class="parameter_description"><p>output data to be freed with <code class="function">gnutls_free()</code>.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
@@ -10069,7 +10065,7 @@ gnutls_x509_crt_set_pin_function (<em class="parameter"><code><a class="link" hr
 it is required to access a protected object. This function overrides 
 the global function set using <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-set-pin-function" title="gnutls_pkcs11_set_pin_function ()"><code class="function">gnutls_pkcs11_set_pin_function()</code></a>.</p>
 <p>Note that this callback is currently used only during the import
-of a PKCS <span class="type">11</span> certificate with <a class="link" href="gnutls-pkcs11.html#gnutls-x509-crt-import-pkcs11-url" title="gnutls_x509_crt_import_pkcs11_url ()"><code class="function">gnutls_x509_crt_import_pkcs11_url()</code></a>.</p>
+of a PKCS <span class="type">11</span> certificate with <code class="function">gnutls_x509_crt_import_url()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.165.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -10122,12 +10118,12 @@ if this is exceeded.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>crt</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>policy</p></td>
-<td class="parameter_description"><p>A pointer to a policy structure.</p></td>
+<td class="parameter_description"><p>A pointer to a policy</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -10277,7 +10273,7 @@ set it later by using <a class="link" href="gnutls-x509.html#gnutls-x509-crt-set
 <tbody>
 <tr>
 <td class="parameter_name"><p>crt</p></td>
-<td class="parameter_description"><p>a gnutls_x509_crt_t structure with the new proxy cert</p></td>
+<td class="parameter_description"><p>a gnutls_x509_crt_t type with the new proxy cert</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -10665,8 +10661,10 @@ gnutls_x509_crt_verify (<em class="parameter"><code><a class="link" href="gnutls
 its status. Note that a verification error does not imply a negative
 return status. In that case the <em class="parameter"><code>verify</code></em>
  status is set.</p>
+<p>The details of the verification are the same
+as in <code class="function">gnutls_x509_trust_list_verify_crt2()</code>.</p>
 <div class="refsect3">
-<a name="id-1.2.6.6.177.5"></a><h4>Parameters</h4>
+<a name="id-1.2.6.6.177.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -10703,7 +10701,7 @@ return status. In that case the <em class="parameter"><code>verify</code></em>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.6.6.177.6"></a><h4>Returns</h4>
+<a name="id-1.2.6.6.177.7"></a><h4>Returns</h4>
 <p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 <p></p>
@@ -10796,7 +10794,7 @@ gnutls_x509_dn_export2 (<em class="parameter"><code><a class="link" href="gnutls
                         <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> format</code></em>,
                         <em class="parameter"><code><span class="type">gnutls_datum_t</span> *out</code></em>);</pre>
 <p>This function will export the DN to DER or PEM format.</p>
-<p>The output buffer is allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+<p>The output buffer is allocated using <code class="function">gnutls_malloc()</code>.</p>
 <p>If the structure is PEM encoded, it will have a header
 of "BEGIN NAME".</p>
 <div class="refsect3">
@@ -10906,7 +10904,7 @@ value conversions when necessary (e.g. from UCS-2).</p>
 gnutls_x509_dn_import (<em class="parameter"><code><a class="link" href="gnutls-x509.html#gnutls-x509-dn-t" title="gnutls_x509_dn_t"><span class="type">gnutls_x509_dn_t</span></a> dn</code></em>,
                        <em class="parameter"><code>const <span class="type">gnutls_datum_t</span> *data</code></em>);</pre>
 <p>This function parses an RDN sequence and stores the result to a
-<a class="link" href="gnutls-x509.html#gnutls-x509-dn-t" title="gnutls_x509_dn_t"><span class="type">gnutls_x509_dn_t</span></a> structure. The structure must have been initialized
+<a class="link" href="gnutls-x509.html#gnutls-x509-dn-t" title="gnutls_x509_dn_t"><span class="type">gnutls_x509_dn_t</span></a> type. The data must have been initialized
 with <a class="link" href="gnutls-x509.html#gnutls-x509-dn-init" title="gnutls_x509_dn_init ()"><code class="function">gnutls_x509_dn_init()</code></a>. You may use <a class="link" href="gnutls-x509.html#gnutls-x509-dn-get-rdn-ava" title="gnutls_x509_dn_get_rdn_ava ()"><code class="function">gnutls_x509_dn_get_rdn_ava()</code></a> to
 decode the DN.</p>
 <div class="refsect3">
@@ -10944,7 +10942,7 @@ negative error value.</p>
 <a name="gnutls-x509-dn-init"></a><h3>gnutls_x509_dn_init ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>
 gnutls_x509_dn_init (<em class="parameter"><code><a class="link" href="gnutls-x509.html#gnutls-x509-dn-t" title="gnutls_x509_dn_t"><span class="type">gnutls_x509_dn_t</span></a> *dn</code></em>);</pre>
-<p>This function initializes a <a class="link" href="gnutls-x509.html#gnutls-x509-dn-t" title="gnutls_x509_dn_t"><span class="type">gnutls_x509_dn_t</span></a> structure.</p>
+<p>This function initializes a <a class="link" href="gnutls-x509.html#gnutls-x509-dn-t" title="gnutls_x509_dn_t"><span class="type">gnutls_x509_dn_t</span></a> type.</p>
 <p>The object returned must be deallocated using
 <a class="link" href="gnutls-x509.html#gnutls-x509-dn-deinit" title="gnutls_x509_dn_deinit ()"><code class="function">gnutls_x509_dn_deinit()</code></a>.</p>
 <div class="refsect3">
@@ -11120,7 +11118,7 @@ gnutls_x509_privkey_deinit (<em class="parameter"><code><a class="link" href="gn
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to be deinitialized</p></td>
+<td class="parameter_description"><p>The key to be deinitialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -11193,7 +11191,7 @@ gnutls_x509_privkey_export2 (<em class="parameter"><code><a class="link" href="g
 <p>This function will export the private key to a PKCS1 structure for
 RSA keys, or an integer sequence for DSA keys.  The DSA keys are in
 the same format with the parameters used by openssl.</p>
-<p>The output buffer is allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+<p>The output buffer is allocated using <code class="function">gnutls_malloc()</code>.</p>
 <p>If the structure is PEM encoded, it will have a header
 of "BEGIN RSA PRIVATE KEY".</p>
 <div class="refsect3">
@@ -11247,7 +11245,7 @@ cipher, then the default 3DES (PBES2) will be used.</p>
 <p>The <em class="parameter"><code>password</code></em>
  can be either ASCII or UTF-8 in the default PBES2
 encryption schemas, or ASCII for the PKCS12 schemas.</p>
-<p>The output buffer is allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+<p>The output buffer is allocated using <code class="function">gnutls_malloc()</code>.</p>
 <p>If the structure is PEM encoded, it will have a header
 of "BEGIN ENCRYPTED PRIVATE KEY" or "BEGIN PRIVATE KEY" if
 encryption is not used.</p>
@@ -11308,7 +11306,7 @@ gnutls_x509_privkey_export_dsa_raw (<em class="parameter"><code><a class="link" 
                                     <em class="parameter"><code><span class="type">gnutls_datum_t</span> *x</code></em>);</pre>
 <p>This function will export the DSA private key's parameters found
 in the given structure. The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.192.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -11320,7 +11318,7 @@ in the given structure. The new parameters will be allocated using
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>a structure that holds the DSA parameters</p></td>
+<td class="parameter_description"><p>a key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -11369,7 +11367,7 @@ gnutls_x509_privkey_export_ecc_raw (<em class="parameter"><code><a class="link" 
                                     <em class="parameter"><code><span class="type">gnutls_datum_t</span> *k</code></em>);</pre>
 <p>This function will export the ECC private key's parameters found
 in the given structure. The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.193.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -11381,7 +11379,7 @@ in the given structure. The new parameters will be allocated using
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>a structure that holds the rsa parameters</p></td>
+<td class="parameter_description"><p>a key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -11501,7 +11499,7 @@ gnutls_x509_privkey_export_rsa_raw (<em class="parameter"><code><a class="link" 
                                     <em class="parameter"><code><span class="type">gnutls_datum_t</span> *u</code></em>);</pre>
 <p>This function will export the RSA private key's parameters found
 in the given structure. The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.195.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -11513,7 +11511,7 @@ in the given structure. The new parameters will be allocated using
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>a structure that holds the rsa parameters</p></td>
+<td class="parameter_description"><p>a key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -11571,7 +11569,7 @@ gnutls_x509_privkey_export_rsa_raw2 (<em class="parameter"><code><a class="link"
                                      <em class="parameter"><code><span class="type">gnutls_datum_t</span> *e2</code></em>);</pre>
 <p>This function will export the RSA private key's parameters found
 in the given structure. The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.196.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -11583,7 +11581,7 @@ in the given structure. The new parameters will be allocated using
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>a structure that holds the rsa parameters</p></td>
+<td class="parameter_description"><p>a key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -11654,7 +11652,7 @@ In RSA keys, this can be the coefficient and exponent1,2.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>Holds the key</p></td>
+<td class="parameter_description"><p>a key</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -11693,7 +11691,7 @@ the <code class="function">GNUTLS_SUBGROUP_TO_BITS()</code> macro.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey-t" title="gnutls_x509_privkey_t"><span class="type">gnutls_x509_privkey_t</span></a> structure</p></td>
+<td class="parameter_description"><p>a key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -11748,7 +11746,7 @@ which is 20 bytes.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>Holds the key</p></td>
+<td class="parameter_description"><p>a key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -11794,7 +11792,7 @@ key.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey-t" title="gnutls_x509_privkey_t"><span class="type">gnutls_x509_privkey_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey-t" title="gnutls_x509_privkey_t"><span class="type">gnutls_x509_privkey_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -11825,7 +11823,7 @@ key.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey-t" title="gnutls_x509_privkey_t"><span class="type">gnutls_x509_privkey_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey-t" title="gnutls_x509_privkey_t"><span class="type">gnutls_x509_privkey_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -11868,7 +11866,7 @@ password, if the default format fails to import.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to store the parsed key</p></td>
+<td class="parameter_description"><p>The data to store the parsed key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -11906,7 +11904,8 @@ input format. The input format is auto-detected.</p>
 <p>The supported formats are basic unencrypted key, PKCS8, PKCS12,
 and the openssl format.</p>
 <p>If the provided key is encrypted but no password was given, then
-<a class="link" href="gnutls-gnutls.html#GNUTLS-E-DECRYPTION-FAILED:CAPS" title="GNUTLS_E_DECRYPTION_FAILED"><code class="literal">GNUTLS_E_DECRYPTION_FAILED</code></a> is returned.</p>
+<a class="link" href="gnutls-gnutls.html#GNUTLS-E-DECRYPTION-FAILED:CAPS" title="GNUTLS_E_DECRYPTION_FAILED"><code class="literal">GNUTLS_E_DECRYPTION_FAILED</code></a> is returned. Since GnuTLS 3.4.0 this
+function will utilize the PIN callbacks if any.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.203.7"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -11918,7 +11917,7 @@ and the openssl format.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to store the parsed key</p></td>
+<td class="parameter_description"><p>The data to store the parsed key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -11976,7 +11975,7 @@ in <em class="parameter"><code>key</code></em>
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to store the parsed key</p></td>
+<td class="parameter_description"><p>The data to store the parsed key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -12038,7 +12037,7 @@ in <em class="parameter"><code>key</code></em>
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to store the parsed key</p></td>
+<td class="parameter_description"><p>The data to store the parsed key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -12099,7 +12098,7 @@ or wrong then <a class="link" href="gnutls-gnutls.html#GNUTLS-E-DECRYPTION-FAILE
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to store the parsed key</p></td>
+<td class="parameter_description"><p>The data to store the parsed key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -12157,7 +12156,7 @@ are encrypted then <a class="link" href="gnutls-gnutls.html#GNUTLS-E-DECRYPTION-
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to store the parsed key</p></td>
+<td class="parameter_description"><p>The data to store the parsed key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -12216,7 +12215,7 @@ native <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey-t" title="gn
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to store the parsed key</p></td>
+<td class="parameter_description"><p>The data to store the parsed key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -12287,7 +12286,7 @@ native <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey-t" title="gn
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to store the parsed key</p></td>
+<td class="parameter_description"><p>The data to store the parsed key</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -12345,7 +12344,7 @@ negative error value.</p>
 <a name="gnutls-x509-privkey-init"></a><h3>gnutls_x509_privkey_init ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>
 gnutls_x509_privkey_init (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey-t" title="gnutls_x509_privkey_t"><span class="type">gnutls_x509_privkey_t</span></a> *key</code></em>);</pre>
-<p>This function will initialize an private key structure.</p>
+<p>This function will initialize a private key type.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.210.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -12356,7 +12355,7 @@ gnutls_x509_privkey_init (<em class="parameter"><code><a class="link" href="gnut
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -12385,7 +12384,7 @@ this private key.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>a key structure</p></td>
+<td class="parameter_description"><p>a key</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -12414,7 +12413,7 @@ gnutls_x509_privkey_verify_params (<em class="parameter"><code><a class="link" h
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey-t" title="gnutls_x509_privkey_t"><span class="type">gnutls_x509_privkey_t</span></a> structure</p></td>
+<td class="parameter_description"><p>a key</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -12603,7 +12602,7 @@ added to the list and will be deinitialized.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>list</p></td>
-<td class="parameter_description"><p>The structure of the list</p></td>
+<td class="parameter_description"><p>The list</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -12656,7 +12655,7 @@ to allow verifying the CRLs for validity.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>list</p></td>
-<td class="parameter_description"><p>The structure of the list</p></td>
+<td class="parameter_description"><p>The list</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -12701,7 +12700,9 @@ gnutls_x509_trust_list_add_named_crt (<em class="parameter"><code><a class="link
 <p>This function will add the given certificate to the trusted
 list and associate it with a name. The certificate will not be
 be used for verification with <a class="link" href="gnutls-x509.html#gnutls-x509-trust-list-verify-crt" title="gnutls_x509_trust_list_verify_crt ()"><code class="function">gnutls_x509_trust_list_verify_crt()</code></a>
-but only with <a class="link" href="gnutls-x509.html#gnutls-x509-trust-list-verify-named-crt" title="gnutls_x509_trust_list_verify_named_crt ()"><code class="function">gnutls_x509_trust_list_verify_named_crt()</code></a>.</p>
+but with <a class="link" href="gnutls-x509.html#gnutls-x509-trust-list-verify-named-crt" title="gnutls_x509_trust_list_verify_named_crt ()"><code class="function">gnutls_x509_trust_list_verify_named_crt()</code></a> or
+<code class="function">gnutls_x509_trust_list_verify_crt2()</code> - the latter only since
+GnuTLS 3.4.0 and if a hostname is provided.</p>
 <p>In principle this function can be used to set individual "server"
 certificates that are trusted by the user for that specific server
 but for no other purposes.</p>
@@ -12718,7 +12719,7 @@ of the trusted list.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>list</p></td>
-<td class="parameter_description"><p>The structure of the list</p></td>
+<td class="parameter_description"><p>The list</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -12825,7 +12826,7 @@ trust databases can be set; they cannot be stacked with multiple calls.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>list</p></td>
-<td class="parameter_description"><p>The structure of the list</p></td>
+<td class="parameter_description"><p>The list</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -12886,7 +12887,7 @@ to the trusted list.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>list</p></td>
-<td class="parameter_description"><p>The structure of the list</p></td>
+<td class="parameter_description"><p>The list</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -12946,7 +12947,7 @@ want to prevent them from being deinitialized by this function.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>list</p></td>
-<td class="parameter_description"><p>The structure to be deinitialized</p></td>
+<td class="parameter_description"><p>The list to be deinitialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -12983,7 +12984,7 @@ to work with PKCS <span class="type">11</span> trust lists in a thread-safe way.
 <tbody>
 <tr>
 <td class="parameter_name"><p>list</p></td>
-<td class="parameter_description"><p>The structure of the list</p></td>
+<td class="parameter_description"><p>The list</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -13030,7 +13031,7 @@ gnutls_x509_trust_list_init (<em class="parameter"><code><a class="link" href="g
 <tbody>
 <tr>
 <td class="parameter_name"><p>list</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -13060,13 +13061,10 @@ gnutls_x509_trust_list_verify_crt (<em class="parameter"><code><a class="link" h
                                    <em class="parameter"><code>unsigned <span class="type">int</span> *verify</code></em>,
                                    <em class="parameter"><code><span class="type">gnutls_verify_output_function</span> func</code></em>);</pre>
 <p>This function will try to verify the given certificate and return
-its status. The <em class="parameter"><code>verify</code></em>
+its status. The <em class="parameter"><code>voutput</code></em>
  parameter will hold an OR'ed sequence of
 <a class="link" href="gnutls-gnutls.html#gnutls-certificate-status-t" title="enum gnutls_certificate_status_t"><code class="literal">gnutls_certificate_status_t</code></a> flags.</p>
-<p>Additionally a certificate verification profile can be specified
-from the ones in <code class="literal">gnutls_certificate_verification_profiles_t</code> by
-ORing the result of <code class="function">GNUTLS_PROFILE_TO_VFLAGS()</code> to the verification
-flags.</p>
+<p>The details of the verification are the same as in <code class="function">gnutls_x509_trust_list_verify_crt2()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.6.6.225.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -13078,7 +13076,7 @@ flags.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>list</p></td>
-<td class="parameter_description"><p>The structure of the list</p></td>
+<td class="parameter_description"><p>The list</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -13125,10 +13123,11 @@ gnutls_x509_trust_list_verify_named_crt
                                 <em class="parameter"><code>unsigned <span class="type">int</span> *verify</code></em>,
                                 <em class="parameter"><code><span class="type">gnutls_verify_output_function</span> func</code></em>);</pre>
 <p>This function will try to find a certificate that is associated with the provided
-name --see <a class="link" href="gnutls-x509.html#gnutls-x509-trust-list-add-named-crt" title="gnutls_x509_trust_list_add_named_crt ()"><code class="function">gnutls_x509_trust_list_add_named_crt()</code></a>. If a match is found the certificate is considered valid. 
-In addition to that this function will also check CRLs. 
-The <em class="parameter"><code>voutput</code></em>
- parameter will hold an OR'ed sequence of <a class="link" href="gnutls-gnutls.html#gnutls-certificate-status-t" title="enum gnutls_certificate_status_t"><code class="literal">gnutls_certificate_status_t</code></a> flags.</p>
+name --see <a class="link" href="gnutls-x509.html#gnutls-x509-trust-list-add-named-crt" title="gnutls_x509_trust_list_add_named_crt ()"><code class="function">gnutls_x509_trust_list_add_named_crt()</code></a>. If a match is found the
+certificate is considered valid. In addition to that this function will also 
+check CRLs. The <em class="parameter"><code>voutput</code></em>
+ parameter will hold an OR'ed sequence of 
+<a class="link" href="gnutls-gnutls.html#gnutls-certificate-status-t" title="enum gnutls_certificate_status_t"><code class="literal">gnutls_certificate_status_t</code></a> flags.</p>
 <p>Additionally a certificate verification profile can be specified
 from the ones in <code class="literal">gnutls_certificate_verification_profiles_t</code> by
 ORing the result of <code class="function">GNUTLS_PROFILE_TO_VFLAGS()</code> to the verification
@@ -13144,7 +13143,7 @@ flags.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>list</p></td>
-<td class="parameter_description"><p>The structure of the list</p></td>
+<td class="parameter_description"><p>The list</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -13508,7 +13507,7 @@ negative error value.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-PKCS8-USE-PKCS12-3DES:CAPS"></a><h3>GNUTLS_PKCS8_USE_PKCS12_3DES</h3>
-<pre class="programlisting">#define GNUTLS_PKCS8_USE_PKCS12_3DES GNUTLS_PKCS_USE_PKCS12_3DES
+<pre class="programlisting">#define GNUTLS_PKCS8_USE_PKCS12_3DES GNUTLS_PKCS_PKCS12_3DES
 </pre>
 <p>
 </p>
@@ -13516,7 +13515,7 @@ negative error value.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-PKCS8-USE-PKCS12-ARCFOUR:CAPS"></a><h3>GNUTLS_PKCS8_USE_PKCS12_ARCFOUR</h3>
-<pre class="programlisting">#define GNUTLS_PKCS8_USE_PKCS12_ARCFOUR GNUTLS_PKCS_USE_PKCS12_ARCFOUR
+<pre class="programlisting">#define GNUTLS_PKCS8_USE_PKCS12_ARCFOUR GNUTLS_PKCS_PKCS12_ARCFOUR
 </pre>
 <p>
 </p>
@@ -13524,7 +13523,7 @@ negative error value.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-PKCS8-USE-PKCS12-RC2-40:CAPS"></a><h3>GNUTLS_PKCS8_USE_PKCS12_RC2_40</h3>
-<pre class="programlisting">#define GNUTLS_PKCS8_USE_PKCS12_RC2_40 GNUTLS_PKCS_USE_PKCS12_RC2_40
+<pre class="programlisting">#define GNUTLS_PKCS8_USE_PKCS12_RC2_40 GNUTLS_PKCS_PKCS12_RC2_40
 </pre>
 <p>
 </p>
@@ -13573,6 +13572,13 @@ negative error value.</p>
 <p>Fail if the certificates
   in the buffer are not ordered starting from subject to issuer.
   The error code will be <a class="link" href="gnutls-gnutls.html#GNUTLS-E-CERTIFICATE-LIST-UNSORTED:CAPS" title="GNUTLS_E_CERTIFICATE_LIST_UNSORTED"><code class="literal">GNUTLS_E_CERTIFICATE_LIST_UNSORTED</code></a>.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GNUTLS-X509-CRT-LIST-SORT:CAPS"></a>GNUTLS_X509_CRT_LIST_SORT</p></td>
+<td class="enum_member_description">
+<p>Sort the certificate chain if unsorted.</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>
@@ -13801,49 +13807,49 @@ and <code class="literal">gnutls_certificate_verification_profiles_t</code>.</p>
 <td class="enum_member_annotations"> </td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GNUTLS-PKCS-USE-PKCS12-3DES:CAPS"></a>GNUTLS_PKCS_USE_PKCS12_3DES</p></td>
+<td class="enum_member_name"><p><a name="GNUTLS-PKCS-PKCS12-3DES:CAPS"></a>GNUTLS_PKCS_PKCS12_3DES</p></td>
 <td class="enum_member_description">
 <p>PKCS-12 3DES.</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GNUTLS-PKCS-USE-PKCS12-ARCFOUR:CAPS"></a>GNUTLS_PKCS_USE_PKCS12_ARCFOUR</p></td>
+<td class="enum_member_name"><p><a name="GNUTLS-PKCS-PKCS12-ARCFOUR:CAPS"></a>GNUTLS_PKCS_PKCS12_ARCFOUR</p></td>
 <td class="enum_member_description">
 <p>PKCS-12 ARCFOUR.</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GNUTLS-PKCS-USE-PKCS12-RC2-40:CAPS"></a>GNUTLS_PKCS_USE_PKCS12_RC2_40</p></td>
+<td class="enum_member_name"><p><a name="GNUTLS-PKCS-PKCS12-RC2-40:CAPS"></a>GNUTLS_PKCS_PKCS12_RC2_40</p></td>
 <td class="enum_member_description">
 <p>PKCS-12 RC2-40.</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GNUTLS-PKCS-USE-PBES2-3DES:CAPS"></a>GNUTLS_PKCS_USE_PBES2_3DES</p></td>
+<td class="enum_member_name"><p><a name="GNUTLS-PKCS-PBES2-3DES:CAPS"></a>GNUTLS_PKCS_PBES2_3DES</p></td>
 <td class="enum_member_description">
 <p>PBES2 3DES.</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GNUTLS-PKCS-USE-PBES2-AES-128:CAPS"></a>GNUTLS_PKCS_USE_PBES2_AES_128</p></td>
+<td class="enum_member_name"><p><a name="GNUTLS-PKCS-PBES2-AES-128:CAPS"></a>GNUTLS_PKCS_PBES2_AES_128</p></td>
 <td class="enum_member_description">
 <p>PBES2 AES-128.</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GNUTLS-PKCS-USE-PBES2-AES-192:CAPS"></a>GNUTLS_PKCS_USE_PBES2_AES_192</p></td>
+<td class="enum_member_name"><p><a name="GNUTLS-PKCS-PBES2-AES-192:CAPS"></a>GNUTLS_PKCS_PBES2_AES_192</p></td>
 <td class="enum_member_description">
 <p>PBES2 AES-192.</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GNUTLS-PKCS-USE-PBES2-AES-256:CAPS"></a>GNUTLS_PKCS_USE_PBES2_AES_256</p></td>
+<td class="enum_member_name"><p><a name="GNUTLS-PKCS-PBES2-AES-256:CAPS"></a>GNUTLS_PKCS_PBES2_AES_256</p></td>
 <td class="enum_member_description">
 <p>PBES2 AES-256.</p>
 </td>
@@ -13853,6 +13859,13 @@ and <code class="literal">gnutls_certificate_verification_profiles_t</code>.</p>
 <td class="enum_member_name"><p><a name="GNUTLS-PKCS-NULL-PASSWORD:CAPS"></a>GNUTLS_PKCS_NULL_PASSWORD</p></td>
 <td class="enum_member_description">
 <p>Some schemas distinguish between an empty and a NULL password.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GNUTLS-PKCS-PBES2-DES:CAPS"></a>GNUTLS_PKCS_PBES2_DES</p></td>
+<td class="enum_member_description">
+<p>PBES2 single DES.</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>

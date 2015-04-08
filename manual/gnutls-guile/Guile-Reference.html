@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 19 January 2015 for version
+3.4.0 of GnuTLS.
 
 Copyright (C) 2001-2012, 2014 Free Software Foundation, Inc.
 
@@ -13,10 +13,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS-Guile 3.3.14: Guile Reference</title>
+<title>GnuTLS-Guile 3.4.0: Guile Reference</title>
 
-<meta name="description" content="GnuTLS-Guile 3.3.14: Guile Reference">
-<meta name="keywords" content="GnuTLS-Guile 3.3.14: Guile Reference">
+<meta name="description" content="GnuTLS-Guile 3.4.0: Guile Reference">
+<meta name="keywords" content="GnuTLS-Guile 3.4.0: Guile Reference">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -405,11 +405,6 @@ GNU Guile Reference Manual</cite>).
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-set_002dcertificate_002dcredentials_002drsa_002dexport_002dparameters_0021"></a>Scheme Procedure: <strong>set-certificate-credentials-rsa-export-parameters!</strong> <em>cred rsa-params</em></dt>
-<dd><p>Use RSA parameters <var>rsa_params</var> for certificate credentials <var>cred</var>.
-</p></dd></dl>
-
-<dl>
 <dt><a name="index-set_002dcertificate_002dcredentials_002ddh_002dparameters_0021"></a>Scheme Procedure: <strong>set-certificate-credentials-dh-parameters!</strong> <em>cred dh-params</em></dt>
 <dd><p>Use Diffie-Hellman parameters <var>dh_params</var> for certificate credentials <var>cred</var>.
 </p></dd></dl>
@@ -417,21 +412,6 @@ GNU Guile Reference Manual</cite>).
 <dl>
 <dt><a name="index-make_002dcertificate_002dcredentials"></a>Scheme Procedure: <strong>make-certificate-credentials</strong></dt>
 <dd><p>Return new certificate credentials (i.e., for use with either X.509 or OpenPGP certificates.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-pkcs1_002dexport_002drsa_002dparameters-1"></a>Scheme Procedure: <strong>pkcs1-export-rsa-parameters</strong> <em>rsa-params format</em></dt>
-<dd><p>Export Diffie-Hellman parameters <var>rsa_params</var> in PKCS1 format according for <var>format</var> (an <code>x509-certificate-format</code> value).  Return a <code>u8vector</code> containing the result.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-pkcs1_002dimport_002drsa_002dparameters"></a>Scheme Procedure: <strong>pkcs1-import-rsa-parameters</strong> <em>array format</em></dt>
-<dd><p>Import Diffie-Hellman parameters in PKCS1 format (further specified by <var>format</var>, an <code>x509-certificate-format</code> value) from <var>array</var> (a homogeneous array) and return a new <code>rsa-params</code> object.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-make_002drsa_002dparameters-1"></a>Scheme Procedure: <strong>make-rsa-parameters</strong> <em>bits</em></dt>
-<dd><p>Return new RSA parameters.
 </p></dd></dl>
 
 <dl>
@@ -455,7 +435,7 @@ GNU Guile Reference Manual</cite>).
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-pkcs3_002dexport_002ddh_002dparameters"></a>Scheme Procedure: <strong>pkcs3-export-dh-parameters</strong> <em>dh-params format</em></dt>
+<dt><a name="index-pkcs3_002dexport_002ddh_002dparameters-1"></a>Scheme Procedure: <strong>pkcs3-export-dh-parameters</strong> <em>dh-params format</em></dt>
 <dd><p>Export Diffie-Hellman parameters <var>dh_params</var> in PKCS3 format according for <var>format</var> (an <code>x509-certificate-format</code> value).  Return a <code>u8vector</code> containing the result.
 </p></dd></dl>
 
@@ -465,7 +445,7 @@ GNU Guile Reference Manual</cite>).
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-make_002ddh_002dparameters"></a>Scheme Procedure: <strong>make-dh-parameters</strong> <em>bits</em></dt>
+<dt><a name="index-make_002ddh_002dparameters-1"></a>Scheme Procedure: <strong>make-dh-parameters</strong> <em>bits</em></dt>
 <dd><p>Return new Diffie-Hellman parameters.
 </p></dd></dl>
 
@@ -663,11 +643,6 @@ GNU Guile Reference Manual</cite>).
 <dl>
 <dt><a name="index-certificate_002dcredentials_003f"></a>Scheme Procedure: <strong>certificate-credentials?</strong> <em>obj</em></dt>
 <dd><p>Return true if <var>obj</var> is of type <code>certificate-credentials</code>.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-rsa_002dparameters_003f"></a>Scheme Procedure: <strong>rsa-parameters?</strong> <em>obj</em></dt>
-<dd><p>Return true if <var>obj</var> is of type <code>rsa-parameters</code>.
 </p></dd></dl>
 
 <dl>

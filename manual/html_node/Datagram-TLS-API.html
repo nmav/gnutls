@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: Datagram TLS API</title>
+<title>GnuTLS 3.4.0: Datagram TLS API</title>
 
-<meta name="description" content="GnuTLS 3.3.14: Datagram TLS API">
-<meta name="keywords" content="GnuTLS 3.3.14: Datagram TLS API">
+<meta name="description" content="GnuTLS 3.4.0: Datagram TLS API">
+<meta name="keywords" content="GnuTLS 3.4.0: Datagram TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -233,7 +233,7 @@ it should be associated with the session using
 <h4 class="subheading">gnutls_dtls_get_data_mtu</h4>
 <a name="gnutls_005fdtls_005fget_005fdata_005fmtu"></a><dl>
 <dt><a name="index-gnutls_005fdtls_005fget_005fdata_005fmtu"></a>Function: <em>unsigned int</em> <strong>gnutls_dtls_get_data_mtu</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function will return the actual maximum transfer unit for
 application data. I.e. DTLS headers are subtracted from the
@@ -248,7 +248,7 @@ actual MTU which is set using <code>gnutls_dtls_set_mtu()</code> .
 <h4 class="subheading">gnutls_dtls_get_mtu</h4>
 <a name="gnutls_005fdtls_005fget_005fmtu"></a><dl>
 <dt><a name="index-gnutls_005fdtls_005fget_005fmtu"></a>Function: <em>unsigned int</em> <strong>gnutls_dtls_get_mtu</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function will return the MTU size as set with
 <code>gnutls_dtls_set_mtu()</code> . This is not the actual MTU
@@ -264,7 +264,7 @@ for that reason.
 <h4 class="subheading">gnutls_dtls_get_timeout</h4>
 <a name="gnutls_005fdtls_005fget_005ftimeout"></a><dl>
 <dt><a name="index-gnutls_005fdtls_005fget_005ftimeout-1"></a>Function: <em>unsigned int</em> <strong>gnutls_dtls_get_timeout</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function will return the milliseconds remaining
 for a retransmission of the previously sent handshake
@@ -299,7 +299,7 @@ and should be succeeded by the actual DTLS handshake using <code>gnutls_handshak
 <h4 class="subheading">gnutls_dtls_set_data_mtu</h4>
 <a name="gnutls_005fdtls_005fset_005fdata_005fmtu"></a><dl>
 <dt><a name="index-gnutls_005fdtls_005fset_005fdata_005fmtu"></a>Function: <em>int</em> <strong>gnutls_dtls_set_data_mtu</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>mtu</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>mtu</var>: The maximum unencrypted transfer unit of the session
 </p>
@@ -323,7 +323,7 @@ the maximum MTU of your transport layer.
 <h4 class="subheading">gnutls_dtls_set_mtu</h4>
 <a name="gnutls_005fdtls_005fset_005fmtu"></a><dl>
 <dt><a name="index-gnutls_005fdtls_005fset_005fmtu"></a>Function: <em>void</em> <strong>gnutls_dtls_set_mtu</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>mtu</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>mtu</var>: The maximum transfer unit of the transport
 </p>
@@ -340,7 +340,7 @@ would be 1500 - 40 (IPV6 header) - 8 (UDP header) = 1452.
 <h4 class="subheading">gnutls_dtls_set_timeouts</h4>
 <a name="gnutls_005fdtls_005fset_005ftimeouts"></a><dl>
 <dt><a name="index-gnutls_005fdtls_005fset_005ftimeouts"></a>Function: <em>void</em> <strong>gnutls_dtls_set_timeouts</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>retrans_timeout</var>, unsigned int <var>total_timeout</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>retrans_timeout</var>: The time at which a retransmission will occur in milliseconds
 </p>
@@ -353,7 +353,7 @@ be retransmitted. The total timeout is the time after which the
 handshake will be aborted with <code>GNUTLS_E_TIMEDOUT</code> .
 </p>
 <p>The DTLS protocol recommends the values of 1 sec and 60 seconds
-respectively.
+respectively, and these are the default values.
 </p>
 <p>If the retransmission timeout is zero then the handshake will operate
 in a non-blocking way, i.e., return <code>GNUTLS_E_AGAIN</code> .
@@ -367,7 +367,7 @@ in a non-blocking way, i.e., return <code>GNUTLS_E_AGAIN</code> .
 <h4 class="subheading">gnutls_record_get_discarded</h4>
 <a name="gnutls_005frecord_005fget_005fdiscarded"></a><dl>
 <dt><a name="index-gnutls_005frecord_005fget_005fdiscarded"></a>Function: <em>unsigned int</em> <strong>gnutls_record_get_discarded</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Returns the number of discarded packets in a
 DTLS connection.

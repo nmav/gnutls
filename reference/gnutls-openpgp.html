@@ -663,7 +663,7 @@ gnutls_certificate_set_openpgp_key (<em class="parameter"><code><span class="typ
                                     <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-openpgp-crt-t" title="gnutls_openpgp_crt_t"><span class="type">gnutls_openpgp_crt_t</span></a> crt</code></em>,
                                     <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-openpgp-privkey-t" title="gnutls_openpgp_privkey_t"><span class="type">gnutls_openpgp_privkey_t</span></a> pkey</code></em>);</pre>
 <p>This function sets a certificate/private key pair in the
-gnutls_certificate_credentials_t structure.  This function may be
+gnutls_certificate_credentials_t type.  This function may be
 called more than once (in case multiple keys/certificates exist
 for the server).</p>
 <p>Note that this function requires that the preferred key ids have
@@ -680,7 +680,7 @@ Otherwise the master key will be used.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>res</p></td>
-<td class="parameter_description"><p>is a <span class="type">gnutls_certificate_credentials_t</span> structure.</p></td>
+<td class="parameter_description"><p>is a <span class="type">gnutls_certificate_credentials_t</span> type.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1043,7 +1043,7 @@ described in RFC2818 (HTTPS), which takes into account wildcards.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-openpgp-crt-t" title="gnutls_openpgp_crt_t"><span class="type">gnutls_openpgp_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-gnutls.html#gnutls-openpgp-crt-t" title="gnutls_openpgp_crt_t"><span class="type">gnutls_openpgp_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1076,7 +1076,7 @@ gnutls_openpgp_crt_deinit (<em class="parameter"><code><a class="link" href="gnu
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -1140,7 +1140,7 @@ gnutls_openpgp_crt_export2 (<em class="parameter"><code><a class="link" href="gn
                             <em class="parameter"><code><a class="link" href="gnutls-openpgp.html#gnutls-openpgp-crt-fmt-t" title="enum gnutls_openpgp_crt_fmt_t"><span class="type">gnutls_openpgp_crt_fmt_t</span></a> format</code></em>,
                             <em class="parameter"><code><span class="type">gnutls_datum_t</span> *out</code></em>);</pre>
 <p>This function will convert the given key to RAW or Base64 format.
-The output buffer is allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+The output buffer is allocated using <code class="function">gnutls_malloc()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.7.6.12.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -1373,7 +1373,7 @@ key algorithm. The key usage value will ORed values of the:
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>should contain a gnutls_openpgp_crt_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_openpgp_crt_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1495,7 +1495,7 @@ gnutls_openpgp_crt_get_pk_dsa_raw (<em class="parameter"><code><a class="link" h
                                    <em class="parameter"><code><span class="type">gnutls_datum_t</span> *y</code></em>);</pre>
 <p>This function will export the DSA public key's parameters found in
 the given certificate.  The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.7.6.21.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -1549,7 +1549,7 @@ gnutls_openpgp_crt_get_pk_rsa_raw (<em class="parameter"><code><a class="link" h
                                    <em class="parameter"><code><span class="type">gnutls_datum_t</span> *e</code></em>);</pre>
 <p>This function will export the RSA public key's parameters found in
 the given structure.  The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.7.6.22.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -1942,7 +1942,7 @@ gnutls_openpgp_crt_get_subkey_pk_dsa_raw
                                 <em class="parameter"><code><span class="type">gnutls_datum_t</span> *y</code></em>);</pre>
 <p>This function will export the DSA public key's parameters found in
 the given certificate.  The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.7.6.32.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -2003,7 +2003,7 @@ gnutls_openpgp_crt_get_subkey_pk_rsa_raw
                                 <em class="parameter"><code><span class="type">gnutls_datum_t</span> *e</code></em>);</pre>
 <p>This function will export the RSA public key's parameters found in
 the given structure.  The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.7.6.33.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -2103,7 +2103,7 @@ key algorithm.  The key usage value will ORed values of
 <tbody>
 <tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>should contain a gnutls_openpgp_crt_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_openpgp_crt_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -2212,7 +2212,7 @@ gnutls_openpgp_crt_init (<em class="parameter"><code><a class="link" href="gnutl
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -2234,7 +2234,7 @@ gnutls_openpgp_crt_print (<em class="parameter"><code><a class="link" href="gnut
 for display to a human.</p>
 <p>The format should be (0) for future compatibility.</p>
 <p>The output <em class="parameter"><code>out</code></em>
- needs to be deallocate using <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p>
+ needs to be deallocate using <code class="function">gnutls_free()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.7.6.39.7"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -2466,7 +2466,7 @@ gnutls_openpgp_keyring_deinit (<em class="parameter"><code><a class="link" href=
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>keyring</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -2504,7 +2504,7 @@ returned structure needs to be deinited.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>cert</p></td>
-<td class="parameter_description"><p>An uninitialized <a class="link" href="gnutls-gnutls.html#gnutls-openpgp-crt-t" title="gnutls_openpgp_crt_t"><span class="type">gnutls_openpgp_crt_t</span></a> structure</p></td>
+<td class="parameter_description"><p>An uninitialized <a class="link" href="gnutls-gnutls.html#gnutls-openpgp-crt-t" title="gnutls_openpgp_crt_t"><span class="type">gnutls_openpgp_crt_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
@@ -2603,7 +2603,7 @@ gnutls_openpgp_keyring_init (<em class="parameter"><code><a class="link" href="g
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>keyring</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -2630,7 +2630,7 @@ gnutls_openpgp_privkey_deinit (<em class="parameter"><code><a class="link" href=
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -2709,7 +2709,7 @@ gnutls_openpgp_privkey_export2 (<em class="parameter"><code><a class="link" href
                                 <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>,
                                 <em class="parameter"><code><span class="type">gnutls_datum_t</span> *out</code></em>);</pre>
 <p>This function will convert the given key to RAW or Base64 format.
-The output buffer is allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+The output buffer is allocated using <code class="function">gnutls_malloc()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.7.6.51.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -2766,7 +2766,7 @@ gnutls_openpgp_privkey_export_dsa_raw (<em class="parameter"><code><a class="lin
                                        <em class="parameter"><code><span class="type">gnutls_datum_t</span> *x</code></em>);</pre>
 <p>This function will export the DSA private key's parameters found in
 the given certificate.  The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.7.6.52.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -2829,7 +2829,7 @@ gnutls_openpgp_privkey_export_rsa_raw (<em class="parameter"><code><a class="lin
                                        <em class="parameter"><code><span class="type">gnutls_datum_t</span> *u</code></em>);</pre>
 <p>This function will export the RSA private key's parameters found in
 the given structure.  The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.7.6.53.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -2898,7 +2898,7 @@ gnutls_openpgp_privkey_export_subkey_dsa_raw
                                 <em class="parameter"><code><span class="type">gnutls_datum_t</span> *x</code></em>);</pre>
 <p>This function will export the DSA private key's parameters found
 in the given certificate.  The new parameters will be allocated
-using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+using <code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.7.6.54.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -2968,7 +2968,7 @@ gnutls_openpgp_privkey_export_subkey_rsa_raw
                                 <em class="parameter"><code><span class="type">gnutls_datum_t</span> *u</code></em>);</pre>
 <p>This function will export the RSA private key's parameters found in
 the given structure.  The new parameters will be allocated using
-<a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a> and will be stored in the appropriate datum.</p>
+<code class="function">gnutls_malloc()</code> and will be stored in the appropriate datum.</p>
 <div class="refsect3">
 <a name="id-1.2.7.6.55.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -3607,7 +3607,7 @@ gnutls_openpgp_privkey_init (<em class="parameter"><code><a class="link" href="g
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>key</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -3702,7 +3702,7 @@ useful on the server, and will only be used if the peer send a key
 fingerprint instead of a full key.  See also
 <a class="link" href="gnutls-openpgp.html#gnutls-openpgp-set-recv-key-function" title="gnutls_openpgp_set_recv_key_function ()"><code class="function">gnutls_openpgp_set_recv_key_function()</code></a>.</p>
 <p>The variable <em class="parameter"><code>key</code></em>
- must be allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+ must be allocated using <code class="function">gnutls_malloc()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.7.6.73.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -3751,7 +3751,7 @@ gnutls_openpgp_set_recv_key_function (<em class="parameter"><code><a class="link
 <p>This funtion will set a key retrieval function for OpenPGP keys. This
 callback is only useful in server side, and will be used if the peer
 sent a key fingerprint instead of a full key.</p>
-<p>The retrieved key must be allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+<p>The retrieved key must be allocated using <code class="function">gnutls_malloc()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.7.6.74.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">

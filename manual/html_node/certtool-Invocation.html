@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: certtool Invocation</title>
+<title>GnuTLS 3.4.0: certtool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.3.14: certtool Invocation">
-<meta name="keywords" content="GnuTLS 3.3.14: certtool Invocation">
+<meta name="description" content="GnuTLS 3.4.0: certtool Invocation">
+<meta name="keywords" content="GnuTLS 3.4.0: certtool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -310,13 +310,15 @@ infile.
 <h4 class="subsubheading">verify-chain option (-e)</h4>
 
 <p>This is the &ldquo;verify a pem encoded certificate chain&rdquo; option.
-The last certificate in the chain must be a self signed one.
+The last certificate in the chain must be a self signed one. It can be combined with &ndash;verify-purpose or &ndash;verify-hostname.
 <a name="certtool-verify"></a></p><a name="verify-option"></a>
 <h4 class="subsubheading">verify option</h4>
 
 <p>This is the &ldquo;verify a pem encoded certificate chain using a trusted list&rdquo; option.
 The trusted certificate list can be loaded with &ndash;load-ca-certificate. If no
-certificate list is provided, then the system&rsquo;s certificate list is used.
+certificate list is provided, then the system&rsquo;s certificate list is used. Note that
+during verification multiple paths may be explored. On a successful verification
+the successful path will be the last one. It can be combined with &ndash;verify-purpose or &ndash;verify-hostname.
 <a name="certtool-verify_002dcrl"></a></p><a name="verify_002dcrl-option"></a>
 <h4 class="subsubheading">verify-crl option</h4>
 
@@ -329,6 +331,31 @@ load-ca-certificate.
 </li></ul>
 
 <p>The trusted certificate list must be loaded with &ndash;load-ca-certificate.
+<a name="certtool-verify_002dhostname"></a></p><a name="verify_002dhostname-option"></a>
+<h4 class="subsubheading">verify-hostname option</h4>
+
+<p>This is the &ldquo;specify a hostname to be used for certificate chain verification&rdquo; option.
+This option takes a string argument.
+This is to be combined with one of the verify certificate options.
+<a name="certtool-verify_002demail"></a></p><a name="verify_002demail-option"></a>
+<h4 class="subsubheading">verify-email option</h4>
+
+<p>This is the &ldquo;specify a email to be used for certificate chain verification&rdquo; option.
+This option takes a string argument.
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> must not appear in combination with any of the following options:
+verify-hostname.
+</li></ul>
+
+<p>This is to be combined with one of the verify certificate options.
+<a name="certtool-verify_002dpurpose"></a></p><a name="verify_002dpurpose-option"></a>
+<h4 class="subsubheading">verify-purpose option</h4>
+
+<p>This is the &ldquo;specify a purpose oid to be used for certificate chain verification&rdquo; option.
+This option takes a string argument.
+This object identifier restricts the purpose of the certificates to be verified. Example purposes are 1.3.6.1.5.5.7.3.1 (TLS WWW), 1.3.6.1.5.5.7.3.4 (EMAIL) etc. Note that a CA certificate without a purpose set (extended key usage) is valid for any purpose.
 <a name="certtool-get_002ddh_002dparams"></a></p><a name="get_002ddh_002dparams-option"></a>
 <h4 class="subsubheading">get-dh-params option</h4>
 
@@ -386,12 +413,32 @@ This option enforces an empty password. This is different than the NULL or no pa
 
 <p>This is the &ldquo;in certain operations it prints the information in c-friendly format&rdquo; option.
 In certain operations it prints the information in C-friendly format, suitable for including into C programs.
+<a name="certtool-fingerprint"></a></p><a name="fingerprint-option"></a>
+<h4 class="subsubheading">fingerprint option</h4>
+
+<p>This is the &ldquo;print the fingerprint of the given certificate&rdquo; option.
+This is a simple hash of the DER encoding of the certificate. It is always better to use the key-id.
+<a name="certtool-key_002did"></a></p><a name="key_002did-option"></a>
+<h4 class="subsubheading">key-id option</h4>
+
+<p>This is the &ldquo;print the key id of the given certificate&rdquo; option.
+This is a hash of the public key of the given certificate. It identifies the key uniquely, remains the same on a certificate renewal and depends only on signed fields of the certificate.
+<a name="certtool-p12_002dinfo"></a></p><a name="p12_002dinfo-option"></a>
+<h4 class="subsubheading">p12-info option</h4>
+
+<p>This is the &ldquo;print information on a pkcs #12 structure&rdquo; option.
+This option will dump the contents and print the metadata of the provided PKCS #12 structure.
 <a name="certtool-p12_002dname"></a></p><a name="p12_002dname-option"></a>
 <h4 class="subsubheading">p12-name option</h4>
 
 <p>This is the &ldquo;the pkcs #12 friendly name to use&rdquo; option.
 This option takes a string argument.
 The name to be used for the primary certificate and private key in a PKCS #12 file.
+<a name="certtool-p8_002dinfo"></a></p><a name="p8_002dinfo-option"></a>
+<h4 class="subsubheading">p8-info option</h4>
+
+<p>This is the &ldquo;print information on a pkcs #8 structure&rdquo; option.
+This option will print information about encrypted PKCS #8 structures. That option does not require the decryption of the structure.
 <a name="certtool-pubkey_002dinfo"></a></p><a name="pubkey_002dinfo-option"></a>
 <h4 class="subsubheading">pubkey-info option</h4>
 
@@ -711,7 +758,7 @@ cn = &quot;Cindy Lauper&quot;
 # jurisdictionOfIncorporationStateOrProvinceName,
 # jurisdictionOfIncorporationCountryName, XmppAddr, and numeric OIDs.
 
-#dn = &quot;cn=Nik,st=Attiki,C=GR,surName=Mavrogiannopoulos,2.5.4.9=Arkadias&quot;
+#dn = &quot;cn = Nikos,st = New\, Something,C=GR,surName=Mavrogiannopoulos,2.5.4.9=Arkadias&quot;
 
 # The serial number of the certificate
 # Comment the field for a time-based serial number.
@@ -756,43 +803,88 @@ challenge_password = 123456
 # Whether this is a CA certificate or not
 #ca
 
-# for microsoft smart card logon
-# key_purpose_oid = 1.3.6.1.4.1.311.20.2.2
+#### Key usage
 
-### Other predefined key purpose OIDs
-
-# Whether this certificate will be used for a TLS client
-#tls_www_client
-
-# Whether this certificate will be used for a TLS server
-#tls_www_server
+# The following key usage flags are used by CAs and end certificates
 
 # Whether this certificate will be used to sign data (needed
-# in TLS DHE ciphersuites).
+# in TLS DHE ciphersuites). This is the digitalSignature flag
+# in RFC5280 terminology.
 signing_key
 
 # Whether this certificate will be used to encrypt data (needed
 # in TLS RSA ciphersuites). Note that it is preferred to use different
-# keys for encryption and signing.
+# keys for encryption and signing. This is the keyEncipherment flag
+# in RFC5280 terminology.
 encryption_key
 
-# Whether this key will be used to sign other certificates.
+# Whether this key will be used to sign other certificates. The
+# keyCertSign flag in RFC5280 terminology.
 #cert_signing_key
 
-# Whether this key will be used to sign CRLs.
+# Whether this key will be used to sign CRLs. The
+# cRLSign flag in RFC5280 terminology.
 #crl_signing_key
 
-# Whether this key will be used to sign code.
+# The keyAgreement flag of RFC5280. It's purpose is loosely
+# defined. Not use it unless required by a protocol.
+#key_agreement
+
+# The dataEncipherment flag of RFC5280. It's purpose is loosely
+# defined. Not use it unless required by a protocol.
+#data_encipherment
+
+# The nonRepudiation flag of RFC5280. It's purpose is loosely
+# defined. Not use it unless required by a protocol.
+#non_repudiation
+
+#### Extended key usage (key purposes)
+
+# The following extensions are used in an end certificate
+# to clarify its purpose. Some CAs also use it to indicate
+# the types of certificates they are purposed to sign.
+
+
+# Whether this certificate will be used for a TLS client;
+# this sets the id-kp-serverAuth (1.3.6.1.5.5.7.3.1) of 
+# extended key usage.
+#tls_www_client
+
+# Whether this certificate will be used for a TLS server;
+# This sets the id-kp-clientAuth (1.3.6.1.5.5.7.3.2) of 
+# extended key usage.
+#tls_www_server
+
+# Whether this key will be used to sign code. This sets the
+# id-kp-codeSigning (1.3.6.1.5.5.7.3.3) of extended key usage
+# extension.
 #code_signing_key
 
-# Whether this key will be used to sign OCSP data.
+# Whether this key will be used to sign OCSP data. This sets the
+# id-kp-OCSPSigning (1.3.6.1.5.5.7.3.9) of extended key usage extension.
 #ocsp_signing_key
 
-# Whether this key will be used for time stamping.
+# Whether this key will be used for time stamping. This sets the
+# id-kp-timeStamping (1.3.6.1.5.5.7.3.8) of extended key usage extension.
 #time_stamping_key
 
-# Whether this key will be used for IPsec IKE operations.
+# Whether this key will be used for email protection. This sets the
+# id-kp-emailProtection (1.3.6.1.5.5.7.3.4) of extended key usage extension.
+#email_protection_key
+
+# Whether this key will be used for IPsec IKE operations (1.3.6.1.5.5.7.3.17).
 #ipsec_ike_key
+
+## adding custom key purpose OIDs
+
+# for microsoft smart card logon
+# key_purpose_oid = 1.3.6.1.4.1.311.20.2.2
+
+# for email protection
+# key_purpose_oid = 1.3.6.1.5.5.7.3.4
+
+# for any purpose (must not be used in intermediate CA certificates)
+# key_purpose_oid = 2.5.29.37.0
 
 ### end of key purpose OIDs
 

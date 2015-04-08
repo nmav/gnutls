@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: Verifying X.509 certificate paths</title>
+<title>GnuTLS 3.4.0: Verifying X.509 certificate paths</title>
 
-<meta name="description" content="GnuTLS 3.3.14: Verifying X.509 certificate paths">
-<meta name="keywords" content="GnuTLS 3.3.14: Verifying X.509 certificate paths">
+<meta name="description" content="GnuTLS 3.4.0: Verifying X.509 certificate paths">
+<meta name="keywords" content="GnuTLS 3.4.0: Verifying X.509 certificate paths">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -176,7 +176,7 @@ provided.
 
 <dl>
 <dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fadd_005fcas"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_add_cas</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const gnutls_x509_crt_t * <var>clist</var>, unsigned <var>clist_size</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>list</var>: The structure of the list
+<dd><p><var>list</var>: The list
 </p>
 <p><var>clist</var>: A list of CAs
 </p>
@@ -202,7 +202,7 @@ added to the list and will be deinitialized.
 
 <dl>
 <dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fadd_005fnamed_005fcrt"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_add_named_crt</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, gnutls_x509_crt_t <var>cert</var>, const void * <var>name</var>, size_t <var>name_size</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>list</var>: The structure of the list
+<dd><p><var>list</var>: The list
 </p>
 <p><var>cert</var>: A certificate
 </p>
@@ -215,7 +215,9 @@ added to the list and will be deinitialized.
 <p>This function will add the given certificate to the trusted
 list and associate it with a name. The certificate will not be
 be used for verification with <code>gnutls_x509_trust_list_verify_crt()</code> 
-but only with <code>gnutls_x509_trust_list_verify_named_crt()</code> .
+but with <code>gnutls_x509_trust_list_verify_named_crt()</code>  or
+<code>gnutls_x509_trust_list_verify_crt2()</code>  - the latter only since
+GnuTLS 3.4.0 and if a hostname is provided.
 </p>
 <p>In principle this function can be used to set individual &quot;server&quot;
 certificates that are trusted by the user for that specific server
@@ -235,7 +237,7 @@ negative error value.
 
 <dl>
 <dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fadd_005fcrls"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_add_crls</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const gnutls_x509_crl_t * <var>crl_list</var>, int <var>crl_size</var>, unsigned int <var>flags</var>, unsigned int <var>verification_flags</var>)</em></dt>
-<dd><p><var>list</var>: The structure of the list
+<dd><p><var>list</var>: The list
 </p>
 <p><var>crl_list</var>: A list of CRLs
 </p>
@@ -262,7 +264,7 @@ to allow verifying the CRLs for validity.
 
 <dl>
 <dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fverify_005fcrt"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_verify_crt</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, gnutls_x509_crt_t * <var>cert_list</var>, unsigned int <var>cert_list_size</var>, unsigned int <var>flags</var>, unsigned int * <var>voutput</var>, gnutls_verify_output_function <var>func</var>)</em></dt>
-<dd><p><var>list</var>: The structure of the list
+<dd><p><var>list</var>: The list
 </p>
 <p><var>cert_list</var>: is the certificate list to be verified
 </p>
@@ -275,13 +277,10 @@ to allow verifying the CRLs for validity.
 <p><var>func</var>: If non-null will be called on each chain element verification with the output.
 </p>
 <p>This function will try to verify the given certificate and return
-its status. The  <code>verify</code> parameter will hold an OR&rsquo;ed sequence of
+its status. The  <code>voutput</code> parameter will hold an OR&rsquo;ed sequence of
 <code>gnutls_certificate_status_t</code>  flags.
 </p>
-<p>Additionally a certificate verification profile can be specified
-from the ones in <code>gnutls_certificate_verification_profiles_t</code>  by
-ORing the result of <code>GNUTLS_PROFILE_TO_VFLAGS()</code>  to the verification
-flags.
+<p>The details of the verification are the same as in <code>gnutls_x509_trust_list_verify_crt2()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -294,7 +293,7 @@ negative error value.
 
 <dl>
 <dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fverify_005fcrt2"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_verify_crt2</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, gnutls_x509_crt_t * <var>cert_list</var>, unsigned int <var>cert_list_size</var>, gnutls_typed_vdata_st * <var>data</var>, unsigned int <var>elements</var>, unsigned int <var>flags</var>, unsigned int * <var>voutput</var>, gnutls_verify_output_function <var>func</var>)</em></dt>
-<dd><p><var>list</var>: The structure of the list
+<dd><p><var>list</var>: The list
 </p>
 <p><var>cert_list</var>: is the certificate list to be verified
 </p>
@@ -310,9 +309,13 @@ negative error value.
 </p>
 <p><var>func</var>: If non-null will be called on each chain element verification with the output.
 </p>
-<p>This function will try to verify the given certificate and return
-its status. The  <code>verify</code> parameter will hold an OR&rsquo;ed sequence of
-<code>gnutls_certificate_status_t</code>  flags.
+<p>This function will attempt to verify the given certificate and return
+its status. The  <code>voutput</code> parameter will hold an OR&rsquo;ed sequence of
+<code>gnutls_certificate_status_t</code>  flags. When a chain of  <code>cert_list_size</code> with 
+more than one certificates is provided, the verification status will apply
+to the first certificate in the chain that failed verification. The
+verification process starts from the end of the chain (from CA to end
+certificate).
 </p>
 <p>Additionally a certificate verification profile can be specified
 from the ones in <code>gnutls_certificate_verification_profiles_t</code>  by
@@ -324,10 +327,13 @@ The former accepts as data a null-terminated hostname, and the latter a null-ter
 object identifier (e.g., <code>GNUTLS_KP_TLS_WWW_SERVER</code> ).
 If a DNS hostname is provided then this function will compare
 the hostname in the certificate against the given. If names do not match the 
-<code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
-If a key purpose OID is provided and the end-certificate contains the extended key
-usage PKIX extension, it will be required to be have the provided key purpose 
-or be marked for any purpose, otherwise verification will fail with <code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code>  status.
+<code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set. In addition it
+will consider certificates provided with <code>gnutls_x509_trust_list_add_named_crt()</code> .
+</p>
+<p>If a key purpose OID is provided and the end-certificate contains the extended key
+usage PKIX extension, it will be required to match the provided OID
+or be marked for any purpose, otherwise verification will fail with 
+<code>GNUTLS_CERT_PURPOSE_MISMATCH</code>  status.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value. Note that verification failure will not result to an
@@ -341,7 +347,7 @@ error code, only  <code>voutput</code> will be updated.
 
 <dl>
 <dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fverify_005fnamed_005fcrt"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_verify_named_crt</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, gnutls_x509_crt_t <var>cert</var>, const void * <var>name</var>, size_t <var>name_size</var>, unsigned int <var>flags</var>, unsigned int * <var>voutput</var>, gnutls_verify_output_function <var>func</var>)</em></dt>
-<dd><p><var>list</var>: The structure of the list
+<dd><p><var>list</var>: The list
 </p>
 <p><var>cert</var>: is the certificate to be verified
 </p>
@@ -356,9 +362,10 @@ error code, only  <code>voutput</code> will be updated.
 <p><var>func</var>: If non-null will be called on each chain element verification with the output.
 </p>
 <p>This function will try to find a certificate that is associated with the provided
-name &ndash;see <code>gnutls_x509_trust_list_add_named_crt()</code> . If a match is found the certificate is considered valid. 
-In addition to that this function will also check CRLs. 
-The  <code>voutput</code> parameter will hold an OR&rsquo;ed sequence of <code>gnutls_certificate_status_t</code>  flags.
+name &ndash;see <code>gnutls_x509_trust_list_add_named_crt()</code> . If a match is found the
+certificate is considered valid. In addition to that this function will also 
+check CRLs. The  <code>voutput</code> parameter will hold an OR&rsquo;ed sequence of 
+<code>gnutls_certificate_status_t</code>  flags.
 </p>
 <p>Additionally a certificate verification profile can be specified
 from the ones in <code>gnutls_certificate_verification_profiles_t</code>  by
@@ -377,7 +384,7 @@ negative error value.
 
 <dl>
 <dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fadd_005ftrust_005ffile"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_add_trust_file</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const char * <var>ca_file</var>, const char * <var>crl_file</var>, gnutls_x509_crt_fmt_t <var>type</var>, unsigned int <var>tl_flags</var>, unsigned int <var>tl_vflags</var>)</em></dt>
-<dd><p><var>list</var>: The structure of the list
+<dd><p><var>list</var>: The list
 </p>
 <p><var>ca_file</var>: A file containing a list of CAs (optional)
 </p>
@@ -406,7 +413,7 @@ trust databases can be set; they cannot be stacked with multiple calls.
 
 <dl>
 <dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fadd_005ftrust_005fmem"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_add_trust_mem</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const gnutls_datum_t * <var>cas</var>, const gnutls_datum_t * <var>crls</var>, gnutls_x509_crt_fmt_t <var>type</var>, unsigned int <var>tl_flags</var>, unsigned int <var>tl_vflags</var>)</em></dt>
-<dd><p><var>list</var>: The structure of the list
+<dd><p><var>list</var>: The list
 </p>
 <p><var>cas</var>: A buffer containing a list of CAs (optional)
 </p>
@@ -505,6 +512,9 @@ violated.
 </p></dd>
 <dt><code>GNUTLS_CERT_MISMATCH</code></dt>
 <dd><p>The certificate presented isn&rsquo;t the expected one (TOFU)
+</p></dd>
+<dt><code>GNUTLS_CERT_PURPOSE_MISMATCH</code></dt>
+<dd><p>The certificate or an intermediate does not match the intended purpose (extended key usage).
 </p></dd>
 </dl>
 

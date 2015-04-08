@@ -320,7 +320,7 @@ gnutls_pkcs12_bag_deinit (<em class="parameter"><code><a class="link" href="gnut
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>bag</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -546,7 +546,7 @@ Certificate revocation lists.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>bag</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -770,7 +770,7 @@ negative error value. or a negative error code on error.</p>
 <a name="gnutls-pkcs12-deinit"></a><h3>gnutls_pkcs12_deinit ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 gnutls_pkcs12_deinit (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> pkcs12</code></em>);</pre>
-<p>This function will deinitialize a PKCS12 structure.</p>
+<p>This function will deinitialize a PKCS12 type.</p>
 <div class="refsect3">
 <a name="id-1.2.10.6.15.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -781,7 +781,7 @@ gnutls_pkcs12_deinit (<em class="parameter"><code><a class="link" href="gnutls-p
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>pkcs12</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>The type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -812,7 +812,7 @@ of "BEGIN PKCS12".</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs12</p></td>
-<td class="parameter_description"><p>Holds the pkcs12 structure</p></td>
+<td class="parameter_description"><p>A pkcs12 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -849,7 +849,7 @@ gnutls_pkcs12_export2 (<em class="parameter"><code><a class="link" href="gnutls-
                        <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-fmt-t" title="enum gnutls_x509_crt_fmt_t"><span class="type">gnutls_x509_crt_fmt_t</span></a> format</code></em>,
                        <em class="parameter"><code><span class="type">gnutls_datum_t</span> *out</code></em>);</pre>
 <p>This function will export the pkcs12 structure to DER or PEM format.</p>
-<p>The output buffer is allocated using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+<p>The output buffer is allocated using <code class="function">gnutls_malloc()</code>.</p>
 <p>If the structure is PEM encoded, it will have a header
 of "BEGIN PKCS12".</p>
 <div class="refsect3">
@@ -863,7 +863,7 @@ of "BEGIN PKCS12".</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs12</p></td>
-<td class="parameter_description"><p>Holds the pkcs12 structure</p></td>
+<td class="parameter_description"><p>A pkcs12 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -905,7 +905,7 @@ gnutls_pkcs12_generate_mac (<em class="parameter"><code><a class="link" href="gn
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs12</p></td>
-<td class="parameter_description"><p>should contain a gnutls_pkcs12_t structure</p></td>
+<td class="parameter_description"><p>A pkcs12 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -944,7 +944,7 @@ gnutls_pkcs12_get_bag (<em class="parameter"><code><a class="link" href="gnutls-
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs12</p></td>
-<td class="parameter_description"><p>should contain a gnutls_pkcs12_t structure</p></td>
+<td class="parameter_description"><p>A pkcs12 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -989,7 +989,7 @@ to the native gnutls_pkcs12_t format. The output will be stored in 'pkcs12'.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs12</p></td>
-<td class="parameter_description"><p>The structure to store the parsed PKCS12.</p></td>
+<td class="parameter_description"><p>The data to store the parsed PKCS12.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1022,7 +1022,7 @@ negative error value.</p>
 <a name="gnutls-pkcs12-init"></a><h3>gnutls_pkcs12_init ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>
 gnutls_pkcs12_init (<em class="parameter"><code><a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-t" title="gnutls_pkcs12_t"><span class="type">gnutls_pkcs12_t</span></a> *pkcs12</code></em>);</pre>
-<p>This function will initialize a PKCS12 structure. PKCS12 structures
+<p>This function will initialize a PKCS12 type. PKCS12 structures
 usually contain lists of X.509 Certificates and X.509 Certificate
 revocation lists.</p>
 <div class="refsect3">
@@ -1035,7 +1035,7 @@ revocation lists.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>pkcs12</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -1065,7 +1065,7 @@ gnutls_pkcs12_set_bag (<em class="parameter"><code><a class="link" href="gnutls-
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs12</p></td>
-<td class="parameter_description"><p>should contain a gnutls_pkcs12_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_pkcs12_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1106,7 +1106,7 @@ certificates and a CRL.</p>
 and both may be set to <code class="literal">NULL</code>. If either is non-<code class="literal">NULL</code>, then both must
 be set. The value for <em class="parameter"><code>extra_certs</code></em>
  is allocated
-using <a class="link" href="gnutls-gnutls.html#gnutls-malloc" title="gnutls_malloc"><code class="function">gnutls_malloc()</code></a>.</p>
+using <code class="function">gnutls_malloc()</code>.</p>
 <p>Encrypted PKCS12 bags and PKCS8 private keys are supported, but
 only with password based security and the same password for all
 operations.</p>
@@ -1133,7 +1133,7 @@ be verified using <a class="link" href="gnutls-pkcs12.html#gnutls-pkcs12-verify-
 <tbody>
 <tr>
 <td class="parameter_name"><p>p12</p></td>
-<td class="parameter_description"><p>should contain a gnutls_pkcs12_t structure</p></td>
+<td class="parameter_description"><p>A pkcs12 type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1207,7 +1207,7 @@ gnutls_pkcs12_verify_mac (<em class="parameter"><code><a class="link" href="gnut
 <tbody>
 <tr>
 <td class="parameter_name"><p>pkcs12</p></td>
-<td class="parameter_description"><p>should contain a gnutls_pkcs12_t structure</p></td>
+<td class="parameter_description"><p>should contain a gnutls_pkcs12_t type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>

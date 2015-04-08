@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: Core TLS API</title>
+<title>GnuTLS 3.4.0: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.3.14: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.3.14: Core TLS API">
+<meta name="description" content="GnuTLS 3.4.0: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.4.0: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -173,7 +173,7 @@ Next: <a href="Datagram-TLS-API.html#Datagram-TLS-API" accesskey="n" rel="next">
 <h4 class="subheading">gnutls_alert_get</h4>
 <a name="gnutls_005falert_005fget"></a><dl>
 <dt><a name="index-gnutls_005falert_005fget-1"></a>Function: <em>gnutls_alert_description_t</em> <strong>gnutls_alert_get</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function will return the last alert number received.  This
 function should be called when <code>GNUTLS_E_WARNING_ALERT_RECEIVED</code>  or
@@ -214,7 +214,7 @@ number, or <code>NULL</code> .  See <code>gnutls_alert_get()</code> .
 <h4 class="subheading">gnutls_alert_send</h4>
 <a name="gnutls_005falert_005fsend"></a><dl>
 <dt><a name="index-gnutls_005falert_005fsend-1"></a>Function: <em>int</em> <strong>gnutls_alert_send</strong> <em>(gnutls_session_t <var>session</var>, gnutls_alert_level_t <var>level</var>, gnutls_alert_description_t <var>desc</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>level</var>: is the level of the alert
 </p>
@@ -237,7 +237,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_alert_send_appropriate</h4>
 <a name="gnutls_005falert_005fsend_005fappropriate"></a><dl>
 <dt><a name="index-gnutls_005falert_005fsend_005fappropriate"></a>Function: <em>int</em> <strong>gnutls_alert_send_appropriate</strong> <em>(gnutls_session_t <var>session</var>, int <var>err</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>err</var>: is an integer
 </p>
@@ -259,7 +259,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_alpn_get_selected_protocol</h4>
 <a name="gnutls_005falpn_005fget_005fselected_005fprotocol"></a><dl>
 <dt><a name="index-gnutls_005falpn_005fget_005fselected_005fprotocol"></a>Function: <em>int</em> <strong>gnutls_alpn_get_selected_protocol</strong> <em>(gnutls_session_t <var>session</var>, gnutls_datum_t * <var>protocol</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>protocol</var>: will hold the protocol name
 </p>
@@ -277,7 +277,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_alpn_set_protocols</h4>
 <a name="gnutls_005falpn_005fset_005fprotocols"></a><dl>
 <dt><a name="index-gnutls_005falpn_005fset_005fprotocols"></a>Function: <em>int</em> <strong>gnutls_alpn_set_protocols</strong> <em>(gnutls_session_t <var>session</var>, const gnutls_datum_t * <var>protocols</var>, unsigned <var>protocols_size</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>protocols</var>: is the protocol names to add.
 </p>
@@ -301,7 +301,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_anon_allocate_client_credentials</h4>
 <a name="gnutls_005fanon_005fallocate_005fclient_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fanon_005fallocate_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_anon_allocate_client_credentials</strong> <em>(gnutls_anon_client_credentials_t *      <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a pointer to a <code>gnutls_anon_client_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a pointer to a <code>gnutls_anon_client_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus
 this helper function is provided in order to allocate it.
@@ -313,7 +313,7 @@ this helper function is provided in order to allocate it.
 <h4 class="subheading">gnutls_anon_allocate_server_credentials</h4>
 <a name="gnutls_005fanon_005fallocate_005fserver_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fanon_005fallocate_005fserver_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_anon_allocate_server_credentials</strong> <em>(gnutls_anon_server_credentials_t *      <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a pointer to a <code>gnutls_anon_server_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a pointer to a <code>gnutls_anon_server_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
 helper function is provided in order to allocate it.
@@ -325,7 +325,7 @@ helper function is provided in order to allocate it.
 <h4 class="subheading">gnutls_anon_free_client_credentials</h4>
 <a name="gnutls_005fanon_005ffree_005fclient_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fanon_005ffree_005fclient_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_anon_free_client_credentials</strong> <em>(gnutls_anon_client_credentials_t <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_anon_client_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_anon_client_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
 helper function is provided in order to free (deallocate) it.
@@ -335,7 +335,7 @@ helper function is provided in order to free (deallocate) it.
 <h4 class="subheading">gnutls_anon_free_server_credentials</h4>
 <a name="gnutls_005fanon_005ffree_005fserver_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fanon_005ffree_005fserver_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_anon_free_server_credentials</strong> <em>(gnutls_anon_server_credentials_t <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_anon_server_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_anon_server_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
 helper function is provided in order to free (deallocate) it.
@@ -345,7 +345,7 @@ helper function is provided in order to free (deallocate) it.
 <h4 class="subheading">gnutls_anon_set_params_function</h4>
 <a name="gnutls_005fanon_005fset_005fparams_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fanon_005fset_005fparams_005ffunction"></a>Function: <em>void</em> <strong>gnutls_anon_set_params_function</strong> <em>(gnutls_anon_server_credentials_t <var>res</var>, gnutls_params_function * <var>func</var>)</em></dt>
-<dd><p><var>res</var>: is a gnutls_anon_server_credentials_t structure
+<dd><p><var>res</var>: is a gnutls_anon_server_credentials_t type
 </p>
 <p><var>func</var>: is the function to be called
 </p>
@@ -358,9 +358,9 @@ The callback should return <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 <h4 class="subheading">gnutls_anon_set_server_dh_params</h4>
 <a name="gnutls_005fanon_005fset_005fserver_005fdh_005fparams"></a><dl>
 <dt><a name="index-gnutls_005fanon_005fset_005fserver_005fdh_005fparams"></a>Function: <em>void</em> <strong>gnutls_anon_set_server_dh_params</strong> <em>(gnutls_anon_server_credentials_t <var>res</var>, gnutls_dh_params_t <var>dh_params</var>)</em></dt>
-<dd><p><var>res</var>: is a gnutls_anon_server_credentials_t structure
+<dd><p><var>res</var>: is a gnutls_anon_server_credentials_t type
 </p>
-<p><var>dh_params</var>: is a structure that holds Diffie-Hellman parameters.
+<p><var>dh_params</var>: The Diffie-Hellman parameters.
 </p>
 <p>This function will set the Diffie-Hellman parameters for an
 anonymous server to use.  These parameters will be used in
@@ -371,7 +371,7 @@ Anonymous Diffie-Hellman cipher suites.
 <h4 class="subheading">gnutls_anon_set_server_params_function</h4>
 <a name="gnutls_005fanon_005fset_005fserver_005fparams_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fanon_005fset_005fserver_005fparams_005ffunction"></a>Function: <em>void</em> <strong>gnutls_anon_set_server_params_function</strong> <em>(gnutls_anon_server_credentials_t            <var>res</var>, gnutls_params_function * <var>func</var>)</em></dt>
-<dd><p><var>res</var>: is a gnutls_certificate_credentials_t structure
+<dd><p><var>res</var>: is a gnutls_certificate_credentials_t type
 </p>
 <p><var>func</var>: is the function to be called
 </p>
@@ -384,7 +384,7 @@ callback should return <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 <h4 class="subheading">gnutls_auth_client_get_type</h4>
 <a name="gnutls_005fauth_005fclient_005fget_005ftype"></a><dl>
 <dt><a name="index-gnutls_005fauth_005fclient_005fget_005ftype"></a>Function: <em>gnutls_credentials_type_t</em> <strong>gnutls_auth_client_get_type</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Returns the type of credentials that were used for client authentication.
 The returned information is to be used to distinguish the function used
@@ -398,7 +398,7 @@ schema, a <code>gnutls_credentials_type_t</code>  type.
 <h4 class="subheading">gnutls_auth_get_type</h4>
 <a name="gnutls_005fauth_005fget_005ftype"></a><dl>
 <dt><a name="index-gnutls_005fauth_005fget_005ftype"></a>Function: <em>gnutls_credentials_type_t</em> <strong>gnutls_auth_get_type</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Returns type of credentials for the current authentication schema.
 The returned information is to be used to distinguish the function used
@@ -416,7 +416,7 @@ schema, a <code>gnutls_credentials_type_t</code>  type.
 <h4 class="subheading">gnutls_auth_server_get_type</h4>
 <a name="gnutls_005fauth_005fserver_005fget_005ftype"></a><dl>
 <dt><a name="index-gnutls_005fauth_005fserver_005fget_005ftype"></a>Function: <em>gnutls_credentials_type_t</em> <strong>gnutls_auth_server_get_type</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Returns the type of credentials that were used for server authentication.
 The returned information is to be used to distinguish the function used
@@ -426,11 +426,28 @@ to access authentication data.
 schema, a <code>gnutls_credentials_type_t</code>  type.
 </p></dd></dl>
 
+<a name="gnutls_005fbuffer_005fappend_005fdata-1"></a>
+<h4 class="subheading">gnutls_buffer_append_data</h4>
+<a name="gnutls_005fbuffer_005fappend_005fdata"></a><dl>
+<dt><a name="index-gnutls_005fbuffer_005fappend_005fdata"></a>Function: <em>int</em> <strong>gnutls_buffer_append_data</strong> <em>(gnutls_buffer_t <var>dest</var>, const void * <var>data</var>, size_t <var>data_size</var>)</em></dt>
+<dd><p><var>dest</var>: the buffer to append to
+</p>
+<p><var>data</var>: the data
+</p>
+<p><var>data_size</var>: the size of  <code>data</code> 
+</p>
+<p>Appends the provided  <code>data</code> to the destination buffer.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
 <a name="gnutls_005fbye-1"></a>
 <h4 class="subheading">gnutls_bye</h4>
 <a name="gnutls_005fbye"></a><dl>
 <dt><a name="index-gnutls_005fbye-1"></a>Function: <em>int</em> <strong>gnutls_bye</strong> <em>(gnutls_session_t <var>session</var>, gnutls_close_request_t <var>how</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>how</var>: is an integer
 </p>
@@ -480,7 +497,7 @@ This is the creation time for openpgp keys.
 <h4 class="subheading">gnutls_certificate_allocate_credentials</h4>
 <a name="gnutls_005fcertificate_005fallocate_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fallocate_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_certificate_allocate_credentials</strong> <em>(gnutls_certificate_credentials_t *      <var>res</var>)</em></dt>
-<dd><p><var>res</var>: is a pointer to a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a pointer to a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
 helper function is provided in order to allocate it.
@@ -517,7 +534,7 @@ authentication or 1 otherwise.
 <h4 class="subheading">gnutls_certificate_free_ca_names</h4>
 <a name="gnutls_005fcertificate_005ffree_005fca_005fnames"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005ffree_005fca_005fnames"></a>Function: <em>void</em> <strong>gnutls_certificate_free_ca_names</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p>This function will delete all the CA name in the given
 credentials. Clients may call this to save some memory since in
@@ -534,7 +551,7 @@ clients.
 <h4 class="subheading">gnutls_certificate_free_cas</h4>
 <a name="gnutls_005fcertificate_005ffree_005fcas"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005ffree_005fcas"></a>Function: <em>void</em> <strong>gnutls_certificate_free_cas</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p>This function will delete all the CAs associated with the given
 credentials. Servers that do not use
@@ -546,7 +563,7 @@ memory.
 <h4 class="subheading">gnutls_certificate_free_credentials</h4>
 <a name="gnutls_005fcertificate_005ffree_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005ffree_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_certificate_free_credentials</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
 helper function is provided in order to free (deallocate) it.
@@ -560,7 +577,7 @@ function).
 <h4 class="subheading">gnutls_certificate_free_crls</h4>
 <a name="gnutls_005fcertificate_005ffree_005fcrls"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005ffree_005fcrls"></a>Function: <em>void</em> <strong>gnutls_certificate_free_crls</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p>This function will delete all the CRLs associated
 with the given credentials.
@@ -570,7 +587,7 @@ with the given credentials.
 <h4 class="subheading">gnutls_certificate_free_keys</h4>
 <a name="gnutls_005fcertificate_005ffree_005fkeys"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005ffree_005fkeys"></a>Function: <em>void</em> <strong>gnutls_certificate_free_keys</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p>This function will delete all the keys and the certificates associated
 with the given credentials. This function must not be called when a
@@ -581,7 +598,7 @@ TLS negotiation that uses the credentials is in progress.
 <h4 class="subheading">gnutls_certificate_get_crt_raw</h4>
 <a name="gnutls_005fcertificate_005fget_005fcrt_005fraw"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fget_005fcrt_005fraw"></a>Function: <em>int</em> <strong>gnutls_certificate_get_crt_raw</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>, unsigned <var>idx1</var>, unsigned <var>idx2</var>, gnutls_datum_t * <var>cert</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>idx1</var>: the index of the certificate if multiple are present
 </p>
@@ -605,7 +622,7 @@ is returned.
 <h4 class="subheading">gnutls_certificate_get_issuer</h4>
 <a name="gnutls_005fcertificate_005fget_005fissuer"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fget_005fissuer"></a>Function: <em>int</em> <strong>gnutls_certificate_get_issuer</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>, gnutls_x509_crt_t <var>cert</var>, gnutls_x509_crt_t * <var>issuer</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>cert</var>: is the certificate to find issuer for
 </p>
@@ -678,11 +695,84 @@ an error code is returned.
 <p><strong>Since:</strong> 3.1.3
 </p></dd></dl>
 
+<a name="gnutls_005fcertificate_005fget_005fverify_005fflags-1"></a>
+<h4 class="subheading">gnutls_certificate_get_verify_flags</h4>
+<a name="gnutls_005fcertificate_005fget_005fverify_005fflags"></a><dl>
+<dt><a name="index-gnutls_005fcertificate_005fget_005fverify_005fflags"></a>Function: <em>unsigned int</em> <strong>gnutls_certificate_get_verify_flags</strong> <em>(gnutls_certificate_credentials_t <var>res</var>)</em></dt>
+<dd><p><var>res</var>: is a gnutls_certificate_credentials_t type
+</p>
+<p>Returns the verification flags set with
+<code>gnutls_certificate_set_verify_flags()</code> .
+</p>
+<p><strong>Returns:</strong> The certificate verification flags used by  <code>res</code> .
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fcertificate_005fget_005fx509_005fcrt-1"></a>
+<h4 class="subheading">gnutls_certificate_get_x509_crt</h4>
+<a name="gnutls_005fcertificate_005fget_005fx509_005fcrt"></a><dl>
+<dt><a name="index-gnutls_005fcertificate_005fget_005fx509_005fcrt"></a>Function: <em>int</em> <strong>gnutls_certificate_get_x509_crt</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, unsigned <var>index</var>, gnutls_x509_crt_t ** <var>crt_list</var>, unsigned * <var>crt_list_size</var>)</em></dt>
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
+</p>
+<p><var>index</var>: The index of the certificate list to obtain.
+</p>
+<p><var>crt_list</var>: Where to store the certificate list.
+</p>
+<p><var>crt_list_size</var>: Will hold the number of certificates.
+</p>
+<p>Obtains a X.509 certificate list that has been stored in  <code>res</code> with one of
+<code>gnutls_certificate_set_x509_key()</code> , <code>gnutls_certificate_set_key()</code> ,
+<code>gnutls_certificate_set_x509_key_file()</code> ,
+<code>gnutls_certificate_set_x509_key_file2()</code> ,
+<code>gnutls_certificate_set_x509_key_mem()</code> , or
+<code>gnutls_certificate_set_x509_key_mem2()</code> . Each certificate in the returned
+certificate list must be deallocated with <code>gnutls_x509_crt_deinit()</code> , and the
+list itself must be freed with <code>gnutls_free()</code> .
+</p>
+<p>If there is no certificate with the given index,
+<code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  is returned. If the certificate
+with the given index is not a X.509 certificate, <code>GNUTLS_E_INVALID_REQUEST</code> 
+is returned. The returned certificates must be deinitialized after
+use, and the  <code>crt_list</code> pointer must be freed using <code>gnutls_free()</code> .
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fcertificate_005fget_005fx509_005fkey-1"></a>
+<h4 class="subheading">gnutls_certificate_get_x509_key</h4>
+<a name="gnutls_005fcertificate_005fget_005fx509_005fkey"></a><dl>
+<dt><a name="index-gnutls_005fcertificate_005fget_005fx509_005fkey"></a>Function: <em>int</em> <strong>gnutls_certificate_get_x509_key</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, unsigned <var>index</var>, gnutls_x509_privkey_t * <var>key</var>)</em></dt>
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
+</p>
+<p><var>index</var>: The index of the key to obtain.
+</p>
+<p><var>key</var>: Location to store the key.
+</p>
+<p>Obtains a X.509 private key that has been stored in  <code>res</code> with one of
+<code>gnutls_certificate_set_x509_key()</code> , <code>gnutls_certificate_set_key()</code> ,
+<code>gnutls_certificate_set_x509_key_file()</code> ,
+<code>gnutls_certificate_set_x509_key_file2()</code> ,
+<code>gnutls_certificate_set_x509_key_mem()</code> , or
+<code>gnutls_certificate_set_x509_key_mem2()</code> . The returned key must be deallocated
+with <code>gnutls_x509_privkey_deinit()</code>  when no longer needed.
+</p>
+<p>If there is no key with the given index,
+<code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  is returned. If the key with the
+given index is not a X.509 key, <code>GNUTLS_E_INVALID_REQUEST</code>  is returned.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
 <a name="gnutls_005fcertificate_005fsend_005fx509_005frdn_005fsequence-1"></a>
 <h4 class="subheading">gnutls_certificate_send_x509_rdn_sequence</h4>
 <a name="gnutls_005fcertificate_005fsend_005fx509_005frdn_005fsequence"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fsend_005fx509_005frdn_005fsequence-1"></a>Function: <em>void</em> <strong>gnutls_certificate_send_x509_rdn_sequence</strong> <em>(gnutls_session_t <var>session</var>, int <var>status</var>)</em></dt>
-<dd><p><var>session</var>: is a pointer to a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>status</var>: is 0 or 1
 </p>
@@ -700,7 +790,7 @@ methods other than certificate with X.509 certificates.
 <h4 class="subheading">gnutls_certificate_server_set_request</h4>
 <a name="gnutls_005fcertificate_005fserver_005fset_005frequest"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fserver_005fset_005frequest-1"></a>Function: <em>void</em> <strong>gnutls_certificate_server_set_request</strong> <em>(gnutls_session_t <var>session</var>, gnutls_certificate_request_t <var>req</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>req</var>: is one of GNUTLS_CERT_REQUEST, GNUTLS_CERT_REQUIRE
 </p>
@@ -715,9 +805,9 @@ function then the client will not be asked to send a certificate.
 <h4 class="subheading">gnutls_certificate_set_dh_params</h4>
 <a name="gnutls_005fcertificate_005fset_005fdh_005fparams"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fdh_005fparams"></a>Function: <em>void</em> <strong>gnutls_certificate_set_dh_params</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, gnutls_dh_params_t <var>dh_params</var>)</em></dt>
-<dd><p><var>res</var>: is a gnutls_certificate_credentials_t structure
+<dd><p><var>res</var>: is a gnutls_certificate_credentials_t type
 </p>
-<p><var>dh_params</var>: is a structure that holds Diffie-Hellman parameters.
+<p><var>dh_params</var>: the Diffie-Hellman parameters.
 </p>
 <p>This function will set the Diffie-Hellman parameters for a
 certificate server to use. These parameters will be used in
@@ -753,7 +843,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_certificate_set_ocsp_status_request_function</h4>
 <a name="gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffunction"></a>Function: <em>void</em> <strong>gnutls_certificate_set_ocsp_status_request_function</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>, gnutls_status_request_ocsp_func <var>ocsp_func</var>, void * <var>ptr</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>ocsp_func</var>: function pointer to OCSP status request callback.
 </p>
@@ -785,7 +875,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_certificate_set_params_function</h4>
 <a name="gnutls_005fcertificate_005fset_005fparams_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fparams_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_certificate_set_params_function</strong> <em>(gnutls_certificate_credentials_t            <var>res</var>, gnutls_params_function * <var>func</var>)</em></dt>
-<dd><p><var>res</var>: is a gnutls_certificate_credentials_t structure
+<dd><p><var>res</var>: is a gnutls_certificate_credentials_t type
 </p>
 <p><var>func</var>: is the function to be called
 </p>
@@ -798,7 +888,7 @@ authentication.  The callback should return <code>GNUTLS_E_SUCCESS</code>  (0) o
 <h4 class="subheading">gnutls_certificate_set_pin_function</h4>
 <a name="gnutls_005fcertificate_005fset_005fpin_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fpin_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_certificate_set_pin_function</strong> <em>(gnutls_certificate_credentials_t       <var>cred</var>, gnutls_pin_callback_t <var>fn</var>, void * <var>userdata</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>fn</var>: A PIN callback
 </p>
@@ -818,7 +908,7 @@ to have effect.
 <h4 class="subheading">gnutls_certificate_set_retrieve_function</h4>
 <a name="gnutls_005fcertificate_005fset_005fretrieve_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fretrieve_005ffunction"></a>Function: <em>void</em> <strong>gnutls_certificate_set_retrieve_function</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, gnutls_certificate_retrieve_function * <var>func</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>func</var>: is the callback function
 </p>
@@ -859,7 +949,7 @@ indicates error and the handshake will be terminated.
 <h4 class="subheading">gnutls_certificate_set_verify_flags</h4>
 <a name="gnutls_005fcertificate_005fset_005fverify_005fflags"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fverify_005fflags"></a>Function: <em>void</em> <strong>gnutls_certificate_set_verify_flags</strong> <em>(gnutls_certificate_credentials_t         <var>res</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>res</var>: is a gnutls_certificate_credentials_t structure
+<dd><p><var>res</var>: is a gnutls_certificate_credentials_t type
 </p>
 <p><var>flags</var>: are the flags
 </p>
@@ -872,7 +962,7 @@ of certificates and override any defaults.  The provided flags must be an OR of 
 <h4 class="subheading">gnutls_certificate_set_verify_function</h4>
 <a name="gnutls_005fcertificate_005fset_005fverify_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fverify_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_certificate_set_verify_function</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, gnutls_certificate_verify_function * <var>func</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>func</var>: is the callback function
 </p>
@@ -899,7 +989,7 @@ or non-zero to terminate.
 <h4 class="subheading">gnutls_certificate_set_verify_limits</h4>
 <a name="gnutls_005fcertificate_005fset_005fverify_005flimits"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fverify_005flimits"></a>Function: <em>void</em> <strong>gnutls_certificate_set_verify_limits</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, unsigned int <var>max_bits</var>, unsigned int <var>max_depth</var>)</em></dt>
-<dd><p><var>res</var>: is a gnutls_certificate_credentials structure
+<dd><p><var>res</var>: is a gnutls_certificate_credentials type
 </p>
 <p><var>max_bits</var>: is the number of bits of an acceptable certificate (default 8200)
 </p>
@@ -915,7 +1005,7 @@ limits.
 <h4 class="subheading">gnutls_certificate_set_x509_crl</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fcrl"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fcrl"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_crl</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, gnutls_x509_crl_t * <var>crl_list</var>, int <var>crl_list_size</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>crl_list</var>: is a list of trusted CRLs. They should have been verified before.
 </p>
@@ -936,7 +1026,7 @@ multiple times.
 <h4 class="subheading">gnutls_certificate_set_x509_crl_file</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fcrl_005ffile"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fcrl_005ffile"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_crl_file</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const char * <var>crlfile</var>, gnutls_x509_crt_fmt_t <var>type</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>crlfile</var>: is a file containing the list of verified CRLs (DER or PEM list)
 </p>
@@ -955,7 +1045,7 @@ This function may be called multiple times.
 <h4 class="subheading">gnutls_certificate_set_x509_crl_mem</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fcrl_005fmem"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fcrl_005fmem"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_crl_mem</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const gnutls_datum_t * <var>CRL</var>, gnutls_x509_crt_fmt_t <var>type</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>CRL</var>: is a list of trusted CRLs. They should have been verified before.
 </p>
@@ -974,7 +1064,7 @@ multiple times.
 <h4 class="subheading">gnutls_certificate_set_x509_key</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fkey"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fkey"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_key</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, gnutls_x509_crt_t * <var>cert_list</var>, int <var>cert_list_size</var>, gnutls_x509_privkey_t <var>key</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>cert_list</var>: contains a certificate list (path) for the specified private key
 </p>
@@ -983,7 +1073,7 @@ multiple times.
 <p><var>key</var>: is a <code>gnutls_x509_privkey_t</code>  key
 </p>
 <p>This function sets a certificate/private key pair in the
-gnutls_certificate_credentials_t structure.  This function may be
+gnutls_certificate_credentials_t type.  This function may be
 called more than once, in case multiple keys/certificates exist for
 the server.  For clients that wants to send more than their own end
 entity certificate (e.g., also an intermediate CA cert) then put
@@ -992,7 +1082,7 @@ the certificate chain in  <code>cert_list</code> .
 <p>Note that the certificates and keys provided, can be safely deinitialized
 after this function is called.
 </p>
-<p>If that function fails to load the  <code>res</code> structure is at an undefined state, it must
+<p>If that function fails to load the  <code>res</code> type is at an undefined state, it must
 not be reused to load other keys or certificates.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
@@ -1004,7 +1094,7 @@ not be reused to load other keys or certificates.
 <h4 class="subheading">gnutls_certificate_set_x509_key_file</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fkey_005ffile"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fkey_005ffile"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_key_file</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const char * <var>certfile</var>, const char * <var>keyfile</var>, gnutls_x509_crt_fmt_t <var>type</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>certfile</var>: is a file that containing the certificate list (path) for
 the specified private key, in PKCS7 format, or a list of certificates
@@ -1014,7 +1104,7 @@ the specified private key, in PKCS7 format, or a list of certificates
 <p><var>type</var>: is PEM or DER
 </p>
 <p>This function sets a certificate/private key pair in the
-gnutls_certificate_credentials_t structure.  This function may be
+gnutls_certificate_credentials_t type.  This function may be
 called more than once, in case multiple keys/certificates exist for
 the server.  For clients that need to send more than its own end
 entity certificate, e.g., also an intermediate CA cert, then the
@@ -1035,13 +1125,15 @@ present issuers in the token are are imported (i.e., the required trust chain).
 not be reused to load other keys or certificates.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
+</p>
+<p><strong>Since:</strong> 3.1.11
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fset_005fx509_005fkey_005ffile2-1"></a>
 <h4 class="subheading">gnutls_certificate_set_x509_key_file2</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fkey_005ffile2"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fkey_005ffile2"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_key_file2</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const char * <var>certfile</var>, const char * <var>keyfile</var>, gnutls_x509_crt_fmt_t <var>type</var>, const char * <var>pass</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>certfile</var>: is a file that containing the certificate list (path) for
 the specified private key, in PKCS7 format, or a list of certificates
@@ -1055,7 +1147,7 @@ the specified private key, in PKCS7 format, or a list of certificates
 <p><var>flags</var>: an ORed sequence of gnutls_pkcs_encrypt_flags_t
 </p>
 <p>This function sets a certificate/private key pair in the
-gnutls_certificate_credentials_t structure.  This function may be
+gnutls_certificate_credentials_t type.  This function may be
 called more than once, in case multiple keys/certificates exist for
 the server.  For clients that need to send more than its own end
 entity certificate, e.g., also an intermediate CA cert, then the
@@ -1068,6 +1160,8 @@ certificate/key pairs).
 <p>This function can also accept URLs at  <code>keyfile</code> and  <code>certfile</code> . In that case it
 will import the private key and certificate indicated by the URLs. Note
 that the supported URLs are the ones indicated by <code>gnutls_url_is_supported()</code> .
+Before GnuTLS 3.4.0 when a URL was specified, the  <code>pass</code> part was ignored and a
+PIN callback had to be registered, this is no longer the case in current releases.
 </p>
 <p>In case the  <code>certfile</code> is provided as a PKCS <code>11</code>  URL, then the certificate, and its
 present issuers in the token are are imported (i.e., the required trust chain).
@@ -1082,7 +1176,7 @@ not be reused to load other keys or certificates.
 <h4 class="subheading">gnutls_certificate_set_x509_key_mem</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fkey_005fmem"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fkey_005fmem"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_key_mem</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const gnutls_datum_t * <var>cert</var>, const gnutls_datum_t * <var>key</var>, gnutls_x509_crt_fmt_t <var>type</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>cert</var>: contains a certificate list (path) for the specified private key
 </p>
@@ -1091,7 +1185,7 @@ not be reused to load other keys or certificates.
 <p><var>type</var>: is PEM or DER
 </p>
 <p>This function sets a certificate/private key pair in the
-gnutls_certificate_credentials_t structure. This function may be called
+gnutls_certificate_credentials_t type. This function may be called
 more than once, in case multiple keys/certificates exist for the
 server.
 </p>
@@ -1112,7 +1206,7 @@ then the strings that hold their values must be null terminated.
 <h4 class="subheading">gnutls_certificate_set_x509_key_mem2</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fkey_005fmem2"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fkey_005fmem2"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_key_mem2</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const gnutls_datum_t * <var>cert</var>, const gnutls_datum_t * <var>key</var>, gnutls_x509_crt_fmt_t <var>type</var>, const char * <var>pass</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>cert</var>: contains a certificate list (path) for the specified private key
 </p>
@@ -1125,7 +1219,7 @@ then the strings that hold their values must be null terminated.
 <p><var>flags</var>: an ORed sequence of gnutls_pkcs_encrypt_flags_t
 </p>
 <p>This function sets a certificate/private key pair in the
-gnutls_certificate_credentials_t structure. This function may be called
+gnutls_certificate_credentials_t type. This function may be called
 more than once, in case multiple keys/certificates exist for the
 server.
 </p>
@@ -1146,7 +1240,7 @@ then the strings that hold their values must be null terminated.
 <h4 class="subheading">gnutls_certificate_set_x509_simple_pkcs12_file</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fsimple_005fpkcs12_005ffile"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fsimple_005fpkcs12_005ffile"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_simple_pkcs12_file</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const char * <var>pkcs12file</var>, gnutls_x509_crt_fmt_t <var>type</var>, const char * <var>password</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>pkcs12file</var>: filename of file containing PKCS<code>12</code>  blob.
 </p>
@@ -1155,7 +1249,7 @@ then the strings that hold their values must be null terminated.
 <p><var>password</var>: optional password used to decrypt PKCS<code>12</code>  file, bags and keys.
 </p>
 <p>This function sets a certificate/private key pair and/or a CRL in
-the gnutls_certificate_credentials_t structure.  This function may
+the gnutls_certificate_credentials_t type.  This function may
 be called more than once (in case multiple keys/certificates exist
 for the server).
 </p>
@@ -1185,7 +1279,7 @@ all.
 <h4 class="subheading">gnutls_certificate_set_x509_simple_pkcs12_mem</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fsimple_005fpkcs12_005fmem"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fsimple_005fpkcs12_005fmem"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_simple_pkcs12_mem</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const gnutls_datum_t * <var>p12blob</var>, gnutls_x509_crt_fmt_t <var>type</var>, const char * <var>password</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>p12blob</var>: the PKCS<code>12</code>  blob.
 </p>
@@ -1194,7 +1288,7 @@ all.
 <p><var>password</var>: optional password used to decrypt PKCS<code>12</code>  file, bags and keys.
 </p>
 <p>This function sets a certificate/private key pair and/or a CRL in
-the gnutls_certificate_credentials_t structure.  This function may
+the gnutls_certificate_credentials_t type.  This function may
 be called more than once (in case multiple keys/certificates exist
 for the server).
 </p>
@@ -1225,7 +1319,7 @@ all.
 <h4 class="subheading">gnutls_certificate_set_x509_system_trust</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005fsystem_005ftrust"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005fsystem_005ftrust-1"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_system_trust</strong> <em>(gnutls_certificate_credentials_t       <var>cred</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p>This function adds the system&rsquo;s default trusted CAs in order to
 verify client or server certificates.
@@ -1243,7 +1337,7 @@ on error.
 <h4 class="subheading">gnutls_certificate_set_x509_trust</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005ftrust"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005ftrust"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_trust</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, gnutls_x509_crt_t * <var>ca_list</var>, int <var>ca_list_size</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>ca_list</var>: is a list of trusted CAs
 </p>
@@ -1269,7 +1363,7 @@ on error.
 <h4 class="subheading">gnutls_certificate_set_x509_trust_dir</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005ftrust_005fdir"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005ftrust_005fdir"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_trust_dir</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, const char * <var>ca_dir</var>, gnutls_x509_crt_fmt_t <var>type</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>ca_dir</var>: is a directory containing the list of trusted CAs (DER or PEM list)
 </p>
@@ -1289,7 +1383,7 @@ in a directory.
 <h4 class="subheading">gnutls_certificate_set_x509_trust_file</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005ftrust_005ffile"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005ftrust_005ffile"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_trust_file</strong> <em>(gnutls_certificate_credentials_t            <var>cred</var>, const char * <var>cafile</var>, gnutls_x509_crt_fmt_t <var>type</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>cafile</var>: is a file containing the list of trusted CAs (DER or PEM list)
 </p>
@@ -1316,7 +1410,7 @@ that the supported URLs are the ones indicated by <code>gnutls_url_is_supported(
 <h4 class="subheading">gnutls_certificate_set_x509_trust_mem</h4>
 <a name="gnutls_005fcertificate_005fset_005fx509_005ftrust_005fmem"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fx509_005ftrust_005fmem"></a>Function: <em>int</em> <strong>gnutls_certificate_set_x509_trust_mem</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const gnutls_datum_t * <var>ca</var>, gnutls_x509_crt_fmt_t <var>type</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>ca</var>: is a list of trusted CAs or a DER certificate
 </p>
@@ -1340,7 +1434,7 @@ on error.
 <h4 class="subheading">gnutls_certificate_type_get</h4>
 <a name="gnutls_005fcertificate_005ftype_005fget"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005ftype_005fget"></a>Function: <em>gnutls_certificate_type_t</em> <strong>gnutls_certificate_type_get</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>The certificate type is by default X.509, unless it is negotiated
 as a TLS extension.
@@ -1427,8 +1521,8 @@ The default verification flags used by this function can be overridden
 using <code>gnutls_certificate_set_verify_flags()</code> . See the documentation
 of <code>gnutls_certificate_verify_peers2()</code>  for details in the verification process.
 </p>
-<p>The acceptable  <code>data</code> types are <code>GNUTLS_DT_DNS_HOSTNAME</code>  and <code>GNUTLS_DT_KEY_PURPOSE_OID</code> .
-The former accepts as data a null-terminated hostname, and the latter a null-terminated
+<p>The acceptable  <code>data</code> types are <code>GNUTLS_DT_DNS_HOSTNAME</code> , <code>GNUTLS_DT_RFC822NAME</code>  and <code>GNUTLS_DT_KEY_PURPOSE_OID</code> .
+The former two accept as data a null-terminated hostname or email address, and the latter a null-terminated
 object identifier (e.g., <code>GNUTLS_KP_TLS_WWW_SERVER</code> ).
 If a DNS hostname is provided then this function will compare
 the hostname in the certificate against the given. If names do not match the 
@@ -1524,7 +1618,7 @@ check is done and only the version string is returned.
 <h4 class="subheading">gnutls_cipher_get</h4>
 <a name="gnutls_005fcipher_005fget"></a><dl>
 <dt><a name="index-gnutls_005fcipher_005fget"></a>Function: <em>gnutls_cipher_algorithm_t</em> <strong>gnutls_cipher_get</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Get currently used cipher.
 </p>
@@ -1631,7 +1725,7 @@ bounds, <code>NULL</code>  is returned.
 <h4 class="subheading">gnutls_compression_get</h4>
 <a name="gnutls_005fcompression_005fget"></a><dl>
 <dt><a name="index-gnutls_005fcompression_005fget"></a>Function: <em>gnutls_compression_method_t</em> <strong>gnutls_compression_get</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Get currently used compression algorithm.
 </p>
@@ -1678,7 +1772,7 @@ integers indicating the available compression methods.
 <h4 class="subheading">gnutls_credentials_clear</h4>
 <a name="gnutls_005fcredentials_005fclear"></a><dl>
 <dt><a name="index-gnutls_005fcredentials_005fclear"></a>Function: <em>void</em> <strong>gnutls_credentials_clear</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Clears all the credentials previously set in this session.
 </p></dd></dl>
@@ -1687,11 +1781,11 @@ integers indicating the available compression methods.
 <h4 class="subheading">gnutls_credentials_get</h4>
 <a name="gnutls_005fcredentials_005fget"></a><dl>
 <dt><a name="index-gnutls_005fcredentials_005fget"></a>Function: <em>int</em> <strong>gnutls_credentials_get</strong> <em>(gnutls_session_t <var>session</var>, gnutls_credentials_type_t <var>type</var>, void ** <var>cred</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>type</var>: is the type of the credentials to return
 </p>
-<p><var>cred</var>: will contain the pointer to the credentials structure.
+<p><var>cred</var>: will contain the credentials.
 </p>
 <p>Returns the previously provided credentials structures.
 </p>
@@ -1714,11 +1808,11 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_credentials_set</h4>
 <a name="gnutls_005fcredentials_005fset"></a><dl>
 <dt><a name="index-gnutls_005fcredentials_005fset-1"></a>Function: <em>int</em> <strong>gnutls_credentials_set</strong> <em>(gnutls_session_t <var>session</var>, gnutls_credentials_type_t <var>type</var>, void * <var>cred</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>type</var>: is the type of the credentials
 </p>
-<p><var>cred</var>: is a pointer to a structure.
+<p><var>cred</var>: the credentials to set
 </p>
 <p>Sets the needed credentials for the specified type.  Eg username,
 password - or public and private keys etc.  The  <code>cred</code> parameter is
@@ -1749,7 +1843,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_db_check_entry</h4>
 <a name="gnutls_005fdb_005fcheck_005fentry"></a><dl>
 <dt><a name="index-gnutls_005fdb_005fcheck_005fentry"></a>Function: <em>int</em> <strong>gnutls_db_check_entry</strong> <em>(gnutls_session_t <var>session</var>, gnutls_datum_t <var>session_entry</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>session_entry</var>: is the session data (not key)
 </p>
@@ -1763,7 +1857,7 @@ expired or 0 otherwise.
 <h4 class="subheading">gnutls_db_check_entry_time</h4>
 <a name="gnutls_005fdb_005fcheck_005fentry_005ftime"></a><dl>
 <dt><a name="index-gnutls_005fdb_005fcheck_005fentry_005ftime"></a>Function: <em>time_t</em> <strong>gnutls_db_check_entry_time</strong> <em>(gnutls_datum_t * <var>entry</var>)</em></dt>
-<dd><p><var>entry</var>: is a pointer to a <code>gnutls_datum_t</code>  structure.
+<dd><p><var>entry</var>: is a pointer to a <code>gnutls_datum_t</code>  type.
 </p>
 <p>This function returns the time that this entry was active.
 It can be used for database entry expiration.
@@ -1783,7 +1877,7 @@ It can be used for database entry expiration.
 <h4 class="subheading">gnutls_db_get_ptr</h4>
 <a name="gnutls_005fdb_005fget_005fptr"></a><dl>
 <dt><a name="index-gnutls_005fdb_005fget_005fptr"></a>Function: <em>void *</em> <strong>gnutls_db_get_ptr</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Get db function pointer.
 </p>
@@ -1795,7 +1889,7 @@ delete functions, as the first argument.
 <h4 class="subheading">gnutls_db_remove_session</h4>
 <a name="gnutls_005fdb_005fremove_005fsession"></a><dl>
 <dt><a name="index-gnutls_005fdb_005fremove_005fsession"></a>Function: <em>void</em> <strong>gnutls_db_remove_session</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function will remove the current session data from the
 session database.  This will prevent future handshakes reusing
@@ -1810,7 +1904,7 @@ sessions.
 <h4 class="subheading">gnutls_db_set_cache_expiration</h4>
 <a name="gnutls_005fdb_005fset_005fcache_005fexpiration"></a><dl>
 <dt><a name="index-gnutls_005fdb_005fset_005fcache_005fexpiration"></a>Function: <em>void</em> <strong>gnutls_db_set_cache_expiration</strong> <em>(gnutls_session_t <var>session</var>, int <var>seconds</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>seconds</var>: is the number of seconds.
 </p>
@@ -1822,7 +1916,7 @@ sessions.
 <h4 class="subheading">gnutls_db_set_ptr</h4>
 <a name="gnutls_005fdb_005fset_005fptr"></a><dl>
 <dt><a name="index-gnutls_005fdb_005fset_005fptr"></a>Function: <em>void</em> <strong>gnutls_db_set_ptr</strong> <em>(gnutls_session_t <var>session</var>, void * <var>ptr</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>ptr</var>: is the pointer
 </p>
@@ -1834,7 +1928,7 @@ delete functions, as the first argument.
 <h4 class="subheading">gnutls_db_set_remove_function</h4>
 <a name="gnutls_005fdb_005fset_005fremove_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fdb_005fset_005fremove_005ffunction"></a>Function: <em>void</em> <strong>gnutls_db_set_remove_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_db_remove_func <var>rem_func</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>rem_func</var>: is the function.
 </p>
@@ -1849,7 +1943,7 @@ resumed sessions database. This function must return 0 on success.
 <h4 class="subheading">gnutls_db_set_retrieve_function</h4>
 <a name="gnutls_005fdb_005fset_005fretrieve_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fdb_005fset_005fretrieve_005ffunction"></a>Function: <em>void</em> <strong>gnutls_db_set_retrieve_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_db_retr_func <var>retr_func</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>retr_func</var>: is the function.
 </p>
@@ -1869,7 +1963,7 @@ containing null and 0 on failure.
 <h4 class="subheading">gnutls_db_set_store_function</h4>
 <a name="gnutls_005fdb_005fset_005fstore_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fdb_005fset_005fstore_005ffunction"></a>Function: <em>void</em> <strong>gnutls_db_set_store_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_db_store_func <var>store_func</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>store_func</var>: is the function
 </p>
@@ -1884,7 +1978,7 @@ sessions database. This function must return 0 on success.
 <h4 class="subheading">gnutls_deinit</h4>
 <a name="gnutls_005fdeinit"></a><dl>
 <dt><a name="index-gnutls_005fdeinit-1"></a>Function: <em>void</em> <strong>gnutls_deinit</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function clears all buffers associated with the  <code>session</code> .
 This function will also remove session data from the session
@@ -1976,9 +2070,9 @@ an error code is returned.
 <h4 class="subheading">gnutls_dh_params_cpy</h4>
 <a name="gnutls_005fdh_005fparams_005fcpy"></a><dl>
 <dt><a name="index-gnutls_005fdh_005fparams_005fcpy"></a>Function: <em>int</em> <strong>gnutls_dh_params_cpy</strong> <em>(gnutls_dh_params_t <var>dst</var>, gnutls_dh_params_t <var>src</var>)</em></dt>
-<dd><p><var>dst</var>: Is the destination structure, which should be initialized.
+<dd><p><var>dst</var>: Is the destination parameters, which should be initialized.
 </p>
-<p><var>src</var>: Is the source structure
+<p><var>src</var>: Is the source parameters
 </p>
 <p>This function will copy the DH parameters structure from source
 to destination.
@@ -1991,9 +2085,9 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_dh_params_deinit</h4>
 <a name="gnutls_005fdh_005fparams_005fdeinit"></a><dl>
 <dt><a name="index-gnutls_005fdh_005fparams_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_dh_params_deinit</strong> <em>(gnutls_dh_params_t <var>dh_params</var>)</em></dt>
-<dd><p><var>dh_params</var>: Is a structure that holds the prime numbers
+<dd><p><var>dh_params</var>: The parameters
 </p>
-<p>This function will deinitialize the DH parameters structure.
+<p>This function will deinitialize the DH parameters type.
 </p></dd></dl>
 
 <a name="gnutls_005fdh_005fparams_005fexport2_005fpkcs3-1"></a>
@@ -2068,7 +2162,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_dh_params_generate2</h4>
 <a name="gnutls_005fdh_005fparams_005fgenerate2"></a><dl>
 <dt><a name="index-gnutls_005fdh_005fparams_005fgenerate2"></a>Function: <em>int</em> <strong>gnutls_dh_params_generate2</strong> <em>(gnutls_dh_params_t <var>dparams</var>, unsigned int <var>bits</var>)</em></dt>
-<dd><p><var>dparams</var>: Is the structure that the DH parameters will be stored
+<dd><p><var>dparams</var>: The parameters
 </p>
 <p><var>bits</var>: is the prime&rsquo;s number of bits
 </p>
@@ -2091,7 +2185,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_dh_params_import_pkcs3</h4>
 <a name="gnutls_005fdh_005fparams_005fimport_005fpkcs3"></a><dl>
 <dt><a name="index-gnutls_005fdh_005fparams_005fimport_005fpkcs3"></a>Function: <em>int</em> <strong>gnutls_dh_params_import_pkcs3</strong> <em>(gnutls_dh_params_t <var>params</var>, const gnutls_datum_t * <var>pkcs3_params</var>, gnutls_x509_crt_fmt_t <var>format</var>)</em></dt>
-<dd><p><var>params</var>: A structure where the parameters will be copied to
+<dd><p><var>params</var>: The parameters
 </p>
 <p><var>pkcs3_params</var>: should contain a PKCS3 DHParams structure PEM or DER encoded
 </p>
@@ -2111,7 +2205,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_dh_params_import_raw</h4>
 <a name="gnutls_005fdh_005fparams_005fimport_005fraw"></a><dl>
 <dt><a name="index-gnutls_005fdh_005fparams_005fimport_005fraw"></a>Function: <em>int</em> <strong>gnutls_dh_params_import_raw</strong> <em>(gnutls_dh_params_t <var>dh_params</var>, const gnutls_datum_t * <var>prime</var>, const gnutls_datum_t * <var>generator</var>)</em></dt>
-<dd><p><var>dh_params</var>: Is a structure that will hold the prime numbers
+<dd><p><var>dh_params</var>: The parameters
 </p>
 <p><var>prime</var>: holds the new prime
 </p>
@@ -2125,13 +2219,33 @@ stored in the appropriate gnutls_datum.
 otherwise a negative error code is returned.
 </p></dd></dl>
 
+<a name="gnutls_005fdh_005fparams_005fimport_005fraw2-1"></a>
+<h4 class="subheading">gnutls_dh_params_import_raw2</h4>
+<a name="gnutls_005fdh_005fparams_005fimport_005fraw2"></a><dl>
+<dt><a name="index-gnutls_005fdh_005fparams_005fimport_005fraw2"></a>Function: <em>int</em> <strong>gnutls_dh_params_import_raw2</strong> <em>(gnutls_dh_params_t <var>dh_params</var>, const gnutls_datum_t * <var>prime</var>, const gnutls_datum_t * <var>generator</var>, unsigned <var>key_bits</var>)</em></dt>
+<dd><p><var>dh_params</var>: The parameters
+</p>
+<p><var>prime</var>: holds the new prime
+</p>
+<p><var>generator</var>: holds the new generator
+</p>
+<p><var>key_bits</var>: the private key bits (set to zero when unknown)
+</p>
+<p>This function will replace the pair of prime and generator for use
+in the Diffie-Hellman key exchange.  The new parameters should be
+stored in the appropriate gnutls_datum.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
+otherwise a negative error code is returned.
+</p></dd></dl>
+
 <a name="gnutls_005fdh_005fparams_005finit-1"></a>
 <h4 class="subheading">gnutls_dh_params_init</h4>
 <a name="gnutls_005fdh_005fparams_005finit"></a><dl>
 <dt><a name="index-gnutls_005fdh_005fparams_005finit"></a>Function: <em>int</em> <strong>gnutls_dh_params_init</strong> <em>(gnutls_dh_params_t * <var>dh_params</var>)</em></dt>
-<dd><p><var>dh_params</var>: Is a structure that will hold the prime numbers
+<dd><p><var>dh_params</var>: The parameters
 </p>
-<p>This function will initialize the DH parameters structure.
+<p>This function will initialize the DH parameters type.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
@@ -2141,7 +2255,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_dh_set_prime_bits</h4>
 <a name="gnutls_005fdh_005fset_005fprime_005fbits"></a><dl>
 <dt><a name="index-gnutls_005fdh_005fset_005fprime_005fbits"></a>Function: <em>void</em> <strong>gnutls_dh_set_prime_bits</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>bits</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>bits</var>: is the number of bits
 </p>
@@ -2207,7 +2321,7 @@ integers indicating the available digests.
 <h4 class="subheading">gnutls_ecc_curve_get</h4>
 <a name="gnutls_005fecc_005fcurve_005fget"></a><dl>
 <dt><a name="index-gnutls_005fecc_005fcurve_005fget"></a>Function: <em>gnutls_ecc_curve_t</em> <strong>gnutls_ecc_curve_get</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Returns the currently used elliptic curve. Only valid
 when using an elliptic curve ciphersuite.
@@ -2324,6 +2438,75 @@ after a completed handshake.
 <p><strong>Since:</strong> 3.2.2
 </p></dd></dl>
 
+<a name="gnutls_005fext_005fget_005fdata-1"></a>
+<h4 class="subheading">gnutls_ext_get_data</h4>
+<a name="gnutls_005fext_005fget_005fdata"></a><dl>
+<dt><a name="index-gnutls_005fext_005fget_005fdata"></a>Function: <em>int</em> <strong>gnutls_ext_get_data</strong> <em>(gnutls_session_t <var>session</var>, unsigned <var>type</var>, gnutls_ext_priv_data_t * <var>data</var>)</em></dt>
+<dd><p><var>session</var>: a <code>gnutls_session_t</code>  opaque pointer
+</p>
+<p><var>type</var>: the numeric id of the extension
+</p>
+<p><var>data</var>: a pointer to the private data to retrieve
+</p>
+<p>This function retrieves any data previously stored with <code>gnutls_ext_set_data()</code> .
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fext_005fregister-1"></a>
+<h4 class="subheading">gnutls_ext_register</h4>
+<a name="gnutls_005fext_005fregister"></a><dl>
+<dt><a name="index-gnutls_005fext_005fregister"></a>Function: <em>int</em> <strong>gnutls_ext_register</strong> <em>(const char * <var>name</var>, int <var>type</var>, gnutls_ext_parse_type_t <var>parse_type</var>, gnutls_ext_recv_func <var>recv_func</var>, gnutls_ext_send_func <var>send_func</var>, gnutls_ext_deinit_data_func <var>deinit_func</var>, gnutls_ext_pack_func <var>pack_func</var>, gnutls_ext_unpack_func <var>unpack_func</var>)</em></dt>
+<dd><p><var>name</var>: the name of the extension to register
+</p>
+<p><var>type</var>: the numeric id of the extension
+</p>
+<p><var>parse_type</var>: the parse type of the extension (see gnutls_ext_parse_type_t)
+</p>
+<p><var>recv_func</var>: a function to receive the data
+</p>
+<p><var>send_func</var>: a function to send the data
+</p>
+<p><var>deinit_func</var>: a function deinitialize any private data
+</p>
+<p><var>pack_func</var>: a function which serializes the extension&rsquo;s private data (used on session packing for resumption)
+</p>
+<p><var>unpack_func</var>: a function which will deserialize the extension&rsquo;s private data
+</p>
+<p>This function will register a new extension type. The extension will remain
+registered until <code>gnutls_global_deinit()</code>  is called. If the extension type
+is already registred then <code>GNUTLS_E_ALREADY_REGISTERED</code>  will be returned.
+</p>
+<p>Each registered extension can store temporary data into the gnutls_session_t
+structure using <code>gnutls_ext_set_data()</code> , and they can be retrieved using
+<code>gnutls_ext_get_data()</code> .
+</p>
+<p>This function is not thread safe.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fext_005fset_005fdata-1"></a>
+<h4 class="subheading">gnutls_ext_set_data</h4>
+<a name="gnutls_005fext_005fset_005fdata"></a><dl>
+<dt><a name="index-gnutls_005fext_005fset_005fdata"></a>Function: <em>void</em> <strong>gnutls_ext_set_data</strong> <em>(gnutls_session_t <var>session</var>, unsigned <var>type</var>, gnutls_ext_priv_data_t <var>data</var>)</em></dt>
+<dd><p><var>session</var>: a <code>gnutls_session_t</code>  opaque pointer
+</p>
+<p><var>type</var>: the numeric id of the extension
+</p>
+<p><var>data</var>: the private data to set
+</p>
+<p>This function allows an extension handler to store data in the current session
+and retrieve them later on. The set data will be deallocated using
+the gnutls_ext_deinit_data_func.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
 <a name="gnutls_005ffingerprint-1"></a>
 <h4 class="subheading">gnutls_fingerprint</h4>
 <a name="gnutls_005ffingerprint"></a><dl>
@@ -2389,9 +2572,10 @@ GnuTLS is used by more than one library in an application.  This
 function can be called many times, but will only do something the
 first time.
 </p>
-<p>Since GnuTLS 3.3.0 this function is only required in systems that
-do not support library constructors and static linking. This
-function also became thread safe.
+<p>Since GnuTLS 3.3.0 this function is automatically called on library
+constructor. Since the same version this function is also thread safe.
+The automatic initialization can be avoided if the environment variable
+<code>GNUTLS_NO_EXPLICIT_INIT</code>  is set to be 1.
 </p>
 <p>A subsequent call of this function if the initial has failed will
 return the same error code.
@@ -2488,7 +2672,7 @@ as the standard function.
 <h4 class="subheading">gnutls_handshake</h4>
 <a name="gnutls_005fhandshake"></a><dl>
 <dt><a name="index-gnutls_005fhandshake-1"></a>Function: <em>int</em> <strong>gnutls_handshake</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function does the handshake of the TLS/SSL protocol, and
 initializes the TLS connection.
@@ -2518,7 +2702,8 @@ then <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  or
 are non fatal errors, only in the specific case of a rehandshake.
 Their meaning is that the client rejected the rehandshake request or
 in the case of <code>GNUTLS_E_GOT_APPLICATION_DATA</code>  it could also mean that
-some data were pending.
+some data were pending. A client may receive that error code if
+it initiates the handshake and the server doesn&rsquo;t agreed.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p></dd></dl>
@@ -2539,7 +2724,7 @@ message or <code>NULL</code> .
 <h4 class="subheading">gnutls_handshake_get_last_in</h4>
 <a name="gnutls_005fhandshake_005fget_005flast_005fin"></a><dl>
 <dt><a name="index-gnutls_005fhandshake_005fget_005flast_005fin"></a>Function: <em>gnutls_handshake_description_t</em> <strong>gnutls_handshake_get_last_in</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function is only useful to check where the last performed
 handshake failed.  If the previous handshake succeed or was not
@@ -2556,7 +2741,7 @@ available handshake descriptions.
 <h4 class="subheading">gnutls_handshake_get_last_out</h4>
 <a name="gnutls_005fhandshake_005fget_005flast_005fout"></a><dl>
 <dt><a name="index-gnutls_005fhandshake_005fget_005flast_005fout"></a>Function: <em>gnutls_handshake_description_t</em> <strong>gnutls_handshake_get_last_out</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function is only useful to check where the last performed
 handshake failed.  If the previous handshake succeed or was not
@@ -2573,7 +2758,7 @@ available handshake descriptions.
 <h4 class="subheading">gnutls_handshake_set_hook_function</h4>
 <a name="gnutls_005fhandshake_005fset_005fhook_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fhandshake_005fset_005fhook_005ffunction"></a>Function: <em>void</em> <strong>gnutls_handshake_set_hook_function</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>htype</var>, int <var>post</var>, gnutls_handshake_hook_func <var>func</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type
 </p>
 <p><var>htype</var>: the <code>gnutls_handshake_description_t</code>  of the message to hook at
 </p>
@@ -2604,7 +2789,7 @@ there is a man-in-the-middle attack being performed.
 <h4 class="subheading">gnutls_handshake_set_max_packet_length</h4>
 <a name="gnutls_005fhandshake_005fset_005fmax_005fpacket_005flength"></a><dl>
 <dt><a name="index-gnutls_005fhandshake_005fset_005fmax_005fpacket_005flength"></a>Function: <em>void</em> <strong>gnutls_handshake_set_max_packet_length</strong> <em>(gnutls_session_t <var>session</var>, size_t <var>max</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>max</var>: is the maximum number.
 </p>
@@ -2622,7 +2807,7 @@ limit Denial of Service attacks.
 <h4 class="subheading">gnutls_handshake_set_post_client_hello_function</h4>
 <a name="gnutls_005fhandshake_005fset_005fpost_005fclient_005fhello_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fhandshake_005fset_005fpost_005fclient_005fhello_005ffunction"></a>Function: <em>void</em> <strong>gnutls_handshake_set_post_client_hello_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_handshake_post_client_hello_func       <var>func</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>func</var>: is the function to be called
 </p>
@@ -2652,7 +2837,7 @@ there is a man-in-the-middle attack being performed.
 <h4 class="subheading">gnutls_handshake_set_private_extensions</h4>
 <a name="gnutls_005fhandshake_005fset_005fprivate_005fextensions"></a><dl>
 <dt><a name="index-gnutls_005fhandshake_005fset_005fprivate_005fextensions"></a>Function: <em>void</em> <strong>gnutls_handshake_set_private_extensions</strong> <em>(gnutls_session_t <var>session</var>, int <var>allow</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>allow</var>: is an integer (0 or 1)
 </p>
@@ -2670,7 +2855,7 @@ gnutls servers and clients may cause interoperability problems.
 <h4 class="subheading">gnutls_handshake_set_random</h4>
 <a name="gnutls_005fhandshake_005fset_005frandom"></a><dl>
 <dt><a name="index-gnutls_005fhandshake_005fset_005frandom"></a>Function: <em>int</em> <strong>gnutls_handshake_set_random</strong> <em>(gnutls_session_t <var>session</var>, const gnutls_datum_t * <var>random</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>random</var>: a random value of 32-bytes
 </p>
@@ -2692,14 +2877,18 @@ will select automatically a random value for the handshake.
 <h4 class="subheading">gnutls_handshake_set_timeout</h4>
 <a name="gnutls_005fhandshake_005fset_005ftimeout"></a><dl>
 <dt><a name="index-gnutls_005fhandshake_005fset_005ftimeout-1"></a>Function: <em>void</em> <strong>gnutls_handshake_set_timeout</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>ms</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>ms</var>: is a timeout value in milliseconds
 </p>
-<p>This function sets the timeout for the handshake process
+<p>This function sets the timeout for the TLS handshake process
 to the provided value. Use an  <code>ms</code> value of zero to disable
 timeout, or <code>GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT</code>  for a reasonable
-default value.
+default value. For the DTLS protocol, the more detailed
+<code>gnutls_dtls_set_timeouts()</code>  is provided.
+</p>
+<p>The TLS handshake process always has the default timeout value since 
+GnuTLS 3.4.0. To unset call this function with zero value.
 </p>
 <p><strong>Since:</strong> 3.1.0
 </p></dd></dl>
@@ -2708,7 +2897,7 @@ default value.
 <h4 class="subheading">gnutls_heartbeat_allowed</h4>
 <a name="gnutls_005fheartbeat_005fallowed"></a><dl>
 <dt><a name="index-gnutls_005fheartbeat_005fallowed"></a>Function: <em>int</em> <strong>gnutls_heartbeat_allowed</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>type</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>type</var>: one of <code>GNUTLS_HB_LOCAL_ALLOWED_TO_SEND</code>  and <code>GNUTLS_HB_PEER_ALLOWED_TO_SEND</code> 
 </p>
@@ -2724,7 +2913,7 @@ to be sent or received in this session.
 <h4 class="subheading">gnutls_heartbeat_enable</h4>
 <a name="gnutls_005fheartbeat_005fenable"></a><dl>
 <dt><a name="index-gnutls_005fheartbeat_005fenable"></a>Function: <em>void</em> <strong>gnutls_heartbeat_enable</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>type</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>type</var>: one of the GNUTLS_HB_* flags
 </p>
@@ -2745,7 +2934,7 @@ locally generated heartbeat messages can be accepted by the peer.
 <h4 class="subheading">gnutls_heartbeat_get_timeout</h4>
 <a name="gnutls_005fheartbeat_005fget_005ftimeout"></a><dl>
 <dt><a name="index-gnutls_005fheartbeat_005fget_005ftimeout"></a>Function: <em>unsigned int</em> <strong>gnutls_heartbeat_get_timeout</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function will return the milliseconds remaining
 for a retransmission of the previously sent ping
@@ -2762,7 +2951,7 @@ if no packets have been received.
 <h4 class="subheading">gnutls_heartbeat_ping</h4>
 <a name="gnutls_005fheartbeat_005fping"></a><dl>
 <dt><a name="index-gnutls_005fheartbeat_005fping"></a>Function: <em>int</em> <strong>gnutls_heartbeat_ping</strong> <em>(gnutls_session_t <var>session</var>, size_t <var>data_size</var>, unsigned int <var>max_tries</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>data_size</var>: is the length of the ping payload.
 </p>
@@ -2786,7 +2975,7 @@ and timeouts manually.
 <h4 class="subheading">gnutls_heartbeat_pong</h4>
 <a name="gnutls_005fheartbeat_005fpong"></a><dl>
 <dt><a name="index-gnutls_005fheartbeat_005fpong"></a>Function: <em>int</em> <strong>gnutls_heartbeat_pong</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>flags</var>: should be zero
 </p>
@@ -2801,7 +2990,7 @@ and timeouts manually.
 <h4 class="subheading">gnutls_heartbeat_set_timeouts</h4>
 <a name="gnutls_005fheartbeat_005fset_005ftimeouts"></a><dl>
 <dt><a name="index-gnutls_005fheartbeat_005fset_005ftimeouts"></a>Function: <em>void</em> <strong>gnutls_heartbeat_set_timeouts</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>retrans_timeout</var>, unsigned int <var>total_timeout</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>retrans_timeout</var>: The time at which a retransmission will occur in milliseconds
 </p>
@@ -2881,7 +3070,7 @@ long enough, or 0 on success.
 <h4 class="subheading">gnutls_init</h4>
 <a name="gnutls_005finit"></a><dl>
 <dt><a name="index-gnutls_005finit-1"></a>Function: <em>int</em> <strong>gnutls_init</strong> <em>(gnutls_session_t * <var>session</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>session</var>: is a pointer to a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a pointer to a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>flags</var>: indicate if this session is to be used for server or client.
 </p>
@@ -2912,9 +3101,9 @@ flag.
 <a name="gnutls_005fkey_005fgenerate"></a><dl>
 <dt><a name="index-gnutls_005fkey_005fgenerate"></a>Function: <em>int</em> <strong>gnutls_key_generate</strong> <em>(gnutls_datum_t * <var>key</var>, unsigned int <var>key_size</var>)</em></dt>
 <dd><p><var>key</var>: is a pointer to a <code>gnutls_datum_t</code>  which will contain a newly
-created key.
+created key
 </p>
-<p><var>key_size</var>: The number of bytes of the key.
+<p><var>key_size</var>: the number of bytes of the key
 </p>
 <p>Generates a random key of  <code>key_size</code> bytes.
 </p>
@@ -2928,7 +3117,7 @@ error code.
 <h4 class="subheading">gnutls_kx_get</h4>
 <a name="gnutls_005fkx_005fget"></a><dl>
 <dt><a name="index-gnutls_005fkx_005fget"></a>Function: <em>gnutls_kx_algorithm_t</em> <strong>gnutls_kx_get</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Get currently used key exchange algorithm.
 </p>
@@ -2996,7 +3185,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_mac_get</h4>
 <a name="gnutls_005fmac_005fget"></a><dl>
 <dt><a name="index-gnutls_005fmac_005fget"></a>Function: <em>gnutls_mac_algorithm_t</em> <strong>gnutls_mac_get</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Get currently used MAC algorithm.
 </p>
@@ -3054,11 +3243,48 @@ This function is not thread safe.
 integers indicating the available MACs.
 </p></dd></dl>
 
+<a name="gnutls_005fmemcmp-1"></a>
+<h4 class="subheading">gnutls_memcmp</h4>
+<a name="gnutls_005fmemcmp"></a><dl>
+<dt><a name="index-gnutls_005fmemcmp"></a>Function: <em>int</em> <strong>gnutls_memcmp</strong> <em>(const void * <var>s1</var>, const void * <var>s2</var>, size_t <var>n</var>)</em></dt>
+<dd><p><var>s1</var>: the first address to compare
+</p>
+<p><var>s2</var>: the second address to compare
+</p>
+<p><var>n</var>: the size of memory to compare
+</p>
+<p>This function will operate similarly to <code>memcmp()</code> , but will operate
+on time that depends only on the size of the string. That is will
+not return early if the strings don&rsquo;t match on the first byte.
+</p>
+<p><strong>Returns:</strong> non zero on difference and zero if the buffers are identical.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fmemset-1"></a>
+<h4 class="subheading">gnutls_memset</h4>
+<a name="gnutls_005fmemset"></a><dl>
+<dt><a name="index-gnutls_005fmemset"></a>Function: <em>void</em> <strong>gnutls_memset</strong> <em>(void * <var>data</var>, int <var>c</var>, size_t <var>size</var>)</em></dt>
+<dd><p><var>data</var>: the memory to set
+</p>
+<p><var>c</var>: the constant byte to fill the memory with
+</p>
+<p><var>size</var>: the size of memory
+</p>
+<p>This function will operate similarly to <code>memset()</code> , but will
+not be optimized out by the compiler.
+</p>
+<p><strong>Returns:</strong> void.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
 <a name="gnutls_005focsp_005fstatus_005frequest_005fenable_005fclient-1"></a>
 <h4 class="subheading">gnutls_ocsp_status_request_enable_client</h4>
 <a name="gnutls_005focsp_005fstatus_005frequest_005fenable_005fclient"></a><dl>
 <dt><a name="index-gnutls_005focsp_005fstatus_005frequest_005fenable_005fclient"></a>Function: <em>int</em> <strong>gnutls_ocsp_status_request_enable_client</strong> <em>(gnutls_session_t <var>session</var>, gnutls_datum_t * <var>responder_id</var>, size_t <var>responder_id_size</var>, gnutls_datum_t * <var>extensions</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>responder_id</var>: array with <code>gnutls_datum_t</code>  with DER data of responder id
 </p>
@@ -3081,7 +3307,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_ocsp_status_request_get</h4>
 <a name="gnutls_005focsp_005fstatus_005frequest_005fget"></a><dl>
 <dt><a name="index-gnutls_005focsp_005fstatus_005frequest_005fget"></a>Function: <em>int</em> <strong>gnutls_ocsp_status_request_get</strong> <em>(gnutls_session_t <var>session</var>, gnutls_datum_t * <var>response</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>response</var>: a <code>gnutls_datum_t</code>  with DER encoded OCSP response
 </p>
@@ -3102,15 +3328,19 @@ otherwise a negative error code is returned.
 <dt><a name="index-gnutls_005focsp_005fstatus_005frequest_005fis_005fchecked"></a>Function: <em>int</em> <strong>gnutls_ocsp_status_request_is_checked</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>session</var>: is a gnutls session
 </p>
-<p><var>flags</var>: should be zero
+<p><var>flags</var>: should be zero or <code>GNUTLS_OCSP_SR_IS_AVAIL</code> 
 </p>
 <p>Check whether an OCSP status response was included in the handshake
 and whether it was checked and valid (not too old or superseded). 
 This is a helper function when needing to decide whether to perform an
-OCSP validity check on the peer&rsquo;s certificate. Must be called after
-<code>gnutls_certificate_verify_peers3()</code>  is called.
+OCSP validity check on the peer&rsquo;s certificate. Should be called after
+any of gnutls_certificate_verify_peers*() are called.
 </p>
-<p><strong>Returns:</strong> non zero it was valid, or a zero if it wasn&rsquo;t sent,
+<p>If the flag <code>GNUTLS_OCSP_SR_IS_AVAIL</code>  is specified, the return
+value of the function indicates whether an OCSP status response have
+been received (even if invalid).
+</p>
+<p><strong>Returns:</strong> non zero if the response was valid, or a zero if it wasn&rsquo;t sent,
 or sent and was invalid.
 </p></dd></dl>
 
@@ -3118,7 +3348,7 @@ or sent and was invalid.
 <h4 class="subheading">gnutls_openpgp_send_cert</h4>
 <a name="gnutls_005fopenpgp_005fsend_005fcert"></a><dl>
 <dt><a name="index-gnutls_005fopenpgp_005fsend_005fcert"></a>Function: <em>void</em> <strong>gnutls_openpgp_send_cert</strong> <em>(gnutls_session_t <var>session</var>, gnutls_openpgp_crt_status_t <var>status</var>)</em></dt>
-<dd><p><var>session</var>: is a pointer to a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>status</var>: is one of GNUTLS_OPENPGP_CERT, or GNUTLS_OPENPGP_CERT_FINGERPRINT
 </p>
@@ -3144,7 +3374,7 @@ the received packet.
 <h4 class="subheading">gnutls_packet_get</h4>
 <a name="gnutls_005fpacket_005fget"></a><dl>
 <dt><a name="index-gnutls_005fpacket_005fget"></a>Function: <em>void</em> <strong>gnutls_packet_get</strong> <em>(gnutls_packet_t <var>packet</var>, gnutls_datum_t * <var>data</var>, unsigned char * <var>sequence</var>)</em></dt>
-<dd><p><var>packet</var>: is a <code>gnutls_packet_t</code>  structure.
+<dd><p><var>packet</var>: is a <code>gnutls_packet_t</code>  type.
 </p>
 <p><var>data</var>: will contain the data present in the  <code>packet</code> structure (may be <code>NULL</code> )
 </p>
@@ -3178,10 +3408,10 @@ packet found.
 not long enough, or 0 on success.
 </p></dd></dl>
 
-<a name="gnutls_005fpem_005fbase64_005fdecode_005falloc-1"></a>
-<h4 class="subheading">gnutls_pem_base64_decode_alloc</h4>
-<a name="gnutls_005fpem_005fbase64_005fdecode_005falloc"></a><dl>
-<dt><a name="index-gnutls_005fpem_005fbase64_005fdecode_005falloc"></a>Function: <em>int</em> <strong>gnutls_pem_base64_decode_alloc</strong> <em>(const char * <var>header</var>, const gnutls_datum_t * <var>b64_data</var>, gnutls_datum_t * <var>result</var>)</em></dt>
+<a name="gnutls_005fpem_005fbase64_005fdecode2-1"></a>
+<h4 class="subheading">gnutls_pem_base64_decode2</h4>
+<a name="gnutls_005fpem_005fbase64_005fdecode2"></a><dl>
+<dt><a name="index-gnutls_005fpem_005fbase64_005fdecode2"></a>Function: <em>int</em> <strong>gnutls_pem_base64_decode2</strong> <em>(const char * <var>header</var>, const gnutls_datum_t * <var>b64_data</var>, gnutls_datum_t * <var>result</var>)</em></dt>
 <dd><p><var>header</var>: The PEM header (eg. CERTIFICATE)
 </p>
 <p><var>b64_data</var>: contains the encoded data
@@ -3223,10 +3453,10 @@ not include the terminating null.
 not long enough, or 0 on success.
 </p></dd></dl>
 
-<a name="gnutls_005fpem_005fbase64_005fencode_005falloc-1"></a>
-<h4 class="subheading">gnutls_pem_base64_encode_alloc</h4>
-<a name="gnutls_005fpem_005fbase64_005fencode_005falloc"></a><dl>
-<dt><a name="index-gnutls_005fpem_005fbase64_005fencode_005falloc"></a>Function: <em>int</em> <strong>gnutls_pem_base64_encode_alloc</strong> <em>(const char * <var>msg</var>, const gnutls_datum_t * <var>data</var>, gnutls_datum_t * <var>result</var>)</em></dt>
+<a name="gnutls_005fpem_005fbase64_005fencode2-1"></a>
+<h4 class="subheading">gnutls_pem_base64_encode2</h4>
+<a name="gnutls_005fpem_005fbase64_005fencode2"></a><dl>
+<dt><a name="index-gnutls_005fpem_005fbase64_005fencode2"></a>Function: <em>int</em> <strong>gnutls_pem_base64_encode2</strong> <em>(const char * <var>msg</var>, const gnutls_datum_t * <var>data</var>, gnutls_datum_t * <var>result</var>)</em></dt>
 <dd><p><var>msg</var>: is a message to be put in the encoded header
 </p>
 <p><var>data</var>: contains the raw data
@@ -3346,7 +3576,7 @@ to signature algorithms.
 <h4 class="subheading">gnutls_prf</h4>
 <a name="gnutls_005fprf"></a><dl>
 <dt><a name="index-gnutls_005fprf"></a>Function: <em>int</em> <strong>gnutls_prf</strong> <em>(gnutls_session_t <var>session</var>, size_t <var>label_size</var>, const char * <var>label</var>, int <var>server_random_first</var>, size_t <var>extra_size</var>, const char * <var>extra</var>, size_t <var>outsize</var>, char * <var>out</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>label_size</var>: length of the  <code>label</code> variable.
 </p>
@@ -3386,7 +3616,7 @@ generated output is strongly connected to some additional data
 <h4 class="subheading">gnutls_prf_raw</h4>
 <a name="gnutls_005fprf_005fraw"></a><dl>
 <dt><a name="index-gnutls_005fprf_005fraw"></a>Function: <em>int</em> <strong>gnutls_prf_raw</strong> <em>(gnutls_session_t <var>session</var>, size_t <var>label_size</var>, const char * <var>label</var>, size_t <var>seed_size</var>, const char * <var>seed</var>, size_t <var>outsize</var>, char * <var>out</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>label_size</var>: length of the  <code>label</code> variable.
 </p>
@@ -3424,7 +3654,7 @@ want to generate pseudo random data unique for each session.
 <h4 class="subheading">gnutls_priority_certificate_type_list</h4>
 <a name="gnutls_005fpriority_005fcertificate_005ftype_005flist"></a><dl>
 <dt><a name="index-gnutls_005fpriority_005fcertificate_005ftype_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_certificate_type_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
-<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  type.
 </p>
 <p><var>list</var>: will point to an integer list
 </p>
@@ -3440,7 +3670,7 @@ structure.
 <h4 class="subheading">gnutls_priority_cipher_list</h4>
 <a name="gnutls_005fpriority_005fcipher_005flist"></a><dl>
 <dt><a name="index-gnutls_005fpriority_005fcipher_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_cipher_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
-<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  type.
 </p>
 <p><var>list</var>: will point to an integer list
 </p>
@@ -3456,7 +3686,7 @@ structure.
 <h4 class="subheading">gnutls_priority_compression_list</h4>
 <a name="gnutls_005fpriority_005fcompression_005flist"></a><dl>
 <dt><a name="index-gnutls_005fpriority_005fcompression_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_compression_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
-<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  type.
 </p>
 <p><var>list</var>: will point to an integer list
 </p>
@@ -3472,7 +3702,7 @@ structure.
 <h4 class="subheading">gnutls_priority_deinit</h4>
 <a name="gnutls_005fpriority_005fdeinit"></a><dl>
 <dt><a name="index-gnutls_005fpriority_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_priority_deinit</strong> <em>(gnutls_priority_t <var>priority_cache</var>)</em></dt>
-<dd><p><var>priority_cache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+<dd><p><var>priority_cache</var>: is a <code>gnutls_prioritity_t</code>  type.
 </p>
 <p>Deinitializes the priority cache.
 </p></dd></dl>
@@ -3481,7 +3711,7 @@ structure.
 <h4 class="subheading">gnutls_priority_ecc_curve_list</h4>
 <a name="gnutls_005fpriority_005fecc_005fcurve_005flist"></a><dl>
 <dt><a name="index-gnutls_005fpriority_005fecc_005fcurve_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_ecc_curve_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
-<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  type.
 </p>
 <p><var>list</var>: will point to an integer list
 </p>
@@ -3497,7 +3727,7 @@ structure.
 <h4 class="subheading">gnutls_priority_get_cipher_suite_index</h4>
 <a name="gnutls_005fpriority_005fget_005fcipher_005fsuite_005findex"></a><dl>
 <dt><a name="index-gnutls_005fpriority_005fget_005fcipher_005fsuite_005findex"></a>Function: <em>int</em> <strong>gnutls_priority_get_cipher_suite_index</strong> <em>(gnutls_priority_t <var>pcache</var>, unsigned int <var>idx</var>, unsigned int * <var>sidx</var>)</em></dt>
-<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  type.
 </p>
 <p><var>idx</var>: is an index number.
 </p>
@@ -3518,14 +3748,15 @@ Once the last available index is crossed then
 <h4 class="subheading">gnutls_priority_init</h4>
 <a name="gnutls_005fpriority_005finit"></a><dl>
 <dt><a name="index-gnutls_005fpriority_005finit"></a>Function: <em>int</em> <strong>gnutls_priority_init</strong> <em>(gnutls_priority_t * <var>priority_cache</var>, const char * <var>priorities</var>, const char ** <var>err_pos</var>)</em></dt>
-<dd><p><var>priority_cache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+<dd><p><var>priority_cache</var>: is a <code>gnutls_prioritity_t</code>  type.
 </p>
 <p><var>priorities</var>: is a string describing priorities (may be <code>NULL</code> )
 </p>
 <p><var>err_pos</var>: In case of an error this will have the position in the string the error occurred
 </p>
 <p>Sets priorities for the ciphers, key exchange methods, macs and
-compression methods.
+compression methods. The  <code>priority_cache</code> should be deinitialized
+using <code>gnutls_priority_deinit()</code> .
 </p>
 <p>The <code>priorities</code>  option allows you to specify a colon
 separated list of the cipher priorities to enable.
@@ -3563,9 +3794,6 @@ of 128.
 <p>&quot;SUITEB192&quot; means all the NSA SuiteB ciphersuites with security level
 of 192.
 </p>
-<p>&quot;EXPORT&quot; means all ciphersuites are enabled, including the
-low-security 40 bit ciphers.
-</p>
 <p>&quot;NONE&quot; means nothing is enabled.  This disables even protocols and
 compression methods.
 </p>
@@ -3574,7 +3802,7 @@ will be expanded from a configuration-time provided file - default is:
 /etc/gnutls/default-priorities. Any keywords that follow it, will 
 be appended to the expanded string. If there is no system string,
 then the function will fail. The system file should be formatted
-as &quot;KEYWORD=VALUE&quot;, e.g., &quot;SYSTEM=NORMAL:-ARCFOUR-128&quot;.
+as &quot;KEYWORD=VALUE&quot;, e.g., &quot;SYSTEM=NORMAL:+ARCFOUR-128&quot;.
 </p>
 <p>Special keywords are &quot;!&quot;, &quot;-&quot; and &quot;+&quot;.
 &quot;!&quot; or &quot;-&quot; appended with an algorithm will remove this algorithm.
@@ -3586,7 +3814,7 @@ information.
 <p><strong>Examples:</strong> 
 &quot;NONE:+VERS-TLS-ALL:+MAC-ALL:+RSA:+AES-128-CBC:+SIGN-ALL:+COMP-NULL&quot;
 </p>
-<p>&quot;NORMAL:-ARCFOUR-128&quot; means normal ciphers except for ARCFOUR-128.
+<p>&quot;NORMAL:+ARCFOUR-128&quot; means normal ciphers plus ARCFOUR-128.
 </p>
 <p>&quot;SECURE128:-VERS-SSL3.0:+COMP-DEFLATE&quot; means that only secure ciphers are
 enabled, SSL3.0 is disabled, and libz compression enabled.
@@ -3610,7 +3838,7 @@ used (this is available since GnuTLS 3.3.0).
 <h4 class="subheading">gnutls_priority_kx_list</h4>
 <a name="gnutls_005fpriority_005fkx_005flist"></a><dl>
 <dt><a name="index-gnutls_005fpriority_005fkx_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_kx_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
-<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  type.
 </p>
 <p><var>list</var>: will point to an integer list
 </p>
@@ -3626,7 +3854,7 @@ structure.
 <h4 class="subheading">gnutls_priority_mac_list</h4>
 <a name="gnutls_005fpriority_005fmac_005flist"></a><dl>
 <dt><a name="index-gnutls_005fpriority_005fmac_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_mac_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
-<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  type.
 </p>
 <p><var>list</var>: will point to an integer list
 </p>
@@ -3642,7 +3870,7 @@ structure.
 <h4 class="subheading">gnutls_priority_protocol_list</h4>
 <a name="gnutls_005fpriority_005fprotocol_005flist"></a><dl>
 <dt><a name="index-gnutls_005fpriority_005fprotocol_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_protocol_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
-<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  type.
 </p>
 <p><var>list</var>: will point to an integer list
 </p>
@@ -3658,9 +3886,9 @@ structure.
 <h4 class="subheading">gnutls_priority_set</h4>
 <a name="gnutls_005fpriority_005fset"></a><dl>
 <dt><a name="index-gnutls_005fpriority_005fset"></a>Function: <em>int</em> <strong>gnutls_priority_set</strong> <em>(gnutls_session_t <var>session</var>, gnutls_priority_t <var>priority</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
-<p><var>priority</var>: is a <code>gnutls_priority_t</code>  structure.
+<p><var>priority</var>: is a <code>gnutls_priority_t</code>  type.
 </p>
 <p>Sets the priorities to use on the ciphers, key exchange methods,
 macs and compression methods.
@@ -3672,7 +3900,7 @@ macs and compression methods.
 <h4 class="subheading">gnutls_priority_set_direct</h4>
 <a name="gnutls_005fpriority_005fset_005fdirect"></a><dl>
 <dt><a name="index-gnutls_005fpriority_005fset_005fdirect"></a>Function: <em>int</em> <strong>gnutls_priority_set_direct</strong> <em>(gnutls_session_t <var>session</var>, const char * <var>priorities</var>, const char ** <var>err_pos</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>priorities</var>: is a string describing priorities
 </p>
@@ -3693,7 +3921,7 @@ TLS session.  For documentation check the <code>gnutls_priority_init()</code> .
 <h4 class="subheading">gnutls_priority_sign_list</h4>
 <a name="gnutls_005fpriority_005fsign_005flist"></a><dl>
 <dt><a name="index-gnutls_005fpriority_005fsign_005flist"></a>Function: <em>int</em> <strong>gnutls_priority_sign_list</strong> <em>(gnutls_priority_t <var>pcache</var>, const unsigned int ** <var>list</var>)</em></dt>
-<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  structure.
+<dd><p><var>pcache</var>: is a <code>gnutls_prioritity_t</code>  type.
 </p>
 <p><var>list</var>: will point to an integer list
 </p>
@@ -3703,6 +3931,24 @@ structure.
 <p><strong>Returns:</strong> the number of algorithms, or an error code.
 </p>
 <p><strong>Since:</strong> 3.0
+</p></dd></dl>
+
+<a name="gnutls_005fpriority_005fstring_005flist-1"></a>
+<h4 class="subheading">gnutls_priority_string_list</h4>
+<a name="gnutls_005fpriority_005fstring_005flist"></a><dl>
+<dt><a name="index-gnutls_005fpriority_005fstring_005flist"></a>Function: <em>const char *</em> <strong>gnutls_priority_string_list</strong> <em>(unsigned <var>iter</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>iter</var>: an integer counter starting from zero
+</p>
+<p><var>flags</var>: one of <code>GNUTLS_PRIORITY_LIST_INIT_KEYWORDS</code> , <code>GNUTLS_PRIORITY_LIST_SPECIAL</code> 
+</p>
+<p>Can be used to iterate all available priority strings.
+Due to internal implementation details, there are cases where this
+function can return the empty string. In that case that string should be ignored.
+When no strings are available it returns <code>NULL</code> .
+</p>
+<p><strong>Returns:</strong> a priority string
+</p>
+<p><strong>Since:</strong> 3.4.0
 </p></dd></dl>
 
 <a name="gnutls_005fprotocol_005fget_005fid-1"></a>
@@ -3733,7 +3979,7 @@ version (e.g., &quot;TLS1.0&quot;), or <code>NULL</code> .
 <h4 class="subheading">gnutls_protocol_get_version</h4>
 <a name="gnutls_005fprotocol_005fget_005fversion"></a><dl>
 <dt><a name="index-gnutls_005fprotocol_005fget_005fversion"></a>Function: <em>gnutls_protocol_t</em> <strong>gnutls_protocol_get_version</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Get TLS version, a <code>gnutls_protocol_t</code>  value.
 </p>
@@ -3757,7 +4003,7 @@ indicating the available protocols.
 <h4 class="subheading">gnutls_psk_allocate_client_credentials</h4>
 <a name="gnutls_005fpsk_005fallocate_005fclient_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fpsk_005fallocate_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_psk_allocate_client_credentials</strong> <em>(gnutls_psk_client_credentials_t *            <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a pointer to a <code>gnutls_psk_server_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a pointer to a <code>gnutls_psk_server_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
 helper function is provided in order to allocate it.
@@ -3770,7 +4016,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_psk_allocate_server_credentials</h4>
 <a name="gnutls_005fpsk_005fallocate_005fserver_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fpsk_005fallocate_005fserver_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_psk_allocate_server_credentials</strong> <em>(gnutls_psk_server_credentials_t *            <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a pointer to a <code>gnutls_psk_server_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a pointer to a <code>gnutls_psk_server_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
 helper function is provided in order to allocate it.
@@ -3798,7 +4044,7 @@ authentication and in case of a client.
 <h4 class="subheading">gnutls_psk_free_client_credentials</h4>
 <a name="gnutls_005fpsk_005ffree_005fclient_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fpsk_005ffree_005fclient_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_psk_free_client_credentials</strong> <em>(gnutls_psk_client_credentials_t <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_psk_client_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_psk_client_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
 helper function is provided in order to free (deallocate) it.
@@ -3808,7 +4054,7 @@ helper function is provided in order to free (deallocate) it.
 <h4 class="subheading">gnutls_psk_free_server_credentials</h4>
 <a name="gnutls_005fpsk_005ffree_005fserver_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fpsk_005ffree_005fserver_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_psk_free_server_credentials</strong> <em>(gnutls_psk_server_credentials_t <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_psk_server_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_psk_server_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
 helper function is provided in order to free (deallocate) it.
@@ -3830,7 +4076,7 @@ case of a server.
 <h4 class="subheading">gnutls_psk_set_client_credentials</h4>
 <a name="gnutls_005fpsk_005fset_005fclient_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fpsk_005fset_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_psk_set_client_credentials</strong> <em>(gnutls_psk_client_credentials_t <var>res</var>, const char * <var>username</var>, const gnutls_datum_t * <var>key</var>, gnutls_psk_key_flags <var>flags</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_psk_client_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_psk_client_credentials_t</code>  type.
 </p>
 <p><var>username</var>: is the user&rsquo;s zero-terminated userid
 </p>
@@ -3840,7 +4086,7 @@ case of a server.
 <code>GNUTLS_PSK_KEY_RAW</code>  or <code>GNUTLS_PSK_KEY_HEX</code> .
 </p>
 <p>This function sets the username and password, in a
-gnutls_psk_client_credentials_t structure.  Those will be used in
+gnutls_psk_client_credentials_t type.  Those will be used in
 PSK authentication.   <code>username</code> should be an ASCII string or UTF-8
 strings prepared using the &quot;SASLprep&quot; profile of &quot;stringprep&quot;.  The
 key can be either in raw byte format or in Hex format (without the
@@ -3854,7 +4100,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_psk_set_client_credentials_function</h4>
 <a name="gnutls_005fpsk_005fset_005fclient_005fcredentials_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fpsk_005fset_005fclient_005fcredentials_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_psk_set_client_credentials_function</strong> <em>(gnutls_psk_client_credentials_t         <var>cred</var>, gnutls_psk_client_credentials_function         * <var>func</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_psk_server_credentials_t</code>  structure.
+<dd><p><var>cred</var>: is a <code>gnutls_psk_server_credentials_t</code>  type.
 </p>
 <p><var>func</var>: is the callback function
 </p>
@@ -3878,7 +4124,7 @@ the &quot;SASLprep&quot; profile of &quot;stringprep&quot;.
 <h4 class="subheading">gnutls_psk_set_params_function</h4>
 <a name="gnutls_005fpsk_005fset_005fparams_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fpsk_005fset_005fparams_005ffunction"></a>Function: <em>void</em> <strong>gnutls_psk_set_params_function</strong> <em>(gnutls_psk_server_credentials_t <var>res</var>, gnutls_params_function * <var>func</var>)</em></dt>
-<dd><p><var>res</var>: is a gnutls_psk_server_credentials_t structure
+<dd><p><var>res</var>: is a gnutls_psk_server_credentials_t type
 </p>
 <p><var>func</var>: is the function to be called
 </p>
@@ -3891,12 +4137,12 @@ callback should return <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 <h4 class="subheading">gnutls_psk_set_server_credentials_file</h4>
 <a name="gnutls_005fpsk_005fset_005fserver_005fcredentials_005ffile"></a><dl>
 <dt><a name="index-gnutls_005fpsk_005fset_005fserver_005fcredentials_005ffile-1"></a>Function: <em>int</em> <strong>gnutls_psk_set_server_credentials_file</strong> <em>(gnutls_psk_server_credentials_t            <var>res</var>, const char * <var>password_file</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_psk_server_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_psk_server_credentials_t</code>  type.
 </p>
 <p><var>password_file</var>: is the PSK password file (passwd.psk)
 </p>
 <p>This function sets the password file, in a
-<code>gnutls_psk_server_credentials_t</code>  structure.  This password file
+<code>gnutls_psk_server_credentials_t</code>  type.  This password file
 holds usernames and keys and will be used for PSK authentication.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
@@ -3907,7 +4153,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_psk_set_server_credentials_function</h4>
 <a name="gnutls_005fpsk_005fset_005fserver_005fcredentials_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fpsk_005fset_005fserver_005fcredentials_005ffunction"></a>Function: <em>void</em> <strong>gnutls_psk_set_server_credentials_function</strong> <em>(gnutls_psk_server_credentials_t         <var>cred</var>, gnutls_psk_server_credentials_function         * <var>func</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_psk_server_credentials_t</code>  structure.
+<dd><p><var>cred</var>: is a <code>gnutls_psk_server_credentials_t</code>  type.
 </p>
 <p><var>func</var>: is the callback function
 </p>
@@ -3931,12 +4177,12 @@ an error.
 <h4 class="subheading">gnutls_psk_set_server_credentials_hint</h4>
 <a name="gnutls_005fpsk_005fset_005fserver_005fcredentials_005fhint"></a><dl>
 <dt><a name="index-gnutls_005fpsk_005fset_005fserver_005fcredentials_005fhint"></a>Function: <em>int</em> <strong>gnutls_psk_set_server_credentials_hint</strong> <em>(gnutls_psk_server_credentials_t <var>res</var>, const char * <var>hint</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_psk_server_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_psk_server_credentials_t</code>  type.
 </p>
 <p><var>hint</var>: is the PSK identity hint string
 </p>
 <p>This function sets the identity hint, in a
-<code>gnutls_psk_server_credentials_t</code>  structure.  This hint is sent to
+<code>gnutls_psk_server_credentials_t</code>  type.  This hint is sent to
 the client to help it chose a good PSK credential (i.e., username
 and password).
 </p>
@@ -3950,7 +4196,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_psk_set_server_dh_params</h4>
 <a name="gnutls_005fpsk_005fset_005fserver_005fdh_005fparams"></a><dl>
 <dt><a name="index-gnutls_005fpsk_005fset_005fserver_005fdh_005fparams"></a>Function: <em>void</em> <strong>gnutls_psk_set_server_dh_params</strong> <em>(gnutls_psk_server_credentials_t <var>res</var>, gnutls_dh_params_t <var>dh_params</var>)</em></dt>
-<dd><p><var>res</var>: is a gnutls_psk_server_credentials_t structure
+<dd><p><var>res</var>: is a gnutls_psk_server_credentials_t type
 </p>
 <p><var>dh_params</var>: is a structure that holds Diffie-Hellman parameters.
 </p>
@@ -3963,7 +4209,7 @@ Diffie-Hellman exchange with PSK cipher suites.
 <h4 class="subheading">gnutls_psk_set_server_params_function</h4>
 <a name="gnutls_005fpsk_005fset_005fserver_005fparams_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fpsk_005fset_005fserver_005fparams_005ffunction"></a>Function: <em>void</em> <strong>gnutls_psk_set_server_params_function</strong> <em>(gnutls_psk_server_credentials_t <var>res</var>, gnutls_params_function * <var>func</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type
 </p>
 <p><var>func</var>: is the function to be called
 </p>
@@ -3999,7 +4245,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_range_split</h4>
 <a name="gnutls_005frange_005fsplit"></a><dl>
 <dt><a name="index-gnutls_005frange_005fsplit"></a>Function: <em>int</em> <strong>gnutls_range_split</strong> <em>(gnutls_session_t <var>session</var>, const gnutls_range_st * <var>orig</var>, gnutls_range_st * <var>next</var>, gnutls_range_st * <var>remainder</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type
 </p>
 <p><var>orig</var>: is the original range provided by the user
 </p>
@@ -4022,7 +4268,7 @@ Note that  <code>orig</code> is not changed, while the values of  <code>next</co
 <h4 class="subheading">gnutls_record_can_use_length_hiding</h4>
 <a name="gnutls_005frecord_005fcan_005fuse_005flength_005fhiding"></a><dl>
 <dt><a name="index-gnutls_005frecord_005fcan_005fuse_005flength_005fhiding"></a>Function: <em>int</em> <strong>gnutls_record_can_use_length_hiding</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>If the session supports length-hiding padding, you can
 invoke <code>gnutls_range_send_message()</code>  to send a message whose
@@ -4040,7 +4286,7 @@ padding, false (0) if the current session does not.
 <h4 class="subheading">gnutls_record_check_corked</h4>
 <a name="gnutls_005frecord_005fcheck_005fcorked"></a><dl>
 <dt><a name="index-gnutls_005frecord_005fcheck_005fcorked"></a>Function: <em>size_t</em> <strong>gnutls_record_check_corked</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function checks if there pending corked
 data in the gnutls buffers &ndash;see <code>gnutls_record_cork()</code> . 
@@ -4054,7 +4300,7 @@ data in the gnutls buffers &ndash;see <code>gnutls_record_cork()</code> .
 <h4 class="subheading">gnutls_record_check_pending</h4>
 <a name="gnutls_005frecord_005fcheck_005fpending"></a><dl>
 <dt><a name="index-gnutls_005frecord_005fcheck_005fpending-1"></a>Function: <em>size_t</em> <strong>gnutls_record_check_pending</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function checks if there are unread data
 in the gnutls buffers. If the return value is
@@ -4068,7 +4314,7 @@ is guaranteed not to block.
 <h4 class="subheading">gnutls_record_cork</h4>
 <a name="gnutls_005frecord_005fcork"></a><dl>
 <dt><a name="index-gnutls_005frecord_005fcork-1"></a>Function: <em>void</em> <strong>gnutls_record_cork</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>If called, <code>gnutls_record_send()</code>  will no longer send any records.
 Any sent records will be cached until <code>gnutls_record_uncork()</code>  is called.
@@ -4082,7 +4328,7 @@ Any sent records will be cached until <code>gnutls_record_uncork()</code>  is ca
 <h4 class="subheading">gnutls_record_disable_padding</h4>
 <a name="gnutls_005frecord_005fdisable_005fpadding"></a><dl>
 <dt><a name="index-gnutls_005frecord_005fdisable_005fpadding"></a>Function: <em>void</em> <strong>gnutls_record_disable_padding</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Used to disabled padding in TLS 1.0 and above.  Normally you do not
 need to use this function, but there are buggy clients that
@@ -4093,11 +4339,25 @@ disable protection against statistical attacks on the data.
 by default unless requested using <code>gnutls_range_send_message()</code> .
 </p></dd></dl>
 
+<a name="gnutls_005frecord_005fdiscard_005fqueued-1"></a>
+<h4 class="subheading">gnutls_record_discard_queued</h4>
+<a name="gnutls_005frecord_005fdiscard_005fqueued"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fdiscard_005fqueued"></a>Function: <em>size_t</em> <strong>gnutls_record_discard_queued</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p>This function discards all queued to be sent packets in a DTLS session.
+These are the packets queued after an interrupted <code>gnutls_record_send()</code> .
+</p>
+<p><strong>Returns:</strong> The number of bytes discarded.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
 <a name="gnutls_005frecord_005fget_005fdirection-1"></a>
 <h4 class="subheading">gnutls_record_get_direction</h4>
 <a name="gnutls_005frecord_005fget_005fdirection"></a><dl>
 <dt><a name="index-gnutls_005frecord_005fget_005fdirection-1"></a>Function: <em>int</em> <strong>gnutls_record_get_direction</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function provides information about the internals of the
 record protocol and is only useful if a prior gnutls function call
@@ -4120,12 +4380,39 @@ trying to write data.
 <h4 class="subheading">gnutls_record_get_max_size</h4>
 <a name="gnutls_005frecord_005fget_005fmax_005fsize"></a><dl>
 <dt><a name="index-gnutls_005frecord_005fget_005fmax_005fsize"></a>Function: <em>size_t</em> <strong>gnutls_record_get_max_size</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Get the record size.  The maximum record size is negotiated by the
 client after the first handshake message.
 </p>
 <p><strong>Returns:</strong> The maximum record packet size in this connection.
+</p></dd></dl>
+
+<a name="gnutls_005frecord_005fget_005fstate-1"></a>
+<h4 class="subheading">gnutls_record_get_state</h4>
+<a name="gnutls_005frecord_005fget_005fstate"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fget_005fstate"></a>Function: <em>int</em> <strong>gnutls_record_get_state</strong> <em>(gnutls_session_t <var>session</var>, unsigned <var>read</var>, gnutls_datum_t * <var>mac_key</var>, gnutls_datum_t * <var>IV</var>, gnutls_datum_t * <var>cipher_key</var>, unsigned char <var>seq_number[8]</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type
+</p>
+<p><var>read</var>: if non-zero the read parameters are returned, otherwise the write
+</p>
+<p><var>mac_key</var>: the key used for MAC (if a MAC is used)
+</p>
+<p><var>IV</var>: the initialization vector or nonce used
+</p>
+<p><var>cipher_key</var>: the cipher key
+</p>
+<p><var>seq_number[8]</var>: &ndash; undescribed &ndash;
+</p>
+<p>This function will return the parameters of the current record state.
+These are only useful to be provided to an external off-loading device
+or subsystem.
+</p>
+<p>In that case, to sync the state you must call <code>gnutls_record_set_state()</code> .
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
+</p>
+<p>Since 3.4.0
 </p></dd></dl>
 
 <a name="gnutls_005frecord_005foverhead_005fsize-1"></a>
@@ -4144,7 +4431,7 @@ due to TLS (or DTLS) per record.
 <h4 class="subheading">gnutls_record_recv</h4>
 <a name="gnutls_005frecord_005frecv"></a><dl>
 <dt><a name="index-gnutls_005frecord_005frecv-1"></a>Function: <em>ssize_t</em> <strong>gnutls_record_recv</strong> <em>(gnutls_session_t <var>session</var>, void * <var>data</var>, size_t <var>data_size</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>data</var>: the buffer that the data will be read into
 </p>
@@ -4176,11 +4463,11 @@ The number of bytes received might be less than the requested  <code>data_size</
 <h4 class="subheading">gnutls_record_recv_packet</h4>
 <a name="gnutls_005frecord_005frecv_005fpacket"></a><dl>
 <dt><a name="index-gnutls_005frecord_005frecv_005fpacket"></a>Function: <em>ssize_t</em> <strong>gnutls_record_recv_packet</strong> <em>(gnutls_session_t <var>session</var>, gnutls_packet_t * <var>packet</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>packet</var>: the structure that will hold the packet data
 </p>
-<p>This is a lower-level function thatn <code>gnutls_record_recv()</code>  and allows
+<p>This is a lower-level function than <code>gnutls_record_recv()</code>  and allows
 to directly receive the whole decrypted packet. That avoids a
 memory copy, and is mostly applicable to applications seeking high
 performance.
@@ -4199,7 +4486,7 @@ connections).  A negative error code is returned in case of an error.
 <h4 class="subheading">gnutls_record_recv_seq</h4>
 <a name="gnutls_005frecord_005frecv_005fseq"></a><dl>
 <dt><a name="index-gnutls_005frecord_005frecv_005fseq-1"></a>Function: <em>ssize_t</em> <strong>gnutls_record_recv_seq</strong> <em>(gnutls_session_t <var>session</var>, void * <var>data</var>, size_t <var>data_size</var>, unsigned char * <var>seq</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>data</var>: the buffer that the data will be read into
 </p>
@@ -4225,7 +4512,7 @@ received might be less than  <code>data_size</code> .
 <h4 class="subheading">gnutls_record_send</h4>
 <a name="gnutls_005frecord_005fsend"></a><dl>
 <dt><a name="index-gnutls_005frecord_005fsend-1"></a>Function: <em>ssize_t</em> <strong>gnutls_record_send</strong> <em>(gnutls_session_t <var>session</var>, const void * <var>data</var>, size_t <var>data_size</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>data</var>: contains the data to send
 </p>
@@ -4265,7 +4552,7 @@ on the negotiated maximum record size.
 <h4 class="subheading">gnutls_record_send_range</h4>
 <a name="gnutls_005frecord_005fsend_005frange"></a><dl>
 <dt><a name="index-gnutls_005frecord_005fsend_005frange"></a>Function: <em>ssize_t</em> <strong>gnutls_record_send_range</strong> <em>(gnutls_session_t <var>session</var>, const void * <var>data</var>, size_t <var>data_size</var>, const gnutls_range_st * <var>range</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>data</var>: contains the data to send.
 </p>
@@ -4288,28 +4575,11 @@ function.
 or a negative error code.
 </p></dd></dl>
 
-<a name="gnutls_005frecord_005fset_005fmax_005fempty_005frecords-1"></a>
-<h4 class="subheading">gnutls_record_set_max_empty_records</h4>
-<a name="gnutls_005frecord_005fset_005fmax_005fempty_005frecords"></a><dl>
-<dt><a name="index-gnutls_005frecord_005fset_005fmax_005fempty_005frecords"></a>Function: <em>void</em> <strong>gnutls_record_set_max_empty_records</strong> <em>(gnutls_session_t <var>session</var>, const unsigned int <var>i</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
-</p>
-<p><var>i</var>: is the desired value of maximum empty records that can be accepted in a row.
-</p>
-<p>Used to set the maximum number of empty fragments that can be accepted
-in a row. Accepting many empty fragments is useful for receiving length-hidden
-content, where empty fragments filled with pad are sent to hide the real
-length of a message. However, a malicious peer could send empty fragments to
-mount a DoS attack, so as a safety measure, a maximum number of empty fragments
-is accepted by default. If you know your application must accept a given number
-of empty fragments in a row, you can use this function to set the desired value.
-</p></dd></dl>
-
 <a name="gnutls_005frecord_005fset_005fmax_005fsize-1"></a>
 <h4 class="subheading">gnutls_record_set_max_size</h4>
 <a name="gnutls_005frecord_005fset_005fmax_005fsize"></a><dl>
 <dt><a name="index-gnutls_005frecord_005fset_005fmax_005fsize"></a>Function: <em>ssize_t</em> <strong>gnutls_record_set_max_size</strong> <em>(gnutls_session_t <var>session</var>, size_t <var>size</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>size</var>: is the new size
 </p>
@@ -4329,11 +4599,30 @@ all TLS implementations use or even understand this extension.
 otherwise a negative error code is returned.
 </p></dd></dl>
 
+<a name="gnutls_005frecord_005fset_005fstate-1"></a>
+<h4 class="subheading">gnutls_record_set_state</h4>
+<a name="gnutls_005frecord_005fset_005fstate"></a><dl>
+<dt><a name="index-gnutls_005frecord_005fset_005fstate"></a>Function: <em>int</em> <strong>gnutls_record_set_state</strong> <em>(gnutls_session_t <var>session</var>, unsigned <var>read</var>, unsigned char <var>seq_number[8]</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type
+</p>
+<p><var>read</var>: if non-zero the read parameters are returned, otherwise the write
+</p>
+<p><var>seq_number[8]</var>: &ndash; undescribed &ndash;
+</p>
+<p>This function will set the sequence number in the current record state.
+This function is useful if sending and receiving are offloaded from
+gnutls. That is, if <code>gnutls_record_get_state()</code>  was used.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
+</p>
+<p>Since 3.4.0
+</p></dd></dl>
+
 <a name="gnutls_005frecord_005fset_005ftimeout-1"></a>
 <h4 class="subheading">gnutls_record_set_timeout</h4>
 <a name="gnutls_005frecord_005fset_005ftimeout"></a><dl>
 <dt><a name="index-gnutls_005frecord_005fset_005ftimeout"></a>Function: <em>void</em> <strong>gnutls_record_set_timeout</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>ms</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>ms</var>: is a timeout value in milliseconds
 </p>
@@ -4348,7 +4637,7 @@ timeout (the default).
 <h4 class="subheading">gnutls_record_uncork</h4>
 <a name="gnutls_005frecord_005funcork"></a><dl>
 <dt><a name="index-gnutls_005frecord_005funcork-1"></a>Function: <em>int</em> <strong>gnutls_record_uncork</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>flags</var>: Could be zero or <code>GNUTLS_RECORD_WAIT</code> 
 </p>
@@ -4373,7 +4662,7 @@ otherwise a negative error code.
 <h4 class="subheading">gnutls_rehandshake</h4>
 <a name="gnutls_005frehandshake"></a><dl>
 <dt><a name="index-gnutls_005frehandshake"></a>Function: <em>int</em> <strong>gnutls_rehandshake</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function will renegotiate security parameters with the
 client.  This should only be called in case of a server.
@@ -4388,8 +4677,8 @@ parameters.
 <p>Since TLS is full duplex some application data might have been
 sent during peer&rsquo;s processing of this message. In that case
 one should call <code>gnutls_record_recv()</code>  until GNUTLS_E_REHANDSHAKE
-is returned to clear any pending data. Care must be taken if
-rehandshake is mandatory to terminate if it does not start after
+is returned to clear any pending data. Care must be taken, if
+rehandshake is mandatory, to terminate if it does not start after
 some threshold.
 </p>
 <p>If the client does not wish to renegotiate parameters he 
@@ -4405,7 +4694,7 @@ this message.
 <h4 class="subheading">gnutls_safe_renegotiation_status</h4>
 <a name="gnutls_005fsafe_005frenegotiation_005fstatus"></a><dl>
 <dt><a name="index-gnutls_005fsafe_005frenegotiation_005fstatus"></a>Function: <em>int</em> <strong>gnutls_safe_renegotiation_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Can be used to check whether safe renegotiation is being used
 in the current session.
@@ -4467,7 +4756,7 @@ symmetric cipher strength for the given security parameter.
 <h4 class="subheading">gnutls_server_name_get</h4>
 <a name="gnutls_005fserver_005fname_005fget"></a><dl>
 <dt><a name="index-gnutls_005fserver_005fname_005fget"></a>Function: <em>int</em> <strong>gnutls_server_name_get</strong> <em>(gnutls_session_t <var>session</var>, void * <var>data</var>, size_t * <var>data_length</var>, unsigned int * <var>type</var>, unsigned int <var>indx</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>data</var>: will hold the data
 </p>
@@ -4483,7 +4772,7 @@ gnutls_server_name_type_t.
 </p>
 <p>If  <code>type</code> is GNUTLS_NAME_DNS, then this function is to be used by
 servers that support virtual hosting, and the data will be a null
-terminated UTF-8 string.
+terminated IDNA ACE string (prior to GnuTLS 3.4.0 it was a UTF-8 string).
 </p>
 <p>If  <code>data</code> has not enough size to hold the server name
 GNUTLS_E_SHORT_MEMORY_BUFFER is returned, and  <code>data_length</code> will
@@ -4502,7 +4791,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_server_name_set</h4>
 <a name="gnutls_005fserver_005fname_005fset"></a><dl>
 <dt><a name="index-gnutls_005fserver_005fname_005fset"></a>Function: <em>int</em> <strong>gnutls_server_name_set</strong> <em>(gnutls_session_t <var>session</var>, gnutls_server_name_type_t <var>type</var>, const void * <var>name</var>, size_t <var>name_length</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>type</var>: specifies the indicator type
 </p>
@@ -4516,9 +4805,10 @@ This should be used by clients that connect to servers that do
 virtual hosting.
 </p>
 <p>The value of  <code>name</code> depends on the  <code>type</code> type.  In case of
-<code>GNUTLS_NAME_DNS</code> , an ASCII (0)-terminated domain name string,
-without the trailing dot, is expected.  IPv4 or IPv6 addresses are
-not permitted.
+<code>GNUTLS_NAME_DNS</code> , a UTF-8 null-terminated domain name string,
+without the trailing dot, is expected.
+</p>
+<p>IPv4 or IPv6 addresses are not permitted.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
@@ -4528,7 +4818,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_session_channel_binding</h4>
 <a name="gnutls_005fsession_005fchannel_005fbinding"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fchannel_005fbinding"></a>Function: <em>int</em> <strong>gnutls_session_channel_binding</strong> <em>(gnutls_session_t <var>session</var>, gnutls_channel_binding_t <var>cbtype</var>, gnutls_datum_t * <var>cb</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>cbtype</var>: an <code>gnutls_channel_binding_t</code>  enumeration type
 </p>
@@ -4549,7 +4839,7 @@ currently available, or an error code.
 <h4 class="subheading">gnutls_session_enable_compatibility_mode</h4>
 <a name="gnutls_005fsession_005fenable_005fcompatibility_005fmode"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fenable_005fcompatibility_005fmode"></a>Function: <em>void</em> <strong>gnutls_session_enable_compatibility_mode</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function can be used to disable certain (security) features in
 TLS in order to maintain maximum compatibility with buggy
@@ -4563,11 +4853,35 @@ everything out there, need to call this function.
 functions.
 </p></dd></dl>
 
+<a name="gnutls_005fsession_005fetm_005fstatus-1"></a>
+<h4 class="subheading">gnutls_session_etm_status</h4>
+<a name="gnutls_005fsession_005fetm_005fstatus"></a><dl>
+<dt><a name="index-gnutls_005fsession_005fetm_005fstatus"></a>Function: <em>unsigned</em> <strong>gnutls_session_etm_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p>Get the status of the encrypt-then-mac extension negotiation.
+This is in accordance to rfc7366
+</p>
+<p><strong>Returns:</strong> Non-zero if the negotiation was successful or zero otherwise.
+</p></dd></dl>
+
+<a name="gnutls_005fsession_005fext_005fmaster_005fsecret_005fstatus-1"></a>
+<h4 class="subheading">gnutls_session_ext_master_secret_status</h4>
+<a name="gnutls_005fsession_005fext_005fmaster_005fsecret_005fstatus"></a><dl>
+<dt><a name="index-gnutls_005fsession_005fext_005fmaster_005fsecret_005fstatus"></a>Function: <em>unsigned</em> <strong>gnutls_session_ext_master_secret_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p>Get the status of the extended master secret extension negotiation.
+This is in accordance to draft-ietf-tls-session-hash-01
+</p>
+<p><strong>Returns:</strong> Non-zero if the negotiation was successful or zero otherwise.
+</p></dd></dl>
+
 <a name="gnutls_005fsession_005fforce_005fvalid-1"></a>
 <h4 class="subheading">gnutls_session_force_valid</h4>
 <a name="gnutls_005fsession_005fforce_005fvalid"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fforce_005fvalid"></a>Function: <em>void</em> <strong>gnutls_session_force_valid</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Clears the invalid flag in a session. That means
 that sessions were corrupt or invalid data were received 
@@ -4580,7 +4894,7 @@ applications.
 <h4 class="subheading">gnutls_session_get_data</h4>
 <a name="gnutls_005fsession_005fget_005fdata"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fget_005fdata"></a>Function: <em>int</em> <strong>gnutls_session_get_data</strong> <em>(gnutls_session_t <var>session</var>, void * <var>session_data</var>, size_t * <var>session_data_size</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>session_data</var>: is a pointer to space to hold the session.
 </p>
@@ -4590,7 +4904,7 @@ applications.
 The client should call this, and store the returned session data. A session
 may be resumed later by calling <code>gnutls_session_set_data()</code> .  
 This function must be called after a successful (full) handshake. It should
-not be used in resumed sessions &ndash;see <code>gnutls_session_is_resumed()</code> .
+not be used in already resumed sessions &ndash;see <code>gnutls_session_is_resumed()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
@@ -4600,7 +4914,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_session_get_data2</h4>
 <a name="gnutls_005fsession_005fget_005fdata2"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fget_005fdata2"></a>Function: <em>int</em> <strong>gnutls_session_get_data2</strong> <em>(gnutls_session_t <var>session</var>, gnutls_datum_t * <var>data</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>data</var>: is a pointer to a datum that will hold the session.
 </p>
@@ -4608,7 +4922,7 @@ an error code is returned.
 The client should call this, and store the returned session data. A session
 may be resumed later by calling <code>gnutls_session_set_data()</code> .  
 This function must be called after a successful (full) handshake. It should
-not be used in resumed sessions &ndash;see <code>gnutls_session_is_resumed()</code> .
+not be used in already resumed sessions &ndash;see <code>gnutls_session_is_resumed()</code> .
 </p>
 <p>The returned  <code>data</code> are allocated and must be released using <code>gnutls_free()</code> .
 </p>
@@ -4625,6 +4939,9 @@ an error code is returned.
 <p>This function returns a string describing the current session.
 The string is null terminated and allocated using <code>gnutls_malloc()</code> .
 </p>
+<p>If initial negotiation is not complete when this function is called,
+<code>NULL</code>  will be returned.
+</p>
 <p><strong>Returns:</strong> a description of the protocols and algorithms in the current session.
 </p>
 <p><strong>Since:</strong> 3.1.10
@@ -4634,7 +4951,7 @@ The string is null terminated and allocated using <code>gnutls_malloc()</code> .
 <h4 class="subheading">gnutls_session_get_id</h4>
 <a name="gnutls_005fsession_005fget_005fid"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fget_005fid"></a>Function: <em>int</em> <strong>gnutls_session_get_id</strong> <em>(gnutls_session_t <var>session</var>, void * <var>session_id</var>, size_t * <var>session_id_size</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>session_id</var>: is a pointer to space to hold the session id.
 </p>
@@ -4646,8 +4963,8 @@ resumed.  That is because resumed sessions share the same session ID
 with the original session.
 </p>
 <p>The session ID is selected by the server, that identify the
-current session.  In TLS 1.0 and SSL 3.0 session id is always less
-than 32 bytes.
+current session.  In all supported TLS protocols, the session id
+is less than <code>GNUTLS_MAX_SESSION_ID_SIZE</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
@@ -4657,7 +4974,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_session_get_id2</h4>
 <a name="gnutls_005fsession_005fget_005fid2"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fget_005fid2"></a>Function: <em>int</em> <strong>gnutls_session_get_id2</strong> <em>(gnutls_session_t <var>session</var>, gnutls_datum_t * <var>session_id</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>session_id</var>: will point to the session ID.
 </p>
@@ -4674,7 +4991,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_session_get_ptr</h4>
 <a name="gnutls_005fsession_005fget_005fptr"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fget_005fptr"></a>Function: <em>void *</em> <strong>gnutls_session_get_ptr</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Get user pointer for session.  Useful in callbacks.  This is the
 pointer set with <code>gnutls_session_set_ptr()</code> .
@@ -4687,7 +5004,7 @@ pointer set with <code>gnutls_session_set_ptr()</code> .
 <h4 class="subheading">gnutls_session_get_random</h4>
 <a name="gnutls_005fsession_005fget_005frandom"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fget_005frandom"></a>Function: <em>void</em> <strong>gnutls_session_get_random</strong> <em>(gnutls_session_t <var>session</var>, gnutls_datum_t * <var>client</var>, gnutls_datum_t * <var>server</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>client</var>: the client part of the random
 </p>
@@ -4707,7 +5024,7 @@ will be garbage.
 <h4 class="subheading">gnutls_session_is_resumed</h4>
 <a name="gnutls_005fsession_005fis_005fresumed"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fis_005fresumed-1"></a>Function: <em>int</em> <strong>gnutls_session_is_resumed</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Check whether session is resumed or not.
 </p>
@@ -4719,7 +5036,7 @@ a new session.
 <h4 class="subheading">gnutls_session_resumption_requested</h4>
 <a name="gnutls_005fsession_005fresumption_005frequested"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fresumption_005frequested-1"></a>Function: <em>int</em> <strong>gnutls_session_resumption_requested</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Check whether the client has asked for session resumption.
 This function is valid only on server side.
@@ -4731,7 +5048,7 @@ This function is valid only on server side.
 <h4 class="subheading">gnutls_session_set_data</h4>
 <a name="gnutls_005fsession_005fset_005fdata"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fset_005fdata"></a>Function: <em>int</em> <strong>gnutls_session_set_data</strong> <em>(gnutls_session_t <var>session</var>, const void * <var>session_data</var>, size_t <var>session_data_size</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>session_data</var>: is a pointer to space to hold the session.
 </p>
@@ -4754,7 +5071,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_session_set_id</h4>
 <a name="gnutls_005fsession_005fset_005fid"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fset_005fid"></a>Function: <em>int</em> <strong>gnutls_session_set_id</strong> <em>(gnutls_session_t <var>session</var>, const gnutls_datum_t * <var>sid</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>sid</var>: the session identifier
 </p>
@@ -4772,7 +5089,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_session_set_premaster</h4>
 <a name="gnutls_005fsession_005fset_005fpremaster"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fset_005fpremaster"></a>Function: <em>int</em> <strong>gnutls_session_set_premaster</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>entity</var>, gnutls_protocol_t <var>version</var>, gnutls_kx_algorithm_t <var>kx</var>, gnutls_cipher_algorithm_t <var>cipher</var>, gnutls_mac_algorithm_t <var>mac</var>, gnutls_compression_method_t <var>comp</var>, const gnutls_datum_t * <var>master</var>, const gnutls_datum_t * <var>session_id</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>entity</var>: GNUTLS_SERVER or GNUTLS_CLIENT
 </p>
@@ -4803,7 +5120,7 @@ an error code is returned.
 <h4 class="subheading">gnutls_session_set_ptr</h4>
 <a name="gnutls_005fsession_005fset_005fptr"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fset_005fptr"></a>Function: <em>void</em> <strong>gnutls_session_set_ptr</strong> <em>(gnutls_session_t <var>session</var>, void * <var>ptr</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>ptr</var>: is the user pointer
 </p>
@@ -4816,7 +5133,7 @@ the session structure.  This pointer can be accessed with
 <h4 class="subheading">gnutls_session_ticket_enable_client</h4>
 <a name="gnutls_005fsession_005fticket_005fenable_005fclient"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fticket_005fenable_005fclient"></a>Function: <em>int</em> <strong>gnutls_session_ticket_enable_client</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Request that the client should attempt session resumption using
 SessionTicket.
@@ -4831,13 +5148,14 @@ error code.
 <h4 class="subheading">gnutls_session_ticket_enable_server</h4>
 <a name="gnutls_005fsession_005fticket_005fenable_005fserver"></a><dl>
 <dt><a name="index-gnutls_005fsession_005fticket_005fenable_005fserver-1"></a>Function: <em>int</em> <strong>gnutls_session_ticket_enable_server</strong> <em>(gnutls_session_t <var>session</var>, const gnutls_datum_t * <var>key</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>key</var>: key to encrypt session parameters.
 </p>
 <p>Request that the server should attempt session resumption using
 SessionTicket.   <code>key</code> must be initialized with
-<code>gnutls_session_ticket_key_generate()</code> .
+<code>gnutls_session_ticket_key_generate()</code> , and should be overwritten
+using <code>gnutls_memset()</code>  before being released.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, or an
 error code.
@@ -4865,7 +5183,7 @@ error code.
 <h4 class="subheading">gnutls_set_default_priority</h4>
 <a name="gnutls_005fset_005fdefault_005fpriority"></a><dl>
 <dt><a name="index-gnutls_005fset_005fdefault_005fpriority"></a>Function: <em>int</em> <strong>gnutls_set_default_priority</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Sets the default priority on the ciphers, key exchange methods,
 macs and compression methods. For more fine-tuning you could
@@ -4878,7 +5196,7 @@ use <code>gnutls_priority_set_direct()</code>  or <code>gnutls_priority_set()</c
 <h4 class="subheading">gnutls_sign_algorithm_get</h4>
 <a name="gnutls_005fsign_005falgorithm_005fget"></a><dl>
 <dt><a name="index-gnutls_005fsign_005falgorithm_005fget"></a>Function: <em>int</em> <strong>gnutls_sign_algorithm_get</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Returns the signature algorithm that is (or will be) used in this 
 session by the server to sign data.
@@ -4892,7 +5210,7 @@ session by the server to sign data.
 <h4 class="subheading">gnutls_sign_algorithm_get_client</h4>
 <a name="gnutls_005fsign_005falgorithm_005fget_005fclient"></a><dl>
 <dt><a name="index-gnutls_005fsign_005falgorithm_005fget_005fclient"></a>Function: <em>int</em> <strong>gnutls_sign_algorithm_get_client</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Returns the signature algorithm that is (or will be) used in this 
 session by the client to sign data.
@@ -4906,7 +5224,7 @@ session by the client to sign data.
 <h4 class="subheading">gnutls_sign_algorithm_get_requested</h4>
 <a name="gnutls_005fsign_005falgorithm_005fget_005frequested"></a><dl>
 <dt><a name="index-gnutls_005fsign_005falgorithm_005fget_005frequested"></a>Function: <em>int</em> <strong>gnutls_sign_algorithm_get_requested</strong> <em>(gnutls_session_t <var>session</var>, size_t <var>indx</var>, gnutls_sign_algorithm_t * <var>algo</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>indx</var>: is an index of the signature algorithm to return
 </p>
@@ -5005,7 +5323,7 @@ integers indicating the available ciphers.
 <h4 class="subheading">gnutls_srp_allocate_client_credentials</h4>
 <a name="gnutls_005fsrp_005fallocate_005fclient_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fsrp_005fallocate_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_srp_allocate_client_credentials</strong> <em>(gnutls_srp_client_credentials_t *            <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a pointer to a <code>gnutls_srp_server_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a pointer to a <code>gnutls_srp_server_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus
 this helper function is provided in order to allocate it.
@@ -5018,7 +5336,7 @@ error code.
 <h4 class="subheading">gnutls_srp_allocate_server_credentials</h4>
 <a name="gnutls_005fsrp_005fallocate_005fserver_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fsrp_005fallocate_005fserver_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_srp_allocate_server_credentials</strong> <em>(gnutls_srp_server_credentials_t *            <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a pointer to a <code>gnutls_srp_server_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a pointer to a <code>gnutls_srp_server_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus this
 helper function is provided in order to allocate it.
@@ -5049,10 +5367,10 @@ do not use it for non-SRP purposes.
 long enough, or 0 on success.
 </p></dd></dl>
 
-<a name="gnutls_005fsrp_005fbase64_005fdecode_005falloc-1"></a>
-<h4 class="subheading">gnutls_srp_base64_decode_alloc</h4>
-<a name="gnutls_005fsrp_005fbase64_005fdecode_005falloc"></a><dl>
-<dt><a name="index-gnutls_005fsrp_005fbase64_005fdecode_005falloc"></a>Function: <em>int</em> <strong>gnutls_srp_base64_decode_alloc</strong> <em>(const gnutls_datum_t * <var>b64_data</var>, gnutls_datum_t * <var>result</var>)</em></dt>
+<a name="gnutls_005fsrp_005fbase64_005fdecode2-1"></a>
+<h4 class="subheading">gnutls_srp_base64_decode2</h4>
+<a name="gnutls_005fsrp_005fbase64_005fdecode2"></a><dl>
+<dt><a name="index-gnutls_005fsrp_005fbase64_005fdecode2"></a>Function: <em>int</em> <strong>gnutls_srp_base64_decode2</strong> <em>(const gnutls_datum_t * <var>b64_data</var>, gnutls_datum_t * <var>result</var>)</em></dt>
 <dd><p><var>b64_data</var>: contains the encoded data
 </p>
 <p><var>result</var>: the place where decoded data lie
@@ -5091,10 +5409,10 @@ do not use it for non-SRP purposes.
 long enough, or 0 on success.
 </p></dd></dl>
 
-<a name="gnutls_005fsrp_005fbase64_005fencode_005falloc-1"></a>
-<h4 class="subheading">gnutls_srp_base64_encode_alloc</h4>
-<a name="gnutls_005fsrp_005fbase64_005fencode_005falloc"></a><dl>
-<dt><a name="index-gnutls_005fsrp_005fbase64_005fencode_005falloc"></a>Function: <em>int</em> <strong>gnutls_srp_base64_encode_alloc</strong> <em>(const gnutls_datum_t * <var>data</var>, gnutls_datum_t * <var>result</var>)</em></dt>
+<a name="gnutls_005fsrp_005fbase64_005fencode2-1"></a>
+<h4 class="subheading">gnutls_srp_base64_encode2</h4>
+<a name="gnutls_005fsrp_005fbase64_005fencode2"></a><dl>
+<dt><a name="index-gnutls_005fsrp_005fbase64_005fencode2"></a>Function: <em>int</em> <strong>gnutls_srp_base64_encode2</strong> <em>(const gnutls_datum_t * <var>data</var>, gnutls_datum_t * <var>result</var>)</em></dt>
 <dd><p><var>data</var>: contains the raw data
 </p>
 <p><var>result</var>: will hold the newly allocated encoded data
@@ -5116,7 +5434,7 @@ do not use it for non-SRP purposes.
 <h4 class="subheading">gnutls_srp_free_client_credentials</h4>
 <a name="gnutls_005fsrp_005ffree_005fclient_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fsrp_005ffree_005fclient_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_srp_free_client_credentials</strong> <em>(gnutls_srp_client_credentials_t <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_srp_client_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_srp_client_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus
 this helper function is provided in order to free (deallocate) it.
@@ -5126,7 +5444,7 @@ this helper function is provided in order to free (deallocate) it.
 <h4 class="subheading">gnutls_srp_free_server_credentials</h4>
 <a name="gnutls_005fsrp_005ffree_005fserver_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fsrp_005ffree_005fserver_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_srp_free_server_credentials</strong> <em>(gnutls_srp_server_credentials_t <var>sc</var>)</em></dt>
-<dd><p><var>sc</var>: is a <code>gnutls_srp_server_credentials_t</code>  structure.
+<dd><p><var>sc</var>: is a <code>gnutls_srp_server_credentials_t</code>  type.
 </p>
 <p>This structure is complex enough to manipulate directly thus
 this helper function is provided in order to free (deallocate) it.
@@ -5149,14 +5467,14 @@ server.  Returns NULL in case of an error.
 <h4 class="subheading">gnutls_srp_set_client_credentials</h4>
 <a name="gnutls_005fsrp_005fset_005fclient_005fcredentials"></a><dl>
 <dt><a name="index-gnutls_005fsrp_005fset_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_srp_set_client_credentials</strong> <em>(gnutls_srp_client_credentials_t <var>res</var>, const char * <var>username</var>, const char * <var>password</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_srp_client_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_srp_client_credentials_t</code>  type.
 </p>
 <p><var>username</var>: is the user&rsquo;s userid
 </p>
 <p><var>password</var>: is the user&rsquo;s password
 </p>
 <p>This function sets the username and password, in a
-<code>gnutls_srp_client_credentials_t</code>  structure.  Those will be used in
+<code>gnutls_srp_client_credentials_t</code>  type.  Those will be used in
 SRP authentication.   <code>username</code> and  <code>password</code> should be ASCII
 strings or UTF-8 strings prepared using the &quot;SASLprep&quot; profile of
 &quot;stringprep&quot;.
@@ -5169,7 +5487,7 @@ error code.
 <h4 class="subheading">gnutls_srp_set_client_credentials_function</h4>
 <a name="gnutls_005fsrp_005fset_005fclient_005fcredentials_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fsrp_005fset_005fclient_005fcredentials_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_srp_set_client_credentials_function</strong> <em>(gnutls_srp_client_credentials_t         <var>cred</var>, gnutls_srp_client_credentials_function         * <var>func</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_srp_server_credentials_t</code>  structure.
+<dd><p><var>cred</var>: is a <code>gnutls_srp_server_credentials_t</code>  type.
 </p>
 <p><var>func</var>: is the callback function
 </p>
@@ -5198,7 +5516,7 @@ time called, since the handshake procedure will be aborted.
 <h4 class="subheading">gnutls_srp_set_prime_bits</h4>
 <a name="gnutls_005fsrp_005fset_005fprime_005fbits"></a><dl>
 <dt><a name="index-gnutls_005fsrp_005fset_005fprime_005fbits"></a>Function: <em>void</em> <strong>gnutls_srp_set_prime_bits</strong> <em>(gnutls_session_t <var>session</var>, unsigned int <var>bits</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>bits</var>: is the number of bits
 </p>
@@ -5219,14 +5537,14 @@ handshake.
 <h4 class="subheading">gnutls_srp_set_server_credentials_file</h4>
 <a name="gnutls_005fsrp_005fset_005fserver_005fcredentials_005ffile"></a><dl>
 <dt><a name="index-gnutls_005fsrp_005fset_005fserver_005fcredentials_005ffile-1"></a>Function: <em>int</em> <strong>gnutls_srp_set_server_credentials_file</strong> <em>(gnutls_srp_server_credentials_t <var>res</var>, const char * <var>password_file</var>, const char * <var>password_conf_file</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_srp_server_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_srp_server_credentials_t</code>  type.
 </p>
 <p><var>password_file</var>: is the SRP password file (tpasswd)
 </p>
 <p><var>password_conf_file</var>: is the SRP password conf file (tpasswd.conf)
 </p>
 <p>This function sets the password files, in a
-<code>gnutls_srp_server_credentials_t</code>  structure.  Those password files
+<code>gnutls_srp_server_credentials_t</code>  type.  Those password files
 hold usernames and verifiers and will be used for SRP
 authentication.
 </p>
@@ -5238,7 +5556,7 @@ error code.
 <h4 class="subheading">gnutls_srp_set_server_credentials_function</h4>
 <a name="gnutls_005fsrp_005fset_005fserver_005fcredentials_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005fsrp_005fset_005fserver_005fcredentials_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_srp_set_server_credentials_function</strong> <em>(gnutls_srp_server_credentials_t         <var>cred</var>, gnutls_srp_server_credentials_function         * <var>func</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_srp_server_credentials_t</code>  structure.
+<dd><p><var>cred</var>: is a <code>gnutls_srp_server_credentials_t</code>  type.
 </p>
 <p><var>func</var>: is the callback function
 </p>
@@ -5275,7 +5593,7 @@ The callback function should return 0 on success, while
 <h4 class="subheading">gnutls_srp_set_server_fake_salt_seed</h4>
 <a name="gnutls_005fsrp_005fset_005fserver_005ffake_005fsalt_005fseed"></a><dl>
 <dt><a name="index-gnutls_005fsrp_005fset_005fserver_005ffake_005fsalt_005fseed"></a>Function: <em>void</em> <strong>gnutls_srp_set_server_fake_salt_seed</strong> <em>(gnutls_srp_server_credentials_t <var>cred</var>, const gnutls_datum_t * <var>seed</var>, unsigned int <var>salt_length</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_srp_server_credentials_t</code>  structure
+<dd><p><var>cred</var>: is a <code>gnutls_srp_server_credentials_t</code>  type
 </p>
 <p><var>seed</var>: is the seed data, only needs to be valid until the function
 returns; size of the seed must be greater than zero
@@ -5337,7 +5655,7 @@ error code.
 <h4 class="subheading">gnutls_srtp_get_keys</h4>
 <a name="gnutls_005fsrtp_005fget_005fkeys"></a><dl>
 <dt><a name="index-gnutls_005fsrtp_005fget_005fkeys-1"></a>Function: <em>int</em> <strong>gnutls_srtp_get_keys</strong> <em>(gnutls_session_t <var>session</var>, void * <var>key_material</var>, unsigned int <var>key_material_size</var>, gnutls_datum_t * <var>client_key</var>, gnutls_datum_t * <var>client_salt</var>, gnutls_datum_t * <var>server_key</var>, gnutls_datum_t * <var>server_salt</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>key_material</var>: Space to hold the generated key material
 </p>
@@ -5367,7 +5685,7 @@ sufficient, or a negative error code.
 <h4 class="subheading">gnutls_srtp_get_mki</h4>
 <a name="gnutls_005fsrtp_005fget_005fmki"></a><dl>
 <dt><a name="index-gnutls_005fsrtp_005fget_005fmki"></a>Function: <em>int</em> <strong>gnutls_srtp_get_mki</strong> <em>(gnutls_session_t <var>session</var>, gnutls_datum_t * <var>mki</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>mki</var>: will hold the MKI
 </p>
@@ -5416,7 +5734,7 @@ otherwise NULL.
 <h4 class="subheading">gnutls_srtp_get_selected_profile</h4>
 <a name="gnutls_005fsrtp_005fget_005fselected_005fprofile"></a><dl>
 <dt><a name="index-gnutls_005fsrtp_005fget_005fselected_005fprofile"></a>Function: <em>int</em> <strong>gnutls_srtp_get_selected_profile</strong> <em>(gnutls_session_t <var>session</var>, gnutls_srtp_profile_t * <var>profile</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>profile</var>: will hold the profile
 </p>
@@ -5432,7 +5750,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_srtp_set_mki</h4>
 <a name="gnutls_005fsrtp_005fset_005fmki"></a><dl>
 <dt><a name="index-gnutls_005fsrtp_005fset_005fmki"></a>Function: <em>int</em> <strong>gnutls_srtp_set_mki</strong> <em>(gnutls_session_t <var>session</var>, const gnutls_datum_t * <var>mki</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>mki</var>: holds the MKI
 </p>
@@ -5449,7 +5767,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_srtp_set_profile</h4>
 <a name="gnutls_005fsrtp_005fset_005fprofile"></a><dl>
 <dt><a name="index-gnutls_005fsrtp_005fset_005fprofile"></a>Function: <em>int</em> <strong>gnutls_srtp_set_profile</strong> <em>(gnutls_session_t <var>session</var>, gnutls_srtp_profile_t <var>profile</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>profile</var>: is the profile id to add.
 </p>
@@ -5466,7 +5784,7 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_srtp_set_profile_direct</h4>
 <a name="gnutls_005fsrtp_005fset_005fprofile_005fdirect"></a><dl>
 <dt><a name="index-gnutls_005fsrtp_005fset_005fprofile_005fdirect"></a>Function: <em>int</em> <strong>gnutls_srtp_set_profile_direct</strong> <em>(gnutls_session_t <var>session</var>, const char * <var>profiles</var>, const char ** <var>err_pos</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>profiles</var>: is a string that contains the supported SRTP profiles,
 separated by colons.
@@ -5596,6 +5914,81 @@ string.
 supplemental data format type, or <code>NULL</code>  for unknown types.
 </p></dd></dl>
 
+<a name="gnutls_005fsupplemental_005frecv-1"></a>
+<h4 class="subheading">gnutls_supplemental_recv</h4>
+<a name="gnutls_005fsupplemental_005frecv"></a><dl>
+<dt><a name="index-gnutls_005fsupplemental_005frecv"></a>Function: <em>void</em> <strong>gnutls_supplemental_recv</strong> <em>(gnutls_session_t <var>session</var>, unsigned <var>do_recv_supplemental</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p><var>do_recv_supplemental</var>: non-zero in order to expect supplemental data
+</p>
+<p>This function is to be called by an extension handler to
+instruct gnutls to attempt to receive supplemental data
+during the handshake process.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fsupplemental_005fregister-1"></a>
+<h4 class="subheading">gnutls_supplemental_register</h4>
+<a name="gnutls_005fsupplemental_005fregister"></a><dl>
+<dt><a name="index-gnutls_005fsupplemental_005fregister"></a>Function: <em>int</em> <strong>gnutls_supplemental_register</strong> <em>(const char * <var>name</var>, gnutls_supplemental_data_format_type_t <var>type</var>, gnutls_supp_recv_func <var>recv_func</var>, gnutls_supp_send_func <var>send_func</var>)</em></dt>
+<dd><p><var>name</var>: the name of the supplemental data to register
+</p>
+<p><var>type</var>: the type of the supplemental data format
+</p>
+<p><var>recv_func</var>: the function to receive the data
+</p>
+<p><var>send_func</var>: the function to send the data
+</p>
+<p>This function will register a new supplemental data type (rfc4680).
+The registered data will remain until <code>gnutls_global_deinit()</code> 
+is called. The provided  <code>type</code> must be an unassigned type in
+<code>gnutls_supplemental_data_format_type_t</code> . If the type is already
+registered or handled by GnuTLS internally <code>GNUTLS_E_ALREADY_REGISTERED</code> 
+will be returned.
+</p>
+<p>This function is not thread safe.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fsupplemental_005fsend-1"></a>
+<h4 class="subheading">gnutls_supplemental_send</h4>
+<a name="gnutls_005fsupplemental_005fsend"></a><dl>
+<dt><a name="index-gnutls_005fsupplemental_005fsend"></a>Function: <em>void</em> <strong>gnutls_supplemental_send</strong> <em>(gnutls_session_t <var>session</var>, unsigned <var>do_send_supplemental</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p><var>do_send_supplemental</var>: &ndash; undescribed &ndash;
+</p>
+<p>This function is to be called by an extension handler to
+instruct gnutls to send supplemental data during the handshake process.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fsystem_005frecv_005ftimeout-1"></a>
+<h4 class="subheading">gnutls_system_recv_timeout</h4>
+<a name="gnutls_005fsystem_005frecv_005ftimeout"></a><dl>
+<dt><a name="index-gnutls_005fsystem_005frecv_005ftimeout"></a>Function: <em>int</em> <strong>gnutls_system_recv_timeout</strong> <em>(gnutls_transport_ptr_t <var>ptr</var>, unsigned int <var>ms</var>)</em></dt>
+<dd><p><var>ptr</var>: A gnutls_transport_ptr_t pointer
+</p>
+<p><var>ms</var>: The number of milliseconds to wait.
+</p>
+<p>Wait for data to be received from the provided socket ( <code>ptr</code> ) within a
+timeout period in milliseconds, using <code>select()</code>  on the provided  <code>ptr</code> .
+</p>
+<p>This function is provided as a helper for constructing custom
+callbacks for <code>gnutls_transport_set_pull_timeout_function()</code> ,
+which can be used if you rely on socket file descriptors.
+</p>
+<p>Returns -1 on error, 0 on timeout, positive value if data are available for reading.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
 <a name="gnutls_005ftdb_005fdeinit-1"></a>
 <h4 class="subheading">gnutls_tdb_deinit</h4>
 <a name="gnutls_005ftdb_005fdeinit"></a><dl>
@@ -5609,7 +6002,7 @@ supplemental data format type, or <code>NULL</code>  for unknown types.
 <h4 class="subheading">gnutls_tdb_init</h4>
 <a name="gnutls_005ftdb_005finit"></a><dl>
 <dt><a name="index-gnutls_005ftdb_005finit"></a>Function: <em>int</em> <strong>gnutls_tdb_init</strong> <em>(gnutls_tdb_t * <var>tdb</var>)</em></dt>
-<dd><p><var>tdb</var>: The structure to be initialized
+<dd><p><var>tdb</var>: A pointer to the type to be initialized
 </p>
 <p>This function will initialize a public key trust storage structure.
 </p>
@@ -5677,7 +6070,7 @@ if there is a mismatch and any other negative error code otherwise.
 <h4 class="subheading">gnutls_transport_get_int</h4>
 <a name="gnutls_005ftransport_005fget_005fint"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fget_005fint"></a>Function: <em>int</em> <strong>gnutls_transport_get_int</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Used to get the first argument of the transport function (like
 PUSH and PULL).  This must have been set using
@@ -5692,7 +6085,7 @@ PUSH and PULL).  This must have been set using
 <h4 class="subheading">gnutls_transport_get_int2</h4>
 <a name="gnutls_005ftransport_005fget_005fint2"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fget_005fint2"></a>Function: <em>void</em> <strong>gnutls_transport_get_int2</strong> <em>(gnutls_session_t <var>session</var>, int * <var>recv_int</var>, int * <var>send_int</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>recv_int</var>: will hold the value for the pull function
 </p>
@@ -5709,7 +6102,7 @@ and PULL).  These should have been set using
 <h4 class="subheading">gnutls_transport_get_ptr</h4>
 <a name="gnutls_005ftransport_005fget_005fptr"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fget_005fptr"></a>Function: <em>gnutls_transport_ptr_t</em> <strong>gnutls_transport_get_ptr</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Used to get the first argument of the transport function (like
 PUSH and PULL).  This must have been set using
@@ -5722,7 +6115,7 @@ PUSH and PULL).  This must have been set using
 <h4 class="subheading">gnutls_transport_get_ptr2</h4>
 <a name="gnutls_005ftransport_005fget_005fptr2"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fget_005fptr2"></a>Function: <em>void</em> <strong>gnutls_transport_get_ptr2</strong> <em>(gnutls_session_t <var>session</var>, gnutls_transport_ptr_t * <var>recv_ptr</var>, gnutls_transport_ptr_t * <var>send_ptr</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>recv_ptr</var>: will hold the value for the pull function
 </p>
@@ -5737,7 +6130,7 @@ and PULL).  These should have been set using
 <h4 class="subheading">gnutls_transport_set_errno</h4>
 <a name="gnutls_005ftransport_005fset_005ferrno"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fset_005ferrno-1"></a>Function: <em>void</em> <strong>gnutls_transport_set_errno</strong> <em>(gnutls_session_t <var>session</var>, int <var>err</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>err</var>: error value to store in session-specific errno variable.
 </p>
@@ -5756,7 +6149,7 @@ msvcr71.dll and gnutls is linked to msvcrt.dll).
 <h4 class="subheading">gnutls_transport_set_errno_function</h4>
 <a name="gnutls_005ftransport_005fset_005ferrno_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fset_005ferrno_005ffunction"></a>Function: <em>void</em> <strong>gnutls_transport_set_errno_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_errno_func <var>errno_func</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>errno_func</var>: a callback function similar to <code>write()</code> 
 </p>
@@ -5774,7 +6167,7 @@ and should return the errno.
 <h4 class="subheading">gnutls_transport_set_int</h4>
 <a name="gnutls_005ftransport_005fset_005fint"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fset_005fint"></a>Function: <em>void</em> <strong>gnutls_transport_set_int</strong> <em>(gnutls_session_t <var>session</var>, int <var>i</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>i</var>: is the value.
 </p>
@@ -5788,7 +6181,7 @@ and pull callbacks) for berkeley style sockets.
 <h4 class="subheading">gnutls_transport_set_int2</h4>
 <a name="gnutls_005ftransport_005fset_005fint2"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fset_005fint2"></a>Function: <em>void</em> <strong>gnutls_transport_set_int2</strong> <em>(gnutls_session_t <var>session</var>, int <var>recv_int</var>, int <var>send_int</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>recv_int</var>: is the value for the pull function
 </p>
@@ -5806,7 +6199,7 @@ pointers for receiving and sending.
 <h4 class="subheading">gnutls_transport_set_ptr</h4>
 <a name="gnutls_005ftransport_005fset_005fptr"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fset_005fptr"></a>Function: <em>void</em> <strong>gnutls_transport_set_ptr</strong> <em>(gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>ptr</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>ptr</var>: is the value.
 </p>
@@ -5819,7 +6212,7 @@ connection descriptor.
 <h4 class="subheading">gnutls_transport_set_ptr2</h4>
 <a name="gnutls_005ftransport_005fset_005fptr2"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fset_005fptr2"></a>Function: <em>void</em> <strong>gnutls_transport_set_ptr2</strong> <em>(gnutls_session_t <var>session</var>, gnutls_transport_ptr_t <var>recv_ptr</var>, gnutls_transport_ptr_t <var>send_ptr</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>recv_ptr</var>: is the value for the pull function
 </p>
@@ -5835,7 +6228,7 @@ pointers for receiving and sending.
 <h4 class="subheading">gnutls_transport_set_pull_function</h4>
 <a name="gnutls_005ftransport_005fset_005fpull_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fset_005fpull_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_transport_set_pull_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_pull_func <var>pull_func</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>pull_func</var>: a callback function similar to <code>read()</code> 
 </p>
@@ -5853,7 +6246,7 @@ ssize_t (*gnutls_pull_func)(gnutls_transport_ptr_t, void*, size_t);
 <h4 class="subheading">gnutls_transport_set_pull_timeout_function</h4>
 <a name="gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction-2"></a>Function: <em>void</em> <strong>gnutls_transport_set_pull_timeout_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_pull_timeout_func <var>func</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>func</var>: a callback function
 </p>
@@ -5870,6 +6263,9 @@ zero if no data are immediately available.
 <p><code>gnutls_pull_timeout_func</code> is of the form,
 int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);
 </p>
+<p>The helper function <code>gnutls_system_recv_timeout()</code>  is provided to
+simplify writing suck callbacks.
+</p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
 
@@ -5877,7 +6273,7 @@ int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);
 <h4 class="subheading">gnutls_transport_set_push_function</h4>
 <a name="gnutls_005ftransport_005fset_005fpush_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fset_005fpush_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_transport_set_push_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_push_func <var>push_func</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>push_func</var>: a callback function similar to <code>write()</code> 
 </p>
@@ -5897,7 +6293,7 @@ ssize_t (*gnutls_push_func)(gnutls_transport_ptr_t, const void*, size_t);
 <h4 class="subheading">gnutls_transport_set_vec_push_function</h4>
 <a name="gnutls_005ftransport_005fset_005fvec_005fpush_005ffunction"></a><dl>
 <dt><a name="index-gnutls_005ftransport_005fset_005fvec_005fpush_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_transport_set_vec_push_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_vec_push_func <var>vec_func</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>vec_func</var>: a callback function similar to <code>writev()</code> 
 </p>

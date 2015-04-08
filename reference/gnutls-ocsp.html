@@ -391,7 +391,7 @@ algorithm, normally <a class="link" href="gnutls-gnutls.html#GNUTLS-DIG-SHA1:CAP
 <tbody>
 <tr>
 <td class="parameter_name"><p>req</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -468,7 +468,7 @@ hashed using <em class="parameter"><code>digest</code></em>
 <tbody>
 <tr>
 <td class="parameter_name"><p>req</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -517,7 +517,7 @@ gnutls_ocsp_req_deinit (<em class="parameter"><code><a class="link" href="gnutls
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>req</p></td>
-<td class="parameter_description"><p>The structure to be deinitialized</p></td>
+<td class="parameter_description"><p>The data to be deinitialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -605,7 +605,7 @@ that the caller is not interested in that value.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>req</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -663,7 +663,7 @@ will be stored as a string.  Any of <em class="parameter"><code>oid</code></em>
  may
 be NULL which means that the caller is not interested in getting
 that information back.</p>
-<p>The caller needs to deallocate memory by calling <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a> on
+<p>The caller needs to deallocate memory by calling <code class="function">gnutls_free()</code> on
 <em class="parameter"><code>oid-&gt;data</code></em>
  and <em class="parameter"><code>data-&gt;data</code></em>
 .</p>
@@ -678,7 +678,7 @@ that information back.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>req</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -721,7 +721,7 @@ gnutls_ocsp_req_get_nonce (<em class="parameter"><code><a class="link" href="gnu
                            <em class="parameter"><code>unsigned <span class="type">int</span> *critical</code></em>,
                            <em class="parameter"><code><span class="type">gnutls_datum_t</span> *nonce</code></em>);</pre>
 <p>This function will return the OCSP request nonce extension data.</p>
-<p>The caller needs to deallocate memory by calling <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a> on
+<p>The caller needs to deallocate memory by calling <code class="function">gnutls_free()</code> on
 <em class="parameter"><code>nonce-&gt;data</code></em>
 .</p>
 <div class="refsect3">
@@ -735,7 +735,7 @@ gnutls_ocsp_req_get_nonce (<em class="parameter"><code><a class="link" href="gnu
 <tbody>
 <tr>
 <td class="parameter_name"><p>req</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -775,7 +775,7 @@ Typically this is always 1 indicating version 1.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>req</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -807,7 +807,7 @@ the native <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnut
 <tbody>
 <tr>
 <td class="parameter_name"><p>req</p></td>
-<td class="parameter_description"><p>The structure to store the parsed request.</p></td>
+<td class="parameter_description"><p>The data to store the parsed request.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -841,7 +841,7 @@ gnutls_ocsp_req_init (<em class="parameter"><code><a class="link" href="gnutls-o
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>req</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -865,7 +865,7 @@ display to a human.</p>
 <p>If the format is <a class="link" href="gnutls-ocsp.html#GNUTLS-OCSP-PRINT-FULL:CAPS"><code class="literal">GNUTLS_OCSP_PRINT_FULL</code></a> then all fields of the
 request will be output, on multiple lines.</p>
 <p>The output <em class="parameter"><code>out-&gt;data</code></em>
- needs to be deallocate using <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p>
+ needs to be deallocate using <code class="function">gnutls_free()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.11.6.12.7"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -877,7 +877,7 @@ request will be output, on multiple lines.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>req</p></td>
-<td class="parameter_description"><p>The structure to be printed</p></td>
+<td class="parameter_description"><p>The data to be printed</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -917,7 +917,7 @@ request with a newly generated random value.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>req</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -951,7 +951,7 @@ from earlier calls.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>req</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1000,7 +1000,7 @@ earlier calls.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>req</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-req-t" title="gnutls_ocsp_req_t"><span class="type">gnutls_ocsp_req_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1043,7 +1043,7 @@ is about the provided certificate.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1083,7 +1083,7 @@ gnutls_ocsp_resp_deinit (<em class="parameter"><code><a class="link" href="gnutl
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>The structure to be deinitialized</p></td>
+<td class="parameter_description"><p>The data to be deinitialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -1138,7 +1138,7 @@ Basic OCSP Response.  The <em class="parameter"><code>certs</code></em>
 allocated zero-terminated array with X.509 certificates.</p>
 <p>Every certificate in the array needs to be de-allocated with
 <a class="link" href="gnutls-x509.html#gnutls-x509-crt-deinit" title="gnutls_x509_crt_deinit ()"><code class="function">gnutls_x509_crt_deinit()</code></a> and the array itself must be freed using
-<a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p>
+<code class="function">gnutls_free()</code>.</p>
 <p>Both the <em class="parameter"><code>certs</code></em>
  and <em class="parameter"><code>ncerts</code></em>
  variables may be NULL.  Then the
@@ -1156,7 +1156,7 @@ only, or to just get the certificate array without its size.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1197,7 +1197,7 @@ will be stored as a string.  Any of <em class="parameter"><code>oid</code></em>
  may
 be NULL which means that the caller is not interested in getting
 that information back.</p>
-<p>The caller needs to deallocate memory by calling <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a> on
+<p>The caller needs to deallocate memory by calling <code class="function">gnutls_free()</code> on
 <em class="parameter"><code>oid-&gt;data</code></em>
  and <em class="parameter"><code>data-&gt;data</code></em>
 .</p>
@@ -1212,7 +1212,7 @@ that information back.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1256,7 +1256,7 @@ gnutls_ocsp_resp_get_nonce (<em class="parameter"><code><a class="link" href="gn
                             <em class="parameter"><code><span class="type">gnutls_datum_t</span> *nonce</code></em>);</pre>
 <p>This function will return the Basic OCSP Response nonce extension
 data.</p>
-<p>The caller needs to deallocate memory by calling <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a> on
+<p>The caller needs to deallocate memory by calling <code class="function">gnutls_free()</code> on
 <em class="parameter"><code>nonce-&gt;data</code></em>
 .</p>
 <div class="refsect3">
@@ -1270,7 +1270,7 @@ data.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1310,7 +1310,7 @@ signed.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -1331,11 +1331,14 @@ gnutls_ocsp_resp_get_responder (<em class="parameter"><code><a class="link" href
 the provided buffer. The name will be in the form
 "C=xxxx,O=yyyy,CN=zzzz" as described in RFC2253. The output string
 will be ASCII or UTF-8 encoded, depending on the certificate data.</p>
-<p>The caller needs to deallocate memory by calling <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a> on
+<p>If the responder ID is not a name but a hash, this function
+will return zero and the <em class="parameter"><code>dn</code></em>
+ elements will be set to <code class="literal">NULL</code>.</p>
+<p>The caller needs to deallocate memory by calling <code class="function">gnutls_free()</code> on
 <em class="parameter"><code>dn-&gt;data</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.11.6.23.6"></a><h4>Parameters</h4>
+<a name="id-1.2.11.6.23.7"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1345,7 +1348,7 @@ will be ASCII or UTF-8 encoded, depending on the certificate data.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1357,7 +1360,7 @@ will be ASCII or UTF-8 encoded, depending on the certificate data.</p>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.11.6.23.7"></a><h4>Returns</h4>
+<a name="id-1.2.11.6.23.8"></a><h4>Returns</h4>
 <p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error code is returned.</p>
 <p></p>
@@ -1392,7 +1395,7 @@ response part and the caller need not worry about that aspect.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1433,7 +1436,7 @@ gnutls_ocsp_resp_get_signature (<em class="parameter"><code><a class="link" href
 <tbody>
 <tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1470,7 +1473,7 @@ sign the OCSP response.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -1516,7 +1519,7 @@ that the caller is not interested in that value.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1599,7 +1602,7 @@ gnutls_ocsp_resp_get_status (<em class="parameter"><code><a class="link" href="g
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -1628,7 +1631,7 @@ Typically this is always 1 indicating version 1.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -1661,7 +1664,7 @@ OCSP Response part, if any.  The output will be stored in <em class="parameter">
 <tbody>
 <tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>The structure to store the parsed response.</p></td>
+<td class="parameter_description"><p>The data to store the parsed response.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1695,7 +1698,7 @@ gnutls_ocsp_resp_init (<em class="parameter"><code><a class="link" href="gnutls-
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>The structure to be initialized</p></td>
+<td class="parameter_description"><p>A pointer to the type to be initialized</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -1719,7 +1722,7 @@ display to a human.</p>
 <p>If the format is <a class="link" href="gnutls-ocsp.html#GNUTLS-OCSP-PRINT-FULL:CAPS"><code class="literal">GNUTLS_OCSP_PRINT_FULL</code></a> then all fields of the
 response will be output, on multiple lines.</p>
 <p>The output <em class="parameter"><code>out-&gt;data</code></em>
- needs to be deallocate using <a class="link" href="gnutls-gnutls.html#gnutls-free" title="gnutls_free"><code class="function">gnutls_free()</code></a>.</p>
+ needs to be deallocate using <code class="function">gnutls_free()</code>.</p>
 <div class="refsect3">
 <a name="id-1.2.11.6.32.7"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -1731,7 +1734,7 @@ response will be output, on multiple lines.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>The structure to be printed</p></td>
+<td class="parameter_description"><p>The data to be printed</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1796,17 +1799,17 @@ variable to find out the verification status.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>trustlist</p></td>
-<td class="parameter_description"><p>trust anchors as a <a class="link" href="gnutls-x509.html#gnutls-x509-trust-list-t" title="gnutls_x509_trust_list_t"><span class="type">gnutls_x509_trust_list_t</span></a> structure</p></td>
+<td class="parameter_description"><p>trust anchors as a <a class="link" href="gnutls-x509.html#gnutls-x509-trust-list-t" title="gnutls_x509_trust_list_t"><span class="type">gnutls_x509_trust_list_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>verify</p></td>
-<td class="parameter_description"><p>output variable with verification status, an <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-cert-status-t" title="enum gnutls_ocsp_cert_status_t"><span class="type">gnutls_ocsp_cert_status_t</span></a></p></td>
+<td class="parameter_description"><p>output variable with verification status, an <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-verify-reason-t" title="enum gnutls_ocsp_verify_reason_t"><span class="type">gnutls_ocsp_verify_reason_t</span></a></p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1857,7 +1860,7 @@ variable to find out the verification status.</p>
 <tbody>
 <tr>
 <td class="parameter_name"><p>resp</p></td>
-<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> structure</p></td>
+<td class="parameter_description"><p>should contain a <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-resp-t" title="gnutls_ocsp_resp_t"><span class="type">gnutls_ocsp_resp_t</span></a> type</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -1867,7 +1870,7 @@ variable to find out the verification status.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>verify</p></td>
-<td class="parameter_description"><p>output variable with verification status, an <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-cert-status-t" title="enum gnutls_ocsp_cert_status_t"><span class="type">gnutls_ocsp_cert_status_t</span></a></p></td>
+<td class="parameter_description"><p>output variable with verification status, an <a class="link" href="gnutls-ocsp.html#gnutls-ocsp-verify-reason-t" title="enum gnutls_ocsp_verify_reason_t"><span class="type">gnutls_ocsp_verify_reason_t</span></a></p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>

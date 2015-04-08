@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: Abstract key API</title>
+<title>GnuTLS 3.4.0: Abstract key API</title>
 
-<meta name="description" content="GnuTLS 3.3.14: Abstract key API">
-<meta name="keywords" content="GnuTLS 3.3.14: Abstract key API">
+<meta name="description" content="GnuTLS 3.4.0: Abstract key API">
+<meta name="keywords" content="GnuTLS 3.4.0: Abstract key API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -173,7 +173,7 @@ Their prototypes lie in <samp>gnutls/abstract.h</samp>.
 <h4 class="subheading">gnutls_certificate_set_key</h4>
 <a name="gnutls_005fcertificate_005fset_005fkey"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fkey-1"></a>Function: <em>int</em> <strong>gnutls_certificate_set_key</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, const char ** <var>names</var>, int <var>names_size</var>, gnutls_pcert_st * <var>pcert_list</var>, int <var>pcert_list_size</var>, gnutls_privkey_t <var>key</var>)</em></dt>
-<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>res</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>names</var>: is an array of DNS name of the certificate (NULL if none)
 </p>
@@ -186,7 +186,7 @@ Their prototypes lie in <samp>gnutls/abstract.h</samp>.
 <p><var>key</var>: is a <code>gnutls_privkey_t</code>  key
 </p>
 <p>This function sets a certificate/private key pair in the
-gnutls_certificate_credentials_t structure.  This function may be
+gnutls_certificate_credentials_t type.  This function may be
 called more than once, in case multiple keys/certificates exist for
 the server.  For clients that wants to send more than its own end
 entity certificate (e.g., also an intermediate CA cert) then put
@@ -194,7 +194,7 @@ the certificate chain in  <code>pcert_list</code> .
 </p>
 <p>Note that the  <code>pcert_list</code> and  <code>key</code> will become part of the credentials 
 structure and must not be deallocated. They will be automatically deallocated 
-when the  <code>res</code> structure is deinitialized.
+when the  <code>res</code> type is deinitialized.
 </p>
 <p>If that function fails to load the  <code>res</code> structure is at an undefined state, it must
 not be reused to load other keys or certificates.
@@ -208,7 +208,7 @@ not be reused to load other keys or certificates.
 <h4 class="subheading">gnutls_certificate_set_retrieve_function2</h4>
 <a name="gnutls_005fcertificate_005fset_005fretrieve_005ffunction2"></a><dl>
 <dt><a name="index-gnutls_005fcertificate_005fset_005fretrieve_005ffunction2"></a>Function: <em>void</em> <strong>gnutls_certificate_set_retrieve_function2</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, gnutls_certificate_retrieve_function2 * <var>func</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
+<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>func</var>: is the callback function
 </p>
@@ -261,6 +261,44 @@ indicates error and the handshake will be terminated.
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
 
+<a name="gnutls_005fpcert_005fexport_005fopenpgp-1"></a>
+<h4 class="subheading">gnutls_pcert_export_openpgp</h4>
+<a name="gnutls_005fpcert_005fexport_005fopenpgp"></a><dl>
+<dt><a name="index-gnutls_005fpcert_005fexport_005fopenpgp"></a>Function: <em>int</em> <strong>gnutls_pcert_export_openpgp</strong> <em>(gnutls_pcert_st * <var>pcert</var>, gnutls_openpgp_crt_t * <var>crt</var>)</em></dt>
+<dd><p><var>pcert</var>: The pcert structure.
+</p>
+<p><var>crt</var>: An initialized <code>gnutls_openpgp_crt_t</code> .
+</p>
+<p>Converts the given <code>gnutls_pcert_t</code>  type into a <code>gnutls_openpgp_crt_t</code> .
+This function only works if the type of  <code>pcert</code> is <code>GNUTLS_CRT_OPENPGP</code> .
+When successful, the value written to  <code>crt</code> must be freed with
+<code>gnutls_openpgp_crt_deinit()</code>  when no longer needed.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fpcert_005fexport_005fx509-1"></a>
+<h4 class="subheading">gnutls_pcert_export_x509</h4>
+<a name="gnutls_005fpcert_005fexport_005fx509"></a><dl>
+<dt><a name="index-gnutls_005fpcert_005fexport_005fx509"></a>Function: <em>int</em> <strong>gnutls_pcert_export_x509</strong> <em>(gnutls_pcert_st * <var>pcert</var>, gnutls_x509_crt_t * <var>crt</var>)</em></dt>
+<dd><p><var>pcert</var>: The pcert structure.
+</p>
+<p><var>crt</var>: An initialized <code>gnutls_x509_crt_t</code> .
+</p>
+<p>Converts the given <code>gnutls_pcert_t</code>  type into a <code>gnutls_x509_crt_t</code> .
+This function only works if the type of  <code>pcert</code> is <code>GNUTLS_CRT_X509</code> .
+When successful, the value written to  <code>crt</code> must be freed with
+<code>gnutls_x509_crt_deinit()</code>  when no longer needed.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
 <a name="gnutls_005fpcert_005fimport_005fopenpgp-1"></a>
 <h4 class="subheading">gnutls_pcert_import_openpgp</h4>
 <a name="gnutls_005fpcert_005fimport_005fopenpgp"></a><dl>
@@ -311,7 +349,7 @@ negative error value.
 <dt><a name="index-gnutls_005fpcert_005fimport_005fx509"></a>Function: <em>int</em> <strong>gnutls_pcert_import_x509</strong> <em>(gnutls_pcert_st * <var>pcert</var>, gnutls_x509_crt_t <var>crt</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>pcert</var>: The pcert structure
 </p>
-<p><var>crt</var>: The raw certificate to be imported
+<p><var>crt</var>: The certificate to be imported
 </p>
 <p><var>flags</var>: zero for now
 </p>
@@ -323,6 +361,33 @@ afterwards using <code>gnutls_pcert_deinit()</code> ;
 negative error value.
 </p>
 <p><strong>Since:</strong> 3.0
+</p></dd></dl>
+
+<a name="gnutls_005fpcert_005fimport_005fx509_005flist-1"></a>
+<h4 class="subheading">gnutls_pcert_import_x509_list</h4>
+<a name="gnutls_005fpcert_005fimport_005fx509_005flist"></a><dl>
+<dt><a name="index-gnutls_005fpcert_005fimport_005fx509_005flist"></a>Function: <em>int</em> <strong>gnutls_pcert_import_x509_list</strong> <em>(gnutls_pcert_st * <var>pcert</var>, gnutls_x509_crt_t * <var>crt</var>, unsigned * <var>ncrt</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>pcert</var>: The pcert structure
+</p>
+<p><var>crt</var>: The certificates to be imported
+</p>
+<p><var>ncrt</var>: The number of certificates
+</p>
+<p><var>flags</var>: zero or <code>GNUTLS_X509_CRT_LIST_SORT</code> 
+</p>
+<p>This convenience function will import the given certificate to a
+<code>gnutls_pcert_st</code>  structure. The structure must be deinitialized
+afterwards using <code>gnutls_pcert_deinit()</code> ;
+</p>
+<p>In the case <code>GNUTLS_X509_CRT_LIST_SORT</code>  is specified and that
+function cannot sort the list, <code>GNUTLS_E_CERTIFICATE_LIST_UNSORTED</code> 
+will be returned. Currently sorting can fail if the list size
+exceeds an internal constraint (16).
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.0
 </p></dd></dl>
 
 <a name="gnutls_005fpcert_005fimport_005fx509_005fraw-1"></a>
@@ -398,7 +463,7 @@ negative error value.
 <h4 class="subheading">gnutls_privkey_deinit</h4>
 <a name="gnutls_005fprivkey_005fdeinit"></a><dl>
 <dt><a name="index-gnutls_005fprivkey_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_privkey_deinit</strong> <em>(gnutls_privkey_t <var>key</var>)</em></dt>
-<dd><p><var>key</var>: The structure to be deinitialized
+<dd><p><var>key</var>: The key to be deinitialized
 </p>
 <p>This function will deinitialize a private key structure.
 </p>
@@ -453,6 +518,44 @@ in the given structure. The new parameters will be allocated using
 <p><strong>Since:</strong> 3.3.0
 </p></dd></dl>
 
+<a name="gnutls_005fprivkey_005fexport_005fopenpgp-1"></a>
+<h4 class="subheading">gnutls_privkey_export_openpgp</h4>
+<a name="gnutls_005fprivkey_005fexport_005fopenpgp"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fexport_005fopenpgp"></a>Function: <em>int</em> <strong>gnutls_privkey_export_openpgp</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_openpgp_privkey_t * <var>key</var>)</em></dt>
+<dd><p><var>pkey</var>: The private key
+</p>
+<p><var>key</var>: Location for the key to be exported.
+</p>
+<p>Converts the given abstract private key to a <code>gnutls_openpgp_privkey_t</code> 
+type. The key must be of type <code>GNUTLS_PRIVKEY_OPENPGP</code> . The key
+returned in  <code>key</code> must be deinitialized with
+<code>gnutls_openpgp_privkey_deinit()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fexport_005fpkcs11-1"></a>
+<h4 class="subheading">gnutls_privkey_export_pkcs11</h4>
+<a name="gnutls_005fprivkey_005fexport_005fpkcs11"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fexport_005fpkcs11"></a>Function: <em>int</em> <strong>gnutls_privkey_export_pkcs11</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_pkcs11_privkey_t * <var>key</var>)</em></dt>
+<dd><p><var>pkey</var>: The private key
+</p>
+<p><var>key</var>: Location for the key to be exported.
+</p>
+<p>Converts the given abstract private key to a <code>gnutls_pkcs11_privkey_t</code> 
+type. The key must be of type <code>GNUTLS_PRIVKEY_PKCS11</code> . The key
+returned in  <code>key</code> must be deinitialized with
+<code>gnutls_pkcs11_privkey_deinit()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
 <a name="gnutls_005fprivkey_005fexport_005frsa_005fraw-1"></a>
 <h4 class="subheading">gnutls_privkey_export_rsa_raw</h4>
 <a name="gnutls_005fprivkey_005fexport_005frsa_005fraw"></a><dl>
@@ -482,6 +585,24 @@ in the given structure. The new parameters will be allocated using
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p>
 <p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fexport_005fx509-1"></a>
+<h4 class="subheading">gnutls_privkey_export_x509</h4>
+<a name="gnutls_005fprivkey_005fexport_005fx509"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fexport_005fx509"></a>Function: <em>int</em> <strong>gnutls_privkey_export_x509</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_x509_privkey_t * <var>key</var>)</em></dt>
+<dd><p><var>pkey</var>: The private key
+</p>
+<p><var>key</var>: Location for the key to be exported.
+</p>
+<p>Converts the given abstract private key to a <code>gnutls_x509_privkey_t</code> 
+type. The key must be of type <code>GNUTLS_PRIVKEY_X509</code> . The key returned
+in  <code>key</code> must be deinitialized with <code>gnutls_x509_privkey_deinit()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.0
 </p></dd></dl>
 
 <a name="gnutls_005fprivkey_005fgenerate-1"></a>
@@ -515,7 +636,7 @@ negative error value.
 <h4 class="subheading">gnutls_privkey_get_pk_algorithm</h4>
 <a name="gnutls_005fprivkey_005fget_005fpk_005falgorithm"></a><dl>
 <dt><a name="index-gnutls_005fprivkey_005fget_005fpk_005falgorithm"></a>Function: <em>int</em> <strong>gnutls_privkey_get_pk_algorithm</strong> <em>(gnutls_privkey_t <var>key</var>, unsigned int * <var>bits</var>)</em></dt>
-<dd><p><var>key</var>: should contain a <code>gnutls_privkey_t</code>  structure
+<dd><p><var>key</var>: should contain a <code>gnutls_privkey_t</code>  type
 </p>
 <p><var>bits</var>: If set will return the number of bits of the parameters (may be NULL)
 </p>
@@ -533,7 +654,7 @@ success, or a negative error code on error.
 <h4 class="subheading">gnutls_privkey_get_type</h4>
 <a name="gnutls_005fprivkey_005fget_005ftype"></a><dl>
 <dt><a name="index-gnutls_005fprivkey_005fget_005ftype"></a>Function: <em>gnutls_privkey_type_t</em> <strong>gnutls_privkey_get_type</strong> <em>(gnutls_privkey_t <var>key</var>)</em></dt>
-<dd><p><var>key</var>: should contain a <code>gnutls_privkey_t</code>  structure
+<dd><p><var>key</var>: should contain a <code>gnutls_privkey_t</code>  type
 </p>
 <p>This function will return the type of the private key. This is
 actually the type of the subsystem used to set this private key.
@@ -572,7 +693,7 @@ negative error value.
 <h4 class="subheading">gnutls_privkey_import_ecc_raw</h4>
 <a name="gnutls_005fprivkey_005fimport_005fecc_005fraw"></a><dl>
 <dt><a name="index-gnutls_005fprivkey_005fimport_005fecc_005fraw"></a>Function: <em>int</em> <strong>gnutls_privkey_import_ecc_raw</strong> <em>(gnutls_privkey_t <var>key</var>, gnutls_ecc_curve_t <var>curve</var>, const gnutls_datum_t * <var>x</var>, const gnutls_datum_t * <var>y</var>, const gnutls_datum_t * <var>k</var>)</em></dt>
-<dd><p><var>key</var>: The structure to store the parsed key
+<dd><p><var>key</var>: The key
 </p>
 <p><var>curve</var>: holds the curve
 </p>
@@ -609,10 +730,10 @@ negative error value.
 <p><var>flags</var>: Flags for the import
 </p>
 <p>This function will associate the given callbacks with the
-<code>gnutls_privkey_t</code>  structure. At least one of the two callbacks
+<code>gnutls_privkey_t</code>  type. At least one of the two callbacks
 must be non-null.
 </p>
-<p>See also <code>gnutls_privkey_import_ext2()</code> .
+<p>See also <code>gnutls_privkey_import_ext3()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -623,23 +744,23 @@ negative error value.
 <a name="gnutls_005fprivkey_005fimport_005fext2-1"></a>
 <h4 class="subheading">gnutls_privkey_import_ext2</h4>
 <a name="gnutls_005fprivkey_005fimport_005fext2"></a><dl>
-<dt><a name="index-gnutls_005fprivkey_005fimport_005fext2-1"></a>Function: <em>int</em> <strong>gnutls_privkey_import_ext2</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_pk_algorithm_t <var>pk</var>, void * <var>userdata</var>, gnutls_privkey_sign_func <var>sign_func</var>, gnutls_privkey_decrypt_func <var>decrypt_func</var>, gnutls_privkey_deinit_func <var>deinit_func</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fprivkey_005fimport_005fext2"></a>Function: <em>int</em> <strong>gnutls_privkey_import_ext2</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_pk_algorithm_t <var>pk</var>, void * <var>userdata</var>, gnutls_privkey_sign_func <var>sign_fn</var>, gnutls_privkey_decrypt_func <var>decrypt_fn</var>, gnutls_privkey_deinit_func <var>deinit_fn</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>pkey</var>: The private key
 </p>
 <p><var>pk</var>: The public key algorithm
 </p>
 <p><var>userdata</var>: private data to be provided to the callbacks
 </p>
-<p><var>sign_func</var>: callback for signature operations
+<p><var>sign_fn</var>: callback for signature operations
 </p>
-<p><var>decrypt_func</var>: callback for decryption operations
+<p><var>decrypt_fn</var>: callback for decryption operations
 </p>
-<p><var>deinit_func</var>: a deinitialization function
+<p><var>deinit_fn</var>: a deinitialization function
 </p>
 <p><var>flags</var>: Flags for the import
 </p>
 <p>This function will associate the given callbacks with the
-<code>gnutls_privkey_t</code>  structure. At least one of the two callbacks
+<code>gnutls_privkey_t</code>  type. At least one of the two callbacks
 must be non-null. If a deinitialization function is provided
 then flags is assumed to contain <code>GNUTLS_PRIVKEY_IMPORT_AUTO_RELEASE</code> .
 </p>
@@ -648,10 +769,50 @@ without any hashing or preprocessing. In case of RSA the DigestInfo
 will be provided, and the signing function is expected to do the PKCS <code>1</code> 
 1.5 padding and the exponentiation.
 </p>
+<p>See also <code>gnutls_privkey_import_ext3()</code> .
+</p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
 </p>
 <p><strong>Since:</strong> 3.1
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fimport_005fext3-1"></a>
+<h4 class="subheading">gnutls_privkey_import_ext3</h4>
+<a name="gnutls_005fprivkey_005fimport_005fext3"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fimport_005fext3-1"></a>Function: <em>int</em> <strong>gnutls_privkey_import_ext3</strong> <em>(gnutls_privkey_t <var>pkey</var>, void * <var>userdata</var>, gnutls_privkey_sign_func <var>sign_fn</var>, gnutls_privkey_decrypt_func <var>decrypt_fn</var>, gnutls_privkey_deinit_func <var>deinit_fn</var>, gnutls_privkey_info_func <var>info_fn</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>pkey</var>: The private key
+</p>
+<p><var>userdata</var>: private data to be provided to the callbacks
+</p>
+<p><var>sign_fn</var>: callback for signature operations
+</p>
+<p><var>decrypt_fn</var>: callback for decryption operations
+</p>
+<p><var>deinit_fn</var>: a deinitialization function
+</p>
+<p><var>info_fn</var>: returns info about the public key algorithm (should not be <code>NULL</code> )
+</p>
+<p><var>flags</var>: Flags for the import
+</p>
+<p>This function will associate the given callbacks with the
+<code>gnutls_privkey_t</code>  type. At least one of the two callbacks
+must be non-null. If a deinitialization function is provided
+then flags is assumed to contain <code>GNUTLS_PRIVKEY_IMPORT_AUTO_RELEASE</code> .
+</p>
+<p>Note that the signing function is supposed to &quot;raw&quot; sign data, i.e.,
+without any hashing or preprocessing. In case of RSA the DigestInfo
+will be provided, and the signing function is expected to do the PKCS <code>1</code> 
+1.5 padding and the exponentiation.
+</p>
+<p>The  <code>info_fn</code> must provide information on the algorithms supported by
+this private key, and should support the flags <code>GNUTLS_PRIVKEY_INFO_PK_ALGO</code>  and
+<code>GNUTLS_PRIVKEY_INFO_SIGN_ALGO</code> . It must return -1 on unknown flags.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.0
 </p></dd></dl>
 
 <a name="gnutls_005fprivkey_005fimport_005fopenpgp-1"></a>
@@ -665,7 +826,7 @@ negative error value.
 <p><var>flags</var>: Flags for the import
 </p>
 <p>This function will import the given private key to the abstract
-<code>gnutls_privkey_t</code>  structure.
+<code>gnutls_privkey_t</code>  type.
 </p>
 <p>The <code>gnutls_openpgp_privkey_t</code>  object must not be deallocated
 during the lifetime of this structure. The subkey set as
@@ -695,7 +856,7 @@ negative error value.
 <p><var>password</var>: A password (optional)
 </p>
 <p>This function will import the given private key to the abstract
-<code>gnutls_privkey_t</code>  structure. 
+<code>gnutls_privkey_t</code>  type. 
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -714,7 +875,7 @@ negative error value.
 <p><var>flags</var>: Flags for the import
 </p>
 <p>This function will import the given private key to the abstract
-<code>gnutls_privkey_t</code>  structure.
+<code>gnutls_privkey_t</code>  type.
 </p>
 <p>The <code>gnutls_pkcs11_privkey_t</code>  object must not be deallocated
 during the lifetime of this structure.
@@ -737,7 +898,7 @@ negative error value.
 <p><var>url</var>: A PKCS 11 url
 </p>
 <p>This function will import a PKCS 11 private key to a <code>gnutls_private_key_t</code> 
-structure.
+type.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -792,7 +953,7 @@ negative error value.
 <p><var>flags</var>: should be zero
 </p>
 <p>This function will import the given private key to the abstract
-<code>gnutls_privkey_t</code>  structure. 
+<code>gnutls_privkey_t</code>  type. 
 </p>
 <p>With respect to passwords the same as in <code>gnutls_privkey_import_tpm_url()</code>  apply.
 </p>
@@ -817,7 +978,7 @@ negative error value.
 <p><var>flags</var>: One of the GNUTLS_PRIVKEY_* flags
 </p>
 <p>This function will import the given private key to the abstract
-<code>gnutls_privkey_t</code>  structure.
+<code>gnutls_privkey_t</code>  type.
 </p>
 <p>Note that unless <code>GNUTLS_PRIVKEY_DISABLE_CALLBACKS</code> 
 is specified, if incorrect (or NULL) passwords are given
@@ -864,7 +1025,7 @@ negative error value.
 <p><var>flags</var>: Flags for the import
 </p>
 <p>This function will import the given private key to the abstract
-<code>gnutls_privkey_t</code>  structure.
+<code>gnutls_privkey_t</code>  type.
 </p>
 <p>The <code>gnutls_x509_privkey_t</code>  object must not be deallocated
 during the lifetime of this structure.
@@ -893,7 +1054,7 @@ negative error value.
 <p><var>flags</var>: an ORed sequence of gnutls_pkcs_encrypt_flags_t
 </p>
 <p>This function will import the given private key to the abstract
-<code>gnutls_privkey_t</code>  structure. 
+<code>gnutls_privkey_t</code>  type. 
 </p>
 <p>The supported formats are basic unencrypted key, PKCS8, PKCS12, 
 and the openssl format.
@@ -908,9 +1069,9 @@ negative error value.
 <h4 class="subheading">gnutls_privkey_init</h4>
 <a name="gnutls_005fprivkey_005finit"></a><dl>
 <dt><a name="index-gnutls_005fprivkey_005finit"></a>Function: <em>int</em> <strong>gnutls_privkey_init</strong> <em>(gnutls_privkey_t * <var>key</var>)</em></dt>
-<dd><p><var>key</var>: The structure to be initialized
+<dd><p><var>key</var>: A pointer to the type to be initialized
 </p>
-<p>This function will initialize an private key structure.
+<p>This function will initialize a private key.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -1018,7 +1179,7 @@ holding the private key is still available (inserted), and zero otherwise.
 <h4 class="subheading">gnutls_privkey_verify_params</h4>
 <a name="gnutls_005fprivkey_005fverify_005fparams"></a><dl>
 <dt><a name="index-gnutls_005fprivkey_005fverify_005fparams"></a>Function: <em>int</em> <strong>gnutls_privkey_verify_params</strong> <em>(gnutls_privkey_t <var>key</var>)</em></dt>
-<dd><p><var>key</var>: should contain a <code>gnutls_privkey_t</code>  structure
+<dd><p><var>key</var>: should contain a <code>gnutls_privkey_t</code>  type
 </p>
 <p>This function will verify the private key parameters.
 </p>
@@ -1032,7 +1193,7 @@ negative error value.
 <h4 class="subheading">gnutls_pubkey_deinit</h4>
 <a name="gnutls_005fpubkey_005fdeinit"></a><dl>
 <dt><a name="index-gnutls_005fpubkey_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_pubkey_deinit</strong> <em>(gnutls_pubkey_t <var>key</var>)</em></dt>
-<dd><p><var>key</var>: The structure to be deinitialized
+<dd><p><var>key</var>: The key to be deinitialized
 </p>
 <p>This function will deinitialize a public key structure.
 </p>
@@ -1229,7 +1390,7 @@ returned, and 0 on success.
 <h4 class="subheading">gnutls_pubkey_get_key_usage</h4>
 <a name="gnutls_005fpubkey_005fget_005fkey_005fusage"></a><dl>
 <dt><a name="index-gnutls_005fpubkey_005fget_005fkey_005fusage"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_key_usage</strong> <em>(gnutls_pubkey_t <var>key</var>, unsigned int * <var>usage</var>)</em></dt>
-<dd><p><var>key</var>: should contain a <code>gnutls_pubkey_t</code>  structure
+<dd><p><var>key</var>: should contain a <code>gnutls_pubkey_t</code>  type
 </p>
 <p><var>usage</var>: If set will return the number of bits of the parameters (may be NULL)
 </p>
@@ -1277,7 +1438,7 @@ returned, and 0 on success.
 <h4 class="subheading">gnutls_pubkey_get_pk_algorithm</h4>
 <a name="gnutls_005fpubkey_005fget_005fpk_005falgorithm"></a><dl>
 <dt><a name="index-gnutls_005fpubkey_005fget_005fpk_005falgorithm"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_pk_algorithm</strong> <em>(gnutls_pubkey_t <var>key</var>, unsigned int * <var>bits</var>)</em></dt>
-<dd><p><var>key</var>: should contain a <code>gnutls_pubkey_t</code>  structure
+<dd><p><var>key</var>: should contain a <code>gnutls_pubkey_t</code>  type
 </p>
 <p><var>bits</var>: If set will return the number of bits of the parameters (may be NULL)
 </p>
@@ -1314,30 +1475,11 @@ returned on error.
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
 
-<a name="gnutls_005fpubkey_005fget_005fverify_005falgorithm-1"></a>
-<h4 class="subheading">gnutls_pubkey_get_verify_algorithm</h4>
-<a name="gnutls_005fpubkey_005fget_005fverify_005falgorithm"></a><dl>
-<dt><a name="index-gnutls_005fpubkey_005fget_005fverify_005falgorithm"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_verify_algorithm</strong> <em>(gnutls_pubkey_t <var>key</var>, const gnutls_datum_t * <var>signature</var>, gnutls_digest_algorithm_t * <var>hash</var>)</em></dt>
-<dd><p><var>key</var>: Holds the certificate
-</p>
-<p><var>signature</var>: contains the signature
-</p>
-<p><var>hash</var>: The result of the call with the hash algorithm used for signature
-</p>
-<p>This function will read the certifcate and the signed data to
-determine the hash algorithm used to generate the signature.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p>
-<p><strong>Since:</strong> 2.12.0
-</p></dd></dl>
-
 <a name="gnutls_005fpubkey_005fimport-1"></a>
 <h4 class="subheading">gnutls_pubkey_import</h4>
 <a name="gnutls_005fpubkey_005fimport"></a><dl>
 <dt><a name="index-gnutls_005fpubkey_005fimport"></a>Function: <em>int</em> <strong>gnutls_pubkey_import</strong> <em>(gnutls_pubkey_t <var>key</var>, const gnutls_datum_t * <var>data</var>, gnutls_x509_crt_fmt_t <var>format</var>)</em></dt>
-<dd><p><var>key</var>: The structure to store the parsed public key. 
+<dd><p><var>key</var>: The public key. 
 </p>
 <p><var>data</var>: The DER or PEM encoded certificate. 
 </p>
@@ -1345,7 +1487,7 @@ negative error value.
 </p>
 <p>This function will import the provided public key in
 a SubjectPublicKeyInfo X.509 structure to a native
-<code>gnutls_pubkey_t</code>  structure. The output will be stored 
+<code>gnutls_pubkey_t</code>  type. The output will be stored 
 in  <code>key</code> . If the public key is PEM encoded it should have a header 
 of &quot;PUBLIC KEY&quot;. 
 </p>
@@ -1431,7 +1573,7 @@ negative error value.
 </p>
 <p>Imports a public key from an openpgp key. This function will import
 the given public key to the abstract <code>gnutls_pubkey_t</code> 
-structure. The subkey set as preferred will be imported or the
+type. The subkey set as preferred will be imported or the
 master key otherwise.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
@@ -1455,7 +1597,7 @@ negative error value.
 <p><var>flags</var>: Should be zero
 </p>
 <p>This function will import the given public key to the abstract
-<code>gnutls_pubkey_t</code>  structure. 
+<code>gnutls_pubkey_t</code>  type. 
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -1474,26 +1616,7 @@ negative error value.
 <p><var>flags</var>: should be zero
 </p>
 <p>Imports a public key from a pkcs11 key. This function will import
-the given public key to the abstract <code>gnutls_pubkey_t</code>  structure.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p>
-<p><strong>Since:</strong> 2.12.0
-</p></dd></dl>
-
-<a name="gnutls_005fpubkey_005fimport_005fpkcs11_005furl-1"></a>
-<h4 class="subheading">gnutls_pubkey_import_pkcs11_url</h4>
-<a name="gnutls_005fpubkey_005fimport_005fpkcs11_005furl"></a><dl>
-<dt><a name="index-gnutls_005fpubkey_005fimport_005fpkcs11_005furl"></a>Function: <em>int</em> <strong>gnutls_pubkey_import_pkcs11_url</strong> <em>(gnutls_pubkey_t <var>key</var>, const char * <var>url</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>key</var>: A key of type <code>gnutls_pubkey_t</code> 
-</p>
-<p><var>url</var>: A PKCS 11 url
-</p>
-<p><var>flags</var>: One of GNUTLS_PKCS11_OBJ_* flags
-</p>
-<p>This function will import a PKCS 11 certificate to a <code>gnutls_pubkey_t</code> 
-structure.
+the given public key to the abstract <code>gnutls_pubkey_t</code>  type.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -1514,7 +1637,7 @@ negative error value.
 <p><var>flags</var>: should be zero
 </p>
 <p>Imports the public key from a private.  This function will import
-the given public key to the abstract <code>gnutls_pubkey_t</code>  structure.
+the given public key to the abstract <code>gnutls_pubkey_t</code>  type.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -1526,7 +1649,7 @@ negative error value.
 <h4 class="subheading">gnutls_pubkey_import_rsa_raw</h4>
 <a name="gnutls_005fpubkey_005fimport_005frsa_005fraw"></a><dl>
 <dt><a name="index-gnutls_005fpubkey_005fimport_005frsa_005fraw"></a>Function: <em>int</em> <strong>gnutls_pubkey_import_rsa_raw</strong> <em>(gnutls_pubkey_t <var>key</var>, const gnutls_datum_t * <var>m</var>, const gnutls_datum_t * <var>e</var>)</em></dt>
-<dd><p><var>key</var>: Is a structure will hold the parameters
+<dd><p><var>key</var>: The key
 </p>
 <p><var>m</var>: holds the modulus
 </p>
@@ -1580,7 +1703,7 @@ negative error value.
 <p><var>flags</var>: should be zero
 </p>
 <p>This function will import the given private key to the abstract
-<code>gnutls_privkey_t</code>  structure. 
+<code>gnutls_privkey_t</code>  type. 
 </p>
 <p>Note that unless <code>GNUTLS_PUBKEY_DISABLE_CALLBACKS</code> 
 is specified, if incorrect (or NULL) passwords are given
@@ -1604,8 +1727,7 @@ negative error value.
 </p>
 <p><var>flags</var>: One of GNUTLS_PKCS11_OBJ_* flags
 </p>
-<p>This function will import a PKCS11 certificate or a TPM key 
-as a public key.
+<p>This function will import a public key from the provided URL.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -1624,7 +1746,7 @@ negative error value.
 <p><var>flags</var>: should be zero
 </p>
 <p>This function will import the given public key to the abstract
-<code>gnutls_pubkey_t</code>  structure.
+<code>gnutls_pubkey_t</code>  type.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -1643,7 +1765,7 @@ negative error value.
 <p><var>flags</var>: should be zero
 </p>
 <p>This function will import the given public key to the abstract
-<code>gnutls_pubkey_t</code>  structure.
+<code>gnutls_pubkey_t</code>  type.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -1664,7 +1786,7 @@ negative error value.
 <p><var>flags</var>: should be zero
 </p>
 <p>This function will import the given public key to the abstract
-<code>gnutls_pubkey_t</code>  structure. 
+<code>gnutls_pubkey_t</code>  type. 
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -1676,9 +1798,9 @@ negative error value.
 <h4 class="subheading">gnutls_pubkey_init</h4>
 <a name="gnutls_005fpubkey_005finit"></a><dl>
 <dt><a name="index-gnutls_005fpubkey_005finit"></a>Function: <em>int</em> <strong>gnutls_pubkey_init</strong> <em>(gnutls_pubkey_t * <var>key</var>)</em></dt>
-<dd><p><var>key</var>: The structure to be initialized
+<dd><p><var>key</var>: A pointer to the type to be initialized
 </p>
-<p>This function will initialize an public key structure.
+<p>This function will initialize a public key.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -1690,7 +1812,7 @@ negative error value.
 <h4 class="subheading">gnutls_pubkey_print</h4>
 <a name="gnutls_005fpubkey_005fprint"></a><dl>
 <dt><a name="index-gnutls_005fpubkey_005fprint"></a>Function: <em>int</em> <strong>gnutls_pubkey_print</strong> <em>(gnutls_pubkey_t <var>pubkey</var>, gnutls_certificate_print_formats_t <var>format</var>, gnutls_datum_t * <var>out</var>)</em></dt>
-<dd><p><var>pubkey</var>: The structure to be printed
+<dd><p><var>pubkey</var>: The data to be printed
 </p>
 <p><var>format</var>: Indicate the format to use
 </p>
@@ -1748,30 +1870,6 @@ to have effect.
 <p><strong>Since:</strong> 3.1.0
 </p></dd></dl>
 
-<a name="gnutls_005fpubkey_005fverify_005fdata-1"></a>
-<h4 class="subheading">gnutls_pubkey_verify_data</h4>
-<a name="gnutls_005fpubkey_005fverify_005fdata"></a><dl>
-<dt><a name="index-gnutls_005fpubkey_005fverify_005fdata"></a>Function: <em>int</em> <strong>gnutls_pubkey_verify_data</strong> <em>(gnutls_pubkey_t <var>pubkey</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>data</var>, const gnutls_datum_t * <var>signature</var>)</em></dt>
-<dd><p><var>pubkey</var>: Holds the public key
-</p>
-<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
-</p>
-<p><var>data</var>: holds the signed data
-</p>
-<p><var>signature</var>: contains the signature
-</p>
-<p>This function will verify the given signed data, using the
-parameters from the certificate.
-</p>
-<p>Deprecated. This function cannot be easily used securely. 
-Use <code>gnutls_pubkey_verify_data2()</code>  instead.
-</p>
-<p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
-is returned, and zero or positive code on success. 
-</p>
-<p><strong>Since:</strong> 2.12.0
-</p></dd></dl>
-
 <a name="gnutls_005fpubkey_005fverify_005fdata2-1"></a>
 <h4 class="subheading">gnutls_pubkey_verify_data2</h4>
 <a name="gnutls_005fpubkey_005fverify_005fdata2"></a><dl>
@@ -1793,30 +1891,6 @@ parameters from the certificate.
 is returned, and zero or positive code on success.
 </p>
 <p><strong>Since:</strong> 3.0
-</p></dd></dl>
-
-<a name="gnutls_005fpubkey_005fverify_005fhash-1"></a>
-<h4 class="subheading">gnutls_pubkey_verify_hash</h4>
-<a name="gnutls_005fpubkey_005fverify_005fhash"></a><dl>
-<dt><a name="index-gnutls_005fpubkey_005fverify_005fhash"></a>Function: <em>int</em> <strong>gnutls_pubkey_verify_hash</strong> <em>(gnutls_pubkey_t <var>key</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>hash</var>, const gnutls_datum_t * <var>signature</var>)</em></dt>
-<dd><p><var>key</var>: Holds the public key
-</p>
-<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
-</p>
-<p><var>hash</var>: holds the hash digest to be verified
-</p>
-<p><var>signature</var>: contains the signature
-</p>
-<p>This function will verify the given signed digest, using the
-parameters from the public key. 
-</p>
-<p>Deprecated. This function cannot be easily used securely. 
-Use <code>gnutls_pubkey_verify_hash2()</code>  instead.
-</p>
-<p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
-is returned, and zero or positive code on success.
-</p>
-<p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
 
 <a name="gnutls_005fpubkey_005fverify_005fhash2-1"></a>
@@ -1848,7 +1922,7 @@ is returned, and zero or positive code on success.
 <h4 class="subheading">gnutls_pubkey_verify_params</h4>
 <a name="gnutls_005fpubkey_005fverify_005fparams"></a><dl>
 <dt><a name="index-gnutls_005fpubkey_005fverify_005fparams"></a>Function: <em>int</em> <strong>gnutls_pubkey_verify_params</strong> <em>(gnutls_pubkey_t <var>key</var>)</em></dt>
-<dd><p><var>key</var>: should contain a <code>gnutls_pubkey_t</code>  structure
+<dd><p><var>key</var>: should contain a <code>gnutls_pubkey_t</code>  type
 </p>
 <p>This function will verify the private key parameters.
 </p>
@@ -1858,11 +1932,117 @@ negative error value.
 <p><strong>Since:</strong> 3.3.0
 </p></dd></dl>
 
+<a name="gnutls_005fregister_005fcustom_005furl-1"></a>
+<h4 class="subheading">gnutls_register_custom_url</h4>
+<a name="gnutls_005fregister_005fcustom_005furl"></a><dl>
+<dt><a name="index-gnutls_005fregister_005fcustom_005furl-1"></a>Function: <em>int</em> <strong>gnutls_register_custom_url</strong> <em>(const gnutls_custom_url_st * <var>st</var>)</em></dt>
+<dd><p><var>st</var>: A <code>gnutls_custom_url_st</code>  structure
+</p>
+<p>Register a custom URL. This will affect the following functions:
+<code>gnutls_url_is_supported()</code> , <code>gnutls_privkey_import_url()</code> ,
+gnutls_pubkey_import_url, <code>gnutls_x509_crt_import_url()</code>  
+and all functions that depend on
+them, e.g., <code>gnutls_certificate_set_x509_key_file2()</code> .
+</p>
+<p>The provided structure and callback functions must be valid throughout
+the lifetime of the process. The registration of an existing URL type
+will fail with <code>GNUTLS_E_INVALID_REQUEST</code> .
+</p>
+<p>This function is not thread safe.
+</p>
+<p><strong>Returns:</strong> returns zero if the given structure was imported or a negative value otherwise.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fsystem_005fkey_005fadd_005fx509-1"></a>
+<h4 class="subheading">gnutls_system_key_add_x509</h4>
+<a name="gnutls_005fsystem_005fkey_005fadd_005fx509"></a><dl>
+<dt><a name="index-gnutls_005fsystem_005fkey_005fadd_005fx509"></a>Function: <em>int</em> <strong>gnutls_system_key_add_x509</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_privkey_t <var>privkey</var>, const char * <var>label</var>, char ** <var>cert_url</var>, char ** <var>key_url</var>)</em></dt>
+<dd><p><var>crt</var>: the certificate to be added
+</p>
+<p><var>privkey</var>: the key to be added
+</p>
+<p><var>label</var>: the friendly name to describe the key
+</p>
+<p><var>cert_url</var>: if non-NULL it will contain an allocated value with the certificate URL
+</p>
+<p><var>key_url</var>: if non-NULL it will contain an allocated value with the key URL
+</p>
+<p>This function will added the given key and certificate pair,
+to the system list.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fsystem_005fkey_005fdelete-1"></a>
+<h4 class="subheading">gnutls_system_key_delete</h4>
+<a name="gnutls_005fsystem_005fkey_005fdelete"></a><dl>
+<dt><a name="index-gnutls_005fsystem_005fkey_005fdelete"></a>Function: <em>int</em> <strong>gnutls_system_key_delete</strong> <em>(const char * <var>cert_url</var>, const char * <var>key_url</var>)</em></dt>
+<dd><p><var>cert_url</var>: the URL of the certificate
+</p>
+<p><var>key_url</var>: the URL of the key
+</p>
+<p>This function will delete the key and certificate pair.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fsystem_005fkey_005fiter_005fdeinit-1"></a>
+<h4 class="subheading">gnutls_system_key_iter_deinit</h4>
+<a name="gnutls_005fsystem_005fkey_005fiter_005fdeinit"></a><dl>
+<dt><a name="index-gnutls_005fsystem_005fkey_005fiter_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_system_key_iter_deinit</strong> <em>(gnutls_system_key_iter_t <var>iter</var>)</em></dt>
+<dd><p><var>iter</var>: an iterator of system keys
+</p>
+<p>This function will deinitialize the iterator.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fsystem_005fkey_005fiter_005fget_005finfo-1"></a>
+<h4 class="subheading">gnutls_system_key_iter_get_info</h4>
+<a name="gnutls_005fsystem_005fkey_005fiter_005fget_005finfo"></a><dl>
+<dt><a name="index-gnutls_005fsystem_005fkey_005fiter_005fget_005finfo-1"></a>Function: <em>int</em> <strong>gnutls_system_key_iter_get_info</strong> <em>(gnutls_system_key_iter_t * <var>iter</var>, unsigned <var>cert_type</var>, char ** <var>cert_url</var>, char ** <var>key_url</var>, char ** <var>label</var>, gnutls_datum_t * <var>der</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>iter</var>: an iterator of the system keys (must be set to <code>NULL</code>  initially)
+</p>
+<p><var>cert_type</var>: A value of gnutls_certificate_type_t which indicates the type of certificate to look for
+</p>
+<p><var>cert_url</var>: The certificate URL of the pair (may be <code>NULL</code> )
+</p>
+<p><var>key_url</var>: The key URL of the pair (may be <code>NULL</code> )
+</p>
+<p><var>label</var>: The friendly name (if any) of the pair (may be <code>NULL</code> )
+</p>
+<p><var>der</var>: if non-NULL the DER data of the certificate
+</p>
+<p><var>flags</var>: should be zero
+</p>
+<p>This function will return on each call a certificate
+and key pair URLs, as well as a label associated with them,
+and the DER-encoded certificate. When the iteration is complete it will
+return <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> .
+</p>
+<p>Typically  <code>cert_type</code> should be <code>GNUTLS_CRT_X509</code> .
+</p>
+<p>All values set are allocated and must be cleared using <code>gnutls_free()</code> ,
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrl_005fprivkey_005fsign-1"></a>
 <h4 class="subheading">gnutls_x509_crl_privkey_sign</h4>
 <a name="gnutls_005fx509_005fcrl_005fprivkey_005fsign"></a><dl>
 <dt><a name="index-gnutls_005fx509_005fcrl_005fprivkey_005fsign-1"></a>Function: <em>int</em> <strong>gnutls_x509_crl_privkey_sign</strong> <em>(gnutls_x509_crl_t <var>crl</var>, gnutls_x509_crt_t <var>issuer</var>, gnutls_privkey_t <var>issuer_key</var>, gnutls_digest_algorithm_t <var>dig</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>crl</var>: should contain a gnutls_x509_crl_t structure
+<dd><p><var>crl</var>: should contain a gnutls_x509_crl_t type
 </p>
 <p><var>issuer</var>: is the certificate of the certificate issuer
 </p>
@@ -1888,7 +2068,7 @@ negative error value.
 <h4 class="subheading">gnutls_x509_crq_privkey_sign</h4>
 <a name="gnutls_005fx509_005fcrq_005fprivkey_005fsign"></a><dl>
 <dt><a name="index-gnutls_005fx509_005fcrq_005fprivkey_005fsign"></a>Function: <em>int</em> <strong>gnutls_x509_crq_privkey_sign</strong> <em>(gnutls_x509_crq_t <var>crq</var>, gnutls_privkey_t <var>key</var>, gnutls_digest_algorithm_t <var>dig</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
+<dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  type
 </p>
 <p><var>key</var>: holds a private key
 </p>
@@ -1916,7 +2096,7 @@ information in the certificate request (e.g., the version using
 <h4 class="subheading">gnutls_x509_crq_set_pubkey</h4>
 <a name="gnutls_005fx509_005fcrq_005fset_005fpubkey"></a><dl>
 <dt><a name="index-gnutls_005fx509_005fcrq_005fset_005fpubkey-1"></a>Function: <em>int</em> <strong>gnutls_x509_crq_set_pubkey</strong> <em>(gnutls_x509_crq_t <var>crq</var>, gnutls_pubkey_t <var>key</var>)</em></dt>
-<dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
+<dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  type
 </p>
 <p><var>key</var>: holds a public key
 </p>
@@ -1957,7 +2137,7 @@ negative error value.
 <h4 class="subheading">gnutls_x509_crt_set_pubkey</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fpubkey"></a><dl>
 <dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fpubkey-1"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_pubkey</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_pubkey_t <var>key</var>)</em></dt>
-<dd><p><var>crt</var>: should contain a <code>gnutls_x509_crt_t</code>  structure
+<dd><p><var>crt</var>: should contain a <code>gnutls_x509_crt_t</code>  type
 </p>
 <p><var>key</var>: holds a public key
 </p>

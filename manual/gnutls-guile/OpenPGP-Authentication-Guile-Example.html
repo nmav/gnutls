@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 19 January 2015 for version
+3.4.0 of GnuTLS.
 
 Copyright (C) 2001-2012, 2014 Free Software Foundation, Inc.
 
@@ -13,10 +13,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS-Guile 3.3.14: OpenPGP Authentication Guile Example</title>
+<title>GnuTLS-Guile 3.4.0: OpenPGP Authentication Guile Example</title>
 
-<meta name="description" content="GnuTLS-Guile 3.3.14: OpenPGP Authentication Guile Example">
-<meta name="keywords" content="GnuTLS-Guile 3.3.14: OpenPGP Authentication Guile Example">
+<meta name="description" content="GnuTLS-Guile 3.4.0: OpenPGP Authentication Guile Example">
+<meta name="keywords" content="GnuTLS-Guile 3.4.0: OpenPGP Authentication Guile Example">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -209,7 +209,6 @@ secret key, respectively, client-side code would look like this:
 (define %certs (list certificate-type/openpgp))
 
 (let ((server (make-session connection-end/server))
-      (rsa    (make-rsa-parameters 1024))
       (dh     (make-dh-parameters 1024)))
   (set-session-default-priority! server)
 
@@ -217,9 +216,8 @@ secret key, respectively, client-side code would look like this:
   (set-session-certificate-type-priority! server %certs)
 
   (let ((cred (make-certificate-credentials)))
-    ;; Prepare credentials with RSA and Diffie-Hellman parameters.
+    ;; Prepare credentials with Diffie-Hellman parameters.
     (set-certificate-credentials-dh-parameters! cred dh)
-    (set-certificate-credentials-rsa-export-parameters! cred rsa)
     (set-certificate-credentials-openpgp-keys! cred pub sec)
     (set-session-credentials! server cred))
 
@@ -232,15 +230,7 @@ secret key, respectively, client-side code would look like this:
     (bye server close-request/rdwr)))
 </pre></div>
 
-<p>In practice, generating RSA parameters (and Diffie-Hellman parameters)
-can time a long time.  Thus, you may want to generate them once and
-store them in a file for future re-use (see <a href="Guile-Reference.html#Guile-Reference"><code>pkcs1-export-rsa-parameters</code> and <code>pkcs1-import-rsa-parameters</code></a>).
-</p>
-<hr>
-<div class="header">
-<p>
-Next: <a href="Importing-OpenPGP-Keys-Guile-Example.html#Importing-OpenPGP-Keys-Guile-Example" accesskey="n" rel="next">Importing OpenPGP Keys Guile Example</a>, Previous: <a href="Anonymous-Authentication-Guile-Example.html#Anonymous-Authentication-Guile-Example" accesskey="p" rel="prev">Anonymous Authentication Guile Example</a>, Up: <a href="Guile-Examples.html#Guile-Examples" accesskey="u" rel="up">Guile Examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Procedure-Index.html#Procedure-Index" title="Index" rel="index">Index</a>]</p>
-</div>
+
 
 
 

@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: PKCS 12 API</title>
+<title>GnuTLS 3.4.0: PKCS 12 API</title>
 
-<meta name="description" content="GnuTLS 3.3.14: PKCS 12 API">
-<meta name="keywords" content="GnuTLS 3.3.14: PKCS 12 API">
+<meta name="description" content="GnuTLS 3.4.0: PKCS 12 API">
+<meta name="keywords" content="GnuTLS 3.4.0: PKCS 12 API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -188,9 +188,39 @@ otherwise a negative error code is returned.
 <h4 class="subheading">gnutls_pkcs12_bag_deinit</h4>
 <a name="gnutls_005fpkcs12_005fbag_005fdeinit"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005fbag_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_pkcs12_bag_deinit</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>)</em></dt>
-<dd><p><var>bag</var>: The structure to be initialized
+<dd><p><var>bag</var>: A pointer to the type to be initialized
 </p>
 <p>This function will deinitialize a PKCS12 Bag structure.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs12_005fbag_005fenc_005finfo-1"></a>
+<h4 class="subheading">gnutls_pkcs12_bag_enc_info</h4>
+<a name="gnutls_005fpkcs12_005fbag_005fenc_005finfo"></a><dl>
+<dt><a name="index-gnutls_005fpkcs12_005fbag_005fenc_005finfo"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_enc_info</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, unsigned int * <var>schema</var>, unsigned int * <var>cipher</var>, void * <var>salt</var>, unsigned int * <var>salt_size</var>, unsigned int * <var>iter_count</var>, char ** <var>oid</var>)</em></dt>
+<dd><p><var>bag</var>: The bag
+</p>
+<p><var>schema</var>: indicate the schema as one of <code>gnutls_pkcs_encrypt_flags_t</code> 
+</p>
+<p><var>cipher</var>: the cipher used as <code>gnutls_cipher_algorithm_t</code> 
+</p>
+<p><var>salt</var>: PBKDF2 salt (if non-NULL then  <code>salt_size</code> initially holds its size)
+</p>
+<p><var>salt_size</var>: PBKDF2 salt size
+</p>
+<p><var>iter_count</var>: PBKDF2 iteration count
+</p>
+<p><var>oid</var>: if non-NULL it will contain an allocated null-terminated variable with the OID
+</p>
+<p>This function will provide information on the encryption algorithms used
+in an encrypted bag. If the structure algorithms
+are unknown the code <code>GNUTLS_E_UNKNOWN_CIPHER_TYPE</code>  will be returned,
+and only  <code>oid</code> , will be set. That is,  <code>oid</code> will be set on encrypted bags
+whether supported or not. It must be deinitialized using <code>gnutls_free()</code> .
+The other variables are only set on supported structures.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_INVALID_REQUEST</code>  if the provided bag isn&rsquo;t encrypted,
+<code>GNUTLS_E_UNKNOWN_CIPHER_TYPE</code>  if the structure&rsquo;s encryption isn&rsquo;t supported, or
+another negative error code in case of a failure. Zero on success.
 </p></dd></dl>
 
 <a name="gnutls_005fpkcs12_005fbag_005fencrypt-1"></a>
@@ -292,7 +322,7 @@ negative error value. or a negative error code on error.
 <h4 class="subheading">gnutls_pkcs12_bag_init</h4>
 <a name="gnutls_005fpkcs12_005fbag_005finit"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005fbag_005finit"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_init</strong> <em>(gnutls_pkcs12_bag_t * <var>bag</var>)</em></dt>
-<dd><p><var>bag</var>: The structure to be initialized
+<dd><p><var>bag</var>: A pointer to the type to be initialized
 </p>
 <p>This function will initialize a PKCS12 bag structure. PKCS12 Bags
 usually contain private keys, lists of X.509 Certificates and X.509
@@ -387,20 +417,39 @@ the local private key and the certificate pair.
 negative error value. or a negative error code on error.
 </p></dd></dl>
 
+<a name="gnutls_005fpkcs12_005fbag_005fset_005fprivkey-1"></a>
+<h4 class="subheading">gnutls_pkcs12_bag_set_privkey</h4>
+<a name="gnutls_005fpkcs12_005fbag_005fset_005fprivkey"></a><dl>
+<dt><a name="index-gnutls_005fpkcs12_005fbag_005fset_005fprivkey"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_set_privkey</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, gnutls_x509_privkey_t <var>privkey</var>, const char * <var>password</var>, unsigned <var>flags</var>)</em></dt>
+<dd><p><var>bag</var>: The bag
+</p>
+<p><var>privkey</var>: the private key to be copied.
+</p>
+<p><var>password</var>: the password to protect the key with (may be <code>NULL</code> )
+</p>
+<p><var>flags</var>: should be one of <code>gnutls_pkcs_encrypt_flags_t</code>  elements bitwise or&rsquo;d
+</p>
+<p>This function will insert the given private key into the
+bag. This is just a wrapper over <code>gnutls_pkcs12_bag_set_data()</code> .
+</p>
+<p><strong>Returns:</strong> the index of the added bag on success, or a negative
+value on failure.
+</p></dd></dl>
+
 <a name="gnutls_005fpkcs12_005fdeinit-1"></a>
 <h4 class="subheading">gnutls_pkcs12_deinit</h4>
 <a name="gnutls_005fpkcs12_005fdeinit"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_pkcs12_deinit</strong> <em>(gnutls_pkcs12_t <var>pkcs12</var>)</em></dt>
-<dd><p><var>pkcs12</var>: The structure to be initialized
+<dd><p><var>pkcs12</var>: The type to be initialized
 </p>
-<p>This function will deinitialize a PKCS12 structure.
+<p>This function will deinitialize a PKCS12 type.
 </p></dd></dl>
 
 <a name="gnutls_005fpkcs12_005fexport-1"></a>
 <h4 class="subheading">gnutls_pkcs12_export</h4>
 <a name="gnutls_005fpkcs12_005fexport"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005fexport"></a>Function: <em>int</em> <strong>gnutls_pkcs12_export</strong> <em>(gnutls_pkcs12_t <var>pkcs12</var>, gnutls_x509_crt_fmt_t <var>format</var>, void * <var>output_data</var>, size_t * <var>output_data_size</var>)</em></dt>
-<dd><p><var>pkcs12</var>: Holds the pkcs12 structure
+<dd><p><var>pkcs12</var>: A pkcs12 type
 </p>
 <p><var>format</var>: the format of output params. One of PEM or DER.
 </p>
@@ -426,7 +475,7 @@ returned, and 0 on success.
 <h4 class="subheading">gnutls_pkcs12_export2</h4>
 <a name="gnutls_005fpkcs12_005fexport2"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005fexport2"></a>Function: <em>int</em> <strong>gnutls_pkcs12_export2</strong> <em>(gnutls_pkcs12_t <var>pkcs12</var>, gnutls_x509_crt_fmt_t <var>format</var>, gnutls_datum_t * <var>out</var>)</em></dt>
-<dd><p><var>pkcs12</var>: Holds the pkcs12 structure
+<dd><p><var>pkcs12</var>: A pkcs12 type
 </p>
 <p><var>format</var>: the format of output params. One of PEM or DER.
 </p>
@@ -449,7 +498,23 @@ returned, and 0 on success.
 <h4 class="subheading">gnutls_pkcs12_generate_mac</h4>
 <a name="gnutls_005fpkcs12_005fgenerate_005fmac"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005fgenerate_005fmac"></a>Function: <em>int</em> <strong>gnutls_pkcs12_generate_mac</strong> <em>(gnutls_pkcs12_t <var>pkcs12</var>, const char * <var>pass</var>)</em></dt>
-<dd><p><var>pkcs12</var>: should contain a gnutls_pkcs12_t structure
+<dd><p><var>pkcs12</var>: A pkcs12 type
+</p>
+<p><var>pass</var>: The password for the MAC
+</p>
+<p>This function will generate a MAC for the PKCS12 structure.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs12_005fgenerate_005fmac2-1"></a>
+<h4 class="subheading">gnutls_pkcs12_generate_mac2</h4>
+<a name="gnutls_005fpkcs12_005fgenerate_005fmac2"></a><dl>
+<dt><a name="index-gnutls_005fpkcs12_005fgenerate_005fmac2"></a>Function: <em>int</em> <strong>gnutls_pkcs12_generate_mac2</strong> <em>(gnutls_pkcs12_t <var>pkcs12</var>, gnutls_mac_algorithm_t <var>mac</var>, const char * <var>pass</var>)</em></dt>
+<dd><p><var>pkcs12</var>: A pkcs12 type
+</p>
+<p><var>mac</var>: the MAC algorithm to use
 </p>
 <p><var>pass</var>: The password for the MAC
 </p>
@@ -463,7 +528,7 @@ negative error value.
 <h4 class="subheading">gnutls_pkcs12_get_bag</h4>
 <a name="gnutls_005fpkcs12_005fget_005fbag"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005fget_005fbag"></a>Function: <em>int</em> <strong>gnutls_pkcs12_get_bag</strong> <em>(gnutls_pkcs12_t <var>pkcs12</var>, int <var>indx</var>, gnutls_pkcs12_bag_t <var>bag</var>)</em></dt>
-<dd><p><var>pkcs12</var>: should contain a gnutls_pkcs12_t structure
+<dd><p><var>pkcs12</var>: A pkcs12 type
 </p>
 <p><var>indx</var>: contains the index of the bag to extract
 </p>
@@ -482,7 +547,7 @@ negative error value.
 <h4 class="subheading">gnutls_pkcs12_import</h4>
 <a name="gnutls_005fpkcs12_005fimport"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005fimport"></a>Function: <em>int</em> <strong>gnutls_pkcs12_import</strong> <em>(gnutls_pkcs12_t <var>pkcs12</var>, const gnutls_datum_t * <var>data</var>, gnutls_x509_crt_fmt_t <var>format</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>pkcs12</var>: The structure to store the parsed PKCS12.
+<dd><p><var>pkcs12</var>: The data to store the parsed PKCS12.
 </p>
 <p><var>data</var>: The DER or PEM encoded PKCS12.
 </p>
@@ -503,9 +568,9 @@ negative error value.
 <h4 class="subheading">gnutls_pkcs12_init</h4>
 <a name="gnutls_005fpkcs12_005finit"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005finit"></a>Function: <em>int</em> <strong>gnutls_pkcs12_init</strong> <em>(gnutls_pkcs12_t * <var>pkcs12</var>)</em></dt>
-<dd><p><var>pkcs12</var>: The structure to be initialized
+<dd><p><var>pkcs12</var>: A pointer to the type to be initialized
 </p>
-<p>This function will initialize a PKCS12 structure. PKCS12 structures
+<p>This function will initialize a PKCS12 type. PKCS12 structures
 usually contain lists of X.509 Certificates and X.509 Certificate
 revocation lists.
 </p>
@@ -513,11 +578,39 @@ revocation lists.
 negative error value.
 </p></dd></dl>
 
+<a name="gnutls_005fpkcs12_005fmac_005finfo-1"></a>
+<h4 class="subheading">gnutls_pkcs12_mac_info</h4>
+<a name="gnutls_005fpkcs12_005fmac_005finfo"></a><dl>
+<dt><a name="index-gnutls_005fpkcs12_005fmac_005finfo"></a>Function: <em>int</em> <strong>gnutls_pkcs12_mac_info</strong> <em>(gnutls_pkcs12_t <var>pkcs12</var>, unsigned int * <var>mac</var>, void * <var>salt</var>, unsigned int * <var>salt_size</var>, unsigned int * <var>iter_count</var>, char ** <var>oid</var>)</em></dt>
+<dd><p><var>pkcs12</var>: A pkcs12 type
+</p>
+<p><var>mac</var>: the MAC algorithm used as <code>gnutls_mac_algorithm_t</code> 
+</p>
+<p><var>salt</var>: the salt used for string to key (if non-NULL then  <code>salt_size</code> initially holds its size)
+</p>
+<p><var>salt_size</var>: string to key salt size
+</p>
+<p><var>iter_count</var>: string to key iteration count
+</p>
+<p><var>oid</var>: if non-NULL it will contain an allocated null-terminated variable with the OID
+</p>
+<p>This function will provide information on the MAC algorithm used
+in a PKCS <code>12</code>  structure. If the structure algorithms
+are unknown the code <code>GNUTLS_E_UNKNOWN_HASH_ALGORITHM</code>  will be returned,
+and only  <code>oid</code> , will be set. That is,  <code>oid</code> will be set on structures
+with a MAC whether supported or not. It must be deinitialized using <code>gnutls_free()</code> .
+The other variables are only set on supported structures.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_INVALID_REQUEST</code>  if the provided structure doesn&rsquo;t contain a MAC,
+<code>GNUTLS_E_UNKNOWN_HASH_ALGORITHM</code>  if the structure&rsquo;s MAC isn&rsquo;t supported, or
+another negative error code in case of a failure. Zero on success.
+</p></dd></dl>
+
 <a name="gnutls_005fpkcs12_005fset_005fbag-1"></a>
 <h4 class="subheading">gnutls_pkcs12_set_bag</h4>
 <a name="gnutls_005fpkcs12_005fset_005fbag"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005fset_005fbag"></a>Function: <em>int</em> <strong>gnutls_pkcs12_set_bag</strong> <em>(gnutls_pkcs12_t <var>pkcs12</var>, gnutls_pkcs12_bag_t <var>bag</var>)</em></dt>
-<dd><p><var>pkcs12</var>: should contain a gnutls_pkcs12_t structure
+<dd><p><var>pkcs12</var>: should contain a gnutls_pkcs12_t type
 </p>
 <p><var>bag</var>: An initialized bag
 </p>
@@ -531,7 +624,7 @@ negative error value.
 <h4 class="subheading">gnutls_pkcs12_simple_parse</h4>
 <a name="gnutls_005fpkcs12_005fsimple_005fparse"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005fsimple_005fparse-1"></a>Function: <em>int</em> <strong>gnutls_pkcs12_simple_parse</strong> <em>(gnutls_pkcs12_t <var>p12</var>, const char * <var>password</var>, gnutls_x509_privkey_t * <var>key</var>, gnutls_x509_crt_t ** <var>chain</var>, unsigned int * <var>chain_len</var>, gnutls_x509_crt_t ** <var>extra_certs</var>, unsigned int * <var>extra_certs_len</var>, gnutls_x509_crl_t * <var>crl</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>p12</var>: should contain a gnutls_pkcs12_t structure
+<dd><p><var>p12</var>: A pkcs12 type
 </p>
 <p><var>password</var>: optional password used to decrypt the structure, bags and keys.
 </p>
@@ -590,7 +683,7 @@ negative error value.
 <h4 class="subheading">gnutls_pkcs12_verify_mac</h4>
 <a name="gnutls_005fpkcs12_005fverify_005fmac"></a><dl>
 <dt><a name="index-gnutls_005fpkcs12_005fverify_005fmac"></a>Function: <em>int</em> <strong>gnutls_pkcs12_verify_mac</strong> <em>(gnutls_pkcs12_t <var>pkcs12</var>, const char * <var>pass</var>)</em></dt>
-<dd><p><var>pkcs12</var>: should contain a gnutls_pkcs12_t structure
+<dd><p><var>pkcs12</var>: should contain a gnutls_pkcs12_t type
 </p>
 <p><var>pass</var>: The password for the MAC
 </p>

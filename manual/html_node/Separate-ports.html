@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: Separate ports</title>
+<title>GnuTLS 3.4.0: Separate ports</title>
 
-<meta name="description" content="GnuTLS 3.3.14: Separate ports">
-<meta name="keywords" content="GnuTLS 3.3.14: Separate ports">
+<meta name="description" content="GnuTLS 3.4.0: Separate ports">
+<meta name="keywords" content="GnuTLS 3.4.0: Separate ports">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -179,7 +179,7 @@ approach starts the <acronym>TLS</acronym> Handshake procedure just after the
 client connects on the &mdash;so called&mdash; secure port.  That way the
 <acronym>TLS</acronym> protocol does not know anything about the client, and
 popular methods like the host advertising in HTTP do not
-work<a name="DOCF4" href="#FOOT4"><sup>4</sup></a>.  There is no way for the client to say &ldquo;I
+work<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>.  There is no way for the client to say &ldquo;I
 connected to YYY server&rdquo; before the Handshake starts, so the server
 cannot possibly know which certificate to use.
 </p>
@@ -192,7 +192,7 @@ soon deprecated in favor of upward negotiation.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
+<h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
 <p>See also the Server Name Indication extension on
 <a href="Server-name-indication.html#serverind">serverind</a>.</p>
 </div>

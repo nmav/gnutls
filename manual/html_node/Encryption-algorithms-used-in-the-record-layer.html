@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: Encryption algorithms used in the record layer</title>
+<title>GnuTLS 3.4.0: Encryption algorithms used in the record layer</title>
 
-<meta name="description" content="GnuTLS 3.3.14: Encryption algorithms used in the record layer">
-<meta name="keywords" content="GnuTLS 3.3.14: Encryption algorithms used in the record layer">
+<meta name="description" content="GnuTLS 3.4.0: Encryption algorithms used in the record layer">
+<meta name="keywords" content="GnuTLS 3.4.0: Encryption algorithms used in the record layer">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -182,18 +182,29 @@ data size.
 <div class="float"><a name="tab_003aciphers"></a>
 <table>
 <thead><tr><th width="20%">Algorithm</th><th width="70%">Description</th></tr></thead>
-<tr><td width="20%">3DES_CBC</td><td width="70%">This is the DES block cipher algorithm used with triple
-encryption (EDE). Has 64 bits block size and is used in CBC mode.</td></tr>
-<tr><td width="20%">ARCFOUR_128</td><td width="70%">ARCFOUR_128 is a compatible algorithm with RSA&rsquo;s RC4 algorithm, which is considered to be a trade
-secret. It is a fast cipher but considered weak today.</td></tr>
 <tr><td width="20%">AES_CBC</td><td width="70%">AES or RIJNDAEL is the block cipher algorithm that replaces the old
 DES algorithm.  Has 128 bits block size and is used in CBC mode.</td></tr>
 <tr><td width="20%">AES_GCM</td><td width="70%">This is the AES algorithm in the authenticated encryption GCM mode.
 This mode combines message authentication and encryption and can
 be extremely fast on CPUs that support hardware acceleration.</td></tr>
+<tr><td width="20%">AES_CCM</td><td width="70%">This is the AES algorithm in the authenticated encryption CCM mode.
+This mode combines message authentication and encryption and is
+often used by systems without AES or GCM acceleration support.</td></tr>
+<tr><td width="20%">AES_CCM_8</td><td width="70%">This is the AES algorithm in the authenticated encryption CCM mode
+with a truncated to 64-bit authentication tag. This mode is for
+communication with restricted systems.</td></tr>
 <tr><td width="20%">CAMELLIA_CBC</td><td width="70%">This is an 128-bit block cipher developed by Mitsubishi and NTT. It
 is one of the approved ciphers of the European NESSIE and Japanese
 CRYPTREC projects.</td></tr>
+<tr><td width="20%">CHACHA20_POLY1305</td><td width="70%">CHACHA20-POLY1305 is an authenticated encryption algorithm based on CHACHA20 cipher and
+POLY1305 MAC. CHACHA20 is a refinement of SALSA20 algorithm, an approved cipher by
+the European ESTREAM project. POLY1305 is Wegman-Carter, one-time authenticator. The
+combination provides a fast stream cipher suitable for systems where a hardware AES
+accelerator is not available.</td></tr>
+<tr><td width="20%">3DES_CBC</td><td width="70%">This is the DES block cipher algorithm used with triple
+encryption (EDE). Has 64 bits block size and is used in CBC mode.</td></tr>
+<tr><td width="20%">ARCFOUR_128</td><td width="70%">ARCFOUR-128 is a compatible algorithm with RSA&rsquo;s RC4 algorithm, which is considered to be a trade
+secret. It is a fast cipher but considered weak today, and thus it is not enabled by default.</td></tr>
 </table>
 
 <div class="float-caption"><p><strong>Table 3.1: </strong>Supported ciphers.</p></div></div>

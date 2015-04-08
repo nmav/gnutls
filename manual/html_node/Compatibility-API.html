@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is last updated 23 March 2015 for version
-3.3.14 of GnuTLS.
+<!-- This manual is last updated 4 March 2015 for version
+3.4.0 of GnuTLS.
 
-Copyright (C) 2001-2013 Free Software Foundation, Inc.\\
-Copyright (C) 2001-2013 Nikos Mavrogiannopoulos
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.3.14: Compatibility API</title>
+<title>GnuTLS 3.4.0: Compatibility API</title>
 
-<meta name="description" content="GnuTLS 3.3.14: Compatibility API">
-<meta name="keywords" content="GnuTLS 3.3.14: Compatibility API">
+<meta name="description" content="GnuTLS 3.4.0: Compatibility API">
+<meta name="keywords" content="GnuTLS 3.4.0: Compatibility API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -169,140 +169,6 @@ Previous: <a href="Cryptographic-API.html#Cryptographic-API" accesskey="p" rel="
 Their prototypes lie in <samp>gnutls/compat.h</samp>.
 </p>
 
-<a name="gnutls_005fcertificate_005fclient_005fset_005fretrieve_005ffunction-1"></a>
-<h4 class="subheading">gnutls_certificate_client_set_retrieve_function</h4>
-<a name="gnutls_005fcertificate_005fclient_005fset_005fretrieve_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fclient_005fset_005fretrieve_005ffunction"></a>Function: <em>void</em> <strong>gnutls_certificate_client_set_retrieve_function</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, gnutls_certificate_client_retrieve_function * <var>func</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
-</p>
-<p><var>func</var>: is the callback function
-</p>
-<p>This function sets a callback to be called in order to retrieve the
-certificate to be used in the handshake.
-You are advised to use <code>gnutls_certificate_set_retrieve_function2()</code>  because it
-is much more efficient in the processing it requires from gnutls.
-</p>
-<p>The callback&rsquo;s function prototype is:
-int (*callback)(gnutls_session_t, const gnutls_datum_t* req_ca_dn, int nreqs,
-const gnutls_pk_algorithm_t* pk_algos, int pk_algos_length, gnutls_retr_st* st);
-</p>
-<p><code>req_ca_cert</code> is only used in X.509 certificates.
-Contains a list with the CA names that the server considers trusted.
-Normally we should send a certificate that is signed
-by one of these CAs. These names are DER encoded. To get a more
-meaningful value use the function <code>gnutls_x509_rdn_get()</code> .
-</p>
-<p><code>pk_algos</code> contains a list with server&rsquo;s acceptable signature algorithms.
-The certificate returned should support the server&rsquo;s given algorithms.
-</p>
-<p><code>st</code> should contain the certificates and private keys.
-</p>
-<p>If the callback function is provided then gnutls will call it, in the
-handshake, if a certificate is requested by the server (and after the 
-certificate request message has been received).
-</p>
-<p>The callback function should set the certificate list to be sent,
-and return 0 on success. If no certificate was selected then the
-number of certificates should be set to zero. The value (-1)
-indicates error and the handshake will be terminated.
-</p></dd></dl>
-
-<a name="gnutls_005fcertificate_005fserver_005fset_005fretrieve_005ffunction-1"></a>
-<h4 class="subheading">gnutls_certificate_server_set_retrieve_function</h4>
-<a name="gnutls_005fcertificate_005fserver_005fset_005fretrieve_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fserver_005fset_005fretrieve_005ffunction"></a>Function: <em>void</em> <strong>gnutls_certificate_server_set_retrieve_function</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, gnutls_certificate_server_retrieve_function * <var>func</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  structure.
-</p>
-<p><var>func</var>: is the callback function
-</p>
-<p>This function sets a callback to be called in order to retrieve the
-certificate to be used in the handshake.
-You are advised to use <code>gnutls_certificate_set_retrieve_function2()</code>  because it
-is much more efficient in the processing it requires from gnutls.
-</p>
-<p>The callback&rsquo;s function prototype is:
-int (*callback)(gnutls_session_t, gnutls_retr_st* st);
-</p>
-<p><code>st</code> should contain the certificates and private keys.
-</p>
-<p>If the callback function is provided then gnutls will call it, in the
-handshake, after the certificate request message has been received.
-</p>
-<p>The callback function should set the certificate list to be sent, and
-return 0 on success.  The value (-1) indicates error and the handshake
-will be terminated.
-</p></dd></dl>
-
-<a name="gnutls_005fcertificate_005fset_005frsa_005fexport_005fparams-1"></a>
-<h4 class="subheading">gnutls_certificate_set_rsa_export_params</h4>
-<a name="gnutls_005fcertificate_005fset_005frsa_005fexport_005fparams"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fset_005frsa_005fexport_005fparams"></a>Function: <em>void</em> <strong>gnutls_certificate_set_rsa_export_params</strong> <em>(gnutls_certificate_credentials_t       <var>res</var>, gnutls_rsa_params_t <var>rsa_params</var>)</em></dt>
-<dd><p><var>res</var>: is a gnutls_certificate_credentials_t structure
-</p>
-<p><var>rsa_params</var>: is a structure that holds temporary RSA parameters.
-</p>
-<p>This function will set the temporary RSA parameters for a
-certificate server to use.  These parameters will be used in
-RSA-EXPORT cipher suites.
-</p></dd></dl>
-
-<a name="gnutls_005fcertificate_005ftype_005fset_005fpriority-1"></a>
-<h4 class="subheading">gnutls_certificate_type_set_priority</h4>
-<a name="gnutls_005fcertificate_005ftype_005fset_005fpriority"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005ftype_005fset_005fpriority"></a>Function: <em>int</em> <strong>gnutls_certificate_type_set_priority</strong> <em>(gnutls_session_t <var>session</var>, const int * <var>list</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
-</p>
-<p><var>list</var>: is a 0 terminated list of gnutls_certificate_type_t elements.
-</p>
-<p>Sets the priority on the certificate types supported by gnutls.
-Priority is higher for elements specified before others.
-After specifying the types you want, you must append a 0.
-Note that the certificate type priority is set on the client.
-The server does not use the cert type priority except for disabling
-types that were not specified.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
-</p></dd></dl>
-
-<a name="gnutls_005fcipher_005fset_005fpriority-1"></a>
-<h4 class="subheading">gnutls_cipher_set_priority</h4>
-<a name="gnutls_005fcipher_005fset_005fpriority"></a><dl>
-<dt><a name="index-gnutls_005fcipher_005fset_005fpriority"></a>Function: <em>int</em> <strong>gnutls_cipher_set_priority</strong> <em>(gnutls_session_t <var>session</var>, const int * <var>list</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
-</p>
-<p><var>list</var>: is a 0 terminated list of gnutls_cipher_algorithm_t elements.
-</p>
-<p>Sets the priority on the ciphers supported by gnutls.  Priority is
-higher for elements specified before others.  After specifying the
-ciphers you want, you must append a 0.  Note that the priority is
-set on the client. The server does not use the algorithm&rsquo;s
-priority except for disabling algorithms that were not specified.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
-</p></dd></dl>
-
-<a name="gnutls_005fcompression_005fset_005fpriority-1"></a>
-<h4 class="subheading">gnutls_compression_set_priority</h4>
-<a name="gnutls_005fcompression_005fset_005fpriority"></a><dl>
-<dt><a name="index-gnutls_005fcompression_005fset_005fpriority"></a>Function: <em>int</em> <strong>gnutls_compression_set_priority</strong> <em>(gnutls_session_t <var>session</var>, const int * <var>list</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
-</p>
-<p><var>list</var>: is a 0 terminated list of gnutls_compression_method_t elements.
-</p>
-<p>Sets the priority on the compression algorithms supported by
-gnutls.  Priority is higher for elements specified before others.
-After specifying the algorithms you want, you must append a 0.
-Note that the priority is set on the client. The server does not
-use the algorithm&rsquo;s priority except for disabling algorithms that
-were not specified.
-</p>
-<p>TLS 1.0 does not define any compression algorithms except
-NULL. Other compression algorithms are to be considered as gnutls
-extensions.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
-</p></dd></dl>
-
 <a name="gnutls_005fglobal_005fset_005fmem_005ffunctions-1"></a>
 <h4 class="subheading">gnutls_global_set_mem_functions</h4>
 <a name="gnutls_005fglobal_005fset_005fmem_005ffunctions"></a><dl>
@@ -331,42 +197,6 @@ memory allocation functions to something other than the defaults
 This function is not thread safe.
 </p></dd></dl>
 
-<a name="gnutls_005fkx_005fset_005fpriority-1"></a>
-<h4 class="subheading">gnutls_kx_set_priority</h4>
-<a name="gnutls_005fkx_005fset_005fpriority"></a><dl>
-<dt><a name="index-gnutls_005fkx_005fset_005fpriority"></a>Function: <em>int</em> <strong>gnutls_kx_set_priority</strong> <em>(gnutls_session_t <var>session</var>, const int * <var>list</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
-</p>
-<p><var>list</var>: is a 0 terminated list of gnutls_kx_algorithm_t elements.
-</p>
-<p>Sets the priority on the key exchange algorithms supported by
-gnutls.  Priority is higher for elements specified before others.
-After specifying the algorithms you want, you must append a 0.
-Note that the priority is set on the client. The server does not
-use the algorithm&rsquo;s priority except for disabling algorithms that
-were not specified.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
-</p></dd></dl>
-
-<a name="gnutls_005fmac_005fset_005fpriority-1"></a>
-<h4 class="subheading">gnutls_mac_set_priority</h4>
-<a name="gnutls_005fmac_005fset_005fpriority"></a><dl>
-<dt><a name="index-gnutls_005fmac_005fset_005fpriority"></a>Function: <em>int</em> <strong>gnutls_mac_set_priority</strong> <em>(gnutls_session_t <var>session</var>, const int * <var>list</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
-</p>
-<p><var>list</var>: is a 0 terminated list of gnutls_mac_algorithm_t elements.
-</p>
-<p>Sets the priority on the mac algorithms supported by gnutls.
-Priority is higher for elements specified before others.  After
-specifying the algorithms you want, you must append a 0.  Note
-that the priority is set on the client. The server does not use
-the algorithm&rsquo;s priority except for disabling algorithms that were
-not specified.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
-</p></dd></dl>
-
 <a name="gnutls_005fopenpgp_005fprivkey_005fsign_005fhash-1"></a>
 <h4 class="subheading">gnutls_openpgp_privkey_sign_hash</h4>
 <a name="gnutls_005fopenpgp_005fprivkey_005fsign_005fhash"></a><dl>
@@ -387,294 +217,11 @@ negative error value.
 <p><strong>Deprecated:</strong> Use <code>gnutls_privkey_sign_hash()</code>  instead.
 </p></dd></dl>
 
-<a name="gnutls_005fprivkey_005fsign_005fraw_005fdata-1"></a>
-<h4 class="subheading">gnutls_privkey_sign_raw_data</h4>
-<a name="gnutls_005fprivkey_005fsign_005fraw_005fdata"></a><dl>
-<dt><a name="index-gnutls_005fprivkey_005fsign_005fraw_005fdata"></a>Function: <em>int</em> <strong>gnutls_privkey_sign_raw_data</strong> <em>(gnutls_privkey_t <var>key</var>, unsigned <var>flags</var>, const gnutls_datum_t * <var>data</var>, gnutls_datum_t * <var>signature</var>)</em></dt>
-<dd><p><var>key</var>: Holds the key
-</p>
-<p><var>flags</var>: should be zero
-</p>
-<p><var>data</var>: holds the data to be signed
-</p>
-<p><var>signature</var>: will contain the signature allocate with <code>gnutls_malloc()</code> 
-</p>
-<p>This function will sign the given data using a signature algorithm
-supported by the private key. Note that this is a low-level function
-and does not apply any preprocessing or hash on the signed data. 
-For example on an RSA key the input  <code>data</code> should be of the DigestInfo
-PKCS <code>1</code>  1.5 format. Use it only if you know what are you doing.
-</p>
-<p>Note this function is equivalent to using the <code>GNUTLS_PRIVKEY_SIGN_FLAG_TLS1_RSA</code> 
-flag with <code>gnutls_privkey_sign_hash()</code> .
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p>
-<p><strong>Since:</strong> 3.1.10
-</p></dd></dl>
-
-<a name="gnutls_005fprotocol_005fset_005fpriority-1"></a>
-<h4 class="subheading">gnutls_protocol_set_priority</h4>
-<a name="gnutls_005fprotocol_005fset_005fpriority"></a><dl>
-<dt><a name="index-gnutls_005fprotocol_005fset_005fpriority"></a>Function: <em>int</em> <strong>gnutls_protocol_set_priority</strong> <em>(gnutls_session_t <var>session</var>, const int * <var>list</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
-</p>
-<p><var>list</var>: is a 0 terminated list of gnutls_protocol_t elements.
-</p>
-<p>Sets the priority on the protocol versions supported by gnutls.
-This function actually enables or disables protocols. Newer protocol
-versions always have highest priority.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
-</p></dd></dl>
-
-<a name="gnutls_005frsa_005fexport_005fget_005fmodulus_005fbits-1"></a>
-<h4 class="subheading">gnutls_rsa_export_get_modulus_bits</h4>
-<a name="gnutls_005frsa_005fexport_005fget_005fmodulus_005fbits"></a><dl>
-<dt><a name="index-gnutls_005frsa_005fexport_005fget_005fmodulus_005fbits"></a>Function: <em>int</em> <strong>gnutls_rsa_export_get_modulus_bits</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a gnutls session
-</p>
-<p>Get the export RSA parameter&rsquo;s modulus size.
-</p>
-<p><strong>Returns:</strong> The bits used in the last RSA-EXPORT key exchange with the
-peer, or a negative error code in case of error.
-</p></dd></dl>
-
-<a name="gnutls_005frsa_005fexport_005fget_005fpubkey-1"></a>
-<h4 class="subheading">gnutls_rsa_export_get_pubkey</h4>
-<a name="gnutls_005frsa_005fexport_005fget_005fpubkey"></a><dl>
-<dt><a name="index-gnutls_005frsa_005fexport_005fget_005fpubkey"></a>Function: <em>int</em> <strong>gnutls_rsa_export_get_pubkey</strong> <em>(gnutls_session_t <var>session</var>, gnutls_datum_t * <var>exponent</var>, gnutls_datum_t * <var>modulus</var>)</em></dt>
-<dd><p><var>session</var>: is a gnutls session
-</p>
-<p><var>exponent</var>: will hold the exponent.
-</p>
-<p><var>modulus</var>: will hold the modulus.
-</p>
-<p>This function will return the peer&rsquo;s public key exponent and
-modulus used in the last RSA-EXPORT authentication.  The output
-parameters must be freed with <code>gnutls_free()</code> .
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
-an error code is returned.
-</p></dd></dl>
-
-<a name="gnutls_005frsa_005fparams_005fcpy-1"></a>
-<h4 class="subheading">gnutls_rsa_params_cpy</h4>
-<a name="gnutls_005frsa_005fparams_005fcpy"></a><dl>
-<dt><a name="index-gnutls_005frsa_005fparams_005fcpy"></a>Function: <em>int</em> <strong>gnutls_rsa_params_cpy</strong> <em>(gnutls_rsa_params_t <var>dst</var>, gnutls_rsa_params_t <var>src</var>)</em></dt>
-<dd><p><var>dst</var>: Is the destination structure, which should be initialized.
-</p>
-<p><var>src</var>: Is the source structure
-</p>
-<p>This function will copy the RSA parameters structure from source
-to destination.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an negative error code.
-</p></dd></dl>
-
-<a name="gnutls_005frsa_005fparams_005fdeinit-1"></a>
-<h4 class="subheading">gnutls_rsa_params_deinit</h4>
-<a name="gnutls_005frsa_005fparams_005fdeinit"></a><dl>
-<dt><a name="index-gnutls_005frsa_005fparams_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_rsa_params_deinit</strong> <em>(gnutls_rsa_params_t <var>rsa_params</var>)</em></dt>
-<dd><p><var>rsa_params</var>: Is a structure that holds the parameters
-</p>
-<p>This function will deinitialize the RSA parameters structure.
-</p></dd></dl>
-
-<a name="gnutls_005frsa_005fparams_005fexport_005fpkcs1-1"></a>
-<h4 class="subheading">gnutls_rsa_params_export_pkcs1</h4>
-<a name="gnutls_005frsa_005fparams_005fexport_005fpkcs1"></a><dl>
-<dt><a name="index-gnutls_005frsa_005fparams_005fexport_005fpkcs1"></a>Function: <em>int</em> <strong>gnutls_rsa_params_export_pkcs1</strong> <em>(gnutls_rsa_params_t <var>params</var>, gnutls_x509_crt_fmt_t <var>format</var>, unsigned char * <var>params_data</var>, size_t * <var>params_data_size</var>)</em></dt>
-<dd><p><var>params</var>: Holds the RSA parameters
-</p>
-<p><var>format</var>: the format of output params. One of PEM or DER.
-</p>
-<p><var>params_data</var>: will contain a PKCS1 RSAPrivateKey structure PEM or DER encoded
-</p>
-<p><var>params_data_size</var>: holds the size of params_data (and will be replaced by the actual size of parameters)
-</p>
-<p>This function will export the given RSA parameters to a PKCS1
-RSAPrivateKey structure. If the buffer provided is not long enough to
-hold the output, then GNUTLS_E_SHORT_MEMORY_BUFFER will be returned.
-</p>
-<p>If the structure is PEM encoded, it will have a header
-of &quot;BEGIN RSA PRIVATE KEY&quot;.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an negative error code.
-</p></dd></dl>
-
-<a name="gnutls_005frsa_005fparams_005fexport_005fraw-1"></a>
-<h4 class="subheading">gnutls_rsa_params_export_raw</h4>
-<a name="gnutls_005frsa_005fparams_005fexport_005fraw"></a><dl>
-<dt><a name="index-gnutls_005frsa_005fparams_005fexport_005fraw"></a>Function: <em>int</em> <strong>gnutls_rsa_params_export_raw</strong> <em>(gnutls_rsa_params_t <var>rsa</var>, gnutls_datum_t * <var>m</var>, gnutls_datum_t * <var>e</var>, gnutls_datum_t * <var>d</var>, gnutls_datum_t * <var>p</var>, gnutls_datum_t * <var>q</var>, gnutls_datum_t * <var>u</var>, unsigned int * <var>bits</var>)</em></dt>
-<dd><p><var>rsa</var>: a structure that holds the rsa parameters
-</p>
-<p><var>m</var>: will hold the modulus
-</p>
-<p><var>e</var>: will hold the public exponent
-</p>
-<p><var>d</var>: will hold the private exponent
-</p>
-<p><var>p</var>: will hold the first prime (p)
-</p>
-<p><var>q</var>: will hold the second prime (q)
-</p>
-<p><var>u</var>: will hold the coefficient
-</p>
-<p><var>bits</var>: if non null will hold the prime&rsquo;s number of bits
-</p>
-<p>This function will export the RSA parameters found in the given
-structure. The new parameters will be allocated using
-<code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an negative error code.
-</p></dd></dl>
-
-<a name="gnutls_005frsa_005fparams_005fgenerate2-1"></a>
-<h4 class="subheading">gnutls_rsa_params_generate2</h4>
-<a name="gnutls_005frsa_005fparams_005fgenerate2"></a><dl>
-<dt><a name="index-gnutls_005frsa_005fparams_005fgenerate2"></a>Function: <em>int</em> <strong>gnutls_rsa_params_generate2</strong> <em>(gnutls_rsa_params_t <var>params</var>, unsigned int <var>bits</var>)</em></dt>
-<dd><p><var>params</var>: The structure where the parameters will be stored
-</p>
-<p><var>bits</var>: is the prime&rsquo;s number of bits
-</p>
-<p>This function will generate new temporary RSA parameters for use in
-RSA-EXPORT ciphersuites.  This function is normally slow.
-</p>
-<p>Note that if the parameters are to be used in export cipher suites the
-bits value should be 512 or less.
-Also note that the generation of new RSA parameters is only useful
-to servers. Clients use the parameters sent by the server, thus it&rsquo;s
-no use calling this in client side.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an negative error code.
-</p></dd></dl>
-
-<a name="gnutls_005frsa_005fparams_005fimport_005fpkcs1-1"></a>
-<h4 class="subheading">gnutls_rsa_params_import_pkcs1</h4>
-<a name="gnutls_005frsa_005fparams_005fimport_005fpkcs1"></a><dl>
-<dt><a name="index-gnutls_005frsa_005fparams_005fimport_005fpkcs1"></a>Function: <em>int</em> <strong>gnutls_rsa_params_import_pkcs1</strong> <em>(gnutls_rsa_params_t <var>params</var>, const gnutls_datum_t * <var>pkcs1_params</var>, gnutls_x509_crt_fmt_t <var>format</var>)</em></dt>
-<dd><p><var>params</var>: A structure where the parameters will be copied to
-</p>
-<p><var>pkcs1_params</var>: should contain a PKCS1 RSAPrivateKey structure PEM or DER encoded
-</p>
-<p><var>format</var>: the format of params. PEM or DER.
-</p>
-<p>This function will extract the RSAPrivateKey found in a PKCS1 formatted
-structure.
-</p>
-<p>If the structure is PEM encoded, it should have a header
-of &quot;BEGIN RSA PRIVATE KEY&quot;.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an negative error code.
-</p></dd></dl>
-
-<a name="gnutls_005frsa_005fparams_005fimport_005fraw-1"></a>
-<h4 class="subheading">gnutls_rsa_params_import_raw</h4>
-<a name="gnutls_005frsa_005fparams_005fimport_005fraw"></a><dl>
-<dt><a name="index-gnutls_005frsa_005fparams_005fimport_005fraw"></a>Function: <em>int</em> <strong>gnutls_rsa_params_import_raw</strong> <em>(gnutls_rsa_params_t <var>rsa_params</var>, const gnutls_datum_t * <var>m</var>, const gnutls_datum_t * <var>e</var>, const gnutls_datum_t * <var>d</var>, const gnutls_datum_t * <var>p</var>, const gnutls_datum_t * <var>q</var>, const gnutls_datum_t * <var>u</var>)</em></dt>
-<dd><p><var>rsa_params</var>: Is a structure will hold the parameters
-</p>
-<p><var>m</var>: holds the modulus
-</p>
-<p><var>e</var>: holds the public exponent
-</p>
-<p><var>d</var>: holds the private exponent
-</p>
-<p><var>p</var>: holds the first prime (p)
-</p>
-<p><var>q</var>: holds the second prime (q)
-</p>
-<p><var>u</var>: holds the coefficient
-</p>
-<p>This function will replace the parameters in the given structure.
-The new parameters should be stored in the appropriate
-gnutls_datum.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an negative error code.
-</p></dd></dl>
-
-<a name="gnutls_005frsa_005fparams_005finit-1"></a>
-<h4 class="subheading">gnutls_rsa_params_init</h4>
-<a name="gnutls_005frsa_005fparams_005finit"></a><dl>
-<dt><a name="index-gnutls_005frsa_005fparams_005finit"></a>Function: <em>int</em> <strong>gnutls_rsa_params_init</strong> <em>(gnutls_rsa_params_t * <var>rsa_params</var>)</em></dt>
-<dd><p><var>rsa_params</var>: Is a structure that will hold the parameters
-</p>
-<p>This function will initialize the temporary RSA parameters structure.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an negative error code.
-</p></dd></dl>
-
-<a name="gnutls_005fset_005fdefault_005fexport_005fpriority-1"></a>
-<h4 class="subheading">gnutls_set_default_export_priority</h4>
-<a name="gnutls_005fset_005fdefault_005fexport_005fpriority"></a><dl>
-<dt><a name="index-gnutls_005fset_005fdefault_005fexport_005fpriority"></a>Function: <em>int</em> <strong>gnutls_set_default_export_priority</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
-<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  structure.
-</p>
-<p>Sets some default priority on the ciphers, key exchange methods, macs
-and compression methods.  This function also includes weak algorithms.
-</p>
-<p>This is the same as calling:
-</p>
-<p>gnutls_priority_set_direct (session, &quot;EXPORT&quot;, NULL);
-</p>
-<p>This function is kept around for backwards compatibility, but
-because of its wide use it is still fully supported.  If you wish
-to allow users to provide a string that specify which ciphers to
-use (which is recommended), you should use
-<code>gnutls_priority_set_direct()</code>  or <code>gnutls_priority_set()</code>  instead.
-</p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
-</p></dd></dl>
-
-<a name="gnutls_005fsign_005fcallback_005fget-1"></a>
-<h4 class="subheading">gnutls_sign_callback_get</h4>
-<a name="gnutls_005fsign_005fcallback_005fget"></a><dl>
-<dt><a name="index-gnutls_005fsign_005fcallback_005fget"></a>Function: <em>gnutls_sign_func</em> <strong>gnutls_sign_callback_get</strong> <em>(gnutls_session_t <var>session</var>, void ** <var>userdata</var>)</em></dt>
-<dd><p><var>session</var>: is a gnutls session
-</p>
-<p><var>userdata</var>: if non-<code>NULL</code> , will be set to abstract callback pointer.
-</p>
-<p>Retrieve the callback function, and its userdata pointer.
-</p>
-<p><strong>Returns:</strong> The function pointer set by <code>gnutls_sign_callback_set()</code> , or
-if not set, <code>NULL</code> .
-</p>
-<p><strong>Deprecated:</strong> Use the PKCS 11 interfaces instead.
-</p></dd></dl>
-
-<a name="gnutls_005fsign_005fcallback_005fset-1"></a>
-<h4 class="subheading">gnutls_sign_callback_set</h4>
-<a name="gnutls_005fsign_005fcallback_005fset"></a><dl>
-<dt><a name="index-gnutls_005fsign_005fcallback_005fset"></a>Function: <em>void</em> <strong>gnutls_sign_callback_set</strong> <em>(gnutls_session_t <var>session</var>, gnutls_sign_func <var>sign_func</var>, void * <var>userdata</var>)</em></dt>
-<dd><p><var>session</var>: is a gnutls session
-</p>
-<p><var>sign_func</var>: function pointer to application&rsquo;s sign callback.
-</p>
-<p><var>userdata</var>: void pointer that will be passed to sign callback.
-</p>
-<p>Set the callback function.  The function must have this prototype:
-</p>
-<p>typedef int (*gnutls_sign_func) (gnutls_session_t session,
-void *userdata,
-gnutls_certificate_type_t cert_type,
-const gnutls_datum_t * cert,
-const gnutls_datum_t * hash,
-gnutls_datum_t * signature);
-</p>
-<p>The  <code>userdata</code> parameter is passed to the  <code>sign_func</code> verbatim, and
-can be used to store application-specific data needed in the
-callback function.  See also <code>gnutls_sign_callback_get()</code> .
-</p>
-<p><strong>Deprecated:</strong> Use the PKCS 11 or <code>gnutls_privkey_t</code>  interfacess like <code>gnutls_privkey_import_ext()</code>  instead.
-</p></dd></dl>
-
 <a name="gnutls_005fx509_005fcrl_005fsign-1"></a>
 <h4 class="subheading">gnutls_x509_crl_sign</h4>
 <a name="gnutls_005fx509_005fcrl_005fsign"></a><dl>
 <dt><a name="index-gnutls_005fx509_005fcrl_005fsign"></a>Function: <em>int</em> <strong>gnutls_x509_crl_sign</strong> <em>(gnutls_x509_crl_t <var>crl</var>, gnutls_x509_crt_t <var>issuer</var>, gnutls_x509_privkey_t <var>issuer_key</var>)</em></dt>
-<dd><p><var>crl</var>: should contain a gnutls_x509_crl_t structure
+<dd><p><var>crl</var>: should contain a gnutls_x509_crl_t type
 </p>
 <p><var>issuer</var>: is the certificate of the certificate issuer
 </p>
@@ -693,7 +240,7 @@ negative error value.
 <h4 class="subheading">gnutls_x509_crq_sign</h4>
 <a name="gnutls_005fx509_005fcrq_005fsign"></a><dl>
 <dt><a name="index-gnutls_005fx509_005fcrq_005fsign"></a>Function: <em>int</em> <strong>gnutls_x509_crq_sign</strong> <em>(gnutls_x509_crq_t <var>crq</var>, gnutls_x509_privkey_t <var>key</var>)</em></dt>
-<dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  structure
+<dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  type
 </p>
 <p><var>key</var>: holds a private key
 </p>
@@ -728,76 +275,11 @@ returned on error.
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
 
-<a name="gnutls_005fx509_005fcrt_005fget_005fverify_005falgorithm-1"></a>
-<h4 class="subheading">gnutls_x509_crt_get_verify_algorithm</h4>
-<a name="gnutls_005fx509_005fcrt_005fget_005fverify_005falgorithm"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fverify_005falgorithm"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_verify_algorithm</strong> <em>(gnutls_x509_crt_t <var>crt</var>, const gnutls_datum_t * <var>signature</var>, gnutls_digest_algorithm_t * <var>hash</var>)</em></dt>
-<dd><p><var>crt</var>: Holds the certificate
-</p>
-<p><var>signature</var>: contains the signature
-</p>
-<p><var>hash</var>: The result of the call with the hash algorithm used for signature
-</p>
-<p>This function will read the certifcate and the signed data to
-determine the hash algorithm used to generate the signature.
-</p>
-<p><strong>Deprecated:</strong> Use <code>gnutls_pubkey_get_verify_algorithm()</code>  instead.
-</p>
-<p><strong>Returns:</strong> the 0 if the hash algorithm is found. A negative error code is
-returned on error.
-</p>
-<p><strong>Since:</strong> 2.8.0
-</p></dd></dl>
-
-<a name="gnutls_005fx509_005fcrt_005fverify_005fdata-1"></a>
-<h4 class="subheading">gnutls_x509_crt_verify_data</h4>
-<a name="gnutls_005fx509_005fcrt_005fverify_005fdata"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fverify_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_crt_verify_data</strong> <em>(gnutls_x509_crt_t <var>crt</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>data</var>, const gnutls_datum_t * <var>signature</var>)</em></dt>
-<dd><p><var>crt</var>: Holds the certificate
-</p>
-<p><var>flags</var>: should be 0 for now
-</p>
-<p><var>data</var>: holds the data to be signed
-</p>
-<p><var>signature</var>: contains the signature
-</p>
-<p>This function will verify the given signed data, using the
-parameters from the certificate.
-</p>
-<p>Deprecated. This function cannot be easily used securely. 
-Use <code>gnutls_pubkey_verify_data2()</code>  instead.
-</p>
-<p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
-is returned, and zero or positive code on success.
-</p></dd></dl>
-
-<a name="gnutls_005fx509_005fcrt_005fverify_005fhash-1"></a>
-<h4 class="subheading">gnutls_x509_crt_verify_hash</h4>
-<a name="gnutls_005fx509_005fcrt_005fverify_005fhash"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fverify_005fhash"></a>Function: <em>int</em> <strong>gnutls_x509_crt_verify_hash</strong> <em>(gnutls_x509_crt_t <var>crt</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>hash</var>, const gnutls_datum_t * <var>signature</var>)</em></dt>
-<dd><p><var>crt</var>: Holds the certificate
-</p>
-<p><var>flags</var>: should be 0 for now
-</p>
-<p><var>hash</var>: holds the hash digest to be verified
-</p>
-<p><var>signature</var>: contains the signature
-</p>
-<p>This function will verify the given signed digest, using the
-parameters from the certificate.
-</p>
-<p>Deprecated. This function cannot be easily used securely. 
-Use <code>gnutls_pubkey_verify_hash2()</code>  instead.
-</p>
-<p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
-is returned, and zero or positive code on success.
-</p></dd></dl>
-
 <a name="gnutls_005fx509_005fprivkey_005fsign_005fdata-1"></a>
 <h4 class="subheading">gnutls_x509_privkey_sign_data</h4>
 <a name="gnutls_005fx509_005fprivkey_005fsign_005fdata"></a><dl>
 <dt><a name="index-gnutls_005fx509_005fprivkey_005fsign_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_privkey_sign_data</strong> <em>(gnutls_x509_privkey_t <var>key</var>, gnutls_digest_algorithm_t <var>digest</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>data</var>, void * <var>signature</var>, size_t * <var>signature_size</var>)</em></dt>
-<dd><p><var>key</var>: Holds the key
+<dd><p><var>key</var>: a key
 </p>
 <p><var>digest</var>: should be MD5 or SHA1
 </p>
@@ -832,7 +314,7 @@ negative error value.
 <h4 class="subheading">gnutls_x509_privkey_sign_hash</h4>
 <a name="gnutls_005fx509_005fprivkey_005fsign_005fhash"></a><dl>
 <dt><a name="index-gnutls_005fx509_005fprivkey_005fsign_005fhash"></a>Function: <em>int</em> <strong>gnutls_x509_privkey_sign_hash</strong> <em>(gnutls_x509_privkey_t <var>key</var>, const gnutls_datum_t * <var>hash</var>, gnutls_datum_t * <var>signature</var>)</em></dt>
-<dd><p><var>key</var>: Holds the key
+<dd><p><var>key</var>: a key
 </p>
 <p><var>hash</var>: holds the data to be signed
 </p>
