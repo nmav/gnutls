@@ -42,11 +42,6 @@
     <td>Unsupported since January 2014.</td>
   </tr>
   <tr>
-    <td>3.0.x - 3.2.x</td>
-    <td>3.0.0</td>
-    <td>Previous stable releases; should be upgraded to 3.3.x.</td>
-  </tr>
-  <tr>
     <td>3.3.x</td>
     <td>3.0.0</td>
     <td>Current stable release.</td>
