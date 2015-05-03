@@ -3,7 +3,34 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2015-04-08T08:42:21+00:00</updated>
+<updated>2015-05-03T20:08:45+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2015-05-03</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2015-05-03'/>
+    <title>GnuTLS 3.4.1</title>
+    <updated>2015-05-03T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2015-05-03.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a
+href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8137">GnuTLS
+3.3.15</a> and <a
+href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8138">GnuTLS
+3.4.1</a> which are bug fix releases in the current and next stable branches.
+</p>
+<p>
+Added <a
+href="security.html#GNUTLS-SA-2015-2">GnuTLS-SA-2015-2</a> security advisory.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2015-04-08</id>
@@ -443,34 +470,6 @@ branches respectively.
 <p>
 <a href="http://www.gnutls.org/security.html#GNUTLS-SA-2014-3">Posted a security advisory</a> on a vulnerability
 on the client side of the gnutls library.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2014-05-06</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-05-06'/>
-    <title>GnuTLS 3.3.2, 3.2.14 and 3.1.24</title>
-    <updated>2014-05-06T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-05-06.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Released <a
-href="http://lists.gnutls.org/pipermail/gnutls-help/2014-May/003468.html">GnuTLS
-3.3.2</a>,
-<a
-href="http://lists.gnutls.org/pipermail/gnutls-help/2014-May/003467.html">GnuTLS
-3.2.14</a>,
-<a
-href="http://lists.gnutls.org/pipermail/gnutls-help/2014-May/003466.html">GnuTLS
-3.1.24</a>, which are bug-fix releases on the next, current and previous stable
-branches respectively. 
 </p>
 
     </div>

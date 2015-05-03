@@ -1,0 +1,12 @@
+<title>GnuTLS 3.4.1</title>
+<p>
+Released <a
+href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8137">GnuTLS
+3.3.15</a> and <a
+href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8138">GnuTLS
+3.4.1</a> which are bug fix releases in the current and next stable branches.
+</p>
+<p>
+Added <a
+href="security.html#GNUTLS-SA-2015-2">GnuTLS-SA-2015-2</a> security advisory.
+</p>
