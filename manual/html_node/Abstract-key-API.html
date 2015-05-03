@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.0 of GnuTLS.
+3.4.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.0: Abstract key API</title>
+<title>GnuTLS 3.4.1: Abstract key API</title>
 
-<meta name="description" content="GnuTLS 3.4.0: Abstract key API">
-<meta name="keywords" content="GnuTLS 3.4.0: Abstract key API">
+<meta name="description" content="GnuTLS 3.4.1: Abstract key API">
+<meta name="keywords" content="GnuTLS 3.4.1: Abstract key API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -1282,17 +1282,19 @@ returned, and 0 on success.
 <dt><a name="index-gnutls_005fpubkey_005fexport_005fdsa_005fraw"></a>Function: <em>int</em> <strong>gnutls_pubkey_export_dsa_raw</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>p</var>, gnutls_datum_t * <var>q</var>, gnutls_datum_t * <var>g</var>, gnutls_datum_t * <var>y</var>)</em></dt>
 <dd><p><var>key</var>: Holds the public key
 </p>
-<p><var>p</var>: will hold the p
+<p><var>p</var>: will hold the p (may be <code>NULL</code> )
 </p>
-<p><var>q</var>: will hold the q
+<p><var>q</var>: will hold the q (may be <code>NULL</code> )
 </p>
-<p><var>g</var>: will hold the g
+<p><var>g</var>: will hold the g (may be <code>NULL</code> )
 </p>
-<p><var>y</var>: will hold the y
+<p><var>y</var>: will hold the y (may be <code>NULL</code> )
 </p>
 <p>This function will export the DSA public key&rsquo;s parameters found in
 the given certificate.  The new parameters will be allocated using
 <code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p>This function allows for <code>NULL</code>  parameters since 3.4.1.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p>
@@ -1305,15 +1307,17 @@ the given certificate.  The new parameters will be allocated using
 <dt><a name="index-gnutls_005fpubkey_005fexport_005fecc_005fraw"></a>Function: <em>int</em> <strong>gnutls_pubkey_export_ecc_raw</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_ecc_curve_t * <var>curve</var>, gnutls_datum_t * <var>x</var>, gnutls_datum_t * <var>y</var>)</em></dt>
 <dd><p><var>key</var>: Holds the public key
 </p>
-<p><var>curve</var>: will hold the curve
+<p><var>curve</var>: will hold the curve (may be <code>NULL</code> )
 </p>
-<p><var>x</var>: will hold x
+<p><var>x</var>: will hold x (may be <code>NULL</code> )
 </p>
-<p><var>y</var>: will hold y
+<p><var>y</var>: will hold y (may be <code>NULL</code> )
 </p>
 <p>This function will export the ECC public key&rsquo;s parameters found in
-the given certificate.  The new parameters will be allocated using
+the given key.  The new parameters will be allocated using
 <code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p>This function allows for <code>NULL</code>  parameters since 3.4.1.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p>
@@ -1345,13 +1349,15 @@ the given certificate.  The new parameters will be allocated using
 <dt><a name="index-gnutls_005fpubkey_005fexport_005frsa_005fraw"></a>Function: <em>int</em> <strong>gnutls_pubkey_export_rsa_raw</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>m</var>, gnutls_datum_t * <var>e</var>)</em></dt>
 <dd><p><var>key</var>: Holds the certificate
 </p>
-<p><var>m</var>: will hold the modulus
+<p><var>m</var>: will hold the modulus (may be <code>NULL</code> )
 </p>
-<p><var>e</var>: will hold the public exponent
+<p><var>e</var>: will hold the public exponent (may be <code>NULL</code> )
 </p>
 <p>This function will export the RSA public key&rsquo;s parameters found in
 the given structure.  The new parameters will be allocated using
 <code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p>This function allows for <code>NULL</code>  parameters since 3.4.1.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p>
@@ -1364,7 +1370,7 @@ the given structure.  The new parameters will be allocated using
 <dt><a name="index-gnutls_005fpubkey_005fget_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_key_id</strong> <em>(gnutls_pubkey_t <var>key</var>, unsigned int <var>flags</var>, unsigned char * <var>output_data</var>, size_t * <var>output_data_size</var>)</em></dt>
 <dd><p><var>key</var>: Holds the public key
 </p>
-<p><var>flags</var>: should be 0 for now
+<p><var>flags</var>: should be one of the flags from <code>gnutls_keyid_flags_t</code> 
 </p>
 <p><var>output_data</var>: will contain the key ID
 </p>

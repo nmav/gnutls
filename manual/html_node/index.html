@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.0 of GnuTLS.
+3.4.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.0: Top</title>
+<title>GnuTLS 3.4.1: Top</title>
 
-<meta name="description" content="GnuTLS 3.4.0: Top">
-<meta name="keywords" content="GnuTLS 3.4.0: Top">
+<meta name="description" content="GnuTLS 3.4.1: Top">
+<meta name="keywords" content="GnuTLS 3.4.1: Top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -155,7 +155,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.4.0</h1>
+<h1 class="settitle" align="center">GnuTLS 3.4.1</h1>
 
 
 
@@ -395,7 +395,11 @@ dl {
     </ul></li>
     <li><a name="toc-Setting-up-the-transport-layer-1" href="Setting-up-the-transport-layer.html#Setting-up-the-transport-layer">6.5 Setting up the transport layer</a>
     <ul class="no-bullet">
-      <li><a name="toc-Asynchronous-operation-1" href="Asynchronous-operation.html#Asynchronous-operation">6.5.1 Asynchronous operation</a></li>
+      <li><a name="toc-Asynchronous-operation-1" href="Asynchronous-operation.html#Asynchronous-operation">6.5.1 Asynchronous operation</a>
+      <ul class="no-bullet">
+        <li><a name="toc-TLS-protocol" href="Asynchronous-operation.html#TLS-protocol">6.5.1.1 TLS protocol</a></li>
+        <li><a name="toc-Datagram-TLS-protocol" href="Asynchronous-operation.html#Datagram-TLS-protocol">6.5.1.2 Datagram TLS protocol</a></li>
+      </ul></li>
       <li><a name="toc-DTLS-sessions-1" href="DTLS-sessions.html#DTLS-sessions">6.5.2 DTLS sessions</a></li>
     </ul></li>
     <li><a name="toc-TLS-handshake-1" href="TLS-handshake.html#TLS-handshake">6.6 TLS handshake</a></li>
@@ -412,11 +416,16 @@ dl {
         <li><a name="toc-Trust-on-first-use" href="Certificate-verification.html#Trust-on-first-use">6.12.2.1 Trust on first use</a></li>
         <li><a name="toc-DANE-verification" href="Certificate-verification.html#DANE-verification">6.12.2.2 DANE verification</a></li>
       </ul></li>
-      <li><a name="toc-Parameter-generation-1" href="Parameter-generation.html#Parameter-generation">6.12.3 Parameter generation</a></li>
-      <li><a name="toc-Deriving-keys-for-other-applications_002fprotocols-1" href="Deriving-keys-for-other-applications_002fprotocols.html#Deriving-keys-for-other-applications_002fprotocols">6.12.4 Deriving keys for other applications/protocols</a></li>
-      <li><a name="toc-Channel-bindings" href="Channel-Bindings.html#Channel-Bindings">6.12.5 Channel bindings</a></li>
-      <li><a name="toc-Interoperability-1" href="Interoperability.html#Interoperability">6.12.6 Interoperability</a></li>
-      <li><a name="toc-Compatibility-with-the-OpenSSL-library-1" href="Compatibility-with-the-OpenSSL-library.html#Compatibility-with-the-OpenSSL-library">6.12.7 Compatibility with the OpenSSL library</a></li>
+      <li><a name="toc-Re_002dauthentication-1" href="Re_002dauthentication.html#Re_002dauthentication">6.12.3 Re-authentication</a>
+      <ul class="no-bullet">
+        <li><a name="toc-Client-side" href="Re_002dauthentication.html#Client-side">6.12.3.1 Client side</a></li>
+        <li><a name="toc-Server-side" href="Re_002dauthentication.html#Server-side">6.12.3.2 Server side</a></li>
+      </ul></li>
+      <li><a name="toc-Parameter-generation-1" href="Parameter-generation.html#Parameter-generation">6.12.4 Parameter generation</a></li>
+      <li><a name="toc-Deriving-keys-for-other-applications_002fprotocols-1" href="Deriving-keys-for-other-applications_002fprotocols.html#Deriving-keys-for-other-applications_002fprotocols">6.12.5 Deriving keys for other applications/protocols</a></li>
+      <li><a name="toc-Channel-bindings" href="Channel-Bindings.html#Channel-Bindings">6.12.6 Channel bindings</a></li>
+      <li><a name="toc-Interoperability-1" href="Interoperability.html#Interoperability">6.12.7 Interoperability</a></li>
+      <li><a name="toc-Compatibility-with-the-OpenSSL-library-1" href="Compatibility-with-the-OpenSSL-library.html#Compatibility-with-the-OpenSSL-library">6.12.8 Compatibility with the OpenSSL library</a></li>
     </ul></li>
   </ul></li>
   <li><a name="toc-GnuTLS-application-examples-1" href="GnuTLS-application-examples.html#GnuTLS-application-examples">7 GnuTLS application examples</a>
@@ -520,7 +529,7 @@ Next: <a href="Preface.html#Preface" accesskey="n" rel="next">Preface</a>, Up: <
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 4 March 2015 for version
-3.4.0 of GnuTLS.
+3.4.1 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2015 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2015 Nikos Mavrogiannopoulos

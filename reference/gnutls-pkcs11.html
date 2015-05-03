@@ -715,8 +715,8 @@ gnutls_pkcs11_init (<em class="parameter"><code>unsigned <span class="type">int<
 read configuration files if <a class="link" href="gnutls-pkcs11.html#GNUTLS-PKCS11-FLAG-AUTO:CAPS" title="GNUTLS_PKCS11_FLAG_AUTO"><code class="literal">GNUTLS_PKCS11_FLAG_AUTO</code></a> is used or allow
 you to independently load PKCS 11 modules using <a class="link" href="gnutls-pkcs11.html#gnutls-pkcs11-add-provider" title="gnutls_pkcs11_add_provider ()"><code class="function">gnutls_pkcs11_add_provider()</code></a>
 if <a class="link" href="gnutls-pkcs11.html#GNUTLS-PKCS11-FLAG-MANUAL:CAPS" title="GNUTLS_PKCS11_FLAG_MANUAL"><code class="literal">GNUTLS_PKCS11_FLAG_MANUAL</code></a> is specified.</p>
-<p>Normally you don't need to call this function since it is being called
-when the first PKCS 11 operation is requested using the <a class="link" href="gnutls-pkcs11.html#GNUTLS-PKCS11-FLAG-AUTO:CAPS" title="GNUTLS_PKCS11_FLAG_AUTO"><code class="literal">GNUTLS_PKCS11_FLAG_AUTO</code></a>
+<p>You don't need to call this function since GnuTLS 3.3.0 because it is being called
+during the first request PKCS 11 operation. That call will assume the <a class="link" href="gnutls-pkcs11.html#GNUTLS-PKCS11-FLAG-AUTO:CAPS" title="GNUTLS_PKCS11_FLAG_AUTO"><code class="literal">GNUTLS_PKCS11_FLAG_AUTO</code></a>
 flag. If another flags are required then it must be called independently
 prior to any PKCS 11 operation.</p>
 <div class="refsect3">

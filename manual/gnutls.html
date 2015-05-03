@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.0 of GnuTLS.
+3.4.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.0</title>
+<title>GnuTLS 3.4.1</title>
 
-<meta name="description" content="GnuTLS 3.4.0">
-<meta name="keywords" content="GnuTLS 3.4.0">
+<meta name="description" content="GnuTLS 3.4.1">
+<meta name="keywords" content="GnuTLS 3.4.1">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -154,7 +154,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.4.0</h1>
+<h1 class="settitle" align="center">GnuTLS 3.4.1</h1>
 
 
 
@@ -394,7 +394,11 @@ dl {
     </ul></li>
     <li><a name="toc-Setting-up-the-transport-layer-1" href="#Setting-up-the-transport-layer">6.5 Setting up the transport layer</a>
     <ul class="no-bullet">
-      <li><a name="toc-Asynchronous-operation-1" href="#Asynchronous-operation">6.5.1 Asynchronous operation</a></li>
+      <li><a name="toc-Asynchronous-operation-1" href="#Asynchronous-operation">6.5.1 Asynchronous operation</a>
+      <ul class="no-bullet">
+        <li><a name="toc-TLS-protocol" href="#TLS-protocol">6.5.1.1 TLS protocol</a></li>
+        <li><a name="toc-Datagram-TLS-protocol" href="#Datagram-TLS-protocol">6.5.1.2 Datagram TLS protocol</a></li>
+      </ul></li>
       <li><a name="toc-DTLS-sessions-1" href="#DTLS-sessions">6.5.2 DTLS sessions</a></li>
     </ul></li>
     <li><a name="toc-TLS-handshake-1" href="#TLS-handshake">6.6 TLS handshake</a></li>
@@ -411,11 +415,16 @@ dl {
         <li><a name="toc-Trust-on-first-use" href="#Trust-on-first-use">6.12.2.1 Trust on first use</a></li>
         <li><a name="toc-DANE-verification" href="#DANE-verification">6.12.2.2 DANE verification</a></li>
       </ul></li>
-      <li><a name="toc-Parameter-generation-1" href="#Parameter-generation">6.12.3 Parameter generation</a></li>
-      <li><a name="toc-Deriving-keys-for-other-applications_002fprotocols-1" href="#Deriving-keys-for-other-applications_002fprotocols">6.12.4 Deriving keys for other applications/protocols</a></li>
-      <li><a name="toc-Channel-bindings" href="#Channel-Bindings">6.12.5 Channel bindings</a></li>
-      <li><a name="toc-Interoperability-1" href="#Interoperability">6.12.6 Interoperability</a></li>
-      <li><a name="toc-Compatibility-with-the-OpenSSL-library-1" href="#Compatibility-with-the-OpenSSL-library">6.12.7 Compatibility with the OpenSSL library</a></li>
+      <li><a name="toc-Re_002dauthentication-1" href="#Re_002dauthentication">6.12.3 Re-authentication</a>
+      <ul class="no-bullet">
+        <li><a name="toc-Client-side" href="#Client-side">6.12.3.1 Client side</a></li>
+        <li><a name="toc-Server-side" href="#Server-side">6.12.3.2 Server side</a></li>
+      </ul></li>
+      <li><a name="toc-Parameter-generation-1" href="#Parameter-generation">6.12.4 Parameter generation</a></li>
+      <li><a name="toc-Deriving-keys-for-other-applications_002fprotocols-1" href="#Deriving-keys-for-other-applications_002fprotocols">6.12.5 Deriving keys for other applications/protocols</a></li>
+      <li><a name="toc-Channel-bindings" href="#Channel-Bindings">6.12.6 Channel bindings</a></li>
+      <li><a name="toc-Interoperability-1" href="#Interoperability">6.12.7 Interoperability</a></li>
+      <li><a name="toc-Compatibility-with-the-OpenSSL-library-1" href="#Compatibility-with-the-OpenSSL-library">6.12.8 Compatibility with the OpenSSL library</a></li>
     </ul></li>
   </ul></li>
   <li><a name="toc-GnuTLS-application-examples-1" href="#GnuTLS-application-examples">7 GnuTLS application examples</a>
@@ -518,7 +527,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 4 March 2015 for version
-3.4.0 of GnuTLS.
+3.4.1 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2015 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2015 Nikos Mavrogiannopoulos
@@ -2326,7 +2335,7 @@ to convert the X.509 structure to a <code>gnutls_pubkey_t</code>. See
 <dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_key_id</strong> <em>(gnutls_x509_crt_t <var>crt</var>, unsigned int <var>flags</var>, unsigned char * <var>output_data</var>, size_t * <var>output_data_size</var>)</em></dt>
 <dd><p><var>crt</var>: Holds the certificate
 </p>
-<p><var>flags</var>: should be 0 for now
+<p><var>flags</var>: should be one of the flags from <code>gnutls_keyid_flags_t</code> 
 </p>
 <p><var>output_data</var>: will contain the key ID
 </p>
@@ -4446,7 +4455,7 @@ In certain operations it prints the information in C-friendly format, suitable f
 <h4 class="subsubheading">fingerprint option</h4>
 
 <p>This is the &ldquo;print the fingerprint of the given certificate&rdquo; option.
-This is a simple hash of the DER encoding of the certificate. It is always better to use the key-id.
+This is a simple hash of the DER encoding of the certificate. It can be combined with the &ndash;hash parameter. However, it is recommended for identification to use the key-id which depends only on the certificate&rsquo;s key.
 <a name="certtool-key_002did"></a></p><a name="key_002did-option"></a>
 <h4 class="subsubheading">key-id option</h4>
 
@@ -6809,13 +6818,12 @@ Next: <a href="#Accessing-objects-that-require-a-PIN" accesskey="n" rel="next">A
 <a name="Initialization-1"></a>
 <h4 class="subsection">5.3.1 Initialization</h4>
 <p>To allow all <acronym>GnuTLS</acronym> applications to transparently access smard cards
-and tokens, <acronym>PKCS</acronym> #11 is automatically initialized during the global 
-initialization (see <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>). The initialization function, to select
-which modules to load reads certain module configuration files.
-Those are stored in <code>/etc/pkcs11/modules/</code> and 
-are the configuration files of <acronym>p11-kit</acronym><a name="DOCF12" href="#FOOT12"><sup>12</sup></a>.
-For example a file that will load the <acronym>OpenSC</acronym> module, could be named
-<code>/etc/pkcs11/modules/opensc.module</code> and contain the following:
+and tokens, <acronym>PKCS</acronym> #11 is automatically initialized during the first
+call of a <acronym>PKCS</acronym> #11 related function. The initialization process, based
+on p11-kit configuration, loads any appropriate modules. The p11-kit configuration
+files<a name="DOCF12" href="#FOOT12"><sup>12</sup></a> are typically stored in <code>/etc/pkcs11/modules/</code>.
+For example a file that will instruct GnuTLS to load the <acronym>OpenSC</acronym> module,
+could be named <code>/etc/pkcs11/modules/opensc.module</code> and contain the following:
 </p>
 <div class="example">
 <pre class="example">module: /usr/lib/opensc-pkcs11.so
@@ -8651,8 +8659,8 @@ be free&rsquo;d by calling <code>gnutls_deinit()</code> .  Returns <code>GNUTLS_
 </p>
 <p><code>flags</code> can be one of <code>GNUTLS_CLIENT</code>  and <code>GNUTLS_SERVER</code> . For a DTLS
 entity, the flags <code>GNUTLS_DATAGRAM</code>  and  <code>GNUTLS_NONBLOCK</code>  are
-also available. The latter flag will enable a non-blocking
-operation of the DTLS timers. 
+also available. The latter flag will indicated non-blocking
+operation of the sockets provided to gnutls.
 </p>
 <p>The flag <code>GNUTLS_NO_REPLAY_PROTECTION</code>  will disable any 
 replay protection in DTLS mode. That must only used when 
@@ -9418,8 +9426,15 @@ zero if no data are immediately available.
 <p><code>gnutls_pull_timeout_func</code> is of the form,
 int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);
 </p>
+<p>This callback is necessary when <code>gnutls_handshake_set_timeout()</code>  or 
+<code>gnutls_record_set_timeout()</code>  are set. It will not be used when 
+non-blocking sockets are in use. That is, this function will
+not operate when <code>GNUTLS_NONBLOCK</code>  is specified in <code>gnutls_init()</code> , 
+or a custom pull function is registered without updating the 
+pull timeout function.
+</p>
 <p>The helper function <code>gnutls_system_recv_timeout()</code>  is provided to
-simplify writing suck callbacks.
+simplify writing callbacks. 
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -9500,8 +9515,15 @@ zero if no data are immediately available.
 <p><code>gnutls_pull_timeout_func</code> is of the form,
 int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);
 </p>
+<p>This callback is necessary when <code>gnutls_handshake_set_timeout()</code>  or 
+<code>gnutls_record_set_timeout()</code>  are set. It will not be used when 
+non-blocking sockets are in use. That is, this function will
+not operate when <code>GNUTLS_NONBLOCK</code>  is specified in <code>gnutls_init()</code> , 
+or a custom pull function is registered without updating the 
+pull timeout function.
+</p>
 <p>The helper function <code>gnutls_system_recv_timeout()</code>  is provided to
-simplify writing suck callbacks.
+simplify writing callbacks. 
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -9539,6 +9561,7 @@ Next: <a href="#DTLS-sessions" accesskey="n" rel="next">DTLS sessions</a>, Up: <
 </div>
 <a name="Asynchronous-operation-1"></a>
 <h4 class="subsection">6.5.1 Asynchronous operation</h4>
+
 <p><acronym>GnuTLS</acronym> can be used with asynchronous socket or event-driven programming.
 The approach is similar to using Berkeley sockets under such an environment.
 The blocking, due to network interaction, calls such as
@@ -9555,17 +9578,35 @@ The only exception is <a href="#gnutls_005frecord_005fsend">gnutls_record_send</
 which if interrupted subsequent calls need not to include the data to be
 sent (can be called with NULL argument).
 </p>
-<p>The <code>select</code> system call can also be used in combination with the
-<acronym>GnuTLS</acronym> functions. <code>select</code> allows monitoring of sockets
-and notifies on them being ready for reading or writing data. Note however
-that this system call cannot notify on data present in <acronym>GnuTLS</acronym>
-read buffers, it is only applicable to the kernel sockets API. Thus if
-you are using it for reading from a <acronym>GnuTLS</acronym> session, make sure
-that any cached data are read completely. That can be achieved by checking there 
-are no data waiting to be read (using <a href="#gnutls_005frecord_005fcheck_005fpending">gnutls_record_check_pending</a>), 
+<p>When using the <code>select</code> system call though, one should remember
+that it is only applicable to the kernel sockets API. To check for any
+available buffers in a <acronym>GnuTLS</acronym> session, 
+utilize <a href="#gnutls_005frecord_005fcheck_005fpending">gnutls_record_check_pending</a>,
 either before the <code>select</code> system call, or after a call to
 <a href="#gnutls_005frecord_005frecv">gnutls_record_recv</a>. <acronym>GnuTLS</acronym> does not keep a write buffer,
 thus when writing no additional actions are required.
+</p>
+<p>The following paragraphs describe the detailed requirements for non-blocking
+operation when using the TLS or DTLS protocols.
+</p>
+<a name="TLS-protocol"></a>
+<h4 class="subsubsection">6.5.1.1 TLS protocol</h4>
+<p>There are no special requirements for the TLS protocol operation in non-blocking
+mode if a non-blocking socket is used.
+</p>
+<p>It is recommended, however, for future compatibility, when in non-blocking mode, to
+call the <a href="#gnutls_005finit">gnutls_init</a> function with the
+<code>GNUTLS_NONBLOCK</code> flag set (see <a href="#Session-initialization">Session initialization</a>).
+</p>
+<a name="Datagram-TLS-protocol"></a>
+<h4 class="subsubsection">6.5.1.2 Datagram TLS protocol</h4>
+<p>When in non-blocking mode the function, the <a href="#gnutls_005finit">gnutls_init</a> function 
+must be called with the <code>GNUTLS_NONBLOCK</code> flag set (see <a href="#Session-initialization">Session initialization</a>). 
+</p>
+<p>In constrast with the TLS protocol, the pull timeout function is required,
+but will only be called with a timeout of zero. In that case it should indicate
+whether there are data to be received or not. When not using the default pull function,
+then <a href="#gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction">gnutls_transport_set_pull_timeout_function</a> should be called.
 </p>
 <p>Although in the TLS protocol implementation each call to receive or send
 function implies to restoring the same function that was interrupted, in
@@ -9598,14 +9639,12 @@ trying to write data.
 <p><strong>Returns:</strong> 0 if trying to read data, 1 if trying to write data.
 </p></dd></dl>
 
-<p>Moreover, to prevent blocking from DTLS&rsquo; retransmission timers to block a
-handshake, the <a href="#gnutls_005finit">gnutls_init</a> function should be called with the
-<code>GNUTLS_NONBLOCK</code> flag set (see <a href="#Session-initialization">Session initialization</a>). In that
-case, in order to be able to use the DTLS handshake timers, the function
-<a href="#gnutls_005fdtls_005fget_005ftimeout">gnutls_dtls_get_timeout</a> should be used to estimate when to call
-<a href="#gnutls_005fhandshake">gnutls_handshake</a> if no packets have been received.
+<p>When calling <a href="#gnutls_005fhandshake">gnutls_handshake</a> through a multi-plexer,
+to be able to handle properly the DTLS handshake retransmission timers,
+the function <a href="#gnutls_005fdtls_005fget_005ftimeout">gnutls_dtls_get_timeout</a>
+should be used to estimate when to call <a href="#gnutls_005fhandshake">gnutls_handshake</a> if
+no data have been received.
 </p>
-
 <hr>
 <a name="DTLS-sessions"></a>
 <div class="header">
@@ -9722,8 +9761,8 @@ timeout, or <code>GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT</code>  for a reasonable
 default value. For the DTLS protocol, the more detailed
 <code>gnutls_dtls_set_timeouts()</code>  is provided.
 </p>
-<p>The TLS handshake process always has the default timeout value since 
-GnuTLS 3.4.0. To unset call this function with zero value.
+<p>This function requires to set a pull timeout callback. See
+<code>gnutls_transport_set_pull_timeout_function()</code> .
 </p>
 <p><strong>Since:</strong> 3.1.0
 </p></dd></dl>
@@ -10276,6 +10315,7 @@ SIGN-RSA-SHA256, SIGN-RSA-SHA384, SIGN-RSA-SHA512, SIGN-DSA-SHA1,
 SIGN-DSA-SHA224, SIGN-DSA-SHA256, SIGN-RSA-MD5. Catch all
 is SIGN-ALL. This is only valid for TLS 1.2 and later.</td></tr>
 <tr><td width="20%">Elliptic curves</td><td width="70%">CURVE-SECP192R1, CURVE-SECP224R1, CURVE-SECP256R1, CURVE-SECP384R1, CURVE-SECP521R1. Catch all is CURVE-ALL.</td></tr>
+<tr><td width="20%">Certificate type</td><td width="70%">CTYPE-OPENPGP, CTYPE-X509. Catch all is CTYPE-ALL.</td></tr>
 </table>
 
 <div class="float-caption"><p><strong>Table 6.4: </strong>The supported algorithm keywords in priority strings.</p></div></div>
@@ -10507,15 +10547,17 @@ Previous: <a href="#Selecting-cryptographic-key-sizes" accesskey="p" rel="prev">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Certificate-verification" accesskey="2">Certificate verification</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Parameter-generation" accesskey="3">Parameter generation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Re_002dauthentication" accesskey="3">Re-authentication</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Deriving-keys-for-other-applications_002fprotocols" accesskey="4">Deriving keys for other applications/protocols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Parameter-generation" accesskey="4">Parameter generation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Channel-Bindings" accesskey="5">Channel Bindings</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Deriving-keys-for-other-applications_002fprotocols" accesskey="5">Deriving keys for other applications/protocols</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Interoperability" accesskey="6">Interoperability</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Channel-Bindings" accesskey="6">Channel Bindings</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Compatibility-with-the-OpenSSL-library" accesskey="7">Compatibility with the OpenSSL library</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Interoperability" accesskey="7">Interoperability</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Compatibility-with-the-OpenSSL-library" accesskey="8">Compatibility with the OpenSSL library</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -10530,7 +10572,7 @@ Next: <a href="#Certificate-verification" accesskey="n" rel="next">Certificate v
 <a name="index-resuming-sessions-1"></a>
 <a name="index-session-resumption-1"></a>
 
-<a name="Client-side"></a>
+<a name="Client-side-1"></a>
 <h4 class="subsubheading">Client side</h4>
 
 <p>To reduce time and roundtrips spent in a handshake the client can   
@@ -10566,7 +10608,7 @@ using the priority functions, at least the algorithms used in the last session.
 a new session.
 </p></dd></dl>
 
-<a name="Server-side"></a>
+<a name="Server-side-1"></a>
 <h4 class="subsubheading">Server side</h4>
 
 <p>In order to support resumption a server can store
@@ -10654,7 +10696,7 @@ would use session tickets when clients support it and the storage otherwise.
 <a name="Certificate-verification"></a>
 <div class="header">
 <p>
-Next: <a href="#Parameter-generation" accesskey="n" rel="next">Parameter generation</a>, Previous: <a href="#Session-resumption" accesskey="p" rel="prev">Session resumption</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Re_002dauthentication" accesskey="n" rel="next">Re-authentication</a>, Previous: <a href="#Session-resumption" accesskey="p" rel="prev">Session resumption</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Certificate-verification-1"></a>
 <h4 class="subsection">6.12.2 Certificate verification</h4>
@@ -10913,13 +10955,108 @@ you may use danetool (see <a href="#danetool-Invocation">danetool Invocation</a>
 
 
 <hr>
+<a name="Re_002dauthentication"></a>
+<div class="header">
+<p>
+Next: <a href="#Parameter-generation" accesskey="n" rel="next">Parameter generation</a>, Previous: <a href="#Certificate-verification" accesskey="p" rel="prev">Certificate verification</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Re_002dauthentication-1"></a>
+<h4 class="subsection">6.12.3 Re-authentication</h4>
+<a name="index-renegotiation-1"></a>
+<a name="index-reauthentication"></a>
+
+<p>In TLS there is no distinction between rekey, re-authentication, and re-negotiation.
+All of these use cases are handled by the TLS&rsquo; rehandshake process. For that reason
+in GnuTLS rehandshake is not transparent to the application, and the application
+must take control of that process. The following paragraphs explain how to safely
+use the rehandshake process.
+</p>
+<a name="Client-side"></a>
+<h4 class="subsubsection">6.12.3.1 Client side</h4>
+
+<p>According to the TLS specification a client may initiate a rehandshake at any
+time. That can be achieved by calling <a href="#gnutls_005fhandshake">gnutls_handshake</a> and rely on its
+return value for the outcome of the handshake (the server may deny a rehandshake).
+If a server requests a re-handshake, then a call to <a href="#gnutls_005frecord_005frecv">gnutls_record_recv</a> will
+return GNUTLS_E_REHANDSHAKE in the client, instructing it to call <a href="#gnutls_005fhandshake">gnutls_handshake</a>.
+To deny a rehandshake request by the server it is recommended to send a warning alert
+of type GNUTLS_A_NO_RENEGOTIATION.
+</p>
+<p>Due to limitations of early protocol versions, it is required to check whether
+safe renegotiation is in place, i.e., using <a href="#gnutls_005fsafe_005frenegotiation_005fstatus">gnutls_safe_renegotiation_status</a>,
+which ensures that the server remains the same as the initial. For older servers,
+which do not support renegotiation, it is required on the second handshake
+to verify that their certificate/credentials remained the same as in the initial
+session.
+</p>
+
+
+
+
+<dl>
+<dt><a name="index-gnutls_005fsafe_005frenegotiation_005fstatus"></a>Function: <em>int</em> <strong>gnutls_safe_renegotiation_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p>Can be used to check whether safe renegotiation is being used
+in the current session.
+</p>
+<p><strong>Returns:</strong> 0 when safe renegotiation is not used and non (0) when
+safe renegotiation is used.
+</p>
+<p><strong>Since:</strong> 2.10.0
+</p></dd></dl>
+
+<a name="Server-side"></a>
+<h4 class="subsubsection">6.12.3.2 Server side</h4>
+
+<p>A server which wants to instruct the client to re-authenticate, should call
+<a href="#gnutls_005frehandshake">gnutls_rehandshake</a> and wait for the client to re-authenticate.
+It is recommended to only request re-handshake when safe renegotiation is
+enabled for that session (see <a href="#gnutls_005fsafe_005frenegotiation_005fstatus">gnutls_safe_renegotiation_status</a> and
+the discussion in <a href="#Safe-renegotiation">Safe renegotiation</a>).
+</p>
+
+
+
+
+<dl>
+<dt><a name="index-gnutls_005frehandshake"></a>Function: <em>int</em> <strong>gnutls_rehandshake</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p>This function will renegotiate security parameters with the
+client.  This should only be called in case of a server.
+</p>
+<p>This message informs the peer that we want to renegotiate
+parameters (perform a handshake).
+</p>
+<p>If this function succeeds (returns 0), you must call the
+<code>gnutls_handshake()</code>  function in order to negotiate the new
+parameters.
+</p>
+<p>Since TLS is full duplex some application data might have been
+sent during peer&rsquo;s processing of this message. In that case
+one should call <code>gnutls_record_recv()</code>  until GNUTLS_E_REHANDSHAKE
+is returned to clear any pending data. Care must be taken, if
+rehandshake is mandatory, to terminate if it does not start after
+some threshold.
+</p>
+<p>If the client does not wish to renegotiate parameters he 
+should reply with an alert message, thus the return code will be
+<code>GNUTLS_E_WARNING_ALERT_RECEIVED</code>  and the alert will be
+<code>GNUTLS_A_NO_RENEGOTIATION</code> .  A client may also choose to ignore
+this message.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p></dd></dl>
+
+<hr>
 <a name="Parameter-generation"></a>
 <div class="header">
 <p>
-Next: <a href="#Deriving-keys-for-other-applications_002fprotocols" accesskey="n" rel="next">Deriving keys for other applications/protocols</a>, Previous: <a href="#Certificate-verification" accesskey="p" rel="prev">Certificate verification</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Deriving-keys-for-other-applications_002fprotocols" accesskey="n" rel="next">Deriving keys for other applications/protocols</a>, Previous: <a href="#Re_002dauthentication" accesskey="p" rel="prev">Re-authentication</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Parameter-generation-1"></a>
-<h4 class="subsection">6.12.3 Parameter generation</h4>
+<h4 class="subsection">6.12.4 Parameter generation</h4>
 <a name="index-parameter-generation"></a>
 <a name="index-generating-parameters"></a>
 
@@ -10982,7 +11119,7 @@ authentication.  The callback should return <code>GNUTLS_E_SUCCESS</code>  (0) o
 Next: <a href="#Channel-Bindings" accesskey="n" rel="next">Channel Bindings</a>, Previous: <a href="#Parameter-generation" accesskey="p" rel="prev">Parameter generation</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Deriving-keys-for-other-applications_002fprotocols-1"></a>
-<h4 class="subsection">6.12.4 Deriving keys for other applications/protocols</h4>
+<h4 class="subsection">6.12.5 Deriving keys for other applications/protocols</h4>
 <a name="index-keying-material-exporters"></a>
 <a name="index-exporting-keying-material"></a>
 <a name="index-deriving-keys"></a>
@@ -11025,7 +11162,7 @@ nonces, there is a low-level TLS PRF interface called <a href="#gnutls_005fprf_0
 Next: <a href="#Interoperability" accesskey="n" rel="next">Interoperability</a>, Previous: <a href="#Deriving-keys-for-other-applications_002fprotocols" accesskey="p" rel="prev">Deriving keys for other applications/protocols</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Channel-bindings"></a>
-<h4 class="subsection">6.12.5 Channel bindings</h4>
+<h4 class="subsection">6.12.6 Channel bindings</h4>
 <a name="index-channel-bindings"></a>
 
 <p>In user authentication protocols (e.g., EAP or SASL mechanisms) it is
@@ -11073,7 +11210,7 @@ Note that it must be run after a successful TLS handshake.
 Next: <a href="#Compatibility-with-the-OpenSSL-library" accesskey="n" rel="next">Compatibility with the OpenSSL library</a>, Previous: <a href="#Channel-Bindings" accesskey="p" rel="prev">Channel Bindings</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Interoperability-1"></a>
-<h4 class="subsection">6.12.6 Interoperability</h4>
+<h4 class="subsection">6.12.7 Interoperability</h4>
 
 <p>The <acronym>TLS</acronym> protocols support many ciphersuites, extensions and version
 numbers. As a result, few implementations are 
@@ -11105,7 +11242,7 @@ TLS 1.0 as protocols.
 Previous: <a href="#Interoperability" accesskey="p" rel="prev">Interoperability</a>, Up: <a href="#Advanced-topics" accesskey="u" rel="up">Advanced topics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Compatibility-with-the-OpenSSL-library-1"></a>
-<h4 class="subsection">6.12.7 Compatibility with the OpenSSL library</h4>
+<h4 class="subsection">6.12.8 Compatibility with the OpenSSL library</h4>
 <a name="index-OpenSSL"></a>
 
 <p>To ease <acronym>GnuTLS</acronym>&rsquo; integration with existing applications, a
@@ -11773,8 +11910,7 @@ int main(void)
 
         /* set the connection MTU */
         gnutls_dtls_set_mtu(session, 1000);
-        gnutls_handshake_set_timeout(session,
-                                     GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT);
+        /* gnutls_dtls_set_timeouts(session, 1000, 60000); */
 
         /* Perform the TLS handshake */
         do {
@@ -15382,6 +15518,9 @@ algorithms and by convention kernel implemented algorithms have
 priority of 90 and CPU-assisted of 80.  The algorithm with the lowest priority will be
 used by gnutls.
 </p>
+<p>In the case the registered init or setkey functions return <code>GNUTLS_E_NEED_FALLBACK</code> ,
+GnuTLS will attempt to use the next in priority registered cipher.
+</p>
 <p>The functions which are marked as non-AEAD they are not required when
 registering a cipher to be used with the new AEAD API introduced in
 GnuTLS 3.4.0. Internally GnuTLS uses the new AEAD API.
@@ -15415,6 +15554,9 @@ gnutls.  Any algorithm registered will override the included
 algorithms and by convention kernel implemented algorithms have
 priority of 90 and CPU-assisted of 80.  The algorithm with the lowest priority will be
 used by gnutls.
+</p>
+<p>In the case the registered init or setkey functions return <code>GNUTLS_E_NEED_FALLBACK</code> ,
+GnuTLS will attempt to use the next in priority registered cipher.
 </p>
 <p>The functions registered will be used with the new AEAD API introduced in
 GnuTLS 3.4.0. Internally GnuTLS uses the new AEAD API.
@@ -15905,17 +16047,18 @@ Serial: 1234
 $ p11tool --login --list-certs &quot;pkcs11:model=PKCS15;manufacturer=MyMan;serial=1234;token=Test&quot;
 
 Object 0:
-URL: pkcs11:model=PKCS15;manufacturer=MyMan;serial=1234;token=Test;object=client;object-type=cert
+URL: pkcs11:model=PKCS15;manufacturer=MyMan;serial=1234;token=Test;object=client;type=cert
 Type: X.509 Certificate
 Label: client
 ID: 2a:97:0d:58:d1:51:3c:23:07:ae:4e:0d:72:26:03:7d:99:06:02:6a
 
-$ export MYCERT=&quot;pkcs11:model=PKCS15;manufacturer=MyMan;serial=1234;token=Test;object=client;object-type=cert&quot;
-$ export MYKEY=&quot;pkcs11:model=PKCS15;manufacturer=MyMan;serial=1234;token=Test;object=client;object-type=private&quot;
+$ MYCERT=&quot;pkcs11:model=PKCS15;manufacturer=MyMan;serial=1234;token=Test;object=client;type=cert&quot;
+$ MYKEY=&quot;pkcs11:model=PKCS15;manufacturer=MyMan;serial=1234;token=Test;object=client;type=private&quot;
+$ export MYCERT MYKEY
 
-$ gnutls-cli www.example.com --x509keyfile $MYKEY --x509certfile MYCERT
+$ gnutls-cli www.example.com --x509keyfile $MYKEY --x509certfile $MYCERT
 </pre></div>
-<p>Notice that the private key only differs from the certificate in the object-type.
+<p>Notice that the private key only differs from the certificate in the type.
 </p><hr>
 <a name="gnutls_002dserv-Invocation"></a>
 <div class="header">
@@ -16831,7 +16974,8 @@ _foobar_supp_send_params(gnutls_session_t session, gnutls_buffer_t buf)
    unsigned char *msg = &quot;hello world&quot;;
    int len = strlen(msg);
 
-   gnutls_buffer_append_data(buf, msg, len);
+   if (gnutls_buffer_append_data(buf, msg, len) &lt; 0)
+       abort();
 
    return len;
 }
@@ -16852,9 +16996,8 @@ Previous: <a href="#TLS-Extension-Handling" accesskey="p" rel="prev">TLS Extensi
 include either instructions  intended to speed up cryptographic operations,
 or a co-processor with cryptographic capabilities. Taking advantage of 
 those is a challenging task for every cryptographic  application or 
-library. Unfortunately the cryptographic library that GnuTLS is based 
-on takes no advantage of these capabilities. For this reason GnuTLS handles 
-this internally by following a layered approach to accessing
+library. GnuTLS handles the cryptographic provider in a modular
+way, following a layered approach to access
 cryptographic operations as in <a href="#fig_002dcrypto_002dlayers">Figure 10.4</a>.
 </p>
 <div class="float"><a name="fig_002dcrypto_002dlayers"></a>
@@ -16905,45 +17048,27 @@ source code in <code>lib/accelerated/</code>.
 <h4 class="subsubheading">Overriding specific algorithms</h4>
 <p>When an optimized implementation of a single algorithm is available,
 say a hardware assisted version of <acronym>AES-CBC</acronym> then the
-following (internal) functions, from <code>crypto-backend.h</code>, can 
+following functions, from <code>crypto.h</code>, can 
 be used to register those algorithms.
 </p>
 <ul>
-<li> <code>gnutls_crypto_single_cipher_register</code>:
+<li> <a href="#gnutls_005fcrypto_005fregister_005fcipher">gnutls_crypto_register_cipher</a>:
 To register a cipher algorithm.
 
-</li><li> <code>gnutls_crypto_single_digest_register</code>:
-To register a hash (digest) or MAC algorithm.
+</li><li> <a href="#gnutls_005fcrypto_005fregister_005faead_005fcipher">gnutls_crypto_register_aead_cipher</a>:
+To register an AEAD cipher algorithm.
+
+</li><li> <a href="#gnutls_005fcrypto_005fregister_005fmac">gnutls_crypto_register_mac</a>:
+To register a MAC algorithm.
+
+</li><li> <a href="#gnutls_005fcrypto_005fregister_005fdigest">gnutls_crypto_register_digest</a>:
+To register a hash algorithm.
 
 </li></ul>
 
 <p>Those registration functions will only replace the specified algorithm
 and leave the rest of subsystem intact.
 </p>
-<a name="Overriding-the-cryptographic-library"></a>
-<h4 class="subsubheading">Overriding the cryptographic library</h4>
-<p>In some systems, that might contain a broad acceleration engine, it 
-might be desirable to override big parts of the cryptographic back-end, 
-or even all of them. The following functions are provided for this reason.
-</p>
-<ul>
-<li> <code>gnutls_crypto_cipher_register</code>:
-To override the cryptographic algorithms back-end.
-
-</li><li> <code>gnutls_crypto_digest_register</code>:
-To override the digest algorithms back-end.
-
-</li><li> <code>gnutls_crypto_rnd_register</code>:
-To override the random number generator back-end.
-
-</li><li> <code>gnutls_crypto_bigint_register</code>:
-To override the big number number operations back-end.
-
-</li><li> <code>gnutls_crypto_pk_register</code>:
-To override the public key encryption back-end. This is tied to the
-big number operations so either none or both of them should be overridden.
-
-</li></ul>
 
 
 
@@ -16992,7 +17117,7 @@ as described in <a href="#Asynchronous-operation">Asynchronous operation</a></td
 <tr><td width="30%"><code>gnutls_session_get_server_random</code>,
 <code>gnutls_session_get_client_random</code></td><td width="60%">They are replaced by the safer function <a href="#gnutls_005fsession_005fget_005frandom">gnutls_session_get_random</a></td></tr>
 <tr><td width="30%"><code>gnutls_session_get_master_secret</code></td><td width="60%">Replaced by the keying material exporters discussed in <a href="#Deriving-keys-for-other-applications_002fprotocols">Deriving keys for other applications/protocols</a></td></tr>
-<tr><td width="30%"><code>gnutls_transport_set_global_errno</code></td><td width="60%">Replaced by using the system&rsquo;s errno fascility or <a href="#gnutls_005ftransport_005fset_005ferrno">gnutls_transport_set_errno</a>.</td></tr>
+<tr><td width="30%"><code>gnutls_transport_set_global_errno</code></td><td width="60%">Replaced by using the system&rsquo;s errno facility or <a href="#gnutls_005ftransport_005fset_005ferrno">gnutls_transport_set_errno</a>.</td></tr>
 <tr><td width="30%"><code>gnutls_x509_privkey_verify_data</code></td><td width="60%">Replaced by <a href="#gnutls_005fpubkey_005fverify_005fdata2">gnutls_pubkey_verify_data2</a>.</td></tr>
 <tr><td width="30%"><code>gnutls_certificate_verify_peers</code></td><td width="60%">Replaced by <a href="#gnutls_005fcertificate_005fverify_005fpeers2">gnutls_certificate_verify_peers2</a>.</td></tr>
 <tr><td width="30%"><code>gnutls_psk_netconf_derive_key</code></td><td width="60%">Removed. The key derivation function was never standardized.</td></tr>
@@ -17065,8 +17190,7 @@ however, several deprecated functions were removed, and are listed below.
 <code>gnutls_rsa_params_init</code></td><td width="60%">No replacement; the library does not support the RSA-EXPORT ciphersuites.</td></tr>
 <tr><td width="30%"><code>gnutls_pubkey_verify_hash</code>,</td><td width="60%"><a href="#gnutls_005fpubkey_005fverify_005fhash2">gnutls_pubkey_verify_hash2</a>.</td></tr>
 <tr><td width="30%"><code>gnutls_pubkey_verify_data</code>,</td><td width="60%"><a href="#gnutls_005fpubkey_005fverify_005fdata2">gnutls_pubkey_verify_data2</a>.</td></tr>
-<tr><td width="30%"><code>gnutls_x509_crt_get_verify_algorithm</code>,
-No replacement; a similar function is</td><td width="60%"><a href="#gnutls_005fx509_005fcrt_005fget_005fsignature_005falgorithm">gnutls_x509_crt_get_signature_algorithm</a>.</td></tr>
+<tr><td width="30%"><code>gnutls_x509_crt_get_verify_algorithm</code>,</td><td width="60%">No replacement; a similar function is <a href="#gnutls_005fx509_005fcrt_005fget_005fsignature_005falgorithm">gnutls_x509_crt_get_signature_algorithm</a>.</td></tr>
 <tr><td width="30%"><code>gnutls_pubkey_get_verify_algorithm</code>,</td><td width="60%">No replacement; a similar function is <a href="#gnutls_005fpubkey_005fget_005fpreferred_005fhash_005falgorithm">gnutls_pubkey_get_preferred_hash_algorithm</a>.</td></tr>
 <tr><td width="30%"><code>gnutls_certificate_type_set_priority</code>,
 <code>gnutls_cipher_set_priority</code>,
@@ -18584,7 +18708,8 @@ to have effect.
 <p><var>func</var>: is the callback function
 </p>
 <p>This function sets a callback to be called in order to retrieve the
-certificate to be used in the handshake. You are advised
+certificate to be used in the handshake. The callback will take control
+only if a certificate is requested by the peer. You are advised
 to use <code>gnutls_certificate_set_retrieve_function2()</code>  because it
 is much more efficient in the processing it requires from gnutls.
 </p>
@@ -18592,10 +18717,10 @@ is much more efficient in the processing it requires from gnutls.
 int (*callback)(gnutls_session_t, const gnutls_datum_t* req_ca_dn, int nreqs,
 const gnutls_pk_algorithm_t* pk_algos, int pk_algos_length, gnutls_retr2_st* st);
 </p>
-<p><code>req_ca_cert</code> is only used in X.509 certificates.
+<p><code>req_ca_dn</code> is only used in X.509 certificates.
 Contains a list with the CA names that the server considers trusted.
-Normally we should send a certificate that is signed
-by one of these CAs. These names are DER encoded. To get a more
+This is a hint and typically the client should send a certificate that is signed
+by one of these CAs. These names, when available, are DER encoded. To get a more
 meaningful value use the function <code>gnutls_x509_rdn_get()</code> .
 </p>
 <p><code>pk_algos</code> contains a list with server&rsquo;s acceptable signature algorithms.
@@ -18611,7 +18736,9 @@ handshake, after the certificate request message has been received.
 <p>The callback function should set the certificate list to be sent,
 and return 0 on success. If no certificate was selected then the
 number of certificates should be set to zero. The value (-1)
-indicates error and the handshake will be terminated.
+indicates error and the handshake will be terminated. If both certificates
+are set in the credentials and a callback is available, the callback
+takes predence.
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -19473,6 +19600,8 @@ of a server.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p>
+<p><strong>Since:</strong> 3.3.3
 </p></dd></dl>
 
 <a name="gnutls_005fcredentials_005fset-1"></a>
@@ -20558,8 +20687,8 @@ timeout, or <code>GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT</code>  for a reasonable
 default value. For the DTLS protocol, the more detailed
 <code>gnutls_dtls_set_timeouts()</code>  is provided.
 </p>
-<p>The TLS handshake process always has the default timeout value since 
-GnuTLS 3.4.0. To unset call this function with zero value.
+<p>This function requires to set a pull timeout callback. See
+<code>gnutls_transport_set_pull_timeout_function()</code> .
 </p>
 <p><strong>Since:</strong> 3.1.0
 </p></dd></dl>
@@ -20752,8 +20881,8 @@ be free&rsquo;d by calling <code>gnutls_deinit()</code> .  Returns <code>GNUTLS_
 </p>
 <p><code>flags</code> can be one of <code>GNUTLS_CLIENT</code>  and <code>GNUTLS_SERVER</code> . For a DTLS
 entity, the flags <code>GNUTLS_DATAGRAM</code>  and  <code>GNUTLS_NONBLOCK</code>  are
-also available. The latter flag will enable a non-blocking
-operation of the DTLS timers. 
+also available. The latter flag will indicated non-blocking
+operation of the sockets provided to gnutls.
 </p>
 <p>The flag <code>GNUTLS_NO_REPLAY_PROTECTION</code>  will disable any 
 replay protection in DTLS mode. That must only used when 
@@ -21413,6 +21542,8 @@ Once the last available index is crossed then
 <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  will be returned.
 </p>
 <p><strong>Returns:</strong> On success it returns <code>GNUTLS_E_SUCCESS</code>  (0), or a negative error value otherwise.
+</p>
+<p><strong>Since:</strong> 3.0.9
 </p></dd></dl>
 
 <a name="gnutls_005fpriority_005finit-1"></a>
@@ -22016,7 +22147,7 @@ by default unless requested using <code>gnutls_range_send_message()</code> .
 <dt><a name="index-gnutls_005frecord_005fdiscard_005fqueued"></a>Function: <em>size_t</em> <strong>gnutls_record_discard_queued</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
-<p>This function discards all queued to be sent packets in a DTLS session.
+<p>This function discards all queued to be sent packets in a TLS or DTLS session.
 These are the packets queued after an interrupted <code>gnutls_record_send()</code> .
 </p>
 <p><strong>Returns:</strong> The number of bytes discarded.
@@ -22140,7 +22271,7 @@ The number of bytes received might be less than the requested  <code>data_size</
 </p>
 <p>This is a lower-level function than <code>gnutls_record_recv()</code>  and allows
 to directly receive the whole decrypted packet. That avoids a
-memory copy, and is mostly applicable to applications seeking high
+memory copy, and is intended to be used by applications seeking high
 performance.
 </p>
 <p>The received packet is accessed using <code>gnutls_packet_get()</code>  and 
@@ -22301,6 +22432,9 @@ gnutls. That is, if <code>gnutls_record_get_state()</code>  was used.
 to the provided value. Use an  <code>ms</code> value of zero to disable
 timeout (the default).
 </p>
+<p>This function requires to set a pull timeout callback. See
+<code>gnutls_transport_set_pull_timeout_function()</code> .
+</p>
 <p><strong>Since:</strong> 3.1.7
 </p></dd></dl>
 
@@ -22332,7 +22466,7 @@ otherwise a negative error code.
 <a name="gnutls_005frehandshake-1"></a>
 <h4 class="subheading">gnutls_rehandshake</h4>
 <a name="gnutls_005frehandshake"></a><dl>
-<dt><a name="index-gnutls_005frehandshake"></a>Function: <em>int</em> <strong>gnutls_rehandshake</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dt><a name="index-gnutls_005frehandshake-1"></a>Function: <em>int</em> <strong>gnutls_rehandshake</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function will renegotiate security parameters with the
@@ -22364,7 +22498,7 @@ this message.
 <a name="gnutls_005fsafe_005frenegotiation_005fstatus-1"></a>
 <h4 class="subheading">gnutls_safe_renegotiation_status</h4>
 <a name="gnutls_005fsafe_005frenegotiation_005fstatus"></a><dl>
-<dt><a name="index-gnutls_005fsafe_005frenegotiation_005fstatus"></a>Function: <em>int</em> <strong>gnutls_safe_renegotiation_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dt><a name="index-gnutls_005fsafe_005frenegotiation_005fstatus-1"></a>Function: <em>int</em> <strong>gnutls_safe_renegotiation_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Can be used to check whether safe renegotiation is being used
@@ -23934,8 +24068,15 @@ zero if no data are immediately available.
 <p><code>gnutls_pull_timeout_func</code> is of the form,
 int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);
 </p>
+<p>This callback is necessary when <code>gnutls_handshake_set_timeout()</code>  or 
+<code>gnutls_record_set_timeout()</code>  are set. It will not be used when 
+non-blocking sockets are in use. That is, this function will
+not operate when <code>GNUTLS_NONBLOCK</code>  is specified in <code>gnutls_init()</code> , 
+or a custom pull function is registered without updating the 
+pull timeout function.
+</p>
 <p>The helper function <code>gnutls_system_recv_timeout()</code>  is provided to
-simplify writing suck callbacks.
+simplify writing callbacks. 
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -26156,7 +26297,7 @@ will be returned.
 <dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_key_id</strong> <em>(gnutls_x509_crq_t <var>crq</var>, unsigned int <var>flags</var>, unsigned char * <var>output_data</var>, size_t * <var>output_data_size</var>)</em></dt>
 <dd><p><var>crq</var>: a certificate of type <code>gnutls_x509_crq_t</code> 
 </p>
-<p><var>flags</var>: should be 0 for now
+<p><var>flags</var>: should be one of the flags from <code>gnutls_keyid_flags_t</code> 
 </p>
 <p><var>output_data</var>: will contain the key ID
 </p>
@@ -27663,7 +27804,7 @@ returned, and buf_size will be set to the actual length.
 <dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fkey_005fid-1"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_key_id</strong> <em>(gnutls_x509_crt_t <var>crt</var>, unsigned int <var>flags</var>, unsigned char * <var>output_data</var>, size_t * <var>output_data_size</var>)</em></dt>
 <dd><p><var>crt</var>: Holds the certificate
 </p>
-<p><var>flags</var>: should be 0 for now
+<p><var>flags</var>: should be one of the flags from <code>gnutls_keyid_flags_t</code> 
 </p>
 <p><var>output_data</var>: will contain the key ID
 </p>
@@ -27804,6 +27945,27 @@ the given certificate.  The new parameters will be allocated using
 <code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrt_005fget_005fpk_005fecc_005fraw-1"></a>
+<h4 class="subheading">gnutls_x509_crt_get_pk_ecc_raw</h4>
+<a name="gnutls_005fx509_005fcrt_005fget_005fpk_005fecc_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fpk_005fecc_005fraw"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_pk_ecc_raw</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_ecc_curve_t * <var>curve</var>, gnutls_datum_t * <var>x</var>, gnutls_datum_t * <var>y</var>)</em></dt>
+<dd><p><var>crt</var>: Holds the certificate
+</p>
+<p><var>curve</var>: will hold the curve
+</p>
+<p><var>x</var>: will hold x
+</p>
+<p><var>y</var>: will hold y
+</p>
+<p>This function will export the ECC public key&rsquo;s parameters found in
+the given certificate.  The new parameters will be allocated using
+<code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
+</p>
+<p><strong>Since:</strong> 3.4.1
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fget_005fpk_005frsa_005fraw-1"></a>
@@ -30267,7 +30429,7 @@ negative error value.
 <dt><a name="index-gnutls_005fx509_005fprivkey_005fget_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_x509_privkey_get_key_id</strong> <em>(gnutls_x509_privkey_t <var>key</var>, unsigned int <var>flags</var>, unsigned char * <var>output_data</var>, size_t * <var>output_data_size</var>)</em></dt>
 <dd><p><var>key</var>: a key
 </p>
-<p><var>flags</var>: should be 0 for now
+<p><var>flags</var>: should be one of the flags from <code>gnutls_keyid_flags_t</code> 
 </p>
 <p><var>output_data</var>: will contain the key ID
 </p>
@@ -36156,17 +36318,19 @@ returned, and 0 on success.
 <dt><a name="index-gnutls_005fpubkey_005fexport_005fdsa_005fraw"></a>Function: <em>int</em> <strong>gnutls_pubkey_export_dsa_raw</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>p</var>, gnutls_datum_t * <var>q</var>, gnutls_datum_t * <var>g</var>, gnutls_datum_t * <var>y</var>)</em></dt>
 <dd><p><var>key</var>: Holds the public key
 </p>
-<p><var>p</var>: will hold the p
+<p><var>p</var>: will hold the p (may be <code>NULL</code> )
 </p>
-<p><var>q</var>: will hold the q
+<p><var>q</var>: will hold the q (may be <code>NULL</code> )
 </p>
-<p><var>g</var>: will hold the g
+<p><var>g</var>: will hold the g (may be <code>NULL</code> )
 </p>
-<p><var>y</var>: will hold the y
+<p><var>y</var>: will hold the y (may be <code>NULL</code> )
 </p>
 <p>This function will export the DSA public key&rsquo;s parameters found in
 the given certificate.  The new parameters will be allocated using
 <code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p>This function allows for <code>NULL</code>  parameters since 3.4.1.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p>
@@ -36179,15 +36343,17 @@ the given certificate.  The new parameters will be allocated using
 <dt><a name="index-gnutls_005fpubkey_005fexport_005fecc_005fraw"></a>Function: <em>int</em> <strong>gnutls_pubkey_export_ecc_raw</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_ecc_curve_t * <var>curve</var>, gnutls_datum_t * <var>x</var>, gnutls_datum_t * <var>y</var>)</em></dt>
 <dd><p><var>key</var>: Holds the public key
 </p>
-<p><var>curve</var>: will hold the curve
+<p><var>curve</var>: will hold the curve (may be <code>NULL</code> )
 </p>
-<p><var>x</var>: will hold x
+<p><var>x</var>: will hold x (may be <code>NULL</code> )
 </p>
-<p><var>y</var>: will hold y
+<p><var>y</var>: will hold y (may be <code>NULL</code> )
 </p>
 <p>This function will export the ECC public key&rsquo;s parameters found in
-the given certificate.  The new parameters will be allocated using
+the given key.  The new parameters will be allocated using
 <code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p>This function allows for <code>NULL</code>  parameters since 3.4.1.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p>
@@ -36219,13 +36385,15 @@ the given certificate.  The new parameters will be allocated using
 <dt><a name="index-gnutls_005fpubkey_005fexport_005frsa_005fraw"></a>Function: <em>int</em> <strong>gnutls_pubkey_export_rsa_raw</strong> <em>(gnutls_pubkey_t <var>key</var>, gnutls_datum_t * <var>m</var>, gnutls_datum_t * <var>e</var>)</em></dt>
 <dd><p><var>key</var>: Holds the certificate
 </p>
-<p><var>m</var>: will hold the modulus
+<p><var>m</var>: will hold the modulus (may be <code>NULL</code> )
 </p>
-<p><var>e</var>: will hold the public exponent
+<p><var>e</var>: will hold the public exponent (may be <code>NULL</code> )
 </p>
 <p>This function will export the RSA public key&rsquo;s parameters found in
 the given structure.  The new parameters will be allocated using
 <code>gnutls_malloc()</code>  and will be stored in the appropriate datum.
+</p>
+<p>This function allows for <code>NULL</code>  parameters since 3.4.1.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p>
@@ -36238,7 +36406,7 @@ the given structure.  The new parameters will be allocated using
 <dt><a name="index-gnutls_005fpubkey_005fget_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_pubkey_get_key_id</strong> <em>(gnutls_pubkey_t <var>key</var>, unsigned int <var>flags</var>, unsigned char * <var>output_data</var>, size_t * <var>output_data_size</var>)</em></dt>
 <dd><p><var>key</var>: Holds the public key
 </p>
-<p><var>flags</var>: should be 0 for now
+<p><var>flags</var>: should be one of the flags from <code>gnutls_keyid_flags_t</code> 
 </p>
 <p><var>output_data</var>: will contain the key ID
 </p>
@@ -37751,6 +37919,9 @@ algorithms and by convention kernel implemented algorithms have
 priority of 90 and CPU-assisted of 80.  The algorithm with the lowest priority will be
 used by gnutls.
 </p>
+<p>In the case the registered init or setkey functions return <code>GNUTLS_E_NEED_FALLBACK</code> ,
+GnuTLS will attempt to use the next in priority registered cipher.
+</p>
 <p>The functions registered will be used with the new AEAD API introduced in
 GnuTLS 3.4.0. Internally GnuTLS uses the new AEAD API.
 </p>
@@ -37784,6 +37955,9 @@ gnutls.  Any algorithm registered will override the included
 algorithms and by convention kernel implemented algorithms have
 priority of 90 and CPU-assisted of 80.  The algorithm with the lowest priority will be
 used by gnutls.
+</p>
+<p>In the case the registered init or setkey functions return <code>GNUTLS_E_NEED_FALLBACK</code> ,
+GnuTLS will attempt to use the next in priority registered cipher.
 </p>
 <p>The functions which are marked as non-AEAD they are not required when
 registering a cipher to be used with the new AEAD API introduced in
@@ -39030,8 +39204,8 @@ available from <a href="http://www.ietf.org/rfc/rfc5929">http://www.ietf.org/rfc
 </p>
 </dd>
 <dt><a name="PKCS11URI"></a>[PKCS11URI]</dt>
-<dd><p>J. Pechanec, D. Moffat, &quot;The PKCS#11 URI Scheme&quot;, September 2013,
-Work in progress, available from <a href="http://tools.ietf.org/html/draft-pechanec-pkcs11uri-13">http://tools.ietf.org/html/draft-pechanec-pkcs11uri-13</a>.
+<dd><p>J. Pechanec, D. Moffat, &quot;The PKCS#11 URI Scheme&quot;, April 2015,
+available from <a href="http://www.ietf.org/rfc/rfc7512">http://www.ietf.org/rfc/rfc7512</a>.
 </p>
 </dd>
 <dt><a name="TPMURI"></a>[TPMURI]</dt>
@@ -39741,11 +39915,13 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frecord_005funcork-1"><code>gnutls_record_uncork</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fregister_005fcustom_005furl"><code>gnutls_register_custom_url</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Application_002dspecific-keys">Application-specific keys</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fregister_005fcustom_005furl-1"><code>gnutls_register_custom_url</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Abstract-key-API">Abstract key API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005frehandshake"><code>gnutls_rehandshake</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frehandshake"><code>gnutls_rehandshake</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Re_002dauthentication">Re-authentication</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005frehandshake-1"><code>gnutls_rehandshake</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frnd"><code>gnutls_rnd</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Random-number-generation">Random number generation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frnd-1"><code>gnutls_rnd</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005frnd_005frefresh"><code>gnutls_rnd_refresh</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fsafe_005frenegotiation_005fstatus"><code>gnutls_safe_renegotiation_status</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fsafe_005frenegotiation_005fstatus"><code>gnutls_safe_renegotiation_status</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Re_002dauthentication">Re-authentication</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fsafe_005frenegotiation_005fstatus-1"><code>gnutls_safe_renegotiation_status</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsec_005fparam_005fget_005fname"><code>gnutls_sec_param_get_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsec_005fparam_005fto_005fpk_005fbits"><code>gnutls_sec_param_to_pk_bits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Selecting-cryptographic-key-sizes">Selecting cryptographic key sizes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsec_005fparam_005fto_005fpk_005fbits-1"><code>gnutls_sec_param_to_pk_bits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -40026,6 +40202,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fname_005fconstraints"><code>gnutls_x509_crt_get_name_constraints</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fpk_005falgorithm"><code>gnutls_x509_crt_get_pk_algorithm</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fpk_005fdsa_005fraw"><code>gnutls_x509_crt_get_pk_dsa_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fpk_005fecc_005fraw"><code>gnutls_x509_crt_get_pk_ecc_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fpk_005frsa_005fraw"><code>gnutls_x509_crt_get_pk_rsa_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fpolicy"><code>gnutls_x509_crt_get_policy</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fget_005fpreferred_005fhash_005falgorithm"><code>gnutls_x509_crt_get_preferred_hash_algorithm</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compatibility-API">Compatibility API</a></td></tr>
@@ -40380,9 +40557,11 @@ Previous: <a href="#Function-and-Data-Index" accesskey="p" rel="prev">Function a
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-R">R</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-random-numbers">random numbers</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Random-number-generation">Random number generation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-reauthentication">reauthentication</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Re_002dauthentication">Re-authentication</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-record-padding">record padding</a>:</td><td>&nbsp;</td><td valign="top"><a href="#On-Record-Padding">On Record Padding</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-record-protocol">record protocol</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-TLS-record-protocol">The TLS record protocol</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-renegotiation">renegotiation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Safe-renegotiation">Safe renegotiation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-renegotiation-1">renegotiation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Re_002dauthentication">Re-authentication</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-reporting-bugs">reporting bugs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bug-Reports">Bug Reports</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-resuming-sessions">resuming sessions</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Resuming-Sessions">Resuming Sessions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-resuming-sessions-1">resuming sessions</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Session-resumption">Session resumption</a></td></tr>

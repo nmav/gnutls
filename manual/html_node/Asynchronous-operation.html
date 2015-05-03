@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.0 of GnuTLS.
+3.4.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.0: Asynchronous operation</title>
+<title>GnuTLS 3.4.1: Asynchronous operation</title>
 
-<meta name="description" content="GnuTLS 3.4.0: Asynchronous operation">
-<meta name="keywords" content="GnuTLS 3.4.0: Asynchronous operation">
+<meta name="description" content="GnuTLS 3.4.1: Asynchronous operation">
+<meta name="keywords" content="GnuTLS 3.4.1: Asynchronous operation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -164,6 +164,7 @@ Next: <a href="DTLS-sessions.html#DTLS-sessions" accesskey="n" rel="next">DTLS s
 <hr>
 <a name="Asynchronous-operation-1"></a>
 <h4 class="subsection">6.5.1 Asynchronous operation</h4>
+
 <p><acronym>GnuTLS</acronym> can be used with asynchronous socket or event-driven programming.
 The approach is similar to using Berkeley sockets under such an environment.
 The blocking, due to network interaction, calls such as
@@ -180,17 +181,35 @@ The only exception is <a href="Core-TLS-API.html#gnutls_005frecord_005fsend">gnu
 which if interrupted subsequent calls need not to include the data to be
 sent (can be called with NULL argument).
 </p>
-<p>The <code>select</code> system call can also be used in combination with the
-<acronym>GnuTLS</acronym> functions. <code>select</code> allows monitoring of sockets
-and notifies on them being ready for reading or writing data. Note however
-that this system call cannot notify on data present in <acronym>GnuTLS</acronym>
-read buffers, it is only applicable to the kernel sockets API. Thus if
-you are using it for reading from a <acronym>GnuTLS</acronym> session, make sure
-that any cached data are read completely. That can be achieved by checking there 
-are no data waiting to be read (using <a href="Core-TLS-API.html#gnutls_005frecord_005fcheck_005fpending">gnutls_record_check_pending</a>), 
+<p>When using the <code>select</code> system call though, one should remember
+that it is only applicable to the kernel sockets API. To check for any
+available buffers in a <acronym>GnuTLS</acronym> session, 
+utilize <a href="Core-TLS-API.html#gnutls_005frecord_005fcheck_005fpending">gnutls_record_check_pending</a>,
 either before the <code>select</code> system call, or after a call to
 <a href="Core-TLS-API.html#gnutls_005frecord_005frecv">gnutls_record_recv</a>. <acronym>GnuTLS</acronym> does not keep a write buffer,
 thus when writing no additional actions are required.
+</p>
+<p>The following paragraphs describe the detailed requirements for non-blocking
+operation when using the TLS or DTLS protocols.
+</p>
+<a name="TLS-protocol"></a>
+<h4 class="subsubsection">6.5.1.1 TLS protocol</h4>
+<p>There are no special requirements for the TLS protocol operation in non-blocking
+mode if a non-blocking socket is used.
+</p>
+<p>It is recommended, however, for future compatibility, when in non-blocking mode, to
+call the <a href="Core-TLS-API.html#gnutls_005finit">gnutls_init</a> function with the
+<code>GNUTLS_NONBLOCK</code> flag set (see <a href="Session-initialization.html#Session-initialization">Session initialization</a>).
+</p>
+<a name="Datagram-TLS-protocol"></a>
+<h4 class="subsubsection">6.5.1.2 Datagram TLS protocol</h4>
+<p>When in non-blocking mode the function, the <a href="Core-TLS-API.html#gnutls_005finit">gnutls_init</a> function 
+must be called with the <code>GNUTLS_NONBLOCK</code> flag set (see <a href="Session-initialization.html#Session-initialization">Session initialization</a>). 
+</p>
+<p>In constrast with the TLS protocol, the pull timeout function is required,
+but will only be called with a timeout of zero. In that case it should indicate
+whether there are data to be received or not. When not using the default pull function,
+then <a href="Core-TLS-API.html#gnutls_005ftransport_005fset_005fpull_005ftimeout_005ffunction">gnutls_transport_set_pull_timeout_function</a> should be called.
 </p>
 <p>Although in the TLS protocol implementation each call to receive or send
 function implies to restoring the same function that was interrupted, in
@@ -223,14 +242,12 @@ trying to write data.
 <p><strong>Returns:</strong> 0 if trying to read data, 1 if trying to write data.
 </p></dd></dl>
 
-<p>Moreover, to prevent blocking from DTLS&rsquo; retransmission timers to block a
-handshake, the <a href="Core-TLS-API.html#gnutls_005finit">gnutls_init</a> function should be called with the
-<code>GNUTLS_NONBLOCK</code> flag set (see <a href="Session-initialization.html#Session-initialization">Session initialization</a>). In that
-case, in order to be able to use the DTLS handshake timers, the function
-<a href="Datagram-TLS-API.html#gnutls_005fdtls_005fget_005ftimeout">gnutls_dtls_get_timeout</a> should be used to estimate when to call
-<a href="Core-TLS-API.html#gnutls_005fhandshake">gnutls_handshake</a> if no packets have been received.
+<p>When calling <a href="Core-TLS-API.html#gnutls_005fhandshake">gnutls_handshake</a> through a multi-plexer,
+to be able to handle properly the DTLS handshake retransmission timers,
+the function <a href="Datagram-TLS-API.html#gnutls_005fdtls_005fget_005ftimeout">gnutls_dtls_get_timeout</a>
+should be used to estimate when to call <a href="Core-TLS-API.html#gnutls_005fhandshake">gnutls_handshake</a> if
+no data have been received.
 </p>
-
 <hr>
 <div class="header">
 <p>

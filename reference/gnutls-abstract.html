@@ -692,22 +692,23 @@ gnutls_certificate_set_retrieve_function2
                                (<em class="parameter"><code><span class="type">gnutls_certificate_credentials_t</span> cred</code></em>,
                                 <em class="parameter"><code><span class="type">gnutls_certificate_retrieve_function2</span> *func</code></em>);</pre>
 <p>This function sets a callback to be called in order to retrieve the
-certificate to be used in the handshake.</p>
+certificate to be used in the handshake. The callback will take control
+only if a certificate is requested by the peer.</p>
 <p>The callback's function prototype is:
 int (*callback)(gnutls_session_t, const gnutls_datum_t* req_ca_dn, int nreqs,
 const gnutls_pk_algorithm_t* pk_algos, int pk_algos_length, gnutls_pcert_st** pcert,
 unsigned int *pcert_length, gnutls_privkey_t * pkey);</p>
-<p><em class="parameter"><code>req_ca_cert</code></em>
+<p><em class="parameter"><code>req_ca_dn</code></em>
  is only used in X.509 certificates.
 Contains a list with the CA names that the server considers trusted.
-Normally we should send a certificate that is signed
-by one of these CAs. These names are DER encoded. To get a more
+This is a hint and typically the client should send a certificate that is signed
+by one of these CAs. These names, when available, are DER encoded. To get a more
 meaningful value use the function <a class="link" href="gnutls-x509.html#gnutls-x509-rdn-get" title="gnutls_x509_rdn_get ()"><code class="function">gnutls_x509_rdn_get()</code></a>.</p>
 <p><em class="parameter"><code>pk_algos</code></em>
  contains a list with server's acceptable signature algorithms.
 The certificate returned should support the server's given algorithms.</p>
 <p><em class="parameter"><code>pcert</code></em>
- should contain a single certificate and public or a list of them.</p>
+ should contain a single certificate and public key or a list of them.</p>
 <p><em class="parameter"><code>pcert_length</code></em>
  is the size of the previous list.</p>
 <p><em class="parameter"><code>pkey</code></em>
@@ -720,7 +721,9 @@ modified by gnutls.</p>
 <p>The callback function should set the certificate list to be sent,
 and return 0 on success. If no certificate was selected then the
 number of certificates should be set to zero. The value (-1)
-indicates error and the handshake will be terminated.</p>
+indicates error and the handshake will be terminated. If both certificates
+are set in the credentials and a callback is available, the callback
+takes predence.</p>
 <div class="refsect3">
 <a name="id-1.2.5.6.3.14"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -2173,7 +2176,7 @@ which is 20 bytes.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>flags</p></td>
-<td class="parameter_description"><p>should be 0 for now</p></td>
+<td class="parameter_description"><p>should be one of the flags from <code class="literal">gnutls_keyid_flags_t</code></p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>

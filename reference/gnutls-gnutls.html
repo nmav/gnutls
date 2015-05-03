@@ -4558,17 +4558,18 @@ gnutls_certificate_set_retrieve_function
                                (<em class="parameter"><code><span class="type">gnutls_certificate_credentials_t</span> cred</code></em>,
                                 <em class="parameter"><code><span class="type">gnutls_certificate_retrieve_function</span> *func</code></em>);</pre>
 <p>This function sets a callback to be called in order to retrieve the
-certificate to be used in the handshake. You are advised
+certificate to be used in the handshake. The callback will take control
+only if a certificate is requested by the peer. You are advised
 to use <a class="link" href="gnutls-abstract.html#gnutls-certificate-set-retrieve-function2" title="gnutls_certificate_set_retrieve_function2 ()"><code class="function">gnutls_certificate_set_retrieve_function2()</code></a> because it
 is much more efficient in the processing it requires from gnutls.</p>
 <p>The callback's function prototype is:
 int (*callback)(gnutls_session_t, const gnutls_datum_t* req_ca_dn, int nreqs,
 const gnutls_pk_algorithm_t* pk_algos, int pk_algos_length, gnutls_retr2_st* st);</p>
-<p><em class="parameter"><code>req_ca_cert</code></em>
+<p><em class="parameter"><code>req_ca_dn</code></em>
  is only used in X.509 certificates.
 Contains a list with the CA names that the server considers trusted.
-Normally we should send a certificate that is signed
-by one of these CAs. These names are DER encoded. To get a more
+This is a hint and typically the client should send a certificate that is signed
+by one of these CAs. These names, when available, are DER encoded. To get a more
 meaningful value use the function <a class="link" href="gnutls-x509.html#gnutls-x509-rdn-get" title="gnutls_x509_rdn_get ()"><code class="function">gnutls_x509_rdn_get()</code></a>.</p>
 <p><em class="parameter"><code>pk_algos</code></em>
  contains a list with server's acceptable signature algorithms.
@@ -4581,7 +4582,9 @@ handshake, after the certificate request message has been received.</p>
 <p>The callback function should set the certificate list to be sent,
 and return 0 on success. If no certificate was selected then the
 number of certificates should be set to zero. The value (-1)
-indicates error and the handshake will be terminated.</p>
+indicates error and the handshake will be terminated. If both certificates
+are set in the credentials and a callback is available, the callback
+takes predence.</p>
 <div class="refsect3">
 <a name="id-1.2.4.6.46.12"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -7751,8 +7754,8 @@ to the provided value. Use an <em class="parameter"><code>ms</code></em>
 timeout, or <a class="link" href="gnutls-gnutls.html#GNUTLS-DEFAULT-HANDSHAKE-TIMEOUT:CAPS" title="GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT"><code class="literal">GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT</code></a> for a reasonable
 default value. For the DTLS protocol, the more detailed
 <a class="link" href="gnutls-dtls.html#gnutls-dtls-set-timeouts" title="gnutls_dtls_set_timeouts ()"><code class="function">gnutls_dtls_set_timeouts()</code></a> is provided.</p>
-<p>The TLS handshake process always has the default timeout value since 
-GnuTLS 3.4.0. To unset call this function with zero value.</p>
+<p>This function requires to set a pull timeout callback. See
+<a class="link" href="gnutls-gnutls.html#gnutls-transport-set-pull-timeout-function" title="gnutls_transport_set_pull_timeout_function ()"><code class="function">gnutls_transport_set_pull_timeout_function()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.4.6.134.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -8169,8 +8172,8 @@ be free'd by calling <a class="link" href="gnutls-gnutls.html#gnutls-deinit" tit
 <p><em class="parameter"><code>flags</code></em>
  can be one of <a class="link" href="gnutls-gnutls.html#GNUTLS-CLIENT:CAPS" title="GNUTLS_CLIENT"><code class="literal">GNUTLS_CLIENT</code></a> and <a class="link" href="gnutls-gnutls.html#GNUTLS-SERVER:CAPS" title="GNUTLS_SERVER"><code class="literal">GNUTLS_SERVER</code></a>. For a DTLS
 entity, the flags <a class="link" href="gnutls-gnutls.html#GNUTLS-DATAGRAM:CAPS" title="GNUTLS_DATAGRAM"><code class="literal">GNUTLS_DATAGRAM</code></a> and  <a class="link" href="gnutls-gnutls.html#GNUTLS-NONBLOCK:CAPS" title="GNUTLS_NONBLOCK"><code class="literal">GNUTLS_NONBLOCK</code></a> are
-also available. The latter flag will enable a non-blocking
-operation of the DTLS timers. </p>
+also available. The latter flag will indicated non-blocking
+operation of the sockets provided to gnutls.</p>
 <p>The flag <code class="literal">GNUTLS_NO_REPLAY_PROTECTION</code> will disable any 
 replay protection in DTLS mode. That must only used when 
 replay protection is achieved using other means.</p>
@@ -13378,10 +13381,16 @@ zero if no data are immediately available.</p>
 <p><em class="parameter"><code>gnutls_pull_timeout_func</code></em>
  is of the form,
 int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);</p>
+<p>This callback is necessary when <a class="link" href="gnutls-gnutls.html#gnutls-handshake-set-timeout" title="gnutls_handshake_set_timeout ()"><code class="function">gnutls_handshake_set_timeout()</code></a> or 
+<code class="function">gnutls_record_set_timeout()</code> are set. It will not be used when 
+non-blocking sockets are in use. That is, this function will
+not operate when <a class="link" href="gnutls-gnutls.html#GNUTLS-NONBLOCK:CAPS" title="GNUTLS_NONBLOCK"><code class="literal">GNUTLS_NONBLOCK</code></a> is specified in <a class="link" href="gnutls-gnutls.html#gnutls-init" title="gnutls_init ()"><code class="function">gnutls_init()</code></a>, 
+or a custom pull function is registered without updating the 
+pull timeout function.</p>
 <p>The helper function <code class="function">gnutls_system_recv_timeout()</code> is provided to
-simplify writing suck callbacks.</p>
+simplify writing callbacks.</p>
 <div class="refsect3">
-<a name="id-1.2.4.6.287.8"></a><h4>Parameters</h4>
+<a name="id-1.2.4.6.287.9"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -15110,7 +15119,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.4.0"
+<pre class="programlisting">#define GNUTLS_VERSION "3.4.1"
 </pre>
 <p>
 </p>
@@ -15134,7 +15143,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030400
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030401
 </pre>
 <p>
 </p>
@@ -15142,7 +15151,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 0
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 1
 </pre>
 <p>
 </p>

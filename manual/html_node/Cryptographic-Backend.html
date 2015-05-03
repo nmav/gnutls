@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.0 of GnuTLS.
+3.4.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.0: Cryptographic Backend</title>
+<title>GnuTLS 3.4.1: Cryptographic Backend</title>
 
-<meta name="description" content="GnuTLS 3.4.0: Cryptographic Backend">
-<meta name="keywords" content="GnuTLS 3.4.0: Cryptographic Backend">
+<meta name="description" content="GnuTLS 3.4.1: Cryptographic Backend">
+<meta name="keywords" content="GnuTLS 3.4.1: Cryptographic Backend">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -168,9 +168,8 @@ Previous: <a href="TLS-Extension-Handling.html#TLS-Extension-Handling" accesskey
 include either instructions  intended to speed up cryptographic operations,
 or a co-processor with cryptographic capabilities. Taking advantage of 
 those is a challenging task for every cryptographic  application or 
-library. Unfortunately the cryptographic library that GnuTLS is based 
-on takes no advantage of these capabilities. For this reason GnuTLS handles 
-this internally by following a layered approach to accessing
+library. GnuTLS handles the cryptographic provider in a modular
+way, following a layered approach to access
 cryptographic operations as in <a href="#fig_002dcrypto_002dlayers">Figure 10.4</a>.
 </p>
 <div class="float"><a name="fig_002dcrypto_002dlayers"></a>
@@ -221,45 +220,27 @@ source code in <code>lib/accelerated/</code>.
 <h4 class="subsubheading">Overriding specific algorithms</h4>
 <p>When an optimized implementation of a single algorithm is available,
 say a hardware assisted version of <acronym>AES-CBC</acronym> then the
-following (internal) functions, from <code>crypto-backend.h</code>, can 
+following functions, from <code>crypto.h</code>, can 
 be used to register those algorithms.
 </p>
 <ul>
-<li> <code>gnutls_crypto_single_cipher_register</code>:
+<li> <a href="Cryptographic-API.html#gnutls_005fcrypto_005fregister_005fcipher">gnutls_crypto_register_cipher</a>:
 To register a cipher algorithm.
 
-</li><li> <code>gnutls_crypto_single_digest_register</code>:
-To register a hash (digest) or MAC algorithm.
+</li><li> <a href="Cryptographic-API.html#gnutls_005fcrypto_005fregister_005faead_005fcipher">gnutls_crypto_register_aead_cipher</a>:
+To register an AEAD cipher algorithm.
+
+</li><li> <a href="Cryptographic-API.html#gnutls_005fcrypto_005fregister_005fmac">gnutls_crypto_register_mac</a>:
+To register a MAC algorithm.
+
+</li><li> <a href="Cryptographic-API.html#gnutls_005fcrypto_005fregister_005fdigest">gnutls_crypto_register_digest</a>:
+To register a hash algorithm.
 
 </li></ul>
 
 <p>Those registration functions will only replace the specified algorithm
 and leave the rest of subsystem intact.
 </p>
-<a name="Overriding-the-cryptographic-library"></a>
-<h4 class="subsubheading">Overriding the cryptographic library</h4>
-<p>In some systems, that might contain a broad acceleration engine, it 
-might be desirable to override big parts of the cryptographic back-end, 
-or even all of them. The following functions are provided for this reason.
-</p>
-<ul>
-<li> <code>gnutls_crypto_cipher_register</code>:
-To override the cryptographic algorithms back-end.
-
-</li><li> <code>gnutls_crypto_digest_register</code>:
-To override the digest algorithms back-end.
-
-</li><li> <code>gnutls_crypto_rnd_register</code>:
-To override the random number generator back-end.
-
-</li><li> <code>gnutls_crypto_bigint_register</code>:
-To override the big number number operations back-end.
-
-</li><li> <code>gnutls_crypto_pk_register</code>:
-To override the public key encryption back-end. This is tied to the
-big number operations so either none or both of them should be overridden.
-
-</li></ul>
 
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.0 of GnuTLS.
+3.4.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.0: Setting up the transport layer</title>
+<title>GnuTLS 3.4.1: Setting up the transport layer</title>
 
-<meta name="description" content="GnuTLS 3.4.0: Setting up the transport layer">
-<meta name="keywords" content="GnuTLS 3.4.0: Setting up the transport layer">
+<meta name="description" content="GnuTLS 3.4.1: Setting up the transport layer">
+<meta name="keywords" content="GnuTLS 3.4.1: Setting up the transport layer">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -270,8 +270,15 @@ zero if no data are immediately available.
 <p><code>gnutls_pull_timeout_func</code> is of the form,
 int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);
 </p>
+<p>This callback is necessary when <code>gnutls_handshake_set_timeout()</code>  or 
+<code>gnutls_record_set_timeout()</code>  are set. It will not be used when 
+non-blocking sockets are in use. That is, this function will
+not operate when <code>GNUTLS_NONBLOCK</code>  is specified in <code>gnutls_init()</code> , 
+or a custom pull function is registered without updating the 
+pull timeout function.
+</p>
 <p>The helper function <code>gnutls_system_recv_timeout()</code>  is provided to
-simplify writing suck callbacks.
+simplify writing callbacks. 
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -352,8 +359,15 @@ zero if no data are immediately available.
 <p><code>gnutls_pull_timeout_func</code> is of the form,
 int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);
 </p>
+<p>This callback is necessary when <code>gnutls_handshake_set_timeout()</code>  or 
+<code>gnutls_record_set_timeout()</code>  are set. It will not be used when 
+non-blocking sockets are in use. That is, this function will
+not operate when <code>GNUTLS_NONBLOCK</code>  is specified in <code>gnutls_init()</code> , 
+or a custom pull function is registered without updating the 
+pull timeout function.
+</p>
 <p>The helper function <code>gnutls_system_recv_timeout()</code>  is provided to
-simplify writing suck callbacks.
+simplify writing callbacks. 
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>

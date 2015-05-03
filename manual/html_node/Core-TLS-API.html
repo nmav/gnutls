@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.0 of GnuTLS.
+3.4.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.0: Core TLS API</title>
+<title>GnuTLS 3.4.1: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.4.0: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.4.0: Core TLS API">
+<meta name="description" content="GnuTLS 3.4.1: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.4.1: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -913,7 +913,8 @@ to have effect.
 <p><var>func</var>: is the callback function
 </p>
 <p>This function sets a callback to be called in order to retrieve the
-certificate to be used in the handshake. You are advised
+certificate to be used in the handshake. The callback will take control
+only if a certificate is requested by the peer. You are advised
 to use <code>gnutls_certificate_set_retrieve_function2()</code>  because it
 is much more efficient in the processing it requires from gnutls.
 </p>
@@ -921,10 +922,10 @@ is much more efficient in the processing it requires from gnutls.
 int (*callback)(gnutls_session_t, const gnutls_datum_t* req_ca_dn, int nreqs,
 const gnutls_pk_algorithm_t* pk_algos, int pk_algos_length, gnutls_retr2_st* st);
 </p>
-<p><code>req_ca_cert</code> is only used in X.509 certificates.
+<p><code>req_ca_dn</code> is only used in X.509 certificates.
 Contains a list with the CA names that the server considers trusted.
-Normally we should send a certificate that is signed
-by one of these CAs. These names are DER encoded. To get a more
+This is a hint and typically the client should send a certificate that is signed
+by one of these CAs. These names, when available, are DER encoded. To get a more
 meaningful value use the function <code>gnutls_x509_rdn_get()</code> .
 </p>
 <p><code>pk_algos</code> contains a list with server&rsquo;s acceptable signature algorithms.
@@ -940,7 +941,9 @@ handshake, after the certificate request message has been received.
 <p>The callback function should set the certificate list to be sent,
 and return 0 on success. If no certificate was selected then the
 number of certificates should be set to zero. The value (-1)
-indicates error and the handshake will be terminated.
+indicates error and the handshake will be terminated. If both certificates
+are set in the credentials and a callback is available, the callback
+takes predence.
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -1802,6 +1805,8 @@ of a server.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
+</p>
+<p><strong>Since:</strong> 3.3.3
 </p></dd></dl>
 
 <a name="gnutls_005fcredentials_005fset-1"></a>
@@ -2887,8 +2892,8 @@ timeout, or <code>GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT</code>  for a reasonable
 default value. For the DTLS protocol, the more detailed
 <code>gnutls_dtls_set_timeouts()</code>  is provided.
 </p>
-<p>The TLS handshake process always has the default timeout value since 
-GnuTLS 3.4.0. To unset call this function with zero value.
+<p>This function requires to set a pull timeout callback. See
+<code>gnutls_transport_set_pull_timeout_function()</code> .
 </p>
 <p><strong>Since:</strong> 3.1.0
 </p></dd></dl>
@@ -3081,8 +3086,8 @@ be free&rsquo;d by calling <code>gnutls_deinit()</code> .  Returns <code>GNUTLS_
 </p>
 <p><code>flags</code> can be one of <code>GNUTLS_CLIENT</code>  and <code>GNUTLS_SERVER</code> . For a DTLS
 entity, the flags <code>GNUTLS_DATAGRAM</code>  and  <code>GNUTLS_NONBLOCK</code>  are
-also available. The latter flag will enable a non-blocking
-operation of the DTLS timers. 
+also available. The latter flag will indicated non-blocking
+operation of the sockets provided to gnutls.
 </p>
 <p>The flag <code>GNUTLS_NO_REPLAY_PROTECTION</code>  will disable any 
 replay protection in DTLS mode. That must only used when 
@@ -3742,6 +3747,8 @@ Once the last available index is crossed then
 <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  will be returned.
 </p>
 <p><strong>Returns:</strong> On success it returns <code>GNUTLS_E_SUCCESS</code>  (0), or a negative error value otherwise.
+</p>
+<p><strong>Since:</strong> 3.0.9
 </p></dd></dl>
 
 <a name="gnutls_005fpriority_005finit-1"></a>
@@ -4345,7 +4352,7 @@ by default unless requested using <code>gnutls_range_send_message()</code> .
 <dt><a name="index-gnutls_005frecord_005fdiscard_005fqueued"></a>Function: <em>size_t</em> <strong>gnutls_record_discard_queued</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
-<p>This function discards all queued to be sent packets in a DTLS session.
+<p>This function discards all queued to be sent packets in a TLS or DTLS session.
 These are the packets queued after an interrupted <code>gnutls_record_send()</code> .
 </p>
 <p><strong>Returns:</strong> The number of bytes discarded.
@@ -4469,7 +4476,7 @@ The number of bytes received might be less than the requested  <code>data_size</
 </p>
 <p>This is a lower-level function than <code>gnutls_record_recv()</code>  and allows
 to directly receive the whole decrypted packet. That avoids a
-memory copy, and is mostly applicable to applications seeking high
+memory copy, and is intended to be used by applications seeking high
 performance.
 </p>
 <p>The received packet is accessed using <code>gnutls_packet_get()</code>  and 
@@ -4630,6 +4637,9 @@ gnutls. That is, if <code>gnutls_record_get_state()</code>  was used.
 to the provided value. Use an  <code>ms</code> value of zero to disable
 timeout (the default).
 </p>
+<p>This function requires to set a pull timeout callback. See
+<code>gnutls_transport_set_pull_timeout_function()</code> .
+</p>
 <p><strong>Since:</strong> 3.1.7
 </p></dd></dl>
 
@@ -4661,7 +4671,7 @@ otherwise a negative error code.
 <a name="gnutls_005frehandshake-1"></a>
 <h4 class="subheading">gnutls_rehandshake</h4>
 <a name="gnutls_005frehandshake"></a><dl>
-<dt><a name="index-gnutls_005frehandshake"></a>Function: <em>int</em> <strong>gnutls_rehandshake</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dt><a name="index-gnutls_005frehandshake-1"></a>Function: <em>int</em> <strong>gnutls_rehandshake</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function will renegotiate security parameters with the
@@ -4693,7 +4703,7 @@ this message.
 <a name="gnutls_005fsafe_005frenegotiation_005fstatus-1"></a>
 <h4 class="subheading">gnutls_safe_renegotiation_status</h4>
 <a name="gnutls_005fsafe_005frenegotiation_005fstatus"></a><dl>
-<dt><a name="index-gnutls_005fsafe_005frenegotiation_005fstatus"></a>Function: <em>int</em> <strong>gnutls_safe_renegotiation_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dt><a name="index-gnutls_005fsafe_005frenegotiation_005fstatus-1"></a>Function: <em>int</em> <strong>gnutls_safe_renegotiation_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Can be used to check whether safe renegotiation is being used
@@ -6263,8 +6273,15 @@ zero if no data are immediately available.
 <p><code>gnutls_pull_timeout_func</code> is of the form,
 int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);
 </p>
+<p>This callback is necessary when <code>gnutls_handshake_set_timeout()</code>  or 
+<code>gnutls_record_set_timeout()</code>  are set. It will not be used when 
+non-blocking sockets are in use. That is, this function will
+not operate when <code>GNUTLS_NONBLOCK</code>  is specified in <code>gnutls_init()</code> , 
+or a custom pull function is registered without updating the 
+pull timeout function.
+</p>
 <p>The helper function <code>gnutls_system_recv_timeout()</code>  is provided to
-simplify writing suck callbacks.
+simplify writing callbacks. 
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
