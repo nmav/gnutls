@@ -1,0 +1,13 @@
+    <td></td>
+    <td>ServerKeyExchange signature issue</td>
+    <td><a
+    href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8132">Karthikeyan Bhargavan
+    reported</a> that a ServerKeyExchange signature
+    sent by the server is not verified to be in the acceptable by the client
+    set of algorithms. That has the effect of allowing MD5 signatures
+    (which are disabled by default) in the ServerKeyExchange message. It is not believed that this bug can
+    be exploited because a fraudulent signature has to be generated in real-time which is not
+    known to be possible. However, since attacks can only get better it is
+    recommended to update to a GnuTLS version which fixes the issue.<br>
+
+      <b>Recommendation:</b> Upgrade to GnuTLS 3.4.1, or 3.3.15.</td>
