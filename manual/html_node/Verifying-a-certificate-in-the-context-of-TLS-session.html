@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.1 of GnuTLS.
+3.4.2 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.1: Verifying a certificate in the context of TLS session</title>
+<title>GnuTLS 3.4.2: Verifying a certificate in the context of TLS session</title>
 
-<meta name="description" content="GnuTLS 3.4.1: Verifying a certificate in the context of TLS session">
-<meta name="keywords" content="GnuTLS 3.4.1: Verifying a certificate in the context of TLS session">
+<meta name="description" content="GnuTLS 3.4.2: Verifying a certificate in the context of TLS session">
+<meta name="keywords" content="GnuTLS 3.4.2: Verifying a certificate in the context of TLS session">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -163,7 +163,7 @@ Next: <a href="Verification-using-PKCS11.html#Verification-using-PKCS11" accessk
 </div>
 <hr>
 <a name="Verifying-a-certificate-in-the-context-of-TLS-session-1"></a>
-<h4 class="subsubsection">4.1.1.7 Verifying a certificate in the context of TLS session</h4>
+<h4 class="subsubsection">4.1.1.8 Verifying a certificate in the context of TLS session</h4>
 <a name="index-verifying-certificate-paths-1"></a>
 <a name="index-gnutls_005fcertificate_005fverify_005fflags"></a>
 
@@ -256,6 +256,10 @@ certificate chain.
 <dt><code>GNUTLS_VERIFY_DO_NOT_ALLOW_WILDCARDS</code></dt>
 <dd><p>When including a hostname
 check in the verification, do not consider any wildcards.
+</p></dd>
+<dt><code>GNUTLS_VERIFY_USE_TLS1_RSA</code></dt>
+<dd><p>This indicates that a (raw) RSA signature is provided
+as in the TLS 1.0 protocol. Not all functions accept this flag.
 </p></dd>
 </dl>
 

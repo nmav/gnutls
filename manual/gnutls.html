@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.1 of GnuTLS.
+3.4.2 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.1</title>
+<title>GnuTLS 3.4.2</title>
 
-<meta name="description" content="GnuTLS 3.4.1">
-<meta name="keywords" content="GnuTLS 3.4.1">
+<meta name="description" content="GnuTLS 3.4.2">
+<meta name="keywords" content="GnuTLS 3.4.2">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -154,7 +154,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.4.1</h1>
+<h1 class="settitle" align="center">GnuTLS 3.4.2</h1>
 
 
 
@@ -231,12 +231,13 @@ dl {
       <ul class="no-bullet">
         <li><a name="toc-X_002e509-certificate-structure-1" href="#X_002e509-certificate-structure">4.1.1.1 <acronym>X.509</acronym> certificate structure</a></li>
         <li><a name="toc-Importing-an-X_002e509-certificate-1" href="#Importing-an-X_002e509-certificate">4.1.1.2 Importing an X.509 certificate</a></li>
-        <li><a name="toc-X_002e509-distinguished-names-1" href="#X_002e509-distinguished-names">4.1.1.3 X.509 distinguished names</a></li>
-        <li><a name="toc-X_002e509-extensions-1" href="#X_002e509-extensions">4.1.1.4 X.509 extensions</a></li>
-        <li><a name="toc-Accessing-public-and-private-keys" href="#X_002e509-public-and-private-keys">4.1.1.5 Accessing public and private keys</a></li>
-        <li><a name="toc-Verifying-X_002e509-certificate-paths-1" href="#Verifying-X_002e509-certificate-paths">4.1.1.6 Verifying <acronym>X.509</acronym> certificate paths</a></li>
-        <li><a name="toc-Verifying-a-certificate-in-the-context-of-TLS-session-1" href="#Verifying-a-certificate-in-the-context-of-TLS-session">4.1.1.7 Verifying a certificate in the context of TLS session</a></li>
-        <li><a name="toc-Verifying-a-certificate-using-PKCS-_002311" href="#Verification-using-PKCS11">4.1.1.8 Verifying a certificate using PKCS #11</a></li>
+        <li><a name="toc-X_002e509-certificate-names-1" href="#X_002e509-certificate-names">4.1.1.3 X.509 certificate names</a></li>
+        <li><a name="toc-X_002e509-distinguished-names-1" href="#X_002e509-distinguished-names">4.1.1.4 X.509 distinguished names</a></li>
+        <li><a name="toc-X_002e509-extensions-1" href="#X_002e509-extensions">4.1.1.5 X.509 extensions</a></li>
+        <li><a name="toc-Accessing-public-and-private-keys" href="#X_002e509-public-and-private-keys">4.1.1.6 Accessing public and private keys</a></li>
+        <li><a name="toc-Verifying-X_002e509-certificate-paths-1" href="#Verifying-X_002e509-certificate-paths">4.1.1.7 Verifying <acronym>X.509</acronym> certificate paths</a></li>
+        <li><a name="toc-Verifying-a-certificate-in-the-context-of-TLS-session-1" href="#Verifying-a-certificate-in-the-context-of-TLS-session">4.1.1.8 Verifying a certificate in the context of TLS session</a></li>
+        <li><a name="toc-Verifying-a-certificate-using-PKCS-_002311" href="#Verification-using-PKCS11">4.1.1.9 Verifying a certificate using PKCS #11</a></li>
       </ul></li>
       <li><a name="toc-OpenPGP-certificates-1" href="#OpenPGP-certificates">4.1.2 <acronym>OpenPGP</acronym> certificates</a>
       <ul class="no-bullet">
@@ -500,15 +501,16 @@ dl {
     <li><a name="toc-Core-TLS-API-1" href="#Core-TLS-API">E.1 Core TLS API</a></li>
     <li><a name="toc-Datagram-TLS-API-1" href="#Datagram-TLS-API">E.2 Datagram TLS API</a></li>
     <li><a name="toc-X_002e509-certificate-API" href="#X509-certificate-API">E.3 <acronym>X.509</acronym> certificate API</a></li>
-    <li><a name="toc-OCSP-API-1" href="#OCSP-API">E.4 <acronym>OCSP</acronym> API</a></li>
-    <li><a name="toc-OpenPGP-API-1" href="#OpenPGP-API">E.5 <acronym>OpenPGP</acronym> API</a></li>
-    <li><a name="toc-PKCS-12-API-1" href="#PKCS-12-API">E.6 PKCS 12 API</a></li>
-    <li><a name="toc-Hardware-token-via-PKCS-11-API" href="#PKCS-11-API">E.7 Hardware token via PKCS 11 API</a></li>
-    <li><a name="toc-TPM-API-1" href="#TPM-API">E.8 TPM API</a></li>
-    <li><a name="toc-Abstract-key-API-1" href="#Abstract-key-API">E.9 Abstract key API</a></li>
-    <li><a name="toc-DANE-API-1" href="#DANE-API">E.10 DANE API</a></li>
-    <li><a name="toc-Cryptographic-API-1" href="#Cryptographic-API">E.11 Cryptographic API</a></li>
-    <li><a name="toc-Compatibility-API-1" href="#Compatibility-API">E.12 Compatibility API</a></li>
+    <li><a name="toc-PKCS-7-API-1" href="#PKCS-7-API">E.4 <acronym>PKCS</acronym> 7 API</a></li>
+    <li><a name="toc-OCSP-API-1" href="#OCSP-API">E.5 <acronym>OCSP</acronym> API</a></li>
+    <li><a name="toc-OpenPGP-API-1" href="#OpenPGP-API">E.6 <acronym>OpenPGP</acronym> API</a></li>
+    <li><a name="toc-PKCS-12-API-1" href="#PKCS-12-API">E.7 PKCS 12 API</a></li>
+    <li><a name="toc-Hardware-token-via-PKCS-11-API" href="#PKCS-11-API">E.8 Hardware token via PKCS 11 API</a></li>
+    <li><a name="toc-TPM-API-1" href="#TPM-API">E.9 TPM API</a></li>
+    <li><a name="toc-Abstract-key-API-1" href="#Abstract-key-API">E.10 Abstract key API</a></li>
+    <li><a name="toc-DANE-API-1" href="#DANE-API">E.11 DANE API</a></li>
+    <li><a name="toc-Cryptographic-API-1" href="#Cryptographic-API">E.12 Cryptographic API</a></li>
+    <li><a name="toc-Compatibility-API-1" href="#Compatibility-API">E.13 Compatibility API</a></li>
   </ul></li>
   <li><a name="toc-Copying-Information-1" href="#Copying-Information">Appendix F Copying Information</a></li>
   <li><a name="toc-Bibliography-1" href="#Bibliography">Bibliography</a></li>
@@ -527,7 +529,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 4 March 2015 for version
-3.4.1 of GnuTLS.
+3.4.2 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2015 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2015 Nikos Mavrogiannopoulos
@@ -1421,7 +1423,7 @@ and is described in [<em>RFC6520</em>]. The extension is disabled by default and
 <a href="#gnutls_005fheartbeat_005fenable">gnutls_heartbeat_enable</a> can be used to enable it. A policy
 may be negotiated to only allow sending heartbeat messages or sending and receiving.
 The current session policy can be checked with <a href="#gnutls_005fheartbeat_005fallowed">gnutls_heartbeat_allowed</a>. 
-The requests coming from the peer result to <code>GNUTLS_E_HERTBEAT_PING_RECEIVED</code>
+The requests coming from the peer result to <code>GNUTLS_E_HEARTBEAT_PING_RECEIVED</code>
 being returned from the receive function. Ping requests to peer can be send via
 <a href="#gnutls_005fheartbeat_005fping">gnutls_heartbeat_ping</a>. 
 </p>
@@ -2014,17 +2016,19 @@ acceptable.  The framework is illustrated on <a href="#fig_002dx509">Figure 4.1<
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Importing-an-X_002e509-certificate" accesskey="2">Importing an X.509 certificate</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#X_002e509-distinguished-names" accesskey="3">X.509 distinguished names</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#X_002e509-certificate-names" accesskey="3">X.509 certificate names</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#X_002e509-extensions" accesskey="4">X.509 extensions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#X_002e509-distinguished-names" accesskey="4">X.509 distinguished names</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#X_002e509-public-and-private-keys" accesskey="5">X.509 public and private keys</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#X_002e509-extensions" accesskey="5">X.509 extensions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Verifying-X_002e509-certificate-paths" accesskey="6">Verifying X.509 certificate paths</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#X_002e509-public-and-private-keys" accesskey="6">X.509 public and private keys</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Verifying-a-certificate-in-the-context-of-TLS-session" accesskey="7">Verifying a certificate in the context of TLS session</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Verifying-X_002e509-certificate-paths" accesskey="7">Verifying X.509 certificate paths</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Verification-using-PKCS11" accesskey="8">Verification using PKCS11</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Verifying-a-certificate-in-the-context-of-TLS-session" accesskey="8">Verifying a certificate in the context of TLS session</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Verification-using-PKCS11" accesskey="9">Verification using PKCS11</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -2082,7 +2086,7 @@ demonstrate the <acronym>X.509</acronym> parsing capabilities can be found in
 <a name="Importing-an-X_002e509-certificate"></a>
 <div class="header">
 <p>
-Next: <a href="#X_002e509-distinguished-names" accesskey="n" rel="next">X.509 distinguished names</a>, Previous: <a href="#X_002e509-certificate-structure" accesskey="p" rel="prev">X.509 certificate structure</a>, Up: <a href="#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#X_002e509-certificate-names" accesskey="n" rel="next">X.509 certificate names</a>, Previous: <a href="#X_002e509-certificate-structure" accesskey="p" rel="prev">X.509 certificate structure</a>, Up: <a href="#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Importing-an-X_002e509-certificate-1"></a>
 <h4 class="subsubsection">4.1.1.2 Importing an X.509 certificate</h4>
@@ -2109,13 +2113,45 @@ Note that although the functions above apply to <code>gnutls_x509_crt_t</code> s
 exist for the CRL structure <code>gnutls_x509_crl_t</code>.
 </p>
 <hr>
+<a name="X_002e509-certificate-names"></a>
+<div class="header">
+<p>
+Next: <a href="#X_002e509-distinguished-names" accesskey="n" rel="next">X.509 distinguished names</a>, Previous: <a href="#Importing-an-X_002e509-certificate" accesskey="p" rel="prev">Importing an X.509 certificate</a>, Up: <a href="#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="X_002e509-certificate-names-1"></a>
+<h4 class="subsubsection">4.1.1.3 X.509 certificate names</h4>
+<a name="index-X_002e509-certificate-name"></a>
+
+<p>X.509 certificates allow for multiple names and types of names to be specified.
+CA certificates often rely on X.509 distinguished names (see <a href="#X_002e509-distinguished-names">X.509 distinguished names</a>)
+for unique identification, while end-user and server certificates rely on the
+&rsquo;subject alternative names&rsquo;. The subject alternative names provide a typed name, e.g.,
+a DNS name, or an email address, which identifies the owner of the certificate.
+The following functions provide access to that names.
+</p>
+<dl compact="compact">
+<dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrt_005fget_005fsubject_005falt_005fname2">gnutls_x509_crt_get_subject_alt_name2</a> (gnutls_x509_crt_t <var>cert</var>, unsigned int <var>seq</var>, void * <var>san</var>, size_t * <var>san_size</var>, unsigned int * <var>san_type</var>, unsigned int * <var>critical</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname">gnutls_x509_crt_set_subject_alt_name</a> (gnutls_x509_crt_t <var>crt</var>, gnutls_x509_subject_alt_name_t <var>type</var>, const void * <var>data</var>, unsigned int <var>data_size</var>, unsigned int <var>flags</var>)</code></dt>
+</dl>
+<dl compact="compact">
+<dt><code><var>int</var> <a href="#gnutls_005fsubject_005falt_005fnames_005finit">gnutls_subject_alt_names_init</a> (gnutls_subject_alt_names_t * <var>sans</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fsubject_005falt_005fnames_005fget">gnutls_subject_alt_names_get</a> (gnutls_subject_alt_names_t <var>sans</var>, unsigned int <var>seq</var>, unsigned int * <var>san_type</var>, gnutls_datum_t * <var>san</var>, gnutls_datum_t * <var>othername_oid</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fsubject_005falt_005fnames_005fset">gnutls_subject_alt_names_set</a> (gnutls_subject_alt_names_t <var>sans</var>, unsigned int <var>san_type</var>, const gnutls_datum_t * <var>san</var>, const char * <var>othername_oid</var>)</code></dt>
+</dl>
+
+<p>Note however, that server certificates often used the Common Name (CN), part of the
+certificate DistinguishedName to place a single DNS address. That practice is discouraged
+(see [<em>RFC6125</em>]), because only a single address can be specified, and the CN field is
+free-form making matching ambiguous.
+</p>
+<hr>
 <a name="X_002e509-distinguished-names"></a>
 <div class="header">
 <p>
-Next: <a href="#X_002e509-extensions" accesskey="n" rel="next">X.509 extensions</a>, Previous: <a href="#Importing-an-X_002e509-certificate" accesskey="p" rel="prev">Importing an X.509 certificate</a>, Up: <a href="#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#X_002e509-extensions" accesskey="n" rel="next">X.509 extensions</a>, Previous: <a href="#X_002e509-certificate-names" accesskey="p" rel="prev">X.509 certificate names</a>, Up: <a href="#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="X_002e509-distinguished-names-1"></a>
-<h4 class="subsubsection">4.1.1.3 X.509 distinguished names</h4>
+<h4 class="subsubsection">4.1.1.4 X.509 distinguished names</h4>
 <a name="index-X_002e509-distinguished-name"></a>
 
 <p>The &ldquo;subject&rdquo; of an X.509 certificate is not described by
@@ -2142,7 +2178,7 @@ described in RFC4514. The output string will be ASCII or UTF-8
 encoded, depending on the certificate data.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value. and a negative error code on error.
+negative error value.
 </p>
 <p><strong>Since:</strong> 3.1.10
 </p></dd></dl>
@@ -2214,7 +2250,7 @@ value conversions when necessary (e.g. from UCS-2).
 Next: <a href="#X_002e509-public-and-private-keys" accesskey="n" rel="next">X.509 public and private keys</a>, Previous: <a href="#X_002e509-distinguished-names" accesskey="p" rel="prev">X.509 distinguished names</a>, Up: <a href="#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="X_002e509-extensions-1"></a>
-<h4 class="subsubsection">4.1.1.4 X.509 extensions</h4>
+<h4 class="subsubsection">4.1.1.5 X.509 extensions</h4>
 <a name="index-X_002e509-extensions"></a>
 
 <p>X.509 version 3 certificates include a list of extensions that can
@@ -2319,7 +2355,7 @@ in <code>x509.h</code> and some examples are listed below.
 Next: <a href="#Verifying-X_002e509-certificate-paths" accesskey="n" rel="next">Verifying X.509 certificate paths</a>, Previous: <a href="#X_002e509-extensions" accesskey="p" rel="prev">X.509 extensions</a>, Up: <a href="#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Accessing-public-and-private-keys"></a>
-<h4 class="subsubsection">4.1.1.5 Accessing public and private keys</h4>
+<h4 class="subsubsection">4.1.1.6 Accessing public and private keys</h4>
 
 <p>Each X.509 certificate contains a public key that corresponds to a private key. To
 get a unique identifier of the public key the <a href="#gnutls_005fx509_005fcrt_005fget_005fkey_005fid">gnutls_x509_crt_get_key_id</a>
@@ -2372,7 +2408,7 @@ returned, and 0 on success.
 Next: <a href="#Verifying-a-certificate-in-the-context-of-TLS-session" accesskey="n" rel="next">Verifying a certificate in the context of TLS session</a>, Previous: <a href="#X_002e509-public-and-private-keys" accesskey="p" rel="prev">X.509 public and private keys</a>, Up: <a href="#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Verifying-X_002e509-certificate-paths-1"></a>
-<h4 class="subsubsection">4.1.1.6 Verifying <acronym>X.509</acronym> certificate paths</h4>
+<h4 class="subsubsection">4.1.1.7 Verifying <acronym>X.509</acronym> certificate paths</h4>
 <a name="index-verifying-certificate-paths"></a>
 
 <p>Verifying certificate paths is important in <acronym>X.509</acronym>
@@ -2740,7 +2776,7 @@ This purpose is served by the functions <a href="#gnutls_005fx509_005ftrust_005f
 Next: <a href="#Verification-using-PKCS11" accesskey="n" rel="next">Verification using PKCS11</a>, Previous: <a href="#Verifying-X_002e509-certificate-paths" accesskey="p" rel="prev">Verifying X.509 certificate paths</a>, Up: <a href="#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Verifying-a-certificate-in-the-context-of-TLS-session-1"></a>
-<h4 class="subsubsection">4.1.1.7 Verifying a certificate in the context of TLS session</h4>
+<h4 class="subsubsection">4.1.1.8 Verifying a certificate in the context of TLS session</h4>
 <a name="index-verifying-certificate-paths-1"></a>
 <a name="index-gnutls_005fcertificate_005fverify_005fflags"></a>
 
@@ -2834,6 +2870,10 @@ certificate chain.
 <dd><p>When including a hostname
 check in the verification, do not consider any wildcards.
 </p></dd>
+<dt><code>GNUTLS_VERIFY_USE_TLS1_RSA</code></dt>
+<dd><p>This indicates that a (raw) RSA signature is provided
+as in the TLS 1.0 protocol. Not all functions accept this flag.
+</p></dd>
 </dl>
 
 <div class="float-caption"><p><strong>Figure 4.3: </strong>The <code>gnutls_certificate_verify_flags</code> enumeration.</p></div></div>
@@ -2844,7 +2884,7 @@ check in the verification, do not consider any wildcards.
 Previous: <a href="#Verifying-a-certificate-in-the-context-of-TLS-session" accesskey="p" rel="prev">Verifying a certificate in the context of TLS session</a>, Up: <a href="#X_002e509-certificates" accesskey="u" rel="up">X.509 certificates</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Verifying-a-certificate-using-PKCS-_002311"></a>
-<h4 class="subsubsection">4.1.1.8 Verifying a certificate using PKCS #11</h4>
+<h4 class="subsubsection">4.1.1.9 Verifying a certificate using PKCS #11</h4>
 <a name="index-verifying-certificate-with-pkcs11"></a>
 
 <p>Some systems provide a system wide trusted certificate storage accessible using
@@ -4472,6 +4512,31 @@ This option will dump the contents and print the metadata of the provided PKCS #
 <p>This is the &ldquo;the pkcs #12 friendly name to use&rdquo; option.
 This option takes a string argument.
 The name to be used for the primary certificate and private key in a PKCS #12 file.
+<a name="certtool-p7_002dgenerate"></a></p><a name="p7_002dgenerate-option"></a>
+<h4 class="subsubheading">p7-generate option</h4>
+
+<p>This is the &ldquo;generate a pkcs #7 structure&rdquo; option.
+This option generates a PKCS #7 certificate container structure. To add certificates in the structure use &ndash;load-certificate and &ndash;load-crl.
+<a name="certtool-p7_002dsign"></a></p><a name="p7_002dsign-option"></a>
+<h4 class="subsubheading">p7-sign option</h4>
+
+<p>This is the &ldquo;signs using a pkcs #7 structure&rdquo; option.
+This option generates a PKCS #7 structure containing a signature for the provided data. The data are stored within the structure. The signer certificate has to be specified using &ndash;load-certificate and &ndash;load-privkey.
+<a name="certtool-p7_002ddetached_002dsign"></a></p><a name="p7_002ddetached_002dsign-option"></a>
+<h4 class="subsubheading">p7-detached-sign option</h4>
+
+<p>This is the &ldquo;signs using a detached pkcs #7 structure&rdquo; option.
+This option generates a PKCS #7 structure containing a signature for the provided data. The signer certificate has to be specified using &ndash;load-certificate and &ndash;load-privkey.
+<a name="certtool-p7_002dtime"></a></p><a name="p7_002dtime-option"></a>
+<h4 class="subsubheading">p7-time option</h4>
+
+<p>This is the &ldquo;will include a timestamp in the pkcs #7 structure&rdquo; option.
+This option will include a timestamp in the generated signature
+<a name="certtool-p7_002dverify"></a></p><a name="p7_002dverify-option"></a>
+<h4 class="subsubheading">p7-verify option</h4>
+
+<p>This is the &ldquo;verify the provided pkcs #7 structure&rdquo; option.
+This option verifies the signed PKCS #7 structure. The certificate list to use for verification can be specified with &ndash;load-ca-certificate. When no certificate list is provided, then the system&rsquo;s certificate list is used. Alternatively a direct signer can be provided using &ndash;load-certificate. A key purpose can be enforced with the &ndash;verify-purpose option, and the &ndash;load-data option will utilize detached data.
 <a name="certtool-p8_002dinfo"></a></p><a name="p8_002dinfo-option"></a>
 <h4 class="subsubheading">p8-info option</h4>
 
@@ -5272,57 +5337,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">danetool - GnuTLS DANE tool
-Usage:  danetool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
-
-   -d, --debug=num            Enable debugging
-                                - it must be in the range:
-                                  0 to 9999
-   -V, --verbose              More verbose output
-                                - may appear multiple times
-       --infile=file          Input file
-                                - file must pre-exist
-       --outfile=str          Output file
-       --load-pubkey=str      Loads a public key file
-       --load-certificate=str Loads a certificate file
-       --dlv=str              Sets a DLV file
-       --hash=str             Hash algorithm to use for signing
-       --check=str            Check a host's DANE TLSA entry
-       --check-ee             Check only the end-entity's certificate
-       --check-ca             Check only the CA's certificate
-       --tlsa-rr              Print the DANE RR data on a certificate or public key
-                                - requires the option 'host'
-       --host=str             Specify the hostname to be used in the DANE RR
-       --proto=str            The protocol set for DANE data (tcp, udp etc.)
-       --port=num             Specify the port number for the DANE data
-       --app-proto=str        The application protocol to be used to obtain the server's certificate
-(https, smtp, imap)
-       --ca                   Whether the provided certificate or public key is a Certificate
-Authority
-       --x509                 Use the hash of the X.509 certificate, rather than the public key
-       --local                an alias for the 'domain' option
-                                - enabled by default
-       --domain               The provided certificate or public key is issued by the local domain
-                                - disabled as '--no-domain'
-                                - enabled by default
-       --local-dns            Use the local DNS server for DNSSEC resolving
-                                - disabled as '--no-local-dns'
-       --insecure             Do not verify any DNSSEC signature
-       --inder                Use DER format for input certificates and private keys
-                                - disabled as '--no-inder'
-       --inraw                an alias for the 'inder' option
-       --print-raw            Print the received DANE data in raw format
-                                - disabled as '--no-print-raw'
-       --quiet                Suppress several informational messages
-   -v, --version[=arg]        output version information and exit
-   -h, --help                 display extended usage information and exit
-   -!, --more-help            extended usage information passed thru pager
-
-Options are specified by doubled hyphens and their name or by a single
-hyphen and the flag character.
-
-Tool to generate and check DNS resource records for the DANE protocol.
-
+<pre class="example">danetool is unavailable - no --help
 </pre></div>
 
 <a name="danetool-debug"></a><a name="debug-option-_0028_002dd_0029-4"></a>
@@ -6114,7 +6129,7 @@ stored in such modules.
 the API that loads a key or certificate from a file.
 The high-level API will accept URIs in addition to files that specify keys on an HSM or in TPM,
 and a callback function will be used to obtain any required keys. The URI format is defined in 
-[<em>TPMURI</em>] and [<em>PKCS11URI</em>], and is in the process of being standardized across systems.
+[<em>TPMURI</em>] and the standardized [<em>PKCS11URI</em>].
 </p>
 <p>More information on the API is provided in the next sections. Examples of a URI of a certificate 
 stored in an HSM, as well as a key stored in the TPM chip are shown below. To discover the URIs 
@@ -6123,7 +6138,7 @@ or <code>tpmtool</code> (see <a href="#tpmtool-Invocation">tpmtool Invocation</a
 </p>
 <div class="example">
 <pre class="example">pkcs11:token=Nikos;serial=307521161601031;model=PKCS%2315; \
-manufacturer=EnterSafe;object=test1;objecttype=cert
+manufacturer=EnterSafe;object=test1;type=cert
 
 tpmkey:uuid=42309df8-d101-11e1-a89a-97bb33c23ad1;storage=user
 </pre></div>
@@ -6423,7 +6438,7 @@ signature verification operations with the underlying keys.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or an OR list of <code>gnutls_certificate_verify_flags</code> 
 </p>
 <p><var>data</var>: holds the signed data
 </p>
@@ -6433,7 +6448,9 @@ signature verification operations with the underlying keys.
 parameters from the certificate.
 </p>
 <p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
-is returned, and zero or positive code on success.
+is returned, and zero or positive code on success. For known to be insecure
+signatures this function will return <code>GNUTLS_E_INSUFFICIENT_SECURITY</code>  unless
+the flag <code>GNUTLS_VERIFY_ALLOW_BROKEN</code>  is specified.
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -6447,7 +6464,7 @@ is returned, and zero or positive code on success.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or an OR list of <code>gnutls_certificate_verify_flags</code> 
 </p>
 <p><var>hash</var>: holds the hash digest to be verified
 </p>
@@ -6500,7 +6517,7 @@ negative error value.
 </p>
 <p><var>data</var>: holds the data to be signed
 </p>
-<p><var>signature</var>: will contain the signature allocate with <code>gnutls_malloc()</code> 
+<p><var>signature</var>: will contain the signature allocated with <code>gnutls_malloc()</code> 
 </p>
 <p>This function will sign the given data using a signature algorithm
 supported by the private key. Signature algorithms are always used
@@ -6857,8 +6874,8 @@ read configuration files if <code>GNUTLS_PKCS11_FLAG_AUTO</code>  is used or all
 you to independently load PKCS 11 modules using <code>gnutls_pkcs11_add_provider()</code> 
 if <code>GNUTLS_PKCS11_FLAG_MANUAL</code>  is specified.
 </p>
-<p>Normally you don&rsquo;t need to call this function since it is being called
-when the first PKCS 11 operation is requested using the <code>GNUTLS_PKCS11_FLAG_AUTO</code> 
+<p>You don&rsquo;t need to call this function since GnuTLS 3.3.0 because it is being called
+during the first request PKCS 11 operation. That call will assume the <code>GNUTLS_PKCS11_FLAG_AUTO</code> 
 flag. If another flags are required then it must be called independently
 prior to any PKCS 11 operation.
 </p>
@@ -6969,7 +6986,7 @@ key on a smart card may be referenced as:
 </p>
 <div class="example">
 <pre class="example">pkcs11:token=Nikos;serial=307521161601031;model=PKCS%2315; \
-manufacturer=EnterSafe;object=test1;objecttype=public;\
+manufacturer=EnterSafe;object=test1;type=public;\
 id=32f153f3e37990b08624141077ca5dec2d15faed
 </pre></div>
 
@@ -8657,10 +8674,8 @@ session must be initialized before use, so internal structures can
 be allocated.  This function allocates structures which can only
 be free&rsquo;d by calling <code>gnutls_deinit()</code> .  Returns <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 </p>
-<p><code>flags</code> can be one of <code>GNUTLS_CLIENT</code>  and <code>GNUTLS_SERVER</code> . For a DTLS
-entity, the flags <code>GNUTLS_DATAGRAM</code>  and  <code>GNUTLS_NONBLOCK</code>  are
-also available. The latter flag will indicated non-blocking
-operation of the sockets provided to gnutls.
+<p><code>flags</code> can be one of <code>GNUTLS_CLIENT</code> , <code>GNUTLS_SERVER</code> , <code>GNUTLS_DATAGRAM</code> ,
+<code>GNUTLS_NONBLOCK</code>  or <code>GNUTLS_NOSIGNAL</code>  (since 3.4.2).
 </p>
 <p>The flag <code>GNUTLS_NO_REPLAY_PROTECTION</code>  will disable any 
 replay protection in DTLS mode. That must only used when 
@@ -17535,6 +17550,7 @@ expressions.
 <tr><td width="15%">-214</td><td width="40%">GNUTLS_E_BAD_COOKIE</td><td width="37%">The cookie was bad.</td></tr>
 <tr><td width="15%">-215</td><td width="40%">GNUTLS_E_OPENPGP_PREFERRED_KEY_ERROR</td><td width="37%">The OpenPGP key has not a preferred key set.</td></tr>
 <tr><td width="15%">-216</td><td width="40%">GNUTLS_E_INCOMPAT_DSA_KEY_WITH_TLS_PROTOCOL</td><td width="37%">The given DSA key is incompatible with the selected TLS protocol.</td></tr>
+<tr><td width="15%">-217</td><td width="40%">GNUTLS_E_INSUFFICIENT_SECURITY</td><td width="37%">One of the involved algorithms has insufficient security level.</td></tr>
 <tr><td width="15%">-292</td><td width="40%">GNUTLS_E_HEARTBEAT_PONG_RECEIVED</td><td width="37%">A heartbeat pong message was received.</td></tr>
 <tr><td width="15%">-293</td><td width="40%">GNUTLS_E_HEARTBEAT_PING_RECEIVED</td><td width="37%">A heartbeat ping message was received.</td></tr>
 <tr><td width="15%">-300</td><td width="40%">GNUTLS_E_PKCS11_ERROR</td><td width="37%">PKCS #11 error.</td></tr>
@@ -17931,17 +17947,19 @@ Next: <a href="#Copying-Information" accesskey="n" rel="next">Copying Informatio
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#X509-certificate-API" accesskey="3">X509 certificate API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#OCSP-API" accesskey="4">OCSP API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#PKCS-7-API" accesskey="4">PKCS 7 API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#OpenPGP-API" accesskey="5">OpenPGP API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#OCSP-API" accesskey="5">OCSP API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#PKCS-12-API" accesskey="6">PKCS 12 API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#OpenPGP-API" accesskey="6">OpenPGP API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#PKCS-11-API" accesskey="7">PKCS 11 API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#PKCS-12-API" accesskey="7">PKCS 12 API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#TPM-API" accesskey="8">TPM API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#PKCS-11-API" accesskey="8">PKCS 11 API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Abstract-key-API" accesskey="9">Abstract key API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#TPM-API" accesskey="9">TPM API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Abstract-key-API">Abstract key API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#DANE-API">DANE API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -18913,11 +18931,11 @@ when selecting the appropriate certificate to use (in case of multiple
 certificate/key pairs).
 </p>
 <p>This function can also accept URLs at  <code>keyfile</code> and  <code>certfile</code> . In that case it
-will import the private key and certificate indicated by the URLs. Note
+will use the private key and certificate indicated by the URLs. Note
 that the supported URLs are the ones indicated by <code>gnutls_url_is_supported()</code> .
 </p>
 <p>In case the  <code>certfile</code> is provided as a PKCS <code>11</code>  URL, then the certificate, and its
-present issuers in the token are are imported (i.e., the required trust chain).
+present issuers in the token are imported (i.e., forming the required trust chain).
 </p>
 <p>If that function fails to load the  <code>res</code> structure is at an undefined state, it must
 not be reused to load other keys or certificates.
@@ -18956,13 +18974,13 @@ when selecting the appropriate certificate to use (in case of multiple
 certificate/key pairs).
 </p>
 <p>This function can also accept URLs at  <code>keyfile</code> and  <code>certfile</code> . In that case it
-will import the private key and certificate indicated by the URLs. Note
+will use the private key and certificate indicated by the URLs. Note
 that the supported URLs are the ones indicated by <code>gnutls_url_is_supported()</code> .
 Before GnuTLS 3.4.0 when a URL was specified, the  <code>pass</code> part was ignored and a
 PIN callback had to be registered, this is no longer the case in current releases.
 </p>
 <p>In case the  <code>certfile</code> is provided as a PKCS <code>11</code>  URL, then the certificate, and its
-present issuers in the token are are imported (i.e., the required trust chain).
+present issuers in the token are imported (i.e., forming the required trust chain).
 </p>
 <p>If that function fails to load the  <code>res</code> structure is at an undefined state, it must
 not be reused to load other keys or certificates.
@@ -19801,6 +19819,9 @@ the generator used.  This function should be used for both
 anonymous and ephemeral Diffie-Hellman.  The output parameters must
 be freed with <code>gnutls_free()</code> .
 </p>
+<p>Note, that the prime and generator are exported as non-negative
+integers and may include a leading zero byte.
+</p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
 </p></dd></dl>
@@ -19847,6 +19868,9 @@ failure.
 Diffie-Hellman key exchange.  This function should be used for both
 anonymous and ephemeral Diffie-Hellman.  The output parameters must
 be freed with <code>gnutls_free()</code> .
+</p>
+<p>Note, that public key is exported as non-negative
+integer and may include a leading zero byte.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
@@ -20068,8 +20092,8 @@ will be used for the handshake.
 a server sends a prime with less bits than that
 <code>GNUTLS_E_DH_PRIME_UNACCEPTABLE</code>  will be returned by the handshake.
 </p>
-<p>Note that values lower than 512 bits may allow decryption of the
-exchanged data.
+<p>Note that this function will warn via the audit log for value that
+are believed to be weak.
 </p>
 <p>The function has no effect in server side.
 </p>
@@ -20879,10 +20903,8 @@ session must be initialized before use, so internal structures can
 be allocated.  This function allocates structures which can only
 be free&rsquo;d by calling <code>gnutls_deinit()</code> .  Returns <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 </p>
-<p><code>flags</code> can be one of <code>GNUTLS_CLIENT</code>  and <code>GNUTLS_SERVER</code> . For a DTLS
-entity, the flags <code>GNUTLS_DATAGRAM</code>  and  <code>GNUTLS_NONBLOCK</code>  are
-also available. The latter flag will indicated non-blocking
-operation of the sockets provided to gnutls.
+<p><code>flags</code> can be one of <code>GNUTLS_CLIENT</code> , <code>GNUTLS_SERVER</code> , <code>GNUTLS_DATAGRAM</code> ,
+<code>GNUTLS_NONBLOCK</code>  or <code>GNUTLS_NOSIGNAL</code>  (since 3.4.2).
 </p>
 <p>The flag <code>GNUTLS_NO_REPLAY_PROTECTION</code>  will disable any 
 replay protection in DTLS mode. That must only used when 
@@ -24378,9 +24400,6 @@ handshake will be aborted with <code>GNUTLS_E_TIMEDOUT</code> .
 <p>The DTLS protocol recommends the values of 1 sec and 60 seconds
 respectively, and these are the default values.
 </p>
-<p>If the retransmission timeout is zero then the handshake will operate
-in a non-blocking way, i.e., return <code>GNUTLS_E_AGAIN</code> .
-</p>
 <p>To disable retransmissions set a  <code>retrans_timeout</code> larger than the  <code>total_timeout</code> .
 </p>
 <p><strong>Since:</strong> 3.0
@@ -24405,7 +24424,7 @@ DTLS connection.
 <a name="X509-certificate-API"></a>
 <div class="header">
 <p>
-Next: <a href="#OCSP-API" accesskey="n" rel="next">OCSP API</a>, Previous: <a href="#Datagram-TLS-API" accesskey="p" rel="prev">Datagram TLS API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#PKCS-7-API" accesskey="n" rel="next">PKCS 7 API</a>, Previous: <a href="#Datagram-TLS-API" accesskey="p" rel="prev">Datagram TLS API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="X_002e509-certificate-API"></a>
 <h3 class="section">E.3 <acronym>X.509</acronym> certificate API</h3>
@@ -24450,260 +24469,6 @@ when the  <code>res</code> structure is deinitialized.
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success, or a negative error code.
 </p>
 <p><strong>Since:</strong> 3.2.2
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fdeinit-1"></a>
-<h4 class="subheading">gnutls_pkcs7_deinit</h4>
-<a name="gnutls_005fpkcs7_005fdeinit"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_pkcs7_deinit</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>)</em></dt>
-<dd><p><var>pkcs7</var>: the type to be deinitialized
-</p>
-<p>This function will deinitialize a PKCS7 type.
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fdelete_005fcrl-1"></a>
-<h4 class="subheading">gnutls_pkcs7_delete_crl</h4>
-<a name="gnutls_005fpkcs7_005fdelete_005fcrl"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fdelete_005fcrl"></a>Function: <em>int</em> <strong>gnutls_pkcs7_delete_crl</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>)</em></dt>
-<dd><p><var>pkcs7</var>: The pkcs7 type
-</p>
-<p><var>indx</var>: the index of the crl to delete
-</p>
-<p>This function will delete a crl from a PKCS7 or RFC2630 crl set.
-Index starts from 0. Returns 0 on success.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fdelete_005fcrt-1"></a>
-<h4 class="subheading">gnutls_pkcs7_delete_crt</h4>
-<a name="gnutls_005fpkcs7_005fdelete_005fcrt"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fdelete_005fcrt"></a>Function: <em>int</em> <strong>gnutls_pkcs7_delete_crt</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>)</em></dt>
-<dd><p><var>pkcs7</var>: The pkcs7 type
-</p>
-<p><var>indx</var>: the index of the certificate to delete
-</p>
-<p>This function will delete a certificate from a PKCS7 or RFC2630
-certificate set.  Index starts from 0. Returns 0 on success.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fexport-1"></a>
-<h4 class="subheading">gnutls_pkcs7_export</h4>
-<a name="gnutls_005fpkcs7_005fexport"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fexport"></a>Function: <em>int</em> <strong>gnutls_pkcs7_export</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_fmt_t <var>format</var>, void * <var>output_data</var>, size_t * <var>output_data_size</var>)</em></dt>
-<dd><p><var>pkcs7</var>: The pkcs7 type
-</p>
-<p><var>format</var>: the format of output params. One of PEM or DER.
-</p>
-<p><var>output_data</var>: will contain a structure PEM or DER encoded
-</p>
-<p><var>output_data_size</var>: holds the size of output_data (and will be
-replaced by the actual size of parameters)
-</p>
-<p>This function will export the pkcs7 structure to DER or PEM format.
-</p>
-<p>If the buffer provided is not long enough to hold the output, then
-* <code>output_data_size</code> is updated and <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code> 
-will be returned.
-</p>
-<p>If the structure is PEM encoded, it will have a header
-of &quot;BEGIN PKCS7&quot;.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fexport2-1"></a>
-<h4 class="subheading">gnutls_pkcs7_export2</h4>
-<a name="gnutls_005fpkcs7_005fexport2"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fexport2"></a>Function: <em>int</em> <strong>gnutls_pkcs7_export2</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_fmt_t <var>format</var>, gnutls_datum_t * <var>out</var>)</em></dt>
-<dd><p><var>pkcs7</var>: The pkcs7 type
-</p>
-<p><var>format</var>: the format of output params. One of PEM or DER.
-</p>
-<p><var>out</var>: will contain a structure PEM or DER encoded
-</p>
-<p>This function will export the pkcs7 structure to DER or PEM format.
-</p>
-<p>The output buffer is allocated using <code>gnutls_malloc()</code> .
-</p>
-<p>If the structure is PEM encoded, it will have a header
-of &quot;BEGIN PKCS7&quot;.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p>
-<p><strong>Since:</strong> 3.1.3
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fget_005fcrl_005fcount-1"></a>
-<h4 class="subheading">gnutls_pkcs7_get_crl_count</h4>
-<a name="gnutls_005fpkcs7_005fget_005fcrl_005fcount"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrl_005fcount"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crl_count</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>)</em></dt>
-<dd><p><var>pkcs7</var>: The pkcs7 type
-</p>
-<p>This function will return the number of certifcates in the PKCS7
-or RFC2630 crl set.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fget_005fcrl_005fraw-1"></a>
-<h4 class="subheading">gnutls_pkcs7_get_crl_raw</h4>
-<a name="gnutls_005fpkcs7_005fget_005fcrl_005fraw"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrl_005fraw"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crl_raw</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>, void * <var>crl</var>, size_t * <var>crl_size</var>)</em></dt>
-<dd><p><var>pkcs7</var>: The pkcs7 type
-</p>
-<p><var>indx</var>: contains the index of the crl to extract
-</p>
-<p><var>crl</var>: the contents of the crl will be copied there (may be null)
-</p>
-<p><var>crl_size</var>: should hold the size of the crl
-</p>
-<p>This function will return a crl of the PKCS7 or RFC2630 crl set.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.  If the provided buffer is not long enough,
-then  <code>crl_size</code> is updated and <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  is
-returned.  After the last crl has been read
-<code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  will be returned.
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fget_005fcrt_005fcount-1"></a>
-<h4 class="subheading">gnutls_pkcs7_get_crt_count</h4>
-<a name="gnutls_005fpkcs7_005fget_005fcrt_005fcount"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrt_005fcount"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crt_count</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>)</em></dt>
-<dd><p><var>pkcs7</var>: should contain a <code>gnutls_pkcs7_t</code>  type
-</p>
-<p>This function will return the number of certifcates in the PKCS7
-or RFC2630 certificate set.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fget_005fcrt_005fraw-1"></a>
-<h4 class="subheading">gnutls_pkcs7_get_crt_raw</h4>
-<a name="gnutls_005fpkcs7_005fget_005fcrt_005fraw"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrt_005fraw"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crt_raw</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>, void * <var>certificate</var>, size_t * <var>certificate_size</var>)</em></dt>
-<dd><p><var>pkcs7</var>: should contain a gnutls_pkcs7_t type
-</p>
-<p><var>indx</var>: contains the index of the certificate to extract
-</p>
-<p><var>certificate</var>: the contents of the certificate will be copied
-there (may be null)
-</p>
-<p><var>certificate_size</var>: should hold the size of the certificate
-</p>
-<p>This function will return a certificate of the PKCS7 or RFC2630
-certificate set.
-</p>
-<p>After the last certificate has been read
-<code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  will be returned.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.  If the provided buffer is not long enough,
-then  <code>certificate_size</code> is updated and
-<code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  is returned.
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fimport-1"></a>
-<h4 class="subheading">gnutls_pkcs7_import</h4>
-<a name="gnutls_005fpkcs7_005fimport"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fimport"></a>Function: <em>int</em> <strong>gnutls_pkcs7_import</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, const gnutls_datum_t * <var>data</var>, gnutls_x509_crt_fmt_t <var>format</var>)</em></dt>
-<dd><p><var>pkcs7</var>: The data to store the parsed PKCS7.
-</p>
-<p><var>data</var>: The DER or PEM encoded PKCS7.
-</p>
-<p><var>format</var>: One of DER or PEM
-</p>
-<p>This function will convert the given DER or PEM encoded PKCS7 to
-the native <code>gnutls_pkcs7_t</code>  format.  The output will be stored in
- <code>pkcs7</code> .
-</p>
-<p>If the PKCS7 is PEM encoded it should have a header of &quot;PKCS7&quot;.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005finit-1"></a>
-<h4 class="subheading">gnutls_pkcs7_init</h4>
-<a name="gnutls_005fpkcs7_005finit"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005finit"></a>Function: <em>int</em> <strong>gnutls_pkcs7_init</strong> <em>(gnutls_pkcs7_t * <var>pkcs7</var>)</em></dt>
-<dd><p><var>pkcs7</var>: A pointer to the type to be initialized
-</p>
-<p>This function will initialize a PKCS7 structure. PKCS7 structures
-usually contain lists of X.509 Certificates and X.509 Certificate
-revocation lists.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fset_005fcrl-1"></a>
-<h4 class="subheading">gnutls_pkcs7_set_crl</h4>
-<a name="gnutls_005fpkcs7_005fset_005fcrl"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fset_005fcrl"></a>Function: <em>int</em> <strong>gnutls_pkcs7_set_crl</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crl_t <var>crl</var>)</em></dt>
-<dd><p><var>pkcs7</var>: The pkcs7 type
-</p>
-<p><var>crl</var>: the DER encoded crl to be added
-</p>
-<p>This function will add a parsed CRL to the PKCS7 or RFC2630 crl
-set.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fset_005fcrl_005fraw-1"></a>
-<h4 class="subheading">gnutls_pkcs7_set_crl_raw</h4>
-<a name="gnutls_005fpkcs7_005fset_005fcrl_005fraw"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fset_005fcrl_005fraw"></a>Function: <em>int</em> <strong>gnutls_pkcs7_set_crl_raw</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, const gnutls_datum_t * <var>crl</var>)</em></dt>
-<dd><p><var>pkcs7</var>: The pkcs7 type
-</p>
-<p><var>crl</var>: the DER encoded crl to be added
-</p>
-<p>This function will add a crl to the PKCS7 or RFC2630 crl set.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fset_005fcrt-1"></a>
-<h4 class="subheading">gnutls_pkcs7_set_crt</h4>
-<a name="gnutls_005fpkcs7_005fset_005fcrt"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fset_005fcrt"></a>Function: <em>int</em> <strong>gnutls_pkcs7_set_crt</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_t <var>crt</var>)</em></dt>
-<dd><p><var>pkcs7</var>: The pkcs7 type
-</p>
-<p><var>crt</var>: the certificate to be copied.
-</p>
-<p>This function will add a parsed certificate to the PKCS7 or
-RFC2630 certificate set.  This is a wrapper function over
-<code>gnutls_pkcs7_set_crt_raw()</code>  .
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p></dd></dl>
-
-<a name="gnutls_005fpkcs7_005fset_005fcrt_005fraw-1"></a>
-<h4 class="subheading">gnutls_pkcs7_set_crt_raw</h4>
-<a name="gnutls_005fpkcs7_005fset_005fcrt_005fraw"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fset_005fcrt_005fraw"></a>Function: <em>int</em> <strong>gnutls_pkcs7_set_crt_raw</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, const gnutls_datum_t * <var>crt</var>)</em></dt>
-<dd><p><var>pkcs7</var>: The pkcs7 type
-</p>
-<p><var>crt</var>: the DER encoded certificate to be added
-</p>
-<p>This function will add a certificate to the PKCS7 or RFC2630
-certificate set.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
 </p></dd></dl>
 
 <a name="gnutls_005fpkcs8_005finfo-1"></a>
@@ -27286,7 +27051,7 @@ described in RFC4514. The output string will be ASCII or UTF-8
 encoded, depending on the certificate data.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value. and a negative error code on error.
+negative error value.
 </p>
 <p><strong>Since:</strong> 3.1.10
 </p></dd></dl>
@@ -27710,7 +27475,7 @@ described in RFC4514. The output string will be ASCII or UTF-8
 encoded, depending on the certificate data.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value. and a negative error code on error.
+negative error value.
 </p>
 <p><strong>Since:</strong> 3.1.10
 </p></dd></dl>
@@ -28116,7 +27881,7 @@ negative error value.
 <p>This function will extract the signature field of a certificate.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value. and a negative error code on error.
+negative error value.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fget_005fsignature_005falgorithm-1"></a>
@@ -29150,6 +28915,29 @@ as in <code>gnutls_x509_trust_list_verify_crt2()</code> .
 negative error value.
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrt_005fverify_005fdata2-1"></a>
+<h4 class="subheading">gnutls_x509_crt_verify_data2</h4>
+<a name="gnutls_005fx509_005fcrt_005fverify_005fdata2"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fverify_005fdata2"></a>Function: <em>int</em> <strong>gnutls_x509_crt_verify_data2</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_sign_algorithm_t <var>algo</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>data</var>, const gnutls_datum_t * <var>signature</var>)</em></dt>
+<dd><p><var>crt</var>: Holds the certificate to verify with
+</p>
+<p><var>algo</var>: The signature algorithm used
+</p>
+<p><var>flags</var>: Zero or an OR list of <code>gnutls_certificate_verify_flags</code> 
+</p>
+<p><var>data</var>: holds the signed data
+</p>
+<p><var>signature</var>: contains the signature
+</p>
+<p>This function will verify the given signed data, using the
+parameters from the certificate.
+</p>
+<p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
+is returned, and zero or positive code on success.
+</p>
+<p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fdn_005fdeinit-1"></a>
 <h4 class="subheading">gnutls_x509_dn_deinit</h4>
 <a name="gnutls_005fx509_005fdn_005fdeinit"></a><dl>
@@ -29243,6 +29031,25 @@ modify any data or deallocate any of those.
 value conversions when necessary (e.g. from UCS-2).
 </p>
 <p><strong>Returns:</strong> Returns 0 on success, or an error code.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fdn_005fget_005fstr-1"></a>
+<h4 class="subheading">gnutls_x509_dn_get_str</h4>
+<a name="gnutls_005fx509_005fdn_005fget_005fstr"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fdn_005fget_005fstr"></a>Function: <em>int</em> <strong>gnutls_x509_dn_get_str</strong> <em>(gnutls_x509_dn_t <var>dn</var>, gnutls_datum_t * <var>str</var>)</em></dt>
+<dd><p><var>dn</var>: a pointer to DN
+</p>
+<p><var>str</var>: a datum that will hold the name
+</p>
+<p>This function will allocate buffer and copy the name in the provided DN.
+The name will be in the form &quot;C=xxxx,O=yyyy,CN=zzzz&quot; as
+described in RFC4514. The output string will be ASCII or UTF-8
+encoded, depending on the certificate data.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.2
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fdn_005fimport-1"></a>
@@ -30737,6 +30544,39 @@ the global function set using <code>gnutls_pkcs11_set_pin_function()</code> .
 <p><strong>Since:</strong> 3.4.0
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fprivkey_005fsign_005fdata-1"></a>
+<h4 class="subheading">gnutls_x509_privkey_sign_data</h4>
+<a name="gnutls_005fx509_005fprivkey_005fsign_005fdata"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fprivkey_005fsign_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_privkey_sign_data</strong> <em>(gnutls_x509_privkey_t <var>key</var>, gnutls_digest_algorithm_t <var>digest</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>data</var>, void * <var>signature</var>, size_t * <var>signature_size</var>)</em></dt>
+<dd><p><var>key</var>: a key
+</p>
+<p><var>digest</var>: should be MD5 or SHA1
+</p>
+<p><var>flags</var>: should be 0 for now
+</p>
+<p><var>data</var>: holds the data to be signed
+</p>
+<p><var>signature</var>: will contain the signature
+</p>
+<p><var>signature_size</var>: holds the size of signature (and will be replaced
+by the new size)
+</p>
+<p>This function will sign the given data using a signature algorithm
+supported by the private key. Signature algorithms are always used
+together with a hash functions.  Different hash functions may be
+used for the RSA algorithm, but only SHA-1 for the DSA keys.
+</p>
+<p>If the buffer provided is not long enough to hold the output, then
+* <code>signature_size</code> is updated and <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  will
+be returned.
+</p>
+<p>Use <code>gnutls_x509_crt_get_preferred_hash_algorithm()</code>  to determine
+the hash algorithm.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fprivkey_005fverify_005fparams-1"></a>
 <h4 class="subheading">gnutls_x509_privkey_verify_params</h4>
 <a name="gnutls_005fx509_005fprivkey_005fverify_005fparams"></a><dl>
@@ -31050,17 +30890,40 @@ negative error value.
 </p>
 <p><var>dn</var>: is the issuer&rsquo;s DN
 </p>
-<p><var>issuer</var>: Will hold the issuer if any. Should be treated as constant.
+<p><var>issuer</var>: Will hold the issuer if any. Should be deallocated after use.
 </p>
 <p><var>flags</var>: Use zero
 </p>
-<p>This function will find the issuer of the given certificate, and
+<p>This function will find the issuer with the given name, and
 return a copy of the issuer, which must be freed using <code>gnutls_x509_crt_deinit()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
 </p>
 <p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005ftrust_005flist_005fget_005fissuer_005fby_005fsubject_005fkey_005fid-1"></a>
+<h4 class="subheading">gnutls_x509_trust_list_get_issuer_by_subject_key_id</h4>
+<a name="gnutls_005fx509_005ftrust_005flist_005fget_005fissuer_005fby_005fsubject_005fkey_005fid"></a><dl>
+<dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fget_005fissuer_005fby_005fsubject_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_get_issuer_by_subject_key_id</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const gnutls_datum_t * <var>dn</var>, const gnutls_datum_t * <var>spki</var>, gnutls_x509_crt_t * <var>issuer</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>list</var>: The list
+</p>
+<p><var>dn</var>: is the issuer&rsquo;s DN (may be <code>NULL</code> )
+</p>
+<p><var>spki</var>: is the subject key ID
+</p>
+<p><var>issuer</var>: Will hold the issuer if any. Should be deallocated after use.
+</p>
+<p><var>flags</var>: Use zero
+</p>
+<p>This function will find the issuer with the given name and subject key ID, and
+return a copy of the issuer, which must be freed using <code>gnutls_x509_crt_deinit()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.2
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005ftrust_005flist_005finit-1"></a>
@@ -31300,13 +31163,531 @@ negative error value.
 
 
 <hr>
+<a name="PKCS-7-API"></a>
+<div class="header">
+<p>
+Next: <a href="#OCSP-API" accesskey="n" rel="next">OCSP API</a>, Previous: <a href="#X509-certificate-API" accesskey="p" rel="prev">X509 certificate API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="PKCS-7-API-1"></a>
+<h3 class="section">E.4 <acronym>PKCS</acronym> 7 API</h3>
+
+<p>The following functions are to be used for PKCS 7 structures handling.
+Their prototypes lie in <samp>gnutls/pkcs7.h</samp>.
+</p>
+
+<a name="gnutls_005fpkcs7_005fadd_005fattr-1"></a>
+<h4 class="subheading">gnutls_pkcs7_add_attr</h4>
+<a name="gnutls_005fpkcs7_005fadd_005fattr"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fadd_005fattr"></a>Function: <em>int</em> <strong>gnutls_pkcs7_add_attr</strong> <em>(gnutls_pkcs7_attrs_t * <var>list</var>, const char * <var>oid</var>, gnutls_datum_t * <var>data</var>, unsigned <var>flags</var>)</em></dt>
+<dd><p><var>list</var>: A list of existing attributes or pointer to <code>NULL</code>  for the first one
+</p>
+<p><var>oid</var>: the OID of the attribute to be set
+</p>
+<p><var>data</var>: the raw (DER-encoded) data of the attribute to be set
+</p>
+<p><var>flags</var>: zero or <code>GNUTLS_PKCS7_ATTR_ENCODE_OCTET_STRING</code> 
+</p>
+<p>This function will set a PKCS <code>7</code>  attribute in the provided list.
+If this function fails, the previous list would be deallocated.
+</p>
+<p>Note that any attributes set with this function must either be
+DER or BER encoded, unless a special flag is present.
+</p>
+<p><strong>Returns:</strong> On success, the new list head, otherwise <code>NULL</code> .
+</p>
+<p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fattrs_005fdeinit-1"></a>
+<h4 class="subheading">gnutls_pkcs7_attrs_deinit</h4>
+<a name="gnutls_005fpkcs7_005fattrs_005fdeinit"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fattrs_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_pkcs7_attrs_deinit</strong> <em>(gnutls_pkcs7_attrs_t <var>list</var>)</em></dt>
+<dd><p><var>list</var>: A list of existing attributes
+</p>
+<p>This function will clear a PKCS <code>7</code>  attribute list.
+</p>
+<p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fdeinit-1"></a>
+<h4 class="subheading">gnutls_pkcs7_deinit</h4>
+<a name="gnutls_005fpkcs7_005fdeinit"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_pkcs7_deinit</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>)</em></dt>
+<dd><p><var>pkcs7</var>: the type to be deinitialized
+</p>
+<p>This function will deinitialize a PKCS7 type.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fdelete_005fcrl-1"></a>
+<h4 class="subheading">gnutls_pkcs7_delete_crl</h4>
+<a name="gnutls_005fpkcs7_005fdelete_005fcrl"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fdelete_005fcrl"></a>Function: <em>int</em> <strong>gnutls_pkcs7_delete_crl</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>)</em></dt>
+<dd><p><var>pkcs7</var>: The pkcs7 type
+</p>
+<p><var>indx</var>: the index of the crl to delete
+</p>
+<p>This function will delete a crl from a PKCS7 or RFC2630 crl set.
+Index starts from 0. Returns 0 on success.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fdelete_005fcrt-1"></a>
+<h4 class="subheading">gnutls_pkcs7_delete_crt</h4>
+<a name="gnutls_005fpkcs7_005fdelete_005fcrt"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fdelete_005fcrt"></a>Function: <em>int</em> <strong>gnutls_pkcs7_delete_crt</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>)</em></dt>
+<dd><p><var>pkcs7</var>: The pkcs7 type
+</p>
+<p><var>indx</var>: the index of the certificate to delete
+</p>
+<p>This function will delete a certificate from a PKCS7 or RFC2630
+certificate set.  Index starts from 0. Returns 0 on success.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fexport-1"></a>
+<h4 class="subheading">gnutls_pkcs7_export</h4>
+<a name="gnutls_005fpkcs7_005fexport"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fexport"></a>Function: <em>int</em> <strong>gnutls_pkcs7_export</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_fmt_t <var>format</var>, void * <var>output_data</var>, size_t * <var>output_data_size</var>)</em></dt>
+<dd><p><var>pkcs7</var>: The pkcs7 type
+</p>
+<p><var>format</var>: the format of output params. One of PEM or DER.
+</p>
+<p><var>output_data</var>: will contain a structure PEM or DER encoded
+</p>
+<p><var>output_data_size</var>: holds the size of output_data (and will be
+replaced by the actual size of parameters)
+</p>
+<p>This function will export the pkcs7 structure to DER or PEM format.
+</p>
+<p>If the buffer provided is not long enough to hold the output, then
+* <code>output_data_size</code> is updated and <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code> 
+will be returned.
+</p>
+<p>If the structure is PEM encoded, it will have a header
+of &quot;BEGIN PKCS7&quot;.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fexport2-1"></a>
+<h4 class="subheading">gnutls_pkcs7_export2</h4>
+<a name="gnutls_005fpkcs7_005fexport2"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fexport2"></a>Function: <em>int</em> <strong>gnutls_pkcs7_export2</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_fmt_t <var>format</var>, gnutls_datum_t * <var>out</var>)</em></dt>
+<dd><p><var>pkcs7</var>: The pkcs7 type
+</p>
+<p><var>format</var>: the format of output params. One of PEM or DER.
+</p>
+<p><var>out</var>: will contain a structure PEM or DER encoded
+</p>
+<p>This function will export the pkcs7 structure to DER or PEM format.
+</p>
+<p>The output buffer is allocated using <code>gnutls_malloc()</code> .
+</p>
+<p>If the structure is PEM encoded, it will have a header
+of &quot;BEGIN PKCS7&quot;.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.1.3
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fget_005fattr-1"></a>
+<h4 class="subheading">gnutls_pkcs7_get_attr</h4>
+<a name="gnutls_005fpkcs7_005fget_005fattr"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fget_005fattr"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_attr</strong> <em>(gnutls_pkcs7_attrs_t <var>list</var>, unsigned <var>idx</var>, char ** <var>oid</var>, gnutls_datum_t * <var>data</var>, unsigned <var>flags</var>)</em></dt>
+<dd><p><var>list</var>: A list of existing attributes or <code>NULL</code>  for the first one
+</p>
+<p><var>idx</var>: the index of the attribute to get
+</p>
+<p><var>oid</var>: the OID of the attribute (read-only)
+</p>
+<p><var>data</var>: the raw data of the attribute
+</p>
+<p><var>flags</var>: zero or <code>GNUTLS_PKCS7_ATTR_ENCODE_OCTET_STRING</code> 
+</p>
+<p>This function will get a PKCS <code>7</code>  attribute from the provided list.
+The OID is a constant string, but data will be allocated and must be
+deinitialized by the caller.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value. <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  is returned
+if there are no data in the current index.
+</p>
+<p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fget_005fcrl_005fcount-1"></a>
+<h4 class="subheading">gnutls_pkcs7_get_crl_count</h4>
+<a name="gnutls_005fpkcs7_005fget_005fcrl_005fcount"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrl_005fcount"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crl_count</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>)</em></dt>
+<dd><p><var>pkcs7</var>: The pkcs7 type
+</p>
+<p>This function will return the number of certifcates in the PKCS7
+or RFC2630 crl set.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fget_005fcrl_005fraw-1"></a>
+<h4 class="subheading">gnutls_pkcs7_get_crl_raw</h4>
+<a name="gnutls_005fpkcs7_005fget_005fcrl_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrl_005fraw"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crl_raw</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>, void * <var>crl</var>, size_t * <var>crl_size</var>)</em></dt>
+<dd><p><var>pkcs7</var>: The pkcs7 type
+</p>
+<p><var>indx</var>: contains the index of the crl to extract
+</p>
+<p><var>crl</var>: the contents of the crl will be copied there (may be null)
+</p>
+<p><var>crl_size</var>: should hold the size of the crl
+</p>
+<p>This function will return a crl of the PKCS7 or RFC2630 crl set.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.  If the provided buffer is not long enough,
+then  <code>crl_size</code> is updated and <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  is
+returned.  After the last crl has been read
+<code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  will be returned.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fget_005fcrl_005fraw2-1"></a>
+<h4 class="subheading">gnutls_pkcs7_get_crl_raw2</h4>
+<a name="gnutls_005fpkcs7_005fget_005fcrl_005fraw2"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrl_005fraw2"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crl_raw2</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>, gnutls_datum_t * <var>crl</var>)</em></dt>
+<dd><p><var>pkcs7</var>: The pkcs7 type
+</p>
+<p><var>indx</var>: contains the index of the crl to extract
+</p>
+<p><var>crl</var>: will contain the contents of the CRL in an allocated buffer
+</p>
+<p>This function will return a DER encoded CRL of the PKCS7 or RFC2630 crl set.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.  After the last crl has been read
+<code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  will be returned.
+</p>
+<p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fget_005fcrt_005fcount-1"></a>
+<h4 class="subheading">gnutls_pkcs7_get_crt_count</h4>
+<a name="gnutls_005fpkcs7_005fget_005fcrt_005fcount"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrt_005fcount"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crt_count</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>)</em></dt>
+<dd><p><var>pkcs7</var>: should contain a <code>gnutls_pkcs7_t</code>  type
+</p>
+<p>This function will return the number of certifcates in the PKCS7
+or RFC2630 certificate set.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fget_005fcrt_005fraw-1"></a>
+<h4 class="subheading">gnutls_pkcs7_get_crt_raw</h4>
+<a name="gnutls_005fpkcs7_005fget_005fcrt_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrt_005fraw"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crt_raw</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>, void * <var>certificate</var>, size_t * <var>certificate_size</var>)</em></dt>
+<dd><p><var>pkcs7</var>: should contain a gnutls_pkcs7_t type
+</p>
+<p><var>indx</var>: contains the index of the certificate to extract
+</p>
+<p><var>certificate</var>: the contents of the certificate will be copied
+there (may be null)
+</p>
+<p><var>certificate_size</var>: should hold the size of the certificate
+</p>
+<p>This function will return a certificate of the PKCS7 or RFC2630
+certificate set.
+</p>
+<p>After the last certificate has been read
+<code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  will be returned.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.  If the provided buffer is not long enough,
+then  <code>certificate_size</code> is updated and
+<code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  is returned.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fget_005fcrt_005fraw2-1"></a>
+<h4 class="subheading">gnutls_pkcs7_get_crt_raw2</h4>
+<a name="gnutls_005fpkcs7_005fget_005fcrt_005fraw2"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrt_005fraw2"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crt_raw2</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>, gnutls_datum_t * <var>cert</var>)</em></dt>
+<dd><p><var>pkcs7</var>: should contain a gnutls_pkcs7_t type
+</p>
+<p><var>indx</var>: contains the index of the certificate to extract
+</p>
+<p><var>cert</var>: &ndash; undescribed &ndash;
+</p>
+<p>This function will return a certificate of the PKCS7 or RFC2630
+certificate set.
+</p>
+<p>After the last certificate has been read
+<code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  will be returned.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.  If the provided buffer is not long enough,
+then  <code>certificate_size</code> is updated and
+<code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  is returned.
+</p>
+<p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fget_005fsignature_005finfo-1"></a>
+<h4 class="subheading">gnutls_pkcs7_get_signature_info</h4>
+<a name="gnutls_005fpkcs7_005fget_005fsignature_005finfo"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fget_005fsignature_005finfo"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_signature_info</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, unsigned <var>idx</var>, gnutls_pkcs7_signature_info_st * <var>info</var>)</em></dt>
+<dd><p><var>pkcs7</var>: should contain a <code>gnutls_pkcs7_t</code>  type
+</p>
+<p><var>idx</var>: the index of the signature info to check
+</p>
+<p><var>info</var>: will contain the output signature
+</p>
+<p>This function will return information about the signature identified
+by idx in the provided PKCS <code>7</code>  structure. The information should be
+deinitialized using <code>gnutls_pkcs7_signature_info_deinit()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fimport-1"></a>
+<h4 class="subheading">gnutls_pkcs7_import</h4>
+<a name="gnutls_005fpkcs7_005fimport"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fimport"></a>Function: <em>int</em> <strong>gnutls_pkcs7_import</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, const gnutls_datum_t * <var>data</var>, gnutls_x509_crt_fmt_t <var>format</var>)</em></dt>
+<dd><p><var>pkcs7</var>: The data to store the parsed PKCS7.
+</p>
+<p><var>data</var>: The DER or PEM encoded PKCS7.
+</p>
+<p><var>format</var>: One of DER or PEM
+</p>
+<p>This function will convert the given DER or PEM encoded PKCS7 to
+the native <code>gnutls_pkcs7_t</code>  format.  The output will be stored in
+ <code>pkcs7</code> .
+</p>
+<p>If the PKCS7 is PEM encoded it should have a header of &quot;PKCS7&quot;.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005finit-1"></a>
+<h4 class="subheading">gnutls_pkcs7_init</h4>
+<a name="gnutls_005fpkcs7_005finit"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005finit"></a>Function: <em>int</em> <strong>gnutls_pkcs7_init</strong> <em>(gnutls_pkcs7_t * <var>pkcs7</var>)</em></dt>
+<dd><p><var>pkcs7</var>: A pointer to the type to be initialized
+</p>
+<p>This function will initialize a PKCS7 structure. PKCS7 structures
+usually contain lists of X.509 Certificates and X.509 Certificate
+revocation lists.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fprint-1"></a>
+<h4 class="subheading">gnutls_pkcs7_print</h4>
+<a name="gnutls_005fpkcs7_005fprint"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fprint"></a>Function: <em>int</em> <strong>gnutls_pkcs7_print</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_certificate_print_formats_t <var>format</var>, gnutls_datum_t * <var>out</var>)</em></dt>
+<dd><p><var>pkcs7</var>: The PKCS7 struct to be printed
+</p>
+<p><var>format</var>: Indicate the format to use
+</p>
+<p><var>out</var>: Newly allocated datum with null terminated string.
+</p>
+<p>This function will pretty print a signed PKCS <code>7</code>  structure, suitable for
+display to a human.
+</p>
+<p>Currently the supported formats are <code>GNUTLS_CRT_PRINT_FULL</code>  and
+<code>GNUTLS_CRT_PRINT_COMPACT</code> .
+</p>
+<p>The output  <code>out</code> needs to be deallocated using <code>gnutls_free()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fset_005fcrl-1"></a>
+<h4 class="subheading">gnutls_pkcs7_set_crl</h4>
+<a name="gnutls_005fpkcs7_005fset_005fcrl"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fset_005fcrl"></a>Function: <em>int</em> <strong>gnutls_pkcs7_set_crl</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crl_t <var>crl</var>)</em></dt>
+<dd><p><var>pkcs7</var>: The pkcs7 type
+</p>
+<p><var>crl</var>: the DER encoded crl to be added
+</p>
+<p>This function will add a parsed CRL to the PKCS7 or RFC2630 crl
+set.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fset_005fcrl_005fraw-1"></a>
+<h4 class="subheading">gnutls_pkcs7_set_crl_raw</h4>
+<a name="gnutls_005fpkcs7_005fset_005fcrl_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fset_005fcrl_005fraw"></a>Function: <em>int</em> <strong>gnutls_pkcs7_set_crl_raw</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, const gnutls_datum_t * <var>crl</var>)</em></dt>
+<dd><p><var>pkcs7</var>: The pkcs7 type
+</p>
+<p><var>crl</var>: the DER encoded crl to be added
+</p>
+<p>This function will add a crl to the PKCS7 or RFC2630 crl set.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fset_005fcrt-1"></a>
+<h4 class="subheading">gnutls_pkcs7_set_crt</h4>
+<a name="gnutls_005fpkcs7_005fset_005fcrt"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fset_005fcrt"></a>Function: <em>int</em> <strong>gnutls_pkcs7_set_crt</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_t <var>crt</var>)</em></dt>
+<dd><p><var>pkcs7</var>: The pkcs7 type
+</p>
+<p><var>crt</var>: the certificate to be copied.
+</p>
+<p>This function will add a parsed certificate to the PKCS7 or
+RFC2630 certificate set.  This is a wrapper function over
+<code>gnutls_pkcs7_set_crt_raw()</code>  .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fset_005fcrt_005fraw-1"></a>
+<h4 class="subheading">gnutls_pkcs7_set_crt_raw</h4>
+<a name="gnutls_005fpkcs7_005fset_005fcrt_005fraw"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fset_005fcrt_005fraw"></a>Function: <em>int</em> <strong>gnutls_pkcs7_set_crt_raw</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, const gnutls_datum_t * <var>crt</var>)</em></dt>
+<dd><p><var>pkcs7</var>: The pkcs7 type
+</p>
+<p><var>crt</var>: the DER encoded certificate to be added
+</p>
+<p>This function will add a certificate to the PKCS7 or RFC2630
+certificate set.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fsign-1"></a>
+<h4 class="subheading">gnutls_pkcs7_sign</h4>
+<a name="gnutls_005fpkcs7_005fsign"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fsign"></a>Function: <em>int</em> <strong>gnutls_pkcs7_sign</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_t <var>signer</var>, gnutls_privkey_t <var>signer_key</var>, const gnutls_datum_t * <var>data</var>, gnutls_pkcs7_attrs_t <var>signed_attrs</var>, gnutls_pkcs7_attrs_t <var>unsigned_attrs</var>, gnutls_digest_algorithm_t <var>dig</var>, unsigned <var>flags</var>)</em></dt>
+<dd><p><var>pkcs7</var>: should contain a <code>gnutls_pkcs7_t</code>  type
+</p>
+<p><var>signer</var>: the certificate believe to have signed the structure
+</p>
+<p><var>signer_key</var>: &ndash; undescribed &ndash;
+</p>
+<p><var>data</var>: The data to be signed or <code>NULL</code>  if the data are already embedded
+</p>
+<p><var>signed_attrs</var>: Any additional attributes to be included in the signed ones (or <code>NULL</code> )
+</p>
+<p><var>unsigned_attrs</var>: Any additional attributes to be included in the unsigned ones (or <code>NULL</code> )
+</p>
+<p><var>dig</var>: The digest algorithm to use for signing
+</p>
+<p><var>flags</var>: Should be zero or one of <code>GNUTLS_PKCS7</code>  flags
+</p>
+<p>This function will add a signature in the provided PKCS <code>7</code>  structure
+for the provided data. Multiple signatures can be made with different
+signers.
+</p>
+<p>The available flags are:
+- <code>GNUTLS_PKCS7_EMBED_DATA</code> : the data will be embedded in the structure
+- <code>GNUTLS_PKCS7_INCLUDE_TIME</code> : the signing time will be included
+- <code>GNUTLS_PKCS7_INCLUDE_CERT</code> : the signer&rsquo;s certificate will be included in the cert list
+- <code>GNUTLS_PKCS7_WRITE_SPKI</code> : store the issuer&rsquo;s ID instead of name
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value. 
+</p>
+<p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fsignature_005finfo_005fdeinit-1"></a>
+<h4 class="subheading">gnutls_pkcs7_signature_info_deinit</h4>
+<a name="gnutls_005fpkcs7_005fsignature_005finfo_005fdeinit"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fsignature_005finfo_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_pkcs7_signature_info_deinit</strong> <em>(gnutls_pkcs7_signature_info_st * <var>info</var>)</em></dt>
+<dd><p><var>info</var>: should point to a <code>gnutls_pkcs7_signature_info_st</code>  structure
+</p>
+<p>This function will deinitialize any allocated value in the
+provided <code>gnutls_pkcs7_signature_info_st</code> .
+</p>
+<p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fverify-1"></a>
+<h4 class="subheading">gnutls_pkcs7_verify</h4>
+<a name="gnutls_005fpkcs7_005fverify"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fverify"></a>Function: <em>int</em> <strong>gnutls_pkcs7_verify</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_trust_list_t <var>tl</var>, gnutls_typed_vdata_st * <var>vdata</var>, unsigned int <var>vdata_size</var>, unsigned <var>idx</var>, const gnutls_datum_t * <var>data</var>, unsigned <var>flags</var>)</em></dt>
+<dd><p><var>pkcs7</var>: should contain a <code>gnutls_pkcs7_t</code>  type
+</p>
+<p><var>tl</var>: A list of trusted certificates
+</p>
+<p><var>vdata</var>: an array of typed data
+</p>
+<p><var>vdata_size</var>: the number of data elements
+</p>
+<p><var>idx</var>: the index of the signature info to check
+</p>
+<p><var>data</var>: The data to be verified or <code>NULL</code> 
+</p>
+<p><var>flags</var>: Zero or an OR list of <code>gnutls_certificate_verify_flags</code> 
+</p>
+<p>This function will verify the provided data against the signature
+present in the SignedData of the PKCS <code>7</code>  structure. If the data
+provided are NULL then the data in the encapsulatedContent field
+will be used instead.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value. A verification error results to a
+<code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  and the lack of encapsulated data
+to verify to a <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> .
+</p>
+<p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fverify_005fdirect-1"></a>
+<h4 class="subheading">gnutls_pkcs7_verify_direct</h4>
+<a name="gnutls_005fpkcs7_005fverify_005fdirect"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fverify_005fdirect"></a>Function: <em>int</em> <strong>gnutls_pkcs7_verify_direct</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_t <var>signer</var>, unsigned <var>idx</var>, const gnutls_datum_t * <var>data</var>, unsigned <var>flags</var>)</em></dt>
+<dd><p><var>pkcs7</var>: should contain a <code>gnutls_pkcs7_t</code>  type
+</p>
+<p><var>signer</var>: the certificate believe to have signed the structure
+</p>
+<p><var>idx</var>: the index of the signature info to check
+</p>
+<p><var>data</var>: The data to be verified or <code>NULL</code> 
+</p>
+<p><var>flags</var>: Zero or an OR list of <code>gnutls_certificate_verify_flags</code> 
+</p>
+<p>This function will verify the provided data against the signature
+present in the SignedData of the PKCS <code>7</code>  structure. If the data
+provided are NULL then the data in the encapsulatedContent field
+will be used instead.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value. A verification error results to a
+<code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  and the lack of encapsulated data
+to verify to a <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> .
+</p>
+<p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
+
+<hr>
 <a name="OCSP-API"></a>
 <div class="header">
 <p>
-Next: <a href="#OpenPGP-API" accesskey="n" rel="next">OpenPGP API</a>, Previous: <a href="#X509-certificate-API" accesskey="p" rel="prev">X509 certificate API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#OpenPGP-API" accesskey="n" rel="next">OpenPGP API</a>, Previous: <a href="#PKCS-7-API" accesskey="p" rel="prev">PKCS 7 API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="OCSP-API-1"></a>
-<h3 class="section">E.4 <acronym>OCSP</acronym> API</h3>
+<h3 class="section">E.5 <acronym>OCSP</acronym> API</h3>
 <a name="index-OCSP-Functions"></a>
 
 <p>The following functions are for <acronym>OCSP</acronym> certificate status
@@ -32006,7 +32387,7 @@ negative error value.
 Next: <a href="#PKCS-12-API" accesskey="n" rel="next">PKCS 12 API</a>, Previous: <a href="#OCSP-API" accesskey="p" rel="prev">OCSP API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="OpenPGP-API-1"></a>
-<h3 class="section">E.5 <acronym>OpenPGP</acronym> API</h3>
+<h3 class="section">E.6 <acronym>OpenPGP</acronym> API</h3>
 <a name="index-OpenPGP-API"></a>
 
 <p>The following functions are to be used for <acronym>OpenPGP</acronym>
@@ -33399,7 +33780,7 @@ sent a key fingerprint instead of a full key.
 Next: <a href="#PKCS-11-API" accesskey="n" rel="next">PKCS 11 API</a>, Previous: <a href="#OpenPGP-API" accesskey="p" rel="prev">OpenPGP API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="PKCS-12-API-1"></a>
-<h3 class="section">E.6 PKCS 12 API</h3>
+<h3 class="section">E.7 PKCS 12 API</h3>
 
 <p>The following functions are to be used for PKCS 12 handling.
 Their prototypes lie in <samp>gnutls/pkcs12.h</samp>.
@@ -33937,7 +34318,7 @@ negative error value.
 Next: <a href="#TPM-API" accesskey="n" rel="next">TPM API</a>, Previous: <a href="#PKCS-12-API" accesskey="p" rel="prev">PKCS 12 API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Hardware-token-via-PKCS-11-API"></a>
-<h3 class="section">E.7 Hardware token via PKCS 11 API</h3>
+<h3 class="section">E.8 Hardware token via PKCS 11 API</h3>
 
 <p>The following functions are to be used for PKCS 11 handling.
 Their prototypes lie in <samp>gnutls/pkcs11.h</samp>.
@@ -34235,6 +34616,36 @@ negative error value.
 <p><strong>Since:</strong> 3.4.0
 </p></dd></dl>
 
+<a name="gnutls_005fpkcs11_005fget_005fraw_005fissuer_005fby_005fsubject_005fkey_005fid-1"></a>
+<h4 class="subheading">gnutls_pkcs11_get_raw_issuer_by_subject_key_id</h4>
+<a name="gnutls_005fpkcs11_005fget_005fraw_005fissuer_005fby_005fsubject_005fkey_005fid"></a><dl>
+<dt><a name="index-gnutls_005fpkcs11_005fget_005fraw_005fissuer_005fby_005fsubject_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_pkcs11_get_raw_issuer_by_subject_key_id</strong> <em>(const char * <var>url</var>, const gnutls_datum_t * <var>dn</var>, const gnutls_datum_t * <var>spki</var>, gnutls_datum_t * <var>issuer</var>, gnutls_x509_crt_fmt_t <var>fmt</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>url</var>: A PKCS 11 url identifying a token
+</p>
+<p><var>dn</var>: is the DN to search for (may be <code>NULL</code> )
+</p>
+<p><var>spki</var>: is the subject key ID to search for
+</p>
+<p><var>issuer</var>: Will hold the issuer if any in an allocated buffer.
+</p>
+<p><var>fmt</var>: The format of the exported issuer.
+</p>
+<p><var>flags</var>: Use zero or flags from <code>GNUTLS_PKCS11_OBJ_FLAG</code> .
+</p>
+<p>This function will return the certificate with the given DN and  <code>spki</code> , if it
+is stored in the token. By default only marked as trusted issuers
+are retuned. If any issuer should be returned specify
+<code>GNUTLS_PKCS11_OBJ_FLAG_RETRIEVE_ANY</code>  in  <code>flags</code> .
+</p>
+<p>The name of the function includes issuer because it can
+be used to discover issuers of certificates.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
 <a name="gnutls_005fpkcs11_005finit-1"></a>
 <h4 class="subheading">gnutls_pkcs11_init</h4>
 <a name="gnutls_005fpkcs11_005finit"></a><dl>
@@ -34249,8 +34660,8 @@ read configuration files if <code>GNUTLS_PKCS11_FLAG_AUTO</code>  is used or all
 you to independently load PKCS 11 modules using <code>gnutls_pkcs11_add_provider()</code> 
 if <code>GNUTLS_PKCS11_FLAG_MANUAL</code>  is specified.
 </p>
-<p>Normally you don&rsquo;t need to call this function since it is being called
-when the first PKCS 11 operation is requested using the <code>GNUTLS_PKCS11_FLAG_AUTO</code> 
+<p>You don&rsquo;t need to call this function since GnuTLS 3.3.0 because it is being called
+during the first request PKCS 11 operation. That call will assume the <code>GNUTLS_PKCS11_FLAG_AUTO</code> 
 flag. If another flags are required then it must be called independently
 prior to any PKCS 11 operation.
 </p>
@@ -35079,7 +35490,7 @@ negative error value.
 Next: <a href="#Abstract-key-API" accesskey="n" rel="next">Abstract key API</a>, Previous: <a href="#PKCS-11-API" accesskey="p" rel="prev">PKCS 11 API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="TPM-API-1"></a>
-<h3 class="section">E.8 TPM API</h3>
+<h3 class="section">E.9 TPM API</h3>
 
 <p>The following functions are to be used for TPM handling.
 Their prototypes lie in <samp>gnutls/tpm.h</samp>.
@@ -35199,7 +35610,7 @@ negative error value.
 Next: <a href="#DANE-API" accesskey="n" rel="next">DANE API</a>, Previous: <a href="#TPM-API" accesskey="p" rel="prev">TPM API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Abstract-key-API-1"></a>
-<h3 class="section">E.9 Abstract key API</h3>
+<h3 class="section">E.10 Abstract key API</h3>
 
 <p>The following functions are to be used for abstract key handling.
 Their prototypes lie in <samp>gnutls/abstract.h</samp>.
@@ -35249,23 +35660,24 @@ not be reused to load other keys or certificates.
 <p><var>func</var>: is the callback function
 </p>
 <p>This function sets a callback to be called in order to retrieve the
-certificate to be used in the handshake.
+certificate to be used in the handshake. The callback will take control
+only if a certificate is requested by the peer.
 </p>
 <p>The callback&rsquo;s function prototype is:
 int (*callback)(gnutls_session_t, const gnutls_datum_t* req_ca_dn, int nreqs,
 const gnutls_pk_algorithm_t* pk_algos, int pk_algos_length, gnutls_pcert_st** pcert,
 unsigned int *pcert_length, gnutls_privkey_t * pkey);
 </p>
-<p><code>req_ca_cert</code> is only used in X.509 certificates.
+<p><code>req_ca_dn</code> is only used in X.509 certificates.
 Contains a list with the CA names that the server considers trusted.
-Normally we should send a certificate that is signed
-by one of these CAs. These names are DER encoded. To get a more
+This is a hint and typically the client should send a certificate that is signed
+by one of these CAs. These names, when available, are DER encoded. To get a more
 meaningful value use the function <code>gnutls_x509_rdn_get()</code> .
 </p>
 <p><code>pk_algos</code> contains a list with server&rsquo;s acceptable signature algorithms.
 The certificate returned should support the server&rsquo;s given algorithms.
 </p>
-<p><code>pcert</code> should contain a single certificate and public or a list of them.
+<p><code>pcert</code> should contain a single certificate and public key or a list of them.
 </p>
 <p><code>pcert_length</code> is the size of the previous list.
 </p>
@@ -35281,7 +35693,9 @@ modified by gnutls.
 <p>The callback function should set the certificate list to be sent,
 and return 0 on success. If no certificate was selected then the
 number of certificates should be set to zero. The value (-1)
-indicates error and the handshake will be terminated.
+indicates error and the handshake will be terminated. If both certificates
+are set in the credentials and a callback is available, the callback
+takes predence.
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -36147,7 +36561,7 @@ to have effect.
 </p>
 <p><var>data</var>: holds the data to be signed
 </p>
-<p><var>signature</var>: will contain the signature allocate with <code>gnutls_malloc()</code> 
+<p><var>signature</var>: will contain the signature allocated with <code>gnutls_malloc()</code> 
 </p>
 <p>This function will sign the given data using a signature algorithm
 supported by the private key. Signature algorithms are always used
@@ -36920,7 +37334,7 @@ to have effect.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or an OR list of <code>gnutls_certificate_verify_flags</code> 
 </p>
 <p><var>data</var>: holds the signed data
 </p>
@@ -36930,7 +37344,9 @@ to have effect.
 parameters from the certificate.
 </p>
 <p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
-is returned, and zero or positive code on success.
+is returned, and zero or positive code on success. For known to be insecure
+signatures this function will return <code>GNUTLS_E_INSUFFICIENT_SECURITY</code>  unless
+the flag <code>GNUTLS_VERIFY_ALLOW_BROKEN</code>  is specified.
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -36943,7 +37359,7 @@ is returned, and zero or positive code on success.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or an OR list of <code>gnutls_certificate_verify_flags</code> 
 </p>
 <p><var>hash</var>: holds the hash digest to be verified
 </p>
@@ -37200,7 +37616,7 @@ negative error value.
 Next: <a href="#Cryptographic-API" accesskey="n" rel="next">Cryptographic API</a>, Previous: <a href="#Abstract-key-API" accesskey="p" rel="prev">Abstract key API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="DANE-API-1"></a>
-<h3 class="section">E.10 DANE API</h3>
+<h3 class="section">E.11 DANE API</h3>
 
 <p>The following functions are to be used for DANE certificate verification.
 Their prototypes lie in <samp>gnutls/dane.h</samp>. Note that you need to link
@@ -37577,7 +37993,7 @@ negative error value.
 Next: <a href="#Compatibility-API" accesskey="n" rel="next">Compatibility API</a>, Previous: <a href="#DANE-API" accesskey="p" rel="prev">DANE API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Cryptographic-API-1"></a>
-<h3 class="section">E.11 Cryptographic API</h3>
+<h3 class="section">E.12 Cryptographic API</h3>
 
 <p>The following functions are to be used for low-level cryptographic operations.
 Their prototypes lie in <samp>gnutls/crypto.h</samp>.
@@ -38307,7 +38723,7 @@ other values are input into its state.
 Previous: <a href="#Cryptographic-API" accesskey="p" rel="prev">Cryptographic API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Compatibility-API-1"></a>
-<h3 class="section">E.12 Compatibility API</h3>
+<h3 class="section">E.13 Compatibility API</h3>
 
 <p>The following functions are carried over from old GnuTLS released. They might be removed at a later version.
 Their prototypes lie in <samp>gnutls/compat.h</samp>.
@@ -38417,41 +38833,6 @@ DSA might not be able to sign without the preferred algorithm).
 returned on error.
 </p>
 <p><strong>Since:</strong> 2.12.0
-</p></dd></dl>
-
-<a name="gnutls_005fx509_005fprivkey_005fsign_005fdata-1"></a>
-<h4 class="subheading">gnutls_x509_privkey_sign_data</h4>
-<a name="gnutls_005fx509_005fprivkey_005fsign_005fdata"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fprivkey_005fsign_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_privkey_sign_data</strong> <em>(gnutls_x509_privkey_t <var>key</var>, gnutls_digest_algorithm_t <var>digest</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>data</var>, void * <var>signature</var>, size_t * <var>signature_size</var>)</em></dt>
-<dd><p><var>key</var>: a key
-</p>
-<p><var>digest</var>: should be MD5 or SHA1
-</p>
-<p><var>flags</var>: should be 0 for now
-</p>
-<p><var>data</var>: holds the data to be signed
-</p>
-<p><var>signature</var>: will contain the signature
-</p>
-<p><var>signature_size</var>: holds the size of signature (and will be replaced
-by the new size)
-</p>
-<p>This function will sign the given data using a signature algorithm
-supported by the private key. Signature algorithms are always used
-together with a hash functions.  Different hash functions may be
-used for the RSA algorithm, but only SHA-1 for the DSA keys.
-</p>
-<p>If the buffer provided is not long enough to hold the output, then
-* <code>signature_size</code> is updated and <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  will
-be returned.
-</p>
-<p>Use <code>gnutls_x509_crt_get_preferred_hash_algorithm()</code>  to determine
-the hash algorithm.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p>
-<p><strong>Deprecated:</strong> Use <code>gnutls_privkey_sign_data()</code> .
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fprivkey_005fsign_005fhash-1"></a>
@@ -38996,6 +39377,12 @@ Available from <a href="http://tools.ietf.org/html/draft-ietf-websec-key-pinning
 <dd><p>NIST Special Publication 800-57, &quot;Recommendation for Key Management -
 Part 1: General (Revised)&quot;, March 2007, available from
 <a href="http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57-Part1-revised2_Mar08-2007.pdf">http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57-Part1-revised2_Mar08-2007.pdf</a>.
+</p>
+</dd>
+<dt><a name="RFC6125"></a>[RFC6125]</dt>
+<dd><p>Peter Saint-Andre and Jeff Hodges, &quot;Representation and Verification of Domain-Based Application Service Identity within Internet Public Key Infrastructure Using X.509 (PKIX) Certificates in the Context of Transport Layer Security (TLS)&quot;,
+March 2011, Available from
+<a href="http://www.ietf.org/rfc/rfc6125.txt">http://www.ietf.org/rfc/rfc6125.txt</a>.
 </p>
 </dd>
 <dt><a name="RFC2246"></a>[RFC2246]</dt>
@@ -39672,6 +40059,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fget_005fpin_005ffunction"><code>gnutls_pkcs11_get_pin_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fget_005fraw_005fissuer"><code>gnutls_pkcs11_get_raw_issuer</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fget_005fraw_005fissuer_005fby_005fdn"><code>gnutls_pkcs11_get_raw_issuer_by_dn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fget_005fraw_005fissuer_005fby_005fsubject_005fkey_005fid"><code>gnutls_pkcs11_get_raw_issuer_by_subject_key_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005finit"><code>gnutls_pkcs11_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS11-Initialization">PKCS11 Initialization</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005finit-1"><code>gnutls_pkcs11_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fobj_005fdeinit"><code>gnutls_pkcs11_obj_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
@@ -39744,21 +40132,32 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs12_005fsimple_005fparse"><code>gnutls_pkcs12_simple_parse</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Managing-encrypted-keys">Managing encrypted keys</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs12_005fsimple_005fparse-1"><code>gnutls_pkcs12_simple_parse</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-12-API">PKCS 12 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs12_005fverify_005fmac"><code>gnutls_pkcs12_verify_mac</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-12-API">PKCS 12 API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fdeinit"><code>gnutls_pkcs7_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fdelete_005fcrl"><code>gnutls_pkcs7_delete_crl</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fdelete_005fcrt"><code>gnutls_pkcs7_delete_crt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fexport"><code>gnutls_pkcs7_export</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fexport2"><code>gnutls_pkcs7_export2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fget_005fcrl_005fcount"><code>gnutls_pkcs7_get_crl_count</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fget_005fcrl_005fraw"><code>gnutls_pkcs7_get_crl_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fget_005fcrt_005fcount"><code>gnutls_pkcs7_get_crt_count</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fget_005fcrt_005fraw"><code>gnutls_pkcs7_get_crt_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fimport"><code>gnutls_pkcs7_import</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005finit"><code>gnutls_pkcs7_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fset_005fcrl"><code>gnutls_pkcs7_set_crl</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fset_005fcrl_005fraw"><code>gnutls_pkcs7_set_crl_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fset_005fcrt"><code>gnutls_pkcs7_set_crt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fset_005fcrt_005fraw"><code>gnutls_pkcs7_set_crt_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fadd_005fattr"><code>gnutls_pkcs7_add_attr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fattrs_005fdeinit"><code>gnutls_pkcs7_attrs_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fdeinit"><code>gnutls_pkcs7_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fdelete_005fcrl"><code>gnutls_pkcs7_delete_crl</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fdelete_005fcrt"><code>gnutls_pkcs7_delete_crt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fexport"><code>gnutls_pkcs7_export</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fexport2"><code>gnutls_pkcs7_export2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fget_005fattr"><code>gnutls_pkcs7_get_attr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fget_005fcrl_005fcount"><code>gnutls_pkcs7_get_crl_count</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fget_005fcrl_005fraw"><code>gnutls_pkcs7_get_crl_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fget_005fcrl_005fraw2"><code>gnutls_pkcs7_get_crl_raw2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fget_005fcrt_005fcount"><code>gnutls_pkcs7_get_crt_count</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fget_005fcrt_005fraw"><code>gnutls_pkcs7_get_crt_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fget_005fcrt_005fraw2"><code>gnutls_pkcs7_get_crt_raw2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fget_005fsignature_005finfo"><code>gnutls_pkcs7_get_signature_info</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fimport"><code>gnutls_pkcs7_import</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005finit"><code>gnutls_pkcs7_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fprint"><code>gnutls_pkcs7_print</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fset_005fcrl"><code>gnutls_pkcs7_set_crl</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fset_005fcrl_005fraw"><code>gnutls_pkcs7_set_crl_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fset_005fcrt"><code>gnutls_pkcs7_set_crt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fset_005fcrt_005fraw"><code>gnutls_pkcs7_set_crt_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fsign"><code>gnutls_pkcs7_sign</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fsignature_005finfo_005fdeinit"><code>gnutls_pkcs7_signature_info_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fverify"><code>gnutls_pkcs7_verify</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fverify_005fdirect"><code>gnutls_pkcs7_verify_direct</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs8_005finfo"><code>gnutls_pkcs8_info</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs_005fschema_005fget_005fname"><code>gnutls_pkcs_schema_get_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs_005fschema_005fget_005foid"><code>gnutls_pkcs_schema_get_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
@@ -40265,11 +40664,13 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fsign"><code>gnutls_x509_crt_sign</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fsign2"><code>gnutls_x509_crt_sign2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fverify"><code>gnutls_x509_crt_verify</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fverify_005fdata2"><code>gnutls_x509_crt_verify_data2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fdn_005fdeinit"><code>gnutls_x509_dn_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fdn_005fexport"><code>gnutls_x509_dn_export</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fdn_005fexport2"><code>gnutls_x509_dn_export2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fdn_005fget_005frdn_005fava"><code>gnutls_x509_dn_get_rdn_ava</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X_002e509-distinguished-names">X.509 distinguished names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fdn_005fget_005frdn_005fava-1"><code>gnutls_x509_dn_get_rdn_ava</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fdn_005fget_005fstr"><code>gnutls_x509_dn_get_str</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fdn_005fimport"><code>gnutls_x509_dn_import</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fdn_005finit"><code>gnutls_x509_dn_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fdn_005foid_005fknown"><code>gnutls_x509_dn_oid_known</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
@@ -40346,7 +40747,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fprivkey_005finit"><code>gnutls_x509_privkey_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fprivkey_005fsec_005fparam"><code>gnutls_x509_privkey_sec_param</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fprivkey_005fset_005fpin_005ffunction"><code>gnutls_x509_privkey_set_pin_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fprivkey_005fsign_005fdata"><code>gnutls_x509_privkey_sign_data</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compatibility-API">Compatibility API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fprivkey_005fsign_005fdata"><code>gnutls_x509_privkey_sign_data</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fprivkey_005fsign_005fhash"><code>gnutls_x509_privkey_sign_hash</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compatibility-API">Compatibility API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fprivkey_005fverify_005fparams"><code>gnutls_x509_privkey_verify_params</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005frdn_005fget"><code>gnutls_x509_rdn_get</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
@@ -40368,6 +40769,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fdeinit"><code>gnutls_x509_trust_list_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fget_005fissuer"><code>gnutls_x509_trust_list_get_issuer</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fget_005fissuer_005fby_005fdn"><code>gnutls_x509_trust_list_get_issuer_by_dn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fget_005fissuer_005fby_005fsubject_005fkey_005fid"><code>gnutls_x509_trust_list_get_issuer_by_subject_key_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005finit"><code>gnutls_x509_trust_list_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fiter_005fdeinit"><code>gnutls_x509_trust_list_iter_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005ftrust_005flist_005fiter_005fget_005fca"><code>gnutls_x509_trust_list_iter_get_ca</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
@@ -40616,6 +41018,7 @@ Previous: <a href="#Function-and-Data-Index" accesskey="p" rel="prev">Function a
 <tr><td></td><td valign="top"><a href="#index-verifying-certificate-with-pkcs11">verifying certificate with pkcs11</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Verification-using-PKCS11">Verification using PKCS11</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-X">X</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-X_002e509-certificate-name">X.509 certificate name</a>:</td><td>&nbsp;</td><td valign="top"><a href="#X_002e509-certificate-names">X.509 certificate names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-X_002e509-certificates">X.509 certificates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#X_002e509-certificates">X.509 certificates</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-X_002e509-distinguished-name">X.509 distinguished name</a>:</td><td>&nbsp;</td><td valign="top"><a href="#X_002e509-distinguished-names">X.509 distinguished names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-X_002e509-extensions">X.509 extensions</a>:</td><td>&nbsp;</td><td valign="top"><a href="#X_002e509-extensions">X.509 extensions</a></td></tr>

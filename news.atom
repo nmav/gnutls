@@ -3,7 +3,28 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2015-05-03T20:08:45+00:00</updated>
+<updated>2015-06-16T22:11:38+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2015-06-16</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2015-06-16'/>
+    <title>GnuTLS 3.4.2</title>
+    <updated>2015-06-16T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2015-06-16.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a
+href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8189">GnuTLS
+3.4.2</a> which adds new features and fixes bugs in next stable branch.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2015-05-03</id>
@@ -438,38 +459,6 @@ href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7542">GnuT
 Released <a
 href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7494">GnuTLS
 3.3.4</a>, which fixes an issue in the hardware acceleration on certain CPUs. 
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2014-05-30</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-05-30'/>
-    <title>GnuTLS 3.3.3, 3.2.15 and 3.1.25</title>
-    <updated>2014-05-30T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-05-30.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Released <a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7494">GnuTLS
-3.3.3</a>,
-<a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7493">GnuTLS
-3.2.15</a>,
-<a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7492">GnuTLS
-3.1.25</a>, which are bug-fix releases on the next, current and previous stable
-branches respectively. 
-</p>
-<p>
-<a href="http://www.gnutls.org/security.html#GNUTLS-SA-2014-3">Posted a security advisory</a> on a vulnerability
-on the client side of the gnutls library.
 </p>
 
     </div>

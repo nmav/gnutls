@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.1 of GnuTLS.
+3.4.2 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.1: Abstract key API</title>
+<title>GnuTLS 3.4.2: Abstract key API</title>
 
-<meta name="description" content="GnuTLS 3.4.1: Abstract key API">
-<meta name="keywords" content="GnuTLS 3.4.1: Abstract key API">
+<meta name="description" content="GnuTLS 3.4.2: Abstract key API">
+<meta name="keywords" content="GnuTLS 3.4.2: Abstract key API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -163,7 +163,7 @@ Next: <a href="DANE-API.html#DANE-API" accesskey="n" rel="next">DANE API</a>, Pr
 </div>
 <hr>
 <a name="Abstract-key-API-1"></a>
-<h3 class="section">E.9 Abstract key API</h3>
+<h3 class="section">E.10 Abstract key API</h3>
 
 <p>The following functions are to be used for abstract key handling.
 Their prototypes lie in <samp>gnutls/abstract.h</samp>.
@@ -213,23 +213,24 @@ not be reused to load other keys or certificates.
 <p><var>func</var>: is the callback function
 </p>
 <p>This function sets a callback to be called in order to retrieve the
-certificate to be used in the handshake.
+certificate to be used in the handshake. The callback will take control
+only if a certificate is requested by the peer.
 </p>
 <p>The callback&rsquo;s function prototype is:
 int (*callback)(gnutls_session_t, const gnutls_datum_t* req_ca_dn, int nreqs,
 const gnutls_pk_algorithm_t* pk_algos, int pk_algos_length, gnutls_pcert_st** pcert,
 unsigned int *pcert_length, gnutls_privkey_t * pkey);
 </p>
-<p><code>req_ca_cert</code> is only used in X.509 certificates.
+<p><code>req_ca_dn</code> is only used in X.509 certificates.
 Contains a list with the CA names that the server considers trusted.
-Normally we should send a certificate that is signed
-by one of these CAs. These names are DER encoded. To get a more
+This is a hint and typically the client should send a certificate that is signed
+by one of these CAs. These names, when available, are DER encoded. To get a more
 meaningful value use the function <code>gnutls_x509_rdn_get()</code> .
 </p>
 <p><code>pk_algos</code> contains a list with server&rsquo;s acceptable signature algorithms.
 The certificate returned should support the server&rsquo;s given algorithms.
 </p>
-<p><code>pcert</code> should contain a single certificate and public or a list of them.
+<p><code>pcert</code> should contain a single certificate and public key or a list of them.
 </p>
 <p><code>pcert_length</code> is the size of the previous list.
 </p>
@@ -245,7 +246,9 @@ modified by gnutls.
 <p>The callback function should set the certificate list to be sent,
 and return 0 on success. If no certificate was selected then the
 number of certificates should be set to zero. The value (-1)
-indicates error and the handshake will be terminated.
+indicates error and the handshake will be terminated. If both certificates
+are set in the credentials and a callback is available, the callback
+takes predence.
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -1111,7 +1114,7 @@ to have effect.
 </p>
 <p><var>data</var>: holds the data to be signed
 </p>
-<p><var>signature</var>: will contain the signature allocate with <code>gnutls_malloc()</code> 
+<p><var>signature</var>: will contain the signature allocated with <code>gnutls_malloc()</code> 
 </p>
 <p>This function will sign the given data using a signature algorithm
 supported by the private key. Signature algorithms are always used
@@ -1884,7 +1887,7 @@ to have effect.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or an OR list of <code>gnutls_certificate_verify_flags</code> 
 </p>
 <p><var>data</var>: holds the signed data
 </p>
@@ -1894,7 +1897,9 @@ to have effect.
 parameters from the certificate.
 </p>
 <p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
-is returned, and zero or positive code on success.
+is returned, and zero or positive code on success. For known to be insecure
+signatures this function will return <code>GNUTLS_E_INSUFFICIENT_SECURITY</code>  unless
+the flag <code>GNUTLS_VERIFY_ALLOW_BROKEN</code>  is specified.
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -1907,7 +1912,7 @@ is returned, and zero or positive code on success.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or an OR list of <code>gnutls_certificate_verify_flags</code> 
 </p>
 <p><var>hash</var>: holds the hash digest to be verified
 </p>

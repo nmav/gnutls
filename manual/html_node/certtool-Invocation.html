@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.1 of GnuTLS.
+3.4.2 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.1: certtool Invocation</title>
+<title>GnuTLS 3.4.2: certtool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.4.1: certtool Invocation">
-<meta name="keywords" content="GnuTLS 3.4.1: certtool Invocation">
+<meta name="description" content="GnuTLS 3.4.2: certtool Invocation">
+<meta name="keywords" content="GnuTLS 3.4.2: certtool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -434,6 +434,31 @@ This option will dump the contents and print the metadata of the provided PKCS #
 <p>This is the &ldquo;the pkcs #12 friendly name to use&rdquo; option.
 This option takes a string argument.
 The name to be used for the primary certificate and private key in a PKCS #12 file.
+<a name="certtool-p7_002dgenerate"></a></p><a name="p7_002dgenerate-option"></a>
+<h4 class="subsubheading">p7-generate option</h4>
+
+<p>This is the &ldquo;generate a pkcs #7 structure&rdquo; option.
+This option generates a PKCS #7 certificate container structure. To add certificates in the structure use &ndash;load-certificate and &ndash;load-crl.
+<a name="certtool-p7_002dsign"></a></p><a name="p7_002dsign-option"></a>
+<h4 class="subsubheading">p7-sign option</h4>
+
+<p>This is the &ldquo;signs using a pkcs #7 structure&rdquo; option.
+This option generates a PKCS #7 structure containing a signature for the provided data. The data are stored within the structure. The signer certificate has to be specified using &ndash;load-certificate and &ndash;load-privkey.
+<a name="certtool-p7_002ddetached_002dsign"></a></p><a name="p7_002ddetached_002dsign-option"></a>
+<h4 class="subsubheading">p7-detached-sign option</h4>
+
+<p>This is the &ldquo;signs using a detached pkcs #7 structure&rdquo; option.
+This option generates a PKCS #7 structure containing a signature for the provided data. The signer certificate has to be specified using &ndash;load-certificate and &ndash;load-privkey.
+<a name="certtool-p7_002dtime"></a></p><a name="p7_002dtime-option"></a>
+<h4 class="subsubheading">p7-time option</h4>
+
+<p>This is the &ldquo;will include a timestamp in the pkcs #7 structure&rdquo; option.
+This option will include a timestamp in the generated signature
+<a name="certtool-p7_002dverify"></a></p><a name="p7_002dverify-option"></a>
+<h4 class="subsubheading">p7-verify option</h4>
+
+<p>This is the &ldquo;verify the provided pkcs #7 structure&rdquo; option.
+This option verifies the signed PKCS #7 structure. The certificate list to use for verification can be specified with &ndash;load-ca-certificate. When no certificate list is provided, then the system&rsquo;s certificate list is used. Alternatively a direct signer can be provided using &ndash;load-certificate. A key purpose can be enforced with the &ndash;verify-purpose option, and the &ndash;load-data option will utilize detached data.
 <a name="certtool-p8_002dinfo"></a></p><a name="p8_002dinfo-option"></a>
 <h4 class="subsubheading">p8-info option</h4>
 

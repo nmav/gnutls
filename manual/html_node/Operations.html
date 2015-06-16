@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.1 of GnuTLS.
+3.4.2 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.1: Operations</title>
+<title>GnuTLS 3.4.2: Operations</title>
 
-<meta name="description" content="GnuTLS 3.4.1: Operations">
-<meta name="keywords" content="GnuTLS 3.4.1: Operations">
+<meta name="description" content="GnuTLS 3.4.2: Operations">
+<meta name="keywords" content="GnuTLS 3.4.2: Operations">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -177,7 +177,7 @@ signature verification operations with the underlying keys.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or an OR list of <code>gnutls_certificate_verify_flags</code> 
 </p>
 <p><var>data</var>: holds the signed data
 </p>
@@ -187,7 +187,9 @@ signature verification operations with the underlying keys.
 parameters from the certificate.
 </p>
 <p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PK_SIG_VERIFY_FAILED</code>  
-is returned, and zero or positive code on success.
+is returned, and zero or positive code on success. For known to be insecure
+signatures this function will return <code>GNUTLS_E_INSUFFICIENT_SECURITY</code>  unless
+the flag <code>GNUTLS_VERIFY_ALLOW_BROKEN</code>  is specified.
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -201,7 +203,7 @@ is returned, and zero or positive code on success.
 </p>
 <p><var>algo</var>: The signature algorithm used
 </p>
-<p><var>flags</var>: Zero or one of <code>gnutls_pubkey_flags_t</code> 
+<p><var>flags</var>: Zero or an OR list of <code>gnutls_certificate_verify_flags</code> 
 </p>
 <p><var>hash</var>: holds the hash digest to be verified
 </p>
@@ -254,7 +256,7 @@ negative error value.
 </p>
 <p><var>data</var>: holds the data to be signed
 </p>
-<p><var>signature</var>: will contain the signature allocate with <code>gnutls_malloc()</code> 
+<p><var>signature</var>: will contain the signature allocated with <code>gnutls_malloc()</code> 
 </p>
 <p>This function will sign the given data using a signature algorithm
 supported by the private key. Signature algorithms are always used

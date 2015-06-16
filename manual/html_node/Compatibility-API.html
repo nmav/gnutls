@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.1 of GnuTLS.
+3.4.2 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.1: Compatibility API</title>
+<title>GnuTLS 3.4.2: Compatibility API</title>
 
-<meta name="description" content="GnuTLS 3.4.1: Compatibility API">
-<meta name="keywords" content="GnuTLS 3.4.1: Compatibility API">
+<meta name="description" content="GnuTLS 3.4.2: Compatibility API">
+<meta name="keywords" content="GnuTLS 3.4.2: Compatibility API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -163,7 +163,7 @@ Previous: <a href="Cryptographic-API.html#Cryptographic-API" accesskey="p" rel="
 </div>
 <hr>
 <a name="Compatibility-API-1"></a>
-<h3 class="section">E.12 Compatibility API</h3>
+<h3 class="section">E.13 Compatibility API</h3>
 
 <p>The following functions are carried over from old GnuTLS released. They might be removed at a later version.
 Their prototypes lie in <samp>gnutls/compat.h</samp>.
@@ -273,41 +273,6 @@ DSA might not be able to sign without the preferred algorithm).
 returned on error.
 </p>
 <p><strong>Since:</strong> 2.12.0
-</p></dd></dl>
-
-<a name="gnutls_005fx509_005fprivkey_005fsign_005fdata-1"></a>
-<h4 class="subheading">gnutls_x509_privkey_sign_data</h4>
-<a name="gnutls_005fx509_005fprivkey_005fsign_005fdata"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fprivkey_005fsign_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_privkey_sign_data</strong> <em>(gnutls_x509_privkey_t <var>key</var>, gnutls_digest_algorithm_t <var>digest</var>, unsigned int <var>flags</var>, const gnutls_datum_t * <var>data</var>, void * <var>signature</var>, size_t * <var>signature_size</var>)</em></dt>
-<dd><p><var>key</var>: a key
-</p>
-<p><var>digest</var>: should be MD5 or SHA1
-</p>
-<p><var>flags</var>: should be 0 for now
-</p>
-<p><var>data</var>: holds the data to be signed
-</p>
-<p><var>signature</var>: will contain the signature
-</p>
-<p><var>signature_size</var>: holds the size of signature (and will be replaced
-by the new size)
-</p>
-<p>This function will sign the given data using a signature algorithm
-supported by the private key. Signature algorithms are always used
-together with a hash functions.  Different hash functions may be
-used for the RSA algorithm, but only SHA-1 for the DSA keys.
-</p>
-<p>If the buffer provided is not long enough to hold the output, then
-* <code>signature_size</code> is updated and <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  will
-be returned.
-</p>
-<p>Use <code>gnutls_x509_crt_get_preferred_hash_algorithm()</code>  to determine
-the hash algorithm.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p>
-<p><strong>Deprecated:</strong> Use <code>gnutls_privkey_sign_data()</code> .
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fprivkey_005fsign_005fhash-1"></a>

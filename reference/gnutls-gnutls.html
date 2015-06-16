@@ -4939,11 +4939,11 @@ certificate/key pairs).</p>
 <p>This function can also accept URLs at <em class="parameter"><code>keyfile</code></em>
  and <em class="parameter"><code>certfile</code></em>
 . In that case it
-will import the private key and certificate indicated by the URLs. Note
+will use the private key and certificate indicated by the URLs. Note
 that the supported URLs are the ones indicated by <a class="link" href="gnutls-gnutls.html#gnutls-url-is-supported" title="gnutls_url_is_supported ()"><code class="function">gnutls_url_is_supported()</code></a>.</p>
 <p>In case the <em class="parameter"><code>certfile</code></em>
  is provided as a PKCS <span class="type">11</span> URL, then the certificate, and its
-present issuers in the token are are imported (i.e., the required trust chain).</p>
+present issuers in the token are imported (i.e., forming the required trust chain).</p>
 <p>If that function fails to load the <em class="parameter"><code>res</code></em>
  structure is at an undefined state, it must
 not be reused to load other keys or certificates.</p>
@@ -6412,8 +6412,10 @@ Diffie-Hellman key exchange with the peer.  These are the prime and
 the generator used.  This function should be used for both
 anonymous and ephemeral Diffie-Hellman.  The output parameters must
 be freed with <code class="function">gnutls_free()</code>.</p>
+<p>Note, that the prime and generator are exported as non-negative
+integers and may include a leading zero byte.</p>
 <div class="refsect3">
-<a name="id-1.2.4.6.95.5"></a><h4>Parameters</h4>
+<a name="id-1.2.4.6.95.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -6440,7 +6442,7 @@ be freed with <code class="function">gnutls_free()</code>.</p>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.4.6.95.6"></a><h4>Returns</h4>
+<a name="id-1.2.4.6.95.7"></a><h4>Returns</h4>
 <p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise
 an error code is returned.</p>
 <p></p>
@@ -6518,8 +6520,10 @@ gnutls_dh_get_pubkey (<em class="parameter"><code><a class="link" href="gnutls-g
 Diffie-Hellman key exchange.  This function should be used for both
 anonymous and ephemeral Diffie-Hellman.  The output parameters must
 be freed with <code class="function">gnutls_free()</code>.</p>
+<p>Note, that public key is exported as non-negative
+integer and may include a leading zero byte.</p>
 <div class="refsect3">
-<a name="id-1.2.4.6.98.5"></a><h4>Parameters</h4>
+<a name="id-1.2.4.6.98.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -6541,7 +6545,7 @@ be freed with <code class="function">gnutls_free()</code>.</p>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.4.6.98.6"></a><h4>Returns</h4>
+<a name="id-1.2.4.6.98.7"></a><h4>Returns</h4>
 <p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise
 an error code is returned.</p>
 <p></p>
@@ -6955,8 +6959,8 @@ will be used for the handshake.</p>
 <p>In the client side it sets the minimum accepted number of bits.  If
 a server sends a prime with less bits than that
 <a class="link" href="gnutls-gnutls.html#GNUTLS-E-DH-PRIME-UNACCEPTABLE:CAPS" title="GNUTLS_E_DH_PRIME_UNACCEPTABLE"><code class="literal">GNUTLS_E_DH_PRIME_UNACCEPTABLE</code></a> will be returned by the handshake.</p>
-<p>Note that values lower than 512 bits may allow decryption of the
-exchanged data.</p>
+<p>Note that this function will warn via the audit log for value that
+are believed to be weak.</p>
 <p>The function has no effect in server side.</p>
 <p>Note that since 3.1.7 this function is deprecated. The minimum
 number of bits is set by the priority string level.
@@ -8170,10 +8174,8 @@ session must be initialized before use, so internal structures can
 be allocated.  This function allocates structures which can only
 be free'd by calling <a class="link" href="gnutls-gnutls.html#gnutls-deinit" title="gnutls_deinit ()"><code class="function">gnutls_deinit()</code></a>.  Returns <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success.</p>
 <p><em class="parameter"><code>flags</code></em>
- can be one of <a class="link" href="gnutls-gnutls.html#GNUTLS-CLIENT:CAPS" title="GNUTLS_CLIENT"><code class="literal">GNUTLS_CLIENT</code></a> and <a class="link" href="gnutls-gnutls.html#GNUTLS-SERVER:CAPS" title="GNUTLS_SERVER"><code class="literal">GNUTLS_SERVER</code></a>. For a DTLS
-entity, the flags <a class="link" href="gnutls-gnutls.html#GNUTLS-DATAGRAM:CAPS" title="GNUTLS_DATAGRAM"><code class="literal">GNUTLS_DATAGRAM</code></a> and  <a class="link" href="gnutls-gnutls.html#GNUTLS-NONBLOCK:CAPS" title="GNUTLS_NONBLOCK"><code class="literal">GNUTLS_NONBLOCK</code></a> are
-also available. The latter flag will indicated non-blocking
-operation of the sockets provided to gnutls.</p>
+ can be one of <a class="link" href="gnutls-gnutls.html#GNUTLS-CLIENT:CAPS" title="GNUTLS_CLIENT"><code class="literal">GNUTLS_CLIENT</code></a>, <a class="link" href="gnutls-gnutls.html#GNUTLS-SERVER:CAPS" title="GNUTLS_SERVER"><code class="literal">GNUTLS_SERVER</code></a>, <a class="link" href="gnutls-gnutls.html#GNUTLS-DATAGRAM:CAPS" title="GNUTLS_DATAGRAM"><code class="literal">GNUTLS_DATAGRAM</code></a>,
+<a class="link" href="gnutls-gnutls.html#GNUTLS-NONBLOCK:CAPS" title="GNUTLS_NONBLOCK"><code class="literal">GNUTLS_NONBLOCK</code></a> or <code class="literal">GNUTLS_NOSIGNAL</code> (since 3.4.2).</p>
 <p>The flag <code class="literal">GNUTLS_NO_REPLAY_PROTECTION</code> will disable any 
 replay protection in DTLS mode. That must only used when 
 replay protection is achieved using other means.</p>

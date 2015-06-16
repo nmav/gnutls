@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.1 of GnuTLS.
+3.4.2 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.1: PKCS 11 API</title>
+<title>GnuTLS 3.4.2: PKCS 11 API</title>
 
-<meta name="description" content="GnuTLS 3.4.1: PKCS 11 API">
-<meta name="keywords" content="GnuTLS 3.4.1: PKCS 11 API">
+<meta name="description" content="GnuTLS 3.4.2: PKCS 11 API">
+<meta name="keywords" content="GnuTLS 3.4.2: PKCS 11 API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -163,7 +163,7 @@ Next: <a href="TPM-API.html#TPM-API" accesskey="n" rel="next">TPM API</a>, Previ
 </div>
 <hr>
 <a name="Hardware-token-via-PKCS-11-API"></a>
-<h3 class="section">E.7 Hardware token via PKCS 11 API</h3>
+<h3 class="section">E.8 Hardware token via PKCS 11 API</h3>
 
 <p>The following functions are to be used for PKCS 11 handling.
 Their prototypes lie in <samp>gnutls/pkcs11.h</samp>.
@@ -461,6 +461,36 @@ negative error value.
 <p><strong>Since:</strong> 3.4.0
 </p></dd></dl>
 
+<a name="gnutls_005fpkcs11_005fget_005fraw_005fissuer_005fby_005fsubject_005fkey_005fid-1"></a>
+<h4 class="subheading">gnutls_pkcs11_get_raw_issuer_by_subject_key_id</h4>
+<a name="gnutls_005fpkcs11_005fget_005fraw_005fissuer_005fby_005fsubject_005fkey_005fid"></a><dl>
+<dt><a name="index-gnutls_005fpkcs11_005fget_005fraw_005fissuer_005fby_005fsubject_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_pkcs11_get_raw_issuer_by_subject_key_id</strong> <em>(const char * <var>url</var>, const gnutls_datum_t * <var>dn</var>, const gnutls_datum_t * <var>spki</var>, gnutls_datum_t * <var>issuer</var>, gnutls_x509_crt_fmt_t <var>fmt</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>url</var>: A PKCS 11 url identifying a token
+</p>
+<p><var>dn</var>: is the DN to search for (may be <code>NULL</code> )
+</p>
+<p><var>spki</var>: is the subject key ID to search for
+</p>
+<p><var>issuer</var>: Will hold the issuer if any in an allocated buffer.
+</p>
+<p><var>fmt</var>: The format of the exported issuer.
+</p>
+<p><var>flags</var>: Use zero or flags from <code>GNUTLS_PKCS11_OBJ_FLAG</code> .
+</p>
+<p>This function will return the certificate with the given DN and  <code>spki</code> , if it
+is stored in the token. By default only marked as trusted issuers
+are retuned. If any issuer should be returned specify
+<code>GNUTLS_PKCS11_OBJ_FLAG_RETRIEVE_ANY</code>  in  <code>flags</code> .
+</p>
+<p>The name of the function includes issuer because it can
+be used to discover issuers of certificates.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
 <a name="gnutls_005fpkcs11_005finit-1"></a>
 <h4 class="subheading">gnutls_pkcs11_init</h4>
 <a name="gnutls_005fpkcs11_005finit"></a><dl>
@@ -475,8 +505,8 @@ read configuration files if <code>GNUTLS_PKCS11_FLAG_AUTO</code>  is used or all
 you to independently load PKCS 11 modules using <code>gnutls_pkcs11_add_provider()</code> 
 if <code>GNUTLS_PKCS11_FLAG_MANUAL</code>  is specified.
 </p>
-<p>Normally you don&rsquo;t need to call this function since it is being called
-when the first PKCS 11 operation is requested using the <code>GNUTLS_PKCS11_FLAG_AUTO</code> 
+<p>You don&rsquo;t need to call this function since GnuTLS 3.3.0 because it is being called
+during the first request PKCS 11 operation. That call will assume the <code>GNUTLS_PKCS11_FLAG_AUTO</code> 
 flag. If another flags are required then it must be called independently
 prior to any PKCS 11 operation.
 </p>

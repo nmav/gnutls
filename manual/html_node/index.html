@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.1 of GnuTLS.
+3.4.2 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.1: Top</title>
+<title>GnuTLS 3.4.2: Top</title>
 
-<meta name="description" content="GnuTLS 3.4.1: Top">
-<meta name="keywords" content="GnuTLS 3.4.1: Top">
+<meta name="description" content="GnuTLS 3.4.2: Top">
+<meta name="keywords" content="GnuTLS 3.4.2: Top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -155,7 +155,7 @@ dl {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">GnuTLS 3.4.1</h1>
+<h1 class="settitle" align="center">GnuTLS 3.4.2</h1>
 
 
 
@@ -232,12 +232,13 @@ dl {
       <ul class="no-bullet">
         <li><a name="toc-X_002e509-certificate-structure-1" href="X_002e509-certificate-structure.html#X_002e509-certificate-structure">4.1.1.1 <acronym>X.509</acronym> certificate structure</a></li>
         <li><a name="toc-Importing-an-X_002e509-certificate-1" href="Importing-an-X_002e509-certificate.html#Importing-an-X_002e509-certificate">4.1.1.2 Importing an X.509 certificate</a></li>
-        <li><a name="toc-X_002e509-distinguished-names-1" href="X_002e509-distinguished-names.html#X_002e509-distinguished-names">4.1.1.3 X.509 distinguished names</a></li>
-        <li><a name="toc-X_002e509-extensions-1" href="X_002e509-extensions.html#X_002e509-extensions">4.1.1.4 X.509 extensions</a></li>
-        <li><a name="toc-Accessing-public-and-private-keys" href="X_002e509-public-and-private-keys.html#X_002e509-public-and-private-keys">4.1.1.5 Accessing public and private keys</a></li>
-        <li><a name="toc-Verifying-X_002e509-certificate-paths-1" href="Verifying-X_002e509-certificate-paths.html#Verifying-X_002e509-certificate-paths">4.1.1.6 Verifying <acronym>X.509</acronym> certificate paths</a></li>
-        <li><a name="toc-Verifying-a-certificate-in-the-context-of-TLS-session-1" href="Verifying-a-certificate-in-the-context-of-TLS-session.html#Verifying-a-certificate-in-the-context-of-TLS-session">4.1.1.7 Verifying a certificate in the context of TLS session</a></li>
-        <li><a name="toc-Verifying-a-certificate-using-PKCS-_002311" href="Verification-using-PKCS11.html#Verification-using-PKCS11">4.1.1.8 Verifying a certificate using PKCS #11</a></li>
+        <li><a name="toc-X_002e509-certificate-names-1" href="X_002e509-certificate-names.html#X_002e509-certificate-names">4.1.1.3 X.509 certificate names</a></li>
+        <li><a name="toc-X_002e509-distinguished-names-1" href="X_002e509-distinguished-names.html#X_002e509-distinguished-names">4.1.1.4 X.509 distinguished names</a></li>
+        <li><a name="toc-X_002e509-extensions-1" href="X_002e509-extensions.html#X_002e509-extensions">4.1.1.5 X.509 extensions</a></li>
+        <li><a name="toc-Accessing-public-and-private-keys" href="X_002e509-public-and-private-keys.html#X_002e509-public-and-private-keys">4.1.1.6 Accessing public and private keys</a></li>
+        <li><a name="toc-Verifying-X_002e509-certificate-paths-1" href="Verifying-X_002e509-certificate-paths.html#Verifying-X_002e509-certificate-paths">4.1.1.7 Verifying <acronym>X.509</acronym> certificate paths</a></li>
+        <li><a name="toc-Verifying-a-certificate-in-the-context-of-TLS-session-1" href="Verifying-a-certificate-in-the-context-of-TLS-session.html#Verifying-a-certificate-in-the-context-of-TLS-session">4.1.1.8 Verifying a certificate in the context of TLS session</a></li>
+        <li><a name="toc-Verifying-a-certificate-using-PKCS-_002311" href="Verification-using-PKCS11.html#Verification-using-PKCS11">4.1.1.9 Verifying a certificate using PKCS #11</a></li>
       </ul></li>
       <li><a name="toc-OpenPGP-certificates-1" href="OpenPGP-certificates.html#OpenPGP-certificates">4.1.2 <acronym>OpenPGP</acronym> certificates</a>
       <ul class="no-bullet">
@@ -501,15 +502,16 @@ dl {
     <li><a name="toc-Core-TLS-API-1" href="Core-TLS-API.html#Core-TLS-API">E.1 Core TLS API</a></li>
     <li><a name="toc-Datagram-TLS-API-1" href="Datagram-TLS-API.html#Datagram-TLS-API">E.2 Datagram TLS API</a></li>
     <li><a name="toc-X_002e509-certificate-API" href="X509-certificate-API.html#X509-certificate-API">E.3 <acronym>X.509</acronym> certificate API</a></li>
-    <li><a name="toc-OCSP-API-1" href="OCSP-API.html#OCSP-API">E.4 <acronym>OCSP</acronym> API</a></li>
-    <li><a name="toc-OpenPGP-API-1" href="OpenPGP-API.html#OpenPGP-API">E.5 <acronym>OpenPGP</acronym> API</a></li>
-    <li><a name="toc-PKCS-12-API-1" href="PKCS-12-API.html#PKCS-12-API">E.6 PKCS 12 API</a></li>
-    <li><a name="toc-Hardware-token-via-PKCS-11-API" href="PKCS-11-API.html#PKCS-11-API">E.7 Hardware token via PKCS 11 API</a></li>
-    <li><a name="toc-TPM-API-1" href="TPM-API.html#TPM-API">E.8 TPM API</a></li>
-    <li><a name="toc-Abstract-key-API-1" href="Abstract-key-API.html#Abstract-key-API">E.9 Abstract key API</a></li>
-    <li><a name="toc-DANE-API-1" href="DANE-API.html#DANE-API">E.10 DANE API</a></li>
-    <li><a name="toc-Cryptographic-API-1" href="Cryptographic-API.html#Cryptographic-API">E.11 Cryptographic API</a></li>
-    <li><a name="toc-Compatibility-API-1" href="Compatibility-API.html#Compatibility-API">E.12 Compatibility API</a></li>
+    <li><a name="toc-PKCS-7-API-1" href="PKCS-7-API.html#PKCS-7-API">E.4 <acronym>PKCS</acronym> 7 API</a></li>
+    <li><a name="toc-OCSP-API-1" href="OCSP-API.html#OCSP-API">E.5 <acronym>OCSP</acronym> API</a></li>
+    <li><a name="toc-OpenPGP-API-1" href="OpenPGP-API.html#OpenPGP-API">E.6 <acronym>OpenPGP</acronym> API</a></li>
+    <li><a name="toc-PKCS-12-API-1" href="PKCS-12-API.html#PKCS-12-API">E.7 PKCS 12 API</a></li>
+    <li><a name="toc-Hardware-token-via-PKCS-11-API" href="PKCS-11-API.html#PKCS-11-API">E.8 Hardware token via PKCS 11 API</a></li>
+    <li><a name="toc-TPM-API-1" href="TPM-API.html#TPM-API">E.9 TPM API</a></li>
+    <li><a name="toc-Abstract-key-API-1" href="Abstract-key-API.html#Abstract-key-API">E.10 Abstract key API</a></li>
+    <li><a name="toc-DANE-API-1" href="DANE-API.html#DANE-API">E.11 DANE API</a></li>
+    <li><a name="toc-Cryptographic-API-1" href="Cryptographic-API.html#Cryptographic-API">E.12 Cryptographic API</a></li>
+    <li><a name="toc-Compatibility-API-1" href="Compatibility-API.html#Compatibility-API">E.13 Compatibility API</a></li>
   </ul></li>
   <li><a name="toc-Copying-Information-1" href="Copying-Information.html#Copying-Information">Appendix F Copying Information</a></li>
   <li><a name="toc-Bibliography-1" href="Bibliography.html#Bibliography">Bibliography</a></li>
@@ -529,7 +531,7 @@ Next: <a href="Preface.html#Preface" accesskey="n" rel="next">Preface</a>, Up: <
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 4 March 2015 for version
-3.4.1 of GnuTLS.
+3.4.2 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2015 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2015 Nikos Mavrogiannopoulos

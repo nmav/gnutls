@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.1 of GnuTLS.
+3.4.2 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.1: Core TLS API</title>
+<title>GnuTLS 3.4.2: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.4.1: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.4.1: Core TLS API">
+<meta name="description" content="GnuTLS 3.4.2: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.4.2: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -1118,11 +1118,11 @@ when selecting the appropriate certificate to use (in case of multiple
 certificate/key pairs).
 </p>
 <p>This function can also accept URLs at  <code>keyfile</code> and  <code>certfile</code> . In that case it
-will import the private key and certificate indicated by the URLs. Note
+will use the private key and certificate indicated by the URLs. Note
 that the supported URLs are the ones indicated by <code>gnutls_url_is_supported()</code> .
 </p>
 <p>In case the  <code>certfile</code> is provided as a PKCS <code>11</code>  URL, then the certificate, and its
-present issuers in the token are are imported (i.e., the required trust chain).
+present issuers in the token are imported (i.e., forming the required trust chain).
 </p>
 <p>If that function fails to load the  <code>res</code> structure is at an undefined state, it must
 not be reused to load other keys or certificates.
@@ -1161,13 +1161,13 @@ when selecting the appropriate certificate to use (in case of multiple
 certificate/key pairs).
 </p>
 <p>This function can also accept URLs at  <code>keyfile</code> and  <code>certfile</code> . In that case it
-will import the private key and certificate indicated by the URLs. Note
+will use the private key and certificate indicated by the URLs. Note
 that the supported URLs are the ones indicated by <code>gnutls_url_is_supported()</code> .
 Before GnuTLS 3.4.0 when a URL was specified, the  <code>pass</code> part was ignored and a
 PIN callback had to be registered, this is no longer the case in current releases.
 </p>
 <p>In case the  <code>certfile</code> is provided as a PKCS <code>11</code>  URL, then the certificate, and its
-present issuers in the token are are imported (i.e., the required trust chain).
+present issuers in the token are imported (i.e., forming the required trust chain).
 </p>
 <p>If that function fails to load the  <code>res</code> structure is at an undefined state, it must
 not be reused to load other keys or certificates.
@@ -2006,6 +2006,9 @@ the generator used.  This function should be used for both
 anonymous and ephemeral Diffie-Hellman.  The output parameters must
 be freed with <code>gnutls_free()</code> .
 </p>
+<p>Note, that the prime and generator are exported as non-negative
+integers and may include a leading zero byte.
+</p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
 </p></dd></dl>
@@ -2052,6 +2055,9 @@ failure.
 Diffie-Hellman key exchange.  This function should be used for both
 anonymous and ephemeral Diffie-Hellman.  The output parameters must
 be freed with <code>gnutls_free()</code> .
+</p>
+<p>Note, that public key is exported as non-negative
+integer and may include a leading zero byte.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
@@ -2273,8 +2279,8 @@ will be used for the handshake.
 a server sends a prime with less bits than that
 <code>GNUTLS_E_DH_PRIME_UNACCEPTABLE</code>  will be returned by the handshake.
 </p>
-<p>Note that values lower than 512 bits may allow decryption of the
-exchanged data.
+<p>Note that this function will warn via the audit log for value that
+are believed to be weak.
 </p>
 <p>The function has no effect in server side.
 </p>
@@ -3084,10 +3090,8 @@ session must be initialized before use, so internal structures can
 be allocated.  This function allocates structures which can only
 be free&rsquo;d by calling <code>gnutls_deinit()</code> .  Returns <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 </p>
-<p><code>flags</code> can be one of <code>GNUTLS_CLIENT</code>  and <code>GNUTLS_SERVER</code> . For a DTLS
-entity, the flags <code>GNUTLS_DATAGRAM</code>  and  <code>GNUTLS_NONBLOCK</code>  are
-also available. The latter flag will indicated non-blocking
-operation of the sockets provided to gnutls.
+<p><code>flags</code> can be one of <code>GNUTLS_CLIENT</code> , <code>GNUTLS_SERVER</code> , <code>GNUTLS_DATAGRAM</code> ,
+<code>GNUTLS_NONBLOCK</code>  or <code>GNUTLS_NOSIGNAL</code>  (since 3.4.2).
 </p>
 <p>The flag <code>GNUTLS_NO_REPLAY_PROTECTION</code>  will disable any 
 replay protection in DTLS mode. That must only used when 
