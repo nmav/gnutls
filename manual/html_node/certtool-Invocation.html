@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.2 of GnuTLS.
+3.4.3 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.2: certtool Invocation</title>
+<title>GnuTLS 3.4.3: certtool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.4.2: certtool Invocation">
-<meta name="keywords" content="GnuTLS 3.4.2: certtool Invocation">
+<meta name="description" content="GnuTLS 3.4.3: certtool Invocation">
+<meta name="keywords" content="GnuTLS 3.4.3: certtool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -288,7 +288,7 @@ variables GNUTLS_PIN and GNUTLS_SO_PIN.
 
 </pre></div>
 
-<a name="certtool-debug"></a><a name="debug-option-_0028_002dd_0029-2"></a>
+<a name="certtool-debug"></a><a name="debug-option-_0028_002dd_0029-1"></a>
 <h4 class="subsubheading">debug option (-d)</h4>
 
 <p>This is the &ldquo;enable debugging&rdquo; option.
@@ -508,7 +508,7 @@ see <a href="#certtool-ecc">the ecc option documentation</a>.
 <p>This is the &ldquo;hash algorithm to use for signing&rdquo; option.
 This option takes a string argument.
 Available hash functions are SHA1, RMD160, SHA256, SHA384, SHA512.
-<a name="certtool-inder"></a></p><a name="inder-option-2"></a>
+<a name="certtool-inder"></a></p><a name="inder-option-1"></a>
 <h4 class="subsubheading">inder option</h4>
 
 <p>This is the &ldquo;use der format for input certificates, private keys, and dh parameters &rdquo; option.
@@ -521,13 +521,13 @@ Available hash functions are SHA1, RMD160, SHA256, SHA384, SHA512.
 <p>The input files will be assumed to be in DER or RAW format. 
 Unlike options that in PEM input would allow multiple input data (e.g. multiple 
 certificates), when reading in DER format a single data structure is read.
-<a name="certtool-inraw"></a></p><a name="inraw-option-1"></a>
+<a name="certtool-inraw"></a></p><a name="inraw-option"></a>
 <h4 class="subsubheading">inraw option</h4>
 
 <p>This is an alias for the <code>inder</code> option,
 see <a href="#certtool-inder">the inder option documentation</a>.
 </p>
-<a name="certtool-outder"></a><a name="outder-option-2"></a>
+<a name="certtool-outder"></a><a name="outder-option-1"></a>
 <h4 class="subsubheading">outder option</h4>
 
 <p>This is the &ldquo;use der format for output certificates, private keys, and dh parameters&rdquo; option.
@@ -538,19 +538,19 @@ see <a href="#certtool-inder">the inder option documentation</a>.
 </li></ul>
 
 <p>The output will be in DER or RAW format.
-<a name="certtool-outraw"></a></p><a name="outraw-option-1"></a>
+<a name="certtool-outraw"></a></p><a name="outraw-option"></a>
 <h4 class="subsubheading">outraw option</h4>
 
 <p>This is an alias for the <code>outder</code> option,
 see <a href="#certtool-outder">the outder option documentation</a>.
 </p>
-<a name="certtool-curve"></a><a name="curve-option-1"></a>
+<a name="certtool-curve"></a><a name="curve-option"></a>
 <h4 class="subsubheading">curve option</h4>
 
 <p>This is the &ldquo;specify the curve used for ec key generation&rdquo; option.
 This option takes a string argument.
 Supported values are secp192r1, secp224r1, secp256r1, secp384r1 and secp521r1.
-<a name="certtool-sec_002dparam"></a></p><a name="sec_002dparam-option-2"></a>
+<a name="certtool-sec_002dparam"></a></p><a name="sec_002dparam-option-1"></a>
 <h4 class="subsubheading">sec-param option</h4>
 
 <p>This is the &ldquo;specify the security level [low, legacy, medium, high, ultra]&rdquo; option.
@@ -567,7 +567,7 @@ This option will enable interaction to enter password when in batch mode. That i
 <p>This is the &ldquo;cipher to use for pkcs #8 and #12 operations&rdquo; option.
 This option takes a string argument <samp>Cipher</samp>.
 Cipher may be one of 3des, 3des-pkcs12, aes-128, aes-192, aes-256, rc2-40, arcfour.
-<a name="certtool-provider"></a></p><a name="provider-option-1"></a>
+<a name="certtool-provider"></a></p><a name="provider-option"></a>
 <h4 class="subsubheading">provider option</h4>
 
 <p>This is the &ldquo;specify the pkcs #11 provider library&rdquo; option.

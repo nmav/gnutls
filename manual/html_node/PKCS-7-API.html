@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.2 of GnuTLS.
+3.4.3 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.2: PKCS 7 API</title>
+<title>GnuTLS 3.4.3: PKCS 7 API</title>
 
-<meta name="description" content="GnuTLS 3.4.2: PKCS 7 API">
-<meta name="keywords" content="GnuTLS 3.4.2: PKCS 7 API">
+<meta name="description" content="GnuTLS 3.4.3: PKCS 7 API">
+<meta name="keywords" content="GnuTLS 3.4.3: PKCS 7 API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -378,7 +378,7 @@ negative error value.  After the last crl has been read
 <p>This function will return the number of certifcates in the PKCS7
 or RFC2630 certificate set.
 </p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+<p><strong>Returns:</strong> On success, a positive number is returned, otherwise a
 negative error value.
 </p></dd></dl>
 
@@ -415,7 +415,7 @@ then  <code>certificate_size</code> is updated and
 </p>
 <p><var>indx</var>: contains the index of the certificate to extract
 </p>
-<p><var>cert</var>: &ndash; undescribed &ndash;
+<p><var>cert</var>: will hold the contents of the certificate; must be deallocated with <code>gnutls_free()</code> 
 </p>
 <p>This function will return a certificate of the PKCS7 or RFC2630
 certificate set.
@@ -429,6 +429,21 @@ then  <code>certificate_size</code> is updated and
 <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  is returned.
 </p>
 <p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
+<a name="gnutls_005fpkcs7_005fget_005fsignature_005fcount-1"></a>
+<h4 class="subheading">gnutls_pkcs7_get_signature_count</h4>
+<a name="gnutls_005fpkcs7_005fget_005fsignature_005fcount"></a><dl>
+<dt><a name="index-gnutls_005fpkcs7_005fget_005fsignature_005fcount"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_signature_count</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>)</em></dt>
+<dd><p><var>pkcs7</var>: should contain a <code>gnutls_pkcs7_t</code>  type
+</p>
+<p>This function will return the number of signatures in the PKCS7
+structure.
+</p>
+<p><strong>Returns:</strong> On success, a positive number is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.3
 </p></dd></dl>
 
 <a name="gnutls_005fpkcs7_005fget_005fsignature_005finfo-1"></a>
@@ -573,9 +588,9 @@ negative error value.
 <dt><a name="index-gnutls_005fpkcs7_005fsign"></a>Function: <em>int</em> <strong>gnutls_pkcs7_sign</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_t <var>signer</var>, gnutls_privkey_t <var>signer_key</var>, const gnutls_datum_t * <var>data</var>, gnutls_pkcs7_attrs_t <var>signed_attrs</var>, gnutls_pkcs7_attrs_t <var>unsigned_attrs</var>, gnutls_digest_algorithm_t <var>dig</var>, unsigned <var>flags</var>)</em></dt>
 <dd><p><var>pkcs7</var>: should contain a <code>gnutls_pkcs7_t</code>  type
 </p>
-<p><var>signer</var>: the certificate believe to have signed the structure
+<p><var>signer</var>: the certificate to sign the structure
 </p>
-<p><var>signer_key</var>: &ndash; undescribed &ndash;
+<p><var>signer_key</var>: the key to sign the structure
 </p>
 <p><var>data</var>: The data to be signed or <code>NULL</code>  if the data are already embedded
 </p>
@@ -652,7 +667,7 @@ to verify to a <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code> .
 <dt><a name="index-gnutls_005fpkcs7_005fverify_005fdirect"></a>Function: <em>int</em> <strong>gnutls_pkcs7_verify_direct</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_t <var>signer</var>, unsigned <var>idx</var>, const gnutls_datum_t * <var>data</var>, unsigned <var>flags</var>)</em></dt>
 <dd><p><var>pkcs7</var>: should contain a <code>gnutls_pkcs7_t</code>  type
 </p>
-<p><var>signer</var>: the certificate believe to have signed the structure
+<p><var>signer</var>: the certificate believed to have signed the structure
 </p>
 <p><var>idx</var>: the index of the signature info to check
 </p>

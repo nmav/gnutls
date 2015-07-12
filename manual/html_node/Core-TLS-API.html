@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.2 of GnuTLS.
+3.4.3 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.2: Core TLS API</title>
+<title>GnuTLS 3.4.3: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.4.2: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.4.2: Core TLS API">
+<meta name="description" content="GnuTLS 3.4.3: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.4.3: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -2300,7 +2300,7 @@ or the set value may be overridden by the selected priority options.
 compared in a case insensitive way.
 </p>
 <p><strong>Returns:</strong> a <code>gnutls_digest_algorithm_t</code>  id of the specified MAC
-algorithm string, or <code>GNUTLS_DIG_UNKNOWN</code>  on failures.
+algorithm string, or <code>GNUTLS_DIG_UNKNOWN</code>  on failure.
 </p></dd></dl>
 
 <a name="gnutls_005fdigest_005fget_005fname-1"></a>
@@ -2313,6 +2313,20 @@ algorithm string, or <code>GNUTLS_DIG_UNKNOWN</code>  on failures.
 </p>
 <p><strong>Returns:</strong> a string that contains the name of the specified digest
 algorithm, or <code>NULL</code> .
+</p></dd></dl>
+
+<a name="gnutls_005fdigest_005fget_005foid-1"></a>
+<h4 class="subheading">gnutls_digest_get_oid</h4>
+<a name="gnutls_005fdigest_005fget_005foid"></a><dl>
+<dt><a name="index-gnutls_005fdigest_005fget_005foid"></a>Function: <em>const char *</em> <strong>gnutls_digest_get_oid</strong> <em>(gnutls_digest_algorithm_t <var>algorithm</var>)</em></dt>
+<dd><p><var>algorithm</var>: is a digest algorithm
+</p>
+<p>Convert a <code>gnutls_digest_algorithm_t</code>  value to its object identifier.
+</p>
+<p><strong>Returns:</strong> a string that contains the object identifier of the specified digest
+algorithm, or <code>NULL</code> .
+</p>
+<p><strong>Since:</strong> 3.4.3
 </p></dd></dl>
 
 <a name="gnutls_005fdigest_005flist-1"></a>
@@ -2343,6 +2357,20 @@ type.
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
 
+<a name="gnutls_005fecc_005fcurve_005fget_005fid-1"></a>
+<h4 class="subheading">gnutls_ecc_curve_get_id</h4>
+<a name="gnutls_005fecc_005fcurve_005fget_005fid"></a><dl>
+<dt><a name="index-gnutls_005fecc_005fcurve_005fget_005fid"></a>Function: <em>gnutls_ecc_curve_t</em> <strong>gnutls_ecc_curve_get_id</strong> <em>(const char * <var>name</var>)</em></dt>
+<dd><p><var>name</var>: is a curve name
+</p>
+<p>The names are compared in a case insensitive way.
+</p>
+<p><strong>Returns:</strong> return a <code>gnutls_ecc_curve_t</code>  value corresponding to
+the specified curve, or <code>GNUTLS_ECC_CURVE_INVALID</code>  on error.
+</p>
+<p><strong>Since:</strong> 3.4.3
+</p></dd></dl>
+
 <a name="gnutls_005fecc_005fcurve_005fget_005fname-1"></a>
 <h4 class="subheading">gnutls_ecc_curve_get_name</h4>
 <a name="gnutls_005fecc_005fcurve_005fget_005fname"></a><dl>
@@ -2355,6 +2383,20 @@ type.
 curve or <code>NULL</code> .
 </p>
 <p><strong>Since:</strong> 3.0
+</p></dd></dl>
+
+<a name="gnutls_005fecc_005fcurve_005fget_005foid-1"></a>
+<h4 class="subheading">gnutls_ecc_curve_get_oid</h4>
+<a name="gnutls_005fecc_005fcurve_005fget_005foid"></a><dl>
+<dt><a name="index-gnutls_005fecc_005fcurve_005fget_005foid"></a>Function: <em>const char *</em> <strong>gnutls_ecc_curve_get_oid</strong> <em>(gnutls_ecc_curve_t <var>curve</var>)</em></dt>
+<dd><p><var>curve</var>: is an ECC curve
+</p>
+<p>Convert a <code>gnutls_ecc_curve_t</code>  value to its object identifier.
+</p>
+<p><strong>Returns:</strong> a string that contains the OID of the specified
+curve or <code>NULL</code> .
+</p>
+<p><strong>Since:</strong> 3.4.3
 </p></dd></dl>
 
 <a name="gnutls_005fecc_005fcurve_005fget_005fsize-1"></a>
@@ -3212,7 +3254,7 @@ an error code is returned.
 compared in a case insensitive way.
 </p>
 <p><strong>Returns:</strong> a <code>gnutls_mac_algorithm_t</code>  id of the specified MAC
-algorithm string, or <code>GNUTLS_MAC_UNKNOWN</code>  on failures.
+algorithm string, or <code>GNUTLS_MAC_UNKNOWN</code>  on failure.
 </p></dd></dl>
 
 <a name="gnutls_005fmac_005fget_005fkey_005fsize-1"></a>
@@ -3351,6 +3393,61 @@ been received (even if invalid).
 </p>
 <p><strong>Returns:</strong> non zero if the response was valid, or a zero if it wasn&rsquo;t sent,
 or sent and was invalid.
+</p></dd></dl>
+
+<a name="gnutls_005foid_005fto_005fdigest-1"></a>
+<h4 class="subheading">gnutls_oid_to_digest</h4>
+<a name="gnutls_005foid_005fto_005fdigest"></a><dl>
+<dt><a name="index-gnutls_005foid_005fto_005fdigest"></a>Function: <em>gnutls_digest_algorithm_t</em> <strong>gnutls_oid_to_digest</strong> <em>(const char * <var>oid</var>)</em></dt>
+<dd><p><var>oid</var>: is an object identifier
+</p>
+<p>Converts a textual object identifier to a <code>gnutls_digest_algorithm_t</code>  value.
+</p>
+<p><strong>Returns:</strong> a <code>gnutls_digest_algorithm_t</code>  id of the specified digest
+algorithm, or <code>GNUTLS_DIG_UNKNOWN</code>  on failure.
+</p>
+<p><strong>Since:</strong> 3.4.3
+</p></dd></dl>
+
+<a name="gnutls_005foid_005fto_005fecc_005fcurve-1"></a>
+<h4 class="subheading">gnutls_oid_to_ecc_curve</h4>
+<a name="gnutls_005foid_005fto_005fecc_005fcurve"></a><dl>
+<dt><a name="index-gnutls_005foid_005fto_005fecc_005fcurve"></a>Function: <em>gnutls_ecc_curve_t</em> <strong>gnutls_oid_to_ecc_curve</strong> <em>(const char * <var>oid</var>)</em></dt>
+<dd><p><var>oid</var>: is a curve&rsquo;s OID
+</p>
+
+<p><strong>Returns:</strong> return a <code>gnutls_ecc_curve_t</code>  value corresponding to
+the specified OID, or <code>GNUTLS_ECC_CURVE_INVALID</code>  on error.
+</p>
+<p><strong>Since:</strong> 3.4.3
+</p></dd></dl>
+
+<a name="gnutls_005foid_005fto_005fpk-1"></a>
+<h4 class="subheading">gnutls_oid_to_pk</h4>
+<a name="gnutls_005foid_005fto_005fpk"></a><dl>
+<dt><a name="index-gnutls_005foid_005fto_005fpk"></a>Function: <em>gnutls_pk_algorithm_t</em> <strong>gnutls_oid_to_pk</strong> <em>(const char * <var>oid</var>)</em></dt>
+<dd><p><var>oid</var>: is an object identifier
+</p>
+<p>Converts a textual object identifier to a <code>gnutls_pk_algorithm_t</code>  value.
+</p>
+<p><strong>Returns:</strong> a <code>gnutls_pk_algorithm_t</code>  id of the specified digest
+algorithm, or <code>GNUTLS_PK_UNKNOWN</code>  on failure.
+</p>
+<p><strong>Since:</strong> 3.4.3
+</p></dd></dl>
+
+<a name="gnutls_005foid_005fto_005fsign-1"></a>
+<h4 class="subheading">gnutls_oid_to_sign</h4>
+<a name="gnutls_005foid_005fto_005fsign"></a><dl>
+<dt><a name="index-gnutls_005foid_005fto_005fsign"></a>Function: <em>gnutls_sign_algorithm_t</em> <strong>gnutls_oid_to_sign</strong> <em>(const char * <var>oid</var>)</em></dt>
+<dd><p><var>oid</var>: is an object identifier
+</p>
+<p>Converts a textual object identifier to a <code>gnutls_sign_algorithm_t</code>  value.
+</p>
+<p><strong>Returns:</strong> a <code>gnutls_sign_algorithm_t</code>  id of the specified digest
+algorithm, or <code>GNUTLS_SIGN_UNKNOWN</code>  on failure.
+</p>
+<p><strong>Since:</strong> 3.4.3
 </p></dd></dl>
 
 <a name="gnutls_005fopenpgp_005fsend_005fcert-1"></a>
@@ -3550,6 +3647,20 @@ algorithm string, or <code>GNUTLS_PK_UNKNOWN</code>  on failures.
 specified public key algorithm, or <code>NULL</code> .
 </p>
 <p><strong>Since:</strong> 2.6.0
+</p></dd></dl>
+
+<a name="gnutls_005fpk_005fget_005foid-1"></a>
+<h4 class="subheading">gnutls_pk_get_oid</h4>
+<a name="gnutls_005fpk_005fget_005foid"></a><dl>
+<dt><a name="index-gnutls_005fpk_005fget_005foid"></a>Function: <em>const char *</em> <strong>gnutls_pk_get_oid</strong> <em>(gnutls_pk_algorithm_t <var>algorithm</var>)</em></dt>
+<dd><p><var>algorithm</var>: is a public key algorithm
+</p>
+<p>Convert a <code>gnutls_pk_algorithm_t</code>  value to its object identifier string.
+</p>
+<p><strong>Returns:</strong> a pointer to a string that contains the object identifier of the
+specified public key algorithm, or <code>NULL</code> .
+</p>
+<p><strong>Since:</strong> 3.4.3
 </p></dd></dl>
 
 <a name="gnutls_005fpk_005flist-1"></a>
@@ -5296,6 +5407,20 @@ the specified algorithm, or <code>GNUTLS_SIGN_UNKNOWN</code>  on error.
 </p>
 <p><strong>Returns:</strong> a string that contains the name of the specified sign
 algorithm, or <code>NULL</code> .
+</p></dd></dl>
+
+<a name="gnutls_005fsign_005fget_005foid-1"></a>
+<h4 class="subheading">gnutls_sign_get_oid</h4>
+<a name="gnutls_005fsign_005fget_005foid"></a><dl>
+<dt><a name="index-gnutls_005fsign_005fget_005foid"></a>Function: <em>const char *</em> <strong>gnutls_sign_get_oid</strong> <em>(gnutls_sign_algorithm_t <var>sign</var>)</em></dt>
+<dd><p><var>sign</var>: is a sign algorithm
+</p>
+<p>Convert a <code>gnutls_sign_algorithm_t</code>  value to its object identifier.
+</p>
+<p><strong>Returns:</strong> a string that contains the object identifier of the specified sign
+algorithm, or <code>NULL</code> .
+</p>
+<p><strong>Since:</strong> 3.4.3
 </p></dd></dl>
 
 <a name="gnutls_005fsign_005fget_005fpk_005falgorithm-1"></a>
