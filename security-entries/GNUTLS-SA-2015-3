@@ -1,0 +1,9 @@
+    <td></td>
+    <td>Double free in certificate DN decoding</td>
+    <td>Kurt Roeckx reported that decoding a specific certificate with very
+    long DistinguishedName (DN) entries leads to double free, which may result to a denial of
+    service. Since the DN decoding occurs in almost all applications using
+    certificates it is recommended to upgrade the latest GnuTLS version
+    fixing the issue.<br/>
+
+    <b>Recommendation:</b> Upgrade to GnuTLS 3.4.4, or 3.3.17.</td>
