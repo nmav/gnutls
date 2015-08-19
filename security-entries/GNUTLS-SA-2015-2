@@ -1,4 +1,5 @@
-    <td></td>
+    <td><a href="http://seclists.org/oss-sec/2015/q3/374">
+	No CVE assigned</a></td>
     <td>ServerKeyExchange signature issue</td>
     <td><a
     href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8132">Karthikeyan Bhargavan
