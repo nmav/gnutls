@@ -4,12 +4,16 @@
 
   <table class="transparent" border=0 cellspacing="1" width=100%>
     <tr><td>
-    Support for <i>GnuTLS</i> is available through our public mailing
-lists. Additional and commercial <a href="commercial.html">support options are also available</a>.
+<ul>
+ <li><a href="commercial.html">Commercial support options.</a></li>
+ <li>Other support options are through our public mailing lists and
+our answers to <a href="faq.html">frequently asked questions</a>.
+  </li>
+</ul>
+
     </td>
     </tr>
     <tr><td>
-Answers to <a href="faq.html">frequently asked questions</a>.
     </td>
     </tr>
     <tr><td>
