@@ -47,7 +47,7 @@ contain a "Signed-off-by" line, with your name and e-mail address.
 <p>Some additional resources:
 <ul>
 <li><a href="https://gitlab.com/gnutls/gnutls/blob/master/NEWS">most recent NEWS</a></li>
-<li><a href="http://hydra.nixos.org/jobset/gnu/gnutls-master">Continously Hydra builds</a></li>
+<!-- <li><a href="http://hydra.nixos.org/jobset/gnu/gnutls-master">Continously Hydra builds</a></li>-->
 </ul>
 
 <!--
