@@ -1,0 +1,8 @@
+    <td><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3308">
+	CVE-2015-3308</a></td>
+    <td>Double free in CRL distribution points decoding of a certificate</td>
+    <td>Robert Święcki reported that decoding a specially crafted
+    certificate with certain CRL distribution points format can lead to a
+    double free. This issue was fixed in GnuTLS 3.3.14.
+
+    <b>Recommendation:</b> Upgrade to GnuTLS 3.3.14, or later versions.</td>
