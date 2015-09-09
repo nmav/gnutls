@@ -3,7 +3,27 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2015-08-10T09:12:05+00:00</updated>
+<updated>2015-09-09T22:16:15+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2015-09-02</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2015-09-02'/>
+    <title>GnuTLS-SA-2015-4</title>
+    <updated>2015-09-02T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2015-09-02.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Added the <a 
+href="security.html#GNUTLS-SA-2015-4">GnuTLS-SA-2015-4</a> security advisory.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2015-08-10</id>
@@ -441,32 +461,6 @@ branches respectively.
 The development plans for GnuTLS 3.4 are 
 <a href="https://www.gitorious.org/gnutls/pages/Plan3_4">posted on the wiki
 pages</a> on gitorious.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2014-07-23</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-07-23'/>
-    <title>GnuTLS 3.3.6 and 3.2.16</title>
-    <updated>2014-07-23T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-07-23.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Released <a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7582">GnuTLS
-3.3.6</a>,
-and <a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7581">GnuTLS
-3.2.16</a>,
-which are bug-fix releases on the next, and current stable
-branches respectively. 
 </p>
 
     </div>
