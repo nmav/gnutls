@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.3 of GnuTLS.
+3.4.5 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.3: tpmtool Invocation</title>
+<title>GnuTLS 3.4.5: tpmtool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.4.3: tpmtool Invocation">
-<meta name="keywords" content="GnuTLS 3.4.3: tpmtool Invocation">
+<meta name="description" content="GnuTLS 3.4.5: tpmtool Invocation">
+<meta name="keywords" content="GnuTLS 3.4.5: tpmtool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -31,16 +31,16 @@ Documentation License". -->
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -49,10 +49,10 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nocodebreak {white-space: nowrap}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: serif; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
 	margin: 2%;
@@ -155,7 +155,7 @@ dl {
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="tpmtool-Invocation"></a>
 <div class="header">
 <p>
@@ -233,15 +233,22 @@ user.
 </li></ul>
 
 <p>The generated key will be stored in system persistent storage.
+<a name="tpmtool-test_002dsign"></a></p><a name="test_002dsign-option"></a>
+<h4 class="subsection">5.4.10 test-sign option</h4>
+
+<p>This is the &ldquo;tests the signature operation of the provided object&rdquo; option.
+This option takes a string argument <samp>url</samp>.
+It can be used to test the correct operation of the signature operation.
+This operation will sign and verify the signed data.
 <a name="tpmtool-sec_002dparam"></a></p><a name="sec_002dparam-option"></a>
-<h4 class="subsection">5.4.10 sec-param option</h4>
+<h4 class="subsection">5.4.11 sec-param option</h4>
 
 <p>This is the &ldquo;specify the security level [low, legacy, medium, high, ultra].&rdquo; option.
 This option takes a string argument <samp>Security parameter</samp>.
 This is alternative to the bits option. Note however that the
 values allowed by the TPM chip are quantized and given values may be rounded up.
 <a name="tpmtool-inder"></a></p><a name="inder-option"></a>
-<h4 class="subsection">5.4.11 inder option</h4>
+<h4 class="subsection">5.4.12 inder option</h4>
 
 <p>This is the &ldquo;use the der format for keys.&rdquo; option.
 </p>
@@ -254,7 +261,7 @@ values allowed by the TPM chip are quantized and given values may be rounded up.
 DER format of TPM. The default format is a custom format used by various
 TPM tools
 <a name="tpmtool-outder"></a></p><a name="outder-option"></a>
-<h4 class="subsection">5.4.12 outder option</h4>
+<h4 class="subsection">5.4.13 outder option</h4>
 
 <p>This is the &ldquo;use der format for output keys&rdquo; option.
 </p>
@@ -265,7 +272,7 @@ TPM tools
 
 <p>The output will be in the TPM portable DER format.
 <a name="tpmtool-exit-status"></a></p><a name="tpmtool-exit-status-1"></a>
-<h4 class="subsection">5.4.13 tpmtool exit status</h4>
+<h4 class="subsection">5.4.14 tpmtool exit status</h4>
 
 <p>One of the following exit values will be returned:
 </p><dl compact="compact">
@@ -277,10 +284,10 @@ TPM tools
 </p></dd>
 </dl>
 <a name="tpmtool-See-Also"></a><a name="tpmtool-See-Also-1"></a>
-<h4 class="subsection">5.4.14 tpmtool See Also</h4>
+<h4 class="subsection">5.4.15 tpmtool See Also</h4>
 <p>p11tool (1), certtool (1)
 <a name="tpmtool-Examples"></a></p><a name="tpmtool-Examples-1"></a>
-<h4 class="subsection">5.4.15 tpmtool Examples</h4>
+<h4 class="subsection">5.4.16 tpmtool Examples</h4>
 <p>To generate a key that is to be stored in filesystem use:
 </p><div class="example">
 <pre class="example">$ tpmtool --generate-rsa --bits 2048 --outfile tpmkey.pem

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.3 of GnuTLS.
+3.4.5 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.3: Core TLS API</title>
+<title>GnuTLS 3.4.5: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.4.3: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.4.3: Core TLS API">
+<meta name="description" content="GnuTLS 3.4.5: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.4.5: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -31,16 +31,16 @@ Documentation License". -->
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -49,10 +49,10 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nocodebreak {white-space: nowrap}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: serif; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
 	margin: 2%;
@@ -155,7 +155,7 @@ dl {
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="Core-TLS-API"></a>
 <div class="header">
 <p>
@@ -3074,7 +3074,9 @@ in a non-blocking way, i.e., return <code>GNUTLS_E_AGAIN</code> .
 <p><var>bin_size</var>: when calling should hold maximum size of  <code>bin_data</code> ,
 on return will hold actual length of  <code>bin_data</code> .
 </p>
-<p>Convert a buffer with hex data to binary data.
+<p>Convert a buffer with hex data to binary data. This function
+unlike <code>gnutls_hex_decode()</code>  can parse hex data with separators
+between numbers. That is, it ignores any non-hex characters.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p>
@@ -3094,7 +3096,23 @@ on return will hold actual length of  <code>bin_data</code> .
 <p>This function will decode the given encoded data, using the hex
 encoding used by PSK password files.
 </p>
-<p>Note that hex_data should be null terminated.
+<p>Initially  <code>result_size</code> must hold the maximum size available in
+ <code>result</code> , and on return it will contain the number of bytes written.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the buffer given is not
+long enough, or 0 on success.
+</p></dd></dl>
+
+<a name="gnutls_005fhex_005fdecode2-1"></a>
+<h4 class="subheading">gnutls_hex_decode2</h4>
+<a name="gnutls_005fhex_005fdecode2"></a><dl>
+<dt><a name="index-gnutls_005fhex_005fdecode2"></a>Function: <em>int</em> <strong>gnutls_hex_decode2</strong> <em>(const gnutls_datum_t * <var>hex_data</var>, gnutls_datum_t * <var>result</var>)</em></dt>
+<dd><p><var>hex_data</var>: contain the encoded data
+</p>
+<p><var>result</var>: the result in an allocated string
+</p>
+<p>This function will decode the given encoded data, using the hex
+encoding used by PSK password files.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the buffer given is not
 long enough, or 0 on success.
@@ -3117,6 +3135,22 @@ the hex encoding, as used in the PSK password files.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the buffer given is not
 long enough, or 0 on success.
+</p></dd></dl>
+
+<a name="gnutls_005fhex_005fencode2-1"></a>
+<h4 class="subheading">gnutls_hex_encode2</h4>
+<a name="gnutls_005fhex_005fencode2"></a><dl>
+<dt><a name="index-gnutls_005fhex_005fencode2"></a>Function: <em>int</em> <strong>gnutls_hex_encode2</strong> <em>(const gnutls_datum_t * <var>data</var>, gnutls_datum_t * <var>result</var>)</em></dt>
+<dd><p><var>data</var>: contain the raw data
+</p>
+<p><var>result</var>: the result in an allocated string
+</p>
+<p>This function will convert the given data to printable data, using
+the hex encoding, as used in the PSK password files.
+</p>
+<p>Note that the size of the result does NOT include the null terminator.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p></dd></dl>
 
 <a name="gnutls_005finit-1"></a>
@@ -3713,8 +3747,8 @@ to signature algorithms.
 <p><var>out</var>: pre-allocated buffer to hold the generated data.
 </p>
 <p>Applies the TLS Pseudo-Random-Function (PRF) on the master secret
-and the provided data, seeded with the client and server random fields,
-as specified in RFC5705.
+and the provided data, seeded with the client and server random fields.
+For the key expansion specified in RFC5705 see <code>gnutls_prf_rfc5705()</code> .
 </p>
 <p>The  <code>label</code> variable usually contains a string denoting the purpose
 for the generated data.  The  <code>server_random_first</code> indicates whether
@@ -3768,6 +3802,49 @@ client and server random fields directly, and is recommended if you
 want to generate pseudo random data unique for each session.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
+</p></dd></dl>
+
+<a name="gnutls_005fprf_005frfc5705-1"></a>
+<h4 class="subheading">gnutls_prf_rfc5705</h4>
+<a name="gnutls_005fprf_005frfc5705"></a><dl>
+<dt><a name="index-gnutls_005fprf_005frfc5705"></a>Function: <em>int</em> <strong>gnutls_prf_rfc5705</strong> <em>(gnutls_session_t <var>session</var>, size_t <var>label_size</var>, const char * <var>label</var>, size_t <var>context_size</var>, const char * <var>context</var>, size_t <var>outsize</var>, char * <var>out</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p><var>label_size</var>: length of the  <code>label</code> variable.
+</p>
+<p><var>label</var>: label used in PRF computation, typically a short string.
+</p>
+<p><var>context_size</var>: length of the  <code>extra</code> variable.
+</p>
+<p><var>context</var>: optional extra data to seed the PRF with.
+</p>
+<p><var>outsize</var>: size of pre-allocated output buffer to hold the output.
+</p>
+<p><var>out</var>: pre-allocated buffer to hold the generated data.
+</p>
+<p>Applies the TLS Pseudo-Random-Function (PRF) on the master secret
+and the provided data, seeded with the client and server random fields,
+as specified in RFC5705.
+</p>
+<p>The  <code>label</code> variable usually contains a string denoting the purpose
+for the generated data.  The  <code>server_random_first</code> indicates whether
+the client random field or the server random field should be first
+in the seed.  Non-zero indicates that the server random field is first,
+0 that the client random field is first.
+</p>
+<p>The  <code>context</code> variable can be used to add more data to the seed, after
+the random variables.  It can be used to make sure the
+generated output is strongly connected to some additional data
+(e.g., a string used in user authentication). 
+</p>
+<p>The output is placed in  <code>out</code> , which must be pre-allocated.
+</p>
+<p>Note that, to provide the RFC5705 context, the  <code>contect</code> variable
+must be non-null.
+</p>
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
+</p>
+<p><strong>Since:</strong> 3.4.4
 </p></dd></dl>
 
 <a name="gnutls_005fpriority_005fcertificate_005ftype_005flist-1"></a>

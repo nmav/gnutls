@@ -7925,7 +7925,9 @@ gnutls_hex2bin (<em class="parameter"><code>const <span class="type">char</span>
                 <em class="parameter"><code><span class="type">size_t</span> hex_size</code></em>,
                 <em class="parameter"><code><span class="type">void</span> *bin_data</code></em>,
                 <em class="parameter"><code><span class="type">size_t</span> *bin_size</code></em>);</pre>
-<p>Convert a buffer with hex data to binary data.</p>
+<p>Convert a buffer with hex data to binary data. This function
+unlike <a class="link" href="gnutls-gnutls.html#gnutls-hex-decode" title="gnutls_hex_decode ()"><code class="function">gnutls_hex_decode()</code></a> can parse hex data with separators
+between numbers. That is, it ignores any non-hex characters.</p>
 <div class="refsect3">
 <a name="id-1.2.4.6.141.5"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -7976,7 +7978,10 @@ gnutls_hex_decode (<em class="parameter"><code>const <span class="type">gnutls_d
                    <em class="parameter"><code><span class="type">size_t</span> *result_size</code></em>);</pre>
 <p>This function will decode the given encoded data, using the hex
 encoding used by PSK password files.</p>
-<p>Note that hex_data should be null terminated.</p>
+<p>Initially <em class="parameter"><code>result_size</code></em>
+ must hold the maximum size available in
+<em class="parameter"><code>result</code></em>
+, and on return it will contain the number of bytes written.</p>
 <div class="refsect3">
 <a name="id-1.2.4.6.142.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
@@ -8973,8 +8978,8 @@ gnutls_prf (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html
             <em class="parameter"><code><span class="type">size_t</span> outsize</code></em>,
             <em class="parameter"><code><span class="type">char</span> *out</code></em>);</pre>
 <p>Applies the TLS Pseudo-Random-Function (PRF) on the master secret
-and the provided data, seeded with the client and server random fields,
-as specified in RFC5705.</p>
+and the provided data, seeded with the client and server random fields.
+For the key expansion specified in RFC5705 see <code class="function">gnutls_prf_rfc5705()</code>.</p>
 <p>The <em class="parameter"><code>label</code></em>
  variable usually contains a string denoting the purpose
 for the generated data.  The <em class="parameter"><code>server_random_first</code></em>
@@ -14849,7 +14854,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.4.3"
+<pre class="programlisting">#define GNUTLS_VERSION "3.4.4"
 </pre>
 <p>
 </p>
@@ -14873,7 +14878,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030403
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030404
 </pre>
 <p>
 </p>
@@ -14881,7 +14886,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 3
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 4
 </pre>
 <p>
 </p>
@@ -15057,6 +15062,13 @@ or a negative error value on other errors.</p>
 <td class="enum_member_name"><p><a name="GNUTLS-A-INTERNAL-ERROR:CAPS"></a>GNUTLS_A_INTERNAL_ERROR</p></td>
 <td class="enum_member_description">
 <p>Internal error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GNUTLS-A-INAPPROPRIATE-FALLBACK:CAPS"></a>GNUTLS_A_INAPPROPRIATE_FALLBACK</p></td>
+<td class="enum_member_description">
+<p>Inappropriate fallback,</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>
@@ -16655,6 +16667,9 @@ algorithms.</p>
 	 */
 	gnutls_sec_param_t level;
 	unsigned int dh_prime_bits; /* old (deprecated) variable */
+
+	/* TLS_FALLBACK_SCSV */
+	bool fallback;
 };
 </pre>
 <p>

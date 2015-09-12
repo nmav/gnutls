@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.3 of GnuTLS.
+3.4.5 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.3: PKCS11 Initialization</title>
+<title>GnuTLS 3.4.5: PKCS11 Initialization</title>
 
-<meta name="description" content="GnuTLS 3.4.3: PKCS11 Initialization">
-<meta name="keywords" content="GnuTLS 3.4.3: PKCS11 Initialization">
+<meta name="description" content="GnuTLS 3.4.5: PKCS11 Initialization">
+<meta name="keywords" content="GnuTLS 3.4.5: PKCS11 Initialization">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -31,16 +31,16 @@ Documentation License". -->
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -49,10 +49,10 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nocodebreak {white-space: nowrap}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: serif; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
 	margin: 2%;
@@ -155,7 +155,7 @@ dl {
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="PKCS11-Initialization"></a>
 <div class="header">
 <p>
@@ -177,13 +177,13 @@ could be named <code>/etc/pkcs11/modules/opensc.module</code> and contain the fo
 </pre></div>
 
 <p>If you use these configuration files, then there is no need for other initialization in
-<acronym>GnuTLS</acronym>, except for the PIN and token functions (see next section).  
-In several cases, however, it is desirable to limit badly behaving modules 
+<acronym>GnuTLS</acronym>, except for the PIN and token callbacks (see next section).
+In several cases, however, it is desirable to limit badly behaving modules
 (e.g., modules that add an unacceptable delay on initialization)
 to single applications. That can be done using the &ldquo;enable-in:&rdquo; option
 followed by the base name of applications that this module should be used.
 </p>
-<p>In all cases, you can also manually initialize the PKCS #11 subsystem if the 
+<p>It is also possible to manually initialize the PKCS #11 subsystem if the 
 default settings are not desirable. To completely disable PKCS #11 support you
 need to call <a href="PKCS-11-API.html#gnutls_005fpkcs11_005finit">gnutls_pkcs11_init</a> with the flag <code>GNUTLS_PKCS11_FLAG_MANUAL</code>
 prior to <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a>.
@@ -215,10 +215,15 @@ negative error value.
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
 
-<p>Note that PKCS #11 modules must be reinitialized on the child processes
-after a <code>fork</code>. In older versions of <acronym>GnuTLS</acronym> it was
-required to call <a href="PKCS-11-API.html#gnutls_005fpkcs11_005freinit">gnutls_pkcs11_reinit</a>; since 3.3.0 this is no
-longer required, as reinitialization occurs automatically.
+<p>Note that, PKCS #11 modules behave in a peculiar way after a fork; they
+require a reinitialization of all the used PKCS #11 resources.
+While GnuTLS automates that process, there are corner cases where
+it is not possible to handle it correctly in an automated way<a name="DOCF13" href="#FOOT13"><sup>13</sup></a>. For that reasons it is
+recommended not to mix fork() and PKCS #11 module usage. It is recommended
+to initialize and use any PKCS #11 resources in a single process.
+</p>
+<p>Older versions of <acronym>GnuTLS</acronym> required to call <a href="PKCS-11-API.html#gnutls_005fpkcs11_005freinit">gnutls_pkcs11_reinit</a>
+after a fork() call; since 3.3.0 this is no longer required.
 </p>
 <div class="footnote">
 <hr>
@@ -226,6 +231,10 @@ longer required, as reinitialization occurs automatically.
 
 <h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
 <p><a href="http://p11-glue.freedesktop.org/">http://p11-glue.freedesktop.org/</a></p>
+<h3><a name="FOOT13" href="#DOCF13">(13)</a></h3>
+<p>For
+example when an open session is to be reinitialized, but the PIN is not available
+to GnuTLS (e.g., it was entered at a pinpad).</p>
 </div>
 <hr>
 <div class="header">

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.3 of GnuTLS.
+3.4.5 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.3: p11tool Invocation</title>
+<title>GnuTLS 3.4.5: p11tool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.4.3: p11tool Invocation">
-<meta name="keywords" content="GnuTLS 3.4.3: p11tool Invocation">
+<meta name="description" content="GnuTLS 3.4.5: p11tool Invocation">
+<meta name="keywords" content="GnuTLS 3.4.5: p11tool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -31,16 +31,16 @@ Documentation License". -->
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -49,10 +49,10 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nocodebreak {white-space: nowrap}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: serif; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
 	margin: 2%;
@@ -155,7 +155,7 @@ dl {
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="p11tool-Invocation"></a>
 <div class="header">
 <p>
@@ -199,97 +199,7 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">p11tool - GnuTLS PKCS #11 tool
-Usage:  p11tool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [url]
-
-   -d, --debug=num            Enable debugging
-                                - it must be in the range:
-                                  0 to 9999
-       --outfile=str          Output file
-       --list-tokens          List all available tokens
-       --export               Export the object specified by the URL
-       --export-chain         Export the certificate specified by the URL and its chain of trust
-       --list-mechanisms      List all available mechanisms in a token
-       --info                 List information on an available object in a token
-       --list-all             List all available objects in a token
-       --list-all-certs       List all available certificates in a token
-       --list-certs           List all certificates that have an associated private key
-       --list-all-privkeys    List all available private keys in a token
-       --list-privkeys        an alias for the 'list-all-privkeys' option
-       --list-keys            an alias for the 'list-all-privkeys' option
-       --list-all-trusted     List all available certificates marked as trusted
-       --write                Writes the loaded objects to a PKCS #11 token
-       --delete               Deletes the objects matching the PKCS #11 URL
-       --generate-random=num  Generate random data
-       --generate-rsa         Generate an RSA private-public key pair
-       --generate-dsa         Generate an RSA private-public key pair
-       --generate-ecc         Generate an RSA private-public key pair
-       --export-pubkey        Export the public key for a private key
-       --label=str            Sets a label for the write operation
-       --mark-wrap            Marks the generated key to be a wrapping key
-                                - disabled as '--no-mark-wrap'
-       --mark-trusted         Marks the object to be written as trusted
-                                - disabled as '--no-mark-trusted'
-       --mark-ca              Marks the object to be written as a CA
-                                - disabled as '--no-mark-ca'
-       --mark-private         Marks the object to be written as private
-                                - disabled as '--no-mark-private'
-                                - enabled by default
-       --trusted              an alias for the 'mark-trusted' option
-       --ca                   an alias for the 'mark-ca' option
-       --private              an alias for the 'mark-private' option
-                                - enabled by default
-       --login                Force (user) login to token
-                                - disabled as '--no-login'
-       --so-login             Force security officer login to token
-                                - disabled as '--no-so-login'
-       --admin-login          an alias for the 'so-login' option
-       --detailed-url         Print detailed URLs
-                                - disabled as '--no-detailed-url'
-   -!, --secret-key=str       Provide a hex encoded secret key
-   -&quot;, --load-privkey=file    Private key file to use
-                                - file must pre-exist
-   -#, --load-pubkey=file     Public key file to use
-                                - file must pre-exist
-   -$, --load-certificate=file Certificate file to use
-                                - file must pre-exist
-   -8, --pkcs8                Use PKCS #8 format for private keys
-   -%, --bits=num             Specify the number of bits for key generate
-   -&amp;, --curve=str            Specify the curve used for EC key generation
-   -', --sec-param=str        Specify the security level
-   -(, --inder                Use DER/RAW format for input
-                                - disabled as '--no-inder'
-   -), --inraw                an alias for the 'inder' option
-   -*, --outder               Use DER format for output certificates, private keys, and DH parameters
-                                - disabled as '--no-outder'
-   -+, --outraw               an alias for the 'outder' option
-   -,, --initialize           Initializes a PKCS #11 token
-   --, --set-pin=str          Specify the PIN to use on token initialization
-   -., --set-so-pin=str       Specify the Security Officer's PIN to use on token initialization
-   -/, --provider=file        Specify the PKCS #11 provider library
-                                - file must pre-exist
-   -0, --batch                Disable all interaction with the tool.  All parameters need to be
-specified on command line.
-   -v, --version[=arg]        output version information and exit
-   -h, --help                 display extended usage information and exit
-   -!, --more-help            extended usage information passed thru pager
-
-Options are specified by doubled hyphens and their name or by a single
-hyphen and the flag character.
-Operands and options may be intermixed.  They will be reordered.
-
-Program that allows operations on PKCS #11 smart cards and security
-modules.
-
-To use PKCS #11 tokens with GnuTLS the p11-kit configuration files need to
-be setup.  That is create a .module file in /etc/pkcs11/modules with the
-contents 'module: /path/to/pkcs11.so'.  Alternatively the configuration
-file /etc/gnutls/pkcs11.conf has to exist and contain a number of lines of
-the form 'load=/usr/lib/opensc-pkcs11.so'.
-
-You can provide the PIN to be used for the PKCS #11 operations with the
-environment variables GNUTLS_PIN and GNUTLS_SO_PIN.
-
+<pre class="example">p11tool is unavailable - no --help
 </pre></div>
 
 <a name="p11tool-token_002drelated_002doptions"></a><a name="token_002drelated_002doptions-options"></a>
@@ -353,13 +263,13 @@ Generates an RSA private-public key pair on the specified token.
 </p><a name="generate_002ddsa-option_002e"></a>
 <h4 class="subsubheading">generate-dsa option.</h4>
 <a name="p11tool-generate_002ddsa"></a>
-<p>This is the &ldquo;generate an rsa private-public key pair&rdquo; option.
-Generates an RSA private-public key pair on the specified token.
+<p>This is the &ldquo;generate a dsa private-public key pair&rdquo; option.
+Generates a DSA private-public key pair on the specified token.
 </p><a name="generate_002decc-option_002e"></a>
 <h4 class="subsubheading">generate-ecc option.</h4>
 <a name="p11tool-generate_002decc"></a>
-<p>This is the &ldquo;generate an rsa private-public key pair&rdquo; option.
-Generates an RSA private-public key pair on the specified token.
+<p>This is the &ldquo;generate an ecdsa private-public key pair&rdquo; option.
+Generates an ECDSA private-public key pair on the specified token.
 </p><a name="curve-option_002e"></a>
 <h4 class="subsubheading">curve option.</h4>
 <a name="p11tool-curve"></a>
