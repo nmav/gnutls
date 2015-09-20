@@ -3,7 +3,7 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2015-09-20T23:35:02+00:00</updated>
+<updated>2015-09-20T23:36:41+00:00</updated>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2015-09-20</id>
@@ -18,7 +18,7 @@
 
 <p>
 Added <a href="http://www.gnutls.org/abi-tracker/timeline/gnutls/index.html">ABI
-tracker report</a>.
+tracker report for the main library</a>.
 </p>
 
     </div>
