@@ -1,2 +1,15 @@
 *~
 stats/
+abi-tracker/.listing
+abi-tracker/LGPL
+abi-tracker/README
+abi-tracker/abi_dump/
+abi-tracker/compat_report/gnutls/
+abi-tracker/compat_report/gnutls/
+abi-tracker/compat_report/gnutls/
+abi-tracker/db/
+abi-tracker/installed/
+abi-tracker/public_symbols/
+abi-tracker/public_types/
+abi-tracker/src/
+logs/
