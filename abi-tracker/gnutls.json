@@ -3,7 +3,7 @@
   "Title":          "GnuTLS",
   "SourceUrl":      "ftp://ftp.gnutls.org/gcrypt/gnutls/",
   "Git":            "https://gitlab.com/gnutls/gnutls.git",
-  "Maintainer":     "Nicos M.",
+  "Maintainer":     "Nikos Mavrogiannopoulos",
   "MaintainerUrl":  "http://www.gnutls.org/",
   "Configure":      "--with-included-libtasn1 --without-p11-kit --disable-doc --disable-tests",
   "BuildScript":    "build_script/gnutls.sh",
