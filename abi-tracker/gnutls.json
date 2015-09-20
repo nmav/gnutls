@@ -5,7 +5,7 @@
   "Git":            "https://gitlab.com/gnutls/gnutls.git",
   "Maintainer":     "Nikos Mavrogiannopoulos",
   "MaintainerUrl":  "http://www.gnutls.org/",
-  "Configure":      "--with-included-libtasn1 --without-p11-kit --disable-doc --disable-tests",
+  "Configure":      "--disable-tools --disable-guile --disable-libdane --disable-cxx --with-included-libtasn1 --without-p11-kit --disable-doc --disable-tests",
   "BuildScript":    "build_script/gnutls.sh",
 
   "Versions": [
