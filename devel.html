@@ -60,6 +60,14 @@ To report a bug, in addition to describing the issue, please:
 or <a href="https://gitlab.com/gnutls/gnutls/issues">our issue tracker</a>.</li>
 </ul>
 That would help us to address your issue.
+<h1>API and ABI</h1>
+<p>
+Our goal is to deliver a stable API and ABI for the library, but on certain
+major releases we have decided to break the ABI in order to deprecate old APIs and avoid clutter.
+To ensure API and ABI stability we rely on abi-compliance-checker and other tools, and we maintain
+an <a href="abi-tracker.html">ABI tracker page for gnutls</a> which visualises
+the output of these tools.
+</p>
 <h1>Development</h1>
 <p>To follow development it is easier to subscribe <a href="lists.html">on the mailing lists</a>; the <a href="https://gitlab.com/gnutls/gnutls/wikis/home">wiki pages</a>
 may also contain information on new developments and plans.
