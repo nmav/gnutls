@@ -19,6 +19,7 @@ OUTPUT=index.html contrib.html devel.html support.html	\
 
 all: $(OUTPUT) news.atom
 	@for i in news-entries/*.xml;do X=0; if ! test -e $$i.tweet;then X=1;fi;done;if test "$$X" = "1";then echo "There are unsubmitted news. Use 'make tweet'.";fi
+	cd gnutls-abi-tracker && perl ../../abi-tracker/abi-tracker.pl gnutls.json && cp timeline/gnutls/index.html ../abi-tracker.html && sed -i 's|../../css|css|g' ../abi-tracker.html
 #	cvs commit -m "Generated." .
 
 .PHONY: clean manual/index.html tweet stats security.html
