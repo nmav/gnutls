@@ -34,18 +34,6 @@
     "PublicTypes":    "public_types/gnutls/3.4.5/list"
   },
   {
-    "Number":         "3.4.4",
-    "Installed":      "installed/gnutls/3.4.4",
-    "Source":         "src/gnutls/3.4.4/gnutls-3.4.4.tar.lz",
-    "Changelog":      "NEWS",
-    "HeadersDiff":    "On",
-    "PkgDiff":        "Off",
-    "ABIView":        "Off",
-    "ABIDiff":        "Off",
-    "PublicSymbols":  "public_symbols/gnutls/3.4.4/list",
-    "PublicTypes":    "public_types/gnutls/3.4.4/list"
-  },
-  {
     "Number":         "3.4.4.1",
     "Installed":      "installed/gnutls/3.4.4.1",
     "Source":         "src/gnutls/3.4.4.1/gnutls-3.4.4.1.tar.xz",
@@ -56,6 +44,18 @@
     "ABIDiff":        "Off",
     "PublicSymbols":  "public_symbols/gnutls/3.4.4.1/list",
     "PublicTypes":    "public_types/gnutls/3.4.4.1/list"
+  },
+  {
+    "Number":         "3.4.4",
+    "Installed":      "installed/gnutls/3.4.4",
+    "Source":         "src/gnutls/3.4.4/gnutls-3.4.4.tar.lz",
+    "Changelog":      "NEWS",
+    "HeadersDiff":    "On",
+    "PkgDiff":        "Off",
+    "ABIView":        "Off",
+    "ABIDiff":        "Off",
+    "PublicSymbols":  "public_symbols/gnutls/3.4.4/list",
+    "PublicTypes":    "public_types/gnutls/3.4.4/list"
   },
   {
     "Number":         "3.4.3",

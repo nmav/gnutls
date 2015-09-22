@@ -20,7 +20,28 @@
 <br/>
 <h1>Changelog for <span class='version'>current</span> version (Git)</h1><br/><br/>
 <div class='changelog'>
-<pre class='wrap'>commit 48cdff1c093c41a37c3698d90bab36c8005ccd33
+<pre class='wrap'>commit 2d4d9ec52dc6c14887cfe411a3a44e3eea153f56
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-09-19 12:37:51 +0200
+
+    tests: disable cipher-test on windows platform; they don't seem to work
+
+commit bf2abe76dfec1ec8e4ae3c6e9c249e099bfebe1b
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-09-21 14:47:41 +0200
+
+    README.md: added build instructions for Fedora/RHEL
+
+commit b536a585cdceb684ccc1f9423a63676e4183f27c
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-09-21 14:25:12 +0200
+
+    priorities: sort algorithms by security strength unless performance is requested
+    
+    That is prioritize 256-bit ciphers over 128-bit ciphers. This would protect
+    secrecy of current data even after a PQ future.
+
+commit 48cdff1c093c41a37c3698d90bab36c8005ccd33
 Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
 Date:   2015-09-19 12:12:18 +0200
 
@@ -678,24 +699,6 @@ Date:   2015-08-07 15:45:21 +0200
     out. It can only accept numerals.
     
     Patch by David Woodhouse.
-
-commit b9dbb5a4604ed4fd28554d2bbd21cfce954fb9c4
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-07 15:19:33 +0200
-
-    use pure and const gcc attributes in headers
-
-commit 6c800966ef1105aedd870a65480353ef31e44ebe
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-07 14:14:44 +0200
-
-    mention version macro
-
-commit 27468ab3816caca78ac14808feb4570310177da7
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-06 10:37:15 +0200
-
-    p11tool: test-sign will not fail if a pubkey is not found
 
 ...</pre></div>
 
