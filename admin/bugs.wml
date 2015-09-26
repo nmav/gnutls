@@ -1,8 +1,8 @@
 #include 'common.wml' page="Bug trackers" path="../"
 
-<p>The <a href="https://savannah.gnu.org/support/?group=gnutls">official
+<p>The <a href="https://gitlab.com/gnutls/gnutls/issues">official
 bug tracker for GnuTLS</a> is available
-via <a href="http://savannah.gnu.org">savannah</a>.
+via Gitlab.
 
 <p>This rest of this page contains links to various external bug
 trackers that may contain bug reports related to GnuTLS.  These are
