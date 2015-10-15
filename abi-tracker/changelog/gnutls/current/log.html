@@ -20,7 +20,136 @@
 <br/>
 <h1>Changelog for <span class='version'>current</span> version (Git)</h1><br/><br/>
 <div class='changelog'>
-<pre class='wrap'>commit 2d4d9ec52dc6c14887cfe411a3a44e3eea153f56
+<pre class='wrap'>commit 5ecb418ee5c53b4f235dacbb085f2ba4d1396dfc
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-15 21:23:44 +0200
+
+    .gitlab-ci.yml: combined the slow build with the separate build dir
+
+commit d949314986061044dd0c298e1d64315e2b5555ca
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-15 21:16:52 +0200
+
+    Disable the NULL cipher on runtime when FIPS140 mode is enabled instead of statically
+    
+    That way the NULL cipher can be used when not in FIPS140 mode.
+
+commit 500af2badafb991ff580acd747630ed62902da29
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-15 21:09:06 +0200
+
+    re-enable NULL ciphersuites
+    
+    They were accidentally disabled by b237b37d4d17ee4f98629aae9d72aec87f434cb8
+
+commit 872338429c637f861379898602fcad2c13a59d9e
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-15 18:35:44 +0200
+
+    tests: check whether the RSA-EXPORT and ARCFOUR-40 legacy strings are accepted
+
+commit b237b37d4d17ee4f98629aae9d72aec87f434cb8
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-15 18:20:38 +0200
+
+    Tolerate priority strings with names of legacy ciphers and key exchanges
+    
+    That enables better backwards compatibility with old applications
+    which disable or enable algorithms which no longer are supported.
+    Relates #44
+
+commit 38e396f3247cb56174f6807a96ba5c8a62df7f3b
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-15 16:21:43 +0200
+
+    pkcs11: write CKA_ISSUER and CKA_SERIAL_NUMBER when writing on a certificate
+    
+    That allows NSS to read and use the written certificate.
+    Relates #43
+
+commit 2b69c0253b03d3f0f25233e56273a6a801a47639
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-13 04:01:04 +0200
+
+    tests: enhanced sec-params check to account for future sec-param
+
+commit 0b55afd487ec5d9d34499250e9bfaf23ae01ea56
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-12 22:11:16 +0200
+
+    certtool: recognize the future sec-param
+
+commit f159724615a6b5ed981113035770bea2264fdd40
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-12 22:10:25 +0200
+
+    Introduced the security parameter future (256) and switched ultra to 192 bits
+    
+    For ultra, this was its documented strength, and now follows RFC3766 recommendations
+    for sizes.
+
+commit e0143b8c886d378ca364b5fb145de177cbd70bd8
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-12 21:54:09 +0200
+
+    certtool: be more specific on the help message for --sec-param when --bits are given
+
+commit c49247ac8734bd2ce7672b3b2b0d823857fd82a4
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-12 14:54:04 +0200
+
+    doc update
+
+commit 7fffa26f92b4a55dfbca912e475a0346eec0c3d3
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-12 14:15:28 +0200
+
+    tests: added test case for record timeout values
+
+commit 8d43daf7b5f75952a7d5ec49f1138db18ebe8ddb
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-12 13:52:03 +0200
+
+    Introduced GNUTLS_INDEFINITE_TIMEOUT
+    
+    This allows to specify an indefinite timeout to gnutls_record_set_timeout().
+    In addition this flag is accepted by gnutls_handshake_set_timeout() and
+    cancels out a previously set timeout.
+    Resolves #41
+
+commit c141b08728e0853633c8cd3dc35d108984d47f9c
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-07 10:38:25 +0200
+
+    tests: better detection of softhsm library
+
+commit b3ef6ccf1c8c867c2b7688f7fbc116baa764f2bd
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-05 14:31:53 +0200
+
+    added text on _gnutls_dh_compute_key
+
+commit 3d62be5cab0d57f7bdfb5ba583fb1fcd9699b479
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-05 17:11:37 +0200
+
+    gnutls_record_recv: simplified text on GNUTLS_E_REHANDSHAKE
+
+commit c7d6f92eea4f5a1e77d1fea9bf4d2204adddb20e
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-09-22 14:31:00 +0200
+
+    certtool: print 16-bytes of hex values per line
+    
+    Also avoid a colon on the end of the line.
+
+commit 0967e498a5c506947962c33dbe48070c064dd270
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-09-22 08:31:04 +0200
+
+    fips140: set the key via a configure argument
+
+commit 2d4d9ec52dc6c14887cfe411a3a44e3eea153f56
 Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
 Date:   2015-09-19 12:37:51 +0200
 
@@ -572,133 +701,6 @@ Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
 Date:   2015-08-14 11:55:04 +0200
 
     fix typo in comment
-
-commit 701526f31dc2e7fffa23b2cf2698cd3e407c3ff9
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-14 11:27:50 +0200
-
-    Re-enable the certificate key usage checks for compliance with ciphersuite
-    
-    There is a new attack on the TLS protocol which relies on using certificates
-    for ECDSA as certificates for ECDH ciphersuites. That attack while it doesn't
-    affect gnutls, which doesn't support static ECDH, assumes that implementations
-    ignore the key usage bits in the certificate. We have done it since 3.1.0 for
-    compatibility reasons (see http://www.gnutls.org/faq.html#key-usage-violation),
-    but that clearly opens the door for real attacks in the future.
-    
-    For this reason the key usage bits will no longer be ignored.
-    
-    Resolves #24
-
-commit ae317facdb43c229512e89b38ed14b6646cf0329
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-13 12:10:59 +0200
-
-    tests: verify whether CRL date setting works as expected
-
-commit a1fbf2e7828a9e6681aee5fea9f3803d681928eb
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-13 12:05:35 +0200
-
-    certtool: Allow specifying CRL dates as fixed dates
-
-commit 25ef007738bd7d29ea7596d3e05cdb37dd37b012
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-13 11:48:15 +0200
-
-    tests: verify CRL appending effectiveness
-
-commit 4c30aa0db20cf1d1f50c870b777bf1f7a2a85f7d
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-13 11:45:50 +0200
-
-    gnutls_x509_crl_set_authority_key_id, gnutls_x509_crl_set_number allow overwritting
-    
-    That allows them to overwrite values which were previously set (e.g.,
-    on an imported CRL).
-
-commit e186e82922fb6f4295db2834469d7bf47d6d8b66
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-13 11:36:17 +0200
-
-    certtool: allow appending certificates to a CRL
-
-commit eac7a7a0ffb2ac1b775dda1081a9b42c695482a2
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-12 23:03:20 +0200
-
-    certtool: removed limit on maximum imported certificates in the -i option
-
-commit 55b8e578480e09bcf6263b8d70721b1775975756
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-12 22:49:15 +0200
-
-    tests: check whether the CRL generation code works as expected
-
-commit 024c07cc42f6cc927c743b3cec8fa9c6b84dc029
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-12 22:48:45 +0200
-
-    certtool: eliminated memory leaks due to new cert loading code
-
-commit a32cc8ae38c3a03398de898fa72cba503026a181
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-12 22:22:55 +0200
-
-    certtool: lifted limits on file size to load
-
-commit e6b8825c75a7810a19e12d7b78a60897c6ce9fd7
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-10 16:43:28 +0200
-
-    before dist ensure that included libopts matches autogen
-
-commit 30d120ee9976ec03a0c594aa5770f2a5a7785181
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-10 16:12:05 +0200
-
-    configure: use ':' instead of /bin/true for programs not found
-
-commit b2996da0f833af118df11a2b60faee8c94a010fb
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-09 21:20:33 +0200
-
-    doc update
-
-commit 8dce7745f9d8166a8e4d2fd3909e4f3159c9f4d3
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-09 20:58:40 +0200
-
-    tests: include all cert-tests into dist
-
-commit 42b31342f2d2be34471b6f294f5877fe2646feb8
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-07 16:59:18 +0200
-
-    doc update
-
-commit 196e659bd188250cce6b2678736e894a231e3631
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-07 16:13:12 +0200
-
-    doc update
-
-commit 641d0a2085aeba7e74c3dab6328c266cee4fbaec
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-07 16:04:12 +0200
-
-    tests: check gnutls_check_version_numeric()
-
-commit c8b40aeb66b19961e617cc7c1fe124060a22ccc1
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-07 15:45:21 +0200
-
-    gnutls.h: added macro gnutls_check_version_numeric
-    
-    This simplifies version checking, and allows the compiler to optimize
-    out. It can only accept numerals.
-    
-    Patch by David Woodhouse.
 
 ...</pre></div>
 

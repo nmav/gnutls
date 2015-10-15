@@ -15,7 +15,7 @@ appreciated), see the <a href="lists.html">mailing list</a> page.
 <p><table><tr><td>
 <ul>
 
-    <li><a href="http://bugs.debian.org/cgi-bin/pkgreport.cgi?src=gnutls26">
+    <li><a href="http://bugs.debian.org/cgi-bin/pkgreport.cgi?src=gnutls28">
 	Debian BTS for the gnutls package</a>.
 
     <li><a href="http://bugs.gentoo.org/buglist.cgi?quicksearch=gnutls">
@@ -39,7 +39,7 @@ fixes to unreported problems.
 <p><table><tr><td>
 <ul>
 
-  <li><a href="http://ftp.debian.org/debian/pool/main/g/gnutls26/">Debian
+  <li><a href="http://ftp.debian.org/debian/pool/main/g/gnutls28/">Debian
       repository</a>
 
   <li><a href="http://cvs.fedora.redhat.com/viewcvs/devel/gnutls/">
