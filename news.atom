@@ -3,7 +3,28 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2015-09-26T20:57:59+00:00</updated>
+<updated>2015-10-20T18:21:26+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2015-10-20</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2015-10-20'/>
+    <title>GnuTLS 3.4.6</title>
+    <updated>2015-10-20T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2015-10-20.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released 
+<a href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8323">GnuTLS
+3.4.6</a> a bug fix release in the next stable branch.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2015-09-20</id>
@@ -433,28 +454,6 @@ href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7664">GnuT
 href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7663">3.2.18</a>,
 which are bug-fix releases on the next, and current stable
 branches respectively. 
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2014-08-31</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-08-31'/>
-    <title>New paperback manual for 3.3.7</title>
-    <updated>2014-08-31T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-08-31.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Updated GnuTLS'
-<a
-href="http://www.lulu.com/shop/nikos-mavrogiannopoulos-and-simon-josefsson/the-gnutls-manual/paperback/product-21784651.html">the
-paperback manual for version 3.3.7</a>.
 </p>
 
     </div>

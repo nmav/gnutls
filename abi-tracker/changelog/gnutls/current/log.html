@@ -20,7 +20,116 @@
 <br/>
 <h1>Changelog for <span class='version'>current</span> version (Git)</h1><br/><br/>
 <div class='changelog'>
-<pre class='wrap'>commit 5ecb418ee5c53b4f235dacbb085f2ba4d1396dfc
+<pre class='wrap'>commit 1f95f29d568058a735adca39288be07af23846f3
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-20 09:40:56 +0200
+
+    doc: documented future level
+
+commit 57afd6c12a70473deb01b46c340a1f34f7933caf
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-20 09:24:36 +0200
+
+    pkcs11.h: relocated gnutls_pkcs11_copy_pubkey to allow discovery by buggy doc scripts
+
+commit 414fb15b7b4d6e7a710f8494589a3c9610835874
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-20 09:16:20 +0200
+
+    bumped version to distinguish from 3.4 branch
+
+commit df8445ba13ea5fb7e2b24950526a96c89b09ecba
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-20 09:03:25 +0200
+
+    ext master secret: extension is marked as mandatory
+    
+    This forces the extension to be sent even where resuming sessions.
+    Resolves #45
+
+commit 73fb317ae69cb44acf91f900a3c6b545125d3d5a
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-20 08:44:04 +0200
+
+    tests: Check whether a resumed session contains the ext master secret extension
+    
+    Relates #45
+
+commit 80c88c2adc5c9604738d25fd56c77c018272820a
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-17 09:22:28 +0200
+
+    alpn: avoid warning on signed/unsigned
+
+commit 243a714bb955fecccf6fc71a302a16869be74b9b
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-17 09:20:52 +0200
+
+    README: updated CI link
+
+commit 1793b1ce2f44ad1c7a8d3e173af72df51ee8f6bf
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-17 09:12:09 +0200
+
+    doc: set a path which includes new binaries when running autogen
+    
+    That makes sure that autogen will discover the binaries to obtain the
+    --help output.
+
+commit 8d756fa764b34a0e8aa4ad68751724bc7c3b58b9
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-17 08:57:02 +0200
+
+    gnutls-cli-debug: updated doc
+
+commit c0b286b28992dc10bc4a9cf343b54af0526e4de0
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-16 22:58:54 +0200
+
+    tools: when the starttls-proto is specified automatically detect the port if not given
+
+commit 333d98ed59babd8b3a3834cc92686b905ad0dd4b
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-16 15:05:09 +0200
+
+    tests: verify that public keys are properly written
+    
+    Also disable parts of the suite that softhsm2 cannot properly work with,
+    to allow running parts of the suite even with broken softhsm.
+
+commit f22df7debb575c9972fe125a87e9a7d74750eaaa
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-16 15:39:05 +0200
+
+    cleanup in gnutls_pubkey_import_rsa_raw
+
+commit c9966f9d42524cb55c6188b6257200d2e9645535
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-16 15:33:21 +0200
+
+    pkcs11_read_pubkey: make input type more clear
+
+commit 6952b457e2c8aa8b005055e91f5f93aaf293dfe4
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-16 14:13:47 +0200
+
+    p11tool: Allow writing a PKCS #11 pubkey object
+
+commit f0033c9f2a89d14ff69fdc38f982c8f1a94a9570
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-16 13:16:36 +0200
+
+    tools: allow importing a pubkey from a certificate
+
+commit 1c07fda247f1bb570cde745981b049f495678aac
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-16 13:03:57 +0200
+
+    pkcs11: introduced gnutls_pkcs11_copy_pubkey
+    
+    That allows copying a public key to a PKCS #11 module.
+
+commit 5ecb418ee5c53b4f235dacbb085f2ba4d1396dfc
 Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
 Date:   2015-10-15 21:23:44 +0200
 
@@ -587,120 +696,6 @@ Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
 Date:   2015-08-23 22:33:59 +0200
 
     Makefiles: updated for new filenames
-
-commit 5e53eebd5fab5559f54f5b25b2b11116987cdb1d
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-23 19:28:09 +0200
-
-    Moved pk_* functions to pk.c
-
-commit f84d8c0d536a1b6a160ddceadf7fade8d7b2edaa
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-23 19:19:45 +0200
-
-    Removed the 'gnutls_' prefix from files to simplify file naming
-
-commit 172ae7efd99ce30d3bdfc2a35e0335687ef70a0f
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-23 18:44:26 +0200
-
-    Moved the PRF functions to prf.c
-
-commit c1128cff64864e2ae1a0d292571660536dc1004c
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-23 14:19:17 +0200
-
-    hex decoding: more reasonable error codes
-    
-    That is, return GNUTLS_E_PARSING_ERROR instead of base64 decoding
-    error, and document that fact.
-
-commit ebb3029904db136c75e4d9c93c7b3c7f786ab80e
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-21 15:10:46 +0200
-
-    tests: Added resumption tests for PSK ciphersuites
-
-commit 9f845a71b5f97ca0bf8a40dbcfaf6889ce6a3c02
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-21 14:35:09 +0200
-
-    Set the extended master secret status based on resumption data only
-    
-    That is, don't require a new negotiation with extensions.
-
-commit 0fe3ec96370fa94cd103b0dd64259b5c4a30af90
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-21 14:23:38 +0200
-
-    tests: corrected resumption tests to disable tickets when needed
-    
-    That is, perform the tests that require no tickets, with tickets disabled.
-
-commit 6d59fb3a2a01237624d029a84b7fa64b4ed0bb73
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-21 14:06:51 +0200
-
-    session packing: corrected issue in PSK session unpack
-
-commit 48b5499003d72d006e16fa7f29401cb3a608e576
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-21 13:54:41 +0200
-
-    PSK: save the username in client side in the auth structure
-
-commit ca2d2c97408a11df6cfb2f4205cf0e88e81f87f1
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-21 13:26:08 +0200
-
-    _gnutls_hash() returns error code if any.
-    
-    Ideally we would like to eliminate any return codes from that
-    function. However, since that's on exported API we cannot easily
-    do without breaking the ABI. Reported by Benedikt Klotz.
-    
-    Resolves #28
-
-commit f74bfe0b83d815ebc880a091e170f46a95ad2d84
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-21 13:15:11 +0200
-
-    x509: when appending CRLs to a trust list ensure that we don't have duplicates
-    
-    That is, overwrite CRLs if they have been obsoleted.
-
-commit e8c8adf4ca622b0601e146b53f077ba3499fc861
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-21 11:34:39 +0200
-
-    certtool: allow exporting very long CRLs
-
-commit 858d9449b181cfd146423e41e9719cd5866c80d0
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-14 12:15:16 +0200
-
-    tests: verify that a key usage violation is detected
-    
-    That is that the certificate key usage flags are respected
-    by either the client side or the server side.
-
-commit 0e46646edefa793dc43d40033c0d2d52ce2f1040
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-14 12:14:55 +0200
-
-    Enable key usage checks in the client side of RSA ciphersuites
-
-commit 214766b6038bab3e403b611d105d5770685fdb14
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-14 12:14:08 +0200
-
-    priorities: Added internal option to allow key usage violations in server side
-
-commit fee6901aa720d5693c1bb5c65d951099d6bd4cce
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-14 11:55:04 +0200
-
-    fix typo in comment
 
 ...</pre></div>
 
