@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.5 of GnuTLS.
+3.4.6 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.5: TLS handshake</title>
+<title>GnuTLS 3.4.6: TLS handshake</title>
 
-<meta name="description" content="GnuTLS 3.4.5: TLS handshake">
-<meta name="keywords" content="GnuTLS 3.4.5: TLS handshake">
+<meta name="description" content="GnuTLS 3.4.6: TLS handshake">
+<meta name="keywords" content="GnuTLS 3.4.6: TLS handshake">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -233,15 +233,16 @@ default value. For the DTLS protocol, the more detailed
 <p><strong>Since:</strong> 3.1.0
 </p></dd></dl>
 
-<p>The handshake process doesn&rsquo;t ensure the verification
-of the peer&rsquo;s identity. When certificates are in use,
-this can be done, either after the handshake is complete, or during 
-the handshake if <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fverify_005ffunction">gnutls_certificate_set_verify_function</a>
-has been used. In both cases the <a href="Core-TLS-API.html#gnutls_005fcertificate_005fverify_005fpeers2">gnutls_certificate_verify_peers2</a> function can be
-used to verify the peer&rsquo;s certificate (see <a href="Certificate-authentication.html#Certificate-authentication">Certificate authentication</a>
-for more information).
+<p>In GnuTLS 3.5.0 and later it is recommended to use <a href="Core-TLS-API.html#gnutls_005fsession_005fset_005fverify_005fcert">gnutls_session_set_verify_cert</a>
+for the handshake process to ensure the verification of the peer&rsquo;s identity.
+</p>
+<p>In older GnuTLS versions it is required to manually verify the peer&rsquo;s certificate
+during the handshake by using <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fverify_005ffunction">gnutls_certificate_set_verify_function</a>, and
+<a href="Core-TLS-API.html#gnutls_005fcertificate_005fverify_005fpeers2">gnutls_certificate_verify_peers2</a>. See <a href="Certificate-authentication.html#Certificate-authentication">Certificate authentication</a>
+for more information.
 </p>
 <dl compact="compact">
+<dt><code><var>void</var> <a href="Core-TLS-API.html#gnutls_005fsession_005fset_005fverify_005fcert">gnutls_session_set_verify_cert</a> (gnutls_session_t <var>session</var>, const char * <var>hostname</var>, unsigned <var>flags</var>)</code></dt>
 <dt><code><var>int</var> <a href="Core-TLS-API.html#gnutls_005fcertificate_005fverify_005fpeers2">gnutls_certificate_verify_peers2</a> (gnutls_session_t <var>session</var>, unsigned int * <var>status</var>)</code></dt>
 </dl>
 

@@ -5520,7 +5520,9 @@ or use <a class="link" href="gnutls-gnutls.html#gnutls-certificate-verify-peers3
 </div>
 <div class="refsect3">
 <a name="id-1.2.4.6.67.9"></a><h4>Returns</h4>
-<p> a negative error code on error and <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success.</p>
+<p> a negative error code on error and <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0)
+when the peer's certificate was successfully parsed, whether or not
+it was verified.</p>
 </div>
 </div>
 <hr>
@@ -5576,7 +5578,9 @@ key usage), use <code class="function">gnutls_certificate_verify_peers()</code>.
 </div>
 <div class="refsect3">
 <a name="id-1.2.4.6.68.8"></a><h4>Returns</h4>
-<p> a negative error code on error and <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success.</p>
+<p> a negative error code on error and <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0)
+when the peer's certificate was successfully parsed, whether or not
+it was verified.</p>
 </div>
 <p class="since">Since: 3.1.4</p>
 </div>
@@ -8012,7 +8016,7 @@ encoding used by PSK password files.</p>
 <div class="refsect3">
 <a name="id-1.2.4.6.142.7"></a><h4>Returns</h4>
 <p> <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SHORT-MEMORY-BUFFER:CAPS" title="GNUTLS_E_SHORT_MEMORY_BUFFER"><code class="literal">GNUTLS_E_SHORT_MEMORY_BUFFER</code></a> if the buffer given is not
-long enough, or 0 on success.</p>
+long enough, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-PARSING-ERROR:CAPS" title="GNUTLS_E_PARSING_ERROR"><code class="literal">GNUTLS_E_PARSING_ERROR</code></a> on invalid hex data, or 0 on success.</p>
 </div>
 </div>
 <hr>
@@ -10321,21 +10325,19 @@ gnutls_record_recv (<em class="parameter"><code><a class="link" href="gnutls-gnu
 <p>This function has the similar semantics with <code class="function">recv()</code>.  The only
 difference is that it accepts a GnuTLS session, and uses different
 error codes.
-In the special case that a server requests a renegotiation, the
-client may receive an error code of <a class="link" href="gnutls-gnutls.html#GNUTLS-E-REHANDSHAKE:CAPS" title="GNUTLS_E_REHANDSHAKE"><code class="literal">GNUTLS_E_REHANDSHAKE</code></a>.  This
-message may be simply ignored, replied with an alert
+In the special case that the peer requests a renegotiation, the
+caller will receive an error code of <a class="link" href="gnutls-gnutls.html#GNUTLS-E-REHANDSHAKE:CAPS" title="GNUTLS_E_REHANDSHAKE"><code class="literal">GNUTLS_E_REHANDSHAKE</code></a>.  In case
+of a client, this message may be simply ignored, replied with an alert
 <a class="link" href="gnutls-gnutls.html#GNUTLS-A-NO-RENEGOTIATION:CAPS"><code class="literal">GNUTLS_A_NO_RENEGOTIATION</code></a>, or replied with a new handshake,
-depending on the client's will.
-If <code class="literal">EINTR</code> is returned by the internal push function (the default
+depending on the client's will. A server receiving this error code
+can only initiate a new handshake or terminate the session.</p>
+<p>If <code class="literal">EINTR</code> is returned by the internal push function (the default
 is <code class="function">recv()</code>) then <a class="link" href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS" title="GNUTLS_E_INTERRUPTED"><code class="literal">GNUTLS_E_INTERRUPTED</code></a> will be returned.  If
 <a class="link" href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS" title="GNUTLS_E_INTERRUPTED"><code class="literal">GNUTLS_E_INTERRUPTED</code></a> or <a class="link" href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS" title="GNUTLS_E_AGAIN"><code class="literal">GNUTLS_E_AGAIN</code></a> is returned, you must
 call this function again to get the data.  See also
-<a class="link" href="gnutls-gnutls.html#gnutls-record-get-direction" title="gnutls_record_get_direction ()"><code class="function">gnutls_record_get_direction()</code></a>.
-A server may also receive <a class="link" href="gnutls-gnutls.html#GNUTLS-E-REHANDSHAKE:CAPS" title="GNUTLS_E_REHANDSHAKE"><code class="literal">GNUTLS_E_REHANDSHAKE</code></a> when a client has
-initiated a handshake. In that case the server can only initiate a
-handshake or terminate the connection.</p>
+<a class="link" href="gnutls-gnutls.html#gnutls-record-get-direction" title="gnutls_record_get_direction ()"><code class="function">gnutls_record_get_direction()</code></a>.</p>
 <div class="refsect3">
-<a name="id-1.2.4.6.211.5"></a><h4>Parameters</h4>
+<a name="id-1.2.4.6.211.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -10362,7 +10364,7 @@ handshake or terminate the connection.</p>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.4.6.211.6"></a><h4>Returns</h4>
+<a name="id-1.2.4.6.211.7"></a><h4>Returns</h4>
 <p> The number of bytes received and zero on EOF (for stream
 connections).  A negative error code is returned in case of an error.
 The number of bytes received might be less than the requested <em class="parameter"><code>data_size</code></em>
@@ -14854,7 +14856,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.4.4"
+<pre class="programlisting">#define GNUTLS_VERSION "3.4.6"
 </pre>
 <p>
 </p>
@@ -14878,7 +14880,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030404
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030406
 </pre>
 <p>
 </p>
@@ -14886,7 +14888,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 4
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 6
 </pre>
 <p>
 </p>
@@ -16972,6 +16974,13 @@ algorithms.</p>
 <td class="enum_member_name"><p><a name="GNUTLS-SEC-PARAM-ULTRA:CAPS"></a>GNUTLS_SEC_PARAM_ULTRA</p></td>
 <td class="enum_member_description">
 <p>192 bits of security</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GNUTLS-SEC-PARAM-FUTURE:CAPS"></a>GNUTLS_SEC_PARAM_FUTURE</p></td>
+<td class="enum_member_description">
+<p>256 bits of security</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>

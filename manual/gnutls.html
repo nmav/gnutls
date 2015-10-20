@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.5 of GnuTLS.
+3.4.6 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.5</title>
+<title>GnuTLS 3.4.6</title>
 
-<meta name="description" content="GnuTLS 3.4.5">
-<meta name="keywords" content="GnuTLS 3.4.5">
+<meta name="description" content="GnuTLS 3.4.6">
+<meta name="keywords" content="GnuTLS 3.4.6">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -154,7 +154,7 @@ dl {
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">GnuTLS 3.4.5</h1>
+<h1 class="settitle" align="center">GnuTLS 3.4.6</h1>
 
 
 
@@ -500,7 +500,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 4 March 2015 for version
-3.4.5 of GnuTLS.
+3.4.6 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2015 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2015 Nikos Mavrogiannopoulos
@@ -2766,14 +2766,19 @@ via a file, a directory or use the system-specified certificate authories.
 Unless the authorities are application specific, it is generally recommended
 to use the system trust storage (see <a href="#gnutls_005fcertificate_005fset_005fx509_005fsystem_005ftrust">gnutls_certificate_set_x509_system_trust</a>).
 </p>
-<p>Unlike the previous section it is not required to setup a trusted list, and 
-the function <a href="#gnutls_005fcertificate_005fverify_005fpeers3">gnutls_certificate_verify_peers3</a> 
-is used to verify the peer&rsquo;s certificate chain and identity. The reported
-verification status is identical to the verification functions described 
+<p>Unlike the previous section it is not required to setup a trusted list, and there
+are two approaches to verify the peer&rsquo;s certificate and identity.
+The recommended in GnuTLS 3.5.0 and later is via the <a href="#gnutls_005fsession_005fset_005fverify_005fcert">gnutls_session_set_verify_cert</a>,
+but for older GnuTLS versions you may use an explicit callback set via
+<a href="#gnutls_005fcertificate_005fset_005fverify_005ffunction">gnutls_certificate_set_verify_function</a> and then utilize
+<a href="#gnutls_005fcertificate_005fverify_005fpeers3">gnutls_certificate_verify_peers3</a> for verification.
+The reported verification status is identical to the verification functions described 
 in the previous section.
-Note that in certain cases it is required to check the marked purpose of
+</p>
+<p>Note that in certain cases it is required to check the marked purpose of
 the end certificate (e.g. <code>GNUTLS_KP_TLS_WWW_SERVER</code>); in these cases
-the more advanced <a href="#gnutls_005fcertificate_005fverify_005fpeers">gnutls_certificate_verify_peers</a> should be used instead.
+the more advanced <a href="#gnutls_005fsession_005fset_005fverify_005fcert2">gnutls_session_set_verify_cert2</a> and
+<a href="#gnutls_005fcertificate_005fverify_005fpeers">gnutls_certificate_verify_peers</a> should be used instead.
 </p>
 <p>There is also the possibility to pass some input to the verification
 functions in the form of flags. For <a href="#gnutls_005fx509_005ftrust_005flist_005fverify_005fcrt2">gnutls_x509_trust_list_verify_crt2</a> the
@@ -4245,7 +4250,111 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">certtool is unavailable - no --help
+<pre class="example">certtool - GnuTLS certificate tool
+Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+
+   -d, --debug=num            Enable debugging
+                                - it must be in the range:
+                                  0 to 9999
+   -V, --verbose              More verbose output
+                                - may appear multiple times
+       --infile=file          Input file
+                                - file must pre-exist
+       --outfile=str          Output file
+   -s, --generate-self-signed  Generate a self-signed certificate
+   -c, --generate-certificate  Generate a signed certificate
+       --generate-proxy       Generates a proxy certificate
+       --generate-crl         Generate a CRL
+   -u, --update-certificate   Update a signed certificate
+   -p, --generate-privkey     Generate a private key
+   -q, --generate-request     Generate a PKCS #10 certificate request
+                                - prohibits the option 'infile'
+   -e, --verify-chain         Verify a PEM encoded certificate chain
+       --verify               Verify a PEM encoded certificate chain using a trusted list
+       --verify-crl           Verify a CRL using a trusted list
+                                - requires the option 'load-ca-certificate'
+       --verify-hostname=str  Specify a hostname to be used for certificate chain verification
+       --verify-email=str     Specify a email to be used for certificate chain verification
+                                - prohibits the option 'verify-hostname'
+       --verify-purpose=str   Specify a purpose OID to be used for certificate chain verification
+       --generate-dh-params   Generate PKCS #3 encoded Diffie-Hellman parameters
+       --get-dh-params        Get the included PKCS #3 encoded Diffie-Hellman parameters
+       --dh-info              Print information PKCS #3 encoded Diffie-Hellman parameters
+       --load-privkey=str     Loads a private key file
+       --load-pubkey=str      Loads a public key file
+       --load-request=str     Loads a certificate request file
+       --load-certificate=str Loads a certificate file
+       --load-ca-privkey=str  Loads the certificate authority's private key file
+       --load-ca-certificate=str Loads the certificate authority's certificate file
+       --load-crl=str         Loads the provided CRL
+       --load-data=str        Loads auxilary data
+       --password=str         Password to use
+       --null-password        Enforce a NULL password
+       --empty-password       Enforce an empty password
+       --hex-numbers          Print big number in an easier format to parse
+       --cprint               In certain operations it prints the information in C-friendly format
+   -i, --certificate-info     Print information on the given certificate
+       --fingerprint          Print the fingerprint of the given certificate
+       --key-id               Print the key ID of the given certificate
+       --certificate-pubkey   Print certificate's public key
+       --pgp-certificate-info  Print information on the given OpenPGP certificate
+       --pgp-ring-info        Print information on the given OpenPGP keyring structure
+   -l, --crl-info             Print information on the given CRL structure
+       --crq-info             Print information on the given certificate request
+       --no-crq-extensions    Do not use extensions in certificate requests
+   -!, --p12-info             Print information on a PKCS #12 structure
+   -&quot;, --p12-name=str         The PKCS #12 friendly name to use
+   -#, --p7-generate          Generate a PKCS #7 structure
+   -$, --p7-sign              Signs using a PKCS #7 structure
+   -%, --p7-detached-sign     Signs using a detached PKCS #7 structure
+   -&amp;, --p7-time              Will include a timestamp in the PKCS #7 structure
+   -', --p7-info              Print information on a PKCS #7 structure
+   -(, --p7-verify            Verify the provided PKCS #7 structure
+   -), --p8-info              Print information on a PKCS #8 structure
+   -*, --smime-to-p7          Convert S/MIME to PKCS #7 structure
+   -k, --key-info             Print information on a private key
+   -+, --pgp-key-info         Print information on an OpenPGP private key
+   -,, --pubkey-info          Print information on a public key
+   --, --v1                   Generate an X.509 version 1 certificate (with no extensions)
+   -., --to-p12               Generate a PKCS #12 structure
+                                - requires the option 'load-certificate'
+   -/, --to-p8                Generate a PKCS #8 structure
+   -8, --pkcs8                Use PKCS #8 format for private keys
+   -0, --rsa                  Generate RSA key
+   -1, --dsa                  Generate DSA key
+   -2, --ecc                  Generate ECC (ECDSA) key
+   -3, --ecdsa                an alias for the 'ecc' option
+   -4, --hash=str             Hash algorithm to use for signing
+   -5, --inder                Use DER format for input certificates, private keys, and DH parameters
+                                - disabled as '--no-inder'
+   -6, --inraw                an alias for the 'inder' option
+   -7, --outder               Use DER format for output certificates, private keys, and DH parameters
+                                - disabled as '--no-outder'
+   -8, --outraw               an alias for the 'outder' option
+   -9, --bits=num             Specify the number of bits for key generate
+   -:, --curve=str            Specify the curve used for EC key generation
+   -;, --sec-param=str        Specify the security level [low, legacy, medium, high, ultra]
+   -&lt;, --disable-quick-random  No effect
+   -=, --template=str         Template file to use for non-interactive operation
+   -&gt;, --stdout-info          Print information to stdout instead of stderr
+   -?, --ask-pass             Enable interaction for entering password when in batch mode.
+   -@, --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
+   -A, --provider=str         Specify the PKCS #11 provider library
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+
+Tool to parse and generate X.509 certificates, requests and private keys.
+It can be used interactively or non interactively by specifying the
+template command line option.
+
+The tool accepts files or URLs supported by GnuTLS.  In case PIN is
+required for the URL access you can provide it using the environment
+variables GNUTLS_PIN and GNUTLS_SO_PIN.
+
 </pre></div>
 
 <a name="certtool-debug"></a><a name="debug-option-_0028_002dd_0029-1"></a>
@@ -4979,7 +5088,53 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">ocsptool is unavailable - no --help
+<pre class="example">ocsptool - GnuTLS OCSP tool
+Usage:  ocsptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+
+   -d, --debug=num            Enable debugging
+                                - it must be in the range:
+                                  0 to 9999
+   -V, --verbose              More verbose output
+                                - may appear multiple times
+       --infile=file          Input file
+                                - file must pre-exist
+       --outfile=str          Output file
+       --ask[=arg]            Ask an OCSP/HTTP server on a certificate validity
+                                - requires these options:
+                                load-cert
+                                load-issuer
+   -e, --verify-response      Verify response
+   -i, --request-info         Print information on a OCSP request
+   -j, --response-info        Print information on a OCSP response
+   -q, --generate-request     Generate an OCSP request
+       --nonce                Use (or not) a nonce to OCSP request
+                                - disabled as '--no-nonce'
+       --load-issuer=file     Read issuer certificate from file
+                                - file must pre-exist
+       --load-cert=file       Read certificate to check from file
+                                - file must pre-exist
+       --load-trust=file      Read OCSP trust anchors from file
+                                - prohibits the option 'load-signer'
+                                - file must pre-exist
+       --load-signer=file     Read OCSP response signer from file
+                                - prohibits the option 'load-trust'
+                                - file must pre-exist
+       --inder                Use DER format for input certificates and private keys
+                                - disabled as '--no-inder'
+   -Q, --load-request=file    Read DER encoded OCSP request from file
+                                - file must pre-exist
+   -S, --load-response=file   Read DER encoded OCSP response from file
+                                - file must pre-exist
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+
+Ocsptool is a program that can parse and print information about OCSP
+requests/responses, generate requests and verify responses.
+
 </pre></div>
 
 <a name="ocsptool-debug"></a><a name="debug-option-_0028_002dd_0029-2"></a>
@@ -5186,7 +5341,58 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">danetool is unavailable - no --help
+<pre class="example">danetool - GnuTLS DANE tool
+Usage:  danetool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+
+   -d, --debug=num            Enable debugging
+                                - it must be in the range:
+                                  0 to 9999
+   -V, --verbose              More verbose output
+                                - may appear multiple times
+       --infile=file          Input file
+                                - file must pre-exist
+       --outfile=str          Output file
+       --load-pubkey=str      Loads a public key file
+       --load-certificate=str Loads a certificate file
+       --dlv=str              Sets a DLV file
+       --hash=str             Hash algorithm to use for signing
+       --check=str            Check a host's DANE TLSA entry
+       --check-ee             Check only the end-entity's certificate
+       --check-ca             Check only the CA's certificate
+       --tlsa-rr              Print the DANE RR data on a certificate or public key
+                                - requires the option 'host'
+       --host=str             Specify the hostname to be used in the DANE RR
+       --proto=str            The protocol set for DANE data (tcp, udp etc.)
+       --port=num             Specify the port number for the DANE data
+       --app-proto=str        an alias for the 'starttls-proto' option
+       --starttls-proto=str   The application protocol to be used to obtain the server's certificate
+(https, ftp, smtp, imap, ldap, xmpp)
+       --ca                   Whether the provided certificate or public key is a Certificate
+Authority
+       --x509                 Use the hash of the X.509 certificate, rather than the public key
+       --local                an alias for the 'domain' option
+                                - enabled by default
+       --domain               The provided certificate or public key is issued by the local domain
+                                - disabled as '--no-domain'
+                                - enabled by default
+       --local-dns            Use the local DNS server for DNSSEC resolving
+                                - disabled as '--no-local-dns'
+       --insecure             Do not verify any DNSSEC signature
+       --inder                Use DER format for input certificates and private keys
+                                - disabled as '--no-inder'
+       --inraw                an alias for the 'inder' option
+       --print-raw            Print the received DANE data in raw format
+                                - disabled as '--no-print-raw'
+       --quiet                Suppress several informational messages
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+
+Tool to generate and check DNS resource records for the DANE protocol.
+
 </pre></div>
 
 <a name="danetool-debug"></a><a name="debug-option-_0028_002dd_0029-3"></a>
@@ -5262,7 +5468,13 @@ This command specifies the protocol for the service set in the DANE data.
 <a name="danetool-app_002dproto"></a></p><a name="app_002dproto-option"></a>
 <h4 class="subsubheading">app-proto option</h4>
 
-<p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, ftp, smtp, imap)&rdquo; option.
+<p>This is an alias for the <code>starttls-proto</code> option,
+see <a href="#danetool-starttls_002dproto">the starttls-proto option documentation</a>.
+</p>
+<a name="danetool-starttls_002dproto"></a><a name="starttls_002dproto-option"></a>
+<h4 class="subsubheading">starttls-proto option</h4>
+
+<p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, ftp, smtp, imap, ldap, xmpp)&rdquo; option.
 This option takes a string argument.
 When the server&rsquo;s certificate isn&rsquo;t provided danetool will connect to the server to obtain the certificate. In that case it is required to known the protocol to talk with the server prior to initiating the TLS handshake.
 <a name="danetool-ca"></a></p><a name="ca-option"></a>
@@ -5565,7 +5777,34 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">srptool is unavailable - no --help
+<pre class="example">srptool - GnuTLS SRP tool
+Usage:  srptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+
+   -d, --debug=num            Enable debugging
+                                - it must be in the range:
+                                  0 to 9999
+   -i, --index=num            specify the index of the group parameters in tpasswd.conf to use
+   -u, --username=str         specify a username
+   -p, --passwd=str           specify a password file
+   -s, --salt=num             specify salt size
+       --verify               just verify the password.
+   -v, --passwd-conf=str      specify a password conf file.
+       --create-conf=str      Generate a password configuration file.
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+
+Simple program that emulates the programs in the Stanford SRP (Secure
+Remote Password) libraries using GnuTLS.  It is intended for use in places
+where you don't expect SRP authentication to be the used for system users.
+
+In brief, to use SRP you need to create two files.  These are the password
+file that holds the users and the verifiers associated with them and the
+configuration file to hold the group parameters (called tpasswd.conf).
+
 </pre></div>
 
 <a name="srptool-debug"></a><a name="debug-option-_0028_002dd_0029-4"></a>
@@ -5729,7 +5968,27 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">psktool is unavailable - no --help
+<pre class="example">psktool - GnuTLS PSK tool
+Usage:  psktool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+
+   -d, --debug=num            Enable debugging
+                                - it must be in the range:
+                                  0 to 9999
+   -s, --keysize=num          specify the key size in bytes
+                                - it must be in the range:
+                                  0 to 512
+   -u, --username=str         specify a username
+   -p, --passwd=str           specify a password file
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+
+Program that generates random keys for use with TLS-PSK.  The keys are
+stored in hexadecimal format in a key file.
+
 </pre></div>
 
 <a name="psktool-debug"></a><a name="debug-option-_0028_002dd_0029-5"></a>
@@ -7097,7 +7356,127 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">p11tool is unavailable - no --help
+<pre class="example">p11tool - GnuTLS PKCS #11 tool
+Usage:  p11tool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [url]
+
+
+Tokens:
+
+       --list-tokens          List all available tokens
+       --list-token-urls      List the URLs available tokens
+       --list-mechanisms      List all available mechanisms in a token
+       --initialize           Initializes a PKCS #11 token
+       --set-pin=str          Specify the PIN to use on token initialization
+       --set-so-pin=str       Specify the Security Officer's PIN to use on token initialization
+
+Object listing:
+
+       --list-all             List all available objects in a token
+       --list-all-certs       List all available certificates in a token
+       --list-certs           List all certificates that have an associated private key
+       --list-all-privkeys    List all available private keys in a token
+       --list-privkeys        an alias for the 'list-all-privkeys' option
+       --list-keys            an alias for the 'list-all-privkeys' option
+       --list-all-trusted     List all available certificates marked as trusted
+       --export               Export the object specified by the URL
+       --export-chain         Export the certificate specified by the URL and its chain of trust
+       --export-pubkey        Export the public key for a private key
+       --info                 List information on an available object in a token
+
+Key generation:
+
+       --generate-rsa         Generate an RSA private-public key pair
+       --generate-dsa         Generate a DSA private-public key pair
+       --generate-ecc         Generate an ECDSA private-public key pair
+       --bits=num             Specify the number of bits for key generate
+       --curve=str            Specify the curve used for EC key generation
+       --sec-param=str        Specify the security level
+
+Writing objects:
+
+       --set-id=str           Set the CKA_ID (in hex) for the specified by the URL object
+                                - prohibits the option 'write'
+       --set-label=str        Set the CKA_LABEL for the specified by the URL object
+                                - prohibits these options:
+                                write
+                                set-id
+       --write                Writes the loaded objects to a PKCS #11 token
+       --delete               Deletes the objects matching the given PKCS #11 URL
+       --label=str            Sets a label for the write operation
+       --id=str               Sets an ID for the write operation
+       --mark-wrap            Marks the generated key to be a wrapping key
+                                - disabled as '--no-mark-wrap'
+       --mark-trusted         Marks the object to be written as trusted
+                                - disabled as '--no-mark-trusted'
+       --mark-decrypt         Marks the object to be written for decryption
+                                - disabled as '--no-mark-decrypt'
+   -!, --mark-sign            Marks the object to be written for signature generation
+                                - disabled as '--no-mark-sign'
+   -&quot;, --mark-ca              Marks the object to be written as a CA
+                                - disabled as '--no-mark-ca'
+   -#, --mark-private         Marks the object to be written as private
+                                - disabled as '--no-mark-private'
+                                - enabled by default
+   -$, --trusted              an alias for the 'mark-trusted' option
+   -%, --ca                   an alias for the 'mark-ca' option
+   -&amp;, --private              an alias for the 'mark-private' option
+                                - enabled by default
+   -', --secret-key=str       Provide a hex encoded secret key
+   -(, --load-privkey=file    Private key file to use
+                                - file must pre-exist
+   -), --load-pubkey=file     Public key file to use
+                                - file must pre-exist
+   -*, --load-certificate=file Certificate file to use
+                                - file must pre-exist
+
+Other options:
+
+   -d, --debug=num            Enable debugging
+                                - it must be in the range:
+                                  0 to 9999
+   -+, --outfile=str          Output file
+   -,, --login                Force (user) login to token
+                                - disabled as '--no-login'
+   --, --so-login             Force security officer login to token
+                                - disabled as '--no-so-login'
+   -., --admin-login          an alias for the 'so-login' option
+   -/, --test-sign            Tests the signature operation of the provided object
+   -0, --generate-random=num  Generate random data
+   -8, --pkcs8                Use PKCS #8 format for private keys
+   -1, --inder                Use DER/RAW format for input
+                                - disabled as '--no-inder'
+   -2, --inraw                an alias for the 'inder' option
+   -3, --outder               Use DER format for output certificates, private keys, and DH parameters
+                                - disabled as '--no-outder'
+   -4, --outraw               an alias for the 'outder' option
+   -5, --provider=file        Specify the PKCS #11 provider library
+                                - file must pre-exist
+   -6, --detailed-url         Print detailed URLs
+                                - disabled as '--no-detailed-url'
+   -7, --batch                Disable all interaction with the tool
+
+Version, usage and configuration options:
+
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+Operands and options may be intermixed.  They will be reordered.
+
+Program that allows operations on PKCS #11 smart cards and security
+modules.
+
+To use PKCS #11 tokens with GnuTLS the p11-kit configuration files need to
+be setup.  That is create a .module file in /etc/pkcs11/modules with the
+contents 'module: /path/to/pkcs11.so'.  Alternatively the configuration
+file /etc/gnutls/pkcs11.conf has to exist and contain a number of lines of
+the form 'load=/usr/lib/opensc-pkcs11.so'.
+
+You can provide the PIN to be used for the PKCS #11 operations with the
+environment variables GNUTLS_PIN and GNUTLS_SO_PIN.
+
 </pre></div>
 
 <a name="p11tool-token_002drelated_002doptions"></a><a name="token_002drelated_002doptions-options"></a>
@@ -7747,7 +8126,49 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">tpmtool is unavailable - no --help
+<pre class="example">tpmtool - GnuTLS TPM tool
+Usage:  tpmtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+
+   -d, --debug=num            Enable debugging
+                                - it must be in the range:
+                                  0 to 9999
+       --infile=file          Input file
+                                - file must pre-exist
+       --outfile=str          Output file
+       --generate-rsa         Generate an RSA private-public key pair
+       --register             Any generated key will be registered in the TPM
+                                - requires the option 'generate-rsa'
+       --signing              Any generated key will be a signing key
+                                - requires the option 'generate-rsa'
+                                -- and prohibits the option 'legacy'
+       --legacy               Any generated key will be a legacy key
+                                - requires the option 'generate-rsa'
+                                -- and prohibits the option 'signing'
+       --user                 Any registered key will be a user key
+                                - requires the option 'register'
+                                -- and prohibits the option 'system'
+       --system               Any registred key will be a system key
+                                - requires the option 'register'
+                                -- and prohibits the option 'user'
+       --pubkey=str           Prints the public key of the provided key
+       --list                 Lists all stored keys in the TPM
+       --delete=str           Delete the key identified by the given URL (UUID).
+       --test-sign=str        Tests the signature operation of the provided object
+       --sec-param=str        Specify the security level [low, legacy, medium, high, ultra].
+       --bits=num             Specify the number of bits for key generate
+       --inder                Use the DER format for keys.
+                                - disabled as '--no-inder'
+       --outder               Use DER format for output keys
+                                - disabled as '--no-outder'
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+
+Program that allows handling cryptographic data from the TPM chip.
+
 </pre></div>
 
 <a name="tpmtool-debug"></a><a name="debug-option-_0028_002dd_0029"></a>
@@ -8762,81 +9183,55 @@ the following functions, applicable to X.509 and OpenPGP certificates.
 <dt><code><var>int</var> <a href="#gnutls_005fcertificate_005fset_005fopenpgp_005fkeyring_005ffile">gnutls_certificate_set_openpgp_keyring_file</a> (gnutls_certificate_credentials_t <var>c</var>, const char * <var>file</var>, gnutls_openpgp_crt_fmt_t <var>format</var>)</code></dt>
 </dl>
 
-<p>The peer&rsquo;s certificate is not automatically verified and one 
-must call <a href="#gnutls_005fcertificate_005fverify_005fpeers3">gnutls_certificate_verify_peers3</a>
-after a successful handshake to verify the certificate&rsquo;s signature and the owner 
-of the certificate. The verification status returned can be printed using
-<a href="#gnutls_005fcertificate_005fverification_005fstatus_005fprint">gnutls_certificate_verification_status_print</a>.
+<p>The peer&rsquo;s certificate will be automatically verified if
+<a href="#gnutls_005fsession_005fset_005fverify_005fcert">gnutls_session_set_verify_cert</a> is called prior to handshake.
 </p>
-<p>Alternatively the verification can occur during the handshake
-by using <a href="#gnutls_005fcertificate_005fset_005fverify_005ffunction">gnutls_certificate_set_verify_function</a>.
-</p>
-<p>The functions above provide a brief verification output. If a
+<p>Alternatively, one must set a callback function during the handshake
+using <a href="#gnutls_005fcertificate_005fset_005fverify_005ffunction">gnutls_certificate_set_verify_function</a>, which
+will verify the peer&rsquo;s certificate once received. The verification
+should happen using <a href="#gnutls_005fcertificate_005fverify_005fpeers3">gnutls_certificate_verify_peers3</a> within
+the callback. It will verify the certificate&rsquo;s signature and the owner 
+of the certificate. That will provide a brief verification output. If a
 detailed output is required one should call <a href="#gnutls_005fcertificate_005fget_005fpeers">gnutls_certificate_get_peers</a>
 to obtain the raw certificate of the peer and verify it using the
 functions discussed in <a href="#X_002e509-certificates">X.509 certificates</a>.
 </p>
+<p>In both the automatic and the manual cases, the verification status returned
+can be printed using <a href="#gnutls_005fcertificate_005fverification_005fstatus_005fprint">gnutls_certificate_verification_status_print</a>.
+</p>
 
 
 
 
 <dl>
-<dt><a name="index-gnutls_005fcertificate_005fverify_005fpeers3"></a>Function: <em>int</em> <strong>gnutls_certificate_verify_peers3</strong> <em>(gnutls_session_t <var>session</var>, const char * <var>hostname</var>, unsigned int * <var>status</var>)</em></dt>
+<dt><a name="index-gnutls_005fsession_005fset_005fverify_005fcert"></a>Function: <em>void</em> <strong>gnutls_session_set_verify_cert</strong> <em>(gnutls_session_t <var>session</var>, const char * <var>hostname</var>, unsigned <var>flags</var>)</em></dt>
 <dd><p><var>session</var>: is a gnutls session
 </p>
 <p><var>hostname</var>: is the expected name of the peer; may be <code>NULL</code> 
 </p>
-<p><var>status</var>: is the output of the verification
+<p><var>flags</var>: flags for certificate verification &ndash; <code>gnutls_certificate_verify_flags</code> 
 </p>
-<p>This function will verify the peer&rsquo;s certificate and store the
-status in the  <code>status</code> variable as a bitwise or&rsquo;d gnutls_certificate_status_t
-values or zero if the certificate is trusted. Note that value in  <code>status</code> is set only when the return value of this function is success (i.e, failure 
-to trust a certificate does not imply a negative return value).
-The default verification flags used by this function can be overridden
-using <code>gnutls_certificate_set_verify_flags()</code> . See the documentation
-of <code>gnutls_certificate_verify_peers2()</code>  for details in the verification process.
+<p>This function instructs GnuTLS to verify the peer&rsquo;s certificate
+using the provided hostname. If the verification fails the handshake
+will also fail with <code>GNUTLS_E_CERTIFICATE_VERIFICATION_ERROR</code> . In that
+case the verification result can be obtained using <code>gnutls_session_get_verify_cert_status()</code> .
 </p>
-<p>If the  <code>hostname</code> provided is non-NULL then this function will compare
-the hostname in the certificate against the given. The comparison will
-be accurate for ascii names; non-ascii names are compared byte-by-byte. 
-If names do not match the <code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
+<p>The  <code>hostname</code> pointer provided must remain valid for the lifetime
+of the session. More precisely it should be available during any subsequent
+handshakes. If no hostname is provided, no hostname verification
+will be performed. For a more advanced verification function check
+<code>gnutls_session_set_verify_cert2()</code> .
 </p>
-<p>In order to verify the purpose of the end-certificate (by checking the extended
-key usage), use <code>gnutls_certificate_verify_peers()</code> .
+<p>The <code>gnutls_session_set_verify_cert()</code>  function is intended to be used by TLS
+clients to verify the server&rsquo;s certificate.
 </p>
-<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0) on success.
-</p>
-<p><strong>Since:</strong> 3.1.4
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
-
-
-
-
-<dl>
-<dt><a name="index-gnutls_005fcertificate_005fset_005fverify_005ffunction"></a>Function: <em>void</em> <strong>gnutls_certificate_set_verify_function</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, gnutls_certificate_verify_function * <var>func</var>)</em></dt>
-<dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
-</p>
-<p><var>func</var>: is the callback function
-</p>
-<p>This function sets a callback to be called when peer&rsquo;s certificate
-has been received in order to verify it on receipt rather than
-doing after the handshake is completed.
-</p>
-<p>The callback&rsquo;s function prototype is:
-int (*callback)(gnutls_session_t);
-</p>
-<p>If the callback function is provided then gnutls will call it, in the
-handshake, just after the certificate message has been received.
-To verify or obtain the certificate the <code>gnutls_certificate_verify_peers2()</code> ,
-<code>gnutls_certificate_type_get()</code> , <code>gnutls_certificate_get_peers()</code>  functions
-can be used.
-</p>
-<p>The callback function should return 0 for the handshake to continue
-or non-zero to terminate.
-</p>
-<p><strong>Since:</strong> 2.10.0
-</p></dd></dl>
+<dl compact="compact">
+<dt><code><var>int</var> <a href="#gnutls_005fcertificate_005fverify_005fpeers3">gnutls_certificate_verify_peers3</a> (gnutls_session_t <var>session</var>, const char * <var>hostname</var>, unsigned int * <var>status</var>)</code></dt>
+<dt><code><var>void</var> <a href="#gnutls_005fcertificate_005fset_005fverify_005ffunction">gnutls_certificate_set_verify_function</a> (gnutls_certificate_credentials_t <var>cred</var>, gnutls_certificate_verify_function * <var>func</var>)</code></dt>
+</dl>
 
 
 <hr>
@@ -9537,15 +9932,16 @@ default value. For the DTLS protocol, the more detailed
 <p><strong>Since:</strong> 3.1.0
 </p></dd></dl>
 
-<p>The handshake process doesn&rsquo;t ensure the verification
-of the peer&rsquo;s identity. When certificates are in use,
-this can be done, either after the handshake is complete, or during 
-the handshake if <a href="#gnutls_005fcertificate_005fset_005fverify_005ffunction">gnutls_certificate_set_verify_function</a>
-has been used. In both cases the <a href="#gnutls_005fcertificate_005fverify_005fpeers2">gnutls_certificate_verify_peers2</a> function can be
-used to verify the peer&rsquo;s certificate (see <a href="#Certificate-authentication">Certificate authentication</a>
-for more information).
+<p>In GnuTLS 3.5.0 and later it is recommended to use <a href="#gnutls_005fsession_005fset_005fverify_005fcert">gnutls_session_set_verify_cert</a>
+for the handshake process to ensure the verification of the peer&rsquo;s identity.
+</p>
+<p>In older GnuTLS versions it is required to manually verify the peer&rsquo;s certificate
+during the handshake by using <a href="#gnutls_005fcertificate_005fset_005fverify_005ffunction">gnutls_certificate_set_verify_function</a>, and
+<a href="#gnutls_005fcertificate_005fverify_005fpeers2">gnutls_certificate_verify_peers2</a>. See <a href="#Certificate-authentication">Certificate authentication</a>
+for more information.
 </p>
 <dl compact="compact">
+<dt><code><var>void</var> <a href="#gnutls_005fsession_005fset_005fverify_005fcert">gnutls_session_set_verify_cert</a> (gnutls_session_t <var>session</var>, const char * <var>hostname</var>, unsigned <var>flags</var>)</code></dt>
 <dt><code><var>int</var> <a href="#gnutls_005fcertificate_005fverify_005fpeers2">gnutls_certificate_verify_peers2</a> (gnutls_session_t <var>session</var>, unsigned int * <var>status</var>)</code></dt>
 </dl>
 
@@ -9621,19 +10017,18 @@ on the negotiated maximum record size.
 <p>This function has the similar semantics with <code>recv()</code> .  The only
 difference is that it accepts a GnuTLS session, and uses different
 error codes.
-In the special case that a server requests a renegotiation, the
-client may receive an error code of <code>GNUTLS_E_REHANDSHAKE</code> .  This
-message may be simply ignored, replied with an alert
+In the special case that the peer requests a renegotiation, the
+caller will receive an error code of <code>GNUTLS_E_REHANDSHAKE</code> .  In case
+of a client, this message may be simply ignored, replied with an alert
 <code>GNUTLS_A_NO_RENEGOTIATION</code> , or replied with a new handshake,
-depending on the client&rsquo;s will.
-If <code>EINTR</code>  is returned by the internal push function (the default
+depending on the client&rsquo;s will. A server receiving this error code
+can only initiate a new handshake or terminate the session.
+</p>
+<p>If <code>EINTR</code>  is returned by the internal push function (the default
 is <code>recv()</code> ) then <code>GNUTLS_E_INTERRUPTED</code>  will be returned.  If
 <code>GNUTLS_E_INTERRUPTED</code>  or <code>GNUTLS_E_AGAIN</code>  is returned, you must
 call this function again to get the data.  See also
 <code>gnutls_record_get_direction()</code> .
-A server may also receive <code>GNUTLS_E_REHANDSHAKE</code>  when a client has
-initiated a handshake. In that case the server can only initiate a
-handshake or terminate the connection.
 </p>
 <p><strong>Returns:</strong> The number of bytes received and zero on EOF (for stream
 connections).  A negative error code is returned in case of an error.  
@@ -10222,7 +10617,8 @@ authentication.
 <tr><td width="10%">96</td><td width="12%">1776</td><td width="10%">192</td><td width="20%"><code>LEGACY</code></td><td width="32%">Legacy standard level</td></tr>
 <tr><td width="10%">112</td><td width="12%">2048</td><td width="10%">224</td><td width="20%"><code>MEDIUM</code></td><td width="32%">Medium-term protection</td></tr>
 <tr><td width="10%">128</td><td width="12%">3072</td><td width="10%">256</td><td width="20%"><code>HIGH</code></td><td width="32%">Long term protection (corresponds to ENISA future level)</td></tr>
-<tr><td width="10%">256</td><td width="12%">15424</td><td width="10%">512</td><td width="20%"><code>ULTRA</code></td><td width="32%">Foreseeable future</td></tr>
+<tr><td width="10%">192</td><td width="12%">8192</td><td width="10%">384</td><td width="20%"><code>ULTRA</code></td><td width="32%">Even longer term protection</td></tr>
+<tr><td width="10%">256</td><td width="12%">15424</td><td width="10%">512</td><td width="20%"><code>FUTURE</code></td><td width="32%">Foreseeable future</td></tr>
 </table>
 
 <div class="float-caption"><p><strong>Table 6.7: </strong>Key sizes and security parameters.</p></div></div>
@@ -11144,20 +11540,22 @@ resumption.
 
 extern int tcp_connect(void);
 extern void tcp_close(int sd);
-static int _verify_certificate_callback(gnutls_session_t session);
 
 int main(void)
 {
         int ret, sd, ii;
         gnutls_session_t session;
         char buffer[MAX_BUF + 1];
+        gnutls_datum_t out;
+        int type;
+        unsigned status;
 #if 0
         const char *err;
 #endif
         gnutls_certificate_credentials_t xcred;
 
-        if (gnutls_check_version(&quot;3.1.4&quot;) == NULL) {
-                fprintf(stderr, &quot;GnuTLS 3.1.4 or later is required for this example\n&quot;);
+        if (gnutls_check_version(&quot;3.4.6&quot;) == NULL) {
+                fprintf(stderr, &quot;GnuTLS 3.4.6 or later is required for this example\n&quot;);
                 exit(1);
         }
 
@@ -11171,8 +11569,6 @@ int main(void)
          */
         gnutls_certificate_set_x509_trust_file(xcred, CAFILE,
                                                GNUTLS_X509_FMT_PEM);
-        gnutls_certificate_set_verify_function(xcred,
-                                               _verify_certificate_callback);
 
         /* If client holds a certificate it can be set using the following:
          *
@@ -11190,7 +11586,7 @@ int main(void)
         gnutls_server_name_set(session, GNUTLS_NAME_DNS, &quot;my_host_name&quot;,
                                strlen(&quot;my_host_name&quot;));
 
-        /* use default priorities */
+        /* It is recommended to use the default priorities */
         gnutls_set_default_priority(session);
 #if 0
 	/* if more fine-graned control is required */
@@ -11207,6 +11603,7 @@ int main(void)
         /* put the x509 credentials to the current session
          */
         gnutls_credentials_set(session, GNUTLS_CRD_CERTIFICATE, xcred);
+        gnutls_session_set_verify_cert(session, &quot;my_host_name&quot;, 0);
 
         /* connect to the peer
          */
@@ -11222,7 +11619,6 @@ int main(void)
                 ret = gnutls_handshake(session);
         }
         while (ret &lt; 0 &amp;&amp; gnutls_error_is_fatal(ret) == 0);
-
         if (ret &lt; 0) {
                 fprintf(stderr, &quot;*** Handshake failed\n&quot;);
                 gnutls_perror(ret);
@@ -11235,6 +11631,21 @@ int main(void)
                 gnutls_free(desc);
         }
 
+        /* check certificate verification status */
+        type = gnutls_certificate_type_get(session);
+        status = gnutls_session_get_verify_cert_status(session);
+        ret =
+            gnutls_certificate_verification_status_print(status, type,
+                                                         &amp;out, 0);
+        if (ret &lt; 0) {
+                printf(&quot;Error\n&quot;);
+                return GNUTLS_E_CERTIFICATE_ERROR;
+        }
+
+        printf(&quot;%s&quot;, out.data);
+        gnutls_free(out.data);
+
+	/* send data */
         gnutls_record_send(session, MSG, strlen(MSG));
 
         ret = gnutls_record_recv(session, buffer, MAX_BUF);
@@ -11268,71 +11679,6 @@ int main(void)
 
         gnutls_global_deinit();
 
-        return 0;
-}
-
-/* This function will verify the peer's certificate, and check
- * if the hostname matches, as well as the activation, expiration dates.
- */
-static int _verify_certificate_callback(gnutls_session_t session)
-{
-        unsigned int status;
-        int ret, type;
-        const char *hostname;
-        gnutls_datum_t out;
-
-        /* read hostname */
-        hostname = gnutls_session_get_ptr(session);
-
-        /* This verification function uses the trusted CAs in the credentials
-         * structure. So you must have installed one or more CA certificates.
-         */
-
-         /* The following demonstrate two different verification functions,
-          * the more flexible gnutls_certificate_verify_peers(), as well
-          * as the old gnutls_certificate_verify_peers3(). */
-#if 1
-        {
-        gnutls_typed_vdata_st data[2];
-
-        memset(data, 0, sizeof(data));
-
-        data[0].type = GNUTLS_DT_DNS_HOSTNAME;
-        data[0].data = (void*)hostname;
-
-        data[1].type = GNUTLS_DT_KEY_PURPOSE_OID;
-        data[1].data = (void*)GNUTLS_KP_TLS_WWW_SERVER;
-
-        ret = gnutls_certificate_verify_peers(session, data, 2,
-					      &amp;status);
-        }
-#else
-        ret = gnutls_certificate_verify_peers3(session, hostname,
-					       &amp;status);
-#endif
-        if (ret &lt; 0) {
-                printf(&quot;Error\n&quot;);
-                return GNUTLS_E_CERTIFICATE_ERROR;
-        }
-
-        type = gnutls_certificate_type_get(session);
-
-        ret =
-            gnutls_certificate_verification_status_print(status, type,
-                                                         &amp;out, 0);
-        if (ret &lt; 0) {
-                printf(&quot;Error\n&quot;);
-                return GNUTLS_E_CERTIFICATE_ERROR;
-        }
-
-        printf(&quot;%s&quot;, out.data);
-
-        gnutls_free(out.data);
-
-        if (status != 0)        /* Certificate is not trusted */
-                return GNUTLS_E_CERTIFICATE_ERROR;
-
-        /* notify gnutls to continue handshake normally */
         return 0;
 }
 </pre>
@@ -15454,7 +15800,100 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-cli is unavailable - no --help
+<pre class="example">gnutls-cli - GnuTLS client
+Usage:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... [hostname]
+
+   -d, --debug=num            Enable debugging
+                                - it must be in the range:
+                                  0 to 9999
+   -V, --verbose              More verbose output
+                                - may appear multiple times
+       --tofu                 Enable trust on first use authentication
+                                - disabled as '--no-tofu'
+       --strict-tofu          Fail to connect if a known certificate has changed
+                                - disabled as '--no-strict-tofu'
+       --dane                 Enable DANE certificate verification (DNSSEC)
+                                - disabled as '--no-dane'
+       --local-dns            Use the local DNS server for DNSSEC resolving
+                                - disabled as '--no-local-dns'
+       --ca-verification      Enable CA certificate verification
+                                - disabled as '--no-ca-verification'
+                                - enabled by default
+       --ocsp                 Enable OCSP certificate verification
+                                - disabled as '--no-ocsp'
+   -r, --resume               Establish a session and resume
+   -e, --rehandshake          Establish a session and rehandshake
+   -s, --starttls             Connect, establish a plain session and start TLS
+       --app-proto=str        an alias for the 'starttls-proto' option
+       --starttls-proto=str   The application protocol to be used to obtain the server's certificate
+(https, ftp, smtp, imap)
+                                - prohibits the option 'starttls'
+   -u, --udp                  Use DTLS (datagram TLS) over UDP
+       --mtu=num              Set MTU for datagram TLS
+                                - it must be in the range:
+                                  0 to 17000
+       --crlf                 Send CR LF instead of LF
+       --x509fmtder           Use DER format for certificates to read from
+   -f, --fingerprint          Send the openpgp fingerprint, instead of the key
+       --print-cert           Print peer's certificate in PEM format
+       --save-cert=str        Save the peer's certificate chain in the specified file in PEM format
+       --save-ocsp=str        Save the peer's OCSP status response in the provided file
+       --dh-bits=num          The minimum number of bits allowed for DH
+       --priority=str         Priorities string
+       --x509cafile=str       Certificate file or PKCS #11 URL to use
+       --x509crlfile=file     CRL file to use
+                                - file must pre-exist
+       --pgpkeyfile=file      PGP Key file to use
+                                - file must pre-exist
+       --pgpkeyring=file      PGP Key ring file to use
+                                - file must pre-exist
+       --pgpcertfile=file     PGP Public Key (certificate) file to use
+                                - requires the option 'pgpkeyfile'
+                                - file must pre-exist
+       --x509keyfile=str      X.509 key file or PKCS #11 URL to use
+       --x509certfile=str     X.509 Certificate file or PKCS #11 URL to use
+                                - requires the option 'x509keyfile'
+       --pgpsubkey=str        PGP subkey to use (hex or auto)
+       --srpusername=str      SRP username to use
+       --srppasswd=str        SRP password to use
+       --pskusername=str      PSK username to use
+       --pskkey=str           PSK key (in hex) to use
+   -p, --port=str             The port or service to connect to
+       --insecure             Don't abort program if server certificate can't be validated
+       --ranges               Use length-hiding padding to prevent traffic analysis
+       --benchmark-ciphers    Benchmark individual ciphers
+       --benchmark-tls-kx     Benchmark TLS key exchange methods
+   -!, --benchmark-tls-ciphers  Benchmark TLS ciphers
+   -l, --list                 Print a list of the supported algorithms and modes
+                                - prohibits the option 'port'
+   -&quot;, --priority-list        Print a list of the supported priority strings
+   -#, --noticket             Don't allow session tickets
+   -$, --srtp-profiles=str    Offer SRTP profiles
+   -%, --alpn=str             Application layer protocol
+                                - may appear multiple times
+   -b, --heartbeat            Activate heartbeat support
+   -&amp;, --recordsize=num       The maximum record size to advertize
+                                - it must be in the range:
+                                  0 to 4096
+   -', --disable-sni          Do not send a Server Name Indication (SNI)
+   -(, --disable-extensions   Disable all the TLS extensions
+   -), --inline-commands      Inline commands of the form ^&lt;cmd&gt;^
+   -*, --inline-commands-prefix=str Change the default delimiter for inline commands.
+   -+, --provider=file        Specify the PKCS #11 provider library
+                                - file must pre-exist
+   -,, --fips140-mode         Reports the status of the FIPS140-2 mode in gnutls library
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+Operands and options may be intermixed.  They will be reordered.
+
+Simple client program to set up a TLS connection to some other computer.  It
+sets up a TLS connection and forwards data from the standard input to the
+secured socket and vice versa.
+
 </pre></div>
 
 <a name="gnutls_002dcli-debug"></a><a name="debug-option-_0028_002dd_0029-6"></a>
@@ -15557,10 +15996,10 @@ The TLS session will be initiated when EOF or a SIGALRM is received.
 <p>This is an alias for the <code>starttls-proto</code> option,
 see <a href="#gnutls_002dcli-starttls_002dproto">the starttls-proto option documentation</a>.
 </p>
-<a name="gnutls_002dcli-starttls_002dproto"></a><a name="starttls_002dproto-option"></a>
+<a name="gnutls_002dcli-starttls_002dproto"></a><a name="starttls_002dproto-option-1"></a>
 <h4 class="subheading">starttls-proto option</h4>
 
-<p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, ftp, smtp, imap)&rdquo; option.
+<p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, ftp, smtp, imap, ldap, xmpp)&rdquo; option.
 This option takes a string argument.
 </p>
 <p>This option has some usage constraints.  It:
@@ -15776,7 +16215,69 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-serv is unavailable - no --help
+<pre class="example">gnutls-serv - GnuTLS server
+Usage:  gnutls-serv [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]...
+
+   -d, --debug=num            Enable debugging
+                                - it must be in the range:
+                                  0 to 9999
+       --noticket             Don't accept session tickets
+   -g, --generate             Generate Diffie-Hellman and RSA-export parameters
+   -q, --quiet                Suppress some messages
+       --nodb                 Do not use a resumption database
+       --http                 Act as an HTTP server
+       --echo                 Act as an Echo server
+   -u, --udp                  Use DTLS (datagram TLS) over UDP
+       --mtu=num              Set MTU for datagram TLS
+                                - it must be in the range:
+                                  0 to 17000
+       --srtp-profiles=str    Offer SRTP profiles
+   -a, --disable-client-cert  Do not request a client certificate
+   -r, --require-client-cert  Require a client certificate
+       --verify-client-cert   If a client certificate is sent then verify it.
+   -b, --heartbeat            Activate heartbeat support
+       --x509fmtder           Use DER format for certificates to read from
+       --priority=str         Priorities string
+       --dhparams=file        DH params file to use
+                                - file must pre-exist
+       --x509cafile=str       Certificate file or PKCS #11 URL to use
+       --x509crlfile=file     CRL file to use
+                                - file must pre-exist
+       --pgpkeyfile=file      PGP Key file to use
+                                - file must pre-exist
+       --pgpkeyring=file      PGP Key ring file to use
+                                - file must pre-exist
+       --pgpcertfile=file     PGP Public Key (certificate) file to use
+                                - file must pre-exist
+       --x509keyfile=str      X.509 key file or PKCS #11 URL to use
+       --x509certfile=str     X.509 Certificate file or PKCS #11 URL to use
+       --x509dsakeyfile=str   Alternative X.509 key file or PKCS #11 URL to use
+       --x509dsacertfile=str  Alternative X.509 Certificate file or PKCS #11 URL to use
+       --x509ecckeyfile=str   Alternative X.509 key file or PKCS #11 URL to use
+       --x509ecccertfile=str  Alternative X.509 Certificate file or PKCS #11 URL to use
+       --pgpsubkey=str        PGP subkey to use (hex or auto)
+       --srppasswd=file       SRP password file to use
+                                - file must pre-exist
+       --srppasswdconf=file   SRP password configuration file to use
+                                - file must pre-exist
+       --pskpasswd=file       PSK password file to use
+                                - file must pre-exist
+       --pskhint=str          PSK identity hint to use
+       --ocsp-response=file   The OCSP response to send to client
+                                - file must pre-exist
+   -p, --port=num             The port to connect to
+   -l, --list                 Print a list of the supported algorithms and modes
+       --provider=file        Specify the PKCS #11 provider library
+                                - file must pre-exist
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+
+Server program that listens to incoming TLS connections.
+
 </pre></div>
 
 <a name="gnutls_002dserv-debug"></a><a name="debug-option-_0028_002dd_0029-7"></a>
@@ -16042,7 +16543,35 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-cli-debug is unavailable - no --help
+<pre class="example">gnutls-cli-debug - GnuTLS debug client
+Usage:  gnutls-cli-debug [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... 
+
+   -d, --debug=num            Enable debugging
+                                - it must be in the range:
+                                  0 to 9999
+   -V, --verbose              More verbose output
+                                - may appear multiple times
+   -p, --port=num             The port to connect to
+                                - it must be in the range:
+                                  0 to 65536
+       --app-proto=str        an alias for the 'starttls-proto' option
+       --starttls-proto=str   The application protocol to be used to obtain the server's certificate
+(https, ftp, smtp, imap, ldap, xmpp)
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+Operands and options may be intermixed.  They will be reordered.
+
+TLS debug client.  It sets up multiple TLS connections to a server and
+queries its capabilities.  It was created to assist in debugging GnuTLS,
+but it might be useful to extract a TLS server's capabilities.  It connects
+to a TLS server, performs tests and print the server's capabilities.  If
+called with the `-v' parameter more checks will be performed.  Can be used
+to check for servers with special needs or bugs.
+
 </pre></div>
 
 <a name="gnutls_002dcli_002ddebug-debug"></a><a name="debug-option-_0028_002dd_0029-8"></a>
@@ -16051,6 +16580,18 @@ with a status code of 0.
 <p>This is the &ldquo;enable debugging&rdquo; option.
 This option takes a number argument.
 Specifies the debug level.
+<a name="gnutls_002dcli_002ddebug-app_002dproto"></a></p><a name="app_002dproto-option-2"></a>
+<h4 class="subheading">app-proto option</h4>
+
+<p>This is an alias for the <code>starttls-proto</code> option,
+see <a href="#gnutls_002dcli_002ddebug-starttls_002dproto">the starttls-proto option documentation</a>.
+</p>
+<a name="gnutls_002dcli_002ddebug-starttls_002dproto"></a><a name="starttls_002dproto-option-2"></a>
+<h4 class="subheading">starttls-proto option</h4>
+
+<p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, ftp, smtp, imap, ldap, xmpp)&rdquo; option.
+This option takes a string argument.
+Specify the application layer protocol for STARTTLS. If the protocol is supported, gnutls-cli will proceed to the TLS negotiation.
 <a name="gnutls_002dcli_002ddebug-exit-status"></a></p><a name="gnutls_002dcli_002ddebug-exit-status-1"></a>
 <h4 class="subheading">gnutls-cli-debug exit status</h4>
 
@@ -16070,50 +16611,53 @@ Specifies the debug level.
 <h4 class="subheading">gnutls-cli-debug Examples</h4>
 <div class="example">
 <pre class="example">$ ../src/gnutls-cli-debug localhost
-Resolving 'localhost'...
-Connecting to '127.0.0.1:443'...
-Checking for SSL 3.0 support... yes
-Checking whether %COMPAT is required... no
-Checking for TLS 1.0 support... yes
-Checking for TLS 1.1 support... no
-Checking fallback from TLS 1.1 to... TLS 1.0
-Checking for TLS 1.2 support... no
-Checking whether we need to disable TLS 1.0... N/A
-Checking for Safe renegotiation support... yes
-Checking for Safe renegotiation support (SCSV)... yes
-Checking for HTTPS server name... not checked
-Checking for version rollback bug in RSA PMS... no
-Checking for version rollback bug in Client Hello... no
-Checking whether the server ignores the RSA PMS version... no
-Checking whether the server can accept Hello Extensions... yes
-Checking whether the server can accept small records (512 bytes)... yes
-Checking whether the server can accept cipher suites not in SSL 3.0 spec... yes
-Checking whether the server can accept a bogus TLS record version in the client hello... yes
-Checking for certificate information... N/A
-Checking for trusted CAs... N/A
-Checking whether the server understands TLS closure alerts... partially
-Checking whether the server supports session resumption... yes
-Checking for export-grade ciphersuite support... no
-Checking RSA-export ciphersuite info... N/A
-Checking for anonymous authentication support... no
-Checking anonymous Diffie-Hellman group info... N/A
-Checking for ephemeral Diffie-Hellman support... no
-Checking ephemeral Diffie-Hellman group info... N/A
-Checking for ephemeral EC Diffie-Hellman support... yes
-Checking ephemeral EC Diffie-Hellman group info...
- Curve SECP256R1 
-Checking for AES-GCM cipher support... no
-Checking for AES-CBC cipher support... yes
-Checking for CAMELLIA cipher support... no
-Checking for 3DES-CBC cipher support... yes
-Checking for ARCFOUR 128 cipher support... yes
-Checking for ARCFOUR 40 cipher support... no
-Checking for MD5 MAC support... yes
-Checking for SHA1 MAC support... yes
-Checking for SHA256 MAC support... no
-Checking for ZLIB compression support... no
-Checking for max record size... no
-Checking for OpenPGP authentication support... no
+GnuTLS debug client 3.5.0
+Checking localhost:443
+                             for SSL 3.0 (RFC6101) support... yes
+                        whether we need to disable TLS 1.2... no
+                        whether we need to disable TLS 1.1... no
+                        whether we need to disable TLS 1.0... no
+                        whether %NO_EXTENSIONS is required... no
+                               whether %COMPAT is required... no
+                             for TLS 1.0 (RFC2246) support... yes
+                             for TLS 1.1 (RFC4346) support... yes
+                             for TLS 1.2 (RFC5246) support... yes
+                                  fallback from TLS 1.6 to... TLS1.2
+                        for RFC7507 inappropriate fallback... yes
+                                     for HTTPS server name... Local
+                               for certificate chain order... sorted
+                  for safe renegotiation (RFC5746) support... yes
+                     for Safe renegotiation support (SCSV)... no
+                    for encrypt-then-MAC (RFC7366) support... no
+                   for ext master secret (RFC7627) support... no
+                           for heartbeat (RFC6520) support... no
+                       for version rollback bug in RSA PMS... dunno
+                  for version rollback bug in Client Hello... no
+            whether the server ignores the RSA PMS version... yes
+whether small records (512 bytes) are tolerated on handshake... yes
+    whether cipher suites not in SSL 3.0 spec are accepted... yes
+whether a bogus TLS record version in the client hello is accepted... yes
+         whether the server understands TLS closure alerts... partially
+            whether the server supports session resumption... yes
+                      for anonymous authentication support... no
+                      for ephemeral Diffie-Hellman support... no
+                   for ephemeral EC Diffie-Hellman support... yes
+                    ephemeral EC Diffie-Hellman group info... SECP256R1
+                  for AES-128-GCM cipher (RFC5288) support... yes
+                  for AES-128-CCM cipher (RFC6655) support... no
+                for AES-128-CCM-8 cipher (RFC6655) support... no
+                  for AES-128-CBC cipher (RFC3268) support... yes
+             for CAMELLIA-128-GCM cipher (RFC6367) support... no
+             for CAMELLIA-128-CBC cipher (RFC5932) support... no
+                     for 3DES-CBC cipher (RFC2246) support... yes
+                  for ARCFOUR 128 cipher (RFC2246) support... yes
+                                       for MD5 MAC support... yes
+                                      for SHA1 MAC support... yes
+                                    for SHA256 MAC support... yes
+                              for ZLIB compression support... no
+                     for max record size (RFC6066) support... no
+                for OCSP status response (RFC6066) support... no
+              for OpenPGP authentication (RFC6091) support... no
 </pre></div>
 
 <hr>
@@ -17178,6 +17722,7 @@ expressions.
 <tr><td width="15%">-345</td><td width="40%">GNUTLS_E_SOCKETS_INIT_ERROR</td><td width="37%">Error in sockets initialization.</td></tr>
 <tr><td width="15%">-346</td><td width="40%">GNUTLS_E_KEY_IMPORT_FAILED</td><td width="37%">Failed to import the key into store.</td></tr>
 <tr><td width="15%">-347</td><td width="40%">GNUTLS_E_INAPPROPRIATE_FALLBACK</td><td width="37%">A connection with inappropriate fallback was attempted.</td></tr>
+<tr><td width="15%">-348</td><td width="40%">GNUTLS_E_CERTIFICATE_VERIFICATION_ERROR</td><td width="37%">Error in the certificate verification.</td></tr>
 <tr><td width="15%">-400</td><td width="40%">GNUTLS_E_SELF_TEST_ERROR</td><td width="37%">Error while performing self checks.</td></tr>
 <tr><td width="15%">-401</td><td width="40%">GNUTLS_E_NO_SELF_TEST</td><td width="37%">There is no self test for this algorithm.</td></tr>
 <tr><td width="15%">-402</td><td width="40%">GNUTLS_E_LIB_IN_ERROR_STATE</td><td width="37%">An error has been detected in the library and cannot continue operations.</td></tr>
@@ -17462,6 +18007,7 @@ Next: <a href="#API-reference" accesskey="n" rel="next">API reference</a>, Previ
 <dt><code>RSA-PSK</code></dt>
 <dt><code>DHE-PSK</code></dt>
 <dt><code>ECDHE-PSK</code></dt>
+<dt><code>RSA-EXPORT</code></dt>
 </dl>
 
 <a name="Public-key-algorithms-2"></a>
@@ -18361,7 +18907,7 @@ of certificates and override any defaults.  The provided flags must be an OR of 
 <a name="gnutls_005fcertificate_005fset_005fverify_005ffunction-1"></a>
 <h4 class="subheading">gnutls_certificate_set_verify_function</h4>
 <a name="gnutls_005fcertificate_005fset_005fverify_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fset_005fverify_005ffunction-1"></a>Function: <em>void</em> <strong>gnutls_certificate_set_verify_function</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, gnutls_certificate_verify_function * <var>func</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fset_005fverify_005ffunction"></a>Function: <em>void</em> <strong>gnutls_certificate_set_verify_function</strong> <em>(gnutls_certificate_credentials_t <var>cred</var>, gnutls_certificate_verify_function * <var>func</var>)</em></dt>
 <dd><p><var>cred</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
 <p><var>func</var>: is the callback function
@@ -18931,7 +19477,9 @@ If a key purpose OID is provided and the end-certificate contains the extended k
 usage PKIX extension, it will be required to be have the provided key purpose 
 or be marked for any purpose, otherwise verification will fail with <code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code>  status.
 </p>
-<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0) on success.
+<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0)
+when the peer&rsquo;s certificate was successfully parsed, whether or not
+it was verified.
 </p>
 <p><strong>Since:</strong> 3.3.0
 </p></dd></dl>
@@ -18963,13 +19511,15 @@ size are set. To override them use <code>gnutls_certificate_set_verify_limits()<
 the verified certificate belongs to the actual peer, see <code>gnutls_x509_crt_check_hostname()</code> ,
 or use <code>gnutls_certificate_verify_peers3()</code> .
 </p>
-<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0) on success.
+<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0)
+when the peer&rsquo;s certificate was successfully parsed, whether or not
+it was verified.
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fverify_005fpeers3-1"></a>
 <h4 class="subheading">gnutls_certificate_verify_peers3</h4>
 <a name="gnutls_005fcertificate_005fverify_005fpeers3"></a><dl>
-<dt><a name="index-gnutls_005fcertificate_005fverify_005fpeers3-1"></a>Function: <em>int</em> <strong>gnutls_certificate_verify_peers3</strong> <em>(gnutls_session_t <var>session</var>, const char * <var>hostname</var>, unsigned int * <var>status</var>)</em></dt>
+<dt><a name="index-gnutls_005fcertificate_005fverify_005fpeers3"></a>Function: <em>int</em> <strong>gnutls_certificate_verify_peers3</strong> <em>(gnutls_session_t <var>session</var>, const char * <var>hostname</var>, unsigned int * <var>status</var>)</em></dt>
 <dd><p><var>session</var>: is a gnutls session
 </p>
 <p><var>hostname</var>: is the expected name of the peer; may be <code>NULL</code> 
@@ -18992,7 +19542,9 @@ If names do not match the <code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag
 <p>In order to verify the purpose of the end-certificate (by checking the extended
 key usage), use <code>gnutls_certificate_verify_peers()</code> .
 </p>
-<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0) on success.
+<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0) 
+when the peer&rsquo;s certificate was successfully parsed, whether or not
+it was verified.
 </p>
 <p><strong>Since:</strong> 3.1.4
 </p></dd></dl>
@@ -20497,7 +21049,7 @@ encoding used by PSK password files.
  <code>result</code> , and on return it will contain the number of bytes written.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the buffer given is not
-long enough, or 0 on success.
+long enough, <code>GNUTLS_E_PARSING_ERROR</code>  on invalid hex data, or 0 on success.
 </p></dd></dl>
 
 <a name="gnutls_005fhex_005fdecode2-1"></a>
@@ -20511,8 +21063,7 @@ long enough, or 0 on success.
 <p>This function will decode the given encoded data, using the hex
 encoding used by PSK password files.
 </p>
-<p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the buffer given is not
-long enough, or 0 on success.
+<p><strong>Returns:</strong> <code>GNUTLS_E_PARSING_ERROR</code>  on invalid hex data, or 0 on success.
 </p></dd></dl>
 
 <a name="gnutls_005fhex_005fencode-1"></a>
@@ -22036,19 +22587,18 @@ due to TLS (or DTLS) per record.
 <p>This function has the similar semantics with <code>recv()</code> .  The only
 difference is that it accepts a GnuTLS session, and uses different
 error codes.
-In the special case that a server requests a renegotiation, the
-client may receive an error code of <code>GNUTLS_E_REHANDSHAKE</code> .  This
-message may be simply ignored, replied with an alert
+In the special case that the peer requests a renegotiation, the
+caller will receive an error code of <code>GNUTLS_E_REHANDSHAKE</code> .  In case
+of a client, this message may be simply ignored, replied with an alert
 <code>GNUTLS_A_NO_RENEGOTIATION</code> , or replied with a new handshake,
-depending on the client&rsquo;s will.
-If <code>EINTR</code>  is returned by the internal push function (the default
+depending on the client&rsquo;s will. A server receiving this error code
+can only initiate a new handshake or terminate the session.
+</p>
+<p>If <code>EINTR</code>  is returned by the internal push function (the default
 is <code>recv()</code> ) then <code>GNUTLS_E_INTERRUPTED</code>  will be returned.  If
 <code>GNUTLS_E_INTERRUPTED</code>  or <code>GNUTLS_E_AGAIN</code>  is returned, you must
 call this function again to get the data.  See also
 <code>gnutls_record_get_direction()</code> .
-A server may also receive <code>GNUTLS_E_REHANDSHAKE</code>  when a client has
-initiated a handshake. In that case the server can only initiate a
-handshake or terminate the connection.
 </p>
 <p><strong>Returns:</strong> The number of bytes received and zero on EOF (for stream
 connections).  A negative error code is returned in case of an error.  
@@ -22619,6 +23169,24 @@ will be garbage.
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
 
+<a name="gnutls_005fsession_005fget_005fverify_005fcert_005fstatus-1"></a>
+<h4 class="subheading">gnutls_session_get_verify_cert_status</h4>
+<a name="gnutls_005fsession_005fget_005fverify_005fcert_005fstatus"></a><dl>
+<dt><a name="index-gnutls_005fsession_005fget_005fverify_005fcert_005fstatus"></a>Function: <em>unsigned int</em> <strong>gnutls_session_get_verify_cert_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a gnutls session
+</p>
+<p>This function returns the status of the verification when initiated
+via auto-verification, i.e., by <code>gnutls_session_set_verify_cert2()</code>  or
+<code>gnutls_session_set_verify_cert()</code> . If no certificate verification
+was occurred then the return value would be set to ((unsigned int)-1).
+</p>
+<p>The certificate verification status is the same as in <code>gnutls_certificate_verify_peers()</code> .
+</p>
+<p><strong>Returns:</strong> the certificate verification status.
+</p>
+<p><strong>Since:</strong> 3.5.0
+</p></dd></dl>
+
 <a name="gnutls_005fsession_005fis_005fresumed-1"></a>
 <h4 class="subheading">gnutls_session_is_resumed</h4>
 <a name="gnutls_005fsession_005fis_005fresumed"></a><dl>
@@ -22726,6 +23294,85 @@ an error code is returned.
 <p>This function will set (associate) the user given pointer  <code>ptr</code> to
 the session structure.  This pointer can be accessed with
 <code>gnutls_session_get_ptr()</code> .
+</p></dd></dl>
+
+<a name="gnutls_005fsession_005fset_005fverify_005fcert-1"></a>
+<h4 class="subheading">gnutls_session_set_verify_cert</h4>
+<a name="gnutls_005fsession_005fset_005fverify_005fcert"></a><dl>
+<dt><a name="index-gnutls_005fsession_005fset_005fverify_005fcert-1"></a>Function: <em>void</em> <strong>gnutls_session_set_verify_cert</strong> <em>(gnutls_session_t <var>session</var>, const char * <var>hostname</var>, unsigned <var>flags</var>)</em></dt>
+<dd><p><var>session</var>: is a gnutls session
+</p>
+<p><var>hostname</var>: is the expected name of the peer; may be <code>NULL</code> 
+</p>
+<p><var>flags</var>: flags for certificate verification &ndash; <code>gnutls_certificate_verify_flags</code> 
+</p>
+<p>This function instructs GnuTLS to verify the peer&rsquo;s certificate
+using the provided hostname. If the verification fails the handshake
+will also fail with <code>GNUTLS_E_CERTIFICATE_VERIFICATION_ERROR</code> . In that
+case the verification result can be obtained using <code>gnutls_session_get_verify_cert_status()</code> .
+</p>
+<p>The  <code>hostname</code> pointer provided must remain valid for the lifetime
+of the session. More precisely it should be available during any subsequent
+handshakes. If no hostname is provided, no hostname verification
+will be performed. For a more advanced verification function check
+<code>gnutls_session_set_verify_cert2()</code> .
+</p>
+<p>The <code>gnutls_session_set_verify_cert()</code>  function is intended to be used by TLS
+clients to verify the server&rsquo;s certificate.
+</p>
+<p><strong>Since:</strong> 3.5.0
+</p></dd></dl>
+
+<a name="gnutls_005fsession_005fset_005fverify_005fcert2-1"></a>
+<h4 class="subheading">gnutls_session_set_verify_cert2</h4>
+<a name="gnutls_005fsession_005fset_005fverify_005fcert2"></a><dl>
+<dt><a name="index-gnutls_005fsession_005fset_005fverify_005fcert2"></a>Function: <em>void</em> <strong>gnutls_session_set_verify_cert2</strong> <em>(gnutls_session_t <var>session</var>, gnutls_typed_vdata_st * <var>data</var>, unsigned <var>elements</var>, unsigned <var>flags</var>)</em></dt>
+<dd><p><var>session</var>: is a gnutls session
+</p>
+<p><var>data</var>: an array of typed data
+</p>
+<p><var>elements</var>: the number of data elements
+</p>
+<p><var>flags</var>: flags for certificate verification &ndash; <code>gnutls_certificate_verify_flags</code> 
+</p>
+<p>This function instructs GnuTLS to verify the peer&rsquo;s certificate
+using the provided typed data information. If the verification fails the handshake
+will also fail with <code>GNUTLS_E_CERTIFICATE_VERIFICATION_ERROR</code> . In that
+case the verification result can be obtained using <code>gnutls_session_get_verify_cert_status()</code> .
+</p>
+<p>The acceptable typed data are the same as in <code>gnutls_certificate_verify_peers()</code> ,
+and once set must remain valid for the lifetime of the session. More precisely
+they should be available during any subsequent handshakes.
+</p>
+<p><strong>Since:</strong> 3.5.0
+</p></dd></dl>
+
+<a name="gnutls_005fsession_005fset_005fverify_005ffunction-1"></a>
+<h4 class="subheading">gnutls_session_set_verify_function</h4>
+<a name="gnutls_005fsession_005fset_005fverify_005ffunction"></a><dl>
+<dt><a name="index-gnutls_005fsession_005fset_005fverify_005ffunction"></a>Function: <em>void</em> <strong>gnutls_session_set_verify_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_certificate_verify_function * <var>func</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p><var>func</var>: is the callback function
+</p>
+<p>This function sets a callback to be called when peer&rsquo;s certificate
+has been received in order to verify it on receipt rather than
+doing after the handshake is completed. This overrides any callback
+set using <code>gnutls_certificate_set_verify_function()</code> .
+</p>
+<p>The callback&rsquo;s function prototype is:
+int (*callback)(gnutls_session_t);
+</p>
+<p>If the callback function is provided then gnutls will call it, in the
+handshake, just after the certificate message has been received.
+To verify or obtain the certificate the <code>gnutls_certificate_verify_peers2()</code> ,
+<code>gnutls_certificate_type_get()</code> , <code>gnutls_certificate_get_peers()</code>  functions
+can be used.
+</p>
+<p>The callback function should return 0 for the handshake to continue
+or non-zero to terminate.
+</p>
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fticket_005fenable_005fclient-1"></a>
@@ -34176,6 +34823,33 @@ negative error value.
 <p><strong>Since:</strong> 3.3.8
 </p></dd></dl>
 
+<a name="gnutls_005fpkcs11_005fcopy_005fpubkey-1"></a>
+<h4 class="subheading">gnutls_pkcs11_copy_pubkey</h4>
+<a name="gnutls_005fpkcs11_005fcopy_005fpubkey"></a><dl>
+<dt><a name="index-gnutls_005fpkcs11_005fcopy_005fpubkey"></a>Function: <em>int</em> <strong>gnutls_pkcs11_copy_pubkey</strong> <em>(const char * <var>token_url</var>, gnutls_pubkey_t <var>pubkey</var>, const char * <var>label</var>, const gnutls_datum_t * <var>cid</var>, unsigned int <var>key_usage</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>token_url</var>: A PKCS <code>11</code>  URL specifying a token
+</p>
+<p><var>pubkey</var>: The public key to copy
+</p>
+<p><var>label</var>: The name to be used for the stored data
+</p>
+<p><var>cid</var>: The CKA_ID to set for the object -if NULL, the ID will be derived from the public key
+</p>
+<p><var>key_usage</var>: One of GNUTLS_KEY_*
+</p>
+<p><var>flags</var>: One of GNUTLS_PKCS11_OBJ_FLAG_*
+</p>
+<p>This function will copy a public key object into a PKCS <code>11</code>  token specified by
+a URL. Valid flags to mark the key: <code>GNUTLS_PKCS11_OBJ_FLAG_MARK_TRUSTED</code> ,
+<code>GNUTLS_PKCS11_OBJ_FLAG_MARK_SENSITIVE</code> , <code>GNUTLS_PKCS11_OBJ_FLAG_MARK_PRIVATE</code> ,
+<code>GNUTLS_PKCS11_OBJ_FLAG_MARK_CA</code> , <code>GNUTLS_PKCS11_OBJ_FLAG_MARK_ALWAYS_AUTH</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.6
+</p></dd></dl>
+
 <a name="gnutls_005fpkcs11_005fcopy_005fsecret_005fkey-1"></a>
 <h4 class="subheading">gnutls_pkcs11_copy_secret_key</h4>
 <a name="gnutls_005fpkcs11_005fcopy_005fsecret_005fkey"></a><dl>
@@ -39535,8 +40209,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fretrieve_005ffunction2"><code>gnutls_certificate_set_retrieve_function2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Abstract-key-API">Abstract key API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005ftrust_005flist"><code>gnutls_certificate_set_trust_list</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fverify_005fflags"><code>gnutls_certificate_set_verify_flags</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fverify_005ffunction"><code>gnutls_certificate_set_verify_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Certificate-credentials">Certificate credentials</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fverify_005ffunction-1"><code>gnutls_certificate_set_verify_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fverify_005ffunction"><code>gnutls_certificate_set_verify_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fverify_005flimits"><code>gnutls_certificate_set_verify_limits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fx509_005fcrl"><code>gnutls_certificate_set_x509_crl</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fx509_005fcrl_005ffile"><code>gnutls_certificate_set_x509_crl_file</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -39563,8 +40236,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fverify_005fflags-1"><code>gnutls_certificate_verify_flags</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Certificate-verification">Certificate verification</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fverify_005fpeers"><code>gnutls_certificate_verify_peers</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fverify_005fpeers2"><code>gnutls_certificate_verify_peers2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fverify_005fpeers3"><code>gnutls_certificate_verify_peers3</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Certificate-credentials">Certificate credentials</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fverify_005fpeers3-1"><code>gnutls_certificate_verify_peers3</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fverify_005fpeers3"><code>gnutls_certificate_verify_peers3</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcheck_005fversion"><code>gnutls_check_version</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005fadd_005fauth"><code>gnutls_cipher_add_auth</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcipher_005fdecrypt"><code>gnutls_cipher_decrypt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Cryptographic-API">Cryptographic API</a></td></tr>
@@ -39852,6 +40524,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fperror"><code>gnutls_perror</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fadd_005fprovider"><code>gnutls_pkcs11_add_provider</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fcopy_005fattached_005fextension"><code>gnutls_pkcs11_copy_attached_extension</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fcopy_005fpubkey"><code>gnutls_pkcs11_copy_pubkey</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fcopy_005fsecret_005fkey"><code>gnutls_pkcs11_copy_secret_key</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fcopy_005fx509_005fcrt"><code>gnutls_pkcs11_copy_x509_crt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-11-API">PKCS 11 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs11_005fcopy_005fx509_005fcrt2"><code>gnutls_pkcs11_copy_x509_crt2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Writing-objects">Writing objects</a></td></tr>
@@ -40149,6 +40822,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fget_005fid2"><code>gnutls_session_get_id2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fget_005fptr"><code>gnutls_session_get_ptr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fget_005frandom"><code>gnutls_session_get_random</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fget_005fverify_005fcert_005fstatus"><code>gnutls_session_get_verify_cert_status</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fis_005fresumed"><code>gnutls_session_is_resumed</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Session-resumption">Session resumption</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fis_005fresumed-1"><code>gnutls_session_is_resumed</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fresumption_005frequested"><code>gnutls_session_resumption_requested</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Session-resumption">Session resumption</a></td></tr>
@@ -40157,6 +40831,10 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fset_005fid"><code>gnutls_session_set_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fset_005fpremaster"><code>gnutls_session_set_premaster</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fset_005fptr"><code>gnutls_session_set_ptr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fset_005fverify_005fcert"><code>gnutls_session_set_verify_cert</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Certificate-credentials">Certificate credentials</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fset_005fverify_005fcert-1"><code>gnutls_session_set_verify_cert</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fset_005fverify_005fcert2"><code>gnutls_session_set_verify_cert2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fset_005fverify_005ffunction"><code>gnutls_session_set_verify_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fticket_005fenable_005fclient"><code>gnutls_session_ticket_enable_client</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fticket_005fenable_005fserver"><code>gnutls_session_ticket_enable_server</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Session-resumption">Session resumption</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fsession_005fticket_005fenable_005fserver-1"><code>gnutls_session_ticket_enable_server</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>

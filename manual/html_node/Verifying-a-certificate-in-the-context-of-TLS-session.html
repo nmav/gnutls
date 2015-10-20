@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.5 of GnuTLS.
+3.4.6 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.5: Verifying a certificate in the context of TLS session</title>
+<title>GnuTLS 3.4.6: Verifying a certificate in the context of TLS session</title>
 
-<meta name="description" content="GnuTLS 3.4.5: Verifying a certificate in the context of TLS session">
-<meta name="keywords" content="GnuTLS 3.4.5: Verifying a certificate in the context of TLS session">
+<meta name="description" content="GnuTLS 3.4.6: Verifying a certificate in the context of TLS session">
+<meta name="keywords" content="GnuTLS 3.4.6: Verifying a certificate in the context of TLS session">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -181,14 +181,19 @@ via a file, a directory or use the system-specified certificate authories.
 Unless the authorities are application specific, it is generally recommended
 to use the system trust storage (see <a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fx509_005fsystem_005ftrust">gnutls_certificate_set_x509_system_trust</a>).
 </p>
-<p>Unlike the previous section it is not required to setup a trusted list, and 
-the function <a href="Core-TLS-API.html#gnutls_005fcertificate_005fverify_005fpeers3">gnutls_certificate_verify_peers3</a> 
-is used to verify the peer&rsquo;s certificate chain and identity. The reported
-verification status is identical to the verification functions described 
+<p>Unlike the previous section it is not required to setup a trusted list, and there
+are two approaches to verify the peer&rsquo;s certificate and identity.
+The recommended in GnuTLS 3.5.0 and later is via the <a href="Core-TLS-API.html#gnutls_005fsession_005fset_005fverify_005fcert">gnutls_session_set_verify_cert</a>,
+but for older GnuTLS versions you may use an explicit callback set via
+<a href="Core-TLS-API.html#gnutls_005fcertificate_005fset_005fverify_005ffunction">gnutls_certificate_set_verify_function</a> and then utilize
+<a href="Core-TLS-API.html#gnutls_005fcertificate_005fverify_005fpeers3">gnutls_certificate_verify_peers3</a> for verification.
+The reported verification status is identical to the verification functions described 
 in the previous section.
-Note that in certain cases it is required to check the marked purpose of
+</p>
+<p>Note that in certain cases it is required to check the marked purpose of
 the end certificate (e.g. <code>GNUTLS_KP_TLS_WWW_SERVER</code>); in these cases
-the more advanced <a href="Core-TLS-API.html#gnutls_005fcertificate_005fverify_005fpeers">gnutls_certificate_verify_peers</a> should be used instead.
+the more advanced <a href="Core-TLS-API.html#gnutls_005fsession_005fset_005fverify_005fcert2">gnutls_session_set_verify_cert2</a> and
+<a href="Core-TLS-API.html#gnutls_005fcertificate_005fverify_005fpeers">gnutls_certificate_verify_peers</a> should be used instead.
 </p>
 <p>There is also the possibility to pass some input to the verification
 functions in the form of flags. For <a href="X509-certificate-API.html#gnutls_005fx509_005ftrust_005flist_005fverify_005fcrt2">gnutls_x509_trust_list_verify_crt2</a> the

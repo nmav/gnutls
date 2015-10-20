@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.5 of GnuTLS.
+3.4.6 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.5: gnutls-cli-debug Invocation</title>
+<title>GnuTLS 3.4.6: gnutls-cli-debug Invocation</title>
 
-<meta name="description" content="GnuTLS 3.4.5: gnutls-cli-debug Invocation">
-<meta name="keywords" content="GnuTLS 3.4.5: gnutls-cli-debug Invocation">
+<meta name="description" content="GnuTLS 3.4.6: gnutls-cli-debug Invocation">
+<meta name="keywords" content="GnuTLS 3.4.6: gnutls-cli-debug Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -194,7 +194,35 @@ used to select the program, defaulting to <samp>more</samp>.  Both will exit
 with a status code of 0.
 </p>
 <div class="example">
-<pre class="example">gnutls-cli-debug is unavailable - no --help
+<pre class="example">gnutls-cli-debug - GnuTLS debug client
+Usage:  gnutls-cli-debug [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;] ]... 
+
+   -d, --debug=num            Enable debugging
+                                - it must be in the range:
+                                  0 to 9999
+   -V, --verbose              More verbose output
+                                - may appear multiple times
+   -p, --port=num             The port to connect to
+                                - it must be in the range:
+                                  0 to 65536
+       --app-proto=str        an alias for the 'starttls-proto' option
+       --starttls-proto=str   The application protocol to be used to obtain the server's certificate
+(https, ftp, smtp, imap, ldap, xmpp)
+   -v, --version[=arg]        output version information and exit
+   -h, --help                 display extended usage information and exit
+   -!, --more-help            extended usage information passed thru pager
+
+Options are specified by doubled hyphens and their name or by a single
+hyphen and the flag character.
+Operands and options may be intermixed.  They will be reordered.
+
+TLS debug client.  It sets up multiple TLS connections to a server and
+queries its capabilities.  It was created to assist in debugging GnuTLS,
+but it might be useful to extract a TLS server's capabilities.  It connects
+to a TLS server, performs tests and print the server's capabilities.  If
+called with the `-v' parameter more checks will be performed.  Can be used
+to check for servers with special needs or bugs.
+
 </pre></div>
 
 <a name="gnutls_002dcli_002ddebug-debug"></a><a name="debug-option-_0028_002dd_0029-8"></a>
@@ -203,6 +231,18 @@ with a status code of 0.
 <p>This is the &ldquo;enable debugging&rdquo; option.
 This option takes a number argument.
 Specifies the debug level.
+<a name="gnutls_002dcli_002ddebug-app_002dproto"></a></p><a name="app_002dproto-option-2"></a>
+<h4 class="subheading">app-proto option</h4>
+
+<p>This is an alias for the <code>starttls-proto</code> option,
+see <a href="#gnutls_002dcli_002ddebug-starttls_002dproto">the starttls-proto option documentation</a>.
+</p>
+<a name="gnutls_002dcli_002ddebug-starttls_002dproto"></a><a name="starttls_002dproto-option-2"></a>
+<h4 class="subheading">starttls-proto option</h4>
+
+<p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, ftp, smtp, imap, ldap, xmpp)&rdquo; option.
+This option takes a string argument.
+Specify the application layer protocol for STARTTLS. If the protocol is supported, gnutls-cli will proceed to the TLS negotiation.
 <a name="gnutls_002dcli_002ddebug-exit-status"></a></p><a name="gnutls_002dcli_002ddebug-exit-status-1"></a>
 <h4 class="subheading">gnutls-cli-debug exit status</h4>
 
@@ -222,50 +262,53 @@ Specifies the debug level.
 <h4 class="subheading">gnutls-cli-debug Examples</h4>
 <div class="example">
 <pre class="example">$ ../src/gnutls-cli-debug localhost
-Resolving 'localhost'...
-Connecting to '127.0.0.1:443'...
-Checking for SSL 3.0 support... yes
-Checking whether %COMPAT is required... no
-Checking for TLS 1.0 support... yes
-Checking for TLS 1.1 support... no
-Checking fallback from TLS 1.1 to... TLS 1.0
-Checking for TLS 1.2 support... no
-Checking whether we need to disable TLS 1.0... N/A
-Checking for Safe renegotiation support... yes
-Checking for Safe renegotiation support (SCSV)... yes
-Checking for HTTPS server name... not checked
-Checking for version rollback bug in RSA PMS... no
-Checking for version rollback bug in Client Hello... no
-Checking whether the server ignores the RSA PMS version... no
-Checking whether the server can accept Hello Extensions... yes
-Checking whether the server can accept small records (512 bytes)... yes
-Checking whether the server can accept cipher suites not in SSL 3.0 spec... yes
-Checking whether the server can accept a bogus TLS record version in the client hello... yes
-Checking for certificate information... N/A
-Checking for trusted CAs... N/A
-Checking whether the server understands TLS closure alerts... partially
-Checking whether the server supports session resumption... yes
-Checking for export-grade ciphersuite support... no
-Checking RSA-export ciphersuite info... N/A
-Checking for anonymous authentication support... no
-Checking anonymous Diffie-Hellman group info... N/A
-Checking for ephemeral Diffie-Hellman support... no
-Checking ephemeral Diffie-Hellman group info... N/A
-Checking for ephemeral EC Diffie-Hellman support... yes
-Checking ephemeral EC Diffie-Hellman group info...
- Curve SECP256R1 
-Checking for AES-GCM cipher support... no
-Checking for AES-CBC cipher support... yes
-Checking for CAMELLIA cipher support... no
-Checking for 3DES-CBC cipher support... yes
-Checking for ARCFOUR 128 cipher support... yes
-Checking for ARCFOUR 40 cipher support... no
-Checking for MD5 MAC support... yes
-Checking for SHA1 MAC support... yes
-Checking for SHA256 MAC support... no
-Checking for ZLIB compression support... no
-Checking for max record size... no
-Checking for OpenPGP authentication support... no
+GnuTLS debug client 3.5.0
+Checking localhost:443
+                             for SSL 3.0 (RFC6101) support... yes
+                        whether we need to disable TLS 1.2... no
+                        whether we need to disable TLS 1.1... no
+                        whether we need to disable TLS 1.0... no
+                        whether %NO_EXTENSIONS is required... no
+                               whether %COMPAT is required... no
+                             for TLS 1.0 (RFC2246) support... yes
+                             for TLS 1.1 (RFC4346) support... yes
+                             for TLS 1.2 (RFC5246) support... yes
+                                  fallback from TLS 1.6 to... TLS1.2
+                        for RFC7507 inappropriate fallback... yes
+                                     for HTTPS server name... Local
+                               for certificate chain order... sorted
+                  for safe renegotiation (RFC5746) support... yes
+                     for Safe renegotiation support (SCSV)... no
+                    for encrypt-then-MAC (RFC7366) support... no
+                   for ext master secret (RFC7627) support... no
+                           for heartbeat (RFC6520) support... no
+                       for version rollback bug in RSA PMS... dunno
+                  for version rollback bug in Client Hello... no
+            whether the server ignores the RSA PMS version... yes
+whether small records (512 bytes) are tolerated on handshake... yes
+    whether cipher suites not in SSL 3.0 spec are accepted... yes
+whether a bogus TLS record version in the client hello is accepted... yes
+         whether the server understands TLS closure alerts... partially
+            whether the server supports session resumption... yes
+                      for anonymous authentication support... no
+                      for ephemeral Diffie-Hellman support... no
+                   for ephemeral EC Diffie-Hellman support... yes
+                    ephemeral EC Diffie-Hellman group info... SECP256R1
+                  for AES-128-GCM cipher (RFC5288) support... yes
+                  for AES-128-CCM cipher (RFC6655) support... no
+                for AES-128-CCM-8 cipher (RFC6655) support... no
+                  for AES-128-CBC cipher (RFC3268) support... yes
+             for CAMELLIA-128-GCM cipher (RFC6367) support... no
+             for CAMELLIA-128-CBC cipher (RFC5932) support... no
+                     for 3DES-CBC cipher (RFC2246) support... yes
+                  for ARCFOUR 128 cipher (RFC2246) support... yes
+                                       for MD5 MAC support... yes
+                                      for SHA1 MAC support... yes
+                                    for SHA256 MAC support... yes
+                              for ZLIB compression support... no
+                     for max record size (RFC6066) support... no
+                for OCSP status response (RFC6066) support... no
+              for OpenPGP authentication (RFC6091) support... no
 </pre></div>
 
 <hr>
