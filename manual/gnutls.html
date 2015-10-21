@@ -188,8 +188,8 @@ dl {
   </ul></li>
   <li><a name="toc-Introduction-to-TLS-and-DTLS" href="#Introduction-to-TLS">3 Introduction to <acronym>TLS</acronym> and <acronym>DTLS</acronym></a>
   <ul class="no-bullet">
-    <li><a name="toc-TLS-layers-1" href="#TLS-layers">3.1 TLS layers</a></li>
-    <li><a name="toc-The-transport-layer-1" href="#The-transport-layer">3.2 The transport layer</a></li>
+    <li><a name="toc-TLS-Layers" href="#TLS-layers">3.1 TLS Layers</a></li>
+    <li><a name="toc-The-Transport-Layer" href="#The-transport-layer">3.2 The Transport Layer</a></li>
     <li><a name="toc-The-TLS-record-protocol-1" href="#The-TLS-record-protocol">3.3 The TLS record protocol</a>
     <ul class="no-bullet">
       <li><a name="toc-Encryption-algorithms-used-in-the-record-layer-1" href="#Encryption-algorithms-used-in-the-record-layer">3.3.1 Encryption algorithms used in the record layer</a></li>
@@ -215,6 +215,7 @@ dl {
       <li><a name="toc-OCSP-status-request-1" href="#OCSP-status-request">3.6.6 OCSP status request</a></li>
       <li><a name="toc-SRTP-1" href="#SRTP">3.6.7 SRTP</a></li>
       <li><a name="toc-Application-Layer-Protocol-Negotiation-_0028ALPN_0029-1" href="#Application-Layer-Protocol-Negotiation-_0028ALPN_0029">3.6.8 Application Layer Protocol Negotiation (ALPN)</a></li>
+      <li><a name="toc-Extensions-and-Supplemental-Data-1" href="#Extensions-and-Supplemental-Data">3.6.9 Extensions and Supplemental Data</a></li>
     </ul></li>
     <li><a name="toc-How-to-use-TLS-in-application-protocols-1" href="#How-to-use-TLS-in-application-protocols">3.7 How to use <acronym>TLS</acronym> in application protocols</a>
     <ul class="no-bullet">
@@ -816,8 +817,8 @@ noted otherwise.
 <p>
 Next: <a href="#The-transport-layer" accesskey="n" rel="next">The transport layer</a>, Up: <a href="#Introduction-to-TLS" accesskey="u" rel="up">Introduction to TLS</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="TLS-layers-1"></a>
-<h3 class="section">3.1 TLS layers</h3>
+<a name="TLS-Layers"></a>
+<h3 class="section">3.1 TLS Layers</h3>
 <a name="index-TLS-layers"></a>
 
 <p><acronym>TLS</acronym> is a layered protocol, and consists of the record
@@ -845,8 +846,8 @@ protocol.  The protocol layering in TLS is shown in <a href="#fig_002dtls_002dla
 <p>
 Next: <a href="#The-TLS-record-protocol" accesskey="n" rel="next">The TLS record protocol</a>, Previous: <a href="#TLS-layers" accesskey="p" rel="prev">TLS layers</a>, Up: <a href="#Introduction-to-TLS" accesskey="u" rel="up">Introduction to TLS</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="The-transport-layer-1"></a>
-<h3 class="section">3.2 The transport layer</h3>
+<a name="The-Transport-Layer"></a>
+<h3 class="section">3.2 The Transport Layer</h3>
 <a name="index-transport-protocol"></a>
 <a name="index-transport-layer"></a>
 
@@ -1301,6 +1302,8 @@ in <acronym>GnuTLS</acronym> are discussed in the subsections that follow.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Application-Layer-Protocol-Negotiation-_0028ALPN_0029" accesskey="8">Application Layer Protocol Negotiation (ALPN)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Extensions-and-Supplemental-Data" accesskey="9">Extensions and Supplemental Data</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 </table>
 
 <hr>
@@ -1645,14 +1648,14 @@ sufficient, or a negative error code.
 <a name="Application-Layer-Protocol-Negotiation-_0028ALPN_0029"></a>
 <div class="header">
 <p>
-Previous: <a href="#SRTP" accesskey="p" rel="prev">SRTP</a>, Up: <a href="#TLS-Extensions" accesskey="u" rel="up">TLS Extensions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Extensions-and-Supplemental-Data" accesskey="n" rel="next">Extensions and Supplemental Data</a>, Previous: <a href="#SRTP" accesskey="p" rel="prev">SRTP</a>, Up: <a href="#TLS-Extensions" accesskey="u" rel="up">TLS Extensions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Application-Layer-Protocol-Negotiation-_0028ALPN_0029-1"></a>
 <h4 class="subsection">3.6.8 Application Layer Protocol Negotiation (ALPN)</h4>
 <a name="index-ALPN"></a>
 <a name="index-Application-Layer-Protocol-Negotiation"></a>
 
-<p>The TLS protocol was extended in <code>draft-ietf-tls-applayerprotoneg-00</code> 
+<p>The TLS protocol was extended in <code>RFC7301</code> 
 to provide the application layer a method of
 negotiating the application protocol version. This allows for negotiation
 of the application protocol during the TLS handshake, thus reducing
@@ -1668,6 +1671,22 @@ string. To enable, use the following functions.
 registered in the Application Layer Protocol Negotiation IANA registry. While
 you can use them for other protocols (at the risk of collisions), it is preferable
 to register them.
+</p>
+<hr>
+<a name="Extensions-and-Supplemental-Data"></a>
+<div class="header">
+<p>
+Previous: <a href="#Application-Layer-Protocol-Negotiation-_0028ALPN_0029" accesskey="p" rel="prev">Application Layer Protocol Negotiation (ALPN)</a>, Up: <a href="#TLS-Extensions" accesskey="u" rel="up">TLS Extensions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Extensions-and-Supplemental-Data-1"></a>
+<h4 class="subsection">3.6.9 Extensions and Supplemental Data</h4>
+<a name="index-Supplemental-data"></a>
+
+<p>It is possible to transfer supplemental data during the TLS handshake, following
+[<em>RFC4680</em>]. This is for &quot;custom&quot; protocol modifications for applications which
+may want to transfer additional data (e.g. additional authentication messages). Such
+an exchange requires a custom extension to be registered. 
+The provided API for this functionality is low-level and described in <a href="#TLS-Extension-Handling">TLS Extension Handling</a>.
 </p>
 <hr>
 <a name="How-to-use-TLS-in-application-protocols"></a>
@@ -39929,6 +39948,11 @@ May 2000, Available from <a href="http://www.ietf.org/rfc/rfc2817.txt">http://ww
 2000, Available from <a href="http://www.ietf.org/rfc/rfc2945.txt">http://www.ietf.org/rfc/rfc2945.txt</a>.
 </p>
 </dd>
+<dt><a name="RFC7301"></a>[RFC7301]</dt>
+<dd><p>S. Friedl, A. Popov, A. Langley, E. Stephan, &quot;Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension&quot;,
+July 2014, Available from <a href="http://www.ietf.org/rfc/rfc7301.txt">http://www.ietf.org/rfc/rfc7301.txt</a>.
+</p>
+</dd>
 <dt><a name="RFC2986"></a>[RFC2986]</dt>
 <dd><p>Magnus Nystrom and Burt Kaliski, &quot;PKCS 10 v1.7: Certification Request
 Syntax Specification&quot;, November 2000, Available from
@@ -41473,6 +41497,7 @@ Previous: <a href="#Function-and-Data-Index" accesskey="p" rel="prev">Function a
 <tr><td></td><td valign="top"><a href="#index-SSH_002dstyle-authentication">SSH-style authentication</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Verifying-a-certificate-using-trust-on-first-use-authentication">Verifying a certificate using trust on first use authentication</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-SSH_002dstyle-authentication-1">SSH-style authentication</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Certificate-verification">Certificate verification</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-SSL-2">SSL 2</a>:</td><td>&nbsp;</td><td valign="top"><a href="#On-SSL-2-and-older-protocols">On SSL 2 and older protocols</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Supplemental-data">Supplemental data</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Extensions-and-Supplemental-Data">Extensions and Supplemental Data</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-symmetric-algorithms">symmetric algorithms</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Symmetric-algorithms">Symmetric algorithms</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-symmetric-cryptography">symmetric cryptography</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Symmetric-algorithms">Symmetric algorithms</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-symmetric-encryption-algorithms">symmetric encryption algorithms</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Encryption-algorithms-used-in-the-record-layer">Encryption algorithms used in the record layer</a></td></tr>
