@@ -20,7 +20,58 @@
 <br/>
 <h1>Changelog for <span class='version'>current</span> version (Git)</h1><br/><br/>
 <div class='changelog'>
-<pre class='wrap'>commit 1f95f29d568058a735adca39288be07af23846f3
+<pre class='wrap'>commit 07fe3fc33910f43914d374723ac8b5446e3e130c
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-23 15:46:33 +0200
+
+    doc update
+
+commit 02900dbf7452aa3f93e49fd97b83d18664a3eed5
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-23 15:44:27 +0200
+
+    doc update
+
+commit 75a3b041977b7c5273b9df9ef6420adf5adea792
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-23 14:17:23 +0200
+
+    doc update
+
+commit 238ea892e087e8b40a20e8f7e14898ed5ff708ed
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-22 13:04:32 +0200
+
+    doc: document the sign function requirements in gnutls_privkey_import_ext
+
+commit 968e93d1c8b1f51d810e22b9243a2cb24d85137a
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-21 19:57:39 +0200
+
+    Mention key protection through isolation in crypto backend section
+
+commit 6c9d650db4571d2b5fbf3586ae75c7faa92e494d
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-10-21 19:48:22 +0200
+
+    doc: updated supplemental data documentation
+
+commit b5c402f74a29fea656f6b82f5dcff43524b06b36
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-21 09:13:56 +0200
+
+    tests: testdane will not check hosts which are unreachable
+
+commit 520517e93a9f113364b2896431cf01e1d5c4e08b
+Author: Andreas Metzler &lt;ametzler@bebt.de&gt;
+Date:   2015-10-20 19:02:25 +0200
+
+    Documentation update
+    
+    The new simple verification functions were backported to 3.4.6, correct
+    "Since:" to reflect this.
+
+commit 1f95f29d568058a735adca39288be07af23846f3
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
 Date:   2015-10-20 09:40:56 +0200
 
@@ -635,67 +686,6 @@ Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
 Date:   2015-08-24 13:43:09 +0200
 
     doc update
-
-commit 272391c309f81b598ba714746203967b2dc1f5cd
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-24 13:39:33 +0200
-
-    Document the new verification functions
-
-commit 25f2b0814401d1e9c98f3fdc833e09b3c877fc72
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-24 13:19:51 +0200
-
-    examples: simplify the X.509 client example by using the new verification API
-
-commit ee67aa067421dea331f0c7b2e9f719833bb2b5e5
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-24 13:13:57 +0200
-
-    tests: check the auto-verification functionality
-
-commit d35813ffac53aa7c1c7106d7dd74ac90db79f7fa
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-24 12:00:10 +0200
-
-    Added simpler verification functions for clients
-    
-    The major use-case for the TLS protocol is verification of PKIX
-    certificates. However, certificate verification support while is
-    similar for almost all projects it requires around 100 lines of code
-    (a callback) to be duplicated to all applications. That patch
-    set gets rid of the callback and simplifies certificate verification
-    support, by introducing a very simple API; one that would accept
-    the session and the hostname only.
-    
-    Resolves #27
-
-commit c862a1b94ea4212fc24f3a800bc18dbc235fde03
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-24 11:10:26 +0200
-
-    tests: added test for gnutls_session_set_verify_function
-
-commit 05ddde02ff6f121a615cb472ed63039af419da04
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-24 11:03:09 +0200
-
-    Added gnutls_session_set_verify_function
-    
-    That allows to set a verification callback per session rather
-    than only globally on the credentials structure.
-
-commit c3c47a93d0d231b1e44bddc734f88ddfb1616182
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-23 22:54:22 +0200
-
-    getfuncs.pl: ignore defines in headers
-
-commit 135cc1e480e25a0c4570f1e4f4542b5e4ba18479
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-23 22:33:59 +0200
-
-    Makefiles: updated for new filenames
 
 ...</pre></div>
 
