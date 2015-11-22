@@ -20,7 +20,492 @@
 <br/>
 <h1>Changelog for <span class='version'>current</span> version (Git)</h1><br/><br/>
 <div class='changelog'>
-<pre class='wrap'>commit 07fe3fc33910f43914d374723ac8b5446e3e130c
+<pre class='wrap'>commit a814e3c0d4c110e63f8efd665c7c5ba124e79ad3
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-22 13:27:14 +0100
+
+    added cast to silence gcc warning
+
+commit ebcd562003a6f0e0e607e1999c0dfa3311c59994
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-21 13:33:42 +0100
+
+    tests: added check for multiple extension registering
+
+commit 0f6d232dac0d43b89b0c98e638ff591196f18937
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-21 13:25:20 +0100
+
+    statically initialize extensions instead of using the lib constructor
+
+commit 7a2bce033a1e198360171021da8149c7882d08f0
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-21 13:09:19 +0100
+
+    marked all extensions structures as constant
+
+commit b3934af052c1fe83ccecc74106178f5f0c93a817
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-21 11:33:45 +0100
+
+    system-keys-win: allow reinitialization of the library after a deinitialization
+
+commit 8970803f17b8d25ac9a4993a971f9075d9fc9a35
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-21 01:05:37 +0100
+
+    getfuncs.pl: don't consider functions with _gnutls prefix
+
+commit 87539d4c00cbd38ca318e5f091aa034e6c3119f5
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-21 00:52:51 +0100
+
+    gnutls_global_init_skip: prefixed with an underscore
+
+commit c44437090686a833b435bcc880ca5a8e11e1cd3e
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-20 13:57:09 +0100
+
+    .gitlab-ci.yml: added clang compilation target
+
+commit 4fbeca202c9f038e0a964caede4611063e74a953
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-20 10:11:29 +0100
+
+    certtool: check fread_file() for errors in all situations
+    
+    This caused certtool to crash on invalid input on stdin.
+    Reported by Christoph Biedl.
+
+commit 00421e85142e17e9196c809cd20adf088d8c6913
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-19 11:46:39 +0100
+
+    doc update
+
+commit 74a745bc123a81dd97cf968b27335c7ca6118865
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-18 21:44:54 +0100
+
+    gnutls_certificate_set_flags: Added since
+
+commit 46fb64375f8a900d624e27fbfb090b05aa8f3eab
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-18 20:16:38 +0100
+
+    tests: check gnutls_certificate_flags
+
+commit 84070107a45378e0981ea2bb01df73bcceb607b2
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-18 20:13:07 +0100
+
+    Added gnutls_certificate_flags() and GNUTLS_CERTIFICATE_SKIP_KEY_CERT_MATCH
+    
+    That allows a user of the credentials to disable the certificate matching
+    action. That is, to disable the calls to sign and verify on initialization.
+
+commit b97c6f585bed657613042fa946d96f4da48ea8f7
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-18 16:39:36 +0100
+
+    link with libdl when trousers is enabled; reported by Andreas Schneider
+
+commit 164d8ee1de8cab0a612299202312bc0977393be6
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-18 16:30:24 +0100
+
+    enhanced cipher selftests with variable key sizes on arcfour
+
+commit 4754c692b25b1f0d844b6987464af1f55ef2912c
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-18 15:55:19 +0100
+
+    Do not enforce a maximum key size on ARCFOUR
+    
+    That makes the library consistent with the behavior of previous versions (3.3.x)
+
+commit 6c3c6081aa62dc1703e7375a038c2567302c87c7
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-18 10:22:31 +0100
+
+    gnutls-cli-debug: make TLS 1.6 fallback check more reliable
+
+commit 09d8d8a89f56cf63745b82834945fa33a1a7654e
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-18 09:24:18 +0100
+
+    doc update
+
+commit df05e7c3fc1e8cf0e8b2b966a92d68d901971691
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-17 07:09:05 +0100
+
+    README: added non-interactive versions of commands
+
+commit 243f3a3a22d0a639b02b068f08deaedec20524d0
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-16 18:52:48 +0100
+
+    .gitlab-ci.yml: disable non-suiteb curves in all systems as we have multiple which are fedoras
+
+commit 21cb44e051e1f3b019d4bf17b68b06cf0aca6efe
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-16 17:28:49 +0100
+
+    tests: corrected copyright info
+
+commit d1f5013e39ada93da20088b0e0ca7d8fd5fb99cf
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-16 16:32:04 +0100
+
+    documented GNUTLS_SKIP_GLOBAL_INIT macro
+
+commit 6af4aa8e4984b99c426be0521e6a1182c30e0bb8
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-16 16:30:37 +0100
+
+    tests: added check for overriding global initialization
+
+commit b7e35c26b0692a34706d89f48d04f5d2759fb2f8
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-16 16:25:31 +0100
+
+    Added GNUTLS_SKIP_GLOBAL_INIT macro to allow programs skip implicit global initialization
+
+commit a2db87c5ba8d078b2089872ce04abf85bbaf2fd5
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-16 15:02:48 +0100
+
+    tests: utils.c: simplify windows check
+
+commit 1b26f810e76c1492b3ddd22e57b38210f5be960b
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-16 12:40:14 +0100
+
+    .gitlab-ci.yml: added build and check in FIPS140-2 mode
+
+commit e8ed244bb4f1c0df84f101cd672347413723d89c
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-15 20:35:18 +0100
+
+    tests: made seccomp tests more reliable by waiting for each side to terminate
+
+commit 8f79971417180584ba56488815a768cb10a7db87
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-15 17:06:18 +0100
+
+    doc: document how to use gnutls with seccomp
+
+commit a6332ae588eb4ca9151ecc252e9293bf0f44de3d
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-15 16:32:47 +0100
+
+    .gitlab-ci.yml: reorganized and added a simple build and check on x86-64 rule
+    
+    The latter also enables the seccomp checks.
+
+commit bb4f4dadb4f1db196217053a1fe3af06edfe41fb
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-15 15:51:14 +0100
+
+    tests: check operation of TLS and DTLS under seccomp when configured with --enable-seccomp-tests
+
+commit a6da9bc746b0949d199e05fa56fb29b146a11c56
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-13 16:39:24 +0100
+
+    gnutls_x509_crt_set_subject/issuer_unique_id: added Since in doc
+
+commit 87e770ae22dad479d89fdbfbc9343891fed62448
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-13 14:40:20 +0100
+
+    doc update
+
+commit a01919e802b3cba98f20340cea1718351a16e93d
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-13 11:00:10 +0100
+
+    Added documentation on PKCS #7 signing
+
+commit 801425e96a8a57094934da6e48bfa441e051af98
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-12 16:38:02 +0100
+
+    updated chacha20 ciphers to conform to latest draft
+
+commit 5e52b0d0fec0d9eaac30ca8f35fd7b8368064222
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-12 15:03:10 +0100
+
+    tests: suite: more shell scripts were given the .sh suffix and simplified makefile
+
+commit 93d43421be4df2d8ca04d6cb8859ab323ca77eed
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-12 12:04:04 +0100
+
+    tests: verify that unique IDs are generated as expected
+
+commit 0e972f11775774e47acb0a377ebad38ece13655a
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-12 12:03:14 +0100
+
+    certtool: Allow writing unique IDs in generated certificates
+
+commit e19a5047916e0f4403b905f8ff5370caae968cab
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-12 11:43:52 +0100
+
+    Added gnutls_x509_crt_set_issuer_unique_id() and gnutls_x509_crt_set_subject_unique_id()
+
+commit c3f9880e34896741cabfca55c2df5659b84c748e
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-12 11:10:08 +0100
+
+    properly indent unique IDs
+
+commit 9a382523d2a8a96a773f52c401e98db9a90ff4ec
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-12 09:48:27 +0100
+
+    tests: added check with the various X.509 key exchanges
+
+commit b309e8a200c3bd1c670ed8b5968a343205262de2
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-12 09:29:43 +0100
+
+    tests: check rehandshake from anon to DHE
+
+commit 34e767eeb8b647155c9d4b14dab6a279a9643569
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-11 11:37:30 +0100
+
+    documented the GNUTLS_NO_EXPLICIT_INIT environment variable
+
+commit c40c2ca916df2562803f3f9ce31c1022dc56c742
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-11 11:29:21 +0100
+
+    crypto-api: doc update
+
+commit 4639441dc6f4c45b0ba806bc708fb928bb8a64ae
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-11 11:15:51 +0100
+
+    Allow switching a ciphersuite to DHE and ECDHE on a rehandshake
+
+commit 8b83a011bd64a35506e65ead6074ca1f06382aea
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-11 10:49:31 +0100
+
+    tests: added check for ciphersuite switch from anonymous to certificate
+
+commit 212a797adc500ba08da57dfb225a2f2a75182ecf
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-10 13:31:16 +0100
+
+    .gitlab-ci.yml: disable guile in asan builds
+
+commit 564f76af10b20161ec501b9d622452e64e3578a4
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-10 10:34:56 +0100
+
+    tests: suite: don't run shell scripts with valgrind
+
+commit 62fcaa4f7f9039d1f4f7f4daebb355bff76293cf
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-10 10:24:44 +0100
+
+    tests: testsrn: output errors on stderr
+
+commit 82ef9b19c4c1bed3098934edb3c11192688d276e
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-10 10:13:35 +0100
+
+    deinitialize all handshake keys when handshake is over
+
+commit 64b19b328d2634f749737563ddc95cdd5502325a
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-09 23:53:25 +0100
+
+    testdane: improved error detection in sites
+
+commit c935dc12550be64ac300fc995038af390b45abf5
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-09 23:34:03 +0100
+
+    tests: suite: eliminate many leaks in the tests and run them under valgrind
+
+commit 81f56d82b5731ea3f8af5b03e559012bb21a6373
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-09 23:27:47 +0100
+
+    certtool: eliminate leaks in _verify_x509_mem()
+
+commit bb61b696f7da1651d8c62bb96cd0d9ca45751e07
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-09 23:04:48 +0100
+
+    tests: openpgp-certs: use valgrind
+
+commit 78e1789989d3115df88161d6f9ed69705eed67b4
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-09 23:04:03 +0100
+
+    openpgp: eliminate leaks in gnutls_openpgp_keyring_import()
+
+commit a26c53b5e1534bf472dbf7338d856437e052a04a
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-09 22:48:47 +0100
+
+    tests: eliminate leaks in mini-eagain2.c
+
+commit 89dbb39566d08c17e50754a1b9547bbfa2f8c6ca
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-09 22:48:25 +0100
+
+    certtool: eliminate memory leaks in certificate generation
+
+commit 17cc53a73e22208ab90b66531abf596a7998d84e
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-09 22:45:44 +0100
+
+    tests: key-tests: use valgrind
+
+commit 4417998bdd85b868e794adf0f2fcbdfcb0bbd84b
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-09 22:45:13 +0100
+
+    gnutls_x509_crt_set_pubkey: clarify usage
+
+commit 0852ceee111ead165b80dd23f72dd61ea30a86b3
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-09 21:54:54 +0100
+
+    pkcs12: correctly set salt size in gnutls_pkcs12_mac_info
+    
+    Also eliminate leaks in PKCS #12 parsing.
+
+commit cdd6be8ca9bdf3f307adbc21cc51e902142b39f5
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-09 21:54:09 +0100
+
+    tests: run the PKCS #12 tests under valgrind
+
+commit 87d20180c576a211e5abadec60c88caed88629cd
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-09 18:43:03 +0100
+
+    certtool: make sure that pkcs12 structures are deinitialized
+
+commit c63b2b3f0ebedb58fdad211ac1847d48b6420d88
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-09 16:01:55 +0100
+
+    tests: provable-privkey: fixed DSA test on FIPS140 enabled systems
+
+commit d8aa3b1804a0f237602c9e8a3dcf5bb2120474ba
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-09 15:51:17 +0100
+
+    nettle: be more specific in seed size mismatches
+
+commit fa9a5cb246d2878b311457b8d2804890a208ee6d
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-09 15:43:20 +0100
+
+    crypto-backend: ensure there are no leaks on deinitialization
+
+commit 6312c13fb36baade5dd9df4c2f47c8671c5804ce
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-09 14:29:48 +0100
+
+    Require TLS 1.2 for all the ciphersuites which are defined for it only
+    
+    This solves an interoperability issue with openssl. Reported by Viktor Dukhovni.
+
+commit 3a181d85ff9e7abd1819fee87030d8eef96688df
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-08 09:30:39 +0100
+
+    p11tool: introduced --only-urls option
+    
+    This option allows printing a compact listing containing only of URLs.
+
+commit fd309b3c7e8cd34fa7a8de851b8640905d29eb73
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-07 21:51:56 +0100
+
+    Modified the CHACHA20 cipher to conform to draft-ietf-tls-chacha20-poly1305-02
+
+commit 83c332ce00c79ff60811006e87dbfce77bccd9bd
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-06 15:02:51 +0100
+
+    .gitlab-ci.yml: use static libasan
+    
+    This prevents issues with tests which use LD_PRELOAD.
+
+commit 3b9413d80db217abb3ac94a8d784bcc345a5a4cb
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-06 10:40:39 +0100
+
+    .gitlab-ci.yml: disable non-suiteb curves on build on Fedora system
+
+commit b8323e4f4724a2b62f3be71e5d2a16ea6856af1f
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-05 11:11:29 +0100
+
+    tools: better ftp auth tls negotiation
+
+commit 8b1315d58fab8dcd1e8b7cae060ec06ddfa37b7a
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-04 09:49:47 +0100
+
+    tests: added check for gnutls_priority_set_default
+
+commit e58c26879f0d1dbec4da321bf573466cfb2642a6
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-03 10:46:17 +0100
+
+    tools: only check for status code in FTP starttls negotiation
+
+commit 095ba87868c137c299e9ae40b730ce75e103fdf3
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-03 10:45:44 +0100
+
+    tools: print more info in starttls negotiation when --verbose is given
+
+commit 28e0716146530ff5e9b2041c52f78a9ecc7f63b5
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-03 09:40:39 +0100
+
+    gnutls.pc: don't use the libtool version of the link options
+    
+    Reported by Dan Kegel.
+    Resolves #49
+
+commit b45647ef02b3405d0033afb28b3419ac14f7904b
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-01 01:53:43 +0100
+
+    tests: simplified mini-dtls-hello-verify-48
+
+commit 26d14fe4b8a20f5cf54ce50dd51eb8e376d32a7c
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-30 13:38:36 +0100
+
+    tests: added check for blocking on invalid DTLS cookie
+    
+    Relates to #48
+
+commit 6115d3747d5aa65ae3baac3234f8e448162bcdd3
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-10-29 09:28:59 +0100
+
+    removed inacurate text
+
+commit 07fe3fc33910f43914d374723ac8b5446e3e130c
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
 Date:   2015-10-23 15:46:33 +0200
 
@@ -171,521 +656,6 @@ Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
 Date:   2015-10-16 13:16:36 +0200
 
     tools: allow importing a pubkey from a certificate
-
-commit 1c07fda247f1bb570cde745981b049f495678aac
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-16 13:03:57 +0200
-
-    pkcs11: introduced gnutls_pkcs11_copy_pubkey
-    
-    That allows copying a public key to a PKCS #11 module.
-
-commit 5ecb418ee5c53b4f235dacbb085f2ba4d1396dfc
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-15 21:23:44 +0200
-
-    .gitlab-ci.yml: combined the slow build with the separate build dir
-
-commit d949314986061044dd0c298e1d64315e2b5555ca
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-15 21:16:52 +0200
-
-    Disable the NULL cipher on runtime when FIPS140 mode is enabled instead of statically
-    
-    That way the NULL cipher can be used when not in FIPS140 mode.
-
-commit 500af2badafb991ff580acd747630ed62902da29
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-15 21:09:06 +0200
-
-    re-enable NULL ciphersuites
-    
-    They were accidentally disabled by b237b37d4d17ee4f98629aae9d72aec87f434cb8
-
-commit 872338429c637f861379898602fcad2c13a59d9e
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-15 18:35:44 +0200
-
-    tests: check whether the RSA-EXPORT and ARCFOUR-40 legacy strings are accepted
-
-commit b237b37d4d17ee4f98629aae9d72aec87f434cb8
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-15 18:20:38 +0200
-
-    Tolerate priority strings with names of legacy ciphers and key exchanges
-    
-    That enables better backwards compatibility with old applications
-    which disable or enable algorithms which no longer are supported.
-    Relates #44
-
-commit 38e396f3247cb56174f6807a96ba5c8a62df7f3b
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-15 16:21:43 +0200
-
-    pkcs11: write CKA_ISSUER and CKA_SERIAL_NUMBER when writing on a certificate
-    
-    That allows NSS to read and use the written certificate.
-    Relates #43
-
-commit 2b69c0253b03d3f0f25233e56273a6a801a47639
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-13 04:01:04 +0200
-
-    tests: enhanced sec-params check to account for future sec-param
-
-commit 0b55afd487ec5d9d34499250e9bfaf23ae01ea56
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-12 22:11:16 +0200
-
-    certtool: recognize the future sec-param
-
-commit f159724615a6b5ed981113035770bea2264fdd40
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-12 22:10:25 +0200
-
-    Introduced the security parameter future (256) and switched ultra to 192 bits
-    
-    For ultra, this was its documented strength, and now follows RFC3766 recommendations
-    for sizes.
-
-commit e0143b8c886d378ca364b5fb145de177cbd70bd8
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-12 21:54:09 +0200
-
-    certtool: be more specific on the help message for --sec-param when --bits are given
-
-commit c49247ac8734bd2ce7672b3b2b0d823857fd82a4
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-12 14:54:04 +0200
-
-    doc update
-
-commit 7fffa26f92b4a55dfbca912e475a0346eec0c3d3
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-12 14:15:28 +0200
-
-    tests: added test case for record timeout values
-
-commit 8d43daf7b5f75952a7d5ec49f1138db18ebe8ddb
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-12 13:52:03 +0200
-
-    Introduced GNUTLS_INDEFINITE_TIMEOUT
-    
-    This allows to specify an indefinite timeout to gnutls_record_set_timeout().
-    In addition this flag is accepted by gnutls_handshake_set_timeout() and
-    cancels out a previously set timeout.
-    Resolves #41
-
-commit c141b08728e0853633c8cd3dc35d108984d47f9c
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-07 10:38:25 +0200
-
-    tests: better detection of softhsm library
-
-commit b3ef6ccf1c8c867c2b7688f7fbc116baa764f2bd
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-05 14:31:53 +0200
-
-    added text on _gnutls_dh_compute_key
-
-commit 3d62be5cab0d57f7bdfb5ba583fb1fcd9699b479
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-05 17:11:37 +0200
-
-    gnutls_record_recv: simplified text on GNUTLS_E_REHANDSHAKE
-
-commit c7d6f92eea4f5a1e77d1fea9bf4d2204adddb20e
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-09-22 14:31:00 +0200
-
-    certtool: print 16-bytes of hex values per line
-    
-    Also avoid a colon on the end of the line.
-
-commit 0967e498a5c506947962c33dbe48070c064dd270
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-09-22 08:31:04 +0200
-
-    fips140: set the key via a configure argument
-
-commit 2d4d9ec52dc6c14887cfe411a3a44e3eea153f56
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-19 12:37:51 +0200
-
-    tests: disable cipher-test on windows platform; they don't seem to work
-
-commit bf2abe76dfec1ec8e4ae3c6e9c249e099bfebe1b
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-09-21 14:47:41 +0200
-
-    README.md: added build instructions for Fedora/RHEL
-
-commit b536a585cdceb684ccc1f9423a63676e4183f27c
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-09-21 14:25:12 +0200
-
-    priorities: sort algorithms by security strength unless performance is requested
-    
-    That is prioritize 256-bit ciphers over 128-bit ciphers. This would protect
-    secrecy of current data even after a PQ future.
-
-commit 48cdff1c093c41a37c3698d90bab36c8005ccd33
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-19 12:12:18 +0200
-
-    .gitlab-ci.yml: reduce the number of CPUs used in slow on make check
-
-commit dee959dd75371e8d98914cafc7eaec189bda309e
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-19 11:36:48 +0200
-
-    use time_t for internal type to avoid warnings on signed/unsigned comparison
-
-commit 139a699d2836bdccfa7133d8ae2ee04ee25891ca
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-19 11:30:39 +0200
-
-    DSA FIPS186-4 key generation: print the required seed length on mismatch
-
-commit f24d3babb1f34c1fc7b32cc7ddf96847f108c172
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-19 11:22:04 +0200
-
-    certtool: added more friendly error on seed_size mismatch
-    
-    That prints more useful information when generating provable private keys.
-
-commit 8cfb2ff81d4675b359700bb4feb41989ade46c4c
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-19 11:14:29 +0200
-
-    tests: use the corrected seed for default provable private key
-
-commit 355f702280c9df6a2ea6729d1733a42d48614c7f
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-19 06:52:13 +0200
-
-    doc update
-
-commit 6e83ab336439d274d6f018b793be551550b9d2de
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-19 06:50:45 +0200
-
-    certtool: switched the default level to HIGH for key generation
-    
-    That requires 3072 bits for RSA and DSA keys.
-
-commit f259c7a040fa0822b3c630ee7b00777db4f6c7f0
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-18 23:49:46 +0200
-
-    tools: added xmpp into the starttls-proto options
-
-commit 8abd3cb87cddcf408e8f760c505013488820c96c
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-09-18 15:57:14 +0200
-
-    tools: added ldap into the starttls-proto options
-
-commit 3318d6243e21b4106b00c3c5a3db6a6dd666186d
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-09-17 14:52:27 +0200
-
-    system.c: simplify gnutls_system_recv_timeout
-
-commit 6954ba410660b304060e2dddb76ad612cb823f10
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-09-17 13:15:54 +0200
-
-    gnutls-cli-debug: use RFC7627 instead of draft-ietf-tls-session-hash
-
-commit c72f42d1d066d0437e0649697140dffa822a57a7
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-09-17 10:45:30 +0200
-
-    updated documentation on gnutls_vdata_types_t based on DKG's suggestions
-
-commit 2e117b4f87b370b3b3456fd2aacd3a1c1ccae5e3
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-09-17 10:10:47 +0200
-
-    doc update
-
-commit 41c6ce961a881a3f0c86bd6f303c41a5c68966ea
-Author: Daniel Kahn Gillmor &lt;dkg@fifthhorseman.net&gt;
-Date:   2015-09-16 19:59:12 -0400
-
-    improve docs for gnutls_certificate_verify_peers*()
-    
-    The gnutls_certificate_verify_peers{,2,3}() functions all return
-    GNUTLS_E_SUCCESS (0) even in situations when the peer's certificate
-    was not verified.  This is explained in the first paragraphs
-    ("i.e. failure to trust a certificate does not imply a negative return
-    value"), but the Returns: line isn't comparably clear.
-
-commit 368018efccee25f82149cba47e05f5af6af28ae9
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-14 21:36:24 +0200
-
-    certtool: increased seed size to allow for DSA seeds
-
-commit 1788b331d6a1af2a16d001fa5dc111c4f0a144e2
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-14 21:32:05 +0200
-
-    _gnutls_hex2bin: avoid overrun in the provided buffer
-
-commit 2b8fcfdde0040a93d097bb8ff48c200f11aede13
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-13 19:29:41 +0200
-
-    certtool: don't output PKCS #8 on key-info option
-
-commit 9ad217738217b3475aa6eeb9ca48b76732aee227
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-13 13:57:26 +0200
-
-    better error checking in seed decoding
-
-commit 3399978be40b105a921d373494751ad85b8956c7
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-13 13:52:30 +0200
-
-    gnutls_x509_privkey_verify_seed: fail on keys without seed information
-
-commit 26577baca74ffff89f46699b28798319a32adbab
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-13 13:39:13 +0200
-
-    certtool: on provable keys always print the legacy format
-
-commit a0b0bb2867e0082253730a3dbbf89fa95d3168a5
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-13 13:27:12 +0200
-
-    Use separate PEM headers for provable private keys
-    
-    Also introduce GNUTLS_PRIVKEY_FLAG_EXPORT_COMPAT to allow exporting
-    provable private keys in the old compatibility format.
-
-commit 3563a28965c0311f9ada5e08cdb01f4dd4b7cb7b
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-13 11:06:39 +0200
-
-    doc update
-
-commit 690452347a43818559c7c2db848cd160e4a2c612
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-13 11:06:00 +0200
-
-    certtool: provable key generation was moved to a separate flag that can be combined with --generate-privkey
-    
-    Also enhanced the test suite with DSA provable key generation/verification.
-
-commit 18c50b936938f572af39f276e1067fa80fcc1d4f
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-13 10:57:39 +0200
-
-    Allow verifying and generating provable DSA keys
-
-commit defc66226abc283c40256ffffb78f38065aa09b9
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-13 09:51:25 +0200
-
-    tests: added checks for provable key generation and verification
-
-commit adc17e2533a42b9d7030846364186f38476e5048
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-13 09:36:46 +0200
-
-    certtool: added provable key verification
-
-commit dd3780e2468e47a66d877e85b83928406e0b2f54
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-13 09:32:32 +0200
-
-    Made the new key generation API flexible to allow extensions in the future
-
-commit d5075bcff6e0c66014ed279248f27f0cdb275a02
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-13 09:06:12 +0200
-
-    Added API to verify private keys generated with seed
-
-commit 65a67fd2d3bf568c4ef550612583a47865b648a7
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-13 09:01:41 +0200
-
-    gnutls_asn1_tab: updated auto-generated file
-
-commit a9acbbfb696a0245da0fed39864de896c4b6234e
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-12 16:20:13 +0200
-
-    doc update
-
-commit 9e8cf6ef4523a9e54475b796de6b0b9949b17751
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-12 16:18:10 +0200
-
-    certtool: allow the generation of "provable" private keys
-    
-    Relates to #34
-
-commit 6c8702587943c426e06d5b545af4f143ae17c670
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-12 15:47:38 +0200
-
-    Added API to generate private keys from a given seed
-    
-    Currently it is restricted to RSA and FIPS 186-4 key generation with SHA384.
-    Relates to #34
-
-commit 9b89f76fc789fd8f8e3bb3c418f25b97b9e71920
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-12 14:47:02 +0200
-
-    properly generate asn1_tab.c
-
-commit 19f59602f8bb144bb9cdf08ea62845ea4874cc87
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-09-11 15:44:06 +0200
-
-    Don't use formatted output for fixed strings
-    
-    Resolves #35
-
-commit 5a0149b3ce28e343a2fac34eb1e37617b4ce77f5
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-09 22:24:27 +0200
-
-    README.md: updated information
-
-commit 5007a9758a74e4d74721c0dba38f5e868c577df0
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-09-05 06:20:58 +0200
-
-    renamed the auto-verification functions
-    
-    The names are more consistent with the rest of the library.
-
-commit 108f26f86c6094588656e1a4de73029b52aed177
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-09-04 14:05:02 +0200
-
-    pkcs11: when storing public keys, make sure they are marked as not private
-
-commit 1595a94f4c13de47900dd275f2123a0371a6786a
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-31 14:22:02 +0200
-
-    README.md: mention the testsuite
-
-commit 4abd1a1807303d96dae3fe043bdde1e7952c5fe0
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-30 23:41:11 +0200
-
-    README.md: print build status
-
-commit 203f304d0c9cde8593422c0db48f34b09b9fb9e9
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-30 23:31:06 +0200
-
-    README.md: refer to files using markdown
-
-commit c791f8648a453e5cd835610666886748703d489d
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-30 23:26:27 +0200
-
-    Updated coding style
-
-commit ea3966fa3662a16b42c7409018970b7021622770
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-28 16:54:47 +0200
-
-    gnutls-cli-debug: corrected typo in inappropriate fallback check
-
-commit f65f71429334ea77d3e53b6e0b09aad1a2842a8d
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-28 16:51:35 +0200
-
-    .gitlab-ci.yml: use the same number of CPUs in all the checks
-
-commit 501fe50af37262148ed97c6cc801c9aa3cd40d81
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-28 12:05:02 +0200
-
-    gnutls-cli-debug: added check for inappropriate fallback support
-
-commit 4b6003734006fd7e63812ba03eeefbb1525dc060
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-27 22:12:55 +0200
-
-    Introduced GNUTLS_E_CERTIFICATE_VERIFICATION_ERROR to be returned by the auto-verification functions
-
-commit 5bc2123885d38bad739cd47b614e92eb3be95e96
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-26 19:39:22 +0200
-
-    nettle: simplified SHA3 checks for nettle
-    
-    nettle 3.1 doesn't have the functions nettle for
-    runtime version checking.
-
-commit 1313c65f3bb59dd2eeb79b31cf6a3d45c8e7c0c8
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-08-26 19:34:59 +0200
-
-    export _gnutls_digest_exists for self tests
-
-commit 8fa6ae763ef67c139451f4f812fbafb2aad04fd9
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-26 11:51:09 +0200
-
-    x509: tolerate missing subject or issuer fields
-
-commit 89b9a5146d8669eb2123913ab670bd1f00e7f649
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-26 11:42:01 +0200
-
-    certtool: added support for sha3
-
-commit 948671e8ab5bbebd22af32d4aa57e792aab63879
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-26 11:37:13 +0200
-
-    gnutls_oid_to_digest(): don't return supported but disabled algorithms
-
-commit f7be583b6e236c86f5a642d5b5229d070d8c68f2
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-26 11:02:39 +0200
-
-    Added support for the SHA3 digest algorithm
-
-commit a69c18667e6457b91683649cffe872bdc6776be7
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-26 09:13:52 +0200
-
-    corrected typo in ex-server-anon
-
-commit e953b0db849ae7931601e2088d46eb13a73f0468
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-24 14:13:24 +0200
-
-    Define more precisely the auto verification function semantics.
-
-commit d16b5c405e133e1b09bfb7b5c4d4b3687c1cd0e2
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-24 13:59:21 +0200
-
-    Allow overriding the verification flags from the auto-verification functions
-
-commit df278c0b7e77d80edd8ac9424f71490e521952cd
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-08-24 13:43:09 +0200
-
-    doc update
 
 ...</pre></div>
 
