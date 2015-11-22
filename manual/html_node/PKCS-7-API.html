@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.6 of GnuTLS.
+3.4.7 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.6: PKCS 7 API</title>
+<title>GnuTLS 3.4.7: PKCS 7 API</title>
 
-<meta name="description" content="GnuTLS 3.4.6: PKCS 7 API">
-<meta name="keywords" content="GnuTLS 3.4.6: PKCS 7 API">
+<meta name="description" content="GnuTLS 3.4.7: PKCS 7 API">
+<meta name="keywords" content="GnuTLS 3.4.7: PKCS 7 API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -585,7 +585,7 @@ negative error value.
 <a name="gnutls_005fpkcs7_005fsign-1"></a>
 <h4 class="subheading">gnutls_pkcs7_sign</h4>
 <a name="gnutls_005fpkcs7_005fsign"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fsign"></a>Function: <em>int</em> <strong>gnutls_pkcs7_sign</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_t <var>signer</var>, gnutls_privkey_t <var>signer_key</var>, const gnutls_datum_t * <var>data</var>, gnutls_pkcs7_attrs_t <var>signed_attrs</var>, gnutls_pkcs7_attrs_t <var>unsigned_attrs</var>, gnutls_digest_algorithm_t <var>dig</var>, unsigned <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs7_005fsign-1"></a>Function: <em>int</em> <strong>gnutls_pkcs7_sign</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_t <var>signer</var>, gnutls_privkey_t <var>signer_key</var>, const gnutls_datum_t * <var>data</var>, gnutls_pkcs7_attrs_t <var>signed_attrs</var>, gnutls_pkcs7_attrs_t <var>unsigned_attrs</var>, gnutls_digest_algorithm_t <var>dig</var>, unsigned <var>flags</var>)</em></dt>
 <dd><p><var>pkcs7</var>: should contain a <code>gnutls_pkcs7_t</code>  type
 </p>
 <p><var>signer</var>: the certificate to sign the structure
@@ -607,10 +607,9 @@ for the provided data. Multiple signatures can be made with different
 signers.
 </p>
 <p>The available flags are:
-- <code>GNUTLS_PKCS7_EMBED_DATA</code> : the data will be embedded in the structure
-- <code>GNUTLS_PKCS7_INCLUDE_TIME</code> : the signing time will be included
-- <code>GNUTLS_PKCS7_INCLUDE_CERT</code> : the signer&rsquo;s certificate will be included in the cert list
-- <code>GNUTLS_PKCS7_WRITE_SPKI</code> : store the issuer&rsquo;s ID instead of name
+<code>GNUTLS_PKCS7_EMBED_DATA</code> , <code>GNUTLS_PKCS7_INCLUDE_TIME</code> , <code>GNUTLS_PKCS7_INCLUDE_CERT</code> ,
+and <code>GNUTLS_PKCS7_WRITE_SPKI</code> . They are explained in the <code>gnutls_pkcs7_sign_flags</code> 
+definition.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value. 

@@ -9786,10 +9786,11 @@ negative error value.</p>
 gnutls_x509_crt_set_key (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> crt</code></em>,
                          <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-privkey-t" title="gnutls_x509_privkey_t"><span class="type">gnutls_x509_privkey_t</span></a> key</code></em>);</pre>
 <p>This function will set the public parameters from the given
-private key to the certificate. Only RSA keys are currently
-supported.</p>
+private key to the certificate.</p>
+<p>To export the public key (i.e., the SubjectPublicKeyInfo part), check
+<a class="link" href="gnutls-abstract.html#gnutls-pubkey-import-x509" title="gnutls_pubkey_import_x509 ()"><code class="function">gnutls_pubkey_import_x509()</code></a>.</p>
 <div class="refsect3">
-<a name="id-1.2.6.6.162.5"></a><h4>Parameters</h4>
+<a name="id-1.2.6.6.162.6"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -9811,7 +9812,7 @@ supported.</p>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.6.6.162.6"></a><h4>Returns</h4>
+<a name="id-1.2.6.6.162.7"></a><h4>Returns</h4>
 <p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, otherwise a
 negative error value.</p>
 </div>

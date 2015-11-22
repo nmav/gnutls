@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.6 of GnuTLS.
+3.4.7 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.6</title>
+<title>GnuTLS 3.4.7</title>
 
-<meta name="description" content="GnuTLS 3.4.6">
-<meta name="keywords" content="GnuTLS 3.4.6">
+<meta name="description" content="GnuTLS 3.4.7">
+<meta name="keywords" content="GnuTLS 3.4.7">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -154,7 +154,7 @@ dl {
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">GnuTLS 3.4.6</h1>
+<h1 class="settitle" align="center">GnuTLS 3.4.7</h1>
 
 
 
@@ -347,8 +347,9 @@ dl {
       <li><a name="toc-Common-types-1" href="#Common-types">6.1.3 Common types</a></li>
       <li><a name="toc-Debugging-and-auditing-1" href="#Debugging-and-auditing">6.1.4 Debugging and auditing</a></li>
       <li><a name="toc-Thread-safety-1" href="#Thread-safety">6.1.5 Thread safety</a></li>
-      <li><a name="toc-Sessions-and-fork-1" href="#Sessions-and-fork">6.1.6 Sessions and fork</a></li>
-      <li><a name="toc-Callback-functions-1" href="#Callback-functions">6.1.7 Callback functions</a></li>
+      <li><a name="toc-Running-in-a-sandbox-1" href="#Running-in-a-sandbox">6.1.6 Running in a sandbox</a></li>
+      <li><a name="toc-Sessions-and-fork-1" href="#Sessions-and-fork">6.1.7 Sessions and fork</a></li>
+      <li><a name="toc-Callback-functions-1" href="#Callback-functions">6.1.8 Callback functions</a></li>
     </ul></li>
     <li><a name="toc-Preparation-1" href="#Preparation">6.2 Preparation</a>
     <ul class="no-bullet">
@@ -438,7 +439,10 @@ dl {
   <li><a name="toc-Using-GnuTLS-as-a-cryptographic-library-1" href="#Using-GnuTLS-as-a-cryptographic-library">8 Using GnuTLS as a cryptographic library</a>
   <ul class="no-bullet">
     <li><a name="toc-Symmetric-algorithms-1" href="#Symmetric-algorithms">8.1 Symmetric algorithms</a></li>
-    <li><a name="toc-Public-key-algorithms-1" href="#Public-key-algorithms">8.2 Public key algorithms</a></li>
+    <li><a name="toc-Public-key-algorithms-1" href="#Public-key-algorithms">8.2 Public key algorithms</a>
+    <ul class="no-bullet">
+      <li><a name="toc-PKCS-_00237-signing" href="#PKCS-_00237-signing">8.2.1 PKCS #7 signing</a></li>
+    </ul></li>
     <li><a name="toc-Hash-and-HMAC-functions-1" href="#Hash-and-HMAC-functions">8.3 Hash and HMAC functions</a></li>
     <li><a name="toc-Random-number-generation-1" href="#Random-number-generation">8.4 Random number generation</a></li>
     <li><a name="toc-Overriding-algorithms-1" href="#Overriding-algorithms">8.5 Overriding algorithms</a></li>
@@ -501,7 +505,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 4 March 2015 for version
-3.4.6 of GnuTLS.
+3.4.7 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2015 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2015 Nikos Mavrogiannopoulos
@@ -2488,7 +2492,10 @@ to the trusted list. The list of CRLs must not be deinitialized
 during this structure&rsquo;s lifetime.
 </p>
 <p>This function must be called after <code>gnutls_x509_trust_list_add_cas()</code> 
-to allow verifying the CRLs for validity.
+to allow verifying the CRLs for validity. If the flag <code>GNUTLS_TL_NO_DUPLICATES</code> 
+is given, then any provided CRLs that are a duplicate, will be deinitialized
+and not added to the list (that assumes that <code>gnutls_x509_trust_list_deinit()</code> 
+will be called with all=1).
 </p>
 <p><strong>Returns:</strong> The number of added elements is returned.
 </p>
@@ -4920,6 +4927,12 @@ challenge_password = 123456
 
 # Whether this is a CA certificate or not
 #ca
+
+# Subject Unique ID (in hex)
+#subject_unique_id = 00153224
+
+# Issuer Unique ID (in hex)
+#issuer_unique_id = 00153225
 
 #### Key usage
 
@@ -7472,7 +7485,8 @@ Other options:
                                 - file must pre-exist
    -6, --detailed-url         Print detailed URLs
                                 - disabled as '--no-detailed-url'
-   -7, --batch                Disable all interaction with the tool
+   -7, --only-urls            Print a compact listing using only the URLs
+   -8, --batch                Disable all interaction with the tool
 
 Version, usage and configuration options:
 
@@ -8374,9 +8388,11 @@ and the manpages is recommended.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Thread-safety" accesskey="5">Thread safety</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Sessions-and-fork" accesskey="6">Sessions and fork</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Running-in-a-sandbox" accesskey="6">Running in a sandbox</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Callback-functions" accesskey="7">Callback functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Sessions-and-fork" accesskey="7">Sessions and fork</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Callback-functions" accesskey="8">Callback functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8572,7 +8588,7 @@ void (*gnutls_audit_log_func)( gnutls_session_t, const char*);
 <a name="Thread-safety"></a>
 <div class="header">
 <p>
-Next: <a href="#Sessions-and-fork" accesskey="n" rel="next">Sessions and fork</a>, Previous: <a href="#Debugging-and-auditing" accesskey="p" rel="prev">Debugging and auditing</a>, Up: <a href="#Introduction-to-the-library" accesskey="u" rel="up">Introduction to the library</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Running-in-a-sandbox" accesskey="n" rel="next">Running in a sandbox</a>, Previous: <a href="#Debugging-and-auditing" accesskey="p" rel="prev">Debugging and auditing</a>, Up: <a href="#Introduction-to-the-library" accesskey="u" rel="up">Introduction to the library</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Thread-safety-1"></a>
 <h4 class="subsection">6.1.5 Thread safety</h4>
@@ -8641,13 +8657,57 @@ system.
 </p></dd></dl>
 
 <hr>
+<a name="Running-in-a-sandbox"></a>
+<div class="header">
+<p>
+Next: <a href="#Sessions-and-fork" accesskey="n" rel="next">Sessions and fork</a>, Previous: <a href="#Thread-safety" accesskey="p" rel="prev">Thread safety</a>, Up: <a href="#Introduction-to-the-library" accesskey="u" rel="up">Introduction to the library</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Running-in-a-sandbox-1"></a>
+<h4 class="subsection">6.1.6 Running in a sandbox</h4>
+<a name="index-seccomp"></a>
+<a name="index-isolated-mode"></a>
+
+<p>Given that TLS protocol handling as well as X.509 certificate
+parsing are complicated processes involving several thousands lines of code,
+it is often desirable (and recommended) to run the TLS session handling in
+a sandbox like seccomp. That has to be allowed by the overall software design,
+but if available, it adds an additional layer of protection by
+preventing parsing errors from becoming vessels for further security issues such
+as code execution.
+</p>
+<p>GnuTLS requires the following system calls to be available for its proper
+operation.
+</p>
+<ul>
+<li> nanosleep
+</li><li> time
+</li><li> gettimeofday
+</li><li> clock_gettime
+</li><li> getrusage
+</li><li> send
+</li><li> recv
+</li><li> writev
+</li><li> read (to read from /dev/urandom)
+</li><li> getrandom (this is Linux-kernel specific)
+</li><li> select
+</li></ul>
+
+<p>As well as an calls needed for memory allocation to work. Note however, that GnuTLS
+depends on libc for the system calls, and there is no guarrantee that libc will
+call the expected system call. For that it is recommended to test your
+program in all the targetted platforms when filters like seccomp are in place.
+</p>
+<p>An example with a seccomp filter from GnuTLS&rsquo; test suite is at:
+<a href="http://gitlab.com/gnutls/gnutls/blob/master/tests/seccomp.c">http://gitlab.com/gnutls/gnutls/blob/master/tests/seccomp.c</a>.
+</p>
+<hr>
 <a name="Sessions-and-fork"></a>
 <div class="header">
 <p>
-Next: <a href="#Callback-functions" accesskey="n" rel="next">Callback functions</a>, Previous: <a href="#Thread-safety" accesskey="p" rel="prev">Thread safety</a>, Up: <a href="#Introduction-to-the-library" accesskey="u" rel="up">Introduction to the library</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Callback-functions" accesskey="n" rel="next">Callback functions</a>, Previous: <a href="#Running-in-a-sandbox" accesskey="p" rel="prev">Running in a sandbox</a>, Up: <a href="#Introduction-to-the-library" accesskey="u" rel="up">Introduction to the library</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Sessions-and-fork-1"></a>
-<h4 class="subsection">6.1.6 Sessions and fork</h4>
+<h4 class="subsection">6.1.7 Sessions and fork</h4>
 <a name="index-fork"></a>
 
 <p>A <code>gnutls_session_t</code> object can be shared by two processes after a fork,
@@ -8664,7 +8724,7 @@ and the receiving process waiting for a return value of zero.
 Previous: <a href="#Sessions-and-fork" accesskey="p" rel="prev">Sessions and fork</a>, Up: <a href="#Introduction-to-the-library" accesskey="u" rel="up">Introduction to the library</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Callback-functions-1"></a>
-<h4 class="subsection">6.1.7 Callback functions</h4>
+<h4 class="subsection">6.1.8 Callback functions</h4>
 <a name="index-callback-functions"></a>
 
 <p>There are several cases where <acronym>GnuTLS</acronym> may need out of
@@ -8734,7 +8794,7 @@ Next: <a href="#Version-check" accesskey="n" rel="next">Version check</a>, Previ
 <a name="Initialization-2"></a>
 <h4 class="subsection">6.2.2 Initialization</h4>
 
-<p>The GnuTLS library is initialized on load; prior to 3.3.0 was initialized by calling <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a>. 
+<p>The GnuTLS library is initialized on load; prior to 3.3.0 was initialized by calling <a href="#gnutls_005fglobal_005finit">gnutls_global_init</a><a name="DOCF15" href="#FOOT15"><sup>15</sup></a>. 
 The initialization typically enables CPU-specific acceleration, performs any required
 precalculations needed, opens any required system devices (e.g., /dev/urandom on Linux)
 and initializes subsystems that could be used later.
@@ -9244,7 +9304,7 @@ will be performed. For a more advanced verification function check
 <p>The <code>gnutls_session_set_verify_cert()</code>  function is intended to be used by TLS
 clients to verify the server&rsquo;s certificate.
 </p>
-<p><strong>Since:</strong> 3.5.0
+<p><strong>Since:</strong> 3.4.6
 </p></dd></dl>
 
 <dl compact="compact">
@@ -9841,7 +9901,7 @@ Previous: <a href="#Asynchronous-operation" accesskey="p" rel="prev">Asynchronou
 <p>Because datagram TLS can operate over connections where the client
 cannot be reliably verified, functionality in the form of cookies, is available to prevent
 denial of service attacks to servers. <acronym>GnuTLS</acronym> requires a server
-to generate a secret key that is used to sign a cookie<a name="DOCF15" href="#FOOT15"><sup>15</sup></a>. 
+to generate a secret key that is used to sign a cookie<a name="DOCF16" href="#FOOT16"><sup>16</sup></a>. 
 That cookie is sent to the client using <a href="#gnutls_005fdtls_005fcookie_005fsend">gnutls_dtls_cookie_send</a>, and 
 the client must reply using the correct cookie. The server side
 should verify the initial message sent by client using <a href="#gnutls_005fdtls_005fcookie_005fverify">gnutls_dtls_cookie_verify</a>.
@@ -10383,7 +10443,7 @@ advances while providing compatibility with old clients and servers).
 <div class="float"><a name="tab_003aprio_002dkeywords"></a>
 <table>
 <thead><tr><th width="20%">Keyword</th><th width="70%">Description</th></tr></thead>
-<tr><td width="20%">@KEYWORD</td><td width="70%">Means that a compile-time specified system configuration file<a name="DOCF16" href="#FOOT16"><sup>16</sup></a> 
+<tr><td width="20%">@KEYWORD</td><td width="70%">Means that a compile-time specified system configuration file<a name="DOCF17" href="#FOOT17"><sup>17</sup></a> 
 will be used to expand the provided keyword. That is used to impose system-specific policies.
 It may be followed by additional options that will be appended to the
 system string (e.g., &quot;@SYSTEM:+SRP&quot;). The system file should have the
@@ -10504,7 +10564,7 @@ is SIGN-ALL. This is only valid for TLS 1.2 and later.</td></tr>
 
 <div class="float-caption"><p><strong>Table 6.4: </strong>The supported algorithm keywords in priority strings.</p></div></div>
 <p>Note that the DHE key exchange methods are generally
-slower<a name="DOCF17" href="#FOOT17"><sup>17</sup></a> than their elliptic curves counterpart
+slower<a name="DOCF18" href="#FOOT18"><sup>18</sup></a> than their elliptic curves counterpart
 (ECDHE). Moreover the plain Diffie-Hellman key exchange
 requires parameters to be generated and associated with a credentials
 structure by the server (see <a href="#Parameter-generation">Parameter generation</a>). 
@@ -15453,7 +15513,7 @@ it does not provide access to basic cryptographic primitives. However
 it abstracts the internal cryptographic back-end (see <a href="#Cryptographic-Backend">Cryptographic Backend</a>),
 providing symmetric crypto, hash and HMAC algorithms, as well access
 to the random number generation. For a low-level crypto API the usage of nettle
-<a name="DOCF18" href="#FOOT18"><sup>18</sup></a> library is recommended.
+<a name="DOCF19" href="#FOOT19"><sup>19</sup></a> library is recommended.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Symmetric-algorithms" accesskey="1">Symmetric algorithms</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -15522,6 +15582,109 @@ accessed using the abstract key API in <a href="#Abstract-key-types">Abstract ke
 is a high level API with the advantage of transparently handling keys
 in memory and keys present in smart cards.
 </p>
+<a name="PKCS-_00237-signing"></a>
+<h4 class="subsection">8.2.1 PKCS #7 signing</h4>
+<a name="index-PKCS-_00237"></a>
+<a name="index-file-signing"></a>
+
+<p>The PKCS #7 format is common format used for digital signatures. It allows to sign
+by embedding the data into the signature, or creating detached signatures of the data,
+including a timestamp, additional certificates etc. In certain cases this format is also
+used to transport lists of certificates and CRLs.
+</p>
+<p>The basic functions to initialize, deinitialize, import, export or print information
+about a PKCS #7 structure are shown below.
+</p><dl compact="compact">
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005finit">gnutls_pkcs7_init</a> (gnutls_pkcs7_t * <var>pkcs7</var>)</code></dt>
+<dt><code><var>void</var> <a href="#gnutls_005fpkcs7_005fdeinit">gnutls_pkcs7_deinit</a> (gnutls_pkcs7_t <var>pkcs7</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fexport2">gnutls_pkcs7_export2</a> (gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_fmt_t <var>format</var>, gnutls_datum_t * <var>out</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fimport">gnutls_pkcs7_import</a> (gnutls_pkcs7_t <var>pkcs7</var>, const gnutls_datum_t * <var>data</var>, gnutls_x509_crt_fmt_t <var>format</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fprint">gnutls_pkcs7_print</a> (gnutls_pkcs7_t <var>pkcs7</var>, gnutls_certificate_print_formats_t <var>format</var>, gnutls_datum_t * <var>out</var>)</code></dt>
+</dl>
+
+<p>The following functions allow the verification of a structure using either a trust list, or
+individual certificates. The <a href="#gnutls_005fpkcs7_005fsign">gnutls_pkcs7_sign</a> function is the data signing function.
+</p>
+<dl compact="compact">
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fverify_005fdirect">gnutls_pkcs7_verify_direct</a> (gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_t <var>signer</var>, unsigned <var>idx</var>, const gnutls_datum_t * <var>data</var>, unsigned <var>flags</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fverify">gnutls_pkcs7_verify</a> (gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_trust_list_t <var>tl</var>, gnutls_typed_vdata_st * <var>vdata</var>, unsigned int <var>vdata_size</var>, unsigned <var>idx</var>, const gnutls_datum_t * <var>data</var>, unsigned <var>flags</var>)</code></dt>
+</dl>
+
+
+
+
+<dl>
+<dt><a name="index-gnutls_005fpkcs7_005fsign"></a>Function: <em>int</em> <strong>gnutls_pkcs7_sign</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_t <var>signer</var>, gnutls_privkey_t <var>signer_key</var>, const gnutls_datum_t * <var>data</var>, gnutls_pkcs7_attrs_t <var>signed_attrs</var>, gnutls_pkcs7_attrs_t <var>unsigned_attrs</var>, gnutls_digest_algorithm_t <var>dig</var>, unsigned <var>flags</var>)</em></dt>
+<dd><p><var>pkcs7</var>: should contain a <code>gnutls_pkcs7_t</code>  type
+</p>
+<p><var>signer</var>: the certificate to sign the structure
+</p>
+<p><var>signer_key</var>: the key to sign the structure
+</p>
+<p><var>data</var>: The data to be signed or <code>NULL</code>  if the data are already embedded
+</p>
+<p><var>signed_attrs</var>: Any additional attributes to be included in the signed ones (or <code>NULL</code> )
+</p>
+<p><var>unsigned_attrs</var>: Any additional attributes to be included in the unsigned ones (or <code>NULL</code> )
+</p>
+<p><var>dig</var>: The digest algorithm to use for signing
+</p>
+<p><var>flags</var>: Should be zero or one of <code>GNUTLS_PKCS7</code>  flags
+</p>
+<p>This function will add a signature in the provided PKCS <code>7</code>  structure
+for the provided data. Multiple signatures can be made with different
+signers.
+</p>
+<p>The available flags are:
+<code>GNUTLS_PKCS7_EMBED_DATA</code> , <code>GNUTLS_PKCS7_INCLUDE_TIME</code> , <code>GNUTLS_PKCS7_INCLUDE_CERT</code> ,
+and <code>GNUTLS_PKCS7_WRITE_SPKI</code> . They are explained in the <code>gnutls_pkcs7_sign_flags</code> 
+definition.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value. 
+</p>
+<p><strong>Since:</strong> 3.4.2
+</p></dd></dl>
+
+<div class="float"><a name="gnutls_005fpkcs7_005fsign_005fflags"></a>
+
+
+<dl compact="compact">
+<dt><code>GNUTLS_PKCS7_EMBED_DATA</code></dt>
+<dd><p>The signed data will be embedded in the structure.
+</p></dd>
+<dt><code>GNUTLS_PKCS7_INCLUDE_TIME</code></dt>
+<dd><p>The signing time will be included in the structure.
+</p></dd>
+<dt><code>GNUTLS_PKCS7_INCLUDE_CERT</code></dt>
+<dd><p>The signer&rsquo;s certificate will be included in the cert list.
+</p></dd>
+<dt><code>GNUTLS_PKCS7_WRITE_SPKI</code></dt>
+<dd><p>Use the signer&rsquo;s key identifier instead of name.
+</p></dd>
+</dl>
+
+<div class="float-caption"><p><strong>Figure 8.1: </strong>Flags applicable to gnutls_pkcs7_sign()</p></div></div>
+<p>Other helper functions which allow to access the signatures, or certificates attached
+in the structure are listed below.
+</p>
+<dl compact="compact">
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fget_005fsignature_005fcount">gnutls_pkcs7_get_signature_count</a> (gnutls_pkcs7_t <var>pkcs7</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fget_005fsignature_005finfo">gnutls_pkcs7_get_signature_info</a> (gnutls_pkcs7_t <var>pkcs7</var>, unsigned <var>idx</var>, gnutls_pkcs7_signature_info_st * <var>info</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fget_005fcrt_005fcount">gnutls_pkcs7_get_crt_count</a> (gnutls_pkcs7_t <var>pkcs7</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fget_005fcrt_005fraw2">gnutls_pkcs7_get_crt_raw2</a> (gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>, gnutls_datum_t * <var>cert</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fget_005fcrl_005fcount">gnutls_pkcs7_get_crl_count</a> (gnutls_pkcs7_t <var>pkcs7</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fget_005fcrl_005fraw2">gnutls_pkcs7_get_crl_raw2</a> (gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>, gnutls_datum_t * <var>crl</var>)</code></dt>
+</dl>
+
+<p>To append certificates, or CRLs in the structure the following functions are provided.
+</p><dl compact="compact">
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fset_005fcrt_005fraw">gnutls_pkcs7_set_crt_raw</a> (gnutls_pkcs7_t <var>pkcs7</var>, const gnutls_datum_t * <var>crt</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fset_005fcrt">gnutls_pkcs7_set_crt</a> (gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_t <var>crt</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fset_005fcrl_005fraw">gnutls_pkcs7_set_crl_raw</a> (gnutls_pkcs7_t <var>pkcs7</var>, const gnutls_datum_t * <var>crl</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fpkcs7_005fset_005fcrl">gnutls_pkcs7_set_crl</a> (gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crl_t <var>crl</var>)</code></dt>
+</dl>
+
 <hr>
 <a name="Hash-and-HMAC-functions"></a>
 <div class="header">
@@ -15590,7 +15753,7 @@ Fatal in session if broken.
 </p></dd>
 </dl>
 
-<div class="float-caption"><p><strong>Figure 8.1: </strong>The random number levels.</p></div></div>
+<div class="float-caption"><p><strong>Figure 8.2: </strong>The random number levels.</p></div></div>
 
 
 
@@ -15657,6 +15820,9 @@ algorithms and by convention kernel implemented algorithms have
 priority of 90 and CPU-assisted of 80.  The algorithm with the lowest priority will be
 used by gnutls.
 </p>
+<p>In the case the registered init or setkey functions return <code>GNUTLS_E_NEED_FALLBACK</code> ,
+GnuTLS will attempt to use the next in priority registered cipher.
+</p>
 <p>The functions which are marked as non-AEAD they are not required when
 registering a cipher to be used with the new AEAD API introduced in
 GnuTLS 3.4.0. Internally GnuTLS uses the new AEAD API.
@@ -15690,6 +15856,9 @@ gnutls.  Any algorithm registered will override the included
 algorithms and by convention kernel implemented algorithms have
 priority of 90 and CPU-assisted of 80.  The algorithm with the lowest priority will be
 used by gnutls.
+</p>
+<p>In the case the registered init or setkey functions return <code>GNUTLS_E_NEED_FALLBACK</code> ,
+GnuTLS will attempt to use the next in priority registered cipher.
 </p>
 <p>The functions registered will be used with the new AEAD API introduced in
 GnuTLS 3.4.0. Internally GnuTLS uses the new AEAD API.
@@ -16789,7 +16958,7 @@ authentication method needs to implement the functions shown below.
 <p>Those functions are responsible for the
 interpretation of the handshake protocol messages. It is common for such
 functions to read data from one or more <code>credentials_t</code>
-structures<a name="DOCF19" href="#FOOT19"><sup>19</sup></a> and write data,
+structures<a name="DOCF20" href="#FOOT20"><sup>20</sup></a> and write data,
 such as certificates, usernames etc. to <code>auth_info_t</code> structures.
 </p>
 
@@ -17176,7 +17345,7 @@ an efficient way.
 <h4 class="subheading">Cryptographic library layer</h4>
 <p>The Cryptographic library layer, currently supports only
 libnettle. Older versions of GnuTLS used to support libgcrypt,
-but it was switched with nettle mainly for performance reasons<a name="DOCF20" href="#FOOT20"><sup>20</sup></a>
+but it was switched with nettle mainly for performance reasons<a name="DOCF21" href="#FOOT21"><sup>21</sup></a>
 and secondary because it is a simpler library to use.
 In the future other cryptographic libraries might be supported as well.
 </p>
@@ -17186,7 +17355,7 @@ In the future other cryptographic libraries might be supported as well.
 kernel drivers to utilize the operations from software. For this reason 
 GnuTLS provides a layer where each individual algorithm used can be replaced
 by another implementation, i.e., the one provided by the driver. The
-FreeBSD, OpenBSD and Linux kernels<a name="DOCF21" href="#FOOT21"><sup>21</sup></a> include already 
+FreeBSD, OpenBSD and Linux kernels<a name="DOCF22" href="#FOOT22"><sup>22</sup></a> include already 
 a number of hardware assisted implementations, and also provide an interface 
 to access them, called <code>/dev/crypto</code>.
 GnuTLS will take advantage of this interface if compiled with special
@@ -18776,6 +18945,21 @@ certificate server to use. These parameters will be used in
 Ephemeral Diffie-Hellman cipher suites.  Note that only a pointer
 to the parameters are stored in the certificate handle, so you
 must not deallocate the parameters before the certificate is deallocated.
+</p></dd></dl>
+
+<a name="gnutls_005fcertificate_005fset_005fflags-1"></a>
+<h4 class="subheading">gnutls_certificate_set_flags</h4>
+<a name="gnutls_005fcertificate_005fset_005fflags"></a><dl>
+<dt><a name="index-gnutls_005fcertificate_005fset_005fflags"></a>Function: <em>void</em> <strong>gnutls_certificate_set_flags</strong> <em>(gnutls_certificate_credentials_t <var>res</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>res</var>: is a gnutls_certificate_credentials_t type
+</p>
+<p><var>flags</var>: are the flags of <code>gnutls_certificate_flags</code>  type
+</p>
+<p>This function will set flags to tweak the operation of
+the credentials structure. See the <code>gnutls_certificate_flags</code>  enumerations
+for more information on the available flags. 
+</p>
+<p><strong>Since:</strong> 3.4.7
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffile-1"></a>
@@ -21023,9 +21207,6 @@ message from the peer is not received, the previous request will
 be retransmitted. The total timeout is the time after which the
 handshake will be aborted with <code>GNUTLS_E_TIMEDOUT</code> .
 </p>
-<p>If the retransmission timeout is zero then the handshake will operate
-in a non-blocking way, i.e., return <code>GNUTLS_E_AGAIN</code> .
-</p>
 <p><strong>Since:</strong> 3.1.2
 </p></dd></dl>
 
@@ -23203,7 +23384,7 @@ was occurred then the return value would be set to ((unsigned int)-1).
 </p>
 <p><strong>Returns:</strong> the certificate verification status.
 </p>
-<p><strong>Since:</strong> 3.5.0
+<p><strong>Since:</strong> 3.4.6
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fis_005fresumed-1"></a>
@@ -23339,7 +23520,7 @@ will be performed. For a more advanced verification function check
 <p>The <code>gnutls_session_set_verify_cert()</code>  function is intended to be used by TLS
 clients to verify the server&rsquo;s certificate.
 </p>
-<p><strong>Since:</strong> 3.5.0
+<p><strong>Since:</strong> 3.4.6
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fset_005fverify_005fcert2-1"></a>
@@ -23363,7 +23544,7 @@ case the verification result can be obtained using <code>gnutls_session_get_veri
 and once set must remain valid for the lifetime of the session. More precisely
 they should be available during any subsequent handshakes.
 </p>
-<p><strong>Since:</strong> 3.5.0
+<p><strong>Since:</strong> 3.4.6
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fset_005fverify_005ffunction-1"></a>
@@ -23391,7 +23572,7 @@ can be used.
 <p>The callback function should return 0 for the handshake to continue
 or non-zero to terminate.
 </p>
-<p><strong>Since:</strong> 3.5.0
+<p><strong>Since:</strong> 3.4.6
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fticket_005fenable_005fclient-1"></a>
@@ -24851,9 +25032,6 @@ handshake will be aborted with <code>GNUTLS_E_TIMEDOUT</code> .
 </p>
 <p>The DTLS protocol recommends the values of 1 sec and 60 seconds
 respectively, and these are the default values.
-</p>
-<p>If the retransmission timeout is zero then the handshake will operate
-in a non-blocking way, i.e., return <code>GNUTLS_E_AGAIN</code> .
 </p>
 <p>To disable retransmissions set a  <code>retrans_timeout</code> larger than the  <code>total_timeout</code> .
 </p>
@@ -29028,6 +29206,24 @@ certificate.
 negative error value.
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrt_005fset_005fissuer_005funique_005fid-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_issuer_unique_id</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fissuer_005funique_005fid"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fissuer_005funique_005fid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_issuer_unique_id</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const void * <var>id</var>, size_t <var>id_size</var>)</em></dt>
+<dd><p><var>cert</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>id</var>: The unique ID
+</p>
+<p><var>id_size</var>: Holds the size of the unique ID.
+</p>
+<p>This function will set the X.509 certificate&rsquo;s issuer unique ID field.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.7
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrt_005fset_005fkey-1"></a>
 <h4 class="subheading">gnutls_x509_crt_set_key</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fkey"></a><dl>
@@ -29281,6 +29477,24 @@ extension.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005funique_005fid-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_subject_unique_id</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005funique_005fid"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005funique_005fid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_unique_id</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const void * <var>id</var>, size_t <var>id_size</var>)</em></dt>
+<dd><p><var>cert</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>id</var>: The unique ID
+</p>
+<p><var>id_size</var>: Holds the size of the unique ID.
+</p>
+<p>This function will set the X.509 certificate&rsquo;s subject unique ID field.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.4.7
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fset_005fversion-1"></a>
@@ -31158,7 +31372,10 @@ to the trusted list. The list of CRLs must not be deinitialized
 during this structure&rsquo;s lifetime.
 </p>
 <p>This function must be called after <code>gnutls_x509_trust_list_add_cas()</code> 
-to allow verifying the CRLs for validity.
+to allow verifying the CRLs for validity. If the flag <code>GNUTLS_TL_NO_DUPLICATES</code> 
+is given, then any provided CRLs that are a duplicate, will be deinitialized
+and not added to the list (that assumes that <code>gnutls_x509_trust_list_deinit()</code> 
+will be called with all=1).
 </p>
 <p><strong>Returns:</strong> The number of added elements is returned.
 </p>
@@ -32046,7 +32263,7 @@ negative error value.
 <a name="gnutls_005fpkcs7_005fsign-1"></a>
 <h4 class="subheading">gnutls_pkcs7_sign</h4>
 <a name="gnutls_005fpkcs7_005fsign"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fsign"></a>Function: <em>int</em> <strong>gnutls_pkcs7_sign</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_t <var>signer</var>, gnutls_privkey_t <var>signer_key</var>, const gnutls_datum_t * <var>data</var>, gnutls_pkcs7_attrs_t <var>signed_attrs</var>, gnutls_pkcs7_attrs_t <var>unsigned_attrs</var>, gnutls_digest_algorithm_t <var>dig</var>, unsigned <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs7_005fsign-1"></a>Function: <em>int</em> <strong>gnutls_pkcs7_sign</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, gnutls_x509_crt_t <var>signer</var>, gnutls_privkey_t <var>signer_key</var>, const gnutls_datum_t * <var>data</var>, gnutls_pkcs7_attrs_t <var>signed_attrs</var>, gnutls_pkcs7_attrs_t <var>unsigned_attrs</var>, gnutls_digest_algorithm_t <var>dig</var>, unsigned <var>flags</var>)</em></dt>
 <dd><p><var>pkcs7</var>: should contain a <code>gnutls_pkcs7_t</code>  type
 </p>
 <p><var>signer</var>: the certificate to sign the structure
@@ -32068,10 +32285,9 @@ for the provided data. Multiple signatures can be made with different
 signers.
 </p>
 <p>The available flags are:
-- <code>GNUTLS_PKCS7_EMBED_DATA</code> : the data will be embedded in the structure
-- <code>GNUTLS_PKCS7_INCLUDE_TIME</code> : the signing time will be included
-- <code>GNUTLS_PKCS7_INCLUDE_CERT</code> : the signer&rsquo;s certificate will be included in the cert list
-- <code>GNUTLS_PKCS7_WRITE_SPKI</code> : store the issuer&rsquo;s ID instead of name
+<code>GNUTLS_PKCS7_EMBED_DATA</code> , <code>GNUTLS_PKCS7_INCLUDE_TIME</code> , <code>GNUTLS_PKCS7_INCLUDE_CERT</code> ,
+and <code>GNUTLS_PKCS7_WRITE_SPKI</code> . They are explained in the <code>gnutls_pkcs7_sign_flags</code> 
+definition.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value. 
@@ -38832,6 +39048,9 @@ algorithms and by convention kernel implemented algorithms have
 priority of 90 and CPU-assisted of 80.  The algorithm with the lowest priority will be
 used by gnutls.
 </p>
+<p>In the case the registered init or setkey functions return <code>GNUTLS_E_NEED_FALLBACK</code> ,
+GnuTLS will attempt to use the next in priority registered cipher.
+</p>
 <p>The functions registered will be used with the new AEAD API introduced in
 GnuTLS 3.4.0. Internally GnuTLS uses the new AEAD API.
 </p>
@@ -38865,6 +39084,9 @@ gnutls.  Any algorithm registered will override the included
 algorithms and by convention kernel implemented algorithms have
 priority of 90 and CPU-assisted of 80.  The algorithm with the lowest priority will be
 used by gnutls.
+</p>
+<p>In the case the registered init or setkey functions return <code>GNUTLS_E_NEED_FALLBACK</code> ,
+GnuTLS will attempt to use the next in priority registered cipher.
 </p>
 <p>The functions which are marked as non-AEAD they are not required when
 registering a cipher to be used with the new AEAD API introduced in
@@ -40213,6 +40435,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fserver_005fset_005frequest"><code>gnutls_certificate_server_set_request</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Certificate-credentials">Certificate credentials</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fserver_005fset_005frequest-1"><code>gnutls_certificate_server_set_request</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fdh_005fparams"><code>gnutls_certificate_set_dh_params</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fflags"><code>gnutls_certificate_set_flags</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fkey"><code>gnutls_certificate_set_key</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Certificate-credentials">Certificate credentials</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005fkey-1"><code>gnutls_certificate_set_key</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Abstract-key-API">Abstract key API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fcertificate_005fset_005focsp_005fstatus_005frequest_005ffile"><code>gnutls_certificate_set_ocsp_status_request_file</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -40659,7 +40882,8 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fset_005fcrl_005fraw"><code>gnutls_pkcs7_set_crl_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fset_005fcrt"><code>gnutls_pkcs7_set_crt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fset_005fcrt_005fraw"><code>gnutls_pkcs7_set_crt_raw</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fsign"><code>gnutls_pkcs7_sign</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fsign"><code>gnutls_pkcs7_sign</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Public-key-algorithms">Public key algorithms</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fsign-1"><code>gnutls_pkcs7_sign</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fsignature_005finfo_005fdeinit"><code>gnutls_pkcs7_signature_info_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fverify"><code>gnutls_pkcs7_verify</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fpkcs7_005fverify_005fdirect"><code>gnutls_pkcs7_verify_direct</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-7-API">PKCS 7 API</a></td></tr>
@@ -41158,6 +41382,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fissuer_005falt_005fname"><code>gnutls_x509_crt_set_issuer_alt_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fissuer_005fdn"><code>gnutls_x509_crt_set_issuer_dn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fissuer_005fdn_005fby_005foid"><code>gnutls_x509_crt_set_issuer_dn_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fissuer_005funique_005fid"><code>gnutls_x509_crt_set_issuer_unique_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fkey"><code>gnutls_x509_crt_set_key</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fkey_005fpurpose_005foid"><code>gnutls_x509_crt_set_key_purpose_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fkey_005fusage"><code>gnutls_x509_crt_set_key_usage</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
@@ -41173,6 +41398,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname"><code>gnutls_x509_crt_set_subject_alternative_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fname"><code>gnutls_x509_crt_set_subject_alt_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fsubject_005fkey_005fid"><code>gnutls_x509_crt_set_subject_key_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fsubject_005funique_005fid"><code>gnutls_x509_crt_set_subject_unique_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fset_005fversion"><code>gnutls_x509_crt_set_version</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fsign"><code>gnutls_x509_crt_sign</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrt_005fsign2"><code>gnutls_x509_crt_sign2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
@@ -41406,6 +41632,7 @@ Previous: <a href="#Function-and-Data-Index" accesskey="p" rel="prev">Function a
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-F">F</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-FDL_002c-GNU-Free-Documentation-License">FDL, GNU Free Documentation License</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Copying-Information">Copying Information</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-file-signing">file signing</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Public-key-algorithms">Public key algorithms</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-fork">fork</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Sessions-and-fork">Sessions and fork</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-G">G</a></th><td></td><td></td></tr>
@@ -41430,6 +41657,7 @@ Previous: <a href="#Function-and-Data-Index" accesskey="p" rel="prev">Function a
 <tr><td></td><td valign="top"><a href="#index-installation">installation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Downloading-and-installing">Downloading and installing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-installation-1">installation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Installing-for-a-software-distribution">Installing for a software distribution</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-internal-architecture">internal architecture</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-architecture-of-GnuTLS">Internal architecture of GnuTLS</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-isolated-mode">isolated mode</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Running-in-a-sandbox">Running in a sandbox</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-K">K</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-key-extraction">key extraction</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Deriving-keys-for-other-applications_002fprotocols">Deriving keys for other applications/protocols</a></td></tr>
@@ -41463,6 +41691,7 @@ Previous: <a href="#Function-and-Data-Index" accesskey="p" rel="prev">Function a
 <tr><td></td><td valign="top"><a href="#index-PKCS-_002310">PKCS #10</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-10-certificate-requests">PKCS 10 certificate requests</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PKCS-_002311-tokens">PKCS #11 tokens</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Smart-cards-and-HSMs">Smart cards and HSMs</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PKCS-_002312">PKCS #12</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Managing-encrypted-keys">Managing encrypted keys</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PKCS-_00237">PKCS #7</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Public-key-algorithms">Public key algorithms</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PKCS-_00238">PKCS #8</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Managing-encrypted-keys">Managing encrypted keys</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Priority-strings">Priority strings</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Priority-Strings">Priority Strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PSK-authentication">PSK authentication</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Authentication-using-PSK">Authentication using PSK</a></td></tr>
@@ -41483,6 +41712,7 @@ Previous: <a href="#Function-and-Data-Index" accesskey="p" rel="prev">Function a
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-S">S</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-safe-renegotiation">safe renegotiation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Safe-renegotiation">Safe renegotiation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-seccomp">seccomp</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Running-in-a-sandbox">Running in a sandbox</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Secure-RTP">Secure RTP</a>:</td><td>&nbsp;</td><td valign="top"><a href="#SRTP">SRTP</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-server-name-indication">server name indication</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Server-name-indication">Server name indication</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-session-resumption">session resumption</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Resuming-Sessions">Resuming Sessions</a></td></tr>
@@ -41620,22 +41850,26 @@ to GnuTLS (e.g., it was entered at a pinpad).</p>
 <h3><a name="FOOT14" href="#DOCF14">(14)</a></h3>
 <p>The first message in a <acronym>TLS</acronym> handshake</p>
 <h3><a name="FOOT15" href="#DOCF15">(15)</a></h3>
-<p>A key of 128 bits or 16 bytes should be sufficient for this purpose.</p>
+<p>The original behavior of requiring explicit initialization can obtained by setting the
+GNUTLS_NO_EXPLICIT_INIT environment variable to 1, or by using the macro GNUTLS_SKIP_GLOBAL_INIT
+in a global section of your program.</p>
 <h3><a name="FOOT16" href="#DOCF16">(16)</a></h3>
-<p>The default is <code>/etc/gnutls/default-priorities</code>.</p>
+<p>A key of 128 bits or 16 bytes should be sufficient for this purpose.</p>
 <h3><a name="FOOT17" href="#DOCF17">(17)</a></h3>
+<p>The default is <code>/etc/gnutls/default-priorities</code>.</p>
+<h3><a name="FOOT18" href="#DOCF18">(18)</a></h3>
 <p>It depends on the group used.  Primes with
 lesser bits are always faster, but also easier to break.  See <a href="#Selecting-cryptographic-key-sizes">Selecting cryptographic key sizes</a>
 for the acceptable security levels.</p>
-<h3><a name="FOOT18" href="#DOCF18">(18)</a></h3>
-<p>See <a href="http://www.lysator.liu.se/~nisse/nettle/">http://www.lysator.liu.se/~nisse/nettle/</a>.</p>
 <h3><a name="FOOT19" href="#DOCF19">(19)</a></h3>
+<p>See <a href="http://www.lysator.liu.se/~nisse/nettle/">http://www.lysator.liu.se/~nisse/nettle/</a>.</p>
+<h3><a name="FOOT20" href="#DOCF20">(20)</a></h3>
 <p>such as the
 <code>gnutls_certificate_credentials_t</code> structures</p>
-<h3><a name="FOOT20" href="#DOCF20">(20)</a></h3>
+<h3><a name="FOOT21" href="#DOCF21">(21)</a></h3>
 <p>See
 <a href="http://lists.gnu.org/archive/html/gnutls-devel/2011-02/msg00079.html">http://lists.gnu.org/archive/html/gnutls-devel/2011-02/msg00079.html</a>.</p>
-<h3><a name="FOOT21" href="#DOCF21">(21)</a></h3>
+<h3><a name="FOOT22" href="#DOCF22">(22)</a></h3>
 <p>Check <a href="http://home.gna.org/cryptodev-linux/">http://home.gna.org/cryptodev-linux/</a> 
 for the Linux kernel implementation of <code>/dev/crypto</code>.</p>
 </div>
