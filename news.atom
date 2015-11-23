@@ -3,7 +3,26 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2015-11-22T13:48:52+00:00</updated>
+<updated>2015-11-23T19:26:33+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2015-11-23</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2015-11-23'/>
+    <title>GnuTLS 3.4.x</title>
+    <updated>2015-11-23T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2015-11-23.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Added a description of the <a href="http://nmav.gnutls.org/2015/11/an-overview-of-gnutls-34x.html"> features in GnuTLS 3.4.x</a>.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2015-11-22</id>
@@ -424,34 +443,6 @@ of the gnutls library.
 <p>
 <a href="http://www.gnutls.org/security.html#GNUTLS-SA-2014-4">Posted a security advisory</a> on 
 the POODLE attack.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2014-10-13</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-10-13'/>
-    <title>GnuTLS 3.3.9, 3.2.19, and 3.1.17</title>
-    <updated>2014-10-13T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-10-13.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Released <a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7728">GnuTLS
-3.3.9</a>,
-<a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7727">3.2.19</a>, and
-<a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7726">3.1.17</a>,
-which are bug-fix releases on the current and old stable
-branches respectively. The GnuTLS branch 3.3.x is the new
-stable branch.
 </p>
 
     </div>
