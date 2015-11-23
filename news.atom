@@ -3,7 +3,7 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2015-11-23T19:26:33+00:00</updated>
+<updated>2015-11-23T19:27:37+00:00</updated>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2015-11-23</id>
@@ -17,7 +17,7 @@
     <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2015-11-23.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
 
 <p>
-Added a description of the <a href="http://nmav.gnutls.org/2015/11/an-overview-of-gnutls-34x.html"> features in GnuTLS 3.4.x</a>.
+Added a description of the new <a href="http://nmav.gnutls.org/2015/11/an-overview-of-gnutls-34x.html"> features in GnuTLS 3.4.x</a>.
 </p>
 
     </div>
