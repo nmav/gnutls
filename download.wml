@@ -24,28 +24,29 @@
 </center>
 </p>
 
+<perl>
+sub print_ver {
+my $name = $_[0];
+my $abi = $_[1];
+my $version = $_[2];
+
+if ($version ne '') {
+print " <tr>
+    <td>$name</td><td>${version}.x</td>
+    <td>$abi</td>
+    <td><a href=\"ftp://ftp.gnutls.org/gcrypt/gnutls/v${version}\">
+	ftp://ftp.gnutls.org/gcrypt/gnutls/v${version}</a> (<a href=\"http://www.gnupg.org/download/mirrors.en.html\">mirror list</a>)</td>
+  </tr>\n" if ("${version}" ne "");
+}
+return;
+}
+
+</perl>
+
 
 <p>
 
 <center>
-<h1>Releases of GnuTLS</h1>
-<table class="news" border=0 cellspacing=1 width=80%>
-  <tr>
-    <th>Version</th>
-    <th>ABI</th>
-    <th>Status</th>
-  </tr>
-  <tr>
-    <td>3.3.x</td>
-    <td>3.0.0</td>
-    <td>Current stable release.</td>
-  </tr>
-  <tr>
-    <td>3.4.x</td>
-    <td>3.4.0</td>
-    <td>Next stable release.</td>
-  </tr>
-</table>
 
 <h1>Downloading the GnuTLS library</h1>
 
@@ -58,50 +59,14 @@
   <tr>
     <th>Release</th>
     <th>Version</th>
+    <th>ABI</th>
     <th>Location</th>
   </tr>
 
-<perl>
-sub print_ver {
-my $name = $_[0];
-my $version = $_[1];
 
-if ($version ne '') {
-print " <tr>
-    <td>$name</td><td>${version}.x</td>
-    <td><a href=\"ftp://ftp.gnutls.org/gcrypt/gnutls/v${version}\">
-	ftp://ftp.gnutls.org/gcrypt/gnutls/v${version}</a> (<a href=\"http://www.gnupg.org/download/mirrors.en.html\">mirror list</a>)</td>
-  </tr>\n" if ("${version}" ne "");
-}
-return;
-}
-</perl>
-
-<:= &print_ver("stable-next<sup><a href=\"#fn2\" id=\"ref2\">2</a></sup>", "$(STABLE_NEXT_VER)") :>
-<:= &print_ver("stable", "$(STABLE_VER)") :>
-<:= &print_ver("stable-old", "$(STABLE_OLD_VER)") :>
-
-<!--
-  <tr>
-    <td>
-      <a href="ftp://ftp.gnu.org/gnu/gnutls/">ftp://ftp.gnu.org/gnu/gnutls/</a>
-      <br>
-      <a href="http://ftp.gnu.org/gnu/gnutls/">http://ftp.gnu.org/gnu/gnutls/</a>
-    </td>
-    <td>gnu.org FTP server, see <a href="http://www.gnu.org/prep/ftp.html">
-	list of mirrors</a></td>
-    <td>USA</td>
-    <td><a href="http://www.fsf.org">FSF</a></td>
-  </tr>
--->
-
-<!--  <tr>
-    <td><a href="ftp://ftp.gnutls.org/pub/gnutls/">
-	ftp://ftp.gnutls.org/pub/gnutls/</a></td>
-    <td>gnutls.org FTP server</td>
-    <td>Greece</td>
-    <td><a href="http://www.linux.gr">HELLUG</a></td>
-  </tr> -->
+<:= &print_ver("Next stable<sup><a href=\"#fn2\" id=\"ref2\">2</a></sup>", "$(STABLE_NEXT_ABI)", "$(STABLE_NEXT_VER)") :>
+<:= &print_ver("Current stable", "$(STABLE_ABI)", "$(STABLE_VER)") :>
+<:= &print_ver("Previous stable", "$(STABLE_OLD_ABI)", "$(STABLE_OLD_VER)") :>
 
 </table>
 
