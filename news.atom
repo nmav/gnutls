@@ -3,7 +3,27 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2015-11-23T19:27:37+00:00</updated>
+<updated>2015-11-29T11:18:05+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2015-11-29</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2015-11-29'/>
+    <title>GnuTLS 3.4.x</title>
+    <updated>2015-11-29T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2015-11-29.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+GnuTLS 3.4.x is marked as the <a href="devel.html">current stable
+release</a>.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2015-11-23</id>
@@ -423,26 +443,6 @@ branches respectively.
 <p>
 <a href="http://www.gnutls.org/security.html#GNUTLS-SA-2014-5">Posted a security advisory</a> on a vulnerability
 of the gnutls library.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2014-10-16</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-10-16'/>
-    <title>POODLE attack</title>
-    <updated>2014-10-16T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-10-16.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-<a href="http://www.gnutls.org/security.html#GNUTLS-SA-2014-4">Posted a security advisory</a> on 
-the POODLE attack.
 </p>
 
     </div>
