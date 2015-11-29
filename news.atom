@@ -3,7 +3,7 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2015-11-29T11:18:05+00:00</updated>
+<updated>2015-11-29T11:19:56+00:00</updated>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2015-11-29</id>
@@ -17,7 +17,7 @@
     <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2015-11-29.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
 
 <p>
-GnuTLS 3.4.x is marked as the <a href="devel.html">current stable
+GnuTLS 3.4.x is marked as the <a href="download.html">current stable
 release</a>.
 </p>
 
