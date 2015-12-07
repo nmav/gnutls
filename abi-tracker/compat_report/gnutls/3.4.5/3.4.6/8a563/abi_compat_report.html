@@ -1,10 +1,10 @@
-<!-- verdict:compatible;affected:0;added:4;removed:0;type_problems_high:0;type_problems_medium:0;type_problems_low:0;interface_problems_high:0;interface_problems_medium:0;interface_problems_low:0;changed_constants:0;tool_version:1.99.11 -->
+<!-- verdict:compatible;affected:0;added:4;removed:0;type_problems_high:0;type_problems_medium:0;type_problems_low:0;interface_problems_high:0;interface_problems_medium:0;interface_problems_low:0;changed_constants:0;tool_version:1.99.14 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="libgnutls, binary compatibility, API, report" />
-    <meta name="description" content="Binary compatibility report for the libgnutls module between 3.4.5 and 3.4.6 versions on x86_64" />
+    <meta name="description" content="Binary compatibility report for the libgnutls object between 3.4.5 and 3.4.6 versions on x86_64" />
     <title>
         libgnutls: 3.4.5 to 3.4.6 binary compatibility report
     </title>
@@ -256,7 +256,7 @@ td.new {
     </head>
 <body>
 <div><a name='Top'></a>
-<h1>Binary compatibility report between <span style='color:Blue;'>libgnutls.so.30.3.1</span> (<span style='color:Red;'>3.4.5</span>) and <span style='color:Blue;'>libgnutls.so.30.4.0</span> (<span style='color:Red;'>3.4.6</span>) objects on <span style='color:Blue;'>x86_64</span></h1>
+<h1>Binary compatibility report for the <span style='color:Blue;'>libgnutls.so</span> object between <span style='color:Red;'>3.4.5</span> and <span style='color:Red;'>3.4.6</span> versions on <span style='color:Blue;'>x86_64</span></h1>
 
 <h2>Test Info</h2><hr/>
 <table class='summary'>
@@ -264,11 +264,10 @@ td.new {
 <tr><th>Version #1</th><td>3.4.5</td></tr>
 <tr><th>Version #2</th><td>3.4.6</td></tr>
 <tr><th>CPU Type</th><td>x86_64</td></tr>
-<tr><th>GCC Version</th><td>4.9.3</td></tr>
 </table>
 <h2>Test Results</h2><hr/>
 <table class='summary'><tr><th>Total Header Files</th><td><a href='#Headers' style='color:Blue;'>15</a></td></tr>
-<tr><th>Total Source Files</th><td><a href='#Sources' style='color:Blue;'>102</a></td></tr>
+<tr><th>Total Source Files</th><td><a href='#Sources' style='color:Blue;'>99</a></td></tr>
 <tr><th>Total Objects</th><td><a href='#Libs' style='color:Blue;'>1</a></td></tr>
 <tr><th>Total Symbols / Types</th><td>978 / 473</td></tr>
 <tr><th>Verdict</th><td><span style='color:Green;'><b>Compatible</b></span></td></tr>
@@ -283,7 +282,6 @@ td.new {
 <tr><td>Medium</td><td>0</td></tr>
 <tr><td>Low</td><td>0</td></tr>
 <tr><th>Problems with<br/>Constants</th><td>Low</td><td>0</td></tr>
-<tr><th>Other Changes<br/>in Data Types</th><td>-</td><td class='passed'><a href='#Other_Changes_In_Types' style='color:Blue;'>1</a></td></tr>
 </table>
 
 <a name='Added'></a><h2>Added Symbols (4)</h2><hr/>
@@ -294,30 +292,6 @@ td.new {
 <span class="iname">gnutls_session_set_verify_function&#160;<span class='sym_p'>(&#160;gnutls_session_t <span class='color_p'>session</span>, <span class='nowrap'>gnutls_certificate_verify_function* <span class='color_p'>func</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <br/>
 <a class='top_ref' href='#Top'>to the top</a><br/>
-<a name='Other_Changes'></a><a name='Other_Changes_In_Types'></a>
-<h2>Other Changes in Data Types (1)</h2><hr/>
-<span class='h_name'>gnutls.h</span><br/>
-<span class="section" onclick="javascript:showContent(this, 'c_1')">
-<span class='extendable'>[+]</span> <span class='ttype'>enum</span> gnutls_sec_param_t (1)</span>
-<br/>
-<div id="c_1" style="display:none;">
-<table class='ptable'><tr>
-<th width='2%'></th><th width='47%'>Change</th>
-<th>Effect</th></tr><tr><th>1</th><td align='left' valign='top'>The member <b>GNUTLS_SEC_PARAM_FUTURE</b> with value <b>50</b> has been added.</td><td align='left' valign='top'>No effect.</td></tr>
-</table>
-<span class="section_affected" onclick="javascript:showContent(this, 'c_2')">
-[+] affected symbols (6)</span>
-<div id="c_2" style="display:none;">
-<div class='affected'><span class='iname_a'>gnutls_openpgp_privkey_sec_param&#160;<span class='sym_p'>(&#160;<span class='nowrap'>gnutls_openpgp_privkey_t <span class='param'>key</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>Return value has type &#39;enum gnutls_sec_param_t&#39;.</div>
-<span class='iname_a'>gnutls_pk_bits_to_sec_param&#160;<span class='sym_p'>(&#160;enum gnutls_pk_algorithm_t <span class='param'>algo</span>, <span class='nowrap'>unsigned int <span class='param'>bits</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>Return value has type &#39;enum gnutls_sec_param_t&#39;.</div>
-<span class='iname_a'>gnutls_sec_param_get_name&#160;<span class='sym_p'>(&#160;<span class='nowrap'>enum gnutls_sec_param_t <span class='focus_p'>param</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>1st parameter &#39;param&#39; has type &#39;enum gnutls_sec_param_t&#39;.</div>
-<span class='iname_a'>gnutls_sec_param_to_pk_bits&#160;<span class='sym_p'>(&#160;enum gnutls_pk_algorithm_t <span class='param'>algo</span>, <span class='nowrap'>enum gnutls_sec_param_t <span class='focus_p'>param</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>2nd parameter &#39;param&#39; has type &#39;enum gnutls_sec_param_t&#39;.</div>
-<span class='iname_a'>gnutls_sec_param_to_symmetric_bits&#160;<span class='sym_p'>(&#160;<span class='nowrap'>enum gnutls_sec_param_t <span class='focus_p'>param</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>1st parameter &#39;param&#39; has type &#39;enum gnutls_sec_param_t&#39;.</div>
-<span class='iname_a'>gnutls_x509_privkey_sec_param&#160;<span class='sym_p'>(&#160;<span class='nowrap'>gnutls_x509_privkey_t <span class='param'>key</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>Return value has type &#39;enum gnutls_sec_param_t&#39;.</div>
-</div></div>
-<br/><br/></div>
-
-<br/><a class='top_ref' href='#Top'>to the top</a><br/>
 <a name='Headers'></a><h2>Header Files (15)</h2><hr/>
 <div class='h_list'>
 abstract.h<br/>
@@ -337,7 +311,7 @@ x509-ext.h<br/>
 x509.h<br/>
 </div>
 <br/><a class='top_ref' href='#Top'>to the top</a><br/>
-<a name='Sources'></a><h2>Source Files (102)</h2><hr/>
+<a name='Sources'></a><h2>Source Files (99)</h2><hr/>
 <div class='h_list'>
 alpn.c<br/>
 cert_types.c<br/>
@@ -374,7 +348,6 @@ gnutls_handshake.c<br/>
 gnutls_mem.c<br/>
 gnutls_openpgp.c<br/>
 gnutls_pcert.c<br/>
-gnutls_pk.c<br/>
 gnutls_priority.c<br/>
 gnutls_privkey.c<br/>
 gnutls_privkey_raw.c<br/>
@@ -396,7 +369,6 @@ kx.c<br/>
 locks.c<br/>
 mac.c<br/>
 max_record.c<br/>
-mpi.c<br/>
 name_constraints.c<br/>
 ocsp.c<br/>
 ocsp_output.c<br/>
@@ -406,7 +378,6 @@ pgpverify.c<br/>
 pin.c<br/>
 pkcs12.c<br/>
 pkcs12_bag.c<br/>
-pkcs12_encr.c<br/>
 pkcs7-attrs.c<br/>
 pkcs7-output.c<br/>
 pkcs7.c<br/>
@@ -450,6 +421,6 @@ libgnutls.so.30.3.1<br/>
 <br/><a class='top_ref' href='#Top'>to the top</a><br/>
 </div>
 <br/><br/><br/>
-<hr/><div class='footer' align='right'><i>Generated by <a href='http://lvc.github.io/abi-compliance-checker/'>ABI Compliance Checker</a> 1.99.11 &#160;</i></div><br/>
+<hr/><div class='footer' align='right'><i>Generated by <a href='http://lvc.github.io/abi-compliance-checker/'>ABI Compliance Checker</a> 1.99.14 &#160;</i></div><br/>
 
 </body></html>

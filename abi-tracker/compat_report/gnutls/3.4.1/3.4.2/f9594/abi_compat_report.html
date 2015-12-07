@@ -1,10 +1,10 @@
-<!-- verdict:compatible;affected:0;added:14;removed:0;type_problems_high:0;type_problems_medium:0;type_problems_low:1;interface_problems_high:0;interface_problems_medium:0;interface_problems_low:0;changed_constants:0;tool_version:1.99.11 -->
+<!-- verdict:compatible;affected:0;added:14;removed:0;type_problems_high:0;type_problems_medium:0;type_problems_low:1;interface_problems_high:0;interface_problems_medium:0;interface_problems_low:0;changed_constants:0;tool_version:1.99.14 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="libgnutls, binary compatibility, API, report" />
-    <meta name="description" content="Binary compatibility report for the libgnutls module between 3.4.1 and 3.4.2 versions on x86_64" />
+    <meta name="description" content="Binary compatibility report for the libgnutls object between 3.4.1 and 3.4.2 versions on x86_64" />
     <title>
         libgnutls: 3.4.1 to 3.4.2 binary compatibility report
     </title>
@@ -256,7 +256,7 @@ td.new {
     </head>
 <body>
 <div><a name='Top'></a>
-<h1>Binary compatibility report between <span style='color:Blue;'>libgnutls.so.30.0.1</span> (<span style='color:Red;'>3.4.1</span>) and <span style='color:Blue;'>libgnutls.so.30.1.0</span> (<span style='color:Red;'>3.4.2</span>) objects on <span style='color:Blue;'>x86_64</span></h1>
+<h1>Binary compatibility report for the <span style='color:Blue;'>libgnutls.so</span> object between <span style='color:Red;'>3.4.1</span> and <span style='color:Red;'>3.4.2</span> versions on <span style='color:Blue;'>x86_64</span></h1>
 
 <h2>Test Info</h2><hr/>
 <table class='summary'>
@@ -264,11 +264,10 @@ td.new {
 <tr><th>Version #1</th><td>3.4.1</td></tr>
 <tr><th>Version #2</th><td>3.4.2</td></tr>
 <tr><th>CPU Type</th><td>x86_64</td></tr>
-<tr><th>GCC Version</th><td>4.9.3</td></tr>
 </table>
 <h2>Test Results</h2><hr/>
 <table class='summary'><tr><th>Total Header Files</th><td><a href='#Headers' style='color:Blue;'>14</a></td></tr>
-<tr><th>Total Source Files</th><td><a href='#Sources' style='color:Blue;'>100</a></td></tr>
+<tr><th>Total Source Files</th><td><a href='#Sources' style='color:Blue;'>97</a></td></tr>
 <tr><th>Total Objects</th><td><a href='#Libs' style='color:Blue;'>1</a></td></tr>
 <tr><th>Total Symbols / Types</th><td>951 / 462</td></tr>
 <tr><th>Verdict</th><td><span style='color:Green;'><b>Compatible</b></span></td></tr>
@@ -294,13 +293,13 @@ td.new {
 <span class="iname">gnutls_pkcs7_get_crt_raw2&#160;<span class='sym_p'>(&#160;gnutls_pkcs7_t <span class='color_p'>pkcs7</span>, <span class='nowrap'>int <span class='color_p'>indx</span>,</span> <span class='nowrap'>gnutls_datum_t* <span class='color_p'>cert</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <span class="iname">gnutls_pkcs7_get_signature_info&#160;<span class='sym_p'>(&#160;gnutls_pkcs7_t <span class='color_p'>pkcs7</span>, unsigned int <span class='color_p'>idx</span>, <span class='nowrap'>gnutls_pkcs7_signature_info_st* <span class='color_p'>info</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <span class="iname">gnutls_pkcs7_print&#160;<span class='sym_p'>(&#160;gnutls_pkcs7_t <span class='color_p'>pkcs7</span>, gnutls_certificate_print_formats_t <span class='color_p'>format</span>, <span class='nowrap'>gnutls_datum_t* <span class='color_p'>out</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
-<span class="iname">gnutls_pkcs7_sign&#160;<span class='sym_p'>(&#160;gnutls_pkcs7_t <span class='color_p'>pkcs7</span>, gnutls_x509_crt_t <span class='color_p'>signer</span>, gnutls_privkey_t <span class='color_p'>signer_key</span>, gnutls_datum_t const* <span class='color_p'>data</span>, gnutls_pkcs7_attrs_t <span class='color_p'>signed_attrs</span>, gnutls_pkcs7_attrs_t <span class='color_p'>unsigned_attrs</span>, enum gnutls_digest_algorithm_t <span class='color_p'>dig</span>, <span class='nowrap'>unsigned int <span class='color_p'>flags</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<span class="iname">gnutls_pkcs7_sign&#160;<span class='sym_p'>(&#160;gnutls_pkcs7_t <span class='color_p'>pkcs7</span>, gnutls_x509_crt_t <span class='color_p'>signer</span>, gnutls_privkey_t <span class='color_p'>signer_key</span>, gnutls_datum_t const* <span class='color_p'>data</span>, gnutls_pkcs7_attrs_t <span class='color_p'>signed_attrs</span>, gnutls_pkcs7_attrs_t <span class='color_p'>unsigned_attrs</span>, gnutls_digest_algorithm_t <span class='color_p'>dig</span>, <span class='nowrap'>unsigned int <span class='color_p'>flags</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <span class="iname">gnutls_pkcs7_signature_info_deinit&#160;<span class='sym_p'>(&#160;<span class='nowrap'>gnutls_pkcs7_signature_info_st* <span class='color_p'>info</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <span class="iname">gnutls_pkcs7_verify&#160;<span class='sym_p'>(&#160;gnutls_pkcs7_t <span class='color_p'>pkcs7</span>, gnutls_x509_trust_list_t <span class='color_p'>tl</span>, gnutls_typed_vdata_st* <span class='color_p'>vdata</span>, unsigned int <span class='color_p'>vdata_size</span>, unsigned int <span class='color_p'>idx</span>, gnutls_datum_t const* <span class='color_p'>data</span>, <span class='nowrap'>unsigned int <span class='color_p'>flags</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <span class="iname">gnutls_pkcs7_verify_direct&#160;<span class='sym_p'>(&#160;gnutls_pkcs7_t <span class='color_p'>pkcs7</span>, gnutls_x509_crt_t <span class='color_p'>signer</span>, unsigned int <span class='color_p'>idx</span>, gnutls_datum_t const* <span class='color_p'>data</span>, <span class='nowrap'>unsigned int <span class='color_p'>flags</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <br/>
 <span class='h_name'>x509.h</span>, <span class='lib_name'>libgnutls.so.30.1.0</span><br/>
-<span class="iname">gnutls_x509_crt_verify_data2&#160;<span class='sym_p'>(&#160;gnutls_x509_crt_t <span class='color_p'>crt</span>, enum gnutls_sign_algorithm_t <span class='color_p'>algo</span>, unsigned int <span class='color_p'>flags</span>, gnutls_datum_t const* <span class='color_p'>data</span>, <span class='nowrap'>gnutls_datum_t const* <span class='color_p'>signature</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<span class="iname">gnutls_x509_crt_verify_data2&#160;<span class='sym_p'>(&#160;gnutls_x509_crt_t <span class='color_p'>crt</span>, gnutls_sign_algorithm_t <span class='color_p'>algo</span>, unsigned int <span class='color_p'>flags</span>, gnutls_datum_t const* <span class='color_p'>data</span>, <span class='nowrap'>gnutls_datum_t const* <span class='color_p'>signature</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <span class="iname">gnutls_x509_dn_get_str&#160;<span class='sym_p'>(&#160;gnutls_x509_dn_st* <span class='color_p'>dn</span>, <span class='nowrap'>gnutls_datum_t* <span class='color_p'>str</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <span class="iname">gnutls_x509_trust_list_get_issuer_by_subject_key_id&#160;<span class='sym_p'>(&#160;gnutls_x509_trust_list_t <span class='color_p'>list</span>, gnutls_datum_t const* <span class='color_p'>dn</span>, gnutls_datum_t const* <span class='color_p'>spki</span>, gnutls_x509_crt_t* <span class='color_p'>issuer</span>, <span class='nowrap'>unsigned int <span class='color_p'>flags</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <br/>
@@ -314,23 +313,37 @@ td.new {
 <div id="c_1" style="display:none;">
 <table class='ptable'><tr>
 <th width='2%'></th><th width='47%'>Change</th>
-<th>Effect</th></tr><tr><th>1</th><td align='left' valign='top'>Base type has been changed from <b>void*</b> to <b>gnutls_x509_dn_st*</b>.</td><td align='left' valign='top'>Replacement of the base data type may indicate a change in its semantic meaning.</td></tr>
+<th>Effect</th></tr><tr>
+<th>1</th>
+<td align='left' valign='top'>Base type has been changed from <b>void*</b> to <b>gnutls_x509_dn_st*</b>.</td>
+<td align='left' valign='top'>Replacement of the base data type may indicate a change in its semantic meaning.</td>
+</tr>
 </table>
 <span class="section_affected" onclick="javascript:showContent(this, 'c_2')">
 [+] affected symbols (8)</span>
 <div id="c_2" style="display:none;">
-<div class='affected'><span class='iname_a'>gnutls_x509_crt_get_issuer&#160;<span class='sym_p'>(&#160;gnutls_x509_crt_t <span class='param'>cert</span>, <span class='nowrap'>void** <span class='focus_p'>dn</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>2nd parameter &#39;dn&#39; (pointer) has base type &#39;gnutls_x509_dn_t&#39;.</div>
-<span class='iname_a'>gnutls_x509_crt_get_subject&#160;<span class='sym_p'>(&#160;gnutls_x509_crt_t <span class='param'>cert</span>, <span class='nowrap'>void** <span class='focus_p'>dn</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>2nd parameter &#39;dn&#39; (pointer) has base type &#39;gnutls_x509_dn_t&#39;.</div>
-<span class='iname_a'>gnutls_x509_dn_deinit&#160;<span class='sym_p'>(&#160;<span class='nowrap'>void* <span class='focus_p'>dn</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>1st parameter &#39;dn&#39; (pointer) has type &#39;gnutls_x509_dn_t&#39;.</div>
-<span class='iname_a'>gnutls_x509_dn_export2&#160;<span class='sym_p'>(&#160;<span class='nowrap'>void* <span class='focus_p'>dn</span>,</span> enum gnutls_x509_crt_fmt_t <span class='param'>format</span>, <span class='nowrap'>gnutls_datum_t* <span class='param'>out</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>1st parameter &#39;dn&#39; (pointer) has type &#39;gnutls_x509_dn_t&#39;.</div>
-<span class='iname_a'>gnutls_x509_dn_export&#160;<span class='sym_p'>(&#160;<span class='nowrap'>void* <span class='focus_p'>dn</span>,</span> enum gnutls_x509_crt_fmt_t <span class='param'>format</span>, <span class='nowrap'>void* <span class='param'>output_data</span>,</span> <span class='nowrap'>size_t* <span class='param'>output_data_size</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>1st parameter &#39;dn&#39; (pointer) has type &#39;gnutls_x509_dn_t&#39;.</div>
-<span class='iname_a'>gnutls_x509_dn_get_rdn_ava&#160;<span class='sym_p'>(&#160;<span class='nowrap'>void* <span class='focus_p'>dn</span>,</span> <span class='nowrap'>int <span class='param'>irdn</span>,</span> <span class='nowrap'>int <span class='param'>iava</span>,</span> <span class='nowrap'>gnutls_x509_ava_st* <span class='param'>ava</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>1st parameter &#39;dn&#39; (pointer) has type &#39;gnutls_x509_dn_t&#39;.</div>
-<span class='iname_a'>gnutls_x509_dn_import&#160;<span class='sym_p'>(&#160;<span class='nowrap'>void* <span class='focus_p'>dn</span>,</span> <span class='nowrap'>gnutls_datum_t const* <span class='param'>data</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>1st parameter &#39;dn&#39; (pointer) has type &#39;gnutls_x509_dn_t&#39;.</div>
-<span class='iname_a'>gnutls_x509_dn_init&#160;<span class='sym_p'>(&#160;<span class='nowrap'>void** <span class='focus_p'>dn</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/><div class='affect'>1st parameter &#39;dn&#39; (pointer) has base type &#39;gnutls_x509_dn_t&#39;.</div>
-</div></div>
+<div class='affected'><span class='iname_a'>gnutls_x509_crt_get_issuer&#160;<span class='sym_p'>(&#160;gnutls_x509_crt_t <span class='param'>cert</span>, <span class='nowrap'>void** <span class='focus_p'>dn</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<div class='affect'>2nd parameter &#39;dn&#39; (pointer) has base type &#39;gnutls_x509_dn_t&#39;.</div>
+<span class='iname_a'>gnutls_x509_crt_get_subject&#160;<span class='sym_p'>(&#160;gnutls_x509_crt_t <span class='param'>cert</span>, <span class='nowrap'>void** <span class='focus_p'>dn</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<div class='affect'>2nd parameter &#39;dn&#39; (pointer) has base type &#39;gnutls_x509_dn_t&#39;.</div>
+<span class='iname_a'>gnutls_x509_dn_deinit&#160;<span class='sym_p'>(&#160;<span class='nowrap'>void* <span class='focus_p'>dn</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<div class='affect'>1st parameter &#39;dn&#39; (pointer) has type &#39;gnutls_x509_dn_t&#39;.</div>
+<span class='iname_a'>gnutls_x509_dn_export2&#160;<span class='sym_p'>(&#160;<span class='nowrap'>void* <span class='focus_p'>dn</span>,</span> gnutls_x509_crt_fmt_t <span class='param'>format</span>, <span class='nowrap'>gnutls_datum_t* <span class='param'>out</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<div class='affect'>1st parameter &#39;dn&#39; (pointer) has type &#39;gnutls_x509_dn_t&#39;.</div>
+<span class='iname_a'>gnutls_x509_dn_export&#160;<span class='sym_p'>(&#160;<span class='nowrap'>void* <span class='focus_p'>dn</span>,</span> gnutls_x509_crt_fmt_t <span class='param'>format</span>, <span class='nowrap'>void* <span class='param'>output_data</span>,</span> <span class='nowrap'>size_t* <span class='param'>output_data_size</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<div class='affect'>1st parameter &#39;dn&#39; (pointer) has type &#39;gnutls_x509_dn_t&#39;.</div>
+<span class='iname_a'>gnutls_x509_dn_get_rdn_ava&#160;<span class='sym_p'>(&#160;<span class='nowrap'>void* <span class='focus_p'>dn</span>,</span> <span class='nowrap'>int <span class='param'>irdn</span>,</span> <span class='nowrap'>int <span class='param'>iava</span>,</span> <span class='nowrap'>gnutls_x509_ava_st* <span class='param'>ava</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<div class='affect'>1st parameter &#39;dn&#39; (pointer) has type &#39;gnutls_x509_dn_t&#39;.</div>
+<span class='iname_a'>gnutls_x509_dn_import&#160;<span class='sym_p'>(&#160;<span class='nowrap'>void* <span class='focus_p'>dn</span>,</span> <span class='nowrap'>gnutls_datum_t const* <span class='param'>data</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<div class='affect'>1st parameter &#39;dn&#39; (pointer) has type &#39;gnutls_x509_dn_t&#39;.</div>
+<span class='iname_a'>gnutls_x509_dn_init&#160;<span class='sym_p'>(&#160;<span class='nowrap'>void** <span class='focus_p'>dn</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<div class='affect'>1st parameter &#39;dn&#39; (pointer) has base type &#39;gnutls_x509_dn_t&#39;.</div>
+</div>
+</div>
 <br/><br/></div>
 
-<br/><a class='top_ref' href='#Top'>to the top</a><br/>
+<br/>
+<a class='top_ref' href='#Top'>to the top</a><br/>
 <a name='Headers'></a><h2>Header Files (14)</h2><hr/>
 <div class='h_list'>
 abstract.h<br/>
@@ -349,7 +362,7 @@ x509-ext.h<br/>
 x509.h<br/>
 </div>
 <br/><a class='top_ref' href='#Top'>to the top</a><br/>
-<a name='Sources'></a><h2>Source Files (100)</h2><hr/>
+<a name='Sources'></a><h2>Source Files (97)</h2><hr/>
 <div class='h_list'>
 alpn.c<br/>
 cert_types.c<br/>
@@ -386,7 +399,6 @@ gnutls_handshake.c<br/>
 gnutls_mem.c<br/>
 gnutls_openpgp.c<br/>
 gnutls_pcert.c<br/>
-gnutls_pk.c<br/>
 gnutls_priority.c<br/>
 gnutls_privkey.c<br/>
 gnutls_privkey_raw.c<br/>
@@ -408,7 +420,6 @@ kx.c<br/>
 locks.c<br/>
 mac.c<br/>
 max_record.c<br/>
-mpi.c<br/>
 name_constraints.c<br/>
 ocsp.c<br/>
 ocsp_output.c<br/>
@@ -418,7 +429,6 @@ pgpverify.c<br/>
 pin.c<br/>
 pkcs12.c<br/>
 pkcs12_bag.c<br/>
-pkcs12_encr.c<br/>
 pkcs7.c<br/>
 privkey.c<br/>
 privkey_openssl.c<br/>
@@ -460,6 +470,6 @@ libgnutls.so.30.0.1<br/>
 <br/><a class='top_ref' href='#Top'>to the top</a><br/>
 </div>
 <br/><br/><br/>
-<hr/><div class='footer' align='right'><i>Generated by <a href='http://lvc.github.io/abi-compliance-checker/'>ABI Compliance Checker</a> 1.99.11 &#160;</i></div><br/>
+<hr/><div class='footer' align='right'><i>Generated by <a href='http://lvc.github.io/abi-compliance-checker/'>ABI Compliance Checker</a> 1.99.14 &#160;</i></div><br/>
 
 </body></html>

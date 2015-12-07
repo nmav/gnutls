@@ -191,10 +191,41 @@ __</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_RND_NONCE: Non-predictable random number.  Fatal in parts</td><td> </td><td class="right"> * @GNUTLS_RND_NONCE: Non-predictable random number.  Fatal in parts</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"> *   of session if broken, i.e., vulnerable to statistical analysis.</td><td> </td><td class="right"> *   of session if broken, i.e., vulnerable to statistical analysis.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_RND_RANDOM: Pseudo-random cryptographic random number.</td><td> </td><td class="right"> * @GNUTLS_RND_RANDOM: Pseudo-random cryptographic random number.</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l3" /><small>skipping to change at</small><em> line 223</em></th><th> </th><th><a name="part-r3" /><small>skipping to change at</small><em> line 223</em></th><td></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">int</td><td> </td><td class="right">int</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">gnutls_crypto_register_digest(gnutls_digest_algorithm_t digest,</td><td> </td><td class="right">gnutls_crypto_register_digest(gnutls_digest_algorithm_t digest,</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">                          int priority,</td><td> </td><td class="right">                          int priority,</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">                          gnutls_digest_init_func init,</td><td> </td><td class="right">                          gnutls_digest_init_func init,</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">                          gnutls_digest_hash_func hash,</td><td> </td><td class="right">                          gnutls_digest_hash_func hash,</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">                          gnutls_digest_output_func output,</td><td> </td><td class="right">                          gnutls_digest_output_func output,</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">                          gnutls_digest_deinit_func deinit,</td><td> </td><td class="right">                          gnutls_digest_deinit_func deinit,</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">                          gnutls_digest_fast_func hash_fast);</td><td> </td><td class="right">                          gnutls_digest_fast_func hash_fast);</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0005" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">/* RSA-PKCS#1 1.5 helper functions */</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">int</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">gnutls_encode_ber_digest_info(gnutls_digest_algorithm_t hash,</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                             const gnutls_datum_t * digest,</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                             gnutls_datum_t * output);</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">int</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">gnutls_decode_ber_digest_info(const gnutls_datum_t * info,</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                             gnutls_digest_algorithm_t *hash,</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                             unsigned char *digest, unsigned int *digest_si</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">ze);</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">                                                                           </td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">/* *INDENT-OFF* */</td><td> </td><td class="right">/* *INDENT-OFF* */</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">#ifdef __cplusplus</td><td> </td><td class="right">#ifdef __cplusplus</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">}</td><td> </td><td class="right">}</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">#endif</td><td> </td><td class="right">#endif</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">/* *INDENT-ON* */</td><td> </td><td class="right">/* *INDENT-ON* */</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">#endif</td><td> </td><td class="right">#endif</td><td class="lineno" valign="top"></td></tr>
 
      <tr><td></td><td class="left"></td><td> </td><td class="right"></td><td></td></tr>
-     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 4 change blocks.&nbsp;</a></th></tr>
-     <tr class="stats"><td></td><th><i>6 lines changed or deleted</i></th><th><i> </i></th><th><i>9 lines changed or added</i></th><td></td></tr>
+     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 5 change blocks.&nbsp;</a></th></tr>
+     <tr class="stats"><td></td><th><i>6 lines changed or deleted</i></th><th><i> </i></th><th><i>21 lines changed or added</i></th><td></td></tr>
      <tr><td colspan="5" align="center" class="small"></td></tr>
    </table>
    <br/><br/>
@@ -236,25 +267,26 @@ __</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">#endif</td><td> </td><td class="right">#endif</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td><a name="diff0004" /></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">/* Use the following definition globally in your program to disable</span></td><td> </td><td class="rblock"><span class="insert">#ifdef __GNUC__</span></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> * implicit initialization of gnutls. */</span></td><td> </td><td class="rblock"><span class="insert"># define __GNUTLS_CONST__  __attribute__((const))</span></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">#define GNUTLS_SKIP_GLOBAL_INIT int _gnutls_global_init_skip(void); \</span></td><td> </td><td class="rblock"><span class="insert"># define __GNUTLS_PURE__  __attribute__((pure))</span></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">    int _gnutls_global_init_skip(void) {return 1;}</span></td><td> </td><td class="rblock"><span class="insert">#else</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">#ifdef __GNUC__</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"># define __GNUTLS_CONST__  __attribute__((const))</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"># define __GNUTLS_PURE__  __attribute__((pure))</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">#else</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"># define __GNUTLS_CONST__</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"># define __GNUTLS_PURE__</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">#endif</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">                                                                           </td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">/* Use the following definition globally in your program to disable</td><td> </td><td class="right">/* Use the following definition globally in your program to disable</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"> * implicit initialization of gnutls. */</td><td> </td><td class="right"> * implicit initialization of gnutls. */</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">#define GNUTLS_SKIP_GLOBAL_INIT int _gnutls_global_init_skip(void); \</td><td> </td><td class="right">#define GNUTLS_SKIP_GLOBAL_INIT int _gnutls_global_init_skip(void); \</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">    int _gnutls_global_init_skip(void) {return 1;}</td><td> </td><td class="right">    int _gnutls_global_init_skip(void) {return 1;}</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">/**</td><td> </td><td class="right">/**</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"> * gnutls_cipher_algorithm_t:</td><td> </td><td class="right"> * gnutls_cipher_algorithm_t:</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_CIPHER_UNKNOWN: Unknown algorithm.</td><td> </td><td class="right"> * @GNUTLS_CIPHER_UNKNOWN: Unknown algorithm.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_CIPHER_NULL: NULL algorithm.</td><td> </td><td class="right"> * @GNUTLS_CIPHER_NULL: NULL algorithm.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_CIPHER_ARCFOUR_128: ARCFOUR stream cipher with 128-bit keys.</td><td> </td><td class="right"> * @GNUTLS_CIPHER_ARCFOUR_128: ARCFOUR stream cipher with 128-bit keys.</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_CIPHER_3DES_CBC: 3DES in CBC mode.</td><td> </td><td class="right"> * @GNUTLS_CIPHER_3DES_CBC: 3DES in CBC mode.</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_CIPHER_AES_128_CBC: AES in CBC mode with 128-bit keys.</td><td> </td><td class="right"> * @GNUTLS_CIPHER_AES_128_CBC: AES in CBC mode with 128-bit keys.</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_CIPHER_AES_192_CBC: AES in CBC mode with 192-bit keys.</td><td> </td><td class="right"> * @GNUTLS_CIPHER_AES_192_CBC: AES in CBC mode with 192-bit keys.</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_CIPHER_AES_256_CBC: AES in CBC mode with 256-bit keys.</td><td> </td><td class="right"> * @GNUTLS_CIPHER_AES_256_CBC: AES in CBC mode with 256-bit keys.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l2" /><small>skipping to change at</small><em> line 262</em></th><th> </th><th><a name="part-r2" /><small>skipping to change at</small><em> line 265</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l2" /><small>skipping to change at</small><em> line 262</em></th><th> </th><th><a name="part-r2" /><small>skipping to change at</small><em> line 270</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">       GNUTLS_MAC_UNKNOWN = 0,</td><td> </td><td class="right">       GNUTLS_MAC_UNKNOWN = 0,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">       GNUTLS_MAC_NULL = 1,</td><td> </td><td class="right">       GNUTLS_MAC_NULL = 1,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">       GNUTLS_MAC_MD5 = 2,</td><td> </td><td class="right">       GNUTLS_MAC_MD5 = 2,</td><td class="lineno" valign="top"></td></tr>
@@ -324,49 +356,27 @@ __</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">#define GNUTLS_MAX_SESSION_ID_SIZE 32</td><td> </td><td class="right">#define GNUTLS_MAX_SESSION_ID_SIZE 32</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l3" /><small>skipping to change at</small><em> line 743</em></th><th> </th><th><a name="part-r3" /><small>skipping to change at</small><em> line 758</em></th><td></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_SEC_PARAM_UNKNOWN: Cannot be known</td><td> </td><td class="right"> * @GNUTLS_SEC_PARAM_UNKNOWN: Cannot be known</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_SEC_PARAM_INSECURE: Less than 42 bits of security</td><td> </td><td class="right"> * @GNUTLS_SEC_PARAM_INSECURE: Less than 42 bits of security</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_SEC_PARAM_EXPORT: 42 bits of security</td><td> </td><td class="right"> * @GNUTLS_SEC_PARAM_EXPORT: 42 bits of security</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_SEC_PARAM_VERY_WEAK: 64 bits of security</td><td> </td><td class="right"> * @GNUTLS_SEC_PARAM_VERY_WEAK: 64 bits of security</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_SEC_PARAM_WEAK: 72 bits of security</td><td> </td><td class="right"> * @GNUTLS_SEC_PARAM_WEAK: 72 bits of security</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_SEC_PARAM_LOW: 80 bits of security</td><td> </td><td class="right"> * @GNUTLS_SEC_PARAM_LOW: 80 bits of security</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_SEC_PARAM_LEGACY: 96 bits of security</td><td> </td><td class="right"> * @GNUTLS_SEC_PARAM_LEGACY: 96 bits of security</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_SEC_PARAM_MEDIUM: 112 bits of security (used to be %GNUTLS_SEC_P
-ARAM_NORMAL)</td><td> </td><td class="right"> * @GNUTLS_SEC_PARAM_MEDIUM: 112 bits of security (used to be %GNUTLS_SEC_P
-ARAM_NORMAL)</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_SEC_PARAM_HIGH: 128 bits of security</td><td> </td><td class="right"> * @GNUTLS_SEC_PARAM_HIGH: 128 bits of security</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_SEC_PARAM_ULTRA: 192 bits of security</td><td> </td><td class="right"> * @GNUTLS_SEC_PARAM_ULTRA: 192 bits of security</td><td class="lineno" valign="top"></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l3" /><small>skipping to change at</small><em> line 820</em></th><th> </th><th><a name="part-r3" /><small>skipping to change at</small><em> line 840</em></th><td></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_init(gnutls_session_t * session, unsigned int flags);</td><td> </td><td class="right">int gnutls_init(gnutls_session_t * session, unsigned int flags);</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">void gnutls_deinit(gnutls_session_t session);</td><td> </td><td class="right">void gnutls_deinit(gnutls_session_t session);</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">#define _gnutls_deinit(x) gnutls_deinit(x)</td><td> </td><td class="right">#define _gnutls_deinit(x) gnutls_deinit(x)</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_bye(gnutls_session_t session, gnutls_close_request_t how);</td><td> </td><td class="right">int gnutls_bye(gnutls_session_t session, gnutls_close_request_t how);</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_handshake(gnutls_session_t session);</td><td> </td><td class="right">int gnutls_handshake(gnutls_session_t session);</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">#define GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT ((unsigned int)-1)</td><td> </td><td class="right">#define GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT ((unsigned int)-1)</td><td class="lineno" valign="top"></td></tr>
       <tr><td><a name="diff0008" /></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> * @GNUTLS_SEC_PARAM_FUTURE: 256 bits of security</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> *</td><td> </td><td class="right"> *</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * Enumeration of security parameters for passive attacks.</td><td> </td><td class="right"> * Enumeration of security parameters for passive attacks.</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> */</td><td> </td><td class="right"> */</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">typedef enum {</td><td> </td><td class="right">typedef enum {</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">       GNUTLS_SEC_PARAM_UNKNOWN = 0,</td><td> </td><td class="right">       GNUTLS_SEC_PARAM_UNKNOWN = 0,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">       GNUTLS_SEC_PARAM_INSECURE = 5,</td><td> </td><td class="right">       GNUTLS_SEC_PARAM_INSECURE = 5,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">       GNUTLS_SEC_PARAM_EXPORT = 10,</td><td> </td><td class="right">       GNUTLS_SEC_PARAM_EXPORT = 10,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">       GNUTLS_SEC_PARAM_VERY_WEAK = 15,</td><td> </td><td class="right">       GNUTLS_SEC_PARAM_VERY_WEAK = 15,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">       GNUTLS_SEC_PARAM_WEAK = 20,</td><td> </td><td class="right">       GNUTLS_SEC_PARAM_WEAK = 20,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">       GNUTLS_SEC_PARAM_LOW = 25,</td><td> </td><td class="right">       GNUTLS_SEC_PARAM_LOW = 25,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">       GNUTLS_SEC_PARAM_LEGACY = 30,</td><td> </td><td class="right">       GNUTLS_SEC_PARAM_LEGACY = 30,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">       GNUTLS_SEC_PARAM_MEDIUM = 35,</td><td> </td><td class="right">       GNUTLS_SEC_PARAM_MEDIUM = 35,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">       GNUTLS_SEC_PARAM_HIGH = 40,</td><td> </td><td class="right">       GNUTLS_SEC_PARAM_HIGH = 40,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0009" /></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">       GNUTLS_SEC_PARAM_ULTRA = <span class="delete">45,</span></td><td> </td><td class="rblock">       GNUTLS_SEC_PARAM_ULTRA = <span class="insert">45</span></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">       GNUTLS_SEC_PARAM_FUTURE = 50</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">} gnutls_sec_param_t;</td><td> </td><td class="right">} gnutls_sec_param_t;</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">#define GNUTLS_INDEFINITE_TIMEOUT ((unsigned int)-2)</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">void gnutls_handshake_set_timeout(gnutls_session_t session,</td><td> </td><td class="right">void gnutls_handshake_set_timeout(gnutls_session_t session,</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">                                 unsigned int ms);</td><td> </td><td class="right">                                 unsigned int ms);</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_rehandshake(gnutls_session_t session);</td><td> </td><td class="right">int gnutls_rehandshake(gnutls_session_t session);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">/* old name */</td><td> </td><td class="right">/* old name */</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">#define GNUTLS_SEC_PARAM_NORMAL GNUTLS_SEC_PARAM_MEDIUM</td><td> </td><td class="right">#define GNUTLS_SEC_PARAM_NORMAL GNUTLS_SEC_PARAM_MEDIUM</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">/**</td><td> </td><td class="right">/**</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * gnutls_channel_binding_t:</td><td> </td><td class="right"> * gnutls_channel_binding_t:</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * @GNUTLS_CB_TLS_UNIQUE: "tls-unique" (RFC 5929) channel binding</td><td> </td><td class="right"> * @GNUTLS_CB_TLS_UNIQUE: "tls-unique" (RFC 5929) channel binding</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> *</td><td> </td><td class="right"> *</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"> * Enumeration of support channel binding types.</td><td> </td><td class="right"> * Enumeration of support channel binding types.</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l4" /><small>skipping to change at</small><em> line 838</em></th><th> </th><th><a name="part-r4" /><small>skipping to change at</small><em> line 851</em></th><td></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">gnutls_alert_description_t gnutls_alert_get(gnutls_session_t session);</td><td> </td><td class="right">gnutls_alert_description_t gnutls_alert_get(gnutls_session_t session);</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_alert_send(gnutls_session_t session,</td><td> </td><td class="right">int gnutls_alert_send(gnutls_session_t session,</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">                     gnutls_alert_level_t level,</td><td> </td><td class="right">                     gnutls_alert_level_t level,</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">                     gnutls_alert_description_t desc);</td><td> </td><td class="right">                     gnutls_alert_description_t desc);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_alert_send_appropriate(gnutls_session_t session, int err);</td><td> </td><td class="right">int gnutls_alert_send_appropriate(gnutls_session_t session, int err);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">const char *gnutls_alert_get_name(gnutls_alert_description_t alert);</td><td> </td><td class="right">const char *gnutls_alert_get_name(gnutls_alert_description_t alert);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">const char *gnutls_alert_get_strname(gnutls_alert_description_t alert);</td><td> </td><td class="right">const char *gnutls_alert_get_strname(gnutls_alert_description_t alert);</td><td class="lineno" valign="top"></td></tr>
@@ -377,19 +387,19 @@ ARAM_NORMAL)</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">unsigned int gnutls_sec_param_to_pk_bits(gnutls_pk_algorithm_t algo,</td><td> </td><td class="right">unsigned int gnutls_sec_param_to_pk_bits(gnutls_pk_algorithm_t algo,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">                                        gnutls_sec_param_t param);</td><td> </td><td class="right">                                        gnutls_sec_param_t param);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">unsigned int</td><td> </td><td class="right">unsigned int</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0010" /></td></tr>
+      <tr><td><a name="diff0009" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">gnutls_sec_param_to_symmetric_bits(gnutls_sec_param_t param)</span>;</td><td> </td><td class="rblock"><span class="insert">       gnutls_sec_param_to_symmetric_bits(gnutls_sec_param_t param) __GNUTL
 S_CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">/* Elliptic curves */</td><td> </td><td class="right">/* Elliptic curves */</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0011" /></td></tr>
+      <tr><td><a name="diff0010" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_ecc_curve_get_name(gnutls_ecc_curve_t curve);</span></td><td> </td><td class="rblock">const char <span class="insert">*</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_ecc_curve_get_oid(gnutls_ecc_curve_t curve);</span></td><td> </td><td class="rblock"><span class="insert">       gnutls_ecc_curve_get_name(gnutls_ecc_curve_t curve) __GNUTLS_CONST__</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">const char <span class="insert">*</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">       gnutls_ecc_curve_get_oid(gnutls_ecc_curve_t curve) __GNUTLS_CONST__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0012" /></td></tr>
+      <tr><td><a name="diff0011" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">int gnutls_ecc_curve_get_size(gnutls_ecc_curve_t <span class="delete">curve);</span></td><td> </td><td class="rblock">int</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">       gnutls_ecc_curve_get_size(gnutls_ecc_curve_t <span class="insert">curve) __GNUTLS_CONST__</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">;</span></td><td class="lineno" valign="top"></td></tr>
@@ -412,7 +422,7 @@ S_CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">                                       gnutls_sign_algorithm_t * algo);</td><td> </td><td class="right">                                       gnutls_sign_algorithm_t * algo);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">/* the name of the specified algorithms */</td><td> </td><td class="right">/* the name of the specified algorithms */</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0013" /></td></tr>
+      <tr><td><a name="diff0012" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_cipher_get_name(gnutls_cipher_algorithm_t algorithm);</span></td><td> </td><td class="rblock">const char <span class="insert">*</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_mac_get_name(gnutls_mac_algorithm_t algorithm);</span></td><td> </td><td class="rblock"><span class="insert">       gnutls_cipher_get_name(gnutls_cipher_algorithm_t algorithm) __GNUTLS</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">_CONST__;</span></td><td class="lineno" valign="top"></td></tr>
@@ -420,7 +430,7 @@ S_CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">       gnutls_mac_get_name(gnutls_mac_algorithm_t algorithm) __GNUTLS_CONST</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0014" /></td></tr>
+      <tr><td><a name="diff0013" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_digest_get_name(gnutls_digest_algorithm_t algorithm);</span></td><td> </td><td class="rblock">const char <span class="insert">*</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_digest_get_oid(gnutls_digest_algorithm_t algorithm);</span></td><td> </td><td class="rblock"><span class="insert">       gnutls_digest_get_name(gnutls_digest_algorithm_t algorithm) __GNUTLS</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">_CONST__;</span></td><td class="lineno" valign="top"></td></tr>
@@ -428,7 +438,7 @@ S_CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">       gnutls_digest_get_oid(gnutls_digest_algorithm_t algorithm) __GNUTLS_</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">CONST__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0015" /></td></tr>
+      <tr><td><a name="diff0014" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_compression_get_name(gnutls_compression_method_t</span></td><td> </td><td class="rblock">const char <span class="insert">*</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">                                       algorithm);</span></td><td> </td><td class="rblock"><span class="insert">gnutls_compression_get_name(gnutls_compression_method_t</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_kx_get_name(gnutls_kx_algorithm_t algorithm);</span></td><td> </td><td class="rblock"><span class="insert">                           algorithm) __GNUTLS_CONST__;</span></td><td class="lineno" valign="top"></td></tr>
@@ -444,7 +454,7 @@ S_CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">const char <span class="insert">*</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">       gnutls_pk_get_oid(gnutls_pk_algorithm_t algorithm) __GNUTLS_CONST__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0016" /></td></tr>
+      <tr><td><a name="diff0015" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_sign_get_name(gnutls_sign_algorithm_t algorithm);</span></td><td> </td><td class="rblock">const char <span class="insert">*</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_sign_get_oid(gnutls_sign_algorithm_t algorithm);</span></td><td> </td><td class="rblock"><span class="insert">       gnutls_sign_get_name(gnutls_sign_algorithm_t algorithm) __GNUTLS_CON</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">ST__;</span></td><td class="lineno" valign="top"></td></tr>
@@ -452,7 +462,7 @@ S_CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">       gnutls_sign_get_oid(gnutls_sign_algorithm_t algorithm) __GNUTLS_CONS</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">T__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0017" /></td></tr>
+      <tr><td><a name="diff0016" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">size_t gnutls_cipher_get_key_size(gnutls_cipher_algorithm_t <span class="delete">algorithm);</span></td><td> </td><td class="rblock">size_t</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">size_t gnutls_mac_get_key_size(gnutls_mac_algorithm_t <span class="delete">algorithm);</span></td><td> </td><td class="rblock">       gnutls_cipher_get_key_size(gnutls_cipher_algorithm_t <span class="insert">algorithm) __GN</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">UTLS_CONST__;</span></td><td class="lineno" valign="top"></td></tr>
@@ -463,30 +473,30 @@ S_CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">int gnutls_sign_is_secure(gnutls_sign_algorithm_t algorithm) __GNUTLS_CONST</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0018" /></td></tr>
+      <tr><td><a name="diff0017" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">int gnutls_sign_is_secure(gnutls_sign_algorithm_t algorithm);</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">gnutls_digest_algorithm_t</td><td> </td><td class="right">gnutls_digest_algorithm_t</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0019" /></td></tr>
+      <tr><td><a name="diff0018" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">gnutls_sign_get_hash_algorithm(gnutls_sign_algorithm_t sign)</span>;</td><td> </td><td class="rblock"><span class="insert">       gnutls_sign_get_hash_algorithm(gnutls_sign_algorithm_t sign) __GNUTL
 S_CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">gnutls_pk_algorithm_t</td><td> </td><td class="right">gnutls_pk_algorithm_t</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0020" /></td></tr>
+      <tr><td><a name="diff0019" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">gnutls_sign_get_pk_algorithm(gnutls_sign_algorithm_t sign)</span>;</td><td> </td><td class="rblock"><span class="insert">       gnutls_sign_get_pk_algorithm(gnutls_sign_algorithm_t sign) __GNUTLS_
 CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">gnutls_sign_algorithm_t</td><td> </td><td class="right">gnutls_sign_algorithm_t</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0021" /></td></tr>
+      <tr><td><a name="diff0020" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">gnutls_pk_to_sign(gnutls_pk_algorithm_t pk,</td><td> </td><td class="rblock">       gnutls_pk_to_sign(gnutls_pk_algorithm_t pk,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">                 gnutls_digest_algorithm_t <span class="delete">hash);</span></td><td> </td><td class="rblock">                 gnutls_digest_algorithm_t <span class="insert">hash) __GNUTLS_CONST__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">#define gnutls_sign_algorithm_get_name gnutls_sign_get_name</td><td> </td><td class="right">#define gnutls_sign_algorithm_get_name gnutls_sign_get_name</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0022" /></td></tr>
+      <tr><td><a name="diff0021" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">gnutls_mac_algorithm_t gnutls_mac_get_id(const char <span class="delete">*name);</span></td><td> </td><td class="rblock">gnutls_mac_algorithm_t gnutls_mac_get_id(const char <span class="insert">*name) __GNUTLS_CONST__</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">gnutls_digest_algorithm_t gnutls_digest_get_id(const char <span class="delete">*name);</span></td><td> </td><td class="rblock"><span class="insert">;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">gnutls_digest_algorithm_t gnutls_digest_get_id(const char <span class="insert">*name) __GNUTLS_C</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">ONST__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0023" /></td></tr>
+      <tr><td><a name="diff0022" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">gnutls_compression_method_t gnutls_compression_get_id(const char <span class="delete">*name);</span></td><td> </td><td class="rblock">gnutls_compression_method_t</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">gnutls_cipher_algorithm_t gnutls_cipher_get_id(const char <span class="delete">*name);</span></td><td> </td><td class="rblock">       gnutls_compression_get_id(const char <span class="insert">*name) __GNUTLS_CONST__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">gnutls_kx_algorithm_t gnutls_kx_get_id(const char *name);</span></td><td> </td><td class="rblock">gnutls_cipher_algorithm_t</td><td class="lineno" valign="top"></td></tr>
@@ -496,7 +506,7 @@ CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">gnutls_sign_algorithm_t gnutls_sign_get_id(const char *name);</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">gnutls_ecc_curve_t gnutls_ecc_curve_get_id(const char *name);</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0024" /></td></tr>
+      <tr><td><a name="diff0023" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">gnutls_digest_algorithm_t gnutls_oid_to_digest(const char <span class="delete">*oid);</span></td><td> </td><td class="rblock"><span class="insert">gnutls_kx_algorithm_t</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">gnutls_pk_algorithm_t gnutls_oid_to_pk(const char <span class="delete">*oid);</span></td><td> </td><td class="rblock"><span class="insert">       gnutls_kx_get_id(const char *name) __GNUTLS_CONST__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">gnutls_sign_algorithm_t gnutls_oid_to_sign(const char <span class="delete">*oid);</span></td><td> </td><td class="rblock"><span class="insert">gnutls_protocol_t</span></td><td class="lineno" valign="top"></td></tr>
@@ -520,7 +530,7 @@ CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">       gnutls_oid_to_ecc_curve(const char <span class="insert">*oid) __GNUTLS_CONST__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">  /* list supported algorithms */</td><td> </td><td class="right">  /* list supported algorithms */</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0025" /></td></tr>
+      <tr><td><a name="diff0024" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const gnutls_ecc_curve_t <span class="delete">*gnutls_ecc_curve_list(void);</span></td><td> </td><td class="rblock">const gnutls_ecc_curve_t <span class="insert">*</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const gnutls_cipher_algorithm_t <span class="delete">*gnutls_cipher_list(void);</span></td><td> </td><td class="rblock"><span class="insert">       gnutls_ecc_curve_list(void)  __GNUTLS_PURE__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const gnutls_mac_algorithm_t <span class="delete">*gnutls_mac_list(void);</span></td><td> </td><td class="rblock">const gnutls_cipher_algorithm_t <span class="insert">*</span></td><td class="lineno" valign="top"></td></tr>
@@ -550,12 +560,12 @@ CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">                                gnutls_protocol_t * min_version);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">  /* error functions */</td><td> </td><td class="right">  /* error functions */</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0026" /></td></tr>
+      <tr><td><a name="diff0025" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">int gnutls_error_is_fatal(int error);</td><td> </td><td class="rblock">int gnutls_error_is_fatal(int error)<span class="insert"> __GNUTLS_CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_error_to_alert(int err, int *level);</td><td> </td><td class="right">int gnutls_error_to_alert(int err, int *level);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">void gnutls_perror(int error);</td><td> </td><td class="right">void gnutls_perror(int error);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0027" /></td></tr>
+      <tr><td><a name="diff0026" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_strerror(int error);</span></td><td> </td><td class="rblock">const char <span class="insert">* gnutls_strerror(int error) __GNUTLS_CONST__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_strerror_name(int error);</span></td><td> </td><td class="rblock">const char <span class="insert">* gnutls_strerror_name(int error) __GNUTLS_CONST__;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
@@ -569,7 +579,7 @@ CONST__</span>;</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">gnutls_handshake_description_t</td><td> </td><td class="right">gnutls_handshake_description_t</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">gnutls_handshake_get_last_out(gnutls_session_t session);</td><td> </td><td class="right">gnutls_handshake_get_last_out(gnutls_session_t session);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l5" /><small>skipping to change at</small><em> line 1012</em></th><th> </th><th><a name="part-r5" /><small>skipping to change at</small><em> line 1065</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l4" /><small>skipping to change at</small><em> line 1012</em></th><th> </th><th><a name="part-r4" /><small>skipping to change at</small><em> line 1073</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">void gnutls_packet_get(gnutls_packet_t packet, gnutls_datum_t *data, unsign
 ed char *sequence);</td><td> </td><td class="right">void gnutls_packet_get(gnutls_packet_t packet, gnutls_datum_t *data, unsign
 ed char *sequence);</td><td class="lineno" valign="top"></td></tr>
@@ -582,7 +592,7 @@ ed char *sequence);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">size_t gnutls_record_overhead_size(gnutls_session_t session);</td><td> </td><td class="right">size_t gnutls_record_overhead_size(gnutls_session_t session);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0028" /></td></tr>
+      <tr><td><a name="diff0027" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">size_t gnutls_est_record_overhead_size(gnutls_protocol_t version,</td><td> </td><td class="rblock">size_t</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">                                      gnutls_cipher_algorithm_t cipher,</td><td> </td><td class="rblock">       gnutls_est_record_overhead_size(gnutls_protocol_t version,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">                                      gnutls_mac_algorithm_t mac,</td><td> </td><td class="rblock">                                       gnutls_cipher_algorithm_t cipher,</td><td class="lineno" valign="top"></td></tr>
@@ -601,7 +611,7 @@ ed char *sequence);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">size_t gnutls_record_get_max_size(gnutls_session_t session);</td><td> </td><td class="right">size_t gnutls_record_get_max_size(gnutls_session_t session);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">ssize_t gnutls_record_set_max_size(gnutls_session_t session, size_t size);</td><td> </td><td class="right">ssize_t gnutls_record_set_max_size(gnutls_session_t session, size_t size);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l6" /><small>skipping to change at</small><em> line 1199</em></th><th> </th><th><a name="part-r6" /><small>skipping to change at</small><em> line 1253</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l5" /><small>skipping to change at</small><em> line 1199</em></th><th> </th><th><a name="part-r5" /><small>skipping to change at</small><em> line 1261</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_priority_cipher_list(gnutls_priority_t pcache,</td><td> </td><td class="right">int gnutls_priority_cipher_list(gnutls_priority_t pcache,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">                               const unsigned int **list);</td><td> </td><td class="right">                               const unsigned int **list);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_priority_mac_list(gnutls_priority_t pcache,</td><td> </td><td class="right">int gnutls_priority_mac_list(gnutls_priority_t pcache,</td><td class="lineno" valign="top"></td></tr>
@@ -612,7 +622,7 @@ ed char *sequence);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_set_default_priority(gnutls_session_t session);</td><td> </td><td class="right">int gnutls_set_default_priority(gnutls_session_t session);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">/* Returns the name of a cipher suite */</td><td> </td><td class="right">/* Returns the name of a cipher suite */</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0029" /></td></tr>
+      <tr><td><a name="diff0028" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_cipher_suite_get_name(gnutls_kx_algorithm_t</span></td><td> </td><td class="rblock">const char <span class="insert">*</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">                                        kx_algorithm,</td><td> </td><td class="rblock"><span class="insert">       gnutls_cipher_suite_get_name(gnutls_kx_algorithm_t</span> kx_algorithm,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">                                        gnutls_cipher_algorithm_t</td><td> </td><td class="rblock">                                    gnutls_cipher_algorithm_t <span class="insert">cipher_algori</span></td><td class="lineno" valign="top"></td></tr>
@@ -623,7 +633,7 @@ ed char *sequence);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">/* get the currently used protocol version */</td><td> </td><td class="right">/* get the currently used protocol version */</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">gnutls_protocol_t gnutls_protocol_get_version(gnutls_session_t session);</td><td> </td><td class="right">gnutls_protocol_t gnutls_protocol_get_version(gnutls_session_t session);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0030" /></td></tr>
+      <tr><td><a name="diff0029" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_protocol_get_name(gnutls_protocol_t version);</span></td><td> </td><td class="rblock">const char <span class="insert">*</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">       gnutls_protocol_get_name(gnutls_protocol_t version) __GNUTLS_CONST__</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">;</span></td><td class="lineno" valign="top"></td></tr>
@@ -638,7 +648,7 @@ ed char *sequence);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_session_get_data2(gnutls_session_t session,</td><td> </td><td class="right">int gnutls_session_get_data2(gnutls_session_t session,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">                            gnutls_datum_t * data);</td><td> </td><td class="right">                            gnutls_datum_t * data);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l7" /><small>skipping to change at</small><em> line 1354</em></th><th> </th><th><a name="part-r7" /><small>skipping to change at</small><em> line 1407</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l6" /><small>skipping to change at</small><em> line 1354</em></th><th> </th><th><a name="part-r6" /><small>skipping to change at</small><em> line 1415</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">void</td><td> </td><td class="right">void</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">gnutls_handshake_set_post_client_hello_function(gnutls_session_t session,</td><td> </td><td class="right">gnutls_handshake_set_post_client_hello_function(gnutls_session_t session,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">                                               gnutls_handshake_post_client
@@ -651,7 +661,7 @@ _hello_func</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">/* returns libgnutls version (call it with a NULL argument)</td><td> </td><td class="right">/* returns libgnutls version (call it with a NULL argument)</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"> */</td><td> </td><td class="right"> */</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0031" /></td></tr>
+      <tr><td><a name="diff0030" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">const char <span class="delete">*gnutls_check_version(const</span> char <span class="delete">*req_version);</span></td><td> </td><td class="rblock">const char <span class="insert">* gnutls_check_version(const</span> char <span class="insert">*req_version) __GNUTLS_CONST__</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">;</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno" valign="top"></td></tr>
@@ -675,44 +685,7 @@ _hello_func</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">                          gnutls_credentials_type_t type, void *cred);</td><td> </td><td class="right">                          gnutls_credentials_type_t type, void *cred);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_credentials_get(gnutls_session_t session,</td><td> </td><td class="right">int gnutls_credentials_get(gnutls_session_t session,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l8" /><small>skipping to change at</small><em> line 1467</em></th><th> </th><th><a name="part-r8" /><small>skipping to change at</small><em> line 1530</em></th><td></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">void gnutls_certificate_free_ca_names(gnutls_certificate_credentials_t sc);</td><td> </td><td class="right">void gnutls_certificate_free_ca_names(gnutls_certificate_credentials_t sc);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">void gnutls_certificate_free_crls(gnutls_certificate_credentials_t sc);</td><td> </td><td class="right">void gnutls_certificate_free_crls(gnutls_certificate_credentials_t sc);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">void gnutls_certificate_set_dh_params(gnutls_certificate_credentials_t res,</td><td> </td><td class="right">void gnutls_certificate_set_dh_params(gnutls_certificate_credentials_t res,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                     gnutls_dh_params_t dh_params);</td><td> </td><td class="right">                                     gnutls_dh_params_t dh_params);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">void gnutls_certificate_set_verify_flags(gnutls_certificate_credentials_t</td><td> </td><td class="right">void gnutls_certificate_set_verify_flags(gnutls_certificate_credentials_t</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                        res, unsigned int flags);</td><td> </td><td class="right">                                        res, unsigned int flags);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">unsigned int</td><td> </td><td class="right">unsigned int</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">gnutls_certificate_get_verify_flags(gnutls_certificate_credentials_t res);</td><td> </td><td class="right">gnutls_certificate_get_verify_flags(gnutls_certificate_credentials_t res);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0032" /></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">/**</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> * gnutls_certificate_flags:</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> * @GNUTLS_CERTIFICATE_SKIP_KEY_CERT_MATCH: Skip the key and certificate ma</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">tching check.</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> *</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> * Enumeration of different certificate credentials flags.</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> */</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">typedef enum gnutls_certificate_flags {</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">       GNUTLS_CERTIFICATE_SKIP_KEY_CERT_MATCH = 1</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">} gnutls_certificate_flags;</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"></span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">void gnutls_certificate_set_flags(gnutls_certificate_credentials_t,</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">                                 unsigned flags);</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">                                                                           </td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">void gnutls_certificate_set_verify_limits(gnutls_certificate_credentials_t</td><td> </td><td class="right">void gnutls_certificate_set_verify_limits(gnutls_certificate_credentials_t</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                         res, unsigned int max_bits,</td><td> </td><td class="right">                                         res, unsigned int max_bits,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                         unsigned int max_depth);</td><td> </td><td class="right">                                         unsigned int max_depth);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">unsigned int</td><td> </td><td class="right">unsigned int</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">gnutls_certificate_get_verify_flags(gnutls_certificate_credentials_t);</td><td> </td><td class="right">gnutls_certificate_get_verify_flags(gnutls_certificate_credentials_t);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int</td><td> </td><td class="right">int</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">gnutls_certificate_set_x509_system_trust(gnutls_certificate_credentials_t</td><td> </td><td class="right">gnutls_certificate_set_x509_system_trust(gnutls_certificate_credentials_t</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                        cred);</td><td> </td><td class="right">                                        cred);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l9" /><small>skipping to change at</small><em> line 2559</em></th><th> </th><th><a name="part-r9" /><small>skipping to change at</small><em> line 2609</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l7" /><small>skipping to change at</small><em> line 2559</em></th><th> </th><th><a name="part-r7" /><small>skipping to change at</small><em> line 2630</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">#define GNUTLS_E_NO_CERTIFICATE_STATUS -340</td><td> </td><td class="right">#define GNUTLS_E_NO_CERTIFICATE_STATUS -340</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">#define GNUTLS_E_OCSP_RESPONSE_ERROR -341</td><td> </td><td class="right">#define GNUTLS_E_OCSP_RESPONSE_ERROR -341</td><td class="lineno" valign="top"></td></tr>
@@ -725,8 +698,10 @@ _hello_func</td><td class="lineno" valign="top"></td></tr>
 ACK*/</td><td> </td><td class="right">#define GNUTLS_E_INAPPROPRIATE_FALLBACK -347 /*GNUTLS_A_INAPPROPRIATE_FALLB
 ACK*/</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">#define GNUTLS_E_CERTIFICATE_VERIFICATION_ERROR -348</td><td> </td><td class="right">#define GNUTLS_E_CERTIFICATE_VERIFICATION_ERROR -348</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0033" /></td></tr>
+      <tr><td><a name="diff0031" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">#define GNUTLS_E_PRIVKEY_VERIFICATION_ERROR -349</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">#define GNUTLS_E_UNEXPECTED_EXTENSIONS_LENGTH -350 /*GNUTLS_A_DECODE_ERROR*</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">/</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">#define GNUTLS_E_SELF_TEST_ERROR -400</td><td> </td><td class="right">#define GNUTLS_E_SELF_TEST_ERROR -400</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">#define GNUTLS_E_NO_SELF_TEST -401</td><td> </td><td class="right">#define GNUTLS_E_NO_SELF_TEST -401</td><td class="lineno" valign="top"></td></tr>
@@ -739,112 +714,8 @@ ACK*/</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">#define GNUTLS_E_UNIMPLEMENTED_FEATURE -1250</td><td> </td><td class="right">#define GNUTLS_E_UNIMPLEMENTED_FEATURE -1250</td><td class="lineno" valign="top"></td></tr>
 
      <tr><td></td><td class="left"></td><td> </td><td class="right"></td><td></td></tr>
-     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 33 change blocks.&nbsp;</a></th></tr>
-     <tr class="stats"><td></td><th><i>96 lines changed or deleted</i></th><th><i> </i></th><th><i>167 lines changed or added</i></th><td></td></tr>
-     <tr><td colspan="5" align="center" class="small"></td></tr>
-   </table>
-   <br/><br/>
- 
-  <table class='diff_tbl' border="0" cellpadding="0" cellspacing="0"> 
-  <tr bgcolor="orange"><th></th><th>&nbsp;pkcs11.h (3.4.7)&nbsp;</th><th> </th><th>&nbsp;pkcs11.h (current)&nbsp;</th><th></th></tr> 
-      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l1" /><small>skipping to change at</small><em> line 224</em></th><th> </th><th><a name="part-r1" /><small>skipping to change at</small><em> line 224</em></th><td></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                               unsigned int bits, const char *label,</td><td> </td><td class="right">                               unsigned int bits, const char *label,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                               gnutls_x509_crt_fmt_t fmt,</td><td> </td><td class="right">                               gnutls_x509_crt_fmt_t fmt,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                               gnutls_datum_t * pubkey,</td><td> </td><td class="right">                               gnutls_datum_t * pubkey,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                               unsigned int flags);</td><td> </td><td class="right">                               unsigned int flags);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int</td><td> </td><td class="right">int</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">gnutls_pkcs11_privkey_generate(const char *url, gnutls_pk_algorithm_t pk,</td><td> </td><td class="right">gnutls_pkcs11_privkey_generate(const char *url, gnutls_pk_algorithm_t pk,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                              unsigned int bits, const char *label,</td><td> </td><td class="right">                              unsigned int bits, const char *label,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                              unsigned int flags);</td><td> </td><td class="right">                              unsigned int flags);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">#endif</td><td> </td><td class="right">#endif</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0001" /></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">int</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">gnutls_pkcs11_copy_pubkey(const char *token_url,</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">                         gnutls_pubkey_t crt, const char *label,</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">                         const gnutls_datum_t *cid,</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">                         unsigned int key_usage, unsigned int flags);</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">                                                                           </td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">#define gnutls_pkcs11_copy_x509_crt(url, crt, label, flags) \</td><td> </td><td class="right">#define gnutls_pkcs11_copy_x509_crt(url, crt, label, flags) \</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">       gnutls_pkcs11_copy_x509_crt2(url, crt, label, NULL, flags)</td><td> </td><td class="right">       gnutls_pkcs11_copy_x509_crt2(url, crt, label, NULL, flags)</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_pkcs11_copy_x509_crt2(const char *token_url,</td><td> </td><td class="right">int gnutls_pkcs11_copy_x509_crt2(const char *token_url,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                               gnutls_x509_crt_t crt,</td><td> </td><td class="right">                               gnutls_x509_crt_t crt,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                               const char *label,</td><td> </td><td class="right">                               const char *label,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                               const gnutls_datum_t *id,</td><td> </td><td class="right">                               const gnutls_datum_t *id,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                               unsigned int flags /* GNUTLS_PKCS11_OBJ_FLAG
-_* */);</td><td> </td><td class="right">                               unsigned int flags /* GNUTLS_PKCS11_OBJ_FLAG
-_* */);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">#define gnutls_pkcs11_copy_x509_privkey(url, key, label, usage, flags) \</td><td> </td><td class="right">#define gnutls_pkcs11_copy_x509_privkey(url, key, label, usage, flags) \</td><td class="lineno" valign="top"></td></tr>
-
-     <tr><td></td><td class="left"></td><td> </td><td class="right"></td><td></td></tr>
-     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 1 change blocks.&nbsp;</a></th></tr>
-     <tr class="stats"><td></td><th><i>6 lines changed or deleted</i></th><th><i> </i></th><th><i>0 lines changed or added</i></th><td></td></tr>
-     <tr><td colspan="5" align="center" class="small"></td></tr>
-   </table>
-   <br/><br/>
- 
-  <table class='diff_tbl' border="0" cellpadding="0" cellspacing="0"> 
-  <tr bgcolor="orange"><th></th><th>&nbsp;pkcs7.h (3.4.7)&nbsp;</th><th> </th><th>&nbsp;pkcs7.h (current)&nbsp;</th><th></th></tr> 
-      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l1" /><small>skipping to change at</small><em> line 105</em></th><th> </th><th><a name="part-r1" /><small>skipping to change at</small><em> line 105</em></th><td></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                              unsigned idx, const gnutls_datum_t *data, uns
-igned flags);</td><td> </td><td class="right">                              unsigned idx, const gnutls_datum_t *data, uns
-igned flags);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_pkcs7_verify(gnutls_pkcs7_t pkcs7, gnutls_x509_trust_list_t tl,</td><td> </td><td class="right">int gnutls_pkcs7_verify(gnutls_pkcs7_t pkcs7, gnutls_x509_trust_list_t tl,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                       gnutls_typed_vdata_st * vdata, unsigned int vdata_si
-ze,</td><td> </td><td class="right">                       gnutls_typed_vdata_st * vdata, unsigned int vdata_si
-ze,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                       unsigned idx, const gnutls_datum_t *data, unsigned f
-lags);</td><td> </td><td class="right">                       unsigned idx, const gnutls_datum_t *data, unsigned f
-lags);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">#define GNUTLS_PKCS7_ATTR_ENCODE_OCTET_STRING 1</td><td> </td><td class="right">#define GNUTLS_PKCS7_ATTR_ENCODE_OCTET_STRING 1</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_pkcs7_add_attr(gnutls_pkcs7_attrs_t *list, const char *oid, gnut
-ls_datum_t *data, unsigned flags);</td><td> </td><td class="right">int gnutls_pkcs7_add_attr(gnutls_pkcs7_attrs_t *list, const char *oid, gnut
-ls_datum_t *data, unsigned flags);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">void gnutls_pkcs7_attrs_deinit(gnutls_pkcs7_attrs_t list);</td><td> </td><td class="right">void gnutls_pkcs7_attrs_deinit(gnutls_pkcs7_attrs_t list);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_pkcs7_get_attr(gnutls_pkcs7_attrs_t list, unsigned idx, char **o
-id, gnutls_datum_t *data, unsigned flags);</td><td> </td><td class="right">int gnutls_pkcs7_get_attr(gnutls_pkcs7_attrs_t list, unsigned idx, char **o
-id, gnutls_datum_t *data, unsigned flags);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0001" /></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">/**</span></td><td> </td><td class="rblock"><span class="insert">#define</span> GNUTLS_PKCS7_EMBED_DATA <span class="insert">1</span></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> * gnutls_pkcs7_sign_flags:</span></td><td> </td><td class="rblock"><span class="insert">#define</span> GNUTLS_PKCS7_INCLUDE_TIME <span class="insert">(1&lt;&lt;1)</span></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> * @GNUTLS_PKCS7_EMBED_DATA: The signed data will be embedded in the struct</span></td><td> </td><td class="rblock"><span class="insert">#define</span> GNUTLS_PKCS7_INCLUDE_CERT <span class="insert">(1&lt;&lt;2)</span></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">ure.</span></td><td> </td><td class="rblock"><span class="insert">#define</span> GNUTLS_PKCS7_WRITE_SPKI (1&lt;&lt;3)</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> * @GNUTLS_PKCS7_INCLUDE_TIME: The signing time will be included in the str</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">ucture.</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> * @GNUTLS_PKCS7_INCLUDE_CERT: The signer's certificate will be included in</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> the cert list.</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> * @GNUTLS_PKCS7_WRITE_SPKI: Use the signer's key identifier instead of nam</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">e.</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> *</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> * Enumeration of the different PKCS #7 signature flags.</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"> */</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">typedef enum gnutls_pkcs7_sign_flags {</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">       GNUTLS_PKCS7_EMBED_DATA <span class="delete">= 1,</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">       GNUTLS_PKCS7_INCLUDE_TIME <span class="delete">= (1&lt;&lt;1),</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">       GNUTLS_PKCS7_INCLUDE_CERT <span class="delete">= (1&lt;&lt;2),</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">       GNUTLS_PKCS7_WRITE_SPKI <span class="delete">=</span> (1&lt;&lt;3)</td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">} gnutls_pkcs7_sign_flags;</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">                                                                           </td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_pkcs7_sign(gnutls_pkcs7_t pkcs7,</td><td> </td><td class="right">int gnutls_pkcs7_sign(gnutls_pkcs7_t pkcs7,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                     gnutls_x509_crt_t signer,</td><td> </td><td class="right">                     gnutls_x509_crt_t signer,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                     gnutls_privkey_t signer_key,</td><td> </td><td class="right">                     gnutls_privkey_t signer_key,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                     const gnutls_datum_t *data,</td><td> </td><td class="right">                     const gnutls_datum_t *data,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                     gnutls_pkcs7_attrs_t signed_attrs,</td><td> </td><td class="right">                     gnutls_pkcs7_attrs_t signed_attrs,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                     gnutls_pkcs7_attrs_t unsigned_attrs,</td><td> </td><td class="right">                     gnutls_pkcs7_attrs_t unsigned_attrs,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                     gnutls_digest_algorithm_t dig,</td><td> </td><td class="right">                     gnutls_digest_algorithm_t dig,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                     unsigned flags);</td><td> </td><td class="right">                     unsigned flags);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int</td><td> </td><td class="right">int</td><td class="lineno" valign="top"></td></tr>
-
-     <tr><td></td><td class="left"></td><td> </td><td class="right"></td><td></td></tr>
-     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 1 change blocks.&nbsp;</a></th></tr>
-     <tr class="stats"><td></td><th><i>20 lines changed or deleted</i></th><th><i> </i></th><th><i>4 lines changed or added</i></th><td></td></tr>
+     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 31 change blocks.&nbsp;</a></th></tr>
+     <tr class="stats"><td></td><th><i>75 lines changed or deleted</i></th><th><i> </i></th><th><i>170 lines changed or added</i></th><td></td></tr>
      <tr><td colspan="5" align="center" class="small"></td></tr>
    </table>
    <br/><br/>
@@ -852,42 +723,7 @@ id, gnutls_datum_t *data, unsigned flags);</td><td class="lineno" valign="top"><
   <table class='diff_tbl' border="0" cellpadding="0" cellspacing="0"> 
   <tr bgcolor="orange"><th></th><th>&nbsp;x509.h (3.4.7)&nbsp;</th><th> </th><th>&nbsp;x509.h (current)&nbsp;</th><th></th></tr> 
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l1" /><small>skipping to change at</small><em> line 544</em></th><th> </th><th><a name="part-r1" /><small>skipping to change at</small><em> line 544</em></th><td></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                 const char *dn, const char **err);</td><td> </td><td class="right">                                 const char *dn, const char **err);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_x509_crt_set_version(gnutls_x509_crt_t crt,</td><td> </td><td class="right">int gnutls_x509_crt_set_version(gnutls_x509_crt_t crt,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                               unsigned int version);</td><td> </td><td class="right">                               unsigned int version);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_x509_crt_set_key(gnutls_x509_crt_t crt,</td><td> </td><td class="right">int gnutls_x509_crt_set_key(gnutls_x509_crt_t crt,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                           gnutls_x509_privkey_t key);</td><td> </td><td class="right">                           gnutls_x509_privkey_t key);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_x509_crt_set_ca_status(gnutls_x509_crt_t crt, unsigned int ca);</td><td> </td><td class="right">int gnutls_x509_crt_set_ca_status(gnutls_x509_crt_t crt, unsigned int ca);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_x509_crt_set_basic_constraints(gnutls_x509_crt_t crt,</td><td> </td><td class="right">int gnutls_x509_crt_set_basic_constraints(gnutls_x509_crt_t crt,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                         unsigned int ca,</td><td> </td><td class="right">                                         unsigned int ca,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                         int pathLenConstraint);</td><td> </td><td class="right">                                         int pathLenConstraint);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0001" /></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">                                                                           </td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">int</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">gnutls_x509_crt_set_subject_unique_id(gnutls_x509_crt_t cert, const void *i</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">d,</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">                          size_t id_size);</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">int</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">gnutls_x509_crt_set_issuer_unique_id(gnutls_x509_crt_t cert, const void *id</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">,</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">                          size_t id_size);</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">                                                                           </td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_x509_crt_set_subject_alternative_name(gnutls_x509_crt_t</td><td> </td><td class="right">int gnutls_x509_crt_set_subject_alternative_name(gnutls_x509_crt_t</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                                crt,</td><td> </td><td class="right">                                                crt,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                                gnutls_x509_subject_alt_nam
-e_t</td><td> </td><td class="right">                                                gnutls_x509_subject_alt_nam
-e_t</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                                type, const char</td><td> </td><td class="right">                                                type, const char</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                                *data_string);</td><td> </td><td class="right">                                                *data_string);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_x509_crt_set_subject_alt_name(gnutls_x509_crt_t crt,</td><td> </td><td class="right">int gnutls_x509_crt_set_subject_alt_name(gnutls_x509_crt_t crt,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                        gnutls_x509_subject_alt_name_t</td><td> </td><td class="right">                                        gnutls_x509_subject_alt_name_t</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                        type, const void *data,</td><td> </td><td class="right">                                        type, const void *data,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                        unsigned int data_size,</td><td> </td><td class="right">                                        unsigned int data_size,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                                        unsigned int flags);</td><td> </td><td class="right">                                        unsigned int flags);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l2" /><small>skipping to change at</small><em> line 1060</em></th><th> </th><th><a name="part-r2" /><small>skipping to change at</small><em> line 1052</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l1" /><small>skipping to change at</small><em> line 1060</em></th><th> </th><th><a name="part-r1" /><small>skipping to change at</small><em> line 1060</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_x509_privkey_get_pk_algorithm2(gnutls_x509_privkey_t</td><td> </td><td class="right">int gnutls_x509_privkey_get_pk_algorithm2(gnutls_x509_privkey_t</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">                                         key, unsigned int *bits);</td><td> </td><td class="right">                                         key, unsigned int *bits);</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_x509_privkey_get_key_id(gnutls_x509_privkey_t key,</td><td> </td><td class="right">int gnutls_x509_privkey_get_key_id(gnutls_x509_privkey_t key,</td><td class="lineno" valign="top"></td></tr>
@@ -898,7 +734,7 @@ e_t</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_x509_privkey_generate(gnutls_x509_privkey_t key,</td><td> </td><td class="right">int gnutls_x509_privkey_generate(gnutls_x509_privkey_t key,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">                                gnutls_pk_algorithm_t algo,</td><td> </td><td class="right">                                gnutls_pk_algorithm_t algo,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">                                unsigned int bits, unsigned int flags);</td><td> </td><td class="right">                                unsigned int bits, unsigned int flags);</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0002" /></td></tr>
+      <tr><td><a name="diff0001" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">                                                                           </td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">void gnutls_x509_privkey_set_flags(gnutls_x509_privkey_t key, unsigned int </span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">flags);</span></td><td class="lineno" valign="top"></td></tr>
@@ -945,8 +781,8 @@ e_t</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">int gnutls_x509_privkey_export_pkcs8(gnutls_x509_privkey_t key,</td><td> </td><td class="right">int gnutls_x509_privkey_export_pkcs8(gnutls_x509_privkey_t key,</td><td class="lineno" valign="top"></td></tr>
 
      <tr><td></td><td class="left"></td><td> </td><td class="right"></td><td></td></tr>
-     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 2 change blocks.&nbsp;</a></th></tr>
-     <tr class="stats"><td></td><th><i>10 lines changed or deleted</i></th><th><i> </i></th><th><i>34 lines changed or added</i></th><td></td></tr>
+     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 1 change blocks.&nbsp;</a></th></tr>
+     <tr class="stats"><td></td><th><i>0 lines changed or deleted</i></th><th><i> </i></th><th><i>34 lines changed or added</i></th><td></td></tr>
      <tr><td colspan="5" align="center" class="small"></td></tr>
    </table>
    <br/><div style='width:100%;' align='left' class='small'>This html diff was produced by rfcdiff 1.41.The latest version is available from <a href='http://tools.ietf.org/tools/rfcdiff/'>http://tools.ietf.org/tools/rfcdiff/</a></div>

@@ -1,10 +1,10 @@
-<!-- verdict:compatible;affected:0;added:10;removed:0;type_problems_high:0;type_problems_medium:0;type_problems_low:0;interface_problems_high:0;interface_problems_medium:0;interface_problems_low:0;changed_constants:0;tool_version:1.99.11 -->
+<!-- verdict:compatible;affected:0;added:10;removed:0;type_problems_high:0;type_problems_medium:0;type_problems_low:0;interface_problems_high:0;interface_problems_medium:0;interface_problems_low:0;changed_constants:0;tool_version:1.99.14 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="libgnutls, binary compatibility, API, report" />
-    <meta name="description" content="Binary compatibility report for the libgnutls module between 3.4.2 and 3.4.3 versions on x86_64" />
+    <meta name="description" content="Binary compatibility report for the libgnutls object between 3.4.2 and 3.4.3 versions on x86_64" />
     <title>
         libgnutls: 3.4.2 to 3.4.3 binary compatibility report
     </title>
@@ -256,7 +256,7 @@ td.new {
     </head>
 <body>
 <div><a name='Top'></a>
-<h1>Binary compatibility report between <span style='color:Blue;'>libgnutls.so.30.1.0</span> (<span style='color:Red;'>3.4.2</span>) and <span style='color:Blue;'>libgnutls.so.30.2.0</span> (<span style='color:Red;'>3.4.3</span>) objects on <span style='color:Blue;'>x86_64</span></h1>
+<h1>Binary compatibility report for the <span style='color:Blue;'>libgnutls.so</span> object between <span style='color:Red;'>3.4.2</span> and <span style='color:Red;'>3.4.3</span> versions on <span style='color:Blue;'>x86_64</span></h1>
 
 <h2>Test Info</h2><hr/>
 <table class='summary'>
@@ -264,11 +264,10 @@ td.new {
 <tr><th>Version #1</th><td>3.4.2</td></tr>
 <tr><th>Version #2</th><td>3.4.3</td></tr>
 <tr><th>CPU Type</th><td>x86_64</td></tr>
-<tr><th>GCC Version</th><td>4.9.3</td></tr>
 </table>
 <h2>Test Results</h2><hr/>
 <table class='summary'><tr><th>Total Header Files</th><td><a href='#Headers' style='color:Blue;'>15</a></td></tr>
-<tr><th>Total Source Files</th><td><a href='#Sources' style='color:Blue;'>102</a></td></tr>
+<tr><th>Total Source Files</th><td><a href='#Sources' style='color:Blue;'>99</a></td></tr>
 <tr><th>Total Objects</th><td><a href='#Libs' style='color:Blue;'>1</a></td></tr>
 <tr><th>Total Symbols / Types</th><td>965 / 473</td></tr>
 <tr><th>Verdict</th><td><span style='color:Green;'><b>Compatible</b></span></td></tr>
@@ -287,15 +286,15 @@ td.new {
 
 <a name='Added'></a><h2>Added Symbols (10)</h2><hr/>
 <span class='h_name'>gnutls.h</span>, <span class='lib_name'>libgnutls.so.30.2.0</span><br/>
-<span class="iname">gnutls_digest_get_oid&#160;<span class='sym_p'>(&#160;<span class='nowrap'>enum gnutls_digest_algorithm_t <span class='color_p'>algorithm</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<span class="iname">gnutls_digest_get_oid&#160;<span class='sym_p'>(&#160;<span class='nowrap'>gnutls_digest_algorithm_t <span class='color_p'>algorithm</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <span class="iname">gnutls_ecc_curve_get_id&#160;<span class='sym_p'>(&#160;<span class='nowrap'>char const* <span class='color_p'>name</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
-<span class="iname">gnutls_ecc_curve_get_oid&#160;<span class='sym_p'>(&#160;<span class='nowrap'>enum gnutls_ecc_curve_t <span class='color_p'>curve</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<span class="iname">gnutls_ecc_curve_get_oid&#160;<span class='sym_p'>(&#160;<span class='nowrap'>gnutls_ecc_curve_t <span class='color_p'>curve</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <span class="iname">gnutls_oid_to_digest&#160;<span class='sym_p'>(&#160;<span class='nowrap'>char const* <span class='color_p'>oid</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <span class="iname">gnutls_oid_to_ecc_curve&#160;<span class='sym_p'>(&#160;<span class='nowrap'>char const* <span class='color_p'>oid</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <span class="iname">gnutls_oid_to_pk&#160;<span class='sym_p'>(&#160;<span class='nowrap'>char const* <span class='color_p'>oid</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <span class="iname">gnutls_oid_to_sign&#160;<span class='sym_p'>(&#160;<span class='nowrap'>char const* <span class='color_p'>oid</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
-<span class="iname">gnutls_pk_get_oid&#160;<span class='sym_p'>(&#160;<span class='nowrap'>enum gnutls_pk_algorithm_t <span class='color_p'>algorithm</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
-<span class="iname">gnutls_sign_get_oid&#160;<span class='sym_p'>(&#160;<span class='nowrap'>enum gnutls_sign_algorithm_t <span class='color_p'>sign</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<span class="iname">gnutls_pk_get_oid&#160;<span class='sym_p'>(&#160;<span class='nowrap'>gnutls_pk_algorithm_t <span class='color_p'>algorithm</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<span class="iname">gnutls_sign_get_oid&#160;<span class='sym_p'>(&#160;<span class='nowrap'>gnutls_sign_algorithm_t <span class='color_p'>sign</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
 <br/>
 <span class='h_name'>pkcs7.h</span>, <span class='lib_name'>libgnutls.so.30.2.0</span><br/>
 <span class="iname">gnutls_pkcs7_get_signature_count&#160;<span class='sym_p'>(&#160;<span class='nowrap'>gnutls_pkcs7_t <span class='color_p'>pkcs7</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
@@ -320,7 +319,7 @@ x509-ext.h<br/>
 x509.h<br/>
 </div>
 <br/><a class='top_ref' href='#Top'>to the top</a><br/>
-<a name='Sources'></a><h2>Source Files (102)</h2><hr/>
+<a name='Sources'></a><h2>Source Files (99)</h2><hr/>
 <div class='h_list'>
 alpn.c<br/>
 cert_types.c<br/>
@@ -357,7 +356,6 @@ gnutls_handshake.c<br/>
 gnutls_mem.c<br/>
 gnutls_openpgp.c<br/>
 gnutls_pcert.c<br/>
-gnutls_pk.c<br/>
 gnutls_priority.c<br/>
 gnutls_privkey.c<br/>
 gnutls_privkey_raw.c<br/>
@@ -379,7 +377,6 @@ kx.c<br/>
 locks.c<br/>
 mac.c<br/>
 max_record.c<br/>
-mpi.c<br/>
 name_constraints.c<br/>
 ocsp.c<br/>
 ocsp_output.c<br/>
@@ -389,7 +386,6 @@ pgpverify.c<br/>
 pin.c<br/>
 pkcs12.c<br/>
 pkcs12_bag.c<br/>
-pkcs12_encr.c<br/>
 pkcs7-attrs.c<br/>
 pkcs7-output.c<br/>
 pkcs7.c<br/>
@@ -433,6 +429,6 @@ libgnutls.so.30.1.0<br/>
 <br/><a class='top_ref' href='#Top'>to the top</a><br/>
 </div>
 <br/><br/><br/>
-<hr/><div class='footer' align='right'><i>Generated by <a href='http://lvc.github.io/abi-compliance-checker/'>ABI Compliance Checker</a> 1.99.11 &#160;</i></div><br/>
+<hr/><div class='footer' align='right'><i>Generated by <a href='http://lvc.github.io/abi-compliance-checker/'>ABI Compliance Checker</a> 1.99.14 &#160;</i></div><br/>
 
 </body></html>

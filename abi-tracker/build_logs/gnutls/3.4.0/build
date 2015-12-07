@@ -331,7 +331,7 @@ checking whether printf supports POSIX/XSI format strings with positions... yes
 checking for socklen_t... yes
 checking for ssize_t... yes
 checking for working stdalign.h... yes
-checking for max_align_t... no
+checking for max_align_t... yes
 checking whether NULL can be used in arbitrary expressions... yes
 checking whether inttypes macros match system or gnu printf... system
 checking whether dprintf is declared without a macro... yes
@@ -618,7 +618,7 @@ checking whether printf supports POSIX/XSI format strings with positions... (cac
 checking for socklen_t... (cached) yes
 checking for ssize_t... (cached) yes
 checking for working stdalign.h... (cached) yes
-checking for max_align_t... (cached) no
+checking for max_align_t... (cached) yes
 checking whether NULL can be used in arbitrary expressions... (cached) yes
 checking whether inttypes macros match system or gnu printf... (cached) system
 checking whether dprintf is declared without a macro... (cached) yes
@@ -1123,17 +1123,15 @@ configure: System files:
   DNSSEC root key file: /usr/share/dns/root.key
 
 sed: can't read lib/gl/stdio.in.h: No such file or directory
-make[1]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0'
 make  all-recursive
-make[2]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0'
+make[1]: Entering directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0'
 Making all in gl
-make[3]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
+make[2]: Entering directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/gl'
   GEN      alloca.h
   GEN      c++defs.h
   GEN      arg-nonnull.h
   GEN      warn-on-use.h
   GEN      netdb.h
-  GEN      stddef.h
   GEN      stdio.h
   GEN      stdlib.h
   GEN      string.h
@@ -1147,23 +1145,23 @@ make[3]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
   GEN      unistd.h
   GEN      wchar.h
 make  all-recursive
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
+make[3]: Entering directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/gl'
 Making all in tests
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
+make[4]: Entering directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/gl/tests'
   GEN      c++defs.h
   GEN      arg-nonnull.h
   GEN      warn-on-use.h
   GEN      fcntl.h
   GEN      inttypes.h
 make  all-recursive
-make[6]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
+make[5]: Entering directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/gl/tests'
 Making all in .
-make[7]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
-make[7]: Nothing to be done for 'all-am'.
-make[7]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
-make[6]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
+make[6]: Entering directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/gl/tests'
+make[6]: Nothing to be done for 'all-am'.
+make[6]: Leaving directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/gl/tests'
+make[5]: Leaving directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/gl/tests'
+make[4]: Leaving directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/gl/tests'
+make[4]: Entering directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/gl'
   CC       base64.lo
   CC       c-ctype.lo
   CC       hash-pjw-bare.lo
@@ -1177,19 +1175,19 @@ make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
   CC       vasnprintf.lo
   CCLD     libgnu.la
 ar: `u' modifier ignored since `D' is the default (see `U')
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
-make[3]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
+make[4]: Leaving directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/gl'
+make[3]: Leaving directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/gl'
+make[2]: Leaving directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/gl'
 Making all in lib
-make[3]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
+make[2]: Entering directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/lib'
 make  all-recursive
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
+make[3]: Entering directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/lib'
 Making all in includes
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/includes'
-make[5]: Nothing to be done for 'all'.
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/includes'
+make[4]: Entering directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/lib/includes'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/lib/includes'
 Making all in x509
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/x509'
+make[4]: Entering directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/lib/x509'
   CC       common.lo
   CC       key_encode.lo
   CC       key_decode.lo
@@ -1222,9 +1220,9 @@ make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/x509'
   CC       ocsp_output.lo
   CCLD     libgnutls_x509.la
 ar: `u' modifier ignored since `D' is the default (see `U')
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/x509'
+make[4]: Leaving directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/lib/x509'
 Making all in auth
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/auth'
+make[4]: Entering directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/lib/auth'
   CC       anon.lo
   CC       cert.lo
   CC       dh_common.lo
@@ -1242,489 +1240,18 @@ make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/auth'
   CC       ecdhe.lo
   CCLD     libgnutls_auth.la
 ar: `u' modifier ignored since `D' is the default (see `U')
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/auth'
+make[4]: Leaving directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/lib/auth'
 Making all in ext
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/ext'
+make[4]: Entering directory '/tmp/BKxSYYX5TS/build/gnutls-3.4.0/lib/ext'
   CC       max_record.lo
   CC       cert_type.lo
-  CC       server_name.lo
-  CC       signature.lo
-  CC       safe_renegotiation.lo
-  CC       session_ticket.lo
-  CC       srp.lo
-  CC       ecc.lo
-  CC       heartbeat.lo
-  CC       status_request.lo
-  CC       dumbfw.lo
-  CC       ext_master_secret.lo
-  CC       etm.lo
-  CC       alpn.lo
-  CC       srtp.lo
-  CCLD     libgnutls_ext.la
-ar: `u' modifier ignored since `D' is the default (see `U')
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/ext'
-Making all in algorithms
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/algorithms'
-  CC       cert_types.lo
-  CC       ciphers.lo
-  CC       ciphersuites.lo
-  CC       ecc.lo
-  CC       kx.lo
-  CC       mac.lo
-  CC       protocols.lo
-  CC       publickey.lo
-  CC       secparams.lo
-  CC       sign.lo
-  CCLD     libgnutls_alg.la
-ar: `u' modifier ignored since `D' is the default (see `U')
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/algorithms'
-Making all in extras
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/extras'
-  CC       randomart.lo
-  CCLD     libgnutls_extras.la
-ar: `u' modifier ignored since `D' is the default (see `U')
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/extras'
-Making all in accelerated
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated'
-Making all in x86
-make[6]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated/x86'
-  CC       x86-common.lo
-  CC       sha-x86-ssse3.lo
-  CC       hmac-x86-ssse3.lo
-  CC       aes-gcm-x86-ssse3.lo
-  CC       aes-gcm-x86-aesni.lo
-  CC       aes-cbc-x86-ssse3.lo
-  CC       aes-cbc-x86-aesni.lo
-  CC       aes-ccm-x86-aesni.lo
-  CC       sha-padlock.lo
-  CC       hmac-padlock.lo
-  CC       aes-padlock.lo
-  CC       aes-gcm-padlock.lo
-  CC       aes-gcm-x86-pclmul.lo
-  CCAS     elf/aesni-x86_64.lo
-  CCAS     elf/cpuid-x86_64.lo
-  CCAS     elf/ghash-x86_64.lo
-  CCAS     elf/sha1-ssse3-x86_64.lo
-  CCAS     elf/sha512-ssse3-x86_64.lo
-  CCAS     elf/aes-ssse3-x86_64.lo
-  CCAS     elf/e_padlock-x86_64.lo
-  CCLD     libx86.la
-ar: `u' modifier ignored since `D' is the default (see `U')
-make[6]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated/x86'
-make[6]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated'
-  CC       accelerated.lo
-  CC       cryptodev.lo
-  CC       cryptodev-gcm.lo
-  CCLD     libaccelerated.la
-ar: `u' modifier ignored since `D' is the default (see `U')
-make[6]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated'
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated'
-Making all in minitasn1
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/minitasn1'
-  CC       decoding.lo
-  CC       gstr.lo
-  CC       errors.lo
-  CC       parser_aux.lo
-  CC       structure.lo
-  CC       element.lo
-  CC       coding.lo
-  CC       version.lo
-  CCLD     libminitasn1.la
-ar: `u' modifier ignored since `D' is the default (see `U')
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/minitasn1'
-Making all in opencdk
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/opencdk'
-  CC       armor.lo
-  CC       kbnode.lo
-  CC       sig-check.lo
-  CC       keydb.lo
-  CC       pubkey.lo
-  CC       stream.lo
-  CC       write-packet.lo
-  CC       misc.lo
-  CC       seskey.lo
-  CC       literal.lo
-  CC       new-packet.lo
-  CC       read-packet.lo
-  CCLD     libminiopencdk.la
-ar: `u' modifier ignored since `D' is the default (see `U')
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/opencdk'
-Making all in openpgp
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/openpgp'
-  CC       pgp.lo
-  CC       pgpverify.lo
-  CC       extras.lo
-  CC       compat.lo
-  CC       privkey.lo
-  CC       output.lo
-  CC       gnutls_openpgp.lo
-  CCLD     libgnutls_openpgp.la
-ar: `u' modifier ignored since `D' is the default (see `U')
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/openpgp'
-Making all in nettle
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/nettle'
-  CC       pk.lo
-  CC       mpi.lo
-  CC       mac.lo
-  CC       cipher.lo
-  CC       init.lo
-  CC       egd.lo
-  CC       rnd-common.lo
-  CC       rnd.lo
-  CCLD     libcrypto.la
-ar: `u' modifier ignored since `D' is the default (see `U')
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/nettle'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
-  CC       gnutls_range.lo
-  CC       gnutls_record.lo
-  CC       gnutls_compress.lo
-  CC       debug.lo
-  CC       gnutls_cipher.lo
-  CC       gnutls_mbuffers.lo
-  CC       gnutls_buffers.lo
-  CC       gnutls_handshake.lo
-  CC       gnutls_num.lo
-  CC       gnutls_errors.lo
-  CC       gnutls_dh.lo
-  CC       gnutls_kx.lo
-  CC       gnutls_priority.lo
-  CC       gnutls_hash_int.lo
-  CC       gnutls_cipher_int.lo
-  CC       gnutls_session.lo
-  CC       gnutls_db.lo
-  CC       x509_b64.lo
-  CC       gnutls_extensions.lo
-  CC       gnutls_auth.lo
-  CC       gnutls_v2_compat.lo
-  CC       gnutls_datum.lo
-  CC       gnutls_session_pack.lo
-  CC       gnutls_mpi.lo
-  CC       gnutls_pk.lo
-  CC       gnutls_cert.lo
-  CC       gnutls_global.lo
-  CC       gnutls_constate.lo
-  CC       gnutls_anon_cred.lo
-  CC       pkix_asn1_tab.lo
-  CC       gnutls_asn1_tab.lo
-  CC       gnutls_mem.lo
-  CC       gnutls_ui.lo
-  CC       vasprintf.lo
-  CC       gnutls_sig.lo
-  CC       gnutls_ecc.lo
-  CC       gnutls_alert.lo
-  CC       gnutls_privkey_raw.lo
-  CC       system.lo
-  CC       inet_ntop.lo
-  CC       gnutls_str.lo
-  CC       gnutls_state.lo
-  CC       gnutls_x509.lo
-  CC       gnutls_helper.lo
-  CC       gnutls_supplemental.lo
-  CC       random.lo
-  CC       crypto-api.lo
-  CC       gnutls_privkey.lo
-  CC       gnutls_pcert.lo
-  CC       gnutls_pubkey.lo
-  CC       locks.lo
-  CC       gnutls_dtls.lo
-  CC       system_override.lo
-  CC       crypto-backend.lo
-  CC       verify-tofu.lo
-  CC       pin.lo
-  CC       tpm.lo
-  CC       fips.lo
-  CC       safe-memfuncs.lo
-  CC       inet_pton.lo
-  CC       atfork.lo
-  CC       urls.lo
-  CC       system-keys-dummy.lo
-  CC       gnutls_srp.lo
-  CC       gnutls_psk.lo
-  CCLD     libgnutls.la
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
-make[3]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
-Making all in extra
-make[3]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra'
-Making all in includes
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra/includes'
-make[4]: Nothing to be done for 'all'.
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra/includes'
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra'
-make[4]: Nothing to be done for 'all-am'.
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra'
-make[3]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra'
-Making all in po
-make[3]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/po'
-make[3]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/po'
-Making all in src/gl
-make[3]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-  GEN      alloca.h
-  GEN      c++defs.h
-  GEN      warn-on-use.h
-  GEN      arg-nonnull.h
-  GEN      arpa/inet.h
-  GEN      netdb.h
-  GEN      signal.h
-  GEN      stddef.h
-  GEN      stdio.h
-  GEN      stdlib.h
-  GEN      string.h
-  GEN      sys/select.h
-  GEN      sys/socket.h
-  GEN      sys/stat.h
-  GEN      sys/time.h
-  GEN      sys/types.h
-  GEN      sys/uio.h
-  GEN      time.h
-  GEN      unistd.h
-  GEN      wchar.h
-make  all-recursive
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-  CC       c-ctype.lo
-  CC       exitfail.lo
-  CC       fd-hook.lo
-  CC       gettime.lo
-  CC       malloca.lo
-  CC       parse-datetime.lo
-  CC       progname.lo
-  CC       read-file.lo
-  CC       sockets.lo
-  CC       sys_socket.lo
-  CC       timespec.lo
-  CC       unistd.lo
-  CC       xmalloc.lo
-  CC       xalloc-die.lo
-  CC       xsize.lo
-  CC       asnprintf.lo
-  CC       printf-args.lo
-  CC       printf-parse.lo
-  CC       vasnprintf.lo
-  CCLD     libgnu_gpl.la
-ar: `u' modifier ignored since `D' is the default (see `U')
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-make[3]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-make[3]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0'
-make[3]: Nothing to be done for 'all-am'.
-make[3]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0'
-make[2]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0'
-make[1]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0'
-make[1]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0'
-Making install in gl
-make[2]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
-make  install-recursive
-make[3]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
-Making install in tests
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
-make  install-recursive
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
-Making install in .
-make[6]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
-make[7]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
-make[7]: Nothing to be done for 'install-exec-am'.
-make[7]: Nothing to be done for 'install-data-am'.
-make[7]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
-make[6]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl/tests'
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
-make[5]: Nothing to be done for 'install-exec-am'.
-make[5]: Nothing to be done for 'install-data-am'.
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
-make[3]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
-make[2]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/gl'
-Making install in lib
-make[2]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
-make  install-recursive
-make[3]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
-Making install in includes
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/includes'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/includes'
-make[5]: Nothing to be done for 'install-exec-am'.
- /bin/mkdir -p '/home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/include'
- /bin/mkdir -p '/home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/include/gnutls'
- /usr/bin/install -c -m 644  gnutls/x509.h gnutls/pkcs12.h gnutls/compat.h gnutls/openpgp.h gnutls/crypto.h gnutls/pkcs11.h gnutls/abstract.h gnutls/dtls.h gnutls/ocsp.h gnutls/tpm.h gnutls/x509-ext.h gnutls/self-test.h gnutls/system-keys.h gnutls/urls.h '/home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/include/gnutls'
- /bin/mkdir -p '/home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/include'
- /bin/mkdir -p '/home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/include/gnutls'
- /usr/bin/install -c -m 644  gnutls/gnutls.h '/home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/include/gnutls'
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/includes'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/includes'
-Making install in x509
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/x509'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/x509'
-make[5]: Nothing to be done for 'install-exec-am'.
-make[5]: Nothing to be done for 'install-data-am'.
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/x509'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/x509'
-Making install in auth
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/auth'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/auth'
-make[5]: Nothing to be done for 'install-exec-am'.
-make[5]: Nothing to be done for 'install-data-am'.
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/auth'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/auth'
-Making install in ext
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/ext'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/ext'
-make[5]: Nothing to be done for 'install-exec-am'.
-make[5]: Nothing to be done for 'install-data-am'.
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/ext'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/ext'
-Making install in algorithms
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/algorithms'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/algorithms'
-make[5]: Nothing to be done for 'install-exec-am'.
-make[5]: Nothing to be done for 'install-data-am'.
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/algorithms'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/algorithms'
-Making install in extras
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/extras'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/extras'
-make[5]: Nothing to be done for 'install-exec-am'.
-make[5]: Nothing to be done for 'install-data-am'.
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/extras'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/extras'
-Making install in accelerated
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated'
-Making install in x86
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated/x86'
-make[6]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated/x86'
-make[6]: Nothing to be done for 'install-exec-am'.
-make[6]: Nothing to be done for 'install-data-am'.
-make[6]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated/x86'
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated/x86'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated'
-make[6]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated'
-make[6]: Nothing to be done for 'install-exec-am'.
-make[6]: Nothing to be done for 'install-data-am'.
-make[6]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated'
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/accelerated'
-Making install in minitasn1
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/minitasn1'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/minitasn1'
-make[5]: Nothing to be done for 'install-exec-am'.
-make[5]: Nothing to be done for 'install-data-am'.
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/minitasn1'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/minitasn1'
-Making install in opencdk
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/opencdk'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/opencdk'
-make[5]: Nothing to be done for 'install-exec-am'.
-make[5]: Nothing to be done for 'install-data-am'.
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/opencdk'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/opencdk'
-Making install in openpgp
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/openpgp'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/openpgp'
-make[5]: Nothing to be done for 'install-exec-am'.
-make[5]: Nothing to be done for 'install-data-am'.
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/openpgp'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/openpgp'
-Making install in nettle
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/nettle'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/nettle'
-make[5]: Nothing to be done for 'install-exec-am'.
-make[5]: Nothing to be done for 'install-data-am'.
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/nettle'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib/nettle'
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
- /bin/mkdir -p '/home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/lib'
- /bin/bash ../libtool   --mode=install /usr/bin/install -c   libgnutls.la '/home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/lib'
-libtool: install: /usr/bin/install -c .libs/libgnutls.so.30.0.0 /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/lib/libgnutls.so.30.0.0
-libtool: install: (cd /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/lib && { ln -s -f libgnutls.so.30.0.0 libgnutls.so.30 || { rm -f libgnutls.so.30 && ln -s libgnutls.so.30.0.0 libgnutls.so.30; }; })
-libtool: install: (cd /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/lib && { ln -s -f libgnutls.so.30.0.0 libgnutls.so || { rm -f libgnutls.so && ln -s libgnutls.so.30.0.0 libgnutls.so; }; })
-libtool: install: /usr/bin/install -c .libs/libgnutls.lai /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/lib/libgnutls.la
-libtool: finish: PATH="/home/nmav/perl5/bin:/opt/open64-5.0/bin:/home/nmav/cvs/gnulib:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/nmav/android/adt-bundle-linux-x86_64-20130917/sdk/tools:/sbin" ldconfig -n /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/lib
-----------------------------------------------------------------------
-Libraries have been installed in:
-   /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/lib
-
-If you ever happen to want to link against installed libraries
-in a given directory, LIBDIR, you must either use libtool, and
-specify the full pathname of the library, or use the `-LLIBDIR'
-flag during linking and do at least one of the following:
-   - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
-     during execution
-   - add LIBDIR to the `LD_RUN_PATH' environment variable
-     during linking
-   - use the `-Wl,-rpath -Wl,LIBDIR' linker flag
-   - have your system administrator add LIBDIR to `/etc/ld.so.conf'
-
-See any operating system documentation about shared libraries for
-more information, such as the ld(1) and ld.so(8) manual pages.
-----------------------------------------------------------------------
- /bin/mkdir -p '/home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/lib/pkgconfig'
- /usr/bin/install -c -m 644 gnutls.pc '/home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/lib/pkgconfig'
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
-make[3]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
-make[2]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/lib'
-Making install in extra
-make[2]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra'
-Making install in includes
-make[3]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra/includes'
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra/includes'
-make[4]: Nothing to be done for 'install-exec-am'.
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra/includes'
-make[3]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra/includes'
-make[3]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra'
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra'
-make[4]: Nothing to be done for 'install-data-am'.
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra'
-make[3]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra'
-make[2]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/extra'
-Making install in po
-make[2]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/po'
-installing en@boldquot.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/en@boldquot/LC_MESSAGES/gnutls.mo
-installing en@quot.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/en@quot/LC_MESSAGES/gnutls.mo
-installing cs.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/cs/LC_MESSAGES/gnutls.mo
-installing de.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/de/LC_MESSAGES/gnutls.mo
-installing eo.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/eo/LC_MESSAGES/gnutls.mo
-installing fi.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/fi/LC_MESSAGES/gnutls.mo
-installing fr.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/fr/LC_MESSAGES/gnutls.mo
-installing it.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/it/LC_MESSAGES/gnutls.mo
-installing ms.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/ms/LC_MESSAGES/gnutls.mo
-installing nl.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/nl/LC_MESSAGES/gnutls.mo
-installing pl.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/pl/LC_MESSAGES/gnutls.mo
-installing sv.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/sv/LC_MESSAGES/gnutls.mo
-installing uk.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/uk/LC_MESSAGES/gnutls.mo
-installing vi.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/vi/LC_MESSAGES/gnutls.mo
-installing zh_CN.gmo as /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/locale/zh_CN/LC_MESSAGES/gnutls.mo
-if test "gnutls" = "gettext-tools"; then \
-  /bin/mkdir -p /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/gettext/po; \
-  for file in Makefile.in.in remove-potcdate.sin quot.sed boldquot.sed en@quot.header en@boldquot.header insert-header.sin Rules-quot   Makevars.template; do \
-    /usr/bin/install -c -m 644 ./$file \
-		    /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/gettext/po/$file; \
-  done; \
-  for file in Makevars; do \
-    rm -f /home/nmav/cvs/gnutls-web/abi-tracker/installed/gnutls/3.4.0/share/gettext/po/$file; \
-  done; \
-else \
-  : ; \
-fi
-make[2]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/po'
-Making install in src/gl
-make[2]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-make  install-recursive
-make[3]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-make[4]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-make[5]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-make[5]: Nothing to be done for 'install-exec-am'.
-make[5]: Nothing to be done for 'install-data-am'.
-make[5]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-make[4]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-make[3]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-make[2]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0/src/gl'
-make[2]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0'
-make[3]: Entering directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0'
-make[3]: Nothing to be done for 'install-exec-am'.
-make[3]: Nothing to be done for 'install-data-am'.
-make[3]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0'
-make[2]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0'
-make[1]: Leaving directory '/tmp/Zl7m84Drtn/build/gnutls-3.4.0'
+Makefile:1371: recipe for target 'cert_type.lo' failed
+make[4]: *** [cert_type.lo] Error 1
+Makefile:1830: recipe for target 'all-recursive' failed
+make[3]: *** [all-recursive] Interrupt
+Makefile:1560: recipe for target 'all' failed
+make[2]: *** [all] Interrupt
+Makefile:1387: recipe for target 'all-recursive' failed
+make[1]: *** [all-recursive] Interrupt
+Makefile:1314: recipe for target 'all' failed
+make: *** [all] Interrupt

@@ -1,12 +1,12 @@
-<!-- verdict:compatible;affected:0;added:0;removed:0;type_problems_high:0;type_problems_medium:0;type_problems_low:0;interface_problems_high:0;interface_problems_medium:0;interface_problems_low:0;changed_constants:0;tool_version:1.99.14 -->
+<!-- verdict:compatible;affected:0;added:10;removed:0;type_problems_high:0;type_problems_medium:0;type_problems_low:0;interface_problems_high:0;interface_problems_medium:0;interface_problems_low:0;changed_constants:0;tool_version:1.99.14 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="libgnutls, binary compatibility, API, report" />
-    <meta name="description" content="Binary compatibility report for the libgnutls object between 3.4.4.1 and 3.4.5 versions on x86_64" />
+    <meta name="description" content="Binary compatibility report for the libgnutls object between 3.4.7 and current versions on x86_64" />
     <title>
-        libgnutls: 3.4.4.1 to 3.4.5 binary compatibility report
+        libgnutls: 3.4.7 to current binary compatibility report
     </title>
     <style type="text/css">
     body {
@@ -256,24 +256,24 @@ td.new {
     </head>
 <body>
 <div><a name='Top'></a>
-<h1>Binary compatibility report for the <span style='color:Blue;'>libgnutls.so</span> object between <span style='color:Red;'>3.4.4.1</span> and <span style='color:Red;'>3.4.5</span> versions on <span style='color:Blue;'>x86_64</span></h1>
+<h1>Binary compatibility report for the <span style='color:Blue;'>libgnutls.so</span> object between <span style='color:Red;'>3.4.7</span> and <span style='color:Red;'>current</span> versions on <span style='color:Blue;'>x86_64</span></h1>
 
 <h2>Test Info</h2><hr/>
 <table class='summary'>
 <tr><th>Module Name</th><td>libgnutls</td></tr>
-<tr><th>Version #1</th><td>3.4.4.1</td></tr>
-<tr><th>Version #2</th><td>3.4.5</td></tr>
+<tr><th>Version #1</th><td>3.4.7</td></tr>
+<tr><th>Version #2</th><td>current</td></tr>
 <tr><th>CPU Type</th><td>x86_64</td></tr>
 </table>
 <h2>Test Results</h2><hr/>
 <table class='summary'><tr><th>Total Header Files</th><td><a href='#Headers' style='color:Blue;'>15</a></td></tr>
-<tr><th>Total Source Files</th><td><a href='#Sources' style='color:Blue;'>99</a></td></tr>
+<tr><th>Total Source Files</th><td><a href='#Sources' style='color:Blue;'>100</a></td></tr>
 <tr><th>Total Objects</th><td><a href='#Libs' style='color:Blue;'>1</a></td></tr>
-<tr><th>Total Symbols / Types</th><td>978 / 473</td></tr>
+<tr><th>Total Symbols / Types</th><td>934 / 453</td></tr>
 <tr><th>Verdict</th><td><span style='color:Green;'><b>Compatible</b></span></td></tr>
 </table>
 <h2>Problem Summary</h2><hr/>
-<table class='summary'><tr><th></th><th style='text-align:center;'>Severity</th><th style='text-align:center;'>Count</th></tr><tr><th>Added Symbols</th><td>-</td><td>0</td></tr>
+<table class='summary'><tr><th></th><th style='text-align:center;'>Severity</th><th style='text-align:center;'>Count</th></tr><tr><th>Added Symbols</th><td>-</td><td class='new'><a href='#Added' style='color:Blue;'>10</a></td></tr>
 <tr><th>Removed Symbols</th><td>High</td><td>0</td></tr>
 <tr><th rowspan='3'>Problems with<br/>Data Types</th><td>High</td><td>0</td></tr>
 <tr><td>Medium</td><td>0</td></tr>
@@ -284,6 +284,24 @@ td.new {
 <tr><th>Problems with<br/>Constants</th><td>Low</td><td>0</td></tr>
 </table>
 
+<a name='Added'></a><h2>Added Symbols (10)</h2><hr/>
+<span class='h_name'>abstract.h</span>, <span class='lib_name'>libgnutls.so.30.6.0</span><br/>
+<span class="iname">gnutls_privkey_generate2&#160;<span class='sym_p'>(&#160;gnutls_privkey_t <span class='color_p'>pkey</span>, gnutls_pk_algorithm_t <span class='color_p'>algo</span>, unsigned int <span class='color_p'>bits</span>, unsigned int <span class='color_p'>flags</span>, gnutls_keygen_data_st const* <span class='color_p'>data</span>, <span class='nowrap'>unsigned int <span class='color_p'>data_size</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<span class="iname">gnutls_privkey_get_seed&#160;<span class='sym_p'>(&#160;gnutls_privkey_t <span class='color_p'>key</span>, gnutls_digest_algorithm_t* <span class='color_p'>digest</span>, <span class='nowrap'>void* <span class='color_p'>seed</span>,</span> <span class='nowrap'>size_t* <span class='color_p'>seed_size</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<span class="iname">gnutls_privkey_set_flags&#160;<span class='sym_p'>(&#160;gnutls_privkey_t <span class='color_p'>key</span>, <span class='nowrap'>unsigned int <span class='color_p'>flags</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<span class="iname">gnutls_privkey_verify_seed&#160;<span class='sym_p'>(&#160;gnutls_privkey_t <span class='color_p'>key</span>, gnutls_digest_algorithm_t <span class='color_p'>digest</span>, void const* <span class='color_p'>seed</span>, <span class='nowrap'>size_t <span class='color_p'>seed_size</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<br/>
+<span class='h_name'>crypto.h</span>, <span class='lib_name'>libgnutls.so.30.6.0</span><br/>
+<span class="iname">gnutls_decode_ber_digest_info&#160;<span class='sym_p'>(&#160;gnutls_datum_t const* <span class='color_p'>info</span>, gnutls_digest_algorithm_t* <span class='color_p'>hash</span>, unsigned char* <span class='color_p'>digest</span>, <span class='nowrap'>unsigned int* <span class='color_p'>digest_size</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<span class="iname">gnutls_encode_ber_digest_info&#160;<span class='sym_p'>(&#160;gnutls_digest_algorithm_t <span class='color_p'>hash</span>, gnutls_datum_t const* <span class='color_p'>digest</span>, <span class='nowrap'>gnutls_datum_t* <span class='color_p'>output</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<br/>
+<span class='h_name'>x509.h</span>, <span class='lib_name'>libgnutls.so.30.6.0</span><br/>
+<span class="iname">gnutls_x509_privkey_generate2&#160;<span class='sym_p'>(&#160;gnutls_x509_privkey_t <span class='color_p'>key</span>, gnutls_pk_algorithm_t <span class='color_p'>algo</span>, unsigned int <span class='color_p'>bits</span>, unsigned int <span class='color_p'>flags</span>, gnutls_keygen_data_st const* <span class='color_p'>data</span>, <span class='nowrap'>unsigned int <span class='color_p'>data_size</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<span class="iname">gnutls_x509_privkey_get_seed&#160;<span class='sym_p'>(&#160;gnutls_x509_privkey_t <span class='color_p'>key</span>, gnutls_digest_algorithm_t* <span class='color_p'>digest</span>, <span class='nowrap'>void* <span class='color_p'>seed</span>,</span> <span class='nowrap'>size_t* <span class='color_p'>seed_size</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<span class="iname">gnutls_x509_privkey_set_flags&#160;<span class='sym_p'>(&#160;gnutls_x509_privkey_t <span class='color_p'>key</span>, <span class='nowrap'>unsigned int <span class='color_p'>flags</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<span class="iname">gnutls_x509_privkey_verify_seed&#160;<span class='sym_p'>(&#160;gnutls_x509_privkey_t <span class='color_p'>key</span>, gnutls_digest_algorithm_t <span class='color_p'>digest</span>, void const* <span class='color_p'>seed</span>, <span class='nowrap'>size_t <span class='color_p'>seed_size</span> )</span></span><span class='sym_ver'>&#160;@@&#160;GNUTLS_3_4</span></span><br/>
+<br/>
+<a class='top_ref' href='#Top'>to the top</a><br/>
 <a name='Headers'></a><h2>Header Files (15)</h2><hr/>
 <div class='h_list'>
 abstract.h<br/>
@@ -303,9 +321,10 @@ x509-ext.h<br/>
 x509.h<br/>
 </div>
 <br/><a class='top_ref' href='#Top'>to the top</a><br/>
-<a name='Sources'></a><h2>Source Files (99)</h2><hr/>
+<a name='Sources'></a><h2>Source Files (100)</h2><hr/>
 <div class='h_list'>
 alpn.c<br/>
+auto-verify.c<br/>
 cert_types.c<br/>
 ciphers.c<br/>
 ciphersuites.c<br/>
@@ -408,7 +427,7 @@ x509_write.c<br/>
 <br/><a class='top_ref' href='#Top'>to the top</a><br/>
 <a name='Libs'></a><h2>Objects (1)</h2><hr/>
 <div class='lib_list'>
-libgnutls.so.30.3.0<br/>
+libgnutls.so.30.5.0<br/>
 </div>
 <br/><a class='top_ref' href='#Top'>to the top</a><br/>
 </div>
