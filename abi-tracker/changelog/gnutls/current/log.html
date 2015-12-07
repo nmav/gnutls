@@ -20,7 +20,257 @@
 <br/>
 <h1>Changelog for <span class='version'>current</span> version (Git)</h1><br/><br/>
 <div class='changelog'>
-<pre class='wrap'>commit a814e3c0d4c110e63f8efd665c7c5ba124e79ad3
+<pre class='wrap'>commit 32d21019f776536b00410af9191fafb45c80877c
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-12-06 12:00:46 +0100
+
+    tests: check whether gnutls_pubkey_import_privkey() operates well for PKCS#11 RSA keys
+
+commit 5a4e692511dc3a829eda0d7c5a87e56cbc2055f0
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-12-06 11:35:57 +0100
+
+    Do not allow importing public keys from PKCS #11 private keys for DSA and ECDSA
+    
+    That is, because they do not contain all the required parameters for a direct
+    import. Reported by Jan Vcelak.
+
+commit fa0fa4cb96593f2c291c23f84ccc03d0e50d08de
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-12-06 10:58:45 +0100
+
+    pkcs11: avoid setting a variable which isn't used
+
+commit 7ce2024894aa11573dd73a405936a65cd348e513
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-12-06 10:57:48 +0100
+
+    MAX_PK_PARAM_SIZE was moved to gnutls_int.h
+
+commit 266d0ad59c7303bff5f49f4a9bec8d320fe96ac9
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-12-06 10:54:37 +0100
+
+    pkcs11: deinitialize gnutls_pkcs11_obj_t's pubkey on deinit
+
+commit 4d55cc14a63dcdf454de2a3d33719ca96ec63507
+Author: Jan Vcelak &lt;jan.vcelak@nic.cz&gt;
+Date:   2015-12-06 00:46:39 +0100
+
+    pkcs11: fix passing of incorrect variable in privkey_get_pubkey
+    
+    The code worked for RSA because the content of the variables matched.
+    But it doesn't match for ECC.
+    
+    CKM_RSA_PKCS_KEY_PAIR_GEN (0x0) == CKK_RSA (0x0)
+    CKM_ECDSA_KEY_PAIR_GEN (0x1040) != CKK_ECDSA (0x3)
+    
+    Signed-off-by: Jan Vcelak &lt;jan.vcelak@nic.cz&gt;
+
+commit db9ea6da7224c3d8795cd0752d70e1642d0be4f5
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-12-02 18:40:28 +0100
+
+    gnutls-cli: don't use RSA ciphersuites to test chacha20 as they are not defined
+
+commit 382da6e21eb92914bee775c3a29f939c6035a1ba
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-12-02 16:15:03 +0100
+
+    documented bug in gnutls_x509_crt_get_*_unique_id()
+
+commit 72db5d6cd47327c48464eb5cdf042eb04abe0398
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-12-01 10:40:23 +0100
+
+    tools: don't compile tpmtool if PKCS11 is disabled
+    
+    That is because GnuTLS' TPM code makes use of the PKCS11 PIN callbacks.
+
+commit 40f6e1b863341a276dc71b5d9873ea841f98bd26
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-30 10:34:03 +0100
+
+    Amend "When decoding extensions do not ignore decoding errors"
+    
+    Do not treat an error the fact that no extensions field is present.
+
+commit 0728300bbf8086edb26ca82792be0d2a534db69e
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-30 09:49:08 +0100
+
+    allow specifying NULL buffer in gnutls_x509_crt_get_*_unique_id()
+
+commit 1ba167b7a3f8123486c7b11fad9f9e698ba84114
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-26 12:46:02 +0100
+
+    NEWS: removed functions that were part of 3.4.x releases
+
+commit 3d31df2bb41fecf9e2dbb98ee76d2c345a4af912
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-29 10:37:53 +0100
+
+    doc update
+
+commit e108e4f96e04011d6ca518795b2e2a20f2c1f540
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-29 10:30:01 +0100
+
+    tests: added check for TLS extension decoding error propagation
+    
+    Relates #40
+
+commit 68465b818f2bf39d4b8a1f5cae42c03fa1b9e338
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-29 09:24:12 +0100
+
+    When decoding extensions do not ignore decoding errors
+    
+    That is, move from a parsing error tolerance to a more strict
+    decoding approach.
+    Relates #40
+
+commit e54d59e8aa25c39484e979ad9e4eb861e670578b
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-28 10:43:31 +0100
+
+    .gitignore: more files to ignore
+
+commit 8648af78811de8f1040efa9c45cc8c263fc05c60
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-28 10:11:52 +0100
+
+    ocsp_output: when next update is not present don't print error message
+    
+    That is because this field is optional.
+    Resolves #53
+
+commit 2e5fcb74b006972cd07a69faf91217bf5f1d0436
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-26 11:23:15 +0100
+
+    tests: override-ciphers will not run mac tests on windows
+    
+    There is some issue with symbols for self tests not being exported.
+
+commit e24ad5bd3529e2f04048e464d277557af8e8fa41
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-26 09:37:02 +0100
+
+    .gitlab-ci.yml: removed separate builddir build from x86-64 targets to reduce builds
+
+commit db0dc9e30e25ba8de7dd166b2ab4788df0642719
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-26 09:32:25 +0100
+
+    tests: updates for certtool test to run under windows
+
+commit 12a5842b481f65328a0e922442fed99d7f75466a
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-26 09:25:48 +0100
+
+    .gitlab-ci.yml: minimal library no longer requires x86-64 for compilation
+
+commit 847b9629acb1ec23adc114b6ce93c4d1e8ed244f
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2015-11-25 19:24:15 +0100
+
+    .gitlab-ci.yml: in windows build skip the gnulib tests
+
+commit efad4c6c17bb7b8211f42f77e409fd187c26f252
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-25 11:57:31 +0100
+
+    .gitlab-ci.yml: added windows build
+
+commit d8a7207ab9654ee0391dabbf870265b1de53727f
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-25 11:56:49 +0100
+
+    tests: changes for running tests under windows
+
+commit ab627878a31d68cf8e733103fedeba2d98857739
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-25 11:56:06 +0100
+
+    tests: cipher-test will forward the prog exit code as the script exit code
+
+commit 14736b90ccc7e12b1b117000e4c88a60c389e7a0
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-25 11:25:07 +0100
+
+    README: added information for windows build
+
+commit 8c41b8e729b428b3b233fc6aeaa5c5ea37d6436d
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-25 10:53:51 +0100
+
+    libopts: use the O_BINARY flag in windows for files
+
+commit c9c07b7f42183db8bba70c18b4ff7a0220a9b8dc
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-25 10:49:30 +0100
+
+    libopts: updated to 5.18.6
+
+commit 3c16b3c962f96aa4cea01955d856cedfe5ac4ee0
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-25 10:25:08 +0100
+
+    use consistent terms in system.c and system-keys-win.c
+
+commit 315451878dc42c90b65ac5a239a7b2d284728458
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-25 10:21:46 +0100
+
+    tests: added basic functionality testing for system-keys in windows
+
+commit 21a3ece0fd13b63cf0237ea853788ba75e6001ed
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-25 09:49:03 +0100
+
+    doc update
+
+commit 26f956c54b66500c8809c43f2970ae84c3f77374
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-25 09:46:26 +0100
+
+    Added gnutls_encode_ber_digest_info and gnutls_decode_ber_digest_info
+
+commit ba76ca4357fb79f1f55c1520c09a09f18bc9a8a4
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-24 13:27:13 +0100
+
+    cross.mk: allow building with mingw64
+
+commit 3263d5f3e70185b10862324de27cbcdb1115a854
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-24 13:09:40 +0100
+
+    tests: use gnulib where needed
+
+commit 4271cea63db743b79afb0155e02c9cd898438eb7
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-24 13:04:28 +0100
+
+    cross.mk: updated windows cross compile makefile
+
+commit 5f901f7b27f8aab512b92384947e9b8308c6accc
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-24 13:03:15 +0100
+
+    tests: disable global-init-override test in windows
+    
+    Gcc does not support weak symbols on this platform.
+
+commit bc6cc65af2625f3b66a60e7b744c1009f1b896cb
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2015-11-24 12:54:32 +0100
+
+    tools: don't call endservent in windows
+
+commit a814e3c0d4c110e63f8efd665c7c5ba124e79ad3
 Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
 Date:   2015-11-22 13:27:14 +0100
 
@@ -409,253 +659,6 @@ Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
 Date:   2015-11-09 15:51:17 +0100
 
     nettle: be more specific in seed size mismatches
-
-commit fa9a5cb246d2878b311457b8d2804890a208ee6d
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-11-09 15:43:20 +0100
-
-    crypto-backend: ensure there are no leaks on deinitialization
-
-commit 6312c13fb36baade5dd9df4c2f47c8671c5804ce
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-11-09 14:29:48 +0100
-
-    Require TLS 1.2 for all the ciphersuites which are defined for it only
-    
-    This solves an interoperability issue with openssl. Reported by Viktor Dukhovni.
-
-commit 3a181d85ff9e7abd1819fee87030d8eef96688df
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-11-08 09:30:39 +0100
-
-    p11tool: introduced --only-urls option
-    
-    This option allows printing a compact listing containing only of URLs.
-
-commit fd309b3c7e8cd34fa7a8de851b8640905d29eb73
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-11-07 21:51:56 +0100
-
-    Modified the CHACHA20 cipher to conform to draft-ietf-tls-chacha20-poly1305-02
-
-commit 83c332ce00c79ff60811006e87dbfce77bccd9bd
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-11-06 15:02:51 +0100
-
-    .gitlab-ci.yml: use static libasan
-    
-    This prevents issues with tests which use LD_PRELOAD.
-
-commit 3b9413d80db217abb3ac94a8d784bcc345a5a4cb
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-11-06 10:40:39 +0100
-
-    .gitlab-ci.yml: disable non-suiteb curves on build on Fedora system
-
-commit b8323e4f4724a2b62f3be71e5d2a16ea6856af1f
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-11-05 11:11:29 +0100
-
-    tools: better ftp auth tls negotiation
-
-commit 8b1315d58fab8dcd1e8b7cae060ec06ddfa37b7a
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-11-04 09:49:47 +0100
-
-    tests: added check for gnutls_priority_set_default
-
-commit e58c26879f0d1dbec4da321bf573466cfb2642a6
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-11-03 10:46:17 +0100
-
-    tools: only check for status code in FTP starttls negotiation
-
-commit 095ba87868c137c299e9ae40b730ce75e103fdf3
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-11-03 10:45:44 +0100
-
-    tools: print more info in starttls negotiation when --verbose is given
-
-commit 28e0716146530ff5e9b2041c52f78a9ecc7f63b5
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-11-03 09:40:39 +0100
-
-    gnutls.pc: don't use the libtool version of the link options
-    
-    Reported by Dan Kegel.
-    Resolves #49
-
-commit b45647ef02b3405d0033afb28b3419ac14f7904b
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-11-01 01:53:43 +0100
-
-    tests: simplified mini-dtls-hello-verify-48
-
-commit 26d14fe4b8a20f5cf54ce50dd51eb8e376d32a7c
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-30 13:38:36 +0100
-
-    tests: added check for blocking on invalid DTLS cookie
-    
-    Relates to #48
-
-commit 6115d3747d5aa65ae3baac3234f8e448162bcdd3
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-29 09:28:59 +0100
-
-    removed inacurate text
-
-commit 07fe3fc33910f43914d374723ac8b5446e3e130c
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-23 15:46:33 +0200
-
-    doc update
-
-commit 02900dbf7452aa3f93e49fd97b83d18664a3eed5
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-23 15:44:27 +0200
-
-    doc update
-
-commit 75a3b041977b7c5273b9df9ef6420adf5adea792
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-23 14:17:23 +0200
-
-    doc update
-
-commit 238ea892e087e8b40a20e8f7e14898ed5ff708ed
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-22 13:04:32 +0200
-
-    doc: document the sign function requirements in gnutls_privkey_import_ext
-
-commit 968e93d1c8b1f51d810e22b9243a2cb24d85137a
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-21 19:57:39 +0200
-
-    Mention key protection through isolation in crypto backend section
-
-commit 6c9d650db4571d2b5fbf3586ae75c7faa92e494d
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-21 19:48:22 +0200
-
-    doc: updated supplemental data documentation
-
-commit b5c402f74a29fea656f6b82f5dcff43524b06b36
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-21 09:13:56 +0200
-
-    tests: testdane will not check hosts which are unreachable
-
-commit 520517e93a9f113364b2896431cf01e1d5c4e08b
-Author: Andreas Metzler &lt;ametzler@bebt.de&gt;
-Date:   2015-10-20 19:02:25 +0200
-
-    Documentation update
-    
-    The new simple verification functions were backported to 3.4.6, correct
-    "Since:" to reflect this.
-
-commit 1f95f29d568058a735adca39288be07af23846f3
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-20 09:40:56 +0200
-
-    doc: documented future level
-
-commit 57afd6c12a70473deb01b46c340a1f34f7933caf
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-20 09:24:36 +0200
-
-    pkcs11.h: relocated gnutls_pkcs11_copy_pubkey to allow discovery by buggy doc scripts
-
-commit 414fb15b7b4d6e7a710f8494589a3c9610835874
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-20 09:16:20 +0200
-
-    bumped version to distinguish from 3.4 branch
-
-commit df8445ba13ea5fb7e2b24950526a96c89b09ecba
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-20 09:03:25 +0200
-
-    ext master secret: extension is marked as mandatory
-    
-    This forces the extension to be sent even where resuming sessions.
-    Resolves #45
-
-commit 73fb317ae69cb44acf91f900a3c6b545125d3d5a
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-20 08:44:04 +0200
-
-    tests: Check whether a resumed session contains the ext master secret extension
-    
-    Relates #45
-
-commit 80c88c2adc5c9604738d25fd56c77c018272820a
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-17 09:22:28 +0200
-
-    alpn: avoid warning on signed/unsigned
-
-commit 243a714bb955fecccf6fc71a302a16869be74b9b
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-17 09:20:52 +0200
-
-    README: updated CI link
-
-commit 1793b1ce2f44ad1c7a8d3e173af72df51ee8f6bf
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-17 09:12:09 +0200
-
-    doc: set a path which includes new binaries when running autogen
-    
-    That makes sure that autogen will discover the binaries to obtain the
-    --help output.
-
-commit 8d756fa764b34a0e8aa4ad68751724bc7c3b58b9
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-17 08:57:02 +0200
-
-    gnutls-cli-debug: updated doc
-
-commit c0b286b28992dc10bc4a9cf343b54af0526e4de0
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-10-16 22:58:54 +0200
-
-    tools: when the starttls-proto is specified automatically detect the port if not given
-
-commit 333d98ed59babd8b3a3834cc92686b905ad0dd4b
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-16 15:05:09 +0200
-
-    tests: verify that public keys are properly written
-    
-    Also disable parts of the suite that softhsm2 cannot properly work with,
-    to allow running parts of the suite even with broken softhsm.
-
-commit f22df7debb575c9972fe125a87e9a7d74750eaaa
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-16 15:39:05 +0200
-
-    cleanup in gnutls_pubkey_import_rsa_raw
-
-commit c9966f9d42524cb55c6188b6257200d2e9645535
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-16 15:33:21 +0200
-
-    pkcs11_read_pubkey: make input type more clear
-
-commit 6952b457e2c8aa8b005055e91f5f93aaf293dfe4
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-16 14:13:47 +0200
-
-    p11tool: Allow writing a PKCS #11 pubkey object
-
-commit f0033c9f2a89d14ff69fdc38f982c8f1a94a9570
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-10-16 13:16:36 +0200
-
-    tools: allow importing a pubkey from a certificate
 
 ...</pre></div>
 
