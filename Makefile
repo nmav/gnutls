@@ -26,23 +26,7 @@ all: $(OUTPUT) news.atom
 	cd abi-tracker && perl ../../abi-tracker/abi-tracker.pl -build gnutls.json
 #	cvs commit -m "Generated." .
 
-.PHONY: clean manual/index.html tweet stats security.html
-
-all-logs:
-	mkdir -p logs && cd logs && rsync -av trithemius.gnupg.org:/var/log/boa/www.gnutls.org-access* .
-	rm -f logs/all.log
-	cd logs && for i in `ls www.gnutls.org-access*gz|sort -r`; \
-		do zcat $$i >>all.log; \
-		done
-	cd logs && cat www.gnutls.org-access >>all.log
-
-stats: all-logs
-	mkdir -p stats
-	cut -f '2-' -d ' ' --output-delimiter=" " <logs/all.log >logs/new.log
-	webalizer -c stats/webalizer.conf logs/new.log -o stats/ -Dcache.db
-
-stats-clean:
-	rm -f logs/all.log
+.PHONY: clean manual/index.html tweet security.html
 
 manual/index.html: manual/index.html.bak
 	@cp -f manual/index.html.bak $@
