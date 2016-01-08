@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.7 of GnuTLS.
+3.4.8 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.7: Encryption algorithms used in the record layer</title>
+<title>GnuTLS 3.4.8: Encryption algorithms used in the record layer</title>
 
-<meta name="description" content="GnuTLS 3.4.7: Encryption algorithms used in the record layer">
-<meta name="keywords" content="GnuTLS 3.4.7: Encryption algorithms used in the record layer">
+<meta name="description" content="GnuTLS 3.4.8: Encryption algorithms used in the record layer">
+<meta name="keywords" content="GnuTLS 3.4.8: Encryption algorithms used in the record layer">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -207,7 +207,7 @@ encryption (EDE). Has 64 bits block size and is used in CBC mode.</td></tr>
 secret. It is a fast cipher but considered weak today, and thus it is not enabled by default.</td></tr>
 </table>
 
-<div class="float-caption"><p><strong>Table 3.1: </strong>Supported ciphers.</p></div></div>
+<div class="float-caption"><p><strong>Table 3.1: </strong>Supported ciphers in TLS.</p></div></div>
 
 <div class="float"><a name="tab_003amacs"></a>
 <table>
@@ -216,12 +216,13 @@ secret. It is a fast cipher but considered weak today, and thus it is not enable
 by Ron Rivest. Outputs 128 bits of data.</td></tr>
 <tr><td width="20%">MAC_SHA1</td><td width="70%">An HMAC based on the SHA1 cryptographic hash algorithm 
 designed by NSA. Outputs 160 bits of data.</td></tr>
-<tr><td width="20%">MAC_SHA256</td><td width="70%">An HMAC based on SHA256. Outputs 256 bits of data.</td></tr>
+<tr><td width="20%">MAC_SHA256</td><td width="70%">An HMAC based on SHA2-256. Outputs 256 bits of data.</td></tr>
+<tr><td width="20%">MAC_SHA384</td><td width="70%">An HMAC based on SHA2-384. Outputs 384 bits of data.</td></tr>
 <tr><td width="20%">MAC_AEAD</td><td width="70%">This indicates that an authenticated encryption algorithm, such as
 GCM, is in use.</td></tr>
 </table>
 
-<div class="float-caption"><p><strong>Table 3.2: </strong>Supported MAC algorithms.</p></div></div>
+<div class="float-caption"><p><strong>Table 3.2: </strong>Supported MAC algorithms in TLS.</p></div></div>
 
 <hr>
 <div class="header">

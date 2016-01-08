@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.7 of GnuTLS.
+3.4.8 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.7: Symmetric algorithms</title>
+<title>GnuTLS 3.4.8: Symmetric algorithms</title>
 
-<meta name="description" content="GnuTLS 3.4.7: Symmetric algorithms">
-<meta name="keywords" content="GnuTLS 3.4.7: Symmetric algorithms">
+<meta name="description" content="GnuTLS 3.4.8: Symmetric algorithms">
+<meta name="keywords" content="GnuTLS 3.4.8: Symmetric algorithms">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -169,8 +169,114 @@ Next: <a href="Public-key-algorithms.html#Public-key-algorithms" accesskey="n" r
 
 <p>The available functions to access symmetric crypto algorithms operations
 are shown below. The supported algorithms are the algorithms required by the TLS protocol.
-They are listed in <a href="Encryption-algorithms-used-in-the-record-layer.html#tab_003aciphers">Table 3.1</a>.
+They are listed in <a href="#gnutls_005fcipher_005falgorithm_005ft">Figure 8.1</a>.
 </p>
+<div class="float"><a name="gnutls_005fcipher_005falgorithm_005ft"></a>
+
+
+<dl compact="compact">
+<dt><code>GNUTLS_CIPHER_UNKNOWN</code></dt>
+<dd><p>Value to identify an unknown/unsupported algorithm.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_NULL</code></dt>
+<dd><p>The NULL (identity) encryption algorithm.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_ARCFOUR_128</code></dt>
+<dd><p>ARCFOUR stream cipher with 128-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_3DES_CBC</code></dt>
+<dd><p>3DES in CBC mode.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_AES_128_CBC</code></dt>
+<dd><p>AES in CBC mode with 128-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_AES_256_CBC</code></dt>
+<dd><p>AES in CBC mode with 256-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_ARCFOUR_40</code></dt>
+<dd><p>ARCFOUR stream cipher with 40-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_CAMELLIA_128_CBC</code></dt>
+<dd><p>Camellia in CBC mode with 128-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_CAMELLIA_256_CBC</code></dt>
+<dd><p>Camellia in CBC mode with 256-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_AES_192_CBC</code></dt>
+<dd><p>AES in CBC mode with 192-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_AES_128_GCM</code></dt>
+<dd><p>AES in GCM mode with 128-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_AES_256_GCM</code></dt>
+<dd><p>AES in GCM mode with 256-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_CAMELLIA_192_CBC</code></dt>
+<dd><p>Camellia in CBC mode with 192-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_SALSA20_256</code></dt>
+<dd><p>Salsa20 with 256-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_ESTREAM_SALSA20_256</code></dt>
+<dd><p>Estream&rsquo;s Salsa20 variant with 256-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_CAMELLIA_128_GCM</code></dt>
+<dd><p>CAMELLIA in GCM mode with 128-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_CAMELLIA_256_GCM</code></dt>
+<dd><p>CAMELLIA in GCM mode with 256-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_RC2_40_CBC</code></dt>
+<dd><p>RC2 in CBC mode with 40-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_DES_CBC</code></dt>
+<dd><p>DES in CBC mode (56-bit keys).
+</p></dd>
+<dt><code>GNUTLS_CIPHER_AES_128_CCM</code></dt>
+<dd><p>AES in CCM mode with 128-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_AES_256_CCM</code></dt>
+<dd><p>AES in CCM mode with 256-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_AES_128_CCM_8</code></dt>
+<dd><p>AES in CCM mode with 64-bit tag and 128-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_AES_256_CCM_8</code></dt>
+<dd><p>AES in CCM mode with 64-bit tag and 256-bit keys.
+</p></dd>
+<dt><code>GNUTLS_CIPHER_CHACHA20_POLY1305</code></dt>
+<dd><p>The Chacha20 cipher with the Poly1305 authenticator (AEAD).
+</p></dd>
+<dt><code>GNUTLS_CIPHER_IDEA_PGP_CFB</code></dt>
+<dd><p>IDEA in CFB mode (placeholder - unsupported).
+</p></dd>
+<dt><code>GNUTLS_CIPHER_3DES_PGP_CFB</code></dt>
+<dd><p>3DES in CFB mode (placeholder - unsupported).
+</p></dd>
+<dt><code>GNUTLS_CIPHER_CAST5_PGP_CFB</code></dt>
+<dd><p>CAST5 in CFB mode (placeholder - unsupported).
+</p></dd>
+<dt><code>GNUTLS_CIPHER_BLOWFISH_PGP_CFB</code></dt>
+<dd><p>Blowfish in CFB mode (placeholder - unsupported).
+</p></dd>
+<dt><code>GNUTLS_CIPHER_SAFER_SK128_PGP_CFB</code></dt>
+<dd><p>Safer-SK in CFB mode with 128-bit keys (placeholder - unsupported).
+</p></dd>
+<dt><code>GNUTLS_CIPHER_AES128_PGP_CFB</code></dt>
+<dd><p>AES in CFB mode with 128-bit keys (placeholder - unsupported).
+</p></dd>
+<dt><code>GNUTLS_CIPHER_AES192_PGP_CFB</code></dt>
+<dd><p>AES in CFB mode with 192-bit keys (placeholder - unsupported).
+</p></dd>
+<dt><code>GNUTLS_CIPHER_AES256_PGP_CFB</code></dt>
+<dd><p>AES in CFB mode with 256-bit keys (placeholder - unsupported).
+</p></dd>
+<dt><code>GNUTLS_CIPHER_TWOFISH_PGP_CFB</code></dt>
+<dd><p>Twofish in CFB mode (placeholder - unsupported).
+</p></dd>
+</dl>
+
+<div class="float-caption"><p><strong>Figure 8.1: </strong>The supported ciphers.</p></div></div>
 <dl compact="compact">
 <dt><code><var>int</var> <a href="Cryptographic-API.html#gnutls_005fcipher_005finit">gnutls_cipher_init</a> (gnutls_cipher_hd_t * <var>handle</var>, gnutls_cipher_algorithm_t <var>cipher</var>, const gnutls_datum_t * <var>key</var>, const gnutls_datum_t * <var>iv</var>)</code></dt>
 <dt><code><var>int</var> <a href="Cryptographic-API.html#gnutls_005fcipher_005fencrypt2">gnutls_cipher_encrypt2</a> (gnutls_cipher_hd_t <var>handle</var>, const void * <var>ptext</var>, size_t <var>ptext_len</var>, void * <var>ctext</var>, size_t <var>ctext_len</var>)</code></dt>
@@ -195,6 +301,11 @@ and addition in transparent way.
 <dt><code><var>void</var> <a href="Cryptographic-API.html#gnutls_005faead_005fcipher_005fdeinit">gnutls_aead_cipher_deinit</a> (gnutls_aead_cipher_hd_t <var>handle</var>)</code></dt>
 </dl>
 
+<hr>
+<div class="header">
+<p>
+Next: <a href="Public-key-algorithms.html#Public-key-algorithms" accesskey="n" rel="next">Public key algorithms</a>, Up: <a href="Using-GnuTLS-as-a-cryptographic-library.html#Using-GnuTLS-as-a-cryptographic-library" accesskey="u" rel="up">Using GnuTLS as a cryptographic library</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 
