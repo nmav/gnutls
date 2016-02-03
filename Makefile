@@ -25,7 +25,7 @@ all: $(OUTPUT) news.atom
 release: all
 	cd abi-tracker && perl ../../abi-monitor/abi-monitor.pl -get --limit=2 gnutls.json
 	cd abi-tracker && perl ../../abi-monitor/abi-monitor.pl -build --limit=2 gnutls.json
-	cd abi-tracker && perl abi-tracker -build gnutls.json
+	cd abi-tracker && abi-tracker -build gnutls.json
 
 .PHONY: clean manual/index.html tweet security.html
 

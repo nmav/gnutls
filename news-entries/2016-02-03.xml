@@ -1,0 +1,9 @@
+<title>GnuTLS 3.4.9</title>
+<p>
+Released <a
+href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8425">GnuTLS
+3.3.21</a> and <a
+href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8426">GnuTLS
+3.4.9</a> which are bug fix releases in the previous and current stable branches.
+The former disables RC4 from the default priorities.
+</p>
