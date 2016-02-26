@@ -1,7 +1,7 @@
 Build and Check - separate build dir:
   script:
   - git submodule update --init && make autoreconf && mkdir -p build && cd build && ../configure
-    --disable-non-suiteb-curves --with-included-libtasn1 --enable-seccomp-tests --disable-valgrind-tests --disable-doc && make -j4 && make check
+    --disable-non-suiteb-curves --with-included-libtasn1 --enable-seccomp-tests --disable-guile --disable-valgrind-tests --disable-doc && make -j4 && make check
   - cat tests/test-suite.log
   tags:
   - nettle2
@@ -10,7 +10,7 @@ Build and Check - separate build dir:
 Build and Check with valgrind:
   script:
   - git submodule update --init && make autoreconf && rm -f tests/suite/mini-eagain2.c && ./configure
-    --disable-non-suiteb-curves --with-included-libtasn1 --disable-doc && make -j4 && make check
+    --disable-non-suiteb-curves --with-included-libtasn1 --disable-doc --disable-guile && make -j4 && make check
   - cat tests/test-suite.log
   tags:
   - x86-64
