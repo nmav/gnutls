@@ -3,7 +3,28 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2016-02-03T09:29:34+00:00</updated>
+<updated>2016-03-03T09:37:31+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2016-03-03</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2016-03-03'/>
+    <title>GnuTLS 3.4.10</title>
+    <updated>2016-03-03T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2016-03-03.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released 
+<a href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8482">GnuTLS
+3.4.10</a> a bug fix release of the current stable branch.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2016-02-03</id>
@@ -413,31 +434,6 @@ href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8031">GnuT
 Released <a
 href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7967">GnuTLS
 3.3.12</a>, a bug-fix release on the stable branch. 
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2014-12-11</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2014-12-11'/>
-    <title>GnuTLS 3.3.11, 3.2.21</title>
-    <updated>2014-12-11T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2014-12-11.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Released <a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7837">GnuTLS
-3.3.11</a>, and
-<a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/7836">3.2.21</a>,
-which are bug-fix releases on the current and old stable
-branches respectively.
 </p>
 
     </div>
