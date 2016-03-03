@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.9 of GnuTLS.
+3.4.10 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.9: Cryptographic API</title>
+<title>GnuTLS 3.4.10: Cryptographic API</title>
 
-<meta name="description" content="GnuTLS 3.4.9: Cryptographic API">
-<meta name="keywords" content="GnuTLS 3.4.9: Cryptographic API">
+<meta name="description" content="GnuTLS 3.4.10: Cryptographic API">
+<meta name="keywords" content="GnuTLS 3.4.10: Cryptographic API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -325,7 +325,9 @@ need to compare the tag sent with the value returned from <code>gnutls_cipher_ta
 <p><var>ptext_len</var>: the available length for decrypted data
 </p>
 <p>This function will decrypt the given data using the algorithm
-specified by the context.
+specified by the context. For block ciphers the  <code>ctext_len</code> must be
+a multiple of the block size. For the supported ciphers the plaintext
+data length will equal the ciphertext size.
 </p>
 <p>Note that in AEAD ciphers, this will not check the tag. You will
 need to compare the tag sent with the value returned from <code>gnutls_cipher_tag()</code> .
@@ -380,7 +382,9 @@ specified by the context.
 <p><var>ctext_len</var>: the available length for encrypted data
 </p>
 <p>This function will encrypt the given data using the algorithm
-specified by the context.
+specified by the context. For block ciphers the  <code>ptext_len</code> must be
+a multiple of the block size. For the supported ciphers the encrypted
+data length will equal the plaintext size.
 </p>
 <p><strong>Returns:</strong> Zero or a negative error code on error.
 </p>

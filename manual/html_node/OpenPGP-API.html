@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.9 of GnuTLS.
+3.4.10 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.9: OpenPGP API</title>
+<title>GnuTLS 3.4.10: OpenPGP API</title>
 
-<meta name="description" content="GnuTLS 3.4.9: OpenPGP API">
-<meta name="keywords" content="GnuTLS 3.4.9: OpenPGP API">
+<meta name="description" content="GnuTLS 3.4.10: OpenPGP API">
+<meta name="keywords" content="GnuTLS 3.4.10: OpenPGP API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -266,7 +266,7 @@ otherwise a negative error code is returned.
 </p>
 <p><var>format</var>: the format of the keys
 </p>
-<p>This funtion is used to load OpenPGP keys into the GnuTLS
+<p>This function is used to load OpenPGP keys into the GnuTLS
 credentials structure. The file should contain at least one valid non encrypted subkey.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
@@ -287,7 +287,7 @@ negative error value.
 </p>
 <p><var>format</var>: the format of the keys
 </p>
-<p>This funtion is used to load OpenPGP keys into the GnuTLS credential 
+<p>This function is used to load OpenPGP keys into the GnuTLS credential 
 structure. The file should contain at least one valid non encrypted subkey.
 </p>
 <p>The special keyword &quot;auto&quot; is also accepted as  <code>subkey_id</code> .  In that
@@ -312,7 +312,7 @@ negative error value.
 </p>
 <p><var>format</var>: the format of the keys
 </p>
-<p>This funtion is used to load OpenPGP keys into the GnuTLS credential 
+<p>This function is used to load OpenPGP keys into the GnuTLS credential 
 structure. The datum should contain at least one valid non encrypted subkey.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
@@ -333,7 +333,7 @@ negative error value.
 </p>
 <p><var>format</var>: the format of the keys
 </p>
-<p>This funtion is used to load OpenPGP keys into the GnuTLS
+<p>This function is used to load OpenPGP keys into the GnuTLS
 credentials structure. The datum should contain at least one valid non encrypted subkey.
 </p>
 <p>The special keyword &quot;auto&quot; is also accepted as  <code>subkey_id</code> .  In that
@@ -1541,7 +1541,7 @@ otherwise a negative error code is returned.
 </p>
 <p><var>func</var>: the callback
 </p>
-<p>This funtion will set a key retrieval function for OpenPGP keys. This
+<p>This function will set a key retrieval function for OpenPGP keys. This
 callback is only useful in server side, and will be used if the peer
 sent a key fingerprint instead of a full key.
 </p>

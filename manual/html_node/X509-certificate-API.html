@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.9 of GnuTLS.
+3.4.10 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.9: X509 certificate API</title>
+<title>GnuTLS 3.4.10: X509 certificate API</title>
 
-<meta name="description" content="GnuTLS 3.4.9: X509 certificate API">
-<meta name="keywords" content="GnuTLS 3.4.9: X509 certificate API">
+<meta name="description" content="GnuTLS 3.4.10: X509 certificate API">
+<meta name="keywords" content="GnuTLS 3.4.10: X509 certificate API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -596,7 +596,7 @@ if the index is out of bounds, otherwise a negative error value.
 </p>
 <p><var>reasons</var>: Revocation reasons. An ORed sequence of flags from <code>gnutls_x509_crl_reason_flags_t</code> .
 </p>
-<p>This function will store the specified CRL distibution point value
+<p>This function will store the specified CRL distribution point value
 the  <code>cdp</code> type.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0), otherwise a negative error value.
@@ -3294,6 +3294,11 @@ the given certificate.
 full subjectUniqueID, then a GNUTLS_E_SHORT_MEMORY_BUFFER error will be
 returned, and buf_size will be set to the actual length.
 </p>
+<p>This function had a bug prior to 3.4.8 that prevented the setting
+of <code>NULL</code>   <code>buf</code> to discover the  <code>buf_size</code> . To use this function safely
+with the older versions the  <code>buf</code> must be a valid buffer that can hold
+at least a single byte if  <code>buf_size</code> is zero.
+</p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p>
 <p><strong>Since:</strong> 2.12.0
@@ -3793,6 +3798,11 @@ the given certificate.
 <p>If the user allocated memory buffer is not large enough to hold the
 full subjectUniqueID, then a GNUTLS_E_SHORT_MEMORY_BUFFER error will be
 returned, and buf_size will be set to the actual length.
+</p>
+<p>This function had a bug prior to 3.4.8 that prevented the setting
+of <code>NULL</code>   <code>buf</code> to discover the  <code>buf_size</code> . To use this function safely
+with the older versions the  <code>buf</code> must be a valid buffer that can hold
+at least a single byte if  <code>buf_size</code> is zero.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p></dd></dl>
@@ -4336,8 +4346,10 @@ negative error value.
 <p><var>key</var>: holds a private key
 </p>
 <p>This function will set the public parameters from the given
-private key to the certificate. Only RSA keys are currently
-supported.
+private key to the certificate.
+</p>
+<p>To export the public key (i.e., the SubjectPublicKeyInfo part), check
+<code>gnutls_pubkey_import_x509()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
