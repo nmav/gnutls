@@ -20,687 +20,763 @@
 <br/>
 <h1>Changelog for <span class='version'>current</span> version (Git)</h1><br/><br/>
 <div class='changelog'>
-<pre class='wrap'>commit 0a00b26b20c2999f8509c31dc5f8b6e81260e048
+<pre class='wrap'>commit d2a4cc28c7adfd811779a1cb16ae920300457940
 Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-02-03 09:20:05 +0100
+Date:   2016-03-13 11:39:22 +0100
 
-    tests: pkcs11-pubkey-import-ecdsa will only work under softhsmv2
-
-commit c479799cb30d9c0951dd225d252b2e9de7646224
-Author: Andreas Metzler &lt;ametzler@bebt.de&gt;
-Date:   2016-01-31 17:59:37 +0100
-
-    Fix some more typos.
+    abi-check: corrected type of gnutls_x509_crl_get_issuer_dn
     
-    certifcate, funtion, withing, missmatch
+    That will avoid any accidental ABI breakage on that symbol.
 
-commit a912e666cc53c1289b567c2217964e93c3786508
+commit 069b0770eb2adf295d14c0059af088eb9c740f7a
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-30 12:18:55 +0100
+Date:   2016-03-11 14:45:02 +0100
 
-    tests: updated check to account for revert in 7d3caedb8df9d04eee9513cb5b3b417ae29927f5
-
-commit 48cbd6fb2c597a251207e1186f213283867bc5ad
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-30 12:15:07 +0100
-
-    Revert "tests: updated to account for cert generation after 2adb9b2bfb31afebbdd9f990e2b74c9a3d4e5c57 fix"
+    .gitlab-ci.yml: added abi-checker rule
     
-    This reverts commit 735dbde324be6c8785a3dea5f09c82b6a8ad298b.
+    This allows to test ABI incompatibilities as soon as possible.
 
-commit 7d3caedb8df9d04eee9513cb5b3b417ae29927f5
+commit 99b4b7bb53f6d36ee991e2a2679776faf433c9af
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-30 11:15:13 +0100
+Date:   2016-03-11 14:36:39 +0100
 
-    Revert "Fix out-of-bounds read in gnutls_x509_ext_export_key_usage"
+    Makefile: made abi-checks self-contained
     
-    This was not really an out-of-bounds check. Added documentation
-    to make that clear.
+    That is, they no longer assume a given directory structure to exist
+    outside git. It now includes a static dump of the symbols in 3.4.0
+    for x86_64 and we compare with it.
+
+commit 1fcd82b7eee685bb77355e7386c525b915fc528b
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-03-11 11:52:17 +0100
+
+    certtool: better error handling in file_size()
+
+commit 726c514201c0b843bfa88c6633cc7351f411780d
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-03-11 11:47:12 +0100
+
+    gnutls-cli: fix invalid initialization in cert_verify_ocsp()
+
+commit d50c05689de87a591b874d9349ac0f23c4040d69
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-03-11 11:45:23 +0100
+
+    gnutls-serv: human_addr always returns a non-null argument
     
-    This reverts commit ffbc9aaea7dcf29c03784d128b83f0682357858d.
+    This addresses issue with libc's which don't support printf() with
+    a NULL argument.
 
-commit 1b9b122830164059f6cab90d330c62adae840353
+commit 66b675c338479678b6e3f52d67551d97d5b28afa
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-28 13:14:14 +0100
+Date:   2016-03-08 15:10:07 +0100
 
-    certtool: corrected email escaping in texinfo
+    tests: testpkcs11: the test will always fail in code path failures
 
-commit f64fbce6e2ef574359b01ac6f89f5a6b9a125e28
+commit b8555c09e80ec6211fbdbfc03de0e5fa401768e6
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-28 10:45:17 +0100
+Date:   2016-03-08 10:12:22 +0100
 
-    Replaced select() system call with poll() on POSIX systems
-    
-    This allows to use the default gnutls functions with file descriptors
-    over the maximum supported by select.
+    README: list the main branches build status [ci skip]
 
-commit c58f4391ded0dc6ef282b6c6376fac3de25524c1
+commit 67777d01cd234a279fdfcf742f4c2689d41fbf98
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-25 11:08:21 +0100
+Date:   2016-03-07 11:50:34 +0100
 
-    tests: windows: fixed check-output call
+    gnutls_system_recv_timeout: restore poll on EINTR
 
-commit b927910880cff0a6cceca525f536df51e793a947
+commit d6a82ff09e15d2e76674562d2a1ebf6301efd064
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-22 16:34:29 +0100
-
-    tests: added dummy functions used by CAPI32 implementation
-
-commit 4a516cbcd9b318effff6a1085e9536b870de606a
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-22 16:33:48 +0100
-
-    tests: better checking for failure in windows cng check
-
-commit c0dc4556e8d2e80c4f04c1655ed33e3bb659aa67
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-22 12:59:47 +0100
-
-    system-key-win: call CertFreeCertificateContext()
-
-commit fc1e62399a296e7beb7a79081c32a6e086105c37
-Author: Bjørn Christensen &lt;bhc@insight.dk&gt;
-Date:   2016-01-22 11:52:21 +0100
-
-    system-key-win: added interface to  CAPI, old style crypto api on windows
-
-commit 7a109d053fef7cc95be30c16e10528c7ae86d167
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-21 14:45:56 +0100
-
-    certtool: corrected texinfo output for krb5_principal
-
-commit b9d2c7466f1e23105a87dd133ead5911de7277f8
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-21 12:58:56 +0100
-
-    tests: priorities: account for the addition of CHACHA20-POLY1305
-
-commit 5b417325d4e9521490b55b6fdaf2ea3c7e99860c
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-21 12:00:33 +0100
-
-    CHACHA20_POLY1305 was added to the default priority strings
-    
-    That is the NORMAL and PERFORMANCE priority strings now will
-    enable CHACHA20-POLY1305 by default.
-
-commit a7109322b071e8e76ee7ae82835b1f40ff89be74
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-18 18:38:36 +0100
-
-    gnutls_global_init: log gnutls' version on initialization
-
-commit 6856ffafa7b094d2db788a8213d8412f6421f803
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-18 15:56:02 +0100
+Date:   2016-03-07 10:47:43 +0100
 
     doc: corrected typo [ci skip]
 
-commit 08612f4dc7c82fde791cf8d550e43f7e1b86f19f
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-16 20:54:20 +0100
-
-    README: added trousers to list of dependencies [ci skip]
-
-commit 367928578b651bc3252e8440993c02913eca046d
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-16 20:43:42 +0100
-
-    tests: added check for KRB5Principal output
-    
-    Resolves #67
-
-commit 92e140e074a77d9012119d81a6c6dd1da465203c
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-14 17:16:00 +0100
-
-    README.md -&gt; README-alpha.md
-
-commit 831d90e235eaf077a848b616dccd9c1bc7eed8d0
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-14 17:09:23 +0100
-
-    updated copyright info
-
-commit 08409b6a49569be125603ee58370452322213768
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-14 17:04:54 +0100
-
-    README: auto-generated from README-install.md
-
-commit 912618905dc8eb6811e15aeff99b141ee0b680af
+commit 56944b142dfc54c116cd40953294a4914ba47aa9
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-14 14:50:34 +0100
+Date:   2016-03-07 10:42:14 +0100
 
-    gnutls_int.h: increased MAX_SERVER_NAME_SIZE to 256 bytes
+    gnutls_ocsp_status_request_is_checked: document the version the flag was introduced at
+    
+    Relates: #75
 
-commit ecf3edb4e6b992b8df1bc9c878295c3daabe0369
+commit c1947fe1174c8b8cde70b0763cf4eb80fd0560f2
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-13 13:14:55 +0100
+Date:   2016-03-07 10:25:57 +0100
 
-    gnutls_pubkey_import_x509_raw: fixed memory leak
+    doc: generate manpages for all functions
+    
+    That addresses issue where certain manpages were created empty.
+    See https://bugzilla.redhat.com/show_bug.cgi?id=1306800
 
-commit fccea4a3e84de3f4c52a9192efff413f6cc0e264
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-08 16:26:21 +0100
-
-    tests: added check for the krb5_principal template option
-
-commit 026f2445447cc4c56ec02adb5baf7ba552075b34
+commit 7e894ecdb401fc566556de551145fc6858f7e068
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-11 15:11:41 +0100
+Date:   2016-03-07 10:11:37 +0100
 
-    certtool: introduced the krb5_principal template option
+    doc: mention gnutls_certificate_set_x509_trust_dir()
+    
+    It was not mentioned in the "Client or server certificate verification"
+    section.
+    
+    Resolves #76
 
-commit 332475e9cf8cf7afe117e93555dfe24df898bc4b
+commit bbfde250fbbac0ce65569f9be1d2bc88925dcd4e
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-11 15:09:23 +0100
+Date:   2016-03-07 09:30:44 +0100
 
-    x509: introduced GNUTLS_SAN_OTHERNAME_KRB5PRINCIPAL
-    
-    That allows to print and write KRB5PrincipalName othernames
-    in subject alternative name.
+    tests: mini-loss-time: improved timeout detection
 
-commit 0a92ec601c3d33d6b939e2cd2e22302584fe8eea
+commit 58ca20e3d3a6eb4cd9dacd36f0c6e229c5bfcbb8
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-11 15:19:24 +0100
+Date:   2016-03-04 10:16:51 +0100
 
-    x509: place newline when printing unsupported othernames
+    corrected typo in comment [ci skip]
 
-commit 8339cc1a7d89e6fea65069810f5aec91dabd3fdd
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-10 16:05:41 +0100
-
-    x509: moved virtual subject alternative name othername support to virt-san.c
-
-commit a86c563a7a0033b5a1876c2f4969d62fae4fc5a6
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-10 14:46:16 +0100
-
-    gnutls_x509_crt_set_subject_alt_name: documented the version after which GNUTLS_SAN_OTHERNAME_XMPP is available
-
-commit 11da583a2261e148db733e4b6e1543a3bfca44a6
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-10 14:45:03 +0100
-
-    tests: added check for XMPP othername generation
-
-commit 32a1593c71b0aff90cd92ed0cea15fe9da2d2831
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-10 14:39:14 +0100
-
-    certtool: allow writing xmpp_name
-
-commit b992776d1e77309e9c11a7a1d9a1321caab768f6
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-10 14:30:56 +0100
-
-    Allow assigning 'virtual' SAN types via *_set_subject_alt_name()
-
-commit 66694906e6af8c606fb57d03a5ad0a3553baa47d
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-10 13:47:38 +0100
-
-    NEWS: document newly added functions
-
-commit d6041385123411ec5485237e0e766ed992d49dec
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-10 08:17:51 +0100
-
-    alpn: when parsing the list of protocols return at the first mutually common
-    
-    That resolves an issue where the server wouldn't select the first mutually supported.
-    
-    Resolves #63
-
-commit b8313db56227e53bb87190432f89fd566d836c76
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-10 08:17:07 +0100
-
-    tests: mini-alpn: corrected protocol selection order
-
-commit d2792c2079df4771403216812b4cb154fd997ed4
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-10 08:04:29 +0100
-
-    tests: alpn: enhance the testing of ALPN negotiation
-
-commit 92de93fb0492f5a5d27615ca0f1dbe068f5e563f
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-09 21:42:11 +0100
-
-    alpn: document how the selected protocol is selected [ci skip]
-
-commit f7090ed8a9d80df08d03eff18c06e423fc4e0de7
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-09 21:20:00 +0100
-
-    tests: verify that the selected ALPN protocol is the first advertised
-
-commit 14becbb8f8a7aec87e049ab946705480fd929a92
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-08 16:52:44 +0100
-
-    gnutls_aead_cipher_decrypt: removed misleading text
-    
-    Reported by Fridolin Pokorny.
-
-commit e2d69151e334946b0f67531a46c2cd89a58f9610
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-08 12:16:29 +0100
-
-    tests: added check for certtool's othername writing functionality
-
-commit 4a65b1a0ce58064b55c94c92dcc4445552827d37
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-08 11:16:58 +0100
-
-    certtool: added ability to generate othernames via template files
-    
-    Relates #62
-
-commit db6621c3a3ee626e4ccc9bade10e677c0fa3b318
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-08 12:05:18 +0100
-
-    x509: added flags to enable the encoding of othername data
-
-commit 3e8ba29e3fa535e106fa3a3205dc7b3e04956489
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2016-01-08 11:05:36 +0100
-
-    x509: introduced functions to set an othername alternative name
-    
-    That is, added, gnutls_x509_crt_set_subject_alt_othername,
-    gnutls_x509_crt_set_issuer_alt_othername, gnutls_x509_crq_set_subject_alt_othername
-    
-    Relates #62
-
-commit d1a9c629ace34bf715b590446ae83d82164e778e
+commit f5f37a8422ad869191e2c11f7a49cbd79f798365
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-07 14:35:59 +0100
+Date:   2016-03-01 16:23:55 +0100
 
-    trust_list_get_issuer_by_dn: fixed check for DN or SPKI
+    configure: silence clang's warnings
 
-commit e037d042acc91191fb2c1a9b7fe12abf8e795634
+commit aa23adacd8b68124ef7fc055a2f05d2fb0a24220
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2016-03-03 14:24:13 +0100
+
+    tests: added check for version negotiation default prio string
+    
+    That verifies whether the support versions are negotiated.
+
+commit c30154ce66b2d1ffecba35e5311cc16a7c27a28d
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2016-03-03 09:05:32 +0100
+
+    tests: include test-hash-large into dist
+
+commit 437571f00025c7bfcb8134de43bcb15a0129bb8b
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2016-03-03 08:50:48 +0100
+
+    Sync with TP [ci skip]
+
+commit 95504a934758b94d3daef69ef867314d86970971
+Author: Ludovic Courtès &lt;ludo@gnu.org&gt;
+Date:   2016-03-02 09:59:19 +0100
+
+    Update NEWS.
+
+commit ce074f55f8aa6891ad7dd57e5729d77686f96d93
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-07 14:02:24 +0100
+Date:   2016-03-01 14:50:42 +0100
 
-    configure: no longer distribute lzip tarballs
+    Disable weak symbols for _gnutls_global_init_skip() under windows
+    
+    That is to avoid an issue with running gnutls under windows;
+    that renders GNUTLS_SKIP_GLOBAL_INIT a no-op under windows.
+    
+    Relates #74
 
-commit d188c580b287648fb5bf9aefcc735ea3e6088d25
+commit b8ce03e6db6ed13c021de69471fae332b1eadb11
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-07 14:14:21 +0100
+Date:   2016-03-01 13:19:29 +0100
 
-    symbols.last: don't include internal symbols into exported list
+    .gitlab-ci.yml: asan, clang and valgrind builds were made arch-independent
 
-commit 735dbde324be6c8785a3dea5f09c82b6a8ad298b
+commit 7c99351cf641abcf41f50c4e6392dbce627033c6
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2016-02-29 20:49:09 +0100
+
+    tests: pkcs12: allow multiple in-place builds
+
+commit 0a132efee4a5aa7802597a5e6e795ea3776fe8d4
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2016-02-29 19:41:33 +0100
+
+    tests: pkcs1-pad,rsa-md5-collision: allow multiple in-place builds
+
+commit 145cb5b565e7f71063990a513779b656f91fd3a1
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2016-02-29 17:12:49 +0100
+
+    doc update
+
+commit eccfe8b41227f7c96900f01b5e80b2a2966e847d
+Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
+Date:   2016-02-29 17:06:12 +0100
+
+    gnutls-cli: fail if gnutls is not compiled with DANE support and --dane is provided
+    
+    Suggested by Bjorn Jacke.
+
+commit b351bbf123586e0c115c201c0fc5aa9967d7571c
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2016-01-05 11:21:43 +0100
+Date:   2016-02-29 13:23:25 +0100
 
-    tests: updated to account for cert generation after 2adb9b2bfb31afebbdd9f990e2b74c9a3d4e5c57 fix
-
-commit 2adb9b2bfb31afebbdd9f990e2b74c9a3d4e5c57
-Author: Tim Kosse &lt;tim.kosse@filezilla-project.org&gt;
-Date:   2016-01-04 16:40:26 +0100
-
-    Fix out-of-bounds read in gnutls_x509_ext_export_key_usage
-
-commit 1b6b0bd3d8149663992b5992b442d860ad62eefb
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 20:16:37 +0200
-
-    .gitlab-ci.yml: optimized build process
+    tests: always used the slow (portable) version of get16bits
     
-    That is, in slow asan and valgrind builds don't check the full test suite.
+    This prevents issues with misaligned addresses and undefined sanitizer.
 
-commit 9b278dcadc49065d844755bade15c873ace3b040
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 14:35:45 +0200
+commit 1010496d4a1c101ab759bbea6c010503398554b5
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-29 12:46:47 +0100
 
-    gnutls_pkcs11_copy_x509_privkey2: corrected the writing of ECC private key
+    timespec_sub_ms: fixed operation in 32-bit systems
 
-commit 17f2c8f7f3ad2010ecf143dad8b249b0f58f5299
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 13:38:34 +0200
+commit 8dfbfcb54f60401dc1e1d18b44ef7a4fa1e119f2
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-29 10:23:20 +0100
 
-    tests: pkcs11-pubkey-import will check both RSA and ECDSA keys
-
-commit 3eeec745046d6048bba74cc96d92056aa2c0aec5
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 13:35:30 +0200
-
-    gnutls_pkcs11_copy_x509_privkey2: corrected the type of the written object
+    .gitlab-ci.yml: don't use the internal libtasn1 when compiling with libubsan
     
-    Previously only RSA objects were correctly written.
+    This prevents build failures due to issues in libtasn1
 
-commit e55b21d36bd563c8182b84c8c8fdc1163ddb4753
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 13:10:37 +0200
+commit ac6046edd396d98fd426f922b85c392864b34f32
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-29 10:22:13 +0100
 
-    tests: added ECDSA key in cert-common.h
+    tests: Fixes to prevent undefined behavior (found with libubsan)
 
-commit 15a767133328601a5f10a759fd6e548c174d765f
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 12:20:41 +0200
+commit 4bf89ef06091cd24d88fec19963b9c25b2e91e5e
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-29 10:18:58 +0100
 
-    pkcs11: moved default RSA public exponent out of stack
+    pkcs11: Fixes to prevent undefined behavior (found with libubsan)
 
-commit 9c32cfeb453aa81a4af955e5e8cbcb9ce7db59ed
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 12:17:21 +0200
+commit 60f3560ba5f2ccf3adf5ebf7e2eea9907d555cff
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-29 09:58:40 +0100
 
-    pkcs11: import public keys from any available object
-    
-    That is, load public keys from the public key object, or
-    the certificate object if they are present. That affects
-    non-RSA public keys which do not contain all required fields
-    on the private key object.
+    cipher.c: Fixes to prevent undefined behavior (found with libubsan)
 
-commit 0b28b3dde104d110d301a52ed8ed0f5c32a08361
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 01:02:30 +0200
+commit c9a6fd2bf2c8e0b5efbc851460f7917be511d114
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-29 09:57:40 +0100
 
-    session DB: made the magic number depending on gnutls' version
-    
-    That will make sure that sessions not stored by this version of
-    gnutls will not be resumed by another (which may be incompatible).
+    ecc: optimized extension parsing
 
-commit 6fcdc3db628adfb24f2d218dec7fd199dde1d3c9
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 00:46:12 +0200
+commit 63ac0b64a55ee9cb0df77c4174f42cd2c9ee4429
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-29 09:48:12 +0100
 
-    ui.c -&gt; fingerprint.c
+    opencdk: Fixes to prevent undefined behavior (found with libubsan)
 
-commit 15f8fcafa86cc7174aa6b0db6ad400b260a18593
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 00:45:43 +0200
+commit e896f47f9710c9b15b353c63c0e3a01ee4f44835
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-29 09:48:02 +0100
 
-    split OCSP functionality from ui.c
+    gnutls.h: Fixes to prevent undefined behavior (found with libubsan)
 
-commit 879f5466fcb07e608825b59aac96c94e6954d24e
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 00:39:19 +0200
+commit 5bbe1ecbe4c6da8fd5015d0e4aceba580d16afa0
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-29 09:43:32 +0100
 
-    split anon credentials functionality from ui.c
+    x509: Fixes to prevent undefined behavior (found with libubsan)
 
-commit a95807e14727a1ad53d2a65f70a8e2d2ed53e6ec
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 00:38:31 +0200
+commit e99499b0d81717279b790dbb98a149726ab502c0
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-29 09:27:23 +0100
 
-    split psk functionality from ui.c
+    x509: cleanup in privkey.c
 
-commit 1a776ff8c0ec1d1378295c231c46631cb8a0d536
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 00:37:22 +0200
-
-    split session info functions from ui.c
-
-commit 3c60327d27f4d63c9c66f1813da31d0db9beb6b5
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 00:34:25 +0200
-
-    split certificate credentials functions from ui.c
-
-commit 4f27407b9bfcdc795db251dddfe610d5403e81f2
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 00:32:20 +0200
-
-    split dh API functions from ui.c
-
-commit f3051205bc647d96136d8ef0936905f1c75a03e8
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-31 00:28:46 +0200
-
-    split randomart functionality from ui.c
-
-commit d1428c0f9e87655c5bb8543b443bb54979bf53be
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-30 23:18:32 +0200
-
-    helper.c -&gt; file.c
-
-commit 63726a76cc5fa56c3045d674212106f55c77e0c8
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-30 11:26:30 +0200
-
-    certtool: doc update [skip ci]
-
-commit 366260020123dc212dd776e05ff4f6220a6173e9
+commit de39608309c03526d667a57ae77c2af84ddd0bbf
 Author: Andreas Metzler &lt;ametzler@bebt.de&gt;
-Date:   2015-12-26 18:24:56 +0100
+Date:   2016-02-28 15:35:01 +0100
 
-    Fix some typos [ci skip]
-
-commit 65002fce1c5cc68f90c898cd390189df6752da5c
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-24 11:54:21 +0200
-
-    NEWS: doc update [ci skip]
-
-commit eeb514a5b6b3be578ee779d6bfdaf4bf9521062f
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-24 11:44:00 +0200
-
-    respect the max-record extension under DTLS
+    Let p11tool --provider option accept filenames.
     
-    This resolves issue with max-record being negotiated but
-    ignored. Resolves #61
+    Drop 'file-exists = yes;' to allow specifying either an absolute pathname
+    or a file in P11_MODULE_PATH.
 
-commit 32f6aad0b09a4984f44b4219594fac0fa08e3197
+commit 0d897f1dd7e21891cefe04a146d83d045c7554b5
 Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-24 11:42:58 +0200
+Date:   2016-02-28 13:01:11 +0100
 
-    tests: added check for max-record extension in TLS
+    .gitlab-ci.yml: abort on ubsan errors
 
-commit 421ee10a2156ada54763372444cbb21a4168054e
+commit 3bd37a4239769460c42f43ae932f304dd5132576
 Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-24 11:18:57 +0200
+Date:   2016-02-28 12:12:09 +0100
 
-    tests: check whether the max-record extension is usable with DTLS
+    p11tool: addressed memory leaks
 
-commit 2fe1ce16b06e473932ca08608b522b138a529d0b
+commit 4156885beac91ac45fc5853a8d034d0b7daab0c0
 Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-24 11:13:28 +0200
+Date:   2016-02-28 10:45:02 +0100
 
-    dtls: print the MTU in debugging messages
+    tests: use 'datefudge -s' to avoid loops
+    
+    This avoids repeated loops of the same test as well as
+    random failures in the test suite.
 
-commit 66e31a847fcd13c0374fea719f1191c6411f2fa6
+commit a7a5b886d38c5c2ffecbb7a5d1e3a62f397151ab
 Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-22 17:14:02 +0200
+Date:   2016-02-27 22:37:21 +0100
 
-    updated documentation on supported algorithms [ci skip]
+    tests: krb5-test: increased the number of loops
+    
+    This should prevent random failures in the test suite.
 
-commit 8d047c2551853717a65a2245b1b990f1c856e67b
+commit 0919e73e9a79c98ff9f2be1b4e9bf665fa928295
 Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-22 11:30:52 +0200
+Date:   2016-02-27 22:23:34 +0100
 
-    Added SHA384 to the list of TLS support MAC algorithms
+    .gitlab-ci.yml: asan and ubsan include the suite/
 
-commit 149ed253d880a0c9232f1635b4c14e48feb2b7e1
+commit bbaef09e45b57c783e26793ba6eb6b2e6a8a5226
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-23 10:35:14 +0100
+
+    .gitignore: more files to ignore
+
+commit 7b56c641567c91175bab06cbe76925cecb3b0853
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-23 10:33:18 +0100
+
+    doc: documented false start functionality
+
+commit 70c357b25f4222db7f8da6f173757ca27035b879
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-23 10:23:57 +0100
+
+    doc update
+
+commit 945f10c436922abe41441e1754d343ff8ea3cbd2
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-23 10:14:53 +0100
+
+    tests: Added checks for false start operation
+
+commit dd8fb0e3e104836d69654d208129f7c762e3cdc0
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-23 09:40:26 +0100
+
+    Added gnutls_handshake_set_false_start_function()
+    
+    This function allows to use TLS False-start, by using the provided
+    function to send data just after finished message.
+
+commit 72fcf7dfe9f0388ea3ea9a03078b5ba1c183adcd
 Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-21 12:46:09 +0200
+Date:   2016-02-27 21:54:51 +0100
 
-    documented the gitlab ci runner tags
+    tests: enable softhsmv2 test suite by default
+    
+    Also do not fatally fail with known softhsmv2 bugs.
 
-commit 8229a40c67294e56319c4687c2a19e3d14935418
+commit 85196f9fc98dd1a1426da4d7fd84e9397df05bb4
+Author: Jan Vcelak &lt;jan.vcelak@nic.cz&gt;
+Date:   2016-02-26 16:17:48 +0100
+
+    pkcs11: tests for RSA, ECC, DSA private key import
+    
+    Signed-off-by: Jan Vcelak &lt;jan.vcelak@nic.cz&gt;
+
+commit 1b573fc2d00f0884041e3a009539f7074d2adafa
+Author: Jan Vcelak &lt;jan.vcelak@nic.cz&gt;
+Date:   2016-02-26 16:17:47 +0100
+
+    pkcs11: tests for DSA key generating
+    
+    Signed-off-by: Jan Vcelak &lt;jan.vcelak@nic.cz&gt;
+
+commit 3cd9f45d01a0a56ef68cc6817b75a3ddabaf0a7c
 Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-20 11:11:38 +0200
+Date:   2016-02-27 17:56:36 +0100
 
-    tests: added timeout in long-running checks
+    added getpid() to the list of system calls used
 
-commit c71a1f2113d02cab604f10189197a0c9755bd03b
+commit 506ada3459b8e162865bfd7bb89698a457aaaae6
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-26 14:41:12 +0100
+
+    .gitlab-ci.yml: added compilation rule with libubsan
+
+commit 7cf49a7e48a078e6c6a6cb1f1539621b7194742e
+Author: Jan Vcelak &lt;jan.vcelak@nic.cz&gt;
+Date:   2016-02-25 16:43:36 +0100
+
+    gnutls_x509_privkey_import: add missing algorithm setting for DSA keys
+    
+    The algorithm number was set only in the private key structure, not in
+    the nested structure with parameters. This made certain operations to
+    fail (e.g., copying the key into a PKCS #11 token).
+    
+    Signed-off-by: Jan Vcelak &lt;jan.vcelak@nic.cz&gt;
+
+commit f9840c85dcbf9c6ad1bf53dc943a860bdb819dfe
+Author: Jan Vcelak &lt;jan.vcelak@nic.cz&gt;
+Date:   2016-02-25 15:21:30 +0100
+
+    pkcs11: implement correct DSA key pair generating
+    
+    Signed-off-by: Jan Vcelak &lt;jan.vcelak@nic.cz&gt;
+
+commit 88fbd274df32705424c2c752c3ac32b314ee2a94
+Author: Jan Vcelak &lt;jan.vcelak@nic.cz&gt;
+Date:   2016-02-25 15:21:29 +0100
+
+    pkcs11: add interface for C_GenerateKey
+    
+    Signed-off-by: Jan Vcelak &lt;jan.vcelak@nic.cz&gt;
+
+commit dd8c145c9073f30c4e61eb519c3965054e889568
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-26 12:00:55 +0100
+
+    better match with unknown_tls_aid
+
+commit aa1cec5a54b1faedc794e30bf6fc65a6420ca663
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-26 11:54:05 +0100
+
+    x509: moved time-specific functions to time.c
+
+commit 9a9a440efb2ae1808ebede141ba9909c58f4d2c6
+Author: Sebastian Dröge &lt;sebastian@centricular.com&gt;
+Date:   2016-02-24 12:42:26 +0200
+
+    configure: Android is ELF too
+    
+    Without this, compiling Android for x86 or x86-64 fails because the assembly
+    optimizations are not compiled in.
+
+commit 69be7ad81abd9aced5bb5b2c75b1480aadfb1ebd
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-25 15:45:04 +0100
+
+    mentioned the public git URL for cloning [ci skip]
+
+commit dee5a3158cf93f3c3d5ce930e2cac9d706961b59
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-24 15:12:23 +0100
+
+    doc update [ci skip]
+
+commit 1e7a9c095f726f6f4a713df3fdff51719b46229e
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-24 14:55:19 +0100
+
+    doc update
+
+commit 3fb514170d174aa4c98da99901d8431aee677b9c
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-24 14:53:59 +0100
+
+    tests: check functions which export session parameters
+    
+    That is gnutls_session_get_random() and gnutls_session_get_master_secret().
+
+commit fa09df03ed1784ae29bcdd2bb2245be7666a72d4
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-24 14:43:17 +0100
+
+    Added gnutls_session_get_master_secret
+    
+    This provides the ability to export all session parameters in various
+    formats.
+    
+    Resolves #64
+
+commit d37442db4f99a446de40dfac1166e28978b87ccf
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-22 15:51:11 +0100
+
+    tests: gnutls_session_get_flags() is checked for extended master secret
+
+commit 58637b017059a823b74e05dd583e4d11fb5ecd5d
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-22 15:49:25 +0100
+
+    tests: check gnutls_session_get_flags() for EtM
+
+commit 215eaeb3f5aac4f0ac13a48ac084bb8f2668069e
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-22 15:46:33 +0100
+
+    tests: check gnutls_session_get_flags() for safe renegotiation
+
+commit 59e256da3681b7a2ba61deef225589d045e07f7f
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-22 15:26:46 +0100
+
+    Added gnutls_session_get_flags()
+    
+    This function would allow to simplify handling of future
+    flags which we may want to indicate, and would not require
+    API additions for new flags.
+
+commit 9965ddc075df7033aa2786f921648d330cceb63f
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-22 11:57:30 +0100
+
+    Revert ".gitlab-ci.yml: disable guile tests"
+    
+    This reverts commit 50ce516eebaf011f041002ecbfdb61b113159282.
+
+commit 3f98b1a874591c036675cce1f7380c5ad191ed1a
+Author: Ludovic Courtès &lt;ludo@gnu.org&gt;
+Date:   2016-02-21 18:58:35 +0100
+
+    guile: Fix out-of-tree builds.
+    
+    This fixes a regression introduced in 3045a96.
+    
+    * guile/Makefile.am (.in.scm): Make the parent directory of $@.
+
+commit f8a9d4248c8e1f2369358de9141483b01d70366f
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-18 17:04:24 +0100
+
+    Improved documentation in _gnutls_sort_clist
+
+commit b0e2be6a28c5638af4415158d033ad99b8947d02
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-18 16:43:51 +0100
+
+    gnutls_x509_crt_list_import: corrected memory leak
+    
+    This was triggered if GNUTLS_X509_CRT_LIST_FAIL_IF_UNSORTED was specified
+    and a failure occurred.
+
+commit 2408ca75d061856fd1d83389333e576df0e016b3
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-18 15:59:31 +0100
+
+    _gnutls_sort_clist: fixed issues when used with func option
+    
+    This function would incorrectly call func() on elements that were
+    included in the list, and would not call func() if the size of the
+    final chain was one.
+
+commit b9655b5f002ddd82d912b796a9db38be8771b8c5
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-18 15:10:54 +0100
+
+    tests: added tests for gnutls_pcert_list_import_x509_raw()
+
+commit 611121584119434214e8208289375ff9cf5397af
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-18 14:29:20 +0100
+
+    ext master secret: ensure we disable ext master secret if requested
+    
+    That is, on rehandshakes, as on the standard handshakes it is disabled
+    by default.
+
+commit 95537f79ba010a1b84e4f8eceee7a7b51a26f85a
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-18 14:18:04 +0100
+
+    tests: verify that we do not allow rehandshakes without ext master
+    
+    That is, if we have an initial session which uses the extended master
+    secret do not allow subsequent rehandshakes to skip it.
+
+commit dbe7970417c8c4eb3c1a6a3104df3dedb0f49a5c
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-18 11:53:20 +0100
+
+    tests: sha3-test: use different dates for generation and validation
+
+commit f93df7ca5170a3e3d2f6049326bc0b273f378f05
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-18 10:55:32 +0100
+
+    certtool: eliminated memory leaks
+
+commit c79744971ff29ac4a367003a9d4c00095fb47627
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-18 10:28:33 +0100
+
+    bumped the version of max algorithm num to account for new signing algorithms
+
+commit 107e1df19715ffd4701bfcd3325c5cc80e5174b0
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-18 09:17:17 +0100
+
+    src: added systemkey-args to BUILT_SOURCES
+
+commit b7b8e3b521fb900bb9dd060b181dc0c241c21e84
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-17 15:19:08 +0100
+
+    tests: simplified sha3-test
+
+commit 8a8790fc65644b1c59e078048d0a67d481ed1c8b
 Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-20 11:01:48 +0200
+Date:   2016-02-17 05:43:24 +0100
 
-    certtool: eliminated various memory leaks
+    cross.mk: updated for gnutls 3.4.9, nettle 3.2, gmp 6.1.0 and p11-kit 0.23.2 [ci skip]
 
-commit 7192e7a8dd680e674a354839159007aa01c89de3
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-20 10:48:27 +0200
+commit 50ce516eebaf011f041002ecbfdb61b113159282
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-16 16:46:54 +0100
 
-    certtool: prevented memory leak in pkcs8-info cmd
-
-commit 70bbf4686f352a7ff557458b234bdeabe2749ac2
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-19 16:58:03 +0200
-
-    certtool: do not use signal() under win32
-
-commit 19758c412e50d444484b4483eec18848872ccf88
-Author: Alon Bar-Lev &lt;alon.barlev@gmail.com&gt;
-Date:   2015-12-18 17:34:01 +0200
-
-    build: configure.ac: manpages cleanups
+    .gitlab-ci.yml: disable guile tests
     
-    Signed-off-by: Alon Bar-Lev &lt;alon.barlev@gmail.com&gt;
+    This prevents the test suite from failing.
 
-commit af385d1552c0d5854db6db03c82e1e9b89e80b94
-Author: Alon Bar-Lev &lt;alon.barlev@gmail.com&gt;
-Date:   2015-12-18 12:14:08 +0200
+commit a88ce61a36909bb087032e1e3725ff7f24efdcc7
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-16 16:40:09 +0100
 
-    build: allow installing man(1) even with --disable-doc
+    doc update [ci skip]
+
+commit 4f083ddd0739c2aa6c295d14619b35ce71f75777
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-11 16:18:00 +0100
+
+    doc update
+
+commit ca7885241de90a0e9e80456203f3f49d941ec1c2
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-11 16:13:12 +0100
+
+    tests: resume: check whether the server does not resume in ext master secret mismatch
     
-    Currently these man pages are installed only if --enable-doc
-    is provided, while these are not actually docs, do not require any
-    special dependency, nor consume large space.
+    Relates #69
+
+commit 87de44f70d9d848b91f4a6b86fb12b7b8a8633ac
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-11 16:10:31 +0100
+
+    Ensure that session resumption does not occur when ext master secret status changes
     
-    This adds --enable-manpages to enable/disable manpages installation, and
-    install the man(1) regardless of --disable-doc.
+    That is we make sure the server doesn't resume when:
+    1. Original session had extended master secret but not advertised in resumed
+    2. Original session did not have extended master secret but is advertised in resumed
     
-    Signed-off-by: Alon Bar-Lev &lt;alon.barlev@gmail.com&gt;
-    Signed-off-by: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+    Relates #69
 
-commit 15127ff7aa674b25827c4017a4584261613d4cc9
+commit b0f739c644b4182742bbb5f1485897aabeda6169
 Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-18 14:32:25 +0100
+Date:   2016-02-11 14:45:40 +0100
 
-    certtool: ignore sigpipe
+    tests: resume: simplified structure assignment using C99 syntax
+
+commit cc82a0942b1866830541e6b0d874a7c95d091525
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-15 10:52:55 +0100
+
+    tests: added certification generation tests with SHA-3 tests
+
+commit 2b6214dd440b50f4488741b186876e0e52d19c2f
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-15 10:37:57 +0100
+
+    Added NIST's OIDs for SHA3 signature algorithms
     
-    This signal was observed under certain cirquimstances
+    This allows to generate certificates signed with SHA3.
 
-commit ad7149073a68125cc56ddc8cba9642a4a93b0837
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-18 14:29:05 +0100
+commit 72eed3e63486f756e4861febedf7050a786901ee
+Author: Ludovic Courtès &lt;ludo@gnu.org&gt;
+Date:   2016-02-11 23:04:38 +0100
 
-    certtool: don't close stdout on exit
-
-commit ec314874eabab1fbec551af826bd6d01b52fc735
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-18 14:24:23 +0100
-
-    pkcs7: eliminated leak in gnutls_pkcs7_print
-
-commit af02825492b671a30e131f4a4e21b261b03c8b6b
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-18 13:56:31 +0100
-
-    gnutls_pubkey_import_privkey: document that this operation is not possible in certain keys
-
-commit 5a27aaf40fcefd4654ccc78044e59dbeaf028760
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-18 11:40:59 +0100
-
-    doc: replace writev with sendmsg in the list of system calls
-
-commit fad54f9abd90b8ef62a1bd6e8e06d4a3fa85ae2f
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-18 10:23:22 +0100
-
-    tests: don't run the no-signal test in systems which MSG_NOSIGNAL is not available
-
-commit 3c626a48251ae361ba9823145a6234841322e896
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-18 10:15:10 +0100
-
-    Reduce the number of used syscalls by using sendmsg() instead of writev()
+    guile: Work around lack of 'eval-when' on 1.8.
     
-    We relied on sendmsg() anyway for the MSG_NO_SIGNAL version of the calls,
-    thus it is a good idea to avoid calling writev() and use sendmsg(). That
-    way we reduce the number of calls required for seccomp.
+    * guile/modules/gnutls.in (eval-when) [!guile-2]: New macro.
 
-commit d0899dbc4344d84a71a3901c489624439fdbe15a
-Author: Alon Bar-Lev &lt;alon.barlev@gmail.com&gt;
-Date:   2015-12-17 19:57:53 +0200
+commit 3a93730169d7d4658ca1e788b17758a4356a0331
+Author: Ludovic Courtès &lt;ludo@gnu.org&gt;
+Date:   2016-02-11 23:04:37 +0100
 
-    doc: manpages: remove generated tpmtool.1 page
+    guile: Install modules in versioned directory by default.
     
-    Signed-off-by: Alon Bar-Lev &lt;alon.barlev@gmail.com&gt;
+    * configure.ac: Change default 'GUILE_SITE' value to include
+    $guile_effective_version.
 
-commit 6670c53068567cc4ace79c2ce28448a11789e719
-Author: Alon Bar-Lev &lt;alon.barlev@gmail.com&gt;
-Date:   2015-12-17 19:57:52 +0200
+commit 10030021114f9eb52c8dc4f1369a441b6163241b
+Author: Ludovic Courtès &lt;ludo@gnu.org&gt;
+Date:   2016-02-11 23:04:36 +0100
 
-    .gitignore: add m4/extern-inline.m4
-
-commit 6f2dba875cab3b1ba209f4d23b6eb53be5c87016
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-17 14:19:04 +0100
-
-    tests: added check to verify that the PKCS#7 embedded data are recovered as expected
-
-commit f49e359fab2bb63eee7a2308d0258b3e2e25a48d
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-17 14:18:17 +0100
-
-    certtool: introduced the --p7-show-data option
+    guile: build: Make silent rules actually quiet.
     
-    This option allows printing the embedded data in a PKCS#7 signed
-    structure.
+    * guile/Makefile.am (.in.scm): Use $(AM_V_GEN) and $(AM_V_at).
+    * guile/src/Makefile.am (enums.h, enum-map.i.c)
+    (smobs.h, smob-types.i.c, %.x): Likewise.
 
-commit ed8fb55c01d18047c0b3a2e11cc43b965352fa01
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-17 14:17:23 +0100
+commit 3045a96d37f551f60482e9cc74513d60b0590600
+Author: Ludovic Courtès &lt;ludo@gnu.org&gt;
+Date:   2016-02-11 23:04:35 +0100
 
-    gnutls_pkcs7_get_embedded_data: added function
+    guile: Build and install .go files on Guile 2.x.
     
-    This function allows extracting the embedded data from a PKCS#7 signed
-    structure.
+    * configure.ac: Check for 'guild' and substitute 'GUILD'.  Define
+    'HAVE_GUILD'.  Substitute 'guileobjectdir'.  Don't output
+    guile/modules/Makefile and guile/tests/Makefile.
+    * guile/modules/Makefile.am, guile/tests/Makefile.am: Remove.  Move
+    contents to...
+    * guile/Makefile.am: ... here.
+    (SUBDIRS): Remove 'modules' and 'tests'.
 
-commit d7a42b3c5c2f5a346edeb8ad0986ea22d53dd389
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-16 16:13:41 +0100
+commit 92d471b8c10d09795737b695533a43dd08a6b693
+Author: Ludovic Courtès &lt;ludo@gnu.org&gt;
+Date:   2016-02-11 23:04:34 +0100
 
-    tests: updated pkcs7-gen to account for content-type attribute
-
-commit d6f842d5f5b99a39149ffd296633492273680b73
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-16 14:52:39 +0100
-
-    tests: check whether the content-type attribute is set if we sign using time
-
-commit 7551f1b9d9de2908ab7a4d12b953d9caec497fc2
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-16 14:28:23 +0100
-
-    pkcs7: set by default the content type attribute
+    guile: doc: Change prompt in examples.
     
-    That is a requirement of rfc5652. Relates #59
+    * doc/gnutls-guile.texi (Guile Preparations): Use the prompt found in
+    2.0.  Change "libguile-gnutls-v-0" to "guile-gnutls-v-2".
 
-commit 6cc022a099f3d13a8da59850a553a050703a01e7
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-16 14:02:56 +0100
+commit cb5b3a38e0c91f6b4c6b9ce9770649c6486c331a
+Author: Ludovic Courtès &lt;ludo@gnu.org&gt;
+Date:   2016-02-11 23:04:33 +0100
 
-    pkcs7: use the PK_PKIX1_RSA_OID when writing RSA signature OIDs for PKCS#7 structures
+    guile: tests: Add Guile 2.2 compatibility layer.
     
-    That is because there are implementations which cannot cope with the
-    normal RSA signature OIDs. Relates #59
-
-commit 0dd5c078ad6db71f60a107dc0cdf78637baeafe1
-Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
-Date:   2015-12-16 10:10:20 +0100
-
-    pkcs7: Disable the optional fields prior to generating the PKCS#7 structure
+    This allows tests to run with Guile 2.1/2.2.
     
-    This resolves issue with our PKCS#7 structures not being parsed by
-    MacOSX' tools. Relates #59
+    * guile/modules/gnutls/build/tests.scm (define-replacement) [guile-2]:
+    New macro.
+    (uniform-vector-read!, uniform-vector-write) [guile-2]: New procedures.
+    * doc/gnutls-guile.texi (Guile Preparations): Mention 2.2.
 
-commit 20323a763bccb048090e9e343b9012361b08bc91
-Author: Nikos Mavrogiannopoulos &lt;nmav@gnutls.org&gt;
-Date:   2015-12-15 22:28:55 +0100
+commit fcf6f8427c55e8b068ada8735098b46597dadc71
+Author: Ludovic Courtès &lt;ludo@gnu.org&gt;
+Date:   2016-02-11 23:04:32 +0100
 
-    certtool: corrected invalid free
+    guile: tests: Make sure no processes are left behind.
+    
+    Before that, child processes would be left behind and become zombies.
+    
+    * guile/tests/anonymous-auth.scm, guile/tests/openpgp-auth.scm,
+    guile/tests/session-record-port.scm, guile/tests/x509-auth.scm:
+    Add (waitpid pid) call on the server side.
+
+commit 53b7d41a26b3d61a62b2576e30d93f9f8c9aaef6
+Author: Ludovic Courtès &lt;ludo@gnu.org&gt;
+Date:   2016-02-11 23:04:31 +0100
+
+    guile: tests: Add 'with-child-process'.
+    
+    This makes sure that child processes always exit no matter what.
+    
+    * guile/modules/gnutls/build/tests.scm (define-syntax-rule) [!guile-2]:
+    New macro.
+    (call-with-child-process): New procedure.
+    (with-child-process): New macro.
+    * guile/tests/anonymous-auth.scm, guile/tests/openpgp-auth.scm,
+    guile/tests/session-record-port.scm, guile/tests/x509-auth.scm: Use it
+    instead of an explicit 'primitive-fork' call.
+    * guile/.dir-locals.el: New file.
+    * guile/Makefile.am (EXTRA_DIST): New variable.
+
+commit e6dcb14dbbd3e9e40a1f193a7bf6657e82b88cb9
+Author: Nikos Mavrogiannopoulos &lt;nmav@redhat.com&gt;
+Date:   2016-02-15 09:52:10 +0100
+
+    tests: mini-loss-time: ensure client timeouts after the server is
+    
+    This addresses issue with the server detecting the client disconnection
+    prior to its timeout. Reported by Steven Chamberlain, Andreas Metzler.
+
+commit 20ba8633d7c5f8795d4913a017c70cd6d73b45a1
+Author: Jaak Ristioja &lt;jaak.ristioja@cyber.ee&gt;
+Date:   2016-02-12 16:59:31 +0200
+
+    Removed the invariant htype parameter of _gnutls_recv_int()
+    
+    All uses of _gnutls_recv_int() passed -1 as the htype argument of type
+    gnutls_handshake_description_t, which had been used for SSLv2 client
+    hellos. Introduced in 2001 with dc1122e7b6.
 
 ...</pre></div>
 

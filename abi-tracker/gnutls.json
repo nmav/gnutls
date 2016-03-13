@@ -22,6 +22,16 @@
     "PublicTypes":    "public_types/gnutls/current/list"
   },
   {
+    "Number":         "3.4.10",
+    "Installed":      "installed/gnutls/3.4.10",
+    "Source":         "src/gnutls/3.4.10/gnutls-3.4.10.tar.xz",
+    "Changelog":      "NEWS",
+    "HeadersDiff":    "On",
+    "PkgDiff":        "Off",
+    "ABIView":        "Off",
+    "ABIDiff":        "Off"
+  },
+  {
     "Number":         "3.4.9",
     "Installed":      "installed/gnutls/3.4.9",
     "Source":         "src/gnutls/3.4.9/gnutls-3.4.9.tar.xz",
