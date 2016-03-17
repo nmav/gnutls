@@ -64,9 +64,8 @@ our answers to <a href="faq.html">frequently asked questions</a>.
   </table>
  </center>
 
-  <p><b>Bug reports should be addressed to <a
-      href="mailto:$(EMAIL)">$(EMAIL)</a>, which
-      is forwarded to the gnutls-devel list, or on <a href="https://gitlab.com/gnutls/gnutls/issues">our issue tracker</a>.</b> </p>
+  <p><b>You may report bugs using <a href="https://gitlab.com/gnutls/gnutls/issues">our issue tracker</a>. Non-public bug reports should be addressed to <a
+      href="mailto:$(EMAIL)">$(EMAIL)</a></b> </p>
    </td></tr>
 </table>
 
