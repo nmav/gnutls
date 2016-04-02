@@ -24,7 +24,7 @@ the output of these tools.
 
 
 <h1>Development</h1>
-<p>To follow development it is easier to subscribe <a href="lists.html">on the mailing lists</a>; the <a href="https://gitlab.com/gnutls/gnutls/wikis/home">wiki pages</a>
+<p>To follow development it is easier to subscribe <a href="support.html">on the mailing lists</a>; the <a href="https://gitlab.com/gnutls/gnutls/wikis/home">wiki pages</a>
 may also contain information on new developments and plans.
 To browse the source code a web interface exists at <a href="https://gitlab.com/gnutls/gnutls/">gitlab.com</a>.
 If you want to build the latest GnuTLS code from the repository, use the following commands:
