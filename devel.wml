@@ -34,7 +34,7 @@ If you want to build the latest GnuTLS code from the repository, use the followi
 $ git clone https://gitlab.com/gnutls/gnutls.git
 $ cd gnutls
 $ git submodule update --init
-$ make autoreconf # Will generate ./configure script
+$ make bootstrap # Will generate ./configure script
 $ ./configure --enable-gcc-warnings --enable-gtk-doc --enable-gtk-doc-pdf
 $ make
 $ make check
