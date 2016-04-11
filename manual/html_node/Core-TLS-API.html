@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.10 of GnuTLS.
+3.4.11 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.10: Core TLS API</title>
+<title>GnuTLS 3.4.11: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.4.10: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.4.10: Core TLS API">
+<meta name="description" content="GnuTLS 3.4.11: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.4.11: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -3443,7 +3443,7 @@ any of gnutls_certificate_verify_peers*() are called.
 </p>
 <p>If the flag <code>GNUTLS_OCSP_SR_IS_AVAIL</code>  is specified, the return
 value of the function indicates whether an OCSP status response have
-been received (even if invalid).
+been received (even if invalid). The flag was introduced in GnuTLS 3.4.0.
 </p>
 <p><strong>Returns:</strong> non zero if the response was valid, or a zero if it wasn&rsquo;t sent,
 or sent and was invalid.
@@ -4579,20 +4579,16 @@ These are the packets queued after an interrupted <code>gnutls_record_send()</co
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function provides information about the internals of the
-record protocol and is only useful if a prior gnutls function call
-(e.g.  <code>gnutls_handshake()</code> ) was interrupted for some reason, that
+record protocol and is only useful if a prior gnutls function call,
+e.g.  <code>gnutls_handshake()</code> , was interrupted for some reason. That
 is, if a function returned <code>GNUTLS_E_INTERRUPTED</code>  or
-<code>GNUTLS_E_AGAIN</code> .  In such a case, you might want to call <code>select()</code> 
-or <code>poll()</code>  before calling the interrupted gnutls function again.  To
-tell you whether a file descriptor should be selected for either
-reading or writing, <code>gnutls_record_get_direction()</code>  returns 0 if the
-interrupted function was trying to read data, and 1 if it was
-trying to write data.
+<code>GNUTLS_E_AGAIN</code> . In such a case, you might want to call <code>select()</code> 
+or <code>poll()</code>  before restoring the interrupted gnutls function.
 </p>
-<p>This function&rsquo;s output is unreliable if you are using the
+<p>This function&rsquo;s output is unreliable if you are using the same
  <code>session</code> in different threads, for sending and receiving.
 </p>
-<p><strong>Returns:</strong> 0 if trying to read data, 1 if trying to write data.
+<p><strong>Returns:</strong> 0 if interrupted while trying to read data, or 1 while trying to write data.
 </p></dd></dl>
 
 <a name="gnutls_005frecord_005fget_005fmax_005fsize-1"></a>

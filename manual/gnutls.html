@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.10 of GnuTLS.
+3.4.11 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.10</title>
+<title>GnuTLS 3.4.11</title>
 
-<meta name="description" content="GnuTLS 3.4.10">
-<meta name="keywords" content="GnuTLS 3.4.10">
+<meta name="description" content="GnuTLS 3.4.11">
+<meta name="keywords" content="GnuTLS 3.4.11">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -154,7 +154,7 @@ dl {
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">GnuTLS 3.4.10</h1>
+<h1 class="settitle" align="center">GnuTLS 3.4.11</h1>
 
 
 
@@ -505,7 +505,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 4 March 2015 for version
-3.4.10 of GnuTLS.
+3.4.11 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2015 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2015 Nikos Mavrogiannopoulos
@@ -5186,6 +5186,7 @@ Usage:  ocsptool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
                                 - file must pre-exist
    -S, --load-response=file   Read DER encoded OCSP response from file
                                 - file must pre-exist
+       --ignore-errors        Ignore any verification errors
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
    -!, --more-help            extended usage information passed thru pager
@@ -9287,6 +9288,7 @@ the following functions, applicable to X.509 and OpenPGP certificates.
 <dl compact="compact">
 <dt><code><var>int</var> <a href="#gnutls_005fcertificate_005fset_005fx509_005fsystem_005ftrust">gnutls_certificate_set_x509_system_trust</a> (gnutls_certificate_credentials_t       <var>cred</var>)</code></dt>
 <dt><code><var>int</var> <a href="#gnutls_005fcertificate_005fset_005fx509_005ftrust_005ffile">gnutls_certificate_set_x509_trust_file</a> (gnutls_certificate_credentials_t            <var>cred</var>, const char * <var>cafile</var>, gnutls_x509_crt_fmt_t <var>type</var>)</code></dt>
+<dt><code><var>int</var> <a href="#gnutls_005fcertificate_005fset_005fx509_005ftrust_005fdir">gnutls_certificate_set_x509_trust_dir</a> (gnutls_certificate_credentials_t <var>cred</var>, const char * <var>ca_dir</var>, gnutls_x509_crt_fmt_t <var>type</var>)</code></dt>
 <dt><code><var>int</var> <a href="#gnutls_005fcertificate_005fset_005fopenpgp_005fkeyring_005ffile">gnutls_certificate_set_openpgp_keyring_file</a> (gnutls_certificate_credentials_t <var>c</var>, const char * <var>file</var>, gnutls_openpgp_crt_fmt_t <var>format</var>)</code></dt>
 </dl>
 
@@ -9841,7 +9843,7 @@ The blocking, due to network interaction, calls such as
 can be set to non-blocking by setting the underlying sockets to non-blocking.
 If other push and pull functions are setup, then they should behave the same
 way as <code>recv</code> and <code>send</code> when used in a non-blocking
-way, i.e., set errno to <code>EAGAIN</code>. Since, during a TLS protocol session 
+way, i.e., return -1 and set errno to <code>EAGAIN</code>. Since, during a TLS protocol session 
 <acronym>GnuTLS</acronym> does not block except for network interaction, the non blocking
 <code>EAGAIN</code> errno will be propagated and <acronym>GnuTLS</acronym> functions 
 will return the <code>GNUTLS_E_AGAIN</code> error code. Such calls can be resumed the 
@@ -9850,13 +9852,13 @@ The only exception is <a href="#gnutls_005frecord_005fsend">gnutls_record_send</
 which if interrupted subsequent calls need not to include the data to be
 sent (can be called with NULL argument).
 </p>
-<p>When using the <code>select</code> system call though, one should remember
-that it is only applicable to the kernel sockets API. To check for any
-available buffers in a <acronym>GnuTLS</acronym> session, 
+<p>When using the <code>poll</code> or <code>select</code> system calls though, one should remember
+that they only apply to the kernel sockets API. To check for any
+available buffered data in a <acronym>GnuTLS</acronym> session, 
 utilize <a href="#gnutls_005frecord_005fcheck_005fpending">gnutls_record_check_pending</a>,
-either before the <code>select</code> system call, or after a call to
-<a href="#gnutls_005frecord_005frecv">gnutls_record_recv</a>. <acronym>GnuTLS</acronym> does not keep a write buffer,
-thus when writing no additional actions are required.
+either before the <code>poll</code> system call, or after a call to
+<a href="#gnutls_005frecord_005frecv">gnutls_record_recv</a>. Data queued by <a href="#gnutls_005frecord_005fsend">gnutls_record_send</a>
+(when interrupted) can be discarded using <a href="#gnutls_005frecord_005fdiscard_005fqueued">gnutls_record_discard_queued</a>.
 </p>
 <p>The following paragraphs describe the detailed requirements for non-blocking
 operation when using the TLS or DTLS protocols.
@@ -9895,20 +9897,16 @@ to decide which direction to check prior to restoring a function call.
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function provides information about the internals of the
-record protocol and is only useful if a prior gnutls function call
-(e.g.  <code>gnutls_handshake()</code> ) was interrupted for some reason, that
+record protocol and is only useful if a prior gnutls function call,
+e.g.  <code>gnutls_handshake()</code> , was interrupted for some reason. That
 is, if a function returned <code>GNUTLS_E_INTERRUPTED</code>  or
-<code>GNUTLS_E_AGAIN</code> .  In such a case, you might want to call <code>select()</code> 
-or <code>poll()</code>  before calling the interrupted gnutls function again.  To
-tell you whether a file descriptor should be selected for either
-reading or writing, <code>gnutls_record_get_direction()</code>  returns 0 if the
-interrupted function was trying to read data, and 1 if it was
-trying to write data.
+<code>GNUTLS_E_AGAIN</code> . In such a case, you might want to call <code>select()</code> 
+or <code>poll()</code>  before restoring the interrupted gnutls function.
 </p>
-<p>This function&rsquo;s output is unreliable if you are using the
+<p>This function&rsquo;s output is unreliable if you are using the same
  <code>session</code> in different threads, for sending and receiving.
 </p>
-<p><strong>Returns:</strong> 0 if trying to read data, 1 if trying to write data.
+<p><strong>Returns:</strong> 0 if interrupted while trying to read data, or 1 while trying to write data.
 </p></dd></dl>
 
 <p>When calling <a href="#gnutls_005fhandshake">gnutls_handshake</a> through a multi-plexer,
@@ -10204,8 +10202,8 @@ received might be less than  <code>data_size</code> .
 
 <p>The <a href="#gnutls_005frecord_005fcheck_005fpending">gnutls_record_check_pending</a> helper function is available to 
 allow checking whether data are available to be read in a <acronym>GnuTLS</acronym> session 
-buffers. Note that this function complements but does not replace <code>select</code>,
-i.e., <a href="#gnutls_005frecord_005fcheck_005fpending">gnutls_record_check_pending</a> reports no data to be read, <code>select</code>
+buffers. Note that this function complements but does not replace <code>poll</code>,
+i.e., <a href="#gnutls_005frecord_005fcheck_005fpending">gnutls_record_check_pending</a> reports no data to be read, <code>poll</code>
 should be called to check for data in the network buffers.
 </p>
 
@@ -21793,7 +21791,7 @@ any of gnutls_certificate_verify_peers*() are called.
 </p>
 <p>If the flag <code>GNUTLS_OCSP_SR_IS_AVAIL</code>  is specified, the return
 value of the function indicates whether an OCSP status response have
-been received (even if invalid).
+been received (even if invalid). The flag was introduced in GnuTLS 3.4.0.
 </p>
 <p><strong>Returns:</strong> non zero if the response was valid, or a zero if it wasn&rsquo;t sent,
 or sent and was invalid.
@@ -22929,20 +22927,16 @@ These are the packets queued after an interrupted <code>gnutls_record_send()</co
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>This function provides information about the internals of the
-record protocol and is only useful if a prior gnutls function call
-(e.g.  <code>gnutls_handshake()</code> ) was interrupted for some reason, that
+record protocol and is only useful if a prior gnutls function call,
+e.g.  <code>gnutls_handshake()</code> , was interrupted for some reason. That
 is, if a function returned <code>GNUTLS_E_INTERRUPTED</code>  or
-<code>GNUTLS_E_AGAIN</code> .  In such a case, you might want to call <code>select()</code> 
-or <code>poll()</code>  before calling the interrupted gnutls function again.  To
-tell you whether a file descriptor should be selected for either
-reading or writing, <code>gnutls_record_get_direction()</code>  returns 0 if the
-interrupted function was trying to read data, and 1 if it was
-trying to write data.
+<code>GNUTLS_E_AGAIN</code> . In such a case, you might want to call <code>select()</code> 
+or <code>poll()</code>  before restoring the interrupted gnutls function.
 </p>
-<p>This function&rsquo;s output is unreliable if you are using the
+<p>This function&rsquo;s output is unreliable if you are using the same
  <code>session</code> in different threads, for sending and receiving.
 </p>
-<p><strong>Returns:</strong> 0 if trying to read data, 1 if trying to write data.
+<p><strong>Returns:</strong> 0 if interrupted while trying to read data, or 1 while trying to write data.
 </p></dd></dl>
 
 <a name="gnutls_005frecord_005fget_005fmax_005fsize-1"></a>
