@@ -87,7 +87,7 @@ EXTRA_DIST += testcompat-main-polarssl testcompat-main-openssl testcompat-common
 	testpkcs11.pkcs15 testpkcs11.softhsm testpkcs11.sc-hsm
 nodist_check_SCRIPTS = testsrn.sh chain.sh invalid-cert.sh \
 	testpkcs11.sh testrng.sh testcompat-polarssl.sh testcompat-openssl.sh \
-	testrandom.sh
+	testrandom.sh ext-tests/tls-fuzzer.sh
 
 if ENABLE_PKCS11
 check_PROGRAMS += pkcs11-chainverify pkcs11-get-issuer pkcs11-is-known pkcs11-combo pkcs11-privkey pkcs11-pubkey-import-rsa pkcs11-pubkey-import-ecdsa
