@@ -128,6 +128,34 @@ _gnutls_x509_write_ecc_pubkey(gnutls_pk_params_st * params,
 	return 0;
 }
 
+/*
+ * some x509 certificate functions that relate to MPI parameter
+ * setting. This writes a raw public key.
+ *
+ * Allocates the space used to store the data.
+ */
+int
+_gnutls_x509_write_eddsa_pubkey(gnutls_pk_params_st * params,
+			      gnutls_datum_t * raw)
+{
+	int ret;
+
+	raw->data = NULL;
+	raw->size = 0;
+
+	if (params->raw_pub.size == 0)
+		return gnutls_assert_val(GNUTLS_E_INVALID_REQUEST);
+
+	if (params->flags != GNUTLS_ECC_CURVE_ED25519PH)
+		return gnutls_assert_val(GNUTLS_E_ECC_UNSUPPORTED_CURVE);
+
+	ret = _gnutls_set_datum(raw, params->raw_pub.data, params->raw_pub.size);
+	if (ret < 0)
+		return gnutls_assert_val(ret);
+
+	return 0;
+}
+
 int
 _gnutls_x509_write_pubkey_params(gnutls_pk_algorithm_t algo,
 				 gnutls_pk_params_st * params,
@@ -144,8 +172,10 @@ _gnutls_x509_write_pubkey_params(gnutls_pk_algorithm_t algo,
 		memcpy(der->data, ASN1_NULL, ASN1_NULL_SIZE);
 		der->size = ASN1_NULL_SIZE;
 		return 0;
-	case GNUTLS_PK_EC:
+	case GNUTLS_PK_ECDSA:
 		return _gnutls_x509_write_ecc_params(params->flags, der);
+	case GNUTLS_PK_EDDSA:
+		return _gnutls_x509_write_eddsa_params(params->flags, der);
 	default:
 		return gnutls_assert_val(GNUTLS_E_UNIMPLEMENTED_FEATURE);
 	}
@@ -161,11 +191,60 @@ _gnutls_x509_write_pubkey(gnutls_pk_algorithm_t algo,
 		return _gnutls_x509_write_dsa_pubkey(params, der);
 	case GNUTLS_PK_RSA:
 		return _gnutls_x509_write_rsa_pubkey(params, der);
-	case GNUTLS_PK_EC:
+	case GNUTLS_PK_ECDSA:
 		return _gnutls_x509_write_ecc_pubkey(params, der);
+	case GNUTLS_PK_EDDSA:
+		return _gnutls_x509_write_eddsa_pubkey(params, der);
 	default:
 		return gnutls_assert_val(GNUTLS_E_UNIMPLEMENTED_FEATURE);
 	}
+}
+
+/*
+ * This function writes the parameters for EdDSA keys.
+ * That is the EdDSAParameters struct.
+ *
+ * Allocates the space used to store the DER data.
+ */
+int
+_gnutls_x509_write_eddsa_params(gnutls_ecc_curve_t curve,
+			      gnutls_datum_t * der)
+{
+	int result;
+	ASN1_TYPE spk = ASN1_TYPE_EMPTY;
+	const uint8_t two = '\x02';
+
+	der->data = NULL;
+	der->size = 0;
+
+	if (curve != GNUTLS_ECC_CURVE_ED25519PH)
+		return gnutls_assert_val(GNUTLS_E_ECC_UNSUPPORTED_CURVE);
+
+	if ((result = asn1_create_element
+	     (_gnutls_get_gnutls_asn(), "GNUTLS.EdDSAParameters", &spk))
+	    != ASN1_SUCCESS) {
+		gnutls_assert();
+		return _gnutls_asn2err(result);
+	}
+
+	if ((result =
+	     asn1_write_value(spk, "", &two, 1)) != ASN1_SUCCESS) {
+		gnutls_assert();
+		result = _gnutls_asn2err(result);
+		goto cleanup;
+	}
+
+	result = _gnutls_x509_der_encode(spk, "", der, 0);
+	if (result < 0) {
+		gnutls_assert();
+		goto cleanup;
+	}
+
+	result = 0;
+
+      cleanup:
+	asn1_delete_structure(&spk);
+	return result;
 }
 
 /*
@@ -248,7 +327,6 @@ _gnutls_x509_write_ecc_params(gnutls_ecc_curve_t curve,
 	oid = gnutls_ecc_curve_get_oid(curve);
 	if (oid == NULL)
 		return gnutls_assert_val(GNUTLS_E_INVALID_REQUEST);
-
 
 	if ((result = asn1_create_element
 	     (_gnutls_get_gnutls_asn(), "GNUTLS.ECParameters", &spk))
@@ -502,18 +580,8 @@ _gnutls_asn1_encode_ecc(ASN1_TYPE * c2, gnutls_pk_params_st * params)
 
 	oid = gnutls_ecc_curve_get_oid(params->flags);
 
-	if (params->params_nr != ECC_PRIVATE_PARAMS || oid == NULL)
+	if (oid == NULL)
 		return gnutls_assert_val(GNUTLS_E_INVALID_REQUEST);
-
-	ret =
-	    _gnutls_ecc_ansi_x963_export(params->flags,
-					 params->params[ECC_X],
-					 params->params[ECC_Y], &pubkey);
-	if (ret < 0)
-		return gnutls_assert_val(ret);
-
-	/* Ok. Now we have the data. Create the asn1 structures
-	 */
 
 	/* first make sure that no previously allocated data are leaked */
 	if (*c2 != ASN1_TYPE_EMPTY) {
@@ -536,20 +604,51 @@ _gnutls_asn1_encode_ecc(ASN1_TYPE * c2, gnutls_pk_params_st * params)
 		goto cleanup;
 	}
 
-	ret =
-	    _gnutls_x509_write_key_int(*c2, "privateKey",
-				   params->params[ECC_K], 1);
-	if (ret < 0) {
-		gnutls_assert();
-		goto cleanup;
-	}
+	if (curve_is_eddsa(params->flags)) {
+		if (params->raw_pub.size == 0 || params->raw_priv.size == 0)
+			return gnutls_assert_val(GNUTLS_E_INVALID_REQUEST);
 
-	if ((ret =
-	     asn1_write_value(*c2, "publicKey", pubkey.data,
-			      pubkey.size * 8)) != ASN1_SUCCESS) {
-		gnutls_assert();
-		ret = _gnutls_asn2err(ret);
-		goto cleanup;
+		ret =
+		    asn1_write_value(*c2, "privateKey", params->raw_priv.data, params->raw_priv.size);
+		if (ret != ASN1_SUCCESS) {
+			gnutls_assert();
+			ret = _gnutls_asn2err(ret);
+			goto cleanup;
+		}
+
+		ret =
+		    asn1_write_value(*c2, "publicKey", params->raw_pub.data, params->raw_pub.size*8);
+		if (ret != ASN1_SUCCESS) {
+			gnutls_assert();
+			ret = _gnutls_asn2err(ret);
+			goto cleanup;
+		}
+	} else {
+		if (params->params_nr != ECC_PRIVATE_PARAMS)
+			return gnutls_assert_val(GNUTLS_E_INVALID_REQUEST);
+
+		ret =
+		    _gnutls_ecc_ansi_x963_export(params->flags,
+						 params->params[ECC_X],
+						 params->params[ECC_Y], &pubkey);
+		if (ret < 0)
+			return gnutls_assert_val(ret);
+
+		ret =
+		    _gnutls_x509_write_key_int(*c2, "privateKey",
+					   params->params[ECC_K], 1);
+		if (ret < 0) {
+			gnutls_assert();
+			goto cleanup;
+		}
+
+		if ((ret =
+		     asn1_write_value(*c2, "publicKey", pubkey.data,
+				      pubkey.size * 8)) != ASN1_SUCCESS) {
+			gnutls_assert();
+			ret = _gnutls_asn2err(ret);
+			goto cleanup;
+		}
 	}
 
 	/* write our choice */
@@ -684,7 +783,8 @@ int _gnutls_asn1_encode_privkey(gnutls_pk_algorithm_t pk, ASN1_TYPE * c2,
 		return _gnutls_asn1_encode_rsa(c2, params, compat);
 	case GNUTLS_PK_DSA:
 		return _gnutls_asn1_encode_dsa(c2, params, compat);
-	case GNUTLS_PK_EC:
+	case GNUTLS_PK_ECDSA:
+	case GNUTLS_PK_EDDSA:
 		return _gnutls_asn1_encode_ecc(c2, params);
 	default:
 		return GNUTLS_E_UNIMPLEMENTED_FEATURE;

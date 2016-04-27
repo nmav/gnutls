@@ -866,14 +866,20 @@ print_ecc_pkey(FILE * outfile, gnutls_ecc_curve_t curve,
 		fprintf(outfile, "curve:\t%s\n",
 			gnutls_ecc_curve_get_name(curve));
 
-	if (k) {
+	if (k && k->data) {
 		print_head(outfile, "private key", k->size, cprint);
 		print_hex_datum(outfile, k, cprint);
 	}
-	print_head(outfile, "x", x->size, cprint);
-	print_hex_datum(outfile, x, cprint);
-	print_head(outfile, "y", y->size, cprint);
-	print_hex_datum(outfile, y, cprint);
+
+	if (x && x->data) {
+		print_head(outfile, "x", x->size, cprint);
+		print_hex_datum(outfile, x, cprint);
+	}
+
+	if (y && y->data) {
+		print_head(outfile, "y", y->size, cprint);
+		print_hex_datum(outfile, y, cprint);
+	}
 }
 
 
@@ -1143,7 +1149,7 @@ static void privkey_info_int(FILE *outfile, common_info_st * cinfo,
 			gnutls_free(q.data);
 			gnutls_free(g.data);
 		}
-	} else if (key_type == GNUTLS_PK_EC) {
+	} else if (key_type == GNUTLS_PK_EC || key_type == GNUTLS_PK_EDDSA) {
 		gnutls_datum_t y, x, k;
 		gnutls_ecc_curve_t curve;
 

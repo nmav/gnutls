@@ -132,8 +132,10 @@ generate_private_key_int(common_info_st * cinfo)
 
 	bits = get_bits(key_type, cinfo->bits, cinfo->sec_param, 1);
 
-	fprintf(stdlog, "Generating a %d bit %s private key...\n",
-		bits, gnutls_pk_algorithm_get_name(key_type));
+	if (GNUTLS_BITS_ARE_CURVE(bits))
+		fprintf(stdlog, "Generating an %s private key...\n", gnutls_pk_algorithm_get_name(key_type));
+	else
+		fprintf(stdlog, "Generating a %d bit %s private key...\n", bits, gnutls_pk_algorithm_get_name(key_type));
 
 	if (bits < 256 && key_type == GNUTLS_PK_EC)
 		fprintf(stderr,
@@ -1084,7 +1086,9 @@ static void cmd_parser(int argc, char **argv)
 	if (HAVE_OPT(DSA))
 		req_key_type = GNUTLS_PK_DSA;
 	else if (HAVE_OPT(ECC))
-		req_key_type = GNUTLS_PK_ECC;
+		req_key_type = GNUTLS_PK_ECDSA;
+	else if (HAVE_OPT(EDDSA))
+		req_key_type = GNUTLS_PK_EDDSA;
 	else
 		req_key_type = GNUTLS_PK_RSA;
 

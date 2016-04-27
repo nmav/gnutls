@@ -37,6 +37,8 @@ static int _gnutls_x509_read_dsa_pubkey(uint8_t * der, int dersize,
 					gnutls_pk_params_st * params);
 static int _gnutls_x509_read_ecc_pubkey(uint8_t * der, int dersize,
 					gnutls_pk_params_st * params);
+static int _gnutls_x509_read_eddsa_pubkey(uint8_t * der, int dersize,
+					  gnutls_pk_params_st * params);
 
 static int
 _gnutls_x509_read_dsa_params(uint8_t * der, int dersize,
@@ -109,6 +111,60 @@ _gnutls_x509_read_ecc_pubkey(uint8_t * der, int dersize,
 					    &params->params[ECC_Y]);
 }
 
+int _gnutls_x509_read_eddsa_pubkey(uint8_t * der, int dersize,
+				   gnutls_pk_params_st * params)
+{
+	return _gnutls_set_datum(&params->raw_pub, der, dersize);
+}
+
+/* params as defined in draft-ietf-curdle-pkix-00
+ */
+int
+_gnutls_x509_read_eddsa_params(uint8_t * der, int dersize,
+			     unsigned int * curve)
+{
+	int ret;
+	ASN1_TYPE spk = ASN1_TYPE_EMPTY;
+	unsigned int cid;
+ 
+	if ((ret = asn1_create_element
+	     (_gnutls_get_gnutls_asn(), "GNUTLS.EdDSAParameters",
+	      &spk)) != ASN1_SUCCESS) {
+		gnutls_assert();
+		return _gnutls_asn2err(ret);
+	}
+
+	ret = asn1_der_decoding(&spk, der, dersize, NULL);
+	if (ret != ASN1_SUCCESS) {
+		gnutls_assert();
+		ret = _gnutls_asn2err(ret);
+		goto cleanup;
+	}
+
+	/* read the curve */
+	ret = _gnutls_x509_read_uint(spk, "", &cid);
+	if (ret < 0) {
+		gnutls_assert();
+		goto cleanup;
+	}
+
+	if (cid != 2) {
+		_gnutls_debug_log("EdDSA curve %u is not supported\n", cid);
+		gnutls_assert();
+		ret = GNUTLS_E_ECC_UNSUPPORTED_CURVE;
+		goto cleanup;
+	}
+
+	*curve = GNUTLS_ECC_CURVE_ED25519PH;
+
+	ret = 0;
+
+      cleanup:
+
+	asn1_delete_structure(&spk);
+
+	return ret;
+}
 
 /* reads p,q and g 
  * from the certificate (subjectPublicKey BIT STRING).
@@ -247,10 +303,13 @@ int _gnutls_x509_read_pubkey(gnutls_pk_algorithm_t algo, uint8_t * der,
 		if (ret >= 0)
 			params->params_nr = DSA_PUBLIC_PARAMS;
 		break;
-	case GNUTLS_PK_EC:
+	case GNUTLS_PK_ECDSA:
 		ret = _gnutls_x509_read_ecc_pubkey(der, dersize, params);
 		if (ret >= 0)
 			params->params_nr = ECC_PUBLIC_PARAMS;
+		break;
+	case GNUTLS_PK_EDDSA:
+		ret = _gnutls_x509_read_eddsa_pubkey(der, dersize, params);
 		break;
 	default:
 		ret = gnutls_assert_val(GNUTLS_E_UNIMPLEMENTED_FEATURE);
@@ -268,8 +327,10 @@ int _gnutls_x509_read_pubkey_params(gnutls_pk_algorithm_t algo,
 		return 0;
 	case GNUTLS_PK_DSA:
 		return _gnutls_x509_read_dsa_params(der, dersize, params);
-	case GNUTLS_PK_EC:
+	case GNUTLS_PK_ECDSA:
 		return _gnutls_x509_read_ecc_params(der, dersize, &params->flags);
+	case GNUTLS_PK_EDDSA:
+		return _gnutls_x509_read_eddsa_params(der, dersize, &params->flags);
 	default:
 		return gnutls_assert_val(GNUTLS_E_UNIMPLEMENTED_FEATURE);
 	}

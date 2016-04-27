@@ -122,4 +122,6 @@ KRB5PrincipalName ::= SEQUENCE {
 	principalName           [1] PrincipalName
 }
 
+EdDSAParameters ::= ENUMERATED { ed25519 (1), ed25519p (2) }
+
 END

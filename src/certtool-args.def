@@ -448,6 +448,12 @@ flag = {
 };
 
 flag = {
+    name      = eddsa;
+    descrip   = "Generate EdDSA key";
+    doc = "When combined with --generate-privkey generates an elliptic curve private key to be used with EdDSA.";
+};
+
+flag = {
     name      = hash;
     arg-type  = string;
     descrip   = "Hash algorithm to use for signing";

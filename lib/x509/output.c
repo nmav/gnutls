@@ -1669,7 +1669,7 @@ static void print_keyid(gnutls_buffer_st * str, gnutls_x509_crt_t cert)
 	if (err < 0)
 		return;
 
-	if (err == GNUTLS_PK_EC) {
+	if (IS_EC(err)) {
 		gnutls_ecc_curve_t curve;
 
 		err = gnutls_x509_crt_get_pk_ecc_raw(cert, &curve, NULL, NULL);

@@ -112,7 +112,8 @@ _encode_privkey(gnutls_x509_privkey_t pkey, gnutls_datum_t * raw)
 
 	switch (pkey->pk_algorithm) {
 	case GNUTLS_PK_RSA:
-	case GNUTLS_PK_EC:
+	case GNUTLS_PK_ECDSA:
+	case GNUTLS_PK_EDDSA:
 		ret =
 		    gnutls_x509_privkey_export2(pkey, GNUTLS_X509_FMT_DER,
 					        raw);

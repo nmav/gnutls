@@ -81,10 +81,13 @@ const asn1_static_node gnutls_asn1_tab[] = {
   { "name-string", 536879115, NULL },
   { NULL, 1073743880, "1"},
   { NULL, 27, NULL },
-  { "KRB5PrincipalName", 536870917, NULL },
+  { "KRB5PrincipalName", 1610612741, NULL },
   { "realm", 1610620955, NULL },
   { NULL, 2056, "0"},
   { "principalName", 536879106, "PrincipalName"},
   { NULL, 2056, "1"},
+  { "EdDSAParameters", 537133077, NULL },
+  { "ed25519", 1073741825, "1"},
+  { "ed25519p", 1, "2"},
   { NULL, 0, NULL }
 };

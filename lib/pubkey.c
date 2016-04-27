@@ -50,7 +50,8 @@ int pubkey_to_bits(gnutls_pk_algorithm_t pk, gnutls_pk_params_st * params)
 		return _gnutls_mpi_get_nbits(params->params[RSA_MODULUS]);
 	case GNUTLS_PK_DSA:
 		return _gnutls_mpi_get_nbits(params->params[DSA_P]);
-	case GNUTLS_PK_EC:
+	case GNUTLS_PK_ECDSA:
+	case GNUTLS_PK_EDDSA:
 		return gnutls_ecc_curve_get_size(params->flags) * 8;
 	default:
 		return 0;
@@ -289,11 +290,17 @@ gnutls_pubkey_get_preferred_hash_algorithm(gnutls_pubkey_t key,
 		if (mand)
 			*mand = 1;
 		/* fallthrough */
-	case GNUTLS_PK_EC:
+	case GNUTLS_PK_ECDSA:
 
 		me = _gnutls_dsa_q_to_hash(key->pk_algorithm, &key->params, NULL);
 		if (hash)
 			*hash = (gnutls_digest_algorithm_t)me->id;
+
+		ret = 0;
+		break;
+	case GNUTLS_PK_EDDSA:
+		if (hash)
+			*hash = GNUTLS_DIG_SHA512;
 
 		ret = 0;
 		break;
@@ -954,6 +961,7 @@ gnutls_pubkey_export_dsa_raw(gnutls_pubkey_t key,
  * This function will export the ECC public key's parameters found in
  * the given key.  The new parameters will be allocated using
  * gnutls_malloc() and will be stored in the appropriate datum.
+ * For EdDSA public keys, @y will be set to %NULL.
  *
  * This function allows for %NULL parameters since 3.4.1.
  *
@@ -973,13 +981,24 @@ gnutls_pubkey_export_ecc_raw(gnutls_pubkey_t key,
 		return GNUTLS_E_INVALID_REQUEST;
 	}
 
-	if (key->pk_algorithm != GNUTLS_PK_EC) {
+	if (!IS_EC(key->pk_algorithm)) {
 		gnutls_assert();
 		return GNUTLS_E_INVALID_REQUEST;
 	}
 
 	if (curve)
 		*curve = key->params.flags;
+
+	if (key->pk_algorithm == GNUTLS_PK_EDDSA) {
+		if (x) {
+			ret = _gnutls_set_datum(x, key->params.raw_pub.data, key->params.raw_pub.size);
+			if (ret < 0)
+				return gnutls_assert_val(ret);
+		}
+		return 0;
+	}
+
+	/* ECDSA */
 
 	/* X */
 	if (x) {
@@ -1395,7 +1414,8 @@ gnutls_pubkey_import_rsa_raw(gnutls_pubkey_t key,
  * @y: holds the y
  *
  * This function will convert the given elliptic curve parameters to a
- * #gnutls_pubkey_t.  The output will be stored in @key.
+ * #gnutls_pubkey_t.  The output will be stored in @key. For EdDSA
+ * keys the @y parameter should be %NULL.
  *
  * Returns: On success, %GNUTLS_E_SUCCESS (0) is returned, otherwise a
  *   negative error value.
@@ -1420,6 +1440,19 @@ gnutls_pubkey_import_ecc_raw(gnutls_pubkey_t key,
 
 	key->params.flags = curve;
 
+	if (curve_is_eddsa(curve)) {
+		key->pk_algorithm = GNUTLS_PK_EDDSA;
+
+		ret = _gnutls_set_datum(&key->params.raw_pub, x->data, x->size);
+		if (ret < 0)
+			return gnutls_assert_val(ret);
+
+		return 0;
+	}
+
+	/* ECDSA */
+	key->pk_algorithm = GNUTLS_PK_ECDSA;
+
 	if (_gnutls_mpi_init_scan_nz
 	    (&key->params.params[ECC_X], x->data, x->size)) {
 		gnutls_assert();
@@ -1435,7 +1468,6 @@ gnutls_pubkey_import_ecc_raw(gnutls_pubkey_t key,
 		goto cleanup;
 	}
 	key->params.params_nr++;
-	key->pk_algorithm = GNUTLS_PK_EC;
 
 	return 0;
 
@@ -1870,6 +1902,30 @@ dsa_verify_hashed_data(gnutls_pk_algorithm_t pk,
 }
 
 static int
+eddsa_verify_data(gnutls_pk_algorithm_t pk,
+		  const mac_entry_st * algo,
+		  const gnutls_datum_t * data,
+		  const gnutls_datum_t * signature,
+		  gnutls_pk_params_st * params)
+{
+	int ret;
+	uint8_t _digest[MAX_HASH_SIZE];
+	gnutls_datum_t digest;
+
+	if (algo == NULL)
+		return gnutls_assert_val(GNUTLS_E_INVALID_REQUEST);
+
+	ret = _gnutls_hash_fast(algo->id, data->data, data->size, _digest);
+	if (ret < 0)
+		return gnutls_assert_val(ret);
+
+	digest.data = _digest;
+	digest.size = _gnutls_hash_get_algo_len(algo);
+
+	return _gnutls_pk_verify(pk, &digest, signature, params);
+}
+
+static int
 dsa_verify_data(gnutls_pk_algorithm_t pk,
 		const mac_entry_st * algo,
 		const gnutls_datum_t * data,
@@ -1957,7 +2013,15 @@ pubkey_verify_data(gnutls_pk_algorithm_t pk,
 		return 1;
 		break;
 
-	case GNUTLS_PK_EC:
+	case GNUTLS_PK_EDDSA:
+		if (eddsa_verify_data(pk, me, data, signature, issuer_params) != 0) {
+			gnutls_assert();
+			return GNUTLS_E_PK_SIG_VERIFY_FAILED;
+		}
+
+		return 1;
+		break;
+	case GNUTLS_PK_ECDSA:
 	case GNUTLS_PK_DSA:
 		if (dsa_verify_data(pk, me, data, signature, issuer_params)
 		    != 0) {

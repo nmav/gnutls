@@ -134,10 +134,10 @@ int gnutls_privkey_get_pk_algorithm(gnutls_privkey_t key, unsigned int *bits)
 							      bits);
 #endif
 	case GNUTLS_PRIVKEY_X509:
-		if (bits)
-			*bits =
-			    _gnutls_mpi_get_nbits(key->key.x509->
-						  params.params[0]);
+		if (bits) {
+			*bits = pubkey_to_bits(key->key.x509->pk_algorithm, &key->key.x509->params);
+		}
+
 		return gnutls_x509_privkey_get_pk_algorithm(key->key.x509);
 	case GNUTLS_PRIVKEY_EXT:
 		if (bits)
@@ -189,7 +189,7 @@ privkey_to_pubkey(gnutls_pk_algorithm_t pk,
 		}
 
 		break;
-	case GNUTLS_PK_EC:
+	case GNUTLS_PK_ECDSA:
 		pub->params[ECC_X] = _gnutls_mpi_copy(priv->params[ECC_X]);
 		pub->params[ECC_Y] = _gnutls_mpi_copy(priv->params[ECC_Y]);
 
@@ -202,6 +202,13 @@ privkey_to_pubkey(gnutls_pk_algorithm_t pk,
 		}
 
 		break;
+	case GNUTLS_PK_EDDSA:
+		ret = _gnutls_set_datum(&pub->raw_pub, priv->raw_pub.data, priv->raw_pub.size);
+		if (ret < 0)
+			return gnutls_assert_val(ret);
+
+		break;
+
 	default:
 		gnutls_assert();
 		return GNUTLS_E_INVALID_REQUEST;

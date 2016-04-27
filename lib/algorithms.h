@@ -34,7 +34,7 @@
 /* would allow for 256 ciphersuites */
 #define MAX_CIPHERSUITE_SIZE 512
 
-#define IS_EC(x) (((x)==GNUTLS_PK_ECDSA)||((x)==GNUTLS_PK_ECDHX))
+#define IS_EC(x) (((x)==GNUTLS_PK_ECDSA)||((x)==GNUTLS_PK_ECDHX)||((x)==GNUTLS_PK_EDDSA))
 
 /* Functions for version handling. */
 const version_entry_st *version_to_entry(gnutls_protocol_t c);
@@ -323,7 +323,8 @@ struct gnutls_ecc_curve_entry_st {
 	gnutls_ecc_curve_t id;
 	gnutls_pk_algorithm_t pk;
 	int tls_id;		/* The RFC4492 namedCurve ID */
-	int size;		/* the size in bytes */
+	unsigned size;		/* the size of curve in bytes */
+	unsigned sig_size;		/* the size of curve signatures in bytes (EdDSA) */
 };
 typedef struct gnutls_ecc_curve_entry_st gnutls_ecc_curve_entry_st;
 
@@ -332,8 +333,24 @@ const gnutls_ecc_curve_entry_st
 gnutls_ecc_curve_t gnutls_ecc_curve_get_id(const char *name);
 int _gnutls_tls_id_to_ecc_curve(int num);
 int _gnutls_ecc_curve_get_tls_id(gnutls_ecc_curve_t supported_ecc);
-gnutls_ecc_curve_t _gnutls_ecc_bits_to_curve(int bits);
+gnutls_ecc_curve_t _gnutls_ecc_bits_to_curve(gnutls_pk_algorithm_t pk, int bits);
 #define MAX_ECC_CURVE_SIZE 66
+
+inline static int _curve_is_eddsa(const gnutls_ecc_curve_entry_st * e)
+{
+	size_t ret = 0;
+	if (unlikely(e == NULL))
+		return ret;
+	if (e->pk == GNUTLS_PK_EDDSA)
+		return 1;
+	return 0;
+}
+
+inline static int curve_is_eddsa(gnutls_ecc_curve_t id)
+{
+	const gnutls_ecc_curve_entry_st *e = _gnutls_ecc_curve_get_params(id);
+	return _curve_is_eddsa(e);
+}
 
 static inline int _gnutls_kx_is_ecc(gnutls_kx_algorithm_t kx)
 {

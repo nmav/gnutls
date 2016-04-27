@@ -279,7 +279,6 @@ _gnutls_privkey_decode_ecc_key(ASN1_TYPE* pkey_asn, const gnutls_datum_t * raw_k
 
 	gnutls_pk_params_init(&pkey->params);
 
-	pkey->params.algo = GNUTLS_PK_EC;
 	if ((ret =
 	     asn1_create_element(_gnutls_get_gnutls_asn(),
 				 "GNUTLS.ECPrivateKey",
@@ -325,6 +324,7 @@ _gnutls_privkey_decode_ecc_key(ASN1_TYPE* pkey_asn, const gnutls_datum_t * raw_k
 		}
 
 		pkey->params.flags = gnutls_oid_to_ecc_curve(oid);
+		curve = pkey->params.flags;
 
 		if (pkey->params.flags == GNUTLS_ECC_CURVE_INVALID) {
 			_gnutls_debug_log("Curve %s is not supported\n", oid);
@@ -336,35 +336,57 @@ _gnutls_privkey_decode_ecc_key(ASN1_TYPE* pkey_asn, const gnutls_datum_t * raw_k
 		pkey->params.flags = curve;
 	}
 
+	if (curve_is_eddsa(curve)) {
+		pkey->pk_algorithm = GNUTLS_PK_EDDSA;
+		pkey->params.algo = GNUTLS_PK_EDDSA;
 
-	/* read the public key */
-	ret = _gnutls_x509_read_value(*pkey_asn, "publicKey", &out);
-	if (ret < 0) {
-		gnutls_assert();
-		goto error;
+		ret =
+		    _gnutls_x509_read_value(*pkey_asn, "privateKey",
+					  &pkey->params.raw_priv);
+		if (ret < 0) {
+			gnutls_assert();
+			goto error;
+		}
+
+		/* make the public key */
+		ret = _gnutls_pk_fixup(GNUTLS_PK_EDDSA, GNUTLS_IMPORT, &pkey->params);
+		if (ret < 0) {
+			gnutls_assert();
+			goto error;
+		}
+	} else { /* Normal EC curves */
+		pkey->pk_algorithm = GNUTLS_PK_ECDSA;
+		pkey->params.algo = GNUTLS_PK_ECDSA;
+
+		/* read the public key */
+		ret = _gnutls_x509_read_value(*pkey_asn, "publicKey", &out);
+		if (ret < 0) {
+			gnutls_assert();
+			goto error;
+		}
+
+		ret =
+		    _gnutls_ecc_ansi_x963_import(out.data, out.size,
+						 &pkey->params.params[ECC_X],
+						 &pkey->params.params[ECC_Y]);
+
+		_gnutls_free_datum(&out);
+		if (ret < 0) {
+			gnutls_assert();
+			goto error;
+		}
+		pkey->params.params_nr += 2;
+
+		/* read the private key */
+		ret =
+		    _gnutls_x509_read_key_int(*pkey_asn, "privateKey",
+					  &pkey->params.params[ECC_K]);
+		if (ret < 0) {
+			gnutls_assert();
+			goto error;
+		}
+		pkey->params.params_nr++;
 	}
-
-	ret =
-	    _gnutls_ecc_ansi_x963_import(out.data, out.size,
-					 &pkey->params.params[ECC_X],
-					 &pkey->params.params[ECC_Y]);
-
-	_gnutls_free_datum(&out);
-	if (ret < 0) {
-		gnutls_assert();
-		goto error;
-	}
-	pkey->params.params_nr += 2;
-
-	/* read the private key */
-	ret =
-	    _gnutls_x509_read_key_int(*pkey_asn, "privateKey",
-				  &pkey->params.params[ECC_K]);
-	if (ret < 0) {
-		gnutls_assert();
-		goto error;
-	}
-	pkey->params.params_nr++;
 
 	return 0;
 
@@ -373,9 +395,7 @@ _gnutls_privkey_decode_ecc_key(ASN1_TYPE* pkey_asn, const gnutls_datum_t * raw_k
 	gnutls_pk_params_clear(&pkey->params);
 	gnutls_pk_params_release(&pkey->params);
 	return ret;
-
 }
-
 
 static ASN1_TYPE
 decode_dsa_key(const gnutls_datum_t * raw_key, gnutls_x509_privkey_t pkey)
@@ -477,6 +497,7 @@ decode_dsa_key(const gnutls_datum_t * raw_key, gnutls_x509_privkey_t pkey)
 #define PEM_KEY_DSA_PROVABLE "FIPS186-4 DSA PRIVATE KEY"
 #define PEM_KEY_RSA_PROVABLE "FIPS186-4 RSA PRIVATE KEY"
 #define PEM_KEY_ECC "EC PRIVATE KEY"
+#define PEM_KEY_EDDSA "EdDSA PRIVATE KEY"
 #define PEM_KEY_PKCS8 "PRIVATE KEY"
 
 #define MAX_PEM_HEADER_SIZE 25
@@ -554,6 +575,7 @@ gnutls_x509_privkey_import(gnutls_x509_privkey_t key,
 
 				IF_CHECK_FOR(PEM_KEY_RSA, GNUTLS_PK_RSA, ptr, begin_ptr, left, key)
 				else IF_CHECK_FOR(PEM_KEY_ECC, GNUTLS_PK_EC, ptr, begin_ptr, left, key)
+				else IF_CHECK_FOR(PEM_KEY_EDDSA, GNUTLS_PK_EDDSA, ptr, begin_ptr, left, key)
 				else IF_CHECK_FOR(PEM_KEY_DSA, GNUTLS_PK_DSA, ptr, begin_ptr, left, key)
 				else IF_CHECK_FOR(PEM_KEY_RSA_PROVABLE, GNUTLS_PK_RSA, ptr, begin_ptr, left, key)
 				else IF_CHECK_FOR(PEM_KEY_DSA_PROVABLE, GNUTLS_PK_DSA, ptr, begin_ptr, left, key)
@@ -604,7 +626,7 @@ gnutls_x509_privkey_import(gnutls_x509_privkey_t key,
 		key->key = decode_dsa_key(&_data, key);
 		if (key->key == NULL)
 			gnutls_assert();
-	} else if (key->pk_algorithm == GNUTLS_PK_EC) {
+	} else if (key->pk_algorithm == GNUTLS_PK_EC || key->pk_algorithm == GNUTLS_PK_EDDSA) {
 		result = _gnutls_privkey_decode_ecc_key(&key->key, &_data, key, 0);
 		if (result < 0) {
 			gnutls_assert();
@@ -622,7 +644,6 @@ gnutls_x509_privkey_import(gnutls_x509_privkey_t key,
 			key->pk_algorithm = GNUTLS_PK_DSA;
 			key->key = decode_dsa_key(&_data, key);
 			if (key->key == NULL) {
-				key->pk_algorithm = GNUTLS_PK_EC;
 				result =
 				    _gnutls_privkey_decode_ecc_key(&key->key, &_data, key, 0);
 				if (result < 0) {
@@ -635,7 +656,6 @@ gnutls_x509_privkey_import(gnutls_x509_privkey_t key,
 						key->key = NULL;
 					}
 				}
-
 			}
 		}
 	}
@@ -739,9 +759,9 @@ gnutls_x509_privkey_import2(gnutls_x509_privkey_t key,
 		if (ptr != NULL) {
 			left = data->size - ((ptrdiff_t)ptr - (ptrdiff_t)data->data);
 
-			if (data->size - left > 15) {
-				ptr -= 15;
-				left += 15;
+			if (data->size - left > MAX_PEM_HEADER_SIZE) {
+				ptr -= MAX_PEM_HEADER_SIZE;
+				left += MAX_PEM_HEADER_SIZE;
 			} else {
 				ptr = (char*)data->data;
 				left = data->size;
@@ -756,6 +776,7 @@ gnutls_x509_privkey_import2(gnutls_x509_privkey_t key,
 			if (ptr != NULL && left > sizeof(PEM_KEY_RSA)) {
 				if (memcmp(ptr, PEM_KEY_RSA, sizeof(PEM_KEY_RSA)-1) == 0 ||
 				    memcmp(ptr, PEM_KEY_ECC, sizeof(PEM_KEY_ECC)-1) == 0 ||
+				    memcmp(ptr, PEM_KEY_EDDSA, sizeof(PEM_KEY_EDDSA)-1) == 0 ||
 				    memcmp(ptr, PEM_KEY_DSA, sizeof(PEM_KEY_DSA)-1) == 0) {
 				    	head_enc = 0;
 				}
@@ -1111,6 +1132,25 @@ gnutls_x509_privkey_import_ecc_raw(gnutls_x509_privkey_t key,
 	}
 
 	key->params.flags = curve;
+	if (curve_is_eddsa(curve)) {
+		key->params.algo = GNUTLS_PK_EDDSA;
+
+		ret = _gnutls_set_datum(&key->params.raw_pub, x->data, x->size);
+		if (ret < 0) {
+			gnutls_assert();
+			goto cleanup;
+		}
+
+		ret = _gnutls_set_datum(&key->params.raw_priv, k->data, k->size);
+		if (ret < 0) {
+			gnutls_assert();
+			goto cleanup;
+		}
+
+		return 0;
+	}
+
+	key->params.algo = GNUTLS_PK_ECDSA;
 
 	if (_gnutls_mpi_init_scan_nz
 	    (&key->params.params[ECC_X], x->data, x->size)) {
@@ -1135,8 +1175,6 @@ gnutls_x509_privkey_import_ecc_raw(gnutls_x509_privkey_t key,
 		goto cleanup;
 	}
 	key->params.params_nr++;
-
-	key->pk_algorithm = GNUTLS_PK_EC;
 
 	return 0;
 
@@ -1212,9 +1250,11 @@ static const char *set_msg(gnutls_x509_privkey_t key)
 			return PEM_KEY_DSA_PROVABLE;
 		else
 			return PEM_KEY_DSA;
-	} else if (key->pk_algorithm == GNUTLS_PK_EC)
+	} else if (key->pk_algorithm == GNUTLS_PK_EC) {
 		return PEM_KEY_ECC;
-	else
+	} else if (key->pk_algorithm == GNUTLS_PK_EDDSA) {
+		return PEM_KEY_EDDSA;
+	} else
 		return "UNKNOWN";
 }
 
@@ -1343,6 +1383,7 @@ gnutls_sec_param_t gnutls_x509_privkey_sec_param(gnutls_x509_privkey_t key)
  * This function will export the ECC private key's parameters found
  * in the given structure. The new parameters will be allocated using
  * gnutls_malloc() and will be stored in the appropriate datum.
+ * For EdDSA keys, the @y value should be %NULL.
  *
  * Returns: On success, %GNUTLS_E_SUCCESS (0) is returned, otherwise a
  *   negative error value.
@@ -1502,7 +1543,8 @@ char* gen_data = NULL;
 		/* Here we don't know the purpose of the key. Check both
 		 * signing and encryption.
 		 */
-	case GNUTLS_PK_EC: /* we only do keys for ECDSA */
+	case GNUTLS_PK_EDDSA:
+	case GNUTLS_PK_ECDSA:
 	case GNUTLS_PK_DSA:
 		ret = _gnutls_pk_sign(algo, &sig, &ddata, params);
 		if (ret < 0) {
@@ -1618,11 +1660,16 @@ gnutls_x509_privkey_generate2(gnutls_x509_privkey_t key,
 		}
 	}
 
-	if (algo == GNUTLS_PK_EC) {
+	if (IS_EC(algo)) {
 		if (GNUTLS_BITS_ARE_CURVE(bits))
 			bits = GNUTLS_BITS_TO_CURVE(bits);
 		else
-			bits = _gnutls_ecc_bits_to_curve(bits);
+			bits = _gnutls_ecc_bits_to_curve(algo, bits);
+
+		if (gnutls_ecc_curve_get_pk(bits) != algo) {
+			_gnutls_debug_log("curve is incompatible with public key algorithm\n");
+			return gnutls_assert_val(GNUTLS_E_INVALID_REQUEST);
+		}
 	}
 
 	if (flags & GNUTLS_PRIVKEY_FLAG_PROVABLE) {

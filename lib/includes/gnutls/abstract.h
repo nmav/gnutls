@@ -134,6 +134,9 @@ int gnutls_pubkey_get_preferred_hash_algorithm(gnutls_pubkey_t key,
 					       gnutls_digest_algorithm_t
 					       * hash, unsigned int *mand);
 
+int gnutls_pubkey_export_eddsa_raw(gnutls_pubkey_t key, gnutls_ecc_curve_t * curve,
+		gnutls_datum_t * pub);
+
 #define gnutls_pubkey_get_pk_rsa_raw gnutls_pubkey_export_rsa_raw
 int gnutls_pubkey_export_rsa_raw(gnutls_pubkey_t key,
 				 gnutls_datum_t * m, gnutls_datum_t * e);
@@ -414,6 +417,11 @@ int gnutls_privkey_decrypt_data(gnutls_privkey_t key,
 				unsigned int flags,
 				const gnutls_datum_t * ciphertext,
 				gnutls_datum_t * plaintext);
+
+int gnutls_privkey_export_eddsa_raw(gnutls_privkey_t key,
+		gnutls_ecc_curve_t * curve,
+		gnutls_datum_t *pub,
+		gnutls_datum_t *priv);
 
 int
 gnutls_privkey_export_rsa_raw(gnutls_privkey_t key,
