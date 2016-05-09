@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: Simple client example in C++</title>
+<title>GnuTLS 3.5.0: Simple client example in C++</title>
 
-<meta name="description" content="GnuTLS 3.4.11: Simple client example in C++">
-<meta name="keywords" content="GnuTLS 3.4.11: Simple client example in C++">
+<meta name="description" content="GnuTLS 3.5.0: Simple client example in C++">
+<meta name="keywords" content="GnuTLS 3.5.0: Simple client example in C++">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Client-examples.html#Client-examples" rel="up" title="Client examples">
 <link href="Helper-functions-for-TCP-connections.html#Helper-functions-for-TCP-connections" rel="next" title="Helper functions for TCP connections">
-<link href="Simple-client-example-with-SRP-authentication.html#Simple-client-example-with-SRP-authentication" rel="prev" title="Simple client example with SRP authentication">
+<link href="Legacy-client-example-with-X_002e509-certificate-support.html#Legacy-client-example-with-X_002e509-certificate-support" rel="prev" title="Legacy client example with X.509 certificate support">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -159,11 +158,11 @@ dl {
 <a name="Simple-client-example-in-C_002b_002b"></a>
 <div class="header">
 <p>
-Next: <a href="Helper-functions-for-TCP-connections.html#Helper-functions-for-TCP-connections" accesskey="n" rel="next">Helper functions for TCP connections</a>, Previous: <a href="Simple-client-example-with-SRP-authentication.html#Simple-client-example-with-SRP-authentication" accesskey="p" rel="prev">Simple client example with SRP authentication</a>, Up: <a href="Client-examples.html#Client-examples" accesskey="u" rel="up">Client examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Helper-functions-for-TCP-connections.html#Helper-functions-for-TCP-connections" accesskey="n" rel="next">Helper functions for TCP connections</a>, Previous: <a href="Legacy-client-example-with-X_002e509-certificate-support.html#Legacy-client-example-with-X_002e509-certificate-support" accesskey="p" rel="prev">Legacy client example with X.509 certificate support</a>, Up: <a href="Client-examples.html#Client-examples" accesskey="u" rel="up">Client examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Simple-client-example-using-the-C_002b_002b-API"></a>
-<h4 class="subsection">7.1.11 Simple client example using the C++ API</h4>
+<h4 class="subsection">7.1.12 Simple client example using the C++ API</h4>
 
 <p>The following client is a simple example of a client client utilizing
 the GnuTLS C++ API.

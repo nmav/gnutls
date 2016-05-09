@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: Error codes</title>
+<title>GnuTLS 3.5.0: Error codes</title>
 
-<meta name="description" content="GnuTLS 3.4.11: Error codes">
-<meta name="keywords" content="GnuTLS 3.4.11: Error codes">
+<meta name="description" content="GnuTLS 3.5.0: Error codes">
+<meta name="keywords" content="GnuTLS 3.5.0: Error codes">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -282,6 +281,7 @@ expressions.
 <tr><td width="15%">-217</td><td width="40%">GNUTLS_E_INSUFFICIENT_SECURITY</td><td width="37%">One of the involved algorithms has insufficient security level.</td></tr>
 <tr><td width="15%">-292</td><td width="40%">GNUTLS_E_HEARTBEAT_PONG_RECEIVED</td><td width="37%">A heartbeat pong message was received.</td></tr>
 <tr><td width="15%">-293</td><td width="40%">GNUTLS_E_HEARTBEAT_PING_RECEIVED</td><td width="37%">A heartbeat ping message was received.</td></tr>
+<tr><td width="15%">-294</td><td width="40%">GNUTLS_E_UNRECOGNIZED_NAME</td><td width="37%">The SNI host name not recognised.</td></tr>
 <tr><td width="15%">-300</td><td width="40%">GNUTLS_E_PKCS11_ERROR</td><td width="37%">PKCS #11 error.</td></tr>
 <tr><td width="15%">-301</td><td width="40%">GNUTLS_E_PKCS11_LOAD_ERROR</td><td width="37%">PKCS #11 initialization error.</td></tr>
 <tr><td width="15%">-302</td><td width="40%">GNUTLS_E_PARSING_ERROR</td><td width="37%">Error in parsing.</td></tr>
@@ -326,10 +326,15 @@ expressions.
 <tr><td width="15%">-346</td><td width="40%">GNUTLS_E_KEY_IMPORT_FAILED</td><td width="37%">Failed to import the key into store.</td></tr>
 <tr><td width="15%">-347</td><td width="40%">GNUTLS_E_INAPPROPRIATE_FALLBACK</td><td width="37%">A connection with inappropriate fallback was attempted.</td></tr>
 <tr><td width="15%">-348</td><td width="40%">GNUTLS_E_CERTIFICATE_VERIFICATION_ERROR</td><td width="37%">Error in the certificate verification.</td></tr>
+<tr><td width="15%">-349</td><td width="40%">GNUTLS_E_PRIVKEY_VERIFICATION_ERROR</td><td width="37%">Error in the private key verification; seed doesn&rsquo;t match.</td></tr>
+<tr><td width="15%">-350</td><td width="40%">GNUTLS_E_UNEXPECTED_EXTENSIONS_LENGTH</td><td width="37%">Invalid TLS extensions length field.</td></tr>
+<tr><td width="15%">-351</td><td width="40%">GNUTLS_E_ASN1_EMBEDDED_NULL_IN_STRING</td><td width="37%">The provided string has an embedded null.</td></tr>
 <tr><td width="15%">-400</td><td width="40%">GNUTLS_E_SELF_TEST_ERROR</td><td width="37%">Error while performing self checks.</td></tr>
 <tr><td width="15%">-401</td><td width="40%">GNUTLS_E_NO_SELF_TEST</td><td width="37%">There is no self test for this algorithm.</td></tr>
 <tr><td width="15%">-402</td><td width="40%">GNUTLS_E_LIB_IN_ERROR_STATE</td><td width="37%">An error has been detected in the library and cannot continue operations.</td></tr>
 <tr><td width="15%">-403</td><td width="40%">GNUTLS_E_PK_GENERATION_ERROR</td><td width="37%">Error in public key generation.</td></tr>
+<tr><td width="15%">-406</td><td width="40%">GNUTLS_E_SESSION_USER_ID_CHANGED</td><td width="37%">Peer&rsquo;s certificate or username has changed during a rehandshake.</td></tr>
+<tr><td width="15%">-407</td><td width="40%">GNUTLS_E_HANDSHAKE_DURING_FALSE_START</td><td width="37%">Attempted handshake during false start.</td></tr>
 </table>
 
 

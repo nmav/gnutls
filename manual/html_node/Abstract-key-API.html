@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: Abstract key API</title>
+<title>GnuTLS 3.5.0: Abstract key API</title>
 
-<meta name="description" content="GnuTLS 3.4.11: Abstract key API">
-<meta name="keywords" content="GnuTLS 3.4.11: Abstract key API">
+<meta name="description" content="GnuTLS 3.5.0: Abstract key API">
+<meta name="keywords" content="GnuTLS 3.5.0: Abstract key API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -612,16 +611,55 @@ negative error value.
 <h4 class="subheading">gnutls_privkey_generate</h4>
 <a name="gnutls_005fprivkey_005fgenerate"></a><dl>
 <dt><a name="index-gnutls_005fprivkey_005fgenerate"></a>Function: <em>int</em> <strong>gnutls_privkey_generate</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_pk_algorithm_t <var>algo</var>, unsigned int <var>bits</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>pkey</var>: An initialized private key
+</p>
+<p><var>algo</var>: is one of the algorithms in <code>gnutls_pk_algorithm_t</code> .
+</p>
+<p><var>bits</var>: the size of the parameters to generate
+</p>
+<p><var>flags</var>: Must be zero or flags from <code>gnutls_privkey_flags_t</code> .
+</p>
+<p>This function will generate a random private key. Note that this
+function must be called on an empty private key. The flag <code>GNUTLS_PRIVKEY_FLAG_PROVABLE</code> 
+instructs the key generation process to use algorithms which generate
+provable parameters out of a seed.
+</p>
+<p>Note that when generating an elliptic curve key, the curve
+can be substituted in the place of the bits parameter using the
+<code>GNUTLS_CURVE_TO_BITS()</code>  macro. The input to the macro is any curve from
+<code>gnutls_ecc_curve_t</code> .
+</p>
+<p>For DSA keys, if the subgroup size needs to be specified check
+the <code>GNUTLS_SUBGROUP_TO_BITS()</code>  macro.
+</p>
+<p>It is recommended to do not set the number of  <code>bits</code> directly, use <code>gnutls_sec_param_to_pk_bits()</code>  instead .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fgenerate2-1"></a>
+<h4 class="subheading">gnutls_privkey_generate2</h4>
+<a name="gnutls_005fprivkey_005fgenerate2"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fgenerate2"></a>Function: <em>int</em> <strong>gnutls_privkey_generate2</strong> <em>(gnutls_privkey_t <var>pkey</var>, gnutls_pk_algorithm_t <var>algo</var>, unsigned int <var>bits</var>, unsigned int <var>flags</var>, const gnutls_keygen_data_st * <var>data</var>, unsigned <var>data_size</var>)</em></dt>
 <dd><p><var>pkey</var>: The private key
 </p>
 <p><var>algo</var>: is one of the algorithms in <code>gnutls_pk_algorithm_t</code> .
 </p>
 <p><var>bits</var>: the size of the modulus
 </p>
-<p><var>flags</var>: unused for now.  Must be 0.
+<p><var>flags</var>: Must be zero or flags from <code>gnutls_privkey_flags_t</code> .
+</p>
+<p><var>data</var>: Allow specifying <code>gnutls_keygen_data_st</code>  types such as the seed to be used.
+</p>
+<p><var>data_size</var>: The number of  <code>data</code> available.
 </p>
 <p>This function will generate a random private key. Note that this
-function must be called on an empty private key.
+function must be called on an empty private key. The flag <code>GNUTLS_PRIVKEY_FLAG_PROVABLE</code> 
+instructs the key generation process to use algorithms like Shawe-Taylor
+which generate provable parameters out of a seed.
 </p>
 <p>Note that when generating an elliptic curve key, the curve
 can be substituted in the place of the bits parameter using the
@@ -632,7 +670,7 @@ can be substituted in the place of the bits parameter using the
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
 </p>
-<p><strong>Since:</strong> 3.3.0
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fprivkey_005fget_005fpk_005falgorithm-1"></a>
@@ -651,6 +689,28 @@ the security parameter of the key.
 success, or a negative error code on error.
 </p>
 <p><strong>Since:</strong> 2.12.0
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fget_005fseed-1"></a>
+<h4 class="subheading">gnutls_privkey_get_seed</h4>
+<a name="gnutls_005fprivkey_005fget_005fseed"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fget_005fseed"></a>Function: <em>int</em> <strong>gnutls_privkey_get_seed</strong> <em>(gnutls_privkey_t <var>key</var>, gnutls_digest_algorithm_t * <var>digest</var>, void * <var>seed</var>, size_t * <var>seed_size</var>)</em></dt>
+<dd><p><var>key</var>: should contain a <code>gnutls_privkey_t</code>  type
+</p>
+<p><var>digest</var>: if non-NULL it will contain the digest algorithm used for key generation (if applicable)
+</p>
+<p><var>seed</var>: where seed will be copied to
+</p>
+<p><var>seed_size</var>: originally holds the size of  <code>seed</code> , will be updated with actual size
+</p>
+<p>This function will return the seed that was used to generate the
+given private key. That function will succeed only if the key was generated
+as a provable key.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fprivkey_005fget_005ftype-1"></a>
@@ -735,6 +795,11 @@ negative error value.
 <p>This function will associate the given callbacks with the
 <code>gnutls_privkey_t</code>  type. At least one of the two callbacks
 must be non-null.
+</p>
+<p>Note that the signing function is supposed to &quot;raw&quot; sign data, i.e.,
+without any hashing or preprocessing. In case of RSA the DigestInfo
+will be provided, and the signing function is expected to do the PKCS <code>1</code> 
+1.5 padding and the exponentiation.
 </p>
 <p>See also <code>gnutls_privkey_import_ext3()</code> .
 </p>
@@ -1082,6 +1147,21 @@ negative error value.
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
 
+<a name="gnutls_005fprivkey_005fset_005fflags-1"></a>
+<h4 class="subheading">gnutls_privkey_set_flags</h4>
+<a name="gnutls_005fprivkey_005fset_005fflags"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fset_005fflags"></a>Function: <em>void</em> <strong>gnutls_privkey_set_flags</strong> <em>(gnutls_privkey_t <var>key</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>key</var>: A key of type <code>gnutls_privkey_t</code> 
+</p>
+<p><var>flags</var>: flags from the <code>gnutls_privkey_flags</code> 
+</p>
+<p>This function will set flags for the specified private key, after
+it is generated. Currently this is useful for the <code>GNUTLS_PRIVKEY_FLAG_EXPORT_COMPAT</code> 
+to allow exporting a &quot;provable&quot; private key in backwards compatible way.
+</p>
+<p><strong>Since:</strong> 3.5.0
+</p></dd></dl>
+
 <a name="gnutls_005fprivkey_005fset_005fpin_005ffunction-1"></a>
 <h4 class="subheading">gnutls_privkey_set_pin_function</h4>
 <a name="gnutls_005fprivkey_005fset_005fpin_005ffunction"></a><dl>
@@ -1190,6 +1270,27 @@ holding the private key is still available (inserted), and zero otherwise.
 negative error value.
 </p>
 <p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
+<a name="gnutls_005fprivkey_005fverify_005fseed-1"></a>
+<h4 class="subheading">gnutls_privkey_verify_seed</h4>
+<a name="gnutls_005fprivkey_005fverify_005fseed"></a><dl>
+<dt><a name="index-gnutls_005fprivkey_005fverify_005fseed"></a>Function: <em>int</em> <strong>gnutls_privkey_verify_seed</strong> <em>(gnutls_privkey_t <var>key</var>, gnutls_digest_algorithm_t <var>digest</var>, const void * <var>seed</var>, size_t <var>seed_size</var>)</em></dt>
+<dd><p><var>key</var>: should contain a <code>gnutls_privkey_t</code>  type
+</p>
+<p><var>digest</var>: it contains the digest algorithm used for key generation (if applicable)
+</p>
+<p><var>seed</var>: the seed of the key to be checked with
+</p>
+<p><var>seed_size</var>: holds the size of  <code>seed</code> 
+</p>
+<p>This function will verify that the given private key was generated from
+the provided seed.
+</p>
+<p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PRIVKEY_VERIFICATION_ERROR</code> 
+is returned, and zero or positive code on success.
+</p>
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fpubkey_005fdeinit-1"></a>
@@ -1647,6 +1748,9 @@ negative error value.
 </p>
 <p>Imports the public key from a private.  This function will import
 the given public key to the abstract <code>gnutls_pubkey_t</code>  type.
+</p>
+<p>Note that in certain keys this operation may not be possible, e.g.,
+in other than RSA PKCS<code>11</code>  keys.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.

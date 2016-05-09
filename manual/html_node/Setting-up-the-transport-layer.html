@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: Setting up the transport layer</title>
+<title>GnuTLS 3.5.0: Setting up the transport layer</title>
 
-<meta name="description" content="GnuTLS 3.4.11: Setting up the transport layer">
-<meta name="keywords" content="GnuTLS 3.4.11: Setting up the transport layer">
+<meta name="description" content="GnuTLS 3.5.0: Setting up the transport layer">
+<meta name="keywords" content="GnuTLS 3.5.0: Setting up the transport layer">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -265,7 +264,9 @@ You&rsquo;ll need to override this function if <code>select()</code>  is not sui
 for the provided transport calls.
 </p>
 <p>As with <code>select()</code> , if the timeout value is zero the callback should return
-zero if no data are immediately available.
+zero if no data are immediately available. The special value
+<code>GNUTLS_INDEFINITE_TIMEOUT</code>  indicates that the callback should wait indefinitely
+for data.
 </p>
 <p><code>gnutls_pull_timeout_func</code> is of the form,
 int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);
@@ -354,7 +355,9 @@ You&rsquo;ll need to override this function if <code>select()</code>  is not sui
 for the provided transport calls.
 </p>
 <p>As with <code>select()</code> , if the timeout value is zero the callback should return
-zero if no data are immediately available.
+zero if no data are immediately available. The special value
+<code>GNUTLS_INDEFINITE_TIMEOUT</code>  indicates that the callback should wait indefinitely
+for data.
 </p>
 <p><code>gnutls_pull_timeout_func</code> is of the form,
 int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);

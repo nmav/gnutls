@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: PKCS11 Initialization</title>
+<title>GnuTLS 3.5.0: PKCS11 Initialization</title>
 
-<meta name="description" content="GnuTLS 3.4.11: PKCS11 Initialization">
-<meta name="keywords" content="GnuTLS 3.4.11: PKCS11 Initialization">
+<meta name="description" content="GnuTLS 3.5.0: PKCS11 Initialization">
+<meta name="keywords" content="GnuTLS 3.5.0: PKCS11 Initialization">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -26,7 +26,7 @@ Documentation License". -->
 <link href="Function-and-Data-Index.html#Function-and-Data-Index" rel="index" title="Function and Data Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" rel="up" title="Smart cards and HSMs">
-<link href="Accessing-objects-that-require-a-PIN.html#Accessing-objects-that-require-a-PIN" rel="next" title="Accessing objects that require a PIN">
+<link href="PKCS11-Manual-Initialization.html#PKCS11-Manual-Initialization" rel="next" title="PKCS11 Manual Initialization">
 <link href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" rel="prev" title="Smart cards and HSMs">
 <style type="text/css">
 <!--
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -159,15 +158,16 @@ dl {
 <a name="PKCS11-Initialization"></a>
 <div class="header">
 <p>
-Next: <a href="Accessing-objects-that-require-a-PIN.html#Accessing-objects-that-require-a-PIN" accesskey="n" rel="next">Accessing objects that require a PIN</a>, Up: <a href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" accesskey="u" rel="up">Smart cards and HSMs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="PKCS11-Manual-Initialization.html#PKCS11-Manual-Initialization" accesskey="n" rel="next">PKCS11 Manual Initialization</a>, Up: <a href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" accesskey="u" rel="up">Smart cards and HSMs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Initialization-1"></a>
 <h4 class="subsection">5.3.1 Initialization</h4>
 <p>To allow all <acronym>GnuTLS</acronym> applications to transparently access smart cards
 and tokens, <acronym>PKCS</acronym> #11 is automatically initialized during the first
-call of a <acronym>PKCS</acronym> #11 related function. The initialization process, based
-on p11-kit configuration, loads any appropriate modules. The p11-kit configuration
+call of a <acronym>PKCS</acronym> #11 related function, in a thread safe way.
+The default initialization process, utilizes p11-kit configuration, and loads any
+appropriate <acronym>PKCS</acronym> #11 modules. The p11-kit configuration
 files<a name="DOCF12" href="#FOOT12"><sup>12</sup></a> are typically stored in <code>/etc/pkcs11/modules/</code>.
 For example a file that will instruct GnuTLS to load the <acronym>OpenSC</acronym> module,
 could be named <code>/etc/pkcs11/modules/opensc.module</code> and contain the following:
@@ -183,48 +183,21 @@ In several cases, however, it is desirable to limit badly behaving modules
 to single applications. That can be done using the &ldquo;enable-in:&rdquo; option
 followed by the base name of applications that this module should be used.
 </p>
-<p>It is also possible to manually initialize the PKCS #11 subsystem if the 
-default settings are not desirable. To completely disable PKCS #11 support you
-need to call <a href="PKCS-11-API.html#gnutls_005fpkcs11_005finit">gnutls_pkcs11_init</a> with the flag <code>GNUTLS_PKCS11_FLAG_MANUAL</code>
-prior to <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a>.
+<p>It is also possible to manually initialize or even disable the PKCS #11 subsystem if the 
+default settings are not desirable or not available (see <a href="PKCS11-Manual-Initialization.html#PKCS11-Manual-Initialization">PKCS11 Manual Initialization</a>
+for more information).
 </p>
-
-
-
-
-<dl>
-<dt><a name="index-gnutls_005fpkcs11_005finit"></a>Function: <em>int</em> <strong>gnutls_pkcs11_init</strong> <em>(unsigned int <var>flags</var>, const char * <var>deprecated_config_file</var>)</em></dt>
-<dd><p><var>flags</var>: An ORed sequence of <code>GNUTLS_PKCS11_FLAG_</code> *
-</p>
-<p><var>deprecated_config_file</var>: either NULL or the location of a deprecated
-configuration file
-</p>
-<p>This function will initialize the PKCS 11 subsystem in gnutls. It will
-read configuration files if <code>GNUTLS_PKCS11_FLAG_AUTO</code>  is used or allow
-you to independently load PKCS 11 modules using <code>gnutls_pkcs11_add_provider()</code> 
-if <code>GNUTLS_PKCS11_FLAG_MANUAL</code>  is specified.
-</p>
-<p>You don&rsquo;t need to call this function since GnuTLS 3.3.0 because it is being called
-during the first request PKCS 11 operation. That call will assume the <code>GNUTLS_PKCS11_FLAG_AUTO</code> 
-flag. If another flags are required then it must be called independently
-prior to any PKCS 11 operation.
-</p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
-</p>
-<p><strong>Since:</strong> 2.12.0
-</p></dd></dl>
-
 <p>Note that, PKCS #11 modules behave in a peculiar way after a fork; they
 require a reinitialization of all the used PKCS #11 resources.
 While GnuTLS automates that process, there are corner cases where
-it is not possible to handle it correctly in an automated way<a name="DOCF13" href="#FOOT13"><sup>13</sup></a>. For that reasons it is
+it is not possible to handle it correctly in an automated way<a name="DOCF13" href="#FOOT13"><sup>13</sup></a>. For that, it is
 recommended not to mix fork() and PKCS #11 module usage. It is recommended
 to initialize and use any PKCS #11 resources in a single process.
 </p>
 <p>Older versions of <acronym>GnuTLS</acronym> required to call <a href="PKCS-11-API.html#gnutls_005fpkcs11_005freinit">gnutls_pkcs11_reinit</a>
 after a fork() call; since 3.3.0 this is no longer required.
 </p>
+
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
@@ -239,7 +212,7 @@ to GnuTLS (e.g., it was entered at a pinpad).</p>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Accessing-objects-that-require-a-PIN.html#Accessing-objects-that-require-a-PIN" accesskey="n" rel="next">Accessing objects that require a PIN</a>, Up: <a href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" accesskey="u" rel="up">Smart cards and HSMs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="PKCS11-Manual-Initialization.html#PKCS11-Manual-Initialization" accesskey="n" rel="next">PKCS11 Manual Initialization</a>, Up: <a href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" accesskey="u" rel="up">Smart cards and HSMs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

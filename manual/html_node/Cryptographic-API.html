@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: Cryptographic API</title>
+<title>GnuTLS 3.5.0: Cryptographic API</title>
 
-<meta name="description" content="GnuTLS 3.4.11: Cryptographic API">
-<meta name="keywords" content="GnuTLS 3.4.11: Cryptographic API">
+<meta name="description" content="GnuTLS 3.5.0: Cryptographic API">
+<meta name="keywords" content="GnuTLS 3.5.0: Cryptographic API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -241,8 +240,7 @@ authenticated-encryption context.
 </p>
 <p>This function will encrypt the given data using the algorithm
 specified by the context. The output data will contain the
-authentication tag. This function requires that 
-<code>gnutls_aead_cipher_set_nonce()</code>  is called before it.
+authentication tag.
 </p>
 <p><strong>Returns:</strong> Zero or a negative error code on error.
 </p>
@@ -618,6 +616,46 @@ The algorithm with the lowest priority will be used by gnutls.
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p>
 <p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fdecode_005fber_005fdigest_005finfo-1"></a>
+<h4 class="subheading">gnutls_decode_ber_digest_info</h4>
+<a name="gnutls_005fdecode_005fber_005fdigest_005finfo"></a><dl>
+<dt><a name="index-gnutls_005fdecode_005fber_005fdigest_005finfo"></a>Function: <em>int</em> <strong>gnutls_decode_ber_digest_info</strong> <em>(const gnutls_datum_t * <var>info</var>, gnutls_digest_algorithm_t * <var>hash</var>, unsigned char * <var>digest</var>, unsigned int * <var>digest_size</var>)</em></dt>
+<dd><p><var>info</var>: an RSA BER encoded DigestInfo structure
+</p>
+<p><var>hash</var>: will contain the hash algorithm of the structure
+</p>
+<p><var>digest</var>: will contain the hash output of the structure
+</p>
+<p><var>digest_size</var>: will contain the hash size of the structure; initially must hold the maximum size of  <code>digest</code> 
+</p>
+<p>This function will parse an RSA PKCS<code>1</code>  1.5 DigestInfo structure
+and report the hash algorithm used as well as the digest data.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
+an error code is returned.
+</p>
+<p><strong>Since:</strong> 3.5.0
+</p></dd></dl>
+
+<a name="gnutls_005fencode_005fber_005fdigest_005finfo-1"></a>
+<h4 class="subheading">gnutls_encode_ber_digest_info</h4>
+<a name="gnutls_005fencode_005fber_005fdigest_005finfo"></a><dl>
+<dt><a name="index-gnutls_005fencode_005fber_005fdigest_005finfo"></a>Function: <em>int</em> <strong>gnutls_encode_ber_digest_info</strong> <em>(gnutls_digest_algorithm_t <var>hash</var>, const gnutls_datum_t * <var>digest</var>, gnutls_datum_t * <var>output</var>)</em></dt>
+<dd><p><var>hash</var>: the hash algorithm that was used to get the digest
+</p>
+<p><var>digest</var>: must contain the digest data
+</p>
+<p><var>output</var>: will contain the allocated DigestInfo BER encoded data
+</p>
+<p>This function will encode the provided digest data, and its
+algorithm into an RSA PKCS<code>1</code>  1.5 DigestInfo structure. 
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
+an error code is returned.
+</p>
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fhash-1"></a>

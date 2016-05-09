@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: danetool Invocation</title>
+<title>GnuTLS 3.5.0: danetool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.4.11: danetool Invocation">
-<meta name="keywords" content="GnuTLS 3.4.11: danetool Invocation">
+<meta name="description" content="GnuTLS 3.5.0: danetool Invocation">
+<meta name="keywords" content="GnuTLS 3.5.0: danetool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -211,7 +210,7 @@ Usage:  danetool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
                                 - requires the option 'host'
        --host=str             Specify the hostname to be used in the DANE RR
        --proto=str            The protocol set for DANE data (tcp, udp etc.)
-       --port=num             Specify the port number for the DANE data
+       --port=str             The port or service to connect to, for DANE data
        --app-proto=str        an alias for the 'starttls-proto' option
        --starttls-proto=str   The application protocol to be used to obtain the server's certificate
 (https, ftp, smtp, imap, ldap, xmpp)
@@ -324,7 +323,7 @@ see <a href="#danetool-starttls_002dproto">the starttls-proto option documentati
 
 <p>This is the &ldquo;the application protocol to be used to obtain the server&rsquo;s certificate (https, ftp, smtp, imap, ldap, xmpp)&rdquo; option.
 This option takes a string argument.
-When the server&rsquo;s certificate isn&rsquo;t provided danetool will connect to the server to obtain the certificate. In that case it is required to known the protocol to talk with the server prior to initiating the TLS handshake.
+When the server&rsquo;s certificate isn&rsquo;t provided danetool will connect to the server to obtain the certificate. In that case it is required to know the protocol to talk with the server prior to initiating the TLS handshake.
 <a name="danetool-ca"></a></p><a name="ca-option"></a>
 <h4 class="subsubheading">ca option</h4>
 
@@ -453,9 +452,14 @@ certificate using DANE.
 <pre class="example">$ danetool --check www.example.com --proto tcp --port 443
 </pre></div>
 
-<p>To verify a server&rsquo;s DANE TLSA entry, use:
+<p>To verify an HTTPS server&rsquo;s DANE TLSA entry, use:
 </p><div class="example">
 <pre class="example">$ danetool --check www.example.com --proto tcp --port 443 --load-certificate chain.pem
+</pre></div>
+
+<p>To verify an SMTP server&rsquo;s DANE TLSA entry, use:
+</p><div class="example">
+<pre class="example">$ danetool --check www.example.com --proto tcp --starttls-proto=smtp --load-certificate chain.pem
 </pre></div>
 
 <hr>

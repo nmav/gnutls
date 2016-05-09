@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: certtool Invocation</title>
+<title>GnuTLS 3.5.0: certtool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.4.11: certtool Invocation">
-<meta name="keywords" content="GnuTLS 3.4.11: certtool Invocation">
+<meta name="description" content="GnuTLS 3.5.0: certtool Invocation">
+<meta name="keywords" content="GnuTLS 3.5.0: certtool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -212,6 +211,9 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --generate-crl         Generate a CRL
    -u, --update-certificate   Update a signed certificate
    -p, --generate-privkey     Generate a private key
+       --provable             Generate a private key or parameters from a seed using a provable method
+       --verify-provable-privkey  Verify a private key generated from a seed using a provable method
+       --seed=str             When generating a private key use the given hex-encoded seed
    -q, --generate-request     Generate a PKCS #10 certificate request
                                 - prohibits the option 'infile'
    -e, --verify-chain         Verify a PEM encoded certificate chain
@@ -222,6 +224,7 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --verify-email=str     Specify a email to be used for certificate chain verification
                                 - prohibits the option 'verify-hostname'
        --verify-purpose=str   Specify a purpose OID to be used for certificate chain verification
+       --verify-allow-broken  Allow broken algorithms, such as MD5 for verification
        --generate-dh-params   Generate PKCS #3 encoded Diffie-Hellman parameters
        --get-dh-params        Get the included PKCS #3 encoded Diffie-Hellman parameters
        --dh-info              Print information PKCS #3 encoded Diffie-Hellman parameters
@@ -242,54 +245,55 @@ Usage:  certtool [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&gt;
        --fingerprint          Print the fingerprint of the given certificate
        --key-id               Print the key ID of the given certificate
        --certificate-pubkey   Print certificate's public key
-       --pgp-certificate-info  Print information on the given OpenPGP certificate
-       --pgp-ring-info        Print information on the given OpenPGP keyring structure
+   -!, --pgp-certificate-info  Print information on the given OpenPGP certificate
+   -&quot;, --pgp-ring-info        Print information on the given OpenPGP keyring structure
    -l, --crl-info             Print information on the given CRL structure
-       --crq-info             Print information on the given certificate request
-       --no-crq-extensions    Do not use extensions in certificate requests
-   -!, --p12-info             Print information on a PKCS #12 structure
-   -&quot;, --p12-name=str         The PKCS #12 friendly name to use
-   -#, --p7-generate          Generate a PKCS #7 structure
-   -$, --p7-sign              Signs using a PKCS #7 structure
-   -%, --p7-detached-sign     Signs using a detached PKCS #7 structure
-   -&amp;, --p7-include-cert      The signer's certificate will be included in the cert list.
+   -#, --crq-info             Print information on the given certificate request
+   -$, --no-crq-extensions    Do not use extensions in certificate requests
+   -%, --p12-info             Print information on a PKCS #12 structure
+   -&amp;, --p12-name=str         The PKCS #12 friendly name to use
+   -', --p7-generate          Generate a PKCS #7 structure
+   -(, --p7-sign              Signs using a PKCS #7 structure
+   -), --p7-detached-sign     Signs using a detached PKCS #7 structure
+   -*, --p7-include-cert      The signer's certificate will be included in the cert list.
                                 - disabled as '--no-p7-include-cert'
                                 - enabled by default
-   -', --p7-time              Will include a timestamp in the PKCS #7 structure
-   -(, --p7-show-data         Will show the embedded data in the PKCS #7 structure
+   -+, --p7-time              Will include a timestamp in the PKCS #7 structure
+                                - disabled as '--no-p7-time'
+   -,, --p7-show-data         Will show the embedded data in the PKCS #7 structure
                                 - disabled as '--no-p7-show-data'
-   -), --p7-info              Print information on a PKCS #7 structure
-   -*, --p7-verify            Verify the provided PKCS #7 structure
-   -+, --p8-info              Print information on a PKCS #8 structure
-   -,, --smime-to-p7          Convert S/MIME to PKCS #7 structure
+   --, --p7-info              Print information on a PKCS #7 structure
+   -., --p7-verify            Verify the provided PKCS #7 structure
+   -/, --p8-info              Print information on a PKCS #8 structure
+   -0, --smime-to-p7          Convert S/MIME to PKCS #7 structure
    -k, --key-info             Print information on a private key
-   --, --pgp-key-info         Print information on an OpenPGP private key
-   -., --pubkey-info          Print information on a public key
-   -/, --v1                   Generate an X.509 version 1 certificate (with no extensions)
-   -0, --to-p12               Generate a PKCS #12 structure
+   -1, --pgp-key-info         Print information on an OpenPGP private key
+   -2, --pubkey-info          Print information on a public key
+   -3, --v1                   Generate an X.509 version 1 certificate (with no extensions)
+   -4, --to-p12               Generate a PKCS #12 structure
                                 - requires the option 'load-certificate'
-   -1, --to-p8                Generate a PKCS #8 structure
+   -5, --to-p8                Generate a PKCS #8 structure
    -8, --pkcs8                Use PKCS #8 format for private keys
-   -2, --rsa                  Generate RSA key
-   -3, --dsa                  Generate DSA key
-   -4, --ecc                  Generate ECC (ECDSA) key
-   -5, --ecdsa                an alias for the 'ecc' option
-   -6, --hash=str             Hash algorithm to use for signing
-   -7, --inder                Use DER format for input certificates, private keys, and DH parameters
+   -6, --rsa                  Generate RSA key
+   -7, --dsa                  Generate DSA key
+   -8, --ecc                  Generate ECC (ECDSA) key
+   -9, --ecdsa                an alias for the 'ecc' option
+   -:, --hash=str             Hash algorithm to use for signing
+   -;, --inder                Use DER format for input certificates, private keys, and DH parameters
                                 - disabled as '--no-inder'
-   -8, --inraw                an alias for the 'inder' option
-   -9, --outder               Use DER format for output certificates, private keys, and DH parameters
+   -&lt;, --inraw                an alias for the 'inder' option
+   -=, --outder               Use DER format for output certificates, private keys, and DH parameters
                                 - disabled as '--no-outder'
-   -:, --outraw               an alias for the 'outder' option
-   -;, --bits=num             Specify the number of bits for key generate
-   -&lt;, --curve=str            Specify the curve used for EC key generation
-   -=, --sec-param=str        Specify the security level [low, legacy, medium, high, ultra]
-   -&gt;, --disable-quick-random  No effect
-   -?, --template=str         Template file to use for non-interactive operation
-   -@, --stdout-info          Print information to stdout instead of stderr
-   -A, --ask-pass             Enable interaction for entering password when in batch mode.
-   -B, --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
-   -C, --provider=str         Specify the PKCS #11 provider library
+   -&gt;, --outraw               an alias for the 'outder' option
+   -?, --bits=num             Specify the number of bits for key generate
+   -@, --curve=str            Specify the curve used for EC key generation
+   -A, --sec-param=str        Specify the security level [low, legacy, medium, high, ultra]
+   -B, --disable-quick-random  No effect
+   -C, --template=str         Template file to use for non-interactive operation
+   -D, --stdout-info          Print information to stdout instead of stderr
+   -E, --ask-pass             Enable interaction for entering password when in batch mode.
+   -F, --pkcs-cipher=str      Cipher to use for PKCS #8 and #12 operations
+   -G, --provider=str         Specify the PKCS #11 provider library
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
    -!, --more-help            extended usage information passed thru pager
@@ -318,6 +322,16 @@ Specifies the debug level.
 
 <p>This is the &ldquo;generate a crl&rdquo; option.
 This option generates a CRL. When combined with &ndash;load-crl it would use the loaded CRL as base for the generated (i.e., all revoked certificates in the base will be copied to the new CRL).
+<a name="certtool-provable"></a></p><a name="provable-option"></a>
+<h4 class="subsubheading">provable option</h4>
+
+<p>This is the &ldquo;generate a private key or parameters from a seed using a provable method&rdquo; option.
+This will use the FIPS-186-4 algorithms (i.e., Shawe-Taylor) for provable key generation. When specified the private keys or parameters will be generated from a seed, and can be proven to be correctly generated from the seed. You may specify &ndash;seed or allow GnuTLS to generate one (recommended). This option can be combined with &ndash;generate-privkey or &ndash;generate-dh-params.
+<a name="certtool-verify_002dprovable_002dprivkey"></a></p><a name="verify_002dprovable_002dprivkey-option"></a>
+<h4 class="subsubheading">verify-provable-privkey option</h4>
+
+<p>This is the &ldquo;verify a private key generated from a seed using a provable method&rdquo; option.
+This will use the FIPS-186-4 algorithms for provable key generation. You may specify &ndash;seed or use the seed stored in the private key structure.
 <a name="certtool-generate_002drequest"></a></p><a name="generate_002drequest-option-_0028_002dq_0029"></a>
 <h4 class="subsubheading">generate-request option (-q)</h4>
 
@@ -380,6 +394,11 @@ verify-hostname.
 <p>This is the &ldquo;specify a purpose oid to be used for certificate chain verification&rdquo; option.
 This option takes a string argument.
 This object identifier restricts the purpose of the certificates to be verified. Example purposes are 1.3.6.1.5.5.7.3.1 (TLS WWW), 1.3.6.1.5.5.7.3.4 (EMAIL) etc. Note that a CA certificate without a purpose set (extended key usage) is valid for any purpose.
+<a name="certtool-verify_002dallow_002dbroken"></a></p><a name="verify_002dallow_002dbroken-option"></a>
+<h4 class="subsubheading">verify-allow-broken option</h4>
+
+<p>This is the &ldquo;allow broken algorithms, such as md5 for verification&rdquo; option.
+This can be combined with &ndash;p7-verify, &ndash;verify or &ndash;verify-chain.
 <a name="certtool-get_002ddh_002dparams"></a></p><a name="get_002ddh_002dparams-option"></a>
 <h4 class="subsubheading">get-dh-params option</h4>
 
@@ -467,12 +486,12 @@ This option generates a PKCS #7 certificate container structure. To add certific
 <h4 class="subsubheading">p7-sign option</h4>
 
 <p>This is the &ldquo;signs using a pkcs #7 structure&rdquo; option.
-This option generates a PKCS #7 structure containing a signature for the provided data. The data are stored within the structure. The signer certificate has to be specified using &ndash;load-certificate and &ndash;load-privkey.
+This option generates a PKCS #7 structure containing a signature for the provided data from infile. The data are stored within the structure. The signer certificate has to be specified using &ndash;load-certificate and &ndash;load-privkey.
 <a name="certtool-p7_002ddetached_002dsign"></a></p><a name="p7_002ddetached_002dsign-option"></a>
 <h4 class="subsubheading">p7-detached-sign option</h4>
 
 <p>This is the &ldquo;signs using a detached pkcs #7 structure&rdquo; option.
-This option generates a PKCS #7 structure containing a signature for the provided data. The signer certificate has to be specified using &ndash;load-certificate and &ndash;load-privkey.
+This option generates a PKCS #7 structure containing a signature for the provided data from infile. The signer certificate has to be specified using &ndash;load-certificate and &ndash;load-privkey.
 <a name="certtool-p7_002dinclude_002dcert"></a></p><a name="p7_002dinclude_002dcert-option"></a>
 <h4 class="subsubheading">p7-include-cert option</h4>
 
@@ -489,7 +508,13 @@ This option generates a PKCS #7 structure containing a signature for the provide
 <h4 class="subsubheading">p7-time option</h4>
 
 <p>This is the &ldquo;will include a timestamp in the pkcs #7 structure&rdquo; option.
-This option will include a timestamp in the generated signature
+</p>
+<p>This option has some usage constraints.  It:
+</p><ul>
+<li> can be disabled with &ndash;no-p7-time.
+</li></ul>
+
+<p>This option will include a timestamp in the generated signature
 <a name="certtool-p7_002dshow_002ddata"></a></p><a name="p7_002dshow_002ddata-option"></a>
 <h4 class="subsubheading">p7-show-data option</h4>
 
@@ -554,7 +579,7 @@ see <a href="#certtool-ecc">the ecc option documentation</a>.
 
 <p>This is the &ldquo;hash algorithm to use for signing&rdquo; option.
 This option takes a string argument.
-Available hash functions are SHA1, RMD160, SHA256, SHA384, SHA512.
+Available hash functions are SHA1, RMD160, SHA256, SHA384, SHA512, SHA3-224, SHA3-256, SHA3-384, SHA3-512.
 <a name="certtool-inder"></a></p><a name="inder-option-1"></a>
 <h4 class="subsubheading">inder option</h4>
 
@@ -813,8 +838,8 @@ cn = &quot;Cindy Lauper&quot;
 # any OID here.
 # For example set the X.520 Title and the X.520 Pseudonym
 # by using OID and string pairs.
-#dn_oid = 2.5.4.12 Dr. 
-#dn_oid = 2.5.4.65 jackal
+#dn_oid = &quot;2.5.4.12 Dr.&quot;
+#dn_oid = &quot;2.5.4.65 jackal&quot;
 
 # This is deprecated and should not be used in new
 # certificates.
@@ -852,6 +877,18 @@ expiration_days = 700
 # A dnsname in case of a WWW server.
 #dns_name = &quot;www.none.org&quot;
 #dns_name = &quot;www.morethanone.org&quot;
+
+# An othername defined by an OID and a hex encoded string
+#other_name = &quot;1.3.6.1.5.2.2 302ca00d1b0b56414e5245494e2e4f5247a11b3019a006020400000002a10f300d1b047269636b1b0561646d696e&quot;
+#other_name_utf8 = &quot;1.2.4.5.6 A UTF8 string&quot;
+#other_name_octet = &quot;1.2.4.5.6 A string that will be encoded as ASN.1 octet string&quot;
+
+# Allows writing an XmppAddr Identifier
+#xmpp_name = juliet@im.example.com
+
+# Names used in PKINIT
+#krb5_principal = user@REALM.COM
+#krb5_principal = HTTP/user@REALM.COM
 
 # A subject alternative name URI
 #uri = &quot;http://www.example.com&quot;
@@ -1006,6 +1043,11 @@ encryption_key
 
 # Exclude all e-mail addresses of example.com
 #nc_exclude_email = example.com
+
+# IP
+#nc_permit_ip = 192.168.0.0/16
+#nc_exclude_ip = 192.168.5.0/24
+#nc_permit_ip = fc0a:eef2:e7e7:a56e::/64
 
 
 # Options for proxy certificates

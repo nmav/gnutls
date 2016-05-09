@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: Echo server with X.509 authentication</title>
+<title>GnuTLS 3.5.0: Echo server with X.509 authentication</title>
 
-<meta name="description" content="GnuTLS 3.4.11: Echo server with X.509 authentication">
-<meta name="keywords" content="GnuTLS 3.4.11: Echo server with X.509 authentication">
+<meta name="description" content="GnuTLS 3.5.0: Echo server with X.509 authentication">
+<meta name="keywords" content="GnuTLS 3.5.0: Echo server with X.509 authentication">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -184,11 +183,14 @@ Next: <a href="Echo-server-with-OpenPGP-authentication.html#Echo-server-with-Ope
 #include &lt;string.h&gt;
 #include &lt;unistd.h&gt;
 #include &lt;gnutls/gnutls.h&gt;
+#include &lt;assert.h&gt;
 
 #define KEYFILE &quot;key.pem&quot;
 #define CERTFILE &quot;cert.pem&quot;
 #define CAFILE &quot;/etc/ssl/certs/ca-certificates.crt&quot;
 #define CRLFILE &quot;crl.pem&quot;
+
+#define CHECK(x) assert((x)&gt;=0)
 
 /* The OCSP status file contains up to date information about revocation
  * of the server's certificate. That can be periodically be updated
@@ -211,14 +213,14 @@ static gnutls_dh_params_t dh_params;
 static int generate_dh_params(void)
 {
         unsigned int bits = gnutls_sec_param_to_pk_bits(GNUTLS_PK_DH,
-                                                        GNUTLS_SEC_PARAM_LEGACY);
+                                                        GNUTLS_SEC_PARAM_MEDIUM);
 
         /* Generate Diffie-Hellman parameters - for use with DHE
          * kx algorithms. When short bit length is used, it might
          * be wise to regenerate parameters often.
          */
-        gnutls_dh_params_init(&amp;dh_params);
-        gnutls_dh_params_generate2(dh_params, bits);
+        CHECK(gnutls_dh_params_init(&amp;dh_params));
+        CHECK(gnutls_dh_params_generate2(dh_params, bits));
 
         return 0;
 }
@@ -238,35 +240,29 @@ int main(void)
         int optval = 1;
 
         /* for backwards compatibility with gnutls &lt; 3.3.0 */
-        gnutls_global_init();
+        CHECK(gnutls_global_init());
 
-        gnutls_certificate_allocate_credentials(&amp;x509_cred);
-        /* gnutls_certificate_set_x509_system_trust(xcred); */
-        gnutls_certificate_set_x509_trust_file(x509_cred, CAFILE,
-                                               GNUTLS_X509_FMT_PEM);
+        CHECK(gnutls_certificate_allocate_credentials(&amp;x509_cred));
 
-        gnutls_certificate_set_x509_crl_file(x509_cred, CRLFILE,
-                                             GNUTLS_X509_FMT_PEM);
+        CHECK(gnutls_certificate_set_x509_trust_file(x509_cred, CAFILE,
+                                                     GNUTLS_X509_FMT_PEM));
 
-        ret =
-            gnutls_certificate_set_x509_key_file(x509_cred, CERTFILE,
-                                                 KEYFILE,
-                                                 GNUTLS_X509_FMT_PEM);
-        if (ret &lt; 0) {
-                printf(&quot;No certificate or key were found\n&quot;);
-                exit(1);
-        }
+        CHECK(gnutls_certificate_set_x509_crl_file(x509_cred, CRLFILE,
+                                                   GNUTLS_X509_FMT_PEM));
+
+        CHECK(gnutls_certificate_set_x509_key_file(x509_cred, CERTFILE,
+                                                   KEYFILE,
+                                                   GNUTLS_X509_FMT_PEM));
 
         /* loads an OCSP status request if available */
-        gnutls_certificate_set_ocsp_status_request_file(x509_cred,
-                                                        OCSP_STATUS_FILE,
-                                                        0);
+        CHECK(gnutls_certificate_set_ocsp_status_request_file(x509_cred,
+                                                              OCSP_STATUS_FILE,
+                                                              0));
 
         generate_dh_params();
 
-        gnutls_priority_init(&amp;priority_cache,
-                             &quot;PERFORMANCE:%SERVER_PRECEDENCE&quot;, NULL);
-
+        CHECK(gnutls_priority_init(&amp;priority_cache,
+                                   &quot;PERFORMANCE:%SERVER_PRECEDENCE&quot;, NULL));
 
         gnutls_certificate_set_dh_params(x509_cred, dh_params);
 
@@ -290,10 +286,10 @@ int main(void)
 
         client_len = sizeof(sa_cli);
         for (;;) {
-                gnutls_init(&amp;session, GNUTLS_SERVER);
-                gnutls_priority_set(session, priority_cache);
-                gnutls_credentials_set(session, GNUTLS_CRD_CERTIFICATE,
-                                       x509_cred);
+                CHECK(gnutls_init(&amp;session, GNUTLS_SERVER));
+                CHECK(gnutls_priority_set(session, priority_cache));
+                CHECK(gnutls_credentials_set(session, GNUTLS_CRD_CERTIFICATE,
+                                             x509_cred));
 
                 /* We don't request any certificate from the client.
                  * If we did we would need to verify it. One way of
@@ -349,13 +345,13 @@ int main(void)
                         } else if (ret &gt; 0) {
                                 /* echo data back to the client
                                  */
-                                gnutls_record_send(session, buffer, ret);
+                                CHECK(gnutls_record_send(session, buffer, ret));
                         }
                 }
                 printf(&quot;\n&quot;);
                 /* do not wait for the peer to close the connection.
                  */
-                gnutls_bye(session, GNUTLS_SHUT_WR);
+                CHECK(gnutls_bye(session, GNUTLS_SHUT_WR));
 
                 close(sd);
                 gnutls_deinit(session);

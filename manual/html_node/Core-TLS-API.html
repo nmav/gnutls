@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: Core TLS API</title>
+<title>GnuTLS 3.5.0: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.4.11: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.4.11: Core TLS API">
+<meta name="description" content="GnuTLS 3.5.0: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.5.0: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -286,13 +285,13 @@ otherwise a negative error code is returned.
 </p>
 <p><var>protocols_size</var>: the number of protocols to add.
 </p>
-<p><var>flags</var>: zero or <code>GNUTLS_ALPN_</code> *
+<p><var>flags</var>: zero or a sequence of <code>gnutls_alpn_flags_t</code> 
 </p>
 <p>This function is to be used by both clients and servers, to declare
 the supported ALPN protocols, which are used during negotiation with peer.
 </p>
-<p>If <code>GNUTLS_ALPN_MAND</code>  is specified the connection will be aborted
-if no matching ALPN protocol is found.
+<p>See <code>gnutls_alpn_flags_t</code>  description for the documentation of available
+flags.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
@@ -306,8 +305,7 @@ otherwise a negative error code is returned.
 <dt><a name="index-gnutls_005fanon_005fallocate_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_anon_allocate_client_credentials</strong> <em>(gnutls_anon_client_credentials_t *      <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a pointer to a <code>gnutls_anon_client_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus
-this helper function is provided in order to allocate it.
+<p>Allocate a gnutls_anon_client_credentials_t structure.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
 </p></dd></dl>
@@ -318,8 +316,7 @@ this helper function is provided in order to allocate it.
 <dt><a name="index-gnutls_005fanon_005fallocate_005fserver_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_anon_allocate_server_credentials</strong> <em>(gnutls_anon_server_credentials_t *      <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a pointer to a <code>gnutls_anon_server_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus this
-helper function is provided in order to allocate it.
+<p>Allocate a gnutls_anon_server_credentials_t structure.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
 </p></dd></dl>
@@ -330,8 +327,7 @@ helper function is provided in order to allocate it.
 <dt><a name="index-gnutls_005fanon_005ffree_005fclient_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_anon_free_client_credentials</strong> <em>(gnutls_anon_client_credentials_t <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a <code>gnutls_anon_client_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus this
-helper function is provided in order to free (deallocate) it.
+<p>Free a gnutls_anon_client_credentials_t structure.
 </p></dd></dl>
 
 <a name="gnutls_005fanon_005ffree_005fserver_005fcredentials-1"></a>
@@ -340,8 +336,7 @@ helper function is provided in order to free (deallocate) it.
 <dt><a name="index-gnutls_005fanon_005ffree_005fserver_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_anon_free_server_credentials</strong> <em>(gnutls_anon_server_credentials_t <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a <code>gnutls_anon_server_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus this
-helper function is provided in order to free (deallocate) it.
+<p>Free a gnutls_anon_server_credentials_t structure.
 </p></dd></dl>
 
 <a name="gnutls_005fanon_005fset_005fparams_005ffunction-1"></a>
@@ -502,8 +497,7 @@ This is the creation time for openpgp keys.
 <dt><a name="index-gnutls_005fcertificate_005fallocate_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_certificate_allocate_credentials</strong> <em>(gnutls_certificate_credentials_t *      <var>res</var>)</em></dt>
 <dd><p><var>res</var>: is a pointer to a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus this
-helper function is provided in order to allocate it.
+<p>Allocate a gnutls_certificate_credentials_t structure.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
 </p></dd></dl>
@@ -568,8 +562,7 @@ memory.
 <dt><a name="index-gnutls_005fcertificate_005ffree_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_certificate_free_credentials</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus this
-helper function is provided in order to free (deallocate) it.
+<p>Free a gnutls_certificate_credentials_t structure.
 </p>
 <p>This function does not free any temporary parameters associated
 with this structure (ie RSA and DH parameters are not freed by this
@@ -603,9 +596,9 @@ TLS negotiation that uses the credentials is in progress.
 <dt><a name="index-gnutls_005fcertificate_005fget_005fcrt_005fraw"></a>Function: <em>int</em> <strong>gnutls_certificate_get_crt_raw</strong> <em>(gnutls_certificate_credentials_t <var>sc</var>, unsigned <var>idx1</var>, unsigned <var>idx2</var>, gnutls_datum_t * <var>cert</var>)</em></dt>
 <dd><p><var>sc</var>: is a <code>gnutls_certificate_credentials_t</code>  type.
 </p>
-<p><var>idx1</var>: the index of the certificate if multiple are present
+<p><var>idx1</var>: the index of the certificate chain if multiple are present
 </p>
-<p><var>idx2</var>: the index in the certificate list. Zero gives the server&rsquo;s certificate.
+<p><var>idx2</var>: the index of the certificate in the chain. Zero gives the server&rsquo;s certificate.
 </p>
 <p><var>cert</var>: Will hold the DER encoded certificate.
 </p>
@@ -1553,7 +1546,7 @@ usage PKIX extension, it will be required to be have the provided key purpose
 or be marked for any purpose, otherwise verification will fail with <code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code>  status.
 </p>
 <p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0)
-when the peer&rsquo;s certificate was successfully parsed, whether or not
+when the peer&rsquo;s certificate was successfully parsed, irrespective of whether
 it was verified.
 </p>
 <p><strong>Since:</strong> 3.3.0
@@ -1587,7 +1580,7 @@ the verified certificate belongs to the actual peer, see <code>gnutls_x509_crt_c
 or use <code>gnutls_certificate_verify_peers3()</code> .
 </p>
 <p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0)
-when the peer&rsquo;s certificate was successfully parsed, whether or not
+when the peer&rsquo;s certificate was successfully parsed, irrespective of whether
 it was verified.
 </p></dd></dl>
 
@@ -1617,8 +1610,8 @@ If names do not match the <code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag
 <p>In order to verify the purpose of the end-certificate (by checking the extended
 key usage), use <code>gnutls_certificate_verify_peers()</code> .
 </p>
-<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0) 
-when the peer&rsquo;s certificate was successfully parsed, whether or not
+<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0)
+when the peer&rsquo;s certificate was successfully parsed, irrespective of whether
 it was verified.
 </p>
 <p><strong>Since:</strong> 3.1.4
@@ -1630,9 +1623,11 @@ it was verified.
 <dt><a name="index-gnutls_005fcheck_005fversion"></a>Function: <em>const char *</em> <strong>gnutls_check_version</strong> <em>(const char * <var>req_version</var>)</em></dt>
 <dd><p><var>req_version</var>: version string to compare with, or <code>NULL</code> .
 </p>
-<p>Check GnuTLS Library version.
+<p>Check the GnuTLS Library version against the provided string.
+See <code>GNUTLS_VERSION</code>  for a suitable  <code>req_version</code> string.
 </p>
-<p>See <code>GNUTLS_VERSION</code>  for a suitable  <code>req_version</code> string.
+<p>See also <code>gnutls_check_version_numeric()</code> , which provides this
+functionality as a macro.
 </p>
 <p><strong>Returns:</strong> Check that the version of the library is at
 minimum the one given as a string in  <code>req_version</code> and return the
@@ -2216,6 +2211,21 @@ no use to call this in client side.
 otherwise a negative error code is returned.
 </p></dd></dl>
 
+<a name="gnutls_005fdh_005fparams_005fimport_005fdsa-1"></a>
+<h4 class="subheading">gnutls_dh_params_import_dsa</h4>
+<a name="gnutls_005fdh_005fparams_005fimport_005fdsa"></a><dl>
+<dt><a name="index-gnutls_005fdh_005fparams_005fimport_005fdsa"></a>Function: <em>int</em> <strong>gnutls_dh_params_import_dsa</strong> <em>(gnutls_dh_params_t <var>dh_params</var>, gnutls_x509_privkey_t <var>key</var>)</em></dt>
+<dd><p><var>dh_params</var>: The parameters
+</p>
+<p><var>key</var>: holds a DSA private key
+</p>
+<p>This function will import the prime and generator of the DSA key for use 
+in the Diffie-Hellman key exchange.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
+otherwise a negative error code is returned.
+</p></dd></dl>
+
 <a name="gnutls_005fdh_005fparams_005fimport_005fpkcs3-1"></a>
 <h4 class="subheading">gnutls_dh_params_import_pkcs3</h4>
 <a name="gnutls_005fdh_005fparams_005fimport_005fpkcs3"></a><dl>
@@ -2423,15 +2433,26 @@ curve or <code>NULL</code> .
 <p><strong>Since:</strong> 3.4.3
 </p></dd></dl>
 
+<a name="gnutls_005fecc_005fcurve_005fget_005fpk-1"></a>
+<h4 class="subheading">gnutls_ecc_curve_get_pk</h4>
+<a name="gnutls_005fecc_005fcurve_005fget_005fpk"></a><dl>
+<dt><a name="index-gnutls_005fecc_005fcurve_005fget_005fpk"></a>Function: <em>gnutls_pk_algorithm_t</em> <strong>gnutls_ecc_curve_get_pk</strong> <em>(gnutls_ecc_curve_t <var>curve</var>)</em></dt>
+<dd><p><var>curve</var>: is an ECC curve
+</p>
+
+<p><strong>Returns:</strong> the public key algorithm associated with the named curve or <code>GNUTLS_PK_UNKNOWN</code> .
+</p>
+<p><strong>Since:</strong> 3.5.0
+</p></dd></dl>
+
 <a name="gnutls_005fecc_005fcurve_005fget_005fsize-1"></a>
 <h4 class="subheading">gnutls_ecc_curve_get_size</h4>
 <a name="gnutls_005fecc_005fcurve_005fget_005fsize"></a><dl>
 <dt><a name="index-gnutls_005fecc_005fcurve_005fget_005fsize"></a>Function: <em>int</em> <strong>gnutls_ecc_curve_get_size</strong> <em>(gnutls_ecc_curve_t <var>curve</var>)</em></dt>
 <dd><p><var>curve</var>: is an ECC curve
 </p>
-<p>Returns the size in bytes of the curve.
-</p>
-<p><strong>Returns:</strong> a the size or (0).
+
+<p><strong>Returns:</strong> the size in bytes of the curve or 0 on failure.
 </p>
 <p><strong>Since:</strong> 3.0
 </p></dd></dl>
@@ -2883,7 +2904,7 @@ limit Denial of Service attacks.
 <a name="gnutls_005fhandshake_005fset_005fpost_005fclient_005fhello_005ffunction-1"></a>
 <h4 class="subheading">gnutls_handshake_set_post_client_hello_function</h4>
 <a name="gnutls_005fhandshake_005fset_005fpost_005fclient_005fhello_005ffunction"></a><dl>
-<dt><a name="index-gnutls_005fhandshake_005fset_005fpost_005fclient_005fhello_005ffunction"></a>Function: <em>void</em> <strong>gnutls_handshake_set_post_client_hello_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_handshake_post_client_hello_func       <var>func</var>)</em></dt>
+<dt><a name="index-gnutls_005fhandshake_005fset_005fpost_005fclient_005fhello_005ffunction"></a>Function: <em>void</em> <strong>gnutls_handshake_set_post_client_hello_function</strong> <em>(gnutls_session_t <var>session</var>, gnutls_handshake_simple_hook_func <var>func</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p><var>func</var>: is the function to be called
@@ -3186,12 +3207,7 @@ session must be initialized before use, so internal structures can
 be allocated.  This function allocates structures which can only
 be free&rsquo;d by calling <code>gnutls_deinit()</code> .  Returns <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 </p>
-<p><code>flags</code> can be one of <code>GNUTLS_CLIENT</code> , <code>GNUTLS_SERVER</code> , <code>GNUTLS_DATAGRAM</code> ,
-<code>GNUTLS_NONBLOCK</code>  or <code>GNUTLS_NOSIGNAL</code>  (since 3.4.2).
-</p>
-<p>The flag <code>GNUTLS_NO_REPLAY_PROTECTION</code>  will disable any 
-replay protection in DTLS mode. That must only used when 
-replay protection is achieved using other means.
+<p><code>flags</code> can be any of <code>gnutls_init_flags_t</code> .
 </p>
 <p>Note that since version 3.1.2 this function enables some common
 TLS extensions such as session tickets and OCSP certificate status
@@ -3435,18 +3451,23 @@ otherwise a negative error code is returned.
 </p>
 <p><var>flags</var>: should be zero or <code>GNUTLS_OCSP_SR_IS_AVAIL</code> 
 </p>
-<p>Check whether an OCSP status response was included in the handshake
-and whether it was checked and valid (not too old or superseded). 
-This is a helper function when needing to decide whether to perform an
-OCSP validity check on the peer&rsquo;s certificate. Should be called after
-any of gnutls_certificate_verify_peers*() are called.
+<p>When flags are zero this function returns non-zero if a valid OCSP status
+response was included in the TLS handshake. That is, an OCSP status response
+which is not too old or superseded. It returns zero otherwise.
 </p>
-<p>If the flag <code>GNUTLS_OCSP_SR_IS_AVAIL</code>  is specified, the return
-value of the function indicates whether an OCSP status response have
-been received (even if invalid). The flag was introduced in GnuTLS 3.4.0.
+<p>When the flag <code>GNUTLS_OCSP_SR_IS_AVAIL</code>  is specified, the function
+returns non-zero if an OCSP status response was included in the handshake
+even if it was invalid. Otherwise, if no OCSP status response was included,
+it returns zero. The <code>GNUTLS_OCSP_SR_IS_AVAIL</code>  flag was introduced in GnuTLS 3.4.0.
+</p>
+<p>This is a helper function when needing to decide whether to perform an
+explicit OCSP validity check on the peer&rsquo;s certificate. Should be called after
+any of gnutls_certificate_verify_peers*() are called.
 </p>
 <p><strong>Returns:</strong> non zero if the response was valid, or a zero if it wasn&rsquo;t sent,
 or sent and was invalid.
+</p>
+<p><strong>Since:</strong> 3.1.4
 </p></dd></dl>
 
 <a name="gnutls_005foid_005fto_005fdigest-1"></a>
@@ -3586,8 +3607,14 @@ packet found.
 </p>
 <p>You should use <code>gnutls_free()</code>  to free the returned data.
 </p>
+<p>Note, that prior to GnuTLS 3.4.0 this function was available
+under the name <code>gnutls_pem_base64_decode_alloc()</code> . There is
+compatibility macro pointing to this function.
+</p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
+</p>
+<p><strong>Since:</strong> 3.4.0
 </p></dd></dl>
 
 <a name="gnutls_005fpem_005fbase64_005fencode-1"></a>
@@ -3630,8 +3657,14 @@ data.
 </p>
 <p>You should use <code>gnutls_free()</code>  to free the returned data.
 </p>
+<p>Note, that prior to GnuTLS 3.4.0 this function was available
+under the name <code>gnutls_pem_base64_encode_alloc()</code> . There is
+compatibility macro pointing to this function.
+</p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
+</p>
+<p><strong>Since:</strong> 3.4.0
 </p></dd></dl>
 
 <a name="gnutls_005fperror-1"></a>
@@ -4224,8 +4257,7 @@ indicating the available protocols.
 <dt><a name="index-gnutls_005fpsk_005fallocate_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_psk_allocate_client_credentials</strong> <em>(gnutls_psk_client_credentials_t *            <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a pointer to a <code>gnutls_psk_server_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus this
-helper function is provided in order to allocate it.
+<p>Allocate a gnutls_psk_client_credentials_t structure.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
@@ -4237,8 +4269,7 @@ an error code is returned.
 <dt><a name="index-gnutls_005fpsk_005fallocate_005fserver_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_psk_allocate_server_credentials</strong> <em>(gnutls_psk_server_credentials_t *            <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a pointer to a <code>gnutls_psk_server_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus this
-helper function is provided in order to allocate it.
+<p>Allocate a gnutls_psk_server_credentials_t structure.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
@@ -4265,8 +4296,7 @@ authentication and in case of a client.
 <dt><a name="index-gnutls_005fpsk_005ffree_005fclient_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_psk_free_client_credentials</strong> <em>(gnutls_psk_client_credentials_t <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a <code>gnutls_psk_client_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus this
-helper function is provided in order to free (deallocate) it.
+<p>Free a gnutls_psk_client_credentials_t structure.
 </p></dd></dl>
 
 <a name="gnutls_005fpsk_005ffree_005fserver_005fcredentials-1"></a>
@@ -4275,8 +4305,7 @@ helper function is provided in order to free (deallocate) it.
 <dt><a name="index-gnutls_005fpsk_005ffree_005fserver_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_psk_free_server_credentials</strong> <em>(gnutls_psk_server_credentials_t <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a <code>gnutls_psk_server_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus this
-helper function is provided in order to free (deallocate) it.
+<p>Free a gnutls_psk_server_credentials_t structure.
 </p></dd></dl>
 
 <a name="gnutls_005fpsk_005fserver_005fget_005fusername-1"></a>
@@ -4842,7 +4871,8 @@ gnutls. That is, if <code>gnutls_record_get_state()</code>  was used.
 </p>
 <p>This function sets the receive timeout for the record layer
 to the provided value. Use an  <code>ms</code> value of zero to disable
-timeout (the default).
+timeout (the default), or <code>GNUTLS_INDEFINITE_TIMEOUT</code> , to
+set an indefinite timeout.
 </p>
 <p>This function requires to set a pull timeout callback. See
 <code>gnutls_transport_set_pull_timeout_function()</code> .
@@ -5120,8 +5150,6 @@ applications.
 <p>Returns all session parameters needed to be stored to support resumption.
 The client should call this, and store the returned session data. A session
 may be resumed later by calling <code>gnutls_session_set_data()</code> .  
-This function must be called after a successful (full) handshake. It should
-not be used in already resumed sessions &ndash;see <code>gnutls_session_is_resumed()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
@@ -5138,8 +5166,6 @@ an error code is returned.
 <p>Returns all session parameters needed to be stored to support resumption.
 The client should call this, and store the returned session data. A session
 may be resumed later by calling <code>gnutls_session_set_data()</code> .  
-This function must be called after a successful (full) handshake. It should
-not be used in already resumed sessions &ndash;see <code>gnutls_session_is_resumed()</code> .
 </p>
 <p>The returned  <code>data</code> are allocated and must be released using <code>gnutls_free()</code> .
 </p>
@@ -5162,6 +5188,24 @@ The string is null terminated and allocated using <code>gnutls_malloc()</code> .
 <p><strong>Returns:</strong> a description of the protocols and algorithms in the current session.
 </p>
 <p><strong>Since:</strong> 3.1.10
+</p></dd></dl>
+
+<a name="gnutls_005fsession_005fget_005fflags-1"></a>
+<h4 class="subheading">gnutls_session_get_flags</h4>
+<a name="gnutls_005fsession_005fget_005fflags"></a><dl>
+<dt><a name="index-gnutls_005fsession_005fget_005fflags"></a>Function: <em>unsigned</em> <strong>gnutls_session_get_flags</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p>This function will return a series (ORed) of flags, applicable
+for the current session.
+</p>
+<p>This replaces individual informational functions such as
+<code>gnutls_safe_renegotiation_status()</code> , <code>gnutls_session_ext_master_secret_status()</code> ,
+etc.
+</p>
+<p><strong>Returns:</strong> An ORed sequence of flags (see <code>gnutls_session_flags_t</code> )
+</p>
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fget_005fid-1"></a>
@@ -5202,6 +5246,20 @@ treated as constant.
 an error code is returned.
 </p>
 <p><strong>Since:</strong> 3.1.4
+</p></dd></dl>
+
+<a name="gnutls_005fsession_005fget_005fmaster_005fsecret-1"></a>
+<h4 class="subheading">gnutls_session_get_master_secret</h4>
+<a name="gnutls_005fsession_005fget_005fmaster_005fsecret"></a><dl>
+<dt><a name="index-gnutls_005fsession_005fget_005fmaster_005fsecret"></a>Function: <em>void</em> <strong>gnutls_session_get_master_secret</strong> <em>(gnutls_session_t <var>session</var>, gnutls_datum_t * <var>secret</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p><var>secret</var>: the session&rsquo;s master secret
+</p>
+<p>This function returns pointers to the master secret
+used in the TLS session. The pointers are not to be modified or deallocated.
+</p>
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fget_005fptr-1"></a>
@@ -5653,8 +5711,7 @@ integers indicating the available ciphers.
 <dt><a name="index-gnutls_005fsrp_005fallocate_005fclient_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_srp_allocate_client_credentials</strong> <em>(gnutls_srp_client_credentials_t *            <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a pointer to a <code>gnutls_srp_server_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus
-this helper function is provided in order to allocate it.
+<p>Allocate a gnutls_srp_client_credentials_t structure.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, or an
 error code.
@@ -5666,8 +5723,7 @@ error code.
 <dt><a name="index-gnutls_005fsrp_005fallocate_005fserver_005fcredentials"></a>Function: <em>int</em> <strong>gnutls_srp_allocate_server_credentials</strong> <em>(gnutls_srp_server_credentials_t *            <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a pointer to a <code>gnutls_srp_server_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus this
-helper function is provided in order to allocate it.
+<p>Allocate a gnutls_srp_server_credentials_t structure.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, or an
 error code.
@@ -5764,8 +5820,7 @@ do not use it for non-SRP purposes.
 <dt><a name="index-gnutls_005fsrp_005ffree_005fclient_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_srp_free_client_credentials</strong> <em>(gnutls_srp_client_credentials_t <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a <code>gnutls_srp_client_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus
-this helper function is provided in order to free (deallocate) it.
+<p>Free a gnutls_srp_client_credentials_t structure.
 </p></dd></dl>
 
 <a name="gnutls_005fsrp_005ffree_005fserver_005fcredentials-1"></a>
@@ -5774,8 +5829,7 @@ this helper function is provided in order to free (deallocate) it.
 <dt><a name="index-gnutls_005fsrp_005ffree_005fserver_005fcredentials"></a>Function: <em>void</em> <strong>gnutls_srp_free_server_credentials</strong> <em>(gnutls_srp_server_credentials_t <var>sc</var>)</em></dt>
 <dd><p><var>sc</var>: is a <code>gnutls_srp_server_credentials_t</code>  type.
 </p>
-<p>This structure is complex enough to manipulate directly thus
-this helper function is provided in order to free (deallocate) it.
+<p>Free a gnutls_srp_server_credentials_t structure.
 </p></dd></dl>
 
 <a name="gnutls_005fsrp_005fserver_005fget_005fusername-1"></a>
@@ -6586,7 +6640,9 @@ You&rsquo;ll need to override this function if <code>select()</code>  is not sui
 for the provided transport calls.
 </p>
 <p>As with <code>select()</code> , if the timeout value is zero the callback should return
-zero if no data are immediately available.
+zero if no data are immediately available. The special value
+<code>GNUTLS_INDEFINITE_TIMEOUT</code>  indicates that the callback should wait indefinitely
+for data.
 </p>
 <p><code>gnutls_pull_timeout_func</code> is of the form,
 int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);

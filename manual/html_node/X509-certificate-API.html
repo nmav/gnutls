@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: X509 certificate API</title>
+<title>GnuTLS 3.5.0: X509 certificate API</title>
 
-<meta name="description" content="GnuTLS 3.4.11: X509 certificate API">
-<meta name="keywords" content="GnuTLS 3.4.11: X509 certificate API">
+<meta name="description" content="GnuTLS 3.5.0: X509 certificate API">
+<meta name="keywords" content="GnuTLS 3.5.0: X509 certificate API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -1032,6 +1031,26 @@ enumeration that is the signature algorithm.
 negative error value.
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrl_005fget_005fsignature_005foid-1"></a>
+<h4 class="subheading">gnutls_x509_crl_get_signature_oid</h4>
+<a name="gnutls_005fx509_005fcrl_005fget_005fsignature_005foid"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fsignature_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_signature_oid</strong> <em>(gnutls_x509_crl_t <var>crl</var>, char * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
+<dd><p><var>crl</var>: should contain a <code>gnutls_x509_crl_t</code>  type
+</p>
+<p><var>oid</var>: a pointer to a buffer to hold the OID (may be null)
+</p>
+<p><var>oid_size</var>: initially holds the size of  <code>oid</code> 
+</p>
+<p>This function will return the OID of the signature algorithm
+that has been used to sign this CRL. This is function
+is useful in the case <code>gnutls_x509_crl_get_signature_algorithm()</code> 
+returned <code>GNUTLS_SIGN_UNKNOWN</code> .
+</p>
+<p><strong>Returns:</strong> zero or a negative error code on error.
+</p>
+<p><strong>Since:</strong> 3.5.0
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrl_005fget_005fthis_005fupdate-1"></a>
 <h4 class="subheading">gnutls_x509_crl_get_this_update</h4>
 <a name="gnutls_005fx509_005fcrl_005fget_005fthis_005fupdate"></a><dl>
@@ -1911,6 +1930,26 @@ For DSA the bits returned are of the public exponent.
 success, or a negative error code on error.
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrq_005fget_005fpk_005foid-1"></a>
+<h4 class="subheading">gnutls_x509_crq_get_pk_oid</h4>
+<a name="gnutls_005fx509_005fcrq_005fget_005fpk_005foid"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fpk_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_pk_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, char * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
+<dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  type
+</p>
+<p><var>oid</var>: a pointer to a buffer to hold the OID (may be null)
+</p>
+<p><var>oid_size</var>: initially holds the size of  <code>oid</code> 
+</p>
+<p>This function will return the OID of the public key algorithm
+on that certificate request. This is function
+is useful in the case <code>gnutls_x509_crq_get_pk_algorithm()</code> 
+returned <code>GNUTLS_PK_UNKNOWN</code> .
+</p>
+<p><strong>Returns:</strong> zero or a negative error code on error.
+</p>
+<p><strong>Since:</strong> 3.5.0
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrq_005fget_005fprivate_005fkey_005fusage_005fperiod-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_private_key_usage_period</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fprivate_005fkey_005fusage_005fperiod"></a><dl>
@@ -1944,6 +1983,26 @@ sign this certificate request.
 error.
 </p>
 <p><strong>Since:</strong> 3.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrq_005fget_005fsignature_005foid-1"></a>
+<h4 class="subheading">gnutls_x509_crq_get_signature_oid</h4>
+<a name="gnutls_005fx509_005fcrq_005fget_005fsignature_005foid"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fsignature_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_signature_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, char * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
+<dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  type
+</p>
+<p><var>oid</var>: a pointer to a buffer to hold the OID (may be null)
+</p>
+<p><var>oid_size</var>: initially holds the size of  <code>oid</code> 
+</p>
+<p>This function will return the OID of the signature algorithm
+that has been used to sign this certificate request. This is function
+is useful in the case <code>gnutls_x509_crq_get_signature_algorithm()</code> 
+returned <code>GNUTLS_SIGN_UNKNOWN</code> .
+</p>
+<p><strong>Returns:</strong> zero or a negative error code on error.
+</p>
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrq_005fget_005fsubject_005falt_005fname-1"></a>
@@ -2299,6 +2358,32 @@ negative error value.
 <p><strong>Since:</strong> 2.8.0
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrq_005fset_005fsubject_005falt_005fothername-1"></a>
+<h4 class="subheading">gnutls_x509_crq_set_subject_alt_othername</h4>
+<a name="gnutls_005fx509_005fcrq_005fset_005fsubject_005falt_005fothername"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fset_005fsubject_005falt_005fothername"></a>Function: <em>int</em> <strong>gnutls_x509_crq_set_subject_alt_othername</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, const void * <var>data</var>, unsigned int <var>data_size</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>crq</var>: a certificate request of type <code>gnutls_x509_crq_t</code> 
+</p>
+<p><var>oid</var>: is the othername OID
+</p>
+<p><var>data</var>: The data to be set
+</p>
+<p><var>data_size</var>: The size of data to be set
+</p>
+<p><var>flags</var>: <code>GNUTLS_FSAN_SET</code>  to clear previous data or
+<code>GNUTLS_FSAN_APPEND</code>  to append.
+</p>
+<p>This function will set the subject alternative name certificate
+extension.  It can set the following types:
+</p>
+<p>The values set must be binary values and must be properly DER encoded.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.0
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrq_005fset_005fversion-1"></a>
 <h4 class="subheading">gnutls_x509_crq_set_version</h4>
 <a name="gnutls_005fx509_005fcrq_005fset_005fversion"></a><dl>
@@ -2480,6 +2565,37 @@ negative error value.
 <dd><p><var>cert</var>: The data to be deinitialized
 </p>
 <p>This function will deinitialize a certificate structure.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrt_005fequals-1"></a>
+<h4 class="subheading">gnutls_x509_crt_equals</h4>
+<a name="gnutls_005fx509_005fcrt_005fequals"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fequals"></a>Function: <em>unsigned</em> <strong>gnutls_x509_crt_equals</strong> <em>(gnutls_x509_crt_t <var>cert1</var>, gnutls_x509_crt_t <var>cert2</var>)</em></dt>
+<dd><p><var>cert1</var>: The first certificate
+</p>
+<p><var>cert2</var>: The second certificate
+</p>
+<p>This function will compare two X.509 certificate structures.
+</p>
+<p><strong>Returns:</strong> On equality non-zero is returned, otherwise zero.
+</p>
+<p><strong>Since:</strong> 3.5.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrt_005fequals2-1"></a>
+<h4 class="subheading">gnutls_x509_crt_equals2</h4>
+<a name="gnutls_005fx509_005fcrt_005fequals2"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fequals2"></a>Function: <em>unsigned</em> <strong>gnutls_x509_crt_equals2</strong> <em>(gnutls_x509_crt_t <var>cert1</var>, gnutls_datum_t * <var>der</var>)</em></dt>
+<dd><p><var>cert1</var>: The first certificate
+</p>
+<p><var>der</var>: A DER encoded certificate
+</p>
+<p>This function will compare an X.509 certificate structures, with DER
+encoded certificate data.
+</p>
+<p><strong>Returns:</strong> On equality non-zero is returned, otherwise zero.
+</p>
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fexport-1"></a>
@@ -3398,11 +3514,13 @@ the name constraints of the provided CA certificate. That
 structure can be used in combination with <code>gnutls_x509_name_constraints_check()</code> 
 to verify whether a server&rsquo;s name is in accordance with the constraints.
 </p>
-<p>When the  <code>flags</code> is set to <code>GNUTLS_NAME_CONSTRAINTS_FLAG_APPEND</code> , then if 
-the  <code>nc</code> structure is empty
-this function will behave identically as if the flag was not set.
-Otherwise if there are elements in the  <code>nc</code> structure then only the
-excluded constraints will be appended to the constraints.
+<p>When the  <code>flags</code> is set to <code>GNUTLS_NAME_CONSTRAINTS_FLAG_APPEND</code> ,
+then if the  <code>nc</code> structure is empty this function will behave
+identically as if the flag was not set.
+Otherwise if there are elements in the  <code>nc</code> structure then the
+constraints will be merged with the existing constraints following
+RFC5280 p6.1.4 (excluded constraints will be appended, permitted
+will be intersected).
 </p>
 <p>Note that  <code>nc</code> must be initialized prior to calling this function.
 </p>
@@ -3427,6 +3545,8 @@ certificate.
 size in bits. For RSA the bits returned is the modulus.
 For DSA the bits returned are of the public
 exponent.
+</p>
+<p>Unknown/unsupported algorithms are mapped to <code>GNUTLS_PK_UNKNOWN</code> .
 </p>
 <p><strong>Returns:</strong> a member of the <code>gnutls_pk_algorithm_t</code>  enumeration on
 success, or a negative error code on error.
@@ -3472,6 +3592,26 @@ the given certificate.  The new parameters will be allocated using
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p>
 <p><strong>Since:</strong> 3.4.1
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrt_005fget_005fpk_005foid-1"></a>
+<h4 class="subheading">gnutls_x509_crt_get_pk_oid</h4>
+<a name="gnutls_005fx509_005fcrt_005fget_005fpk_005foid"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fpk_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_pk_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, char * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
+<dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  type
+</p>
+<p><var>oid</var>: a pointer to a buffer to hold the OID (may be null)
+</p>
+<p><var>oid_size</var>: initially holds the size of  <code>oid</code> 
+</p>
+<p>This function will return the OID of the public key algorithm
+on that certificate. This is function
+is useful in the case <code>gnutls_x509_crt_get_pk_algorithm()</code> 
+returned <code>GNUTLS_PK_UNKNOWN</code> .
+</p>
+<p><strong>Returns:</strong> zero or a negative error code on error.
+</p>
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fget_005fpk_005frsa_005fraw-1"></a>
@@ -3635,8 +3775,30 @@ negative error value.
 enumeration that is the signature algorithm that has been used to
 sign this certificate.
 </p>
+<p>Unknown/unsupported signature algorithms are mapped to <code>GNUTLS_SIGN_UNKNOWN</code> .
+</p>
 <p><strong>Returns:</strong> a <code>gnutls_sign_algorithm_t</code>  value, or a negative error code on
 error.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrt_005fget_005fsignature_005foid-1"></a>
+<h4 class="subheading">gnutls_x509_crt_get_signature_oid</h4>
+<a name="gnutls_005fx509_005fcrt_005fget_005fsignature_005foid"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fsignature_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_signature_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, char * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
+<dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  type
+</p>
+<p><var>oid</var>: a pointer to a buffer to hold the OID (may be null)
+</p>
+<p><var>oid_size</var>: initially holds the size of  <code>oid</code> 
+</p>
+<p>This function will return the OID of the signature algorithm
+that has been used to sign this certificate. This is function
+is useful in the case <code>gnutls_x509_crt_get_signature_algorithm()</code> 
+returned <code>GNUTLS_SIGN_UNKNOWN</code> .
+</p>
+<p><strong>Returns:</strong> zero or a negative error code on error.
+</p>
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fget_005fsubject-1"></a>
@@ -3847,15 +4009,13 @@ negative error value.
 </p>
 <p><var>url</var>: A PKCS 11 url
 </p>
-<p><var>flags</var>: One of GNUTLS_PKCS11_OBJ_* flags
+<p><var>flags</var>: One of GNUTLS_PKCS11_OBJ_* flags for PKCS<code>11</code>  URLs or zero otherwise
 </p>
-<p>This function will import a PKCS 11 certificate directly from a token
-without involving the <code>gnutls_pkcs11_obj_t</code>  type. This function will
-fail if the certificate stored is not of X.509 type.
+<p>This function will import a certificate present in a PKCS<code>11</code>  token
+or any type of back-end that supports URLs.
 </p>
-<p>Despite its name this function will attempt to import any kind of 
-URL to certificate. In previous versions of gnutls this function
-was named gnutls_x509_crt_import_pkcs11_url, and the old name is
+<p>In previous versions of gnutls this function was named
+gnutls_x509_crt_import_pkcs11_url, and the old name is
 an alias to this one.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
@@ -4270,6 +4430,33 @@ negative error value.
 <p><strong>Since:</strong> 3.3.0
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrt_005fset_005fissuer_005falt_005fothername-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_issuer_alt_othername</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fissuer_005falt_005fothername"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fissuer_005falt_005fothername"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_issuer_alt_othername</strong> <em>(gnutls_x509_crt_t <var>crt</var>, const char * <var>oid</var>, const void * <var>data</var>, unsigned int <var>data_size</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>oid</var>: The other name OID
+</p>
+<p><var>data</var>: The data to be set
+</p>
+<p><var>data_size</var>: The size of data to be set
+</p>
+<p><var>flags</var>: GNUTLS_FSAN_SET to clear previous data or GNUTLS_FSAN_APPEND to append. 
+</p>
+<p>This function will set an &quot;othername&quot; to the issuer alternative name certificate
+extension.
+</p>
+<p>The values set are set as binary values and are expected to have the proper DER encoding.
+For convenience the flags <code>GNUTLS_FSAN_ENCODE_OCTET_STRING</code>  and <code>GNUTLS_FSAN_ENCODE_UTF8_STRING</code> 
+can be used to encode the provided data.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.0
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrt_005fset_005fissuer_005fdn-1"></a>
 <h4 class="subheading">gnutls_x509_crt_set_issuer_dn</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fissuer_005fdn"></a><dl>
@@ -4548,12 +4735,42 @@ negative error value.
 <p><var>flags</var>: GNUTLS_FSAN_SET to clear previous data or GNUTLS_FSAN_APPEND to append. 
 </p>
 <p>This function will set the subject alternative name certificate
-extension. It can set the following types:
+extension. It can set the following types: <code>GNUTLS_SAN_DNSNAME</code>  as a text string,
+<code>GNUTLS_SAN_RFC822NAME</code>  as a text string, <code>GNUTLS_SAN_URI</code>  as a text string,
+<code>GNUTLS_SAN_IPADDRESS</code>  as a binary IP address (4 or 16 bytes),
+<code>GNUTLS_SAN_OTHERNAME_XMPP</code>  as a UTF8 string (since 3.5.0).
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
 </p>
 <p><strong>Since:</strong> 2.6.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fothername-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_subject_alt_othername</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fothername"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fsubject_005falt_005fothername"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_subject_alt_othername</strong> <em>(gnutls_x509_crt_t <var>crt</var>, const char * <var>oid</var>, const void * <var>data</var>, unsigned int <var>data_size</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>oid</var>: The other name OID
+</p>
+<p><var>data</var>: The data to be set
+</p>
+<p><var>data_size</var>: The size of data to be set
+</p>
+<p><var>flags</var>: GNUTLS_FSAN_SET to clear previous data or GNUTLS_FSAN_APPEND to append. 
+</p>
+<p>This function will set an &quot;othername&quot; to the subject alternative name certificate
+extension.
+</p>
+<p>The values set are set as binary values and are expected to have the proper DER encoding.
+For convenience the flags <code>GNUTLS_FSAN_ENCODE_OCTET_STRING</code>  and <code>GNUTLS_FSAN_ENCODE_UTF8_STRING</code> 
+can be used to encode the provided data.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fset_005fsubject_005falternative_005fname-1"></a>
@@ -5282,8 +5499,10 @@ to verify whether a server&rsquo;s name is in accordance with the constraints.
 </p>
 <p>When the  <code>flags</code> is set to <code>GNUTLS_NAME_CONSTRAINTS_FLAG_APPEND</code> , then if 
 the  <code>nc</code> type is empty this function will behave identically as if the flag was not set.
-Otherwise if there are elements in the  <code>nc</code> type then only the
-excluded constraints will be appended to the constraints.
+Otherwise if there are elements in the  <code>nc</code> structure then the
+constraints will be merged with the existing constraints following
+RFC5280 p6.1.4 (excluded constraints will be appended, permitted
+will be intersected).
 </p>
 <p>Note that  <code>nc</code> must be initialized prior to calling this function.
 </p>
@@ -5487,7 +5706,11 @@ purposes.
 <p><var>name</var>: The data of the constraints
 </p>
 <p>This function will add a name constraint to the list of excluded
-constraints.
+constraints. The constraints  <code>type</code> can be any of the following types:
+<code>GNUTLS_SAN_DNSNAME</code> , <code>GNUTLS_SAN_RFC822NAME</code> , <code>GNUTLS_SAN_DN</code> ,
+<code>GNUTLS_SAN_URI</code> , <code>GNUTLS_SAN_IPADDRESS</code> . For the latter, an IP address
+in network byte order is expected, followed by its network mask (which is
+4 bytes in IPv4 or 16-bytes in IPv6).
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a negative error value.
 </p>
@@ -5505,7 +5728,10 @@ constraints.
 <p><var>name</var>: The data of the constraints
 </p>
 <p>This function will add a name constraint to the list of permitted
-constraints.
+constraints. The constraints  <code>type</code> can be any of the following types:
+<code>GNUTLS_SAN_DNSNAME</code> , <code>GNUTLS_SAN_RFC822NAME</code> , <code>GNUTLS_SAN_DN</code> ,
+<code>GNUTLS_SAN_URI</code> , <code>GNUTLS_SAN_IPADDRESS</code> . For the latter, an IP address
+in network byte order is expected, followed by its network mask.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a negative error value.
 </p>
@@ -5990,16 +6216,53 @@ negative error value.
 <h4 class="subheading">gnutls_x509_privkey_generate</h4>
 <a name="gnutls_005fx509_005fprivkey_005fgenerate"></a><dl>
 <dt><a name="index-gnutls_005fx509_005fprivkey_005fgenerate"></a>Function: <em>int</em> <strong>gnutls_x509_privkey_generate</strong> <em>(gnutls_x509_privkey_t <var>key</var>, gnutls_pk_algorithm_t <var>algo</var>, unsigned int <var>bits</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>key</var>: an initialized key
+</p>
+<p><var>algo</var>: is one of the algorithms in <code>gnutls_pk_algorithm_t</code> .
+</p>
+<p><var>bits</var>: the size of the parameters to generate
+</p>
+<p><var>flags</var>: Must be zero or flags from <code>gnutls_privkey_flags_t</code> .
+</p>
+<p>This function will generate a random private key. Note that this
+function must be called on an empty private key. The flag <code>GNUTLS_PRIVKEY_FLAG_PROVABLE</code> 
+instructs the key generation process to use algorithms like Shawe-Taylor
+which generate provable parameters out of a seed.
+</p>
+<p>Note that when generating an elliptic curve key, the curve
+can be substituted in the place of the bits parameter using the
+<code>GNUTLS_CURVE_TO_BITS()</code>  macro. The input to the macro is any curve from
+<code>gnutls_ecc_curve_t</code> .
+</p>
+<p>For DSA keys, if the subgroup size needs to be specified check
+the <code>GNUTLS_SUBGROUP_TO_BITS()</code>  macro.
+</p>
+<p>It is recommended to do not set the number of  <code>bits</code> directly, use <code>gnutls_sec_param_to_pk_bits()</code>  instead .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fprivkey_005fgenerate2-1"></a>
+<h4 class="subheading">gnutls_x509_privkey_generate2</h4>
+<a name="gnutls_005fx509_005fprivkey_005fgenerate2"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fprivkey_005fgenerate2"></a>Function: <em>int</em> <strong>gnutls_x509_privkey_generate2</strong> <em>(gnutls_x509_privkey_t <var>key</var>, gnutls_pk_algorithm_t <var>algo</var>, unsigned int <var>bits</var>, unsigned int <var>flags</var>, const gnutls_keygen_data_st * <var>data</var>, unsigned <var>data_size</var>)</em></dt>
 <dd><p><var>key</var>: a key
 </p>
 <p><var>algo</var>: is one of the algorithms in <code>gnutls_pk_algorithm_t</code> .
 </p>
 <p><var>bits</var>: the size of the modulus
 </p>
-<p><var>flags</var>: unused for now.  Must be 0.
+<p><var>flags</var>: Must be zero or flags from <code>gnutls_privkey_flags_t</code> .
+</p>
+<p><var>data</var>: Allow specifying <code>gnutls_keygen_data_st</code>  types such as the seed to be used.
+</p>
+<p><var>data_size</var>: The number of  <code>data</code> available.
 </p>
 <p>This function will generate a random private key. Note that this
-function must be called on an empty private key.
+function must be called on an empty private key. The flag <code>GNUTLS_PRIVKEY_FLAG_PROVABLE</code> 
+instructs the key generation process to use algorithms which generate
+provable parameters out of a seed.
 </p>
 <p>Note that when generating an elliptic curve key, the curve
 can be substituted in the place of the bits parameter using the
@@ -6066,6 +6329,28 @@ key.
 </p>
 <p><strong>Returns:</strong> a member of the <code>gnutls_pk_algorithm_t</code>  enumeration on
 success, or a negative error code on error.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fprivkey_005fget_005fseed-1"></a>
+<h4 class="subheading">gnutls_x509_privkey_get_seed</h4>
+<a name="gnutls_005fx509_005fprivkey_005fget_005fseed"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fprivkey_005fget_005fseed"></a>Function: <em>int</em> <strong>gnutls_x509_privkey_get_seed</strong> <em>(gnutls_x509_privkey_t <var>key</var>, gnutls_digest_algorithm_t * <var>digest</var>, void * <var>seed</var>, size_t * <var>seed_size</var>)</em></dt>
+<dd><p><var>key</var>: should contain a <code>gnutls_x509_privkey_t</code>  type
+</p>
+<p><var>digest</var>: if non-NULL it will contain the digest algorithm used for key generation (if applicable)
+</p>
+<p><var>seed</var>: where seed will be copied to
+</p>
+<p><var>seed_size</var>: originally holds the size of  <code>seed</code> , will be updated with actual size
+</p>
+<p>This function will return the seed that was used to generate the
+given private key. That function will succeed only if the key was generated
+as a provable key.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fprivkey_005fimport-1"></a>
@@ -6309,6 +6594,21 @@ this private key.
 <p><strong>Since:</strong> 2.12.0
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fprivkey_005fset_005fflags-1"></a>
+<h4 class="subheading">gnutls_x509_privkey_set_flags</h4>
+<a name="gnutls_005fx509_005fprivkey_005fset_005fflags"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fprivkey_005fset_005fflags"></a>Function: <em>void</em> <strong>gnutls_x509_privkey_set_flags</strong> <em>(gnutls_x509_privkey_t <var>key</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>key</var>: A key of type <code>gnutls_x509_privkey_t</code> 
+</p>
+<p><var>flags</var>: flags from the <code>gnutls_privkey_flags</code> 
+</p>
+<p>This function will set flags for the specified private key, after
+it is generated. Currently this is useful for the <code>GNUTLS_PRIVKEY_FLAG_EXPORT_COMPAT</code> 
+to allow exporting a &quot;provable&quot; private key in backwards compatible way.
+</p>
+<p><strong>Since:</strong> 3.5.0
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fprivkey_005fset_005fpin_005ffunction-1"></a>
 <h4 class="subheading">gnutls_x509_privkey_set_pin_function</h4>
 <a name="gnutls_005fx509_005fprivkey_005fset_005fpin_005ffunction"></a><dl>
@@ -6371,6 +6671,28 @@ negative error value.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fprivkey_005fverify_005fseed-1"></a>
+<h4 class="subheading">gnutls_x509_privkey_verify_seed</h4>
+<a name="gnutls_005fx509_005fprivkey_005fverify_005fseed"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fprivkey_005fverify_005fseed"></a>Function: <em>int</em> <strong>gnutls_x509_privkey_verify_seed</strong> <em>(gnutls_x509_privkey_t <var>key</var>, gnutls_digest_algorithm_t <var>digest</var>, const void * <var>seed</var>, size_t <var>seed_size</var>)</em></dt>
+<dd><p><var>key</var>: should contain a <code>gnutls_x509_privkey_t</code>  type
+</p>
+<p><var>digest</var>: it contains the digest algorithm used for key generation (if applicable)
+</p>
+<p><var>seed</var>: the seed of the key to be checked with
+</p>
+<p><var>seed_size</var>: holds the size of  <code>seed</code> 
+</p>
+<p>This function will verify that the given private key was generated from
+the provided seed. If  <code>seed</code> is <code>NULL</code>  then the seed stored in the  <code>key</code> &rsquo;s structure
+will be used for verification.
+</p>
+<p><strong>Returns:</strong> In case of a verification failure <code>GNUTLS_E_PRIVKEY_VERIFICATION_ERROR</code> 
+is returned, and zero or positive code on success.
+</p>
+<p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005frdn_005fget-1"></a>

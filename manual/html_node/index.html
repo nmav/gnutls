@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: Top</title>
+<title>GnuTLS 3.5.0: Top</title>
 
-<meta name="description" content="GnuTLS 3.4.11: Top">
-<meta name="keywords" content="GnuTLS 3.4.11: Top">
+<meta name="description" content="GnuTLS 3.5.0: Top">
+<meta name="keywords" content="GnuTLS 3.5.0: Top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -48,9 +48,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -155,7 +154,7 @@ dl {
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">GnuTLS 3.4.11</h1>
+<h1 class="settitle" align="center">GnuTLS 3.5.0</h1>
 
 
 
@@ -215,8 +214,9 @@ dl {
       <li><a name="toc-Safe-renegotiation-1" href="Safe-renegotiation.html#Safe-renegotiation">3.6.5 Safe renegotiation</a></li>
       <li><a name="toc-OCSP-status-request-1" href="OCSP-status-request.html#OCSP-status-request">3.6.6 OCSP status request</a></li>
       <li><a name="toc-SRTP-1" href="SRTP.html#SRTP">3.6.7 SRTP</a></li>
-      <li><a name="toc-Application-Layer-Protocol-Negotiation-_0028ALPN_0029-1" href="Application-Layer-Protocol-Negotiation-_0028ALPN_0029.html#Application-Layer-Protocol-Negotiation-_0028ALPN_0029">3.6.8 Application Layer Protocol Negotiation (ALPN)</a></li>
-      <li><a name="toc-Extensions-and-Supplemental-Data-1" href="Extensions-and-Supplemental-Data.html#Extensions-and-Supplemental-Data">3.6.9 Extensions and Supplemental Data</a></li>
+      <li><a name="toc-False-Start-1" href="False-Start.html#False-Start">3.6.8 False Start</a></li>
+      <li><a name="toc-Application-Layer-Protocol-Negotiation-_0028ALPN_0029-1" href="Application-Layer-Protocol-Negotiation-_0028ALPN_0029.html#Application-Layer-Protocol-Negotiation-_0028ALPN_0029">3.6.9 Application Layer Protocol Negotiation (ALPN)</a></li>
+      <li><a name="toc-Extensions-and-Supplemental-Data-1" href="Extensions-and-Supplemental-Data.html#Extensions-and-Supplemental-Data">3.6.10 Extensions and Supplemental Data</a></li>
     </ul></li>
     <li><a name="toc-How-to-use-TLS-in-application-protocols-1" href="How-to-use-TLS-in-application-protocols.html#How-to-use-TLS-in-application-protocols">3.7 How to use <acronym>TLS</acronym> in application protocols</a>
     <ul class="no-bullet">
@@ -304,20 +304,21 @@ dl {
     <li><a name="toc-Smart-cards-and-HSMs-1" href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs">5.3 Smart cards and HSMs</a>
     <ul class="no-bullet">
       <li><a name="toc-Initialization-1" href="PKCS11-Initialization.html#PKCS11-Initialization">5.3.1 Initialization</a></li>
-      <li><a name="toc-Accessing-objects-that-require-a-PIN-1" href="Accessing-objects-that-require-a-PIN.html#Accessing-objects-that-require-a-PIN">5.3.2 Accessing objects that require a PIN</a></li>
-      <li><a name="toc-Reading-objects-1" href="Reading-objects.html#Reading-objects">5.3.3 Reading objects</a></li>
-      <li><a name="toc-Writing-objects-1" href="Writing-objects.html#Writing-objects">5.3.4 Writing objects</a></li>
-      <li><a name="toc-Using-a-PKCS-_002311-token-with-TLS" href="Using-a-PKCS11-token-with-TLS.html#Using-a-PKCS11-token-with-TLS">5.3.5 Using a <acronym>PKCS</acronym> #11 token with TLS</a></li>
-      <li><a name="toc-Invoking-p11tool" href="p11tool-Invocation.html#p11tool-Invocation">5.3.6 Invoking p11tool</a></li>
-      <li><a name="toc-p11tool-help_002fusage-_0028_002d_002dhelp_0029" href="p11tool-Invocation.html#p11tool-help_002fusage-_0028_002d_002dhelp_0029">5.3.7 p11tool help/usage (<samp>--help</samp>)</a></li>
-      <li><a name="toc-token_002drelated_002doptions-options" href="p11tool-Invocation.html#token_002drelated_002doptions-options">5.3.8 token-related-options options</a></li>
-      <li><a name="toc-object_002dlist_002drelated_002doptions-options" href="p11tool-Invocation.html#object_002dlist_002drelated_002doptions-options">5.3.9 object-list-related-options options</a></li>
-      <li><a name="toc-keygen_002drelated_002doptions-options" href="p11tool-Invocation.html#keygen_002drelated_002doptions-options">5.3.10 keygen-related-options options</a></li>
-      <li><a name="toc-write_002dobject_002drelated_002doptions-options" href="p11tool-Invocation.html#write_002dobject_002drelated_002doptions-options">5.3.11 write-object-related-options options</a></li>
-      <li><a name="toc-other_002doptions-options" href="p11tool-Invocation.html#other_002doptions-options">5.3.12 other-options options</a></li>
-      <li><a name="toc-p11tool-exit-status-1" href="p11tool-Invocation.html#p11tool-exit-status-1">5.3.13 p11tool exit status</a></li>
-      <li><a name="toc-p11tool-See-Also-1" href="p11tool-Invocation.html#p11tool-See-Also-1">5.3.14 p11tool See Also</a></li>
-      <li><a name="toc-p11tool-Examples-1" href="p11tool-Invocation.html#p11tool-Examples-1">5.3.15 p11tool Examples</a></li>
+      <li><a name="toc-Manual-initialization-of-user_002dspecific-modules" href="PKCS11-Manual-Initialization.html#PKCS11-Manual-Initialization">5.3.2 Manual initialization of user-specific modules</a></li>
+      <li><a name="toc-Accessing-objects-that-require-a-PIN-1" href="Accessing-objects-that-require-a-PIN.html#Accessing-objects-that-require-a-PIN">5.3.3 Accessing objects that require a PIN</a></li>
+      <li><a name="toc-Reading-objects-1" href="Reading-objects.html#Reading-objects">5.3.4 Reading objects</a></li>
+      <li><a name="toc-Writing-objects-1" href="Writing-objects.html#Writing-objects">5.3.5 Writing objects</a></li>
+      <li><a name="toc-Using-a-PKCS-_002311-token-with-TLS" href="Using-a-PKCS11-token-with-TLS.html#Using-a-PKCS11-token-with-TLS">5.3.6 Using a <acronym>PKCS</acronym> #11 token with TLS</a></li>
+      <li><a name="toc-Invoking-p11tool" href="p11tool-Invocation.html#p11tool-Invocation">5.3.7 Invoking p11tool</a></li>
+      <li><a name="toc-p11tool-help_002fusage-_0028_002d_002dhelp_0029" href="p11tool-Invocation.html#p11tool-help_002fusage-_0028_002d_002dhelp_0029">5.3.8 p11tool help/usage (<samp>--help</samp>)</a></li>
+      <li><a name="toc-token_002drelated_002doptions-options" href="p11tool-Invocation.html#token_002drelated_002doptions-options">5.3.9 token-related-options options</a></li>
+      <li><a name="toc-object_002dlist_002drelated_002doptions-options" href="p11tool-Invocation.html#object_002dlist_002drelated_002doptions-options">5.3.10 object-list-related-options options</a></li>
+      <li><a name="toc-keygen_002drelated_002doptions-options" href="p11tool-Invocation.html#keygen_002drelated_002doptions-options">5.3.11 keygen-related-options options</a></li>
+      <li><a name="toc-write_002dobject_002drelated_002doptions-options" href="p11tool-Invocation.html#write_002dobject_002drelated_002doptions-options">5.3.12 write-object-related-options options</a></li>
+      <li><a name="toc-other_002doptions-options" href="p11tool-Invocation.html#other_002doptions-options">5.3.13 other-options options</a></li>
+      <li><a name="toc-p11tool-exit-status-1" href="p11tool-Invocation.html#p11tool-exit-status-1">5.3.14 p11tool exit status</a></li>
+      <li><a name="toc-p11tool-See-Also-1" href="p11tool-Invocation.html#p11tool-See-Also-1">5.3.15 p11tool See Also</a></li>
+      <li><a name="toc-p11tool-Examples-1" href="p11tool-Invocation.html#p11tool-Examples-1">5.3.16 p11tool Examples</a></li>
     </ul></li>
     <li><a name="toc-Trusted-Platform-Module-_0028TPM_0029" href="Trusted-Platform-Module.html#Trusted-Platform-Module">5.4 Trusted Platform Module (TPM)</a>
     <ul class="no-bullet">
@@ -416,9 +417,10 @@ dl {
       <li><a name="toc-Using-a-smart-card-with-TLS" href="Client-using-a-smart-card-with-TLS.html#Client-using-a-smart-card-with-TLS">7.1.8 Using a smart card with TLS</a></li>
       <li><a name="toc-Client-with-resume-capability-example" href="Client-with-Resume-capability-example.html#Client-with-Resume-capability-example">7.1.9 Client with resume capability example</a></li>
       <li><a name="toc-Simple-client-example-with-SRP-authentication-1" href="Simple-client-example-with-SRP-authentication.html#Simple-client-example-with-SRP-authentication">7.1.10 Simple client example with <acronym>SRP</acronym> authentication</a></li>
-      <li><a name="toc-Simple-client-example-using-the-C_002b_002b-API" href="Simple-client-example-in-C_002b_002b.html#Simple-client-example-in-C_002b_002b">7.1.11 Simple client example using the C++ API</a></li>
-      <li><a name="toc-Helper-functions-for-TCP-connections-1" href="Helper-functions-for-TCP-connections.html#Helper-functions-for-TCP-connections">7.1.12 Helper functions for TCP connections</a></li>
-      <li><a name="toc-Helper-functions-for-UDP-connections-1" href="Helper-functions-for-UDP-connections.html#Helper-functions-for-UDP-connections">7.1.13 Helper functions for UDP connections</a></li>
+      <li><a name="toc-Legacy-client-example-with-X_002e509-certificate-support-1" href="Legacy-client-example-with-X_002e509-certificate-support.html#Legacy-client-example-with-X_002e509-certificate-support">7.1.11 Legacy client example with <acronym>X.509</acronym> certificate support</a></li>
+      <li><a name="toc-Simple-client-example-using-the-C_002b_002b-API" href="Simple-client-example-in-C_002b_002b.html#Simple-client-example-in-C_002b_002b">7.1.12 Simple client example using the C++ API</a></li>
+      <li><a name="toc-Helper-functions-for-TCP-connections-1" href="Helper-functions-for-TCP-connections.html#Helper-functions-for-TCP-connections">7.1.13 Helper functions for TCP connections</a></li>
+      <li><a name="toc-Helper-functions-for-UDP-connections-1" href="Helper-functions-for-UDP-connections.html#Helper-functions-for-UDP-connections">7.1.14 Helper functions for UDP connections</a></li>
     </ul></li>
     <li><a name="toc-Server-examples-1" href="Server-examples.html#Server-examples">7.2 Server examples</a>
     <ul class="no-bullet">
@@ -507,7 +509,7 @@ Next: <a href="Preface.html#Preface" accesskey="n" rel="next">Preface</a>, Up: <
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2015 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2015 Nikos Mavrogiannopoulos

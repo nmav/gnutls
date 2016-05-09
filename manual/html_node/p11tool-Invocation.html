@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: p11tool Invocation</title>
+<title>GnuTLS 3.5.0: p11tool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.4.11: p11tool Invocation">
-<meta name="keywords" content="GnuTLS 3.4.11: p11tool Invocation">
+<meta name="description" content="GnuTLS 3.5.0: p11tool Invocation">
+<meta name="keywords" content="GnuTLS 3.5.0: p11tool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -163,7 +162,7 @@ Previous: <a href="Using-a-PKCS11-token-with-TLS.html#Using-a-PKCS11-token-with-
 </div>
 <hr>
 <a name="Invoking-p11tool"></a>
-<h4 class="subsection">5.3.6 Invoking p11tool</h4>
+<h4 class="subsection">5.3.7 Invoking p11tool</h4>
 <a name="index-p11tool"></a>
 
 
@@ -185,7 +184,7 @@ This software is released under the GNU General Public License, version 3 or lat
 </p>
 
 <a name="p11tool-usage"></a><a name="p11tool-help_002fusage-_0028_002d_002dhelp_0029"></a>
-<h4 class="subsection">5.3.7 p11tool help/usage (<samp>--help</samp>)</h4>
+<h4 class="subsection">5.3.8 p11tool help/usage (<samp>--help</samp>)</h4>
 <a name="index-p11tool-help"></a>
 
 <p>This is the automatically generated usage text for p11tool.
@@ -323,7 +322,7 @@ environment variables GNUTLS_PIN and GNUTLS_SO_PIN.
 </pre></div>
 
 <a name="p11tool-token_002drelated_002doptions"></a><a name="token_002drelated_002doptions-options"></a>
-<h4 class="subsection">5.3.8 token-related-options options</h4>
+<h4 class="subsection">5.3.9 token-related-options options</h4>
 <p>Tokens.
 </p><a name="list_002dtoken_002durls-option_002e"></a>
 <h4 class="subsubheading">list-token-urls option.</h4>
@@ -343,7 +342,7 @@ Alternatively the GNUTLS_PIN environment variable may be used.
 This option takes a string argument.
 Alternatively the GNUTLS_SO_PIN environment variable may be used.
 <a name="p11tool-object_002dlist_002drelated_002doptions"></a></p><a name="object_002dlist_002drelated_002doptions-options"></a>
-<h4 class="subsection">5.3.9 object-list-related-options options</h4>
+<h4 class="subsection">5.3.10 object-list-related-options options</h4>
 <p>Object listing.
 </p><a name="list_002dall_002dprivkeys-option_002e"></a>
 <h4 class="subsubheading">list-all-privkeys option.</h4>
@@ -373,7 +372,7 @@ Exports the certificate specified by the URL and generates its chain of trust ba
 <p>This is the &ldquo;export the public key for a private key&rdquo; option.
 Exports the public key for the specified private key
 <a name="p11tool-keygen_002drelated_002doptions"></a></p><a name="keygen_002drelated_002doptions-options"></a>
-<h4 class="subsection">5.3.10 keygen-related-options options</h4>
+<h4 class="subsection">5.3.11 keygen-related-options options</h4>
 <p>Key generation.
 </p><a name="generate_002drsa-option_002e"></a>
 <h4 class="subsubheading">generate-rsa option.</h4>
@@ -403,7 +402,7 @@ Supported values are secp192r1, secp224r1, secp256r1, secp384r1 and secp521r1.
 This option takes a string argument <samp>Security parameter</samp>.
 This is alternative to the bits option. Available options are [low, legacy, medium, high, ultra].
 <a name="p11tool-write_002dobject_002drelated_002doptions"></a></p><a name="write_002dobject_002drelated_002doptions-options"></a>
-<h4 class="subsection">5.3.11 write-object-related-options options</h4>
+<h4 class="subsection">5.3.12 write-object-related-options options</h4>
 <p>Writing objects.
 </p><a name="set_002did-option_002e"></a>
 <h4 class="subsubheading">set-id option.</h4>
@@ -534,7 +533,7 @@ see <a href="#p11tool-mark_002dprivate">the mark-private option documentation</a
 This option takes a string argument.
 This secret key will be written to the module if &ndash;write is specified.
 <a name="p11tool-other_002doptions"></a></p><a name="other_002doptions-options"></a>
-<h4 class="subsection">5.3.12 other-options options</h4>
+<h4 class="subsection">5.3.13 other-options options</h4>
 <p>Other options.
 </p><a name="debug-option-_0028_002dd_0029_002e"></a>
 <h4 class="subsubheading">debug option (-d).</h4>
@@ -618,7 +617,7 @@ This will override the default options in /etc/gnutls/pkcs11.conf
 <p>This is the &ldquo;disable all interaction with the tool&rdquo; option.
 In batch mode there will be no prompts, all parameters need to be specified on command line.
 <a name="p11tool-exit-status"></a></p><a name="p11tool-exit-status-1"></a>
-<h4 class="subsection">5.3.13 p11tool exit status</h4>
+<h4 class="subsection">5.3.14 p11tool exit status</h4>
 
 <p>One of the following exit values will be returned:
 </p><dl compact="compact">
@@ -630,10 +629,10 @@ In batch mode there will be no prompts, all parameters need to be specified on c
 </p></dd>
 </dl>
 <a name="p11tool-See-Also"></a><a name="p11tool-See-Also-1"></a>
-<h4 class="subsection">5.3.14 p11tool See Also</h4>
+<h4 class="subsection">5.3.15 p11tool See Also</h4>
 <p>certtool (1)
 <a name="p11tool-Examples"></a></p><a name="p11tool-Examples-1"></a>
-<h4 class="subsection">5.3.15 p11tool Examples</h4>
+<h4 class="subsection">5.3.16 p11tool Examples</h4>
 <p>To view all tokens in your system use:
 </p><div class="example">
 <pre class="example">$ p11tool --list-tokens

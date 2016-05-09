@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: Simple Datagram TLS client example</title>
+<title>GnuTLS 3.5.0: Simple Datagram TLS client example</title>
 
-<meta name="description" content="GnuTLS 3.4.11: Simple Datagram TLS client example">
-<meta name="keywords" content="GnuTLS 3.4.11: Simple Datagram TLS client example">
+<meta name="description" content="GnuTLS 3.5.0: Simple Datagram TLS client example">
+<meta name="keywords" content="GnuTLS 3.5.0: Simple Datagram TLS client example">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -181,12 +180,15 @@ with X.509 certificates.
 #include &lt;sys/types.h&gt;
 #include &lt;sys/socket.h&gt;
 #include &lt;arpa/inet.h&gt;
+#include &lt;assert.h&gt;
 #include &lt;unistd.h&gt;
 #include &lt;gnutls/gnutls.h&gt;
 #include &lt;gnutls/dtls.h&gt;
 
 /* A very basic Datagram TLS client, over UDP with X.509 authentication.
  */
+
+#define CHECK(x) assert((x)&gt;=0)
 
 #define MAX_BUF 1024
 #define CAFILE &quot;/etc/ssl/certs/ca-certificates.crt&quot;
@@ -201,7 +203,6 @@ int main(void)
         int ret, sd, ii;
         gnutls_session_t session;
         char buffer[MAX_BUF + 1];
-        const char *err;
         gnutls_certificate_credentials_t xcred;
 
         if (gnutls_check_version(&quot;3.1.4&quot;) == NULL) {
@@ -210,34 +211,27 @@ int main(void)
         }
 
         /* for backwards compatibility with gnutls &lt; 3.3.0 */
-        gnutls_global_init();
+        CHECK(gnutls_global_init());
 
         /* X509 stuff */
-        gnutls_certificate_allocate_credentials(&amp;xcred);
+        CHECK(gnutls_certificate_allocate_credentials(&amp;xcred));
 
         /* sets the trusted cas file */
-        gnutls_certificate_set_x509_trust_file(xcred, CAFILE,
-                                               GNUTLS_X509_FMT_PEM);
-        gnutls_certificate_set_verify_function(xcred,
-                                               verify_certificate_callback);
+        CHECK(gnutls_certificate_set_x509_trust_file(xcred, CAFILE,
+                                                     GNUTLS_X509_FMT_PEM));
 
         /* Initialize TLS session */
-        gnutls_init(&amp;session, GNUTLS_CLIENT | GNUTLS_DATAGRAM);
+        CHECK(gnutls_init(&amp;session, GNUTLS_CLIENT | GNUTLS_DATAGRAM));
 
         /* Use default priorities */
-        ret = gnutls_priority_set_direct(session, 
-                                         &quot;NORMAL&quot;, &amp;err);
-        if (ret &lt; 0) {
-                if (ret == GNUTLS_E_INVALID_REQUEST) {
-                        fprintf(stderr, &quot;Syntax error at: %s\n&quot;, err);
-                }
-                exit(1);
-        }
+        CHECK(gnutls_set_default_priority(session));
 
         /* put the x509 credentials to the current session */
-        gnutls_credentials_set(session, GNUTLS_CRD_CERTIFICATE, xcred);
-        gnutls_server_name_set(session, GNUTLS_NAME_DNS, &quot;my_host_name&quot;,
-                               strlen(&quot;my_host_name&quot;));
+        CHECK(gnutls_credentials_set(session, GNUTLS_CRD_CERTIFICATE, xcred));
+        CHECK(gnutls_server_name_set(session, GNUTLS_NAME_DNS, &quot;my_host_name&quot;,
+                                     strlen(&quot;my_host_name&quot;)));
+
+        gnutls_session_set_verify_cert(session, &quot;my_host_name&quot;, 0);
 
         /* connect to the peer */
         sd = udp_connect();
@@ -267,7 +261,7 @@ int main(void)
                 gnutls_free(desc);
         }
 
-        gnutls_record_send(session, MSG, strlen(MSG));
+        CHECK(gnutls_record_send(session, MSG, strlen(MSG)));
 
         ret = gnutls_record_recv(session, buffer, MAX_BUF);
         if (ret == 0) {
@@ -291,7 +285,7 @@ int main(void)
         /* It is suggested not to use GNUTLS_SHUT_RDWR in DTLS
          * connections because the peer's closure message might
          * be lost */
-        gnutls_bye(session, GNUTLS_SHUT_WR);
+        CHECK(gnutls_bye(session, GNUTLS_SHUT_WR));
 
       end:
 

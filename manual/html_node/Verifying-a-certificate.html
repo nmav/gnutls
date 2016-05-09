@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: Verifying a certificate</title>
+<title>GnuTLS 3.5.0: Verifying a certificate</title>
 
-<meta name="description" content="GnuTLS 3.4.11: Verifying a certificate">
-<meta name="keywords" content="GnuTLS 3.4.11: Verifying a certificate">
+<meta name="description" content="GnuTLS 3.5.0: Verifying a certificate">
+<meta name="keywords" content="GnuTLS 3.5.0: Verifying a certificate">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -177,10 +176,13 @@ functions to verify a given certificate list.
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;string.h&gt;
+#include &lt;assert.h&gt;
 #include &lt;gnutls/gnutls.h&gt;
 #include &lt;gnutls/x509.h&gt;
 
 #include &quot;examples.h&quot;
+
+#define CHECK(x) assert((x)&gt;=0)
 
 /* All the available CRLs
  */
@@ -208,18 +210,18 @@ verify_certificate_chain(const char *hostname,
         int i;
         gnutls_x509_trust_list_t tlist;
         gnutls_x509_crt_t *cert;
-
+        gnutls_datum_t txt;
         unsigned int output;
 
         /* Initialize the trusted certificate list. This should be done
          * once on initialization. gnutls_x509_crt_list_import2() and
          * gnutls_x509_crl_list_import2() can be used to load them.
          */
-        gnutls_x509_trust_list_init(&amp;tlist, 0);
+        CHECK(gnutls_x509_trust_list_init(&amp;tlist, 0));
 
-        gnutls_x509_trust_list_add_cas(tlist, ca_list, ca_list_size, 0);
-        gnutls_x509_trust_list_add_crls(tlist, crl_list, crl_list_size,
-                                        GNUTLS_TL_VERIFY_CRL, 0);
+        CHECK(gnutls_x509_trust_list_add_cas(tlist, ca_list, ca_list_size, 0));
+        CHECK(gnutls_x509_trust_list_add_crls(tlist, crl_list, crl_list_size,
+                                              GNUTLS_TL_VERIFY_CRL, 0));
 
         cert = malloc(sizeof(*cert) * cert_chain_length);
 
@@ -227,39 +229,38 @@ verify_certificate_chain(const char *hostname,
          * native certificate format.
          */
         for (i = 0; i &lt; cert_chain_length; i++) {
-                gnutls_x509_crt_init(&amp;cert[i]);
-                gnutls_x509_crt_import(cert[i], &amp;cert_chain[i],
-                                       GNUTLS_X509_FMT_DER);
+                CHECK(gnutls_x509_crt_init(&amp;cert[i]));
+                CHECK(gnutls_x509_crt_import(cert[i], &amp;cert_chain[i],
+                                             GNUTLS_X509_FMT_DER));
         }
 
-        gnutls_x509_trust_list_verify_named_crt(tlist, cert[0], hostname,
+        CHECK(gnutls_x509_trust_list_verify_named_crt(tlist, cert[0],
+                                                hostname,
                                                 strlen(hostname),
                                                 GNUTLS_VERIFY_DISABLE_CRL_CHECKS,
                                                 &amp;output,
-                                                print_details_func);
+                                                print_details_func));
 
         /* if this certificate is not explicitly trusted verify against CAs 
          */
         if (output != 0) {
-                gnutls_x509_trust_list_verify_crt(tlist, cert,
+                CHECK(gnutls_x509_trust_list_verify_crt(tlist, cert,
                                                   cert_chain_length, 0,
                                                   &amp;output,
-                                                  print_details_func);
+                                                  print_details_func));
         }
 
+
+
         if (output &amp; GNUTLS_CERT_INVALID) {
-                fprintf(stderr, &quot;Not trusted&quot;);
+                fprintf(stderr, &quot;Not trusted\n&quot;);
+                CHECK(gnutls_certificate_verification_status_print(
+                                                     output,
+                                                     GNUTLS_CRT_X509,
+                                                     &amp;txt, 0));
 
-                if (output &amp; GNUTLS_CERT_SIGNER_NOT_FOUND)
-                        fprintf(stderr, &quot;: no issuer was found&quot;);
-                if (output &amp; GNUTLS_CERT_SIGNER_NOT_CA)
-                        fprintf(stderr, &quot;: issuer is not a CA&quot;);
-                if (output &amp; GNUTLS_CERT_NOT_ACTIVATED)
-                        fprintf(stderr, &quot;: not yet activated\n&quot;);
-                if (output &amp; GNUTLS_CERT_EXPIRED)
-                        fprintf(stderr, &quot;: expired\n&quot;);
-
-                fprintf(stderr, &quot;\n&quot;);
+                fprintf(stderr, &quot;Error: %s\n&quot;, txt.data);
+                gnutls_free(txt.data);
         } else
                 fprintf(stderr, &quot;Trusted\n&quot;);
 

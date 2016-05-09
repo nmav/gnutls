@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.4.11 of GnuTLS.
+3.5.0 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -12,12 +12,12 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
-<!-- Created by GNU Texinfo 6.0, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.4.11: Re-authentication</title>
+<title>GnuTLS 3.5.0: Re-authentication</title>
 
-<meta name="description" content="GnuTLS 3.4.11: Re-authentication">
-<meta name="keywords" content="GnuTLS 3.4.11: Re-authentication">
+<meta name="description" content="GnuTLS 3.5.0: Re-authentication">
+<meta name="keywords" content="GnuTLS 3.5.0: Re-authentication">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -49,9 +49,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 body { 
@@ -170,8 +169,15 @@ Next: <a href="Parameter-generation.html#Parameter-generation" accesskey="n" rel
 <p>In TLS there is no distinction between rekey, re-authentication, and re-negotiation.
 All of these use cases are handled by the TLS&rsquo; rehandshake process. For that reason
 in GnuTLS rehandshake is not transparent to the application, and the application
-must take control of that process. The following paragraphs explain how to safely
-use the rehandshake process.
+must explicitly take control of that process. In addition GnuTLS since version 3.5.0 will not
+allow the peer to switch identities during a rehandshake.
+The threat addressed by that behavior depends on the application protocol,
+but primarily it protects applications from being misled
+by a rehandshake which switches the peer&rsquo;s identity. Applications can
+disable this protection by using the <code>GNUTLS_ALLOW_ID_CHANGE</code> flag in
+<a href="Core-TLS-API.html#gnutls_005finit">gnutls_init</a>.
+</p>
+<p>The following paragraphs explain how to safely use the rehandshake process.
 </p>
 <a name="Client-side"></a>
 <h4 class="subsubsection">6.12.3.1 Client side</h4>
@@ -186,10 +192,7 @@ of type GNUTLS_A_NO_RENEGOTIATION.
 </p>
 <p>Due to limitations of early protocol versions, it is required to check whether
 safe renegotiation is in place, i.e., using <a href="Core-TLS-API.html#gnutls_005fsafe_005frenegotiation_005fstatus">gnutls_safe_renegotiation_status</a>,
-which ensures that the server remains the same as the initial. For older servers,
-which do not support renegotiation, it is required on the second handshake
-to verify that their certificate/credentials remained the same as in the initial
-session.
+which ensures that the server remains the same as the initial.
 </p>
 
 
