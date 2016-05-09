@@ -3,7 +3,7 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2016-05-09T10:40:29+00:00</updated>
+<updated>2016-05-09T10:52:58+00:00</updated>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2016-05-09</id>
@@ -17,7 +17,7 @@
     <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2016-05-09.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
 
 <p>
-Released <a href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8539">GnuTLS 3.5.0</a> 
+Released <a href="http://permalink.gmane.org/gmane.network.gnutls.general/4127">GnuTLS 3.5.0</a> 
 which is the first release of the new stable-next branch. An overview of the most prominent changes
 is provided <a href="http://nmav.gnutls.org/2016/05/gnutls-3-5-0.html">at Nikos' blog</a>.
 </p>
