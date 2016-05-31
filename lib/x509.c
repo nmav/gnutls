@@ -195,8 +195,14 @@ _gnutls_ocsp_verify_mandatory_stapling(gnutls_session_t session,
 		return 0;
 	}
 
+	ret = gnutls_x509_tlsfeatures_init(&tlsfeatures);
+	if (ret < 0) {
+		gnutls_assert();
+		return ret;
+	}
+
 	/* We have requested the status, now check whether the certificate mandates a response */
-	if (gnutls_x509_crt_get_tlsfeatures(cert, &tlsfeatures) == 0) {
+	if (gnutls_x509_crt_get_tlsfeatures(cert, tlsfeatures, 0, NULL) == 0) {
 		for (i = 0;; ++i) {
 			ret = gnutls_x509_tlsfeatures_get(tlsfeatures, i, &feature);
 			if (ret == GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE) {
@@ -205,8 +211,7 @@ _gnutls_ocsp_verify_mandatory_stapling(gnutls_session_t session,
 
 			if (ret < 0) {
 				gnutls_assert();
-				gnutls_x509_tlsfeatures_deinit(tlsfeatures);
-				return ret;
+				goto cleanup;
 			}
 			if (feature == GNUTLS_EXTENSION_STATUS_REQUEST) {
 				/* We sent a status request, the certificate mandates a reply, but we did not get any. */
@@ -214,10 +219,12 @@ _gnutls_ocsp_verify_mandatory_stapling(gnutls_session_t session,
 				break;
 			}
 		}
-		gnutls_x509_tlsfeatures_deinit(tlsfeatures);
 	}
 
-	return 0;
+	ret = 0;
+ cleanup:
+	gnutls_x509_tlsfeatures_deinit(tlsfeatures);
+	return ret;
 }
 #endif
 
