@@ -2,6 +2,7 @@
     <td>File overwrite by setuid programs</td>
     <td>Setuid programs using GnuTLS 3.4.12 could potentially allow an attacker to overwrite
     and corrupt arbitrary files in the filesystem. This issue was introduced in GnuTLS 3.4.12
-    and fixed in GnuTLS 3.4.13.
+    with the GNUTLS_KEYLOGFILE environment variable handling via getenv() and fixed
+    in GnuTLS 3.4.13 by switching to secure_getenv() where available.
 
     <b>Recommendation:</b> Upgrade to GnuTLS 3.4.13, or later versions.</td>
