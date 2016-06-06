@@ -3,7 +3,30 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2016-05-20T08:00:13+00:00</updated>
+<updated>2016-06-06T19:44:38+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2016-06-06</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2016-06-06'/>
+    <title>GnuTLS 3.4.13</title>
+    <updated>2016-06-06T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2016-06-06.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released 
+<a href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8572">GnuTLS 3.4.13</a> a bug fix release on the current stable branch.
+</p>
+<p>
+Added <a href="security.html#GNUTLS-SA-2016-1">GnuTLS-SA-2016-1</a> security advisory.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2016-05-20</id>
@@ -415,27 +438,6 @@ href="security.html#GNUTLS-SA-2015-2">GnuTLS-SA-2015-2</a> security advisory.
 <p>
 Released <a href="http://lists.gnutls.org/pipermail/gnutls-devel/2015-April/007535.html">GnuTLS
 3.4.0</a> which is the first release of the new stable-next branch.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2015-03-30</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2015-03-30'/>
-    <title>GnuTLS 3.3.14</title>
-    <updated>2015-03-30T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2015-03-30.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Released <a
-href="http://article.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8077">GnuTLS
-3.3.14</a>, a bug-fix release on the stable branch. 
 </p>
 
     </div>

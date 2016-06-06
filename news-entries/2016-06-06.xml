@@ -1,0 +1,8 @@
+<title>GnuTLS 3.4.13</title>
+<p>
+Released 
+<a href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8572">GnuTLS 3.4.13</a> a bug fix release on the current stable branch.
+</p>
+<p>
+Added <a href="security.html#GNUTLS-SA-2016-1">GnuTLS-SA-2016-1</a> security advisory.
+</p>
