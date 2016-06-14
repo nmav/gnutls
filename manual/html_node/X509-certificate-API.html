@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: X509 certificate API</title>
+<title>GnuTLS 3.5.1: X509 certificate API</title>
 
-<meta name="description" content="GnuTLS 3.5.0: X509 certificate API">
-<meta name="keywords" content="GnuTLS 3.5.0: X509 certificate API">
+<meta name="description" content="GnuTLS 3.5.1: X509 certificate API">
+<meta name="keywords" content="GnuTLS 3.5.1: X509 certificate API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -517,7 +517,7 @@ should be set on the first call, and subsequent calls should use a <code>NULL</c
 <a name="gnutls_005fx509_005fcrl_005fcheck_005fissuer-1"></a>
 <h4 class="subheading">gnutls_x509_crl_check_issuer</h4>
 <a name="gnutls_005fx509_005fcrl_005fcheck_005fissuer"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrl_005fcheck_005fissuer"></a>Function: <em>int</em> <strong>gnutls_x509_crl_check_issuer</strong> <em>(gnutls_x509_crl_t <var>crl</var>, gnutls_x509_crt_t <var>issuer</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrl_005fcheck_005fissuer"></a>Function: <em>unsigned</em> <strong>gnutls_x509_crl_check_issuer</strong> <em>(gnutls_x509_crl_t <var>crl</var>, gnutls_x509_crt_t <var>issuer</var>)</em></dt>
 <dd><p><var>crl</var>: is the CRL to be checked
 </p>
 <p><var>issuer</var>: is the certificate of a possible issuer
@@ -726,7 +726,7 @@ given CRL.
 <a name="gnutls_005fx509_005fcrl_005fget_005fcrt_005fserial-1"></a>
 <h4 class="subheading">gnutls_x509_crl_get_crt_serial</h4>
 <a name="gnutls_005fx509_005fcrl_005fget_005fcrt_005fserial"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fcrt_005fserial-1"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_crt_serial</strong> <em>(gnutls_x509_crl_t <var>crl</var>, int <var>indx</var>, unsigned char * <var>serial</var>, size_t * <var>serial_size</var>, time_t * <var>t</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fcrt_005fserial-1"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_crt_serial</strong> <em>(gnutls_x509_crl_t <var>crl</var>, unsigned <var>indx</var>, unsigned char * <var>serial</var>, size_t * <var>serial_size</var>, time_t * <var>t</var>)</em></dt>
 <dd><p><var>crl</var>: should contain a <code>gnutls_x509_crl_t</code>  type
 </p>
 <p><var>indx</var>: the index of the certificate to extract (starting from 0)
@@ -750,7 +750,7 @@ negative error value.
 <a name="gnutls_005fx509_005fcrl_005fget_005fdn_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crl_get_dn_oid</h4>
 <a name="gnutls_005fx509_005fcrl_005fget_005fdn_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fdn_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_dn_oid</strong> <em>(gnutls_x509_crl_t <var>crl</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fdn_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_dn_oid</strong> <em>(gnutls_x509_crl_t <var>crl</var>, unsigned <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>)</em></dt>
 <dd><p><var>crl</var>: should contain a gnutls_x509_crl_t type
 </p>
 <p><var>indx</var>: Specifies which DN OID to send. Use (0) to get the first one.
@@ -772,7 +772,7 @@ with the required size.  On success 0 is returned.
 <a name="gnutls_005fx509_005fcrl_005fget_005fextension_005fdata-1"></a>
 <h4 class="subheading">gnutls_x509_crl_get_extension_data</h4>
 <a name="gnutls_005fx509_005fcrl_005fget_005fextension_005fdata"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fextension_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_extension_data</strong> <em>(gnutls_x509_crl_t <var>crl</var>, int <var>indx</var>, void * <var>data</var>, size_t * <var>sizeof_data</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fextension_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_extension_data</strong> <em>(gnutls_x509_crl_t <var>crl</var>, unsigned <var>indx</var>, void * <var>data</var>, size_t * <var>sizeof_data</var>)</em></dt>
 <dd><p><var>crl</var>: should contain a <code>gnutls_x509_crl_t</code>  type
 </p>
 <p><var>indx</var>: Specifies which extension OID to send. Use (0) to get the first one.
@@ -823,7 +823,7 @@ will be returned.
 <a name="gnutls_005fx509_005fcrl_005fget_005fextension_005finfo-1"></a>
 <h4 class="subheading">gnutls_x509_crl_get_extension_info</h4>
 <a name="gnutls_005fx509_005fcrl_005fget_005fextension_005finfo"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fextension_005finfo"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_extension_info</strong> <em>(gnutls_x509_crl_t <var>crl</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>, unsigned int * <var>critical</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fextension_005finfo"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_extension_info</strong> <em>(gnutls_x509_crl_t <var>crl</var>, unsigned <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>crl</var>: should contain a <code>gnutls_x509_crl_t</code>  type
 </p>
 <p><var>indx</var>: Specifies which extension OID to send, use (0) to get the first one.
@@ -855,7 +855,7 @@ will be returned.
 <a name="gnutls_005fx509_005fcrl_005fget_005fextension_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crl_get_extension_oid</h4>
 <a name="gnutls_005fx509_005fcrl_005fget_005fextension_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fextension_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_extension_oid</strong> <em>(gnutls_x509_crl_t <var>crl</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fextension_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_extension_oid</strong> <em>(gnutls_x509_crl_t <var>crl</var>, unsigned <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>)</em></dt>
 <dd><p><var>crl</var>: should contain a <code>gnutls_x509_crl_t</code>  type
 </p>
 <p><var>indx</var>: Specifies which extension OID to send, use (0) to get the first one.
@@ -920,7 +920,7 @@ negative error value.
 <a name="gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crl_get_issuer_dn_by_oid</h4>
 <a name="gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_issuer_dn_by_oid</strong> <em>(gnutls_x509_crl_t <var>crl</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrl_005fget_005fissuer_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crl_get_issuer_dn_by_oid</strong> <em>(gnutls_x509_crl_t <var>crl</var>, const char * <var>oid</var>, unsigned <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>sizeof_buf</var>)</em></dt>
 <dd><p><var>crl</var>: should contain a gnutls_x509_crl_t type
 </p>
 <p><var>oid</var>: holds an Object Identified in null terminated string
@@ -1361,7 +1361,7 @@ negative error value.
 <a name="gnutls_005fx509_005fcrl_005fverify-1"></a>
 <h4 class="subheading">gnutls_x509_crl_verify</h4>
 <a name="gnutls_005fx509_005fcrl_005fverify"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrl_005fverify"></a>Function: <em>int</em> <strong>gnutls_x509_crl_verify</strong> <em>(gnutls_x509_crl_t <var>crl</var>, const gnutls_x509_crt_t * <var>trusted_cas</var>, int <var>tcas_size</var>, unsigned int <var>flags</var>, unsigned int * <var>verify</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrl_005fverify"></a>Function: <em>int</em> <strong>gnutls_x509_crl_verify</strong> <em>(gnutls_x509_crl_t <var>crl</var>, const gnutls_x509_crt_t * <var>trusted_cas</var>, unsigned <var>tcas_size</var>, unsigned int <var>flags</var>, unsigned int * <var>verify</var>)</em></dt>
 <dd><p><var>crl</var>: is the crl to be verified
 </p>
 <p><var>trusted_cas</var>: is a certificate list that is considered to be trusted one
@@ -1449,7 +1449,7 @@ negative error value.
 <a name="gnutls_005fx509_005fcrq_005fget_005fattribute_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_attribute_by_oid</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fattribute_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fattribute_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_attribute_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fattribute_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_attribute_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, unsigned <var>indx</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  type
 </p>
 <p><var>oid</var>: holds an Object Identifier in null-terminated string
@@ -1475,7 +1475,7 @@ negative error value.
 <a name="gnutls_005fx509_005fcrq_005fget_005fattribute_005fdata-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_attribute_data</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fattribute_005fdata"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fattribute_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_attribute_data</strong> <em>(gnutls_x509_crq_t <var>crq</var>, int <var>indx</var>, void * <var>data</var>, size_t * <var>sizeof_data</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fattribute_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_attribute_data</strong> <em>(gnutls_x509_crq_t <var>crq</var>, unsigned <var>indx</var>, void * <var>data</var>, size_t * <var>sizeof_data</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  type
 </p>
 <p><var>indx</var>: Specifies which attribute number to get. Use (0) to get the first one.
@@ -1504,7 +1504,7 @@ will be returned.
 <a name="gnutls_005fx509_005fcrq_005fget_005fattribute_005finfo-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_attribute_info</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fattribute_005finfo"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fattribute_005finfo"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_attribute_info</strong> <em>(gnutls_x509_crq_t <var>crq</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fattribute_005finfo"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_attribute_info</strong> <em>(gnutls_x509_crq_t <var>crq</var>, unsigned <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  type
 </p>
 <p><var>indx</var>: Specifies which attribute number to get. Use (0) to get the first one.
@@ -1620,7 +1620,7 @@ negative error value. and a negative error code on error.
 <a name="gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_dn_by_oid</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, unsigned <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a gnutls_x509_crq_t type
 </p>
 <p><var>oid</var>: holds an Object Identifier in a null terminated string
@@ -1653,7 +1653,7 @@ updated with the required size.  On success 0 is returned.
 <a name="gnutls_005fx509_005fcrq_005fget_005fdn_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_dn_oid</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fdn_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fdn_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_dn_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, unsigned <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a gnutls_x509_crq_t type
 </p>
 <p><var>indx</var>: Specifies which DN OID to get. Use (0) to get the first one.
@@ -1673,7 +1673,7 @@ updated with the required size.  On success 0 is returned.
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_extension_by_oid</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>buf_size</var>, unsigned int * <var>critical</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, unsigned <var>indx</var>, void * <var>buf</var>, size_t * <var>buf_size</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  type
 </p>
 <p><var>oid</var>: holds an Object Identifier in a null terminated string
@@ -1702,7 +1702,7 @@ contain the specified extension
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid2-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_extension_by_oid2</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid2"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid2"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_by_oid2</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, int <var>indx</var>, gnutls_datum_t * <var>output</var>, unsigned int * <var>critical</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005fby_005foid2"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_by_oid2</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, unsigned <var>indx</var>, gnutls_datum_t * <var>output</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  type
 </p>
 <p><var>oid</var>: holds an Object Identifier in a null terminated string
@@ -1729,7 +1729,7 @@ contain the specified extension
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fdata-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_extension_data</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005fdata"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_data</strong> <em>(gnutls_x509_crq_t <var>crq</var>, int <var>indx</var>, void * <var>data</var>, size_t * <var>sizeof_data</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_data</strong> <em>(gnutls_x509_crq_t <var>crq</var>, unsigned <var>indx</var>, void * <var>data</var>, size_t * <var>sizeof_data</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  type
 </p>
 <p><var>indx</var>: Specifies which extension number to get. Use (0) to get the first one.
@@ -1782,7 +1782,7 @@ will be returned.
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005finfo-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_extension_info</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fextension_005finfo"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005finfo"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_info</strong> <em>(gnutls_x509_crq_t <var>crq</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>, unsigned int * <var>critical</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fextension_005finfo"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_extension_info</strong> <em>(gnutls_x509_crq_t <var>crq</var>, unsigned <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  type
 </p>
 <p><var>indx</var>: Specifies which extension number to get. Use (0) to get the first one.
@@ -1842,7 +1842,7 @@ returned, and 0 on success.
 <a name="gnutls_005fx509_005fcrq_005fget_005fkey_005fpurpose_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crq_get_key_purpose_oid</h4>
 <a name="gnutls_005fx509_005fcrq_005fget_005fkey_005fpurpose_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fkey_005fpurpose_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_key_purpose_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>, unsigned int * <var>critical</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005fkey_005fpurpose_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_key_purpose_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, unsigned <var>indx</var>, void * <var>oid</var>, size_t * <var>sizeof_oid</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>crq</var>: should contain a <code>gnutls_x509_crq_t</code>  type
 </p>
 <p><var>indx</var>: This specifies which OID to return, use (0) to get the first one
@@ -2073,6 +2073,37 @@ sequence number and with the otherName type then
 <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  is returned.
 </p>
 <p><strong>Since:</strong> 2.8.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrq_005fget_005ftlsfeatures-1"></a>
+<h4 class="subheading">gnutls_x509_crq_get_tlsfeatures</h4>
+<a name="gnutls_005fx509_005fcrq_005fget_005ftlsfeatures"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fget_005ftlsfeatures"></a>Function: <em>int</em> <strong>gnutls_x509_crq_get_tlsfeatures</strong> <em>(gnutls_x509_crq_t <var>crq</var>, gnutls_x509_tlsfeatures_t <var>features</var>, unsigned int <var>flags</var>, unsigned int * <var>critical</var>)</em></dt>
+<dd><p><var>crq</var>: &ndash; undescribed &ndash;
+</p>
+<p><var>features</var>: If the function succeeds, the
+features will be stored in this variable.
+</p>
+<p><var>flags</var>: zero or <code>GNUTLS_EXT_FLAG_APPEND</code> 
+</p>
+<p><var>critical</var>: the extension status
+</p>
+<p>This function will get the X.509 TLS features
+extension structure from the certificate request.
+The returned structure needs to be freed using
+<code>gnutls_x509_tlsfeatures_deinit()</code> .
+</p>
+<p>When the  <code>flags</code> is set to <code>GNUTLS_EXT_FLAG_APPEND</code> ,
+then if the  <code>features</code> structure is empty this function will behave
+identically as if the flag was not set. Otherwise if there are elements 
+in the  <code>features</code> structure then they will be merged with.
+</p>
+<p>Note that  <code>features</code> must be initialized prior to calling this function.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
+otherwise a negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.1
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrq_005fget_005fversion-1"></a>
@@ -2384,6 +2415,25 @@ negative error value.
 <p><strong>Since:</strong> 3.5.0
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrq_005fset_005ftlsfeatures-1"></a>
+<h4 class="subheading">gnutls_x509_crq_set_tlsfeatures</h4>
+<a name="gnutls_005fx509_005fcrq_005fset_005ftlsfeatures"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fset_005ftlsfeatures"></a>Function: <em>int</em> <strong>gnutls_x509_crq_set_tlsfeatures</strong> <em>(gnutls_x509_crq_t <var>crq</var>, gnutls_x509_tlsfeatures_t <var>features</var>)</em></dt>
+<dd><p><var>crq</var>: &ndash; undescribed &ndash;
+</p>
+<p><var>features</var>: If the function succeeds, the
+features will be added to the certificate
+request.
+</p>
+<p>This function will set the certificate request&rsquo;s
+X.509 TLS extention from the given structure.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
+otherwise a negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.1
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrq_005fset_005fversion-1"></a>
 <h4 class="subheading">gnutls_x509_crq_set_version</h4>
 <a name="gnutls_005fx509_005fcrq_005fset_005fversion"></a><dl>
@@ -2509,7 +2559,7 @@ starts at the leftmost position.
 <a name="gnutls_005fx509_005fcrt_005fcheck_005fissuer-1"></a>
 <h4 class="subheading">gnutls_x509_crt_check_issuer</h4>
 <a name="gnutls_005fx509_005fcrt_005fcheck_005fissuer"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fcheck_005fissuer"></a>Function: <em>int</em> <strong>gnutls_x509_crt_check_issuer</strong> <em>(gnutls_x509_crt_t <var>cert</var>, gnutls_x509_crt_t <var>issuer</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fcheck_005fissuer"></a>Function: <em>unsigned</em> <strong>gnutls_x509_crt_check_issuer</strong> <em>(gnutls_x509_crt_t <var>cert</var>, gnutls_x509_crt_t <var>issuer</var>)</em></dt>
 <dd><p><var>cert</var>: is the certificate to be checked
 </p>
 <p><var>issuer</var>: is the certificate of a possible issuer
@@ -2528,7 +2578,7 @@ by the given issuer, and false (0) if not.
 <a name="gnutls_005fx509_005fcrt_005fcheck_005frevocation-1"></a>
 <h4 class="subheading">gnutls_x509_crt_check_revocation</h4>
 <a name="gnutls_005fx509_005fcrt_005fcheck_005frevocation"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fcheck_005frevocation"></a>Function: <em>int</em> <strong>gnutls_x509_crt_check_revocation</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const gnutls_x509_crl_t * <var>crl_list</var>, int <var>crl_list_length</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fcheck_005frevocation"></a>Function: <em>int</em> <strong>gnutls_x509_crt_check_revocation</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const gnutls_x509_crl_t * <var>crl_list</var>, unsigned <var>crl_list_length</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  type
 </p>
 <p><var>crl_list</var>: should contain a list of gnutls_x509_crl_t types
@@ -2700,7 +2750,7 @@ accessLocation is not of the &quot;uniformResourceIdentifier&quot; type.
 </p>
 <p>If  <code>what</code> is <code>GNUTLS_IA_OCSP_URI</code> ,  <code>data</code> will hold the OCSP URI.
 Requesting this  <code>what</code> value leads to an error if the accessMethod
-is not 1.3.6.1.5.5.7.48.1 aka OSCP, or if accessLocation is not of
+is not 1.3.6.1.5.5.7.48.1 aka OCSP, or if accessLocation is not of
 the &quot;uniformResourceIdentifier&quot; type. In that case <code>GNUTLS_E_UNKNOWN_ALGORITHM</code> 
 will be returned, and  <code>seq</code> should be increased and this function
 called again.
@@ -2886,7 +2936,8 @@ encoded, depending on the certificate data.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the provided buffer is not
 long enough, and in that case the  <code>buf_size</code> will be updated
-with the required size.  On success 0 is returned.
+with the required size. <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  if
+the DN does not exist, or another error value on error. On success 0 is returned.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fget_005fdn2-1"></a>
@@ -2911,7 +2962,7 @@ negative error value.
 <a name="gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_dn_by_oid</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn_by_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn_by_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, unsigned <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  type
 </p>
 <p><var>oid</var>: holds an Object Identified in null terminated string
@@ -2947,7 +2998,7 @@ are no data in the current index. On success 0 is returned.
 <a name="gnutls_005fx509_005fcrt_005fget_005fdn_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_dn_oid</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fdn_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fdn_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_dn_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, unsigned <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  type
 </p>
 <p><var>indx</var>: This specifies which OID to return. Use (0) to get the first one.
@@ -2986,7 +3037,7 @@ expired.
 <a name="gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_extension_by_oid</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_extension_by_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>buf_size</var>, unsigned int * <var>critical</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_extension_by_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, unsigned <var>indx</var>, void * <var>buf</var>, size_t * <var>buf_size</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  type
 </p>
 <p><var>oid</var>: holds an Object Identified in null terminated string
@@ -3012,7 +3063,7 @@ GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE will be returned.
 <a name="gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid2-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_extension_by_oid2</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid2"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid2"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_extension_by_oid2</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, int <var>indx</var>, gnutls_datum_t * <var>output</var>, unsigned int * <var>critical</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid2"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_extension_by_oid2</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, unsigned <var>indx</var>, gnutls_datum_t * <var>output</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  type
 </p>
 <p><var>oid</var>: holds an Object Identified in null terminated string
@@ -3038,7 +3089,7 @@ GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE will be returned.
 <a name="gnutls_005fx509_005fcrt_005fget_005fextension_005fdata-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_extension_data</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fextension_005fdata"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fextension_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_extension_data</strong> <em>(gnutls_x509_crt_t <var>cert</var>, int <var>indx</var>, void * <var>data</var>, size_t * <var>sizeof_data</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fextension_005fdata"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_extension_data</strong> <em>(gnutls_x509_crt_t <var>cert</var>, unsigned <var>indx</var>, void * <var>data</var>, size_t * <var>sizeof_data</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  type
 </p>
 <p><var>indx</var>: Specifies which extension OID to send. Use (0) to get the first one.
@@ -3087,7 +3138,7 @@ will be returned.
 <a name="gnutls_005fx509_005fcrt_005fget_005fextension_005finfo-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_extension_info</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fextension_005finfo"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fextension_005finfo"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_extension_info</strong> <em>(gnutls_x509_crt_t <var>cert</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>, unsigned int * <var>critical</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fextension_005finfo"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_extension_info</strong> <em>(gnutls_x509_crt_t <var>cert</var>, unsigned <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  type
 </p>
 <p><var>indx</var>: Specifies which extension OID to send. Use (0) to get the first one.
@@ -3118,7 +3169,7 @@ will be returned.
 <a name="gnutls_005fx509_005fcrt_005fget_005fextension_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_extension_oid</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fextension_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fextension_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_extension_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fextension_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_extension_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, unsigned <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  type
 </p>
 <p><var>indx</var>: Specifies which extension OID to send. Use (0) to get the first one.
@@ -3308,9 +3359,10 @@ will be ASCII or UTF-8 encoded, depending on the certificate data.
 </p>
 <p>If  <code>buf</code> is null then only the size will be filled. 
 </p>
-<p><strong>Returns:</strong> GNUTLS_E_SHORT_MEMORY_BUFFER if the provided buffer is not
-long enough, and in that case the  <code>buf_size</code> will be updated with
-the required size.  On success 0 is returned.
+<p><strong>Returns:</strong> <code>GNUTLS_E_SHORT_MEMORY_BUFFER</code>  if the provided buffer is not
+long enough, and in that case the  <code>buf_size</code> will be updated
+with the required size. <code>GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE</code>  if
+the DN does not exist, or another error value on error. On success 0 is returned.
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn2-1"></a>
@@ -3335,7 +3387,7 @@ negative error value.
 <a name="gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_issuer_dn_by_oid</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_issuer_dn_by_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_issuer_dn_by_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, unsigned <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  type
 </p>
 <p><var>oid</var>: holds an Object Identified in null terminated string
@@ -3371,7 +3423,7 @@ are no data in the current index. On success 0 is returned.
 <a name="gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_issuer_dn_oid</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_issuer_dn_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fissuer_005fdn_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_issuer_dn_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, unsigned <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  type
 </p>
 <p><var>indx</var>: This specifies which OID to return. Use (0) to get the first one.
@@ -3449,7 +3501,7 @@ returned, and 0 on success.
 <a name="gnutls_005fx509_005fcrt_005fget_005fkey_005fpurpose_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_key_purpose_oid</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fkey_005fpurpose_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fkey_005fpurpose_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_key_purpose_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>, unsigned int * <var>critical</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fkey_005fpurpose_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_key_purpose_oid</strong> <em>(gnutls_x509_crt_t <var>cert</var>, unsigned <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>cert</var>: should contain a <code>gnutls_x509_crt_t</code>  type
 </p>
 <p><var>indx</var>: This specifies which OID to return. Use (0) to get the first one.
@@ -3505,7 +3557,7 @@ returned.
 </p>
 <p><var>nc</var>: The nameconstraints intermediate type
 </p>
-<p><var>flags</var>: zero or <code>GNUTLS_NAME_CONSTRAINTS_FLAG_APPEND</code> 
+<p><var>flags</var>: zero or <code>GNUTLS_EXT_FLAG_APPEND</code> 
 </p>
 <p><var>critical</var>: the extension status
 </p>
@@ -3514,7 +3566,7 @@ the name constraints of the provided CA certificate. That
 structure can be used in combination with <code>gnutls_x509_name_constraints_check()</code> 
 to verify whether a server&rsquo;s name is in accordance with the constraints.
 </p>
-<p>When the  <code>flags</code> is set to <code>GNUTLS_NAME_CONSTRAINTS_FLAG_APPEND</code> ,
+<p>When the  <code>flags</code> is set to <code>GNUTLS_EXT_FLAG_APPEND</code> ,
 then if the  <code>nc</code> structure is empty this function will behave
 identically as if the flag was not set.
 Otherwise if there are elements in the  <code>nc</code> structure then the
@@ -3634,7 +3686,7 @@ the given structure.  The new parameters will be allocated using
 <a name="gnutls_005fx509_005fcrt_005fget_005fpolicy-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_policy</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fpolicy"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fpolicy"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_policy</strong> <em>(gnutls_x509_crt_t <var>crt</var>, int <var>indx</var>, struct gnutls_x509_policy_st * <var>policy</var>, unsigned int * <var>critical</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005fpolicy"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_policy</strong> <em>(gnutls_x509_crt_t <var>crt</var>, unsigned <var>indx</var>, struct gnutls_x509_policy_st * <var>policy</var>, unsigned int * <var>critical</var>)</em></dt>
 <dd><p><var>crt</var>: should contain a <code>gnutls_x509_crt_t</code>  type
 </p>
 <p><var>indx</var>: This specifies which policy to return. Use (0) to get the first one.
@@ -3969,6 +4021,37 @@ at least a single byte if  <code>buf_size</code> is zero.
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, otherwise a negative error code.
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrt_005fget_005ftlsfeatures-1"></a>
+<h4 class="subheading">gnutls_x509_crt_get_tlsfeatures</h4>
+<a name="gnutls_005fx509_005fcrt_005fget_005ftlsfeatures"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fget_005ftlsfeatures"></a>Function: <em>int</em> <strong>gnutls_x509_crt_get_tlsfeatures</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_tlsfeatures_t <var>features</var>, unsigned int <var>flags</var>, unsigned int * <var>critical</var>)</em></dt>
+<dd><p><var>crt</var>: A X.509 certificate
+</p>
+<p><var>features</var>: If the function succeeds, the
+features will be stored in this variable.
+</p>
+<p><var>flags</var>: zero or <code>GNUTLS_EXT_FLAG_APPEND</code> 
+</p>
+<p><var>critical</var>: the extension status
+</p>
+<p>This function will get the X.509 TLS features
+extension structure from the certificate. The
+returned structure needs to be freed using
+<code>gnutls_x509_tlsfeatures_deinit()</code> .
+</p>
+<p>When the  <code>flags</code> is set to <code>GNUTLS_EXT_FLAG_APPEND</code> ,
+then if the  <code>features</code> structure is empty this function will behave
+identically as if the flag was not set. Otherwise if there are elements 
+in the  <code>features</code> structure then they will be merged with.
+</p>
+<p>Note that  <code>features</code> must be initialized prior to calling this function.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
+otherwise a negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.1
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrt_005fget_005fversion-1"></a>
 <h4 class="subheading">gnutls_x509_crt_get_version</h4>
 <a name="gnutls_005fx509_005fcrt_005fget_005fversion"></a><dl>
@@ -4098,7 +4181,7 @@ independently, and use <code>gnutls_free()</code>  at
 <a name="gnutls_005fx509_005fcrt_005flist_005fverify-1"></a>
 <h4 class="subheading">gnutls_x509_crt_list_verify</h4>
 <a name="gnutls_005fx509_005fcrt_005flist_005fverify"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005flist_005fverify"></a>Function: <em>int</em> <strong>gnutls_x509_crt_list_verify</strong> <em>(const gnutls_x509_crt_t * <var>cert_list</var>, int <var>cert_list_length</var>, const gnutls_x509_crt_t * <var>CA_list</var>, int <var>CA_list_length</var>, const gnutls_x509_crl_t * <var>CRL_list</var>, int <var>CRL_list_length</var>, unsigned int <var>flags</var>, unsigned int * <var>verify</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005flist_005fverify"></a>Function: <em>int</em> <strong>gnutls_x509_crt_list_verify</strong> <em>(const gnutls_x509_crt_t * <var>cert_list</var>, unsigned <var>cert_list_length</var>, const gnutls_x509_crt_t * <var>CA_list</var>, unsigned <var>CA_list_length</var>, const gnutls_x509_crl_t * <var>CRL_list</var>, unsigned <var>CRL_list_length</var>, unsigned int <var>flags</var>, unsigned int * <var>verify</var>)</em></dt>
 <dd><p><var>cert_list</var>: is the certificate list to be verified
 </p>
 <p><var>cert_list_length</var>: holds the number of certificate in cert_list
@@ -4307,6 +4390,27 @@ signed and the signature is correct. See <code>gnutls_x509_crq_sign2()</code> .
 negative error value.
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrt_005fset_005fcrq_005fextension_005fby_005foid-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_crq_extension_by_oid</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005fcrq_005fextension_005fby_005foid"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fcrq_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_crq_extension_by_oid</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, unsigned <var>flags</var>)</em></dt>
+<dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
+</p>
+<p><var>crq</var>: holds a certificate request
+</p>
+<p><var>oid</var>: the object identifier of the OID to copy
+</p>
+<p><var>flags</var>: should be zero
+</p>
+<p>This function will set the extension specify by  <code>oid</code> from the given request to the
+certificate.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.1
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrt_005fset_005fcrq_005fextensions-1"></a>
 <h4 class="subheading">gnutls_x509_crt_set_crq_extensions</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fcrq_005fextensions"></a><dl>
@@ -4315,7 +4419,7 @@ negative error value.
 </p>
 <p><var>crq</var>: holds a certificate request
 </p>
-<p>This function will set extensions from the given request to the
+<p>This function will set the extensions from the given request to the
 certificate.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
@@ -4829,6 +4933,24 @@ negative error value.
 <p><strong>Since:</strong> 3.4.7
 </p></dd></dl>
 
+<a name="gnutls_005fx509_005fcrt_005fset_005ftlsfeatures-1"></a>
+<h4 class="subheading">gnutls_x509_crt_set_tlsfeatures</h4>
+<a name="gnutls_005fx509_005fcrt_005fset_005ftlsfeatures"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fset_005ftlsfeatures"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_tlsfeatures</strong> <em>(gnutls_x509_crt_t <var>crt</var>, gnutls_x509_tlsfeatures_t <var>features</var>)</em></dt>
+<dd><p><var>crt</var>: A X.509 certificate
+</p>
+<p><var>features</var>: If the function succeeds, the
+features will be added to the certificate.
+</p>
+<p>This function will set the certificates
+X.509 TLS extention from the given structure.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
+otherwise a negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.1
+</p></dd></dl>
+
 <a name="gnutls_005fx509_005fcrt_005fset_005fversion-1"></a>
 <h4 class="subheading">gnutls_x509_crt_set_version</h4>
 <a name="gnutls_005fx509_005fcrt_005fset_005fversion"></a><dl>
@@ -4894,7 +5016,7 @@ negative error value.
 <a name="gnutls_005fx509_005fcrt_005fverify-1"></a>
 <h4 class="subheading">gnutls_x509_crt_verify</h4>
 <a name="gnutls_005fx509_005fcrt_005fverify"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fverify"></a>Function: <em>int</em> <strong>gnutls_x509_crt_verify</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const gnutls_x509_crt_t * <var>CA_list</var>, int <var>CA_list_length</var>, unsigned int <var>flags</var>, unsigned int * <var>verify</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fverify"></a>Function: <em>int</em> <strong>gnutls_x509_crt_verify</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const gnutls_x509_crt_t * <var>CA_list</var>, unsigned <var>CA_list_length</var>, unsigned int <var>flags</var>, unsigned int * <var>verify</var>)</em></dt>
 <dd><p><var>cert</var>: is the certificate to be verified
 </p>
 <p><var>CA_list</var>: is one certificate that is considered to be trusted one
@@ -5305,9 +5427,8 @@ negative error value.
 <h4 class="subheading">gnutls_x509_ext_export_proxy</h4>
 <a name="gnutls_005fx509_005fext_005fexport_005fproxy"></a><dl>
 <dt><a name="index-gnutls_005fx509_005fext_005fexport_005fproxy"></a>Function: <em>int</em> <strong>gnutls_x509_ext_export_proxy</strong> <em>(int <var>pathLenConstraint</var>, const char * <var>policyLanguage</var>, const char * <var>policy</var>, size_t <var>sizeof_policy</var>, gnutls_datum_t * <var>ext</var>)</em></dt>
-<dd><p><var>pathLenConstraint</var>: non-negative error codes indicate maximum length of path,
-and negative error codes indicate that the pathLenConstraints field should
-not be present.
+<dd><p><var>pathLenConstraint</var>: A negative value will remove the path length constraint,
+while non-negative values will be set as the length of the pathLenConstraints field.
 </p>
 <p><var>policyLanguage</var>: OID describing the language of  <code>policy</code> .
 </p>
@@ -5319,8 +5440,7 @@ not be present.
 </p>
 <p>This function will convert the parameters provided to a proxyCertInfo extension.
 </p>
-<p>The  <code>ext</code> data will be allocated using
-<code>gnutls_malloc()</code> .
+<p>The  <code>ext</code> data will be allocated using <code>gnutls_malloc()</code> .
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -5361,6 +5481,23 @@ The output data in  <code>ext</code> will be allocated using
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a negative error value.
 </p>
 <p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fext_005fexport_005ftlsfeatures-1"></a>
+<h4 class="subheading">gnutls_x509_ext_export_tlsfeatures</h4>
+<a name="gnutls_005fx509_005fext_005fexport_005ftlsfeatures"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fext_005fexport_005ftlsfeatures"></a>Function: <em>int</em> <strong>gnutls_x509_ext_export_tlsfeatures</strong> <em>(gnutls_x509_tlsfeatures_t <var>f</var>, gnutls_datum_t * <var>ext</var>)</em></dt>
+<dd><p><var>f</var>: The features structure
+</p>
+<p><var>ext</var>: The DER-encoded extension data; must be freed using <code>gnutls_free()</code> .
+</p>
+<p>This function will convert the provided TLS features structure structure to a
+DER-encoded TLS features PKIX extension. The output data in  <code>ext</code> will be allocated using
+<code>gnutls_malloc()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.1
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fext_005fimport_005faia-1"></a>
@@ -5613,6 +5750,29 @@ SubjectKeyIdentifier extension. The ID will be allocated using
 if the extension is not present, otherwise a negative error value.
 </p>
 <p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fext_005fimport_005ftlsfeatures-1"></a>
+<h4 class="subheading">gnutls_x509_ext_import_tlsfeatures</h4>
+<a name="gnutls_005fx509_005fext_005fimport_005ftlsfeatures"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fext_005fimport_005ftlsfeatures"></a>Function: <em>int</em> <strong>gnutls_x509_ext_import_tlsfeatures</strong> <em>(const gnutls_datum_t * <var>ext</var>, gnutls_x509_tlsfeatures_t <var>f</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>ext</var>: The DER-encoded extension data
+</p>
+<p><var>f</var>: The features structure
+</p>
+<p><var>flags</var>: zero or <code>GNUTLS_EXT_FLAG_APPEND</code> 
+</p>
+<p>This function will export the features in the provided DER-encoded
+TLS Features PKIX extension, to a <code>gnutls_x509_tlsfeatures_t</code>  type.  <code>f</code> must be initialized.
+</p>
+<p>When the  <code>flags</code> is set to <code>GNUTLS_EXT_FLAG_APPEND</code> ,
+then if the  <code>features</code> structure is empty this function will behave
+identically as if the flag was not set. Otherwise if there are elements 
+in the  <code>features</code> structure then they will be merged with.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.1
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fext_005fprint-1"></a>
@@ -6718,7 +6878,7 @@ negative error value.
 <a name="gnutls_005fx509_005frdn_005fget_005fby_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_rdn_get_by_oid</h4>
 <a name="gnutls_005fx509_005frdn_005fget_005fby_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005frdn_005fget_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_rdn_get_by_oid</strong> <em>(const gnutls_datum_t * <var>idn</var>, const char * <var>oid</var>, int <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005frdn_005fget_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_rdn_get_by_oid</strong> <em>(const gnutls_datum_t * <var>idn</var>, const char * <var>oid</var>, unsigned <var>indx</var>, unsigned int <var>raw_flag</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>idn</var>: should contain a DER encoded RDN sequence
 </p>
 <p><var>oid</var>: an Object Identifier
@@ -6745,7 +6905,7 @@ negative error value.
 <a name="gnutls_005fx509_005frdn_005fget_005foid-1"></a>
 <h4 class="subheading">gnutls_x509_rdn_get_oid</h4>
 <a name="gnutls_005fx509_005frdn_005fget_005foid"></a><dl>
-<dt><a name="index-gnutls_005fx509_005frdn_005fget_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_rdn_get_oid</strong> <em>(const gnutls_datum_t * <var>idn</var>, int <var>indx</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005frdn_005fget_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_rdn_get_oid</strong> <em>(const gnutls_datum_t * <var>idn</var>, unsigned <var>indx</var>, void * <var>buf</var>, size_t * <var>buf_size</var>)</em></dt>
 <dd><p><var>idn</var>: should contain a DER encoded RDN sequence
 </p>
 <p><var>indx</var>: Indicates which OID to return. Use 0 for the first one.
@@ -6763,6 +6923,84 @@ updated if the provided buffer is not long enough, otherwise a
 negative error value.
 </p>
 <p><strong>Since:</strong> 2.4.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005ftlsfeatures_005fadd-1"></a>
+<h4 class="subheading">gnutls_x509_tlsfeatures_add</h4>
+<a name="gnutls_005fx509_005ftlsfeatures_005fadd"></a><dl>
+<dt><a name="index-gnutls_005fx509_005ftlsfeatures_005fadd"></a>Function: <em>int</em> <strong>gnutls_x509_tlsfeatures_add</strong> <em>(gnutls_x509_tlsfeatures_t <var>f</var>, unsigned int <var>feature</var>)</em></dt>
+<dd><p><var>f</var>: The TLS features
+</p>
+<p><var>feature</var>: The feature to add
+</p>
+<p>This function will append a feature to the X.509 TLS features
+extention structure.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
+otherwise a negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.1
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005ftlsfeatures_005fcheck_005fcrt-1"></a>
+<h4 class="subheading">gnutls_x509_tlsfeatures_check_crt</h4>
+<a name="gnutls_005fx509_005ftlsfeatures_005fcheck_005fcrt"></a><dl>
+<dt><a name="index-gnutls_005fx509_005ftlsfeatures_005fcheck_005fcrt"></a>Function: <em>unsigned</em> <strong>gnutls_x509_tlsfeatures_check_crt</strong> <em>(gnutls_x509_tlsfeatures_t <var>feat</var>, gnutls_x509_crt_t <var>cert</var>)</em></dt>
+<dd><p><var>feat</var>: a set of TLSFeatures
+</p>
+<p><var>cert</var>: the certificate to be checked
+</p>
+<p>This function will check the provided certificate against the TLSFeatures
+set in  <code>feat</code> using the RFC7633 p.4.2.2 rules. It will check whether the certificate
+contains the features in  <code>feat</code> or a superset.
+</p>
+<p><strong>Returns:</strong> non-zero if the provided certificate complies, and zero otherwise.
+</p>
+<p><strong>Since:</strong> 3.5.1
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005ftlsfeatures_005fdeinit-1"></a>
+<h4 class="subheading">gnutls_x509_tlsfeatures_deinit</h4>
+<a name="gnutls_005fx509_005ftlsfeatures_005fdeinit"></a><dl>
+<dt><a name="index-gnutls_005fx509_005ftlsfeatures_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_x509_tlsfeatures_deinit</strong> <em>(gnutls_x509_tlsfeatures_t <var>f</var>)</em></dt>
+<dd><p><var>f</var>: The TLS features
+</p>
+<p>This function will deinitialize a X.509 TLS features extention structure
+</p>
+<p><strong>Since:</strong> 3.5.1
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005ftlsfeatures_005fget-1"></a>
+<h4 class="subheading">gnutls_x509_tlsfeatures_get</h4>
+<a name="gnutls_005fx509_005ftlsfeatures_005fget"></a><dl>
+<dt><a name="index-gnutls_005fx509_005ftlsfeatures_005fget"></a>Function: <em>int</em> <strong>gnutls_x509_tlsfeatures_get</strong> <em>(gnutls_x509_tlsfeatures_t <var>f</var>, unsigned <var>idx</var>, unsigned int * <var>feature</var>)</em></dt>
+<dd><p><var>f</var>: The TLS features
+</p>
+<p><var>idx</var>: The index of the feature to get
+</p>
+<p><var>feature</var>: If the function succeeds, the feature will be stored in this variable
+</p>
+<p>This function will get a feature from the X.509 TLS features
+extention structure.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
+otherwise a negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.1
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005ftlsfeatures_005finit-1"></a>
+<h4 class="subheading">gnutls_x509_tlsfeatures_init</h4>
+<a name="gnutls_005fx509_005ftlsfeatures_005finit"></a><dl>
+<dt><a name="index-gnutls_005fx509_005ftlsfeatures_005finit"></a>Function: <em>int</em> <strong>gnutls_x509_tlsfeatures_init</strong> <em>(gnutls_x509_tlsfeatures_t * <var>f</var>)</em></dt>
+<dd><p><var>f</var>: The TLS features
+</p>
+<p>This function will initialize a X.509 TLS features extention structure
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
+otherwise a negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.1
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005ftrust_005flist_005fadd_005fcas-1"></a>
@@ -6793,7 +7031,7 @@ added to the list and will be deinitialized.
 <a name="gnutls_005fx509_005ftrust_005flist_005fadd_005fcrls-1"></a>
 <h4 class="subheading">gnutls_x509_trust_list_add_crls</h4>
 <a name="gnutls_005fx509_005ftrust_005flist_005fadd_005fcrls"></a><dl>
-<dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fadd_005fcrls-1"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_add_crls</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const gnutls_x509_crl_t * <var>crl_list</var>, int <var>crl_size</var>, unsigned int <var>flags</var>, unsigned int <var>verification_flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fadd_005fcrls-1"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_add_crls</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const gnutls_x509_crl_t * <var>crl_list</var>, unsigned <var>crl_size</var>, unsigned int <var>flags</var>, unsigned int <var>verification_flags</var>)</em></dt>
 <dd><p><var>list</var>: The list
 </p>
 <p><var>crl_list</var>: A list of CRLs
@@ -6982,8 +7220,10 @@ want to prevent them from being deinitialized by this function.
 <p>This function will find the issuer of the given certificate.
 If the flag <code>GNUTLS_TL_GET_COPY</code>  is specified a copy of the issuer
 will be returned which must be freed using <code>gnutls_x509_crt_deinit()</code> .
-Note that the flag <code>GNUTLS_TL_GET_COPY</code>  is required for this function
-to work with PKCS <code>11</code>  trust lists in a thread-safe way.
+In that case the provided  <code>issuer</code> must not be initialized.
+</p>
+<p>Note that the flag <code>GNUTLS_TL_GET_COPY</code>  is required for this function
+to work with PKCS<code>11</code>  trust lists in a thread-safe way.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -7091,7 +7331,7 @@ negative error value.
 <a name="gnutls_005fx509_005ftrust_005flist_005fremove_005fcas-1"></a>
 <h4 class="subheading">gnutls_x509_trust_list_remove_cas</h4>
 <a name="gnutls_005fx509_005ftrust_005flist_005fremove_005fcas"></a><dl>
-<dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fremove_005fcas"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_remove_cas</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const gnutls_x509_crt_t * <var>clist</var>, int <var>clist_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fremove_005fcas"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_remove_cas</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const gnutls_x509_crt_t * <var>clist</var>, unsigned <var>clist_size</var>)</em></dt>
 <dd><p><var>list</var>: The list
 </p>
 <p><var>clist</var>: A list of CAs

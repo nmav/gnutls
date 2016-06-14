@@ -1937,7 +1937,7 @@
 </tr>
 <tr>
 <td class="function_type">
-<span class="returnvalue">int</span>
+<span class="returnvalue">unsigned</span>
 </td>
 <td class="function_name">
 <a class="link" href="gnutls-gnutls.html#gnutls-url-is-supported" title="gnutls_url_is_supported ()">gnutls_url_is_supported</a> <span class="c_punctuation">()</span>
@@ -3736,9 +3736,13 @@ gnutls_certificate_get_issuer (<em class="parameter"><code><span class="type">gn
                                <em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-x509-crt-t" title="gnutls_x509_crt_t"><span class="type">gnutls_x509_crt_t</span></a> *issuer</code></em>,
                                <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
 <p>This function will return the issuer of a given certificate.
-As with <a class="link" href="gnutls-x509.html#gnutls-x509-trust-list-get-issuer" title="gnutls_x509_trust_list_get_issuer ()"><code class="function">gnutls_x509_trust_list_get_issuer()</code></a> this function requires
-the <code class="literal">GNUTLS_TL_GET_COPY</code> flag in order to operate with PKCS <span class="type">11</span> trust
-lists. In that case the issuer must be freed using <a class="link" href="gnutls-x509.html#gnutls-x509-crt-deinit" title="gnutls_x509_crt_deinit ()"><code class="function">gnutls_x509_crt_deinit()</code></a>.</p>
+If the flag <code class="literal">GNUTLS_TL_GET_COPY</code> is specified a copy of the issuer
+will be returned which must be freed using <a class="link" href="gnutls-x509.html#gnutls-x509-crt-deinit" title="gnutls_x509_crt_deinit ()"><code class="function">gnutls_x509_crt_deinit()</code></a>.
+In that case the provided <em class="parameter"><code>issuer</code></em>
+ must not be initialized.</p>
+<p>As with <a class="link" href="gnutls-x509.html#gnutls-x509-trust-list-get-issuer" title="gnutls_x509_trust_list_get_issuer ()"><code class="function">gnutls_x509_trust_list_get_issuer()</code></a> this function requires
+the <code class="literal">GNUTLS_TL_GET_COPY</code> flag in order to operate with PKCS<span class="type">11</span> trust
+lists in a thread-safe way.</p>
 <div class="refsect3">
 <a name="gnutls-certificate-get-issuer.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
@@ -5055,7 +5059,7 @@ or use <a class="link" href="gnutls-gnutls.html#gnutls-certificate-verify-peers3
 <div class="refsect3">
 <a name="gnutls-certificate-verify-peers2.returns"></a><h4>Returns</h4>
 <p> a negative error code on error and <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0)
-when the peer's certificate was successfully parsed, whether or not
+when the peer's certificate was successfully parsed, irrespective of whether
 it was verified.</p>
 </div>
 </div>
@@ -5113,7 +5117,7 @@ key usage), use <code class="function">gnutls_certificate_verify_peers()</code>.
 <div class="refsect3">
 <a name="gnutls-certificate-verify-peers3.returns"></a><h4>Returns</h4>
 <p> a negative error code on error and <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0)
-when the peer's certificate was successfully parsed, whether or not
+when the peer's certificate was successfully parsed, irrespective of whether
 it was verified.</p>
 </div>
 <p class="since">Since: 3.1.4</p>
@@ -8122,13 +8126,24 @@ of 128.</p>
 of 192.</p>
 <p>"NONE" means nothing is enabled.  This disables even protocols and
 compression methods.</p>
-<p>"<em class="parameter"><code>KEYWORD</code></em>
-" The system administrator imposed settings. The provided keywords
-will be expanded from a configuration-time provided file - default is:
-/etc/gnutls/default-priorities. Any keywords that follow it, will 
-be appended to the expanded string. If there is no system string,
-then the function will fail. The system file should be formatted
-as "KEYWORD=VALUE", e.g., "SYSTEM=NORMAL:+ARCFOUR-128".</p>
+<p>"@<em class="parameter"><code>KEYWORD1</code></em>
+,KEYWORD2,..." The system administrator imposed settings.
+The provided keyword(s) will be expanded from a configuration-time
+provided file - default is: /etc/gnutls/default-priorities.
+Any attributes that follow it, will be appended to the expanded
+string. If multiple keywords are provided, separated by commas,
+then the first keyword that exists in the configuration file
+will be used. At least one of the keywords must exist, or this
+function will return an error. Typical usage would be to specify
+an application specified keyword first, followed by "SYSTEM" as
+a default fallback. e.g., "<em class="parameter"><code>LIBVIRT</code></em>
+,SYSTEM:!-VERS-SSL3.0" will
+first try to find a config file entry matching "LIBVIRT", but if
+that does not exist will use the entry for "SYSTEM". If "SYSTEM"
+does not exist either, an error will be returned. In all cases,
+the SSL3.0 protocol will be disabled. The system priority file
+entries should be formatted as "KEYWORD=VALUE", e.g.,
+"SYSTEM=NORMAL:+ARCFOUR-128".</p>
 <p>Special keywords are "!", "-" and "+".
 "!" or "-" appended with an algorithm will remove this algorithm.
 "+" appended with an algorithm will add this algorithm.</p>
@@ -9427,8 +9442,9 @@ GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE is returned.</p>
 </div>
 <div class="refsect3">
 <a name="gnutls-server-name-get.returns"></a><h4>Returns</h4>
-<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned,
-otherwise a negative error code is returned.</p>
+<p> On success, <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) is returned, on UTF-8
+decoding error <code class="literal">GNUTLS_E_IDNA_ERROR</code> is returned, otherwise a negative
+error code is returned.</p>
 </div>
 </div>
 <hr>
@@ -9448,7 +9464,10 @@ virtual hosting.</p>
  type.  In case of
 <a class="link" href="gnutls-gnutls.html#GNUTLS-NAME-DNS:CAPS"><code class="literal">GNUTLS_NAME_DNS</code></a>, a UTF-8 null-terminated domain name string,
 without the trailing dot, is expected.</p>
-<p>IPv4 or IPv6 addresses are not permitted.</p>
+<p>IPv4 or IPv6 addresses are not permitted to be set by this function.
+If the function is called with a name of <em class="parameter"><code>name_length</code></em>
+ zero it will clear
+all server names set.</p>
 <div class="refsect3">
 <a name="gnutls-server-name-set.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
@@ -10070,7 +10089,8 @@ use <a class="link" href="gnutls-gnutls.html#gnutls-priority-set-direct" title="
 <pre class="programlisting"><span class="returnvalue">int</span>
 gnutls_sign_algorithm_get (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>Returns the signature algorithm that is (or will be) used in this 
-session by the server to sign data.</p>
+session by the server to sign data. This function should be
+used only with TLS 1.2 or later.</p>
 <div class="refsect3">
 <a name="gnutls-sign-algorithm-get.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
@@ -11691,10 +11711,11 @@ ssize_t (*gnutls_vec_push_func) (gnutls_transport_ptr_t, const giovec_t * iov, i
 <hr>
 <div class="refsect2">
 <a name="gnutls-url-is-supported"></a><h3>gnutls_url_is_supported ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>
+<pre class="programlisting"><span class="returnvalue">unsigned</span>
 gnutls_url_is_supported (<em class="parameter"><code>const <span class="type">char</span> *url</code></em>);</pre>
-<p>Check whether url is supported.  Depending on the system libraries
-GnuTLS may support pkcs11 or tpmkey URLs.</p>
+<p>Check whether the provided <em class="parameter"><code>url</code></em>
+ is supported.  Depending on the system libraries
+GnuTLS may support pkcs11, tpmkey or other URLs.</p>
 <div class="refsect3">
 <a name="gnutls-url-is-supported.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
@@ -11705,7 +11726,7 @@ GnuTLS may support pkcs11 or tpmkey URLs.</p>
 </colgroup>
 <tbody><tr>
 <td class="parameter_name"><p>url</p></td>
-<td class="parameter_description"><p>A PKCS 11 url</p></td>
+<td class="parameter_description"><p>A URI to be tested</p></td>
 <td class="parameter_annotations"> </td>
 </tr></tbody>
 </table></div>
@@ -13319,7 +13340,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.5.0"
+<pre class="programlisting">#define GNUTLS_VERSION "3.5.1"
 </pre>
 <p>
 </p>
@@ -13343,7 +13364,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030500
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030501
 </pre>
 <p>
 </p>
@@ -13351,7 +13372,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 0
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 1
 </pre>
 <p>
 </p>
@@ -13842,6 +13863,20 @@ certificate verification.</p>
 <td class="enum_member_name"><p><a name="GNUTLS-CERT-PURPOSE-MISMATCH:CAPS"></a>GNUTLS_CERT_PURPOSE_MISMATCH</p></td>
 <td class="enum_member_description">
 <p>The certificate or an intermediate does not match the intended purpose (extended key usage).</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GNUTLS-CERT-MISSING-OCSP-STATUS:CAPS"></a>GNUTLS_CERT_MISSING_OCSP_STATUS</p></td>
+<td class="enum_member_description">
+<p>The certificate requires the server to send the certifiate status, but no status was received.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GNUTLS-CERT-INVALID-OCSP-STATUS:CAPS"></a>GNUTLS_CERT_INVALID_OCSP_STATUS</p></td>
+<td class="enum_member_description">
+<p>The received OCSP status response is invalid.</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>
@@ -16010,7 +16045,10 @@ algorithms.</p>
 <pre class="programlisting">typedef struct {
 	ASN1_TYPE cert;
 	int use_extensions;
-	int expanded;		/* a certificate has been expanded */
+	unsigned expanded; /* a certificate has been expanded */
+	unsigned modified; /* the cached values below may no longer be valid */
+
+	struct pin_info_st pin;
 
 	/* These two cached values allow fast calls to
 	 * get_raw_*_dn(). */
@@ -16019,7 +16057,6 @@ algorithms.</p>
 	gnutls_datum_t raw_spki;
 
 	gnutls_datum_t der;
-	struct pin_info_st pin;
 
 	/* backwards compatibility for gnutls_x509_crt_get_subject()
 	 * and gnutls_x509_crt_get_issuer() */

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: Managing encrypted keys</title>
+<title>GnuTLS 3.5.1: Managing encrypted keys</title>
 
-<meta name="description" content="GnuTLS 3.5.0: Managing encrypted keys">
-<meta name="keywords" content="GnuTLS 3.5.0: Managing encrypted keys">
+<meta name="description" content="GnuTLS 3.5.1: Managing encrypted keys">
+<meta name="keywords" content="GnuTLS 3.5.1: Managing encrypted keys">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -27,7 +27,7 @@ Documentation License". -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="More-on-certificate-authentication.html#More-on-certificate-authentication" rel="up" title="More on certificate authentication">
 <link href="certtool-Invocation.html#certtool-Invocation" rel="next" title="certtool Invocation">
-<link href="OCSP-certificate-status-checking.html#OCSP-certificate-status-checking" rel="prev" title="OCSP certificate status checking">
+<link href="OCSP-stapling.html#OCSP-stapling" rel="prev" title="OCSP stapling">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,11 +158,11 @@ dl {
 <a name="Managing-encrypted-keys"></a>
 <div class="header">
 <p>
-Next: <a href="certtool-Invocation.html#certtool-Invocation" accesskey="n" rel="next">certtool Invocation</a>, Previous: <a href="OCSP-certificate-status-checking.html#OCSP-certificate-status-checking" accesskey="p" rel="prev">OCSP certificate status checking</a>, Up: <a href="More-on-certificate-authentication.html#More-on-certificate-authentication" accesskey="u" rel="up">More on certificate authentication</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="certtool-Invocation.html#certtool-Invocation" accesskey="n" rel="next">certtool Invocation</a>, Previous: <a href="OCSP-stapling.html#OCSP-stapling" accesskey="p" rel="prev">OCSP stapling</a>, Up: <a href="More-on-certificate-authentication.html#More-on-certificate-authentication" accesskey="u" rel="up">More on certificate authentication</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Managing-encrypted-keys-1"></a>
-<h4 class="subsection">4.2.4 Managing encrypted keys</h4>
+<h4 class="subsection">4.2.5 Managing encrypted keys</h4>
 <a name="index-Encrypted-keys"></a>
 
 <p>Transferring or storing private keys in plain may not be a
@@ -391,9 +391,9 @@ negative error value.
 <p><strong>Since:</strong> 3.1.0
 </p></dd></dl>
 <dl compact="compact">
-<dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fget_005fdata">gnutls_pkcs12_bag_get_data</a> (gnutls_pkcs12_bag_t <var>bag</var>, int <var>indx</var>, gnutls_datum_t * <var>data</var>)</code></dt>
-<dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fget_005fkey_005fid">gnutls_pkcs12_bag_get_key_id</a> (gnutls_pkcs12_bag_t <var>bag</var>, int <var>indx</var>, gnutls_datum_t * <var>id</var>)</code></dt>
-<dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fget_005ffriendly_005fname">gnutls_pkcs12_bag_get_friendly_name</a> (gnutls_pkcs12_bag_t <var>bag</var>, int <var>indx</var>, char ** <var>name</var>)</code></dt>
+<dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fget_005fdata">gnutls_pkcs12_bag_get_data</a> (gnutls_pkcs12_bag_t <var>bag</var>, unsigned <var>indx</var>, gnutls_datum_t * <var>data</var>)</code></dt>
+<dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fget_005fkey_005fid">gnutls_pkcs12_bag_get_key_id</a> (gnutls_pkcs12_bag_t <var>bag</var>, unsigned <var>indx</var>, gnutls_datum_t * <var>id</var>)</code></dt>
+<dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fget_005ffriendly_005fname">gnutls_pkcs12_bag_get_friendly_name</a> (gnutls_pkcs12_bag_t <var>bag</var>, unsigned <var>indx</var>, char ** <var>name</var>)</code></dt>
 </dl>
 
 <p>The functions below are used to generate a PKCS #12 structure. An example
@@ -408,8 +408,8 @@ of their usage is shown at <a href="PKCS12-structure-generation-example.html#PKC
 <dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fset_005fdata">gnutls_pkcs12_bag_set_data</a> (gnutls_pkcs12_bag_t <var>bag</var>, gnutls_pkcs12_bag_type_t <var>type</var>, const gnutls_datum_t * <var>data</var>)</code></dt>
 <dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fset_005fcrl">gnutls_pkcs12_bag_set_crl</a> (gnutls_pkcs12_bag_t <var>bag</var>, gnutls_x509_crl_t <var>crl</var>)</code></dt>
 <dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fset_005fcrt">gnutls_pkcs12_bag_set_crt</a> (gnutls_pkcs12_bag_t <var>bag</var>, gnutls_x509_crt_t <var>crt</var>)</code></dt>
-<dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fset_005fkey_005fid">gnutls_pkcs12_bag_set_key_id</a> (gnutls_pkcs12_bag_t <var>bag</var>, int <var>indx</var>, const gnutls_datum_t * <var>id</var>)</code></dt>
-<dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fset_005ffriendly_005fname">gnutls_pkcs12_bag_set_friendly_name</a> (gnutls_pkcs12_bag_t <var>bag</var>, int <var>indx</var>, const char * <var>name</var>)</code></dt>
+<dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fset_005fkey_005fid">gnutls_pkcs12_bag_set_key_id</a> (gnutls_pkcs12_bag_t <var>bag</var>, unsigned <var>indx</var>, const gnutls_datum_t * <var>id</var>)</code></dt>
+<dt><code><var>int</var> <a href="PKCS-12-API.html#gnutls_005fpkcs12_005fbag_005fset_005ffriendly_005fname">gnutls_pkcs12_bag_set_friendly_name</a> (gnutls_pkcs12_bag_t <var>bag</var>, unsigned <var>indx</var>, const char * <var>name</var>)</code></dt>
 </dl>
 
 <a name="OpenSSL-encrypted-keys"></a>
@@ -449,7 +449,7 @@ negative error value.
 <hr>
 <div class="header">
 <p>
-Next: <a href="certtool-Invocation.html#certtool-Invocation" accesskey="n" rel="next">certtool Invocation</a>, Previous: <a href="OCSP-certificate-status-checking.html#OCSP-certificate-status-checking" accesskey="p" rel="prev">OCSP certificate status checking</a>, Up: <a href="More-on-certificate-authentication.html#More-on-certificate-authentication" accesskey="u" rel="up">More on certificate authentication</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="certtool-Invocation.html#certtool-Invocation" accesskey="n" rel="next">certtool Invocation</a>, Previous: <a href="OCSP-stapling.html#OCSP-stapling" accesskey="p" rel="prev">OCSP stapling</a>, Up: <a href="More-on-certificate-authentication.html#More-on-certificate-authentication" accesskey="u" rel="up">More on certificate authentication</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

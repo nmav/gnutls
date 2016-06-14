@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: Core TLS API</title>
+<title>GnuTLS 3.5.1: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.5.0: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.5.0: Core TLS API">
+<meta name="description" content="GnuTLS 3.5.1: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.5.1: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -627,9 +627,13 @@ is returned.
 <p><var>flags</var>: Use zero or <code>GNUTLS_TL_GET_COPY</code> 
 </p>
 <p>This function will return the issuer of a given certificate.
-As with <code>gnutls_x509_trust_list_get_issuer()</code>  this function requires
-the <code>GNUTLS_TL_GET_COPY</code>  flag in order to operate with PKCS <code>11</code>  trust
-lists. In that case the issuer must be freed using <code>gnutls_x509_crt_deinit()</code> .
+If the flag <code>GNUTLS_TL_GET_COPY</code>  is specified a copy of the issuer
+will be returned which must be freed using <code>gnutls_x509_crt_deinit()</code> .
+In that case the provided  <code>issuer</code> must not be initialized.
+</p>
+<p>As with <code>gnutls_x509_trust_list_get_issuer()</code>  this function requires
+the <code>GNUTLS_TL_GET_COPY</code>  flag in order to operate with PKCS<code>11</code>  trust
+lists in a thread-safe way. 
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -2553,6 +2557,18 @@ after a completed handshake.
 <p><strong>Since:</strong> 3.4.0
 </p></dd></dl>
 
+<a name="gnutls_005fext_005fget_005fname-1"></a>
+<h4 class="subheading">gnutls_ext_get_name</h4>
+<a name="gnutls_005fext_005fget_005fname"></a><dl>
+<dt><a name="index-gnutls_005fext_005fget_005fname"></a>Function: <em>const char *</em> <strong>gnutls_ext_get_name</strong> <em>(unsigned int <var>ext</var>)</em></dt>
+<dd><p><var>ext</var>: is a TLS extension numeric ID
+</p>
+<p>Convert a TLS extension numeric ID to a printable string.
+</p>
+<p><strong>Returns:</strong> a pointer to a string that contains the name of the
+specified cipher, or <code>NULL</code> .
+</p></dd></dl>
+
 <a name="gnutls_005fext_005fregister-1"></a>
 <h4 class="subheading">gnutls_ext_register</h4>
 <a name="gnutls_005fext_005fregister"></a><dl>
@@ -4049,12 +4065,22 @@ of 192.
 <p>&quot;NONE&quot; means nothing is enabled.  This disables even protocols and
 compression methods.
 </p>
-<p>&quot; <code>KEYWORD</code> &quot; The system administrator imposed settings. The provided keywords
-will be expanded from a configuration-time provided file - default is:
-/etc/gnutls/default-priorities. Any keywords that follow it, will 
-be appended to the expanded string. If there is no system string,
-then the function will fail. The system file should be formatted
-as &quot;KEYWORD=VALUE&quot;, e.g., &quot;SYSTEM=NORMAL:+ARCFOUR-128&quot;.
+<p>&quot;&nbsp;<code>KEYWORD1</code> ,KEYWORD2,...&quot; The system administrator imposed settings.
+The provided keyword(s) will be expanded from a configuration-time
+provided file - default is: /etc/gnutls/default-priorities.
+Any attributes that follow it, will be appended to the expanded
+string. If multiple keywords are provided, separated by commas,
+then the first keyword that exists in the configuration file
+will be used. At least one of the keywords must exist, or this
+function will return an error. Typical usage would be to specify
+an application specified keyword first, followed by &quot;SYSTEM&quot; as
+a default fallback. e.g., &quot; <code>LIBVIRT</code> ,SYSTEM:!-VERS-SSL3.0&quot; will
+first try to find a config file entry matching &quot;LIBVIRT&quot;, but if
+that does not exist will use the entry for &quot;SYSTEM&quot;. If &quot;SYSTEM&quot;
+does not exist either, an error will be returned. In all cases,
+the SSL3.0 protocol will be disabled. The system priority file
+entries should be formatted as &quot;KEYWORD=VALUE&quot;, e.g.,
+&quot;SYSTEM=NORMAL:+ARCFOUR-128&quot;.
 </p>
 <p>Special keywords are &quot;!&quot;, &quot;-&quot; and &quot;+&quot;.
 &quot;!&quot; or &quot;-&quot; appended with an algorithm will remove this algorithm.
@@ -5030,8 +5056,9 @@ the client).  The first server name has an index of 0, the second 1
 and so on.  If no name with the given index exists
 GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE is returned.
 </p>
-<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
-otherwise a negative error code is returned.
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, on UTF-8
+decoding error <code>GNUTLS_E_IDNA_ERROR</code>  is returned, otherwise a negative
+error code is returned.
 </p></dd></dl>
 
 <a name="gnutls_005fserver_005fname_005fset-1"></a>
@@ -5055,7 +5082,9 @@ virtual hosting.
 <code>GNUTLS_NAME_DNS</code> , a UTF-8 null-terminated domain name string,
 without the trailing dot, is expected.
 </p>
-<p>IPv4 or IPv6 addresses are not permitted.
+<p>IPv4 or IPv6 addresses are not permitted to be set by this function.
+If the function is called with a name of  <code>name_length</code> zero it will clear
+all server names set.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error code is returned.
@@ -5571,7 +5600,8 @@ use <code>gnutls_priority_set_direct()</code>  or <code>gnutls_priority_set()</c
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Returns the signature algorithm that is (or will be) used in this 
-session by the server to sign data.
+session by the server to sign data. This function should be
+used only with TLS 1.2 or later.
 </p>
 <p><strong>Returns:</strong> The sign algorithm or <code>GNUTLS_SIGN_UNKNOWN</code> .
 </p>
@@ -5585,7 +5615,8 @@ session by the server to sign data.
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Returns the signature algorithm that is (or will be) used in this 
-session by the client to sign data.
+session by the client to sign data. This function should be
+used only with TLS 1.2 or later.
 </p>
 <p><strong>Returns:</strong> The sign algorithm or <code>GNUTLS_SIGN_UNKNOWN</code> .
 </p>
@@ -6702,11 +6733,11 @@ ssize_t (*gnutls_vec_push_func) (gnutls_transport_ptr_t, const giovec_t * iov, i
 <a name="gnutls_005furl_005fis_005fsupported-1"></a>
 <h4 class="subheading">gnutls_url_is_supported</h4>
 <a name="gnutls_005furl_005fis_005fsupported"></a><dl>
-<dt><a name="index-gnutls_005furl_005fis_005fsupported-1"></a>Function: <em>int</em> <strong>gnutls_url_is_supported</strong> <em>(const char * <var>url</var>)</em></dt>
-<dd><p><var>url</var>: A PKCS 11 url
+<dt><a name="index-gnutls_005furl_005fis_005fsupported-1"></a>Function: <em>unsigned</em> <strong>gnutls_url_is_supported</strong> <em>(const char * <var>url</var>)</em></dt>
+<dd><p><var>url</var>: A URI to be tested
 </p>
-<p>Check whether url is supported.  Depending on the system libraries
-GnuTLS may support pkcs11 or tpmkey URLs.
+<p>Check whether the provided  <code>url</code> is supported.  Depending on the system libraries
+GnuTLS may support pkcs11, tpmkey or other URLs.
 </p>
 <p><strong>Returns:</strong> return non-zero if the given URL is supported, and zero if
 it is not known.

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: PKCS 7 API</title>
+<title>GnuTLS 3.5.1: PKCS 7 API</title>
 
-<meta name="description" content="GnuTLS 3.5.0: PKCS 7 API">
-<meta name="keywords" content="GnuTLS 3.5.0: PKCS 7 API">
+<meta name="description" content="GnuTLS 3.5.1: PKCS 7 API">
+<meta name="keywords" content="GnuTLS 3.5.1: PKCS 7 API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -331,7 +331,7 @@ negative error value.
 <a name="gnutls_005fpkcs7_005fget_005fcrl_005fraw-1"></a>
 <h4 class="subheading">gnutls_pkcs7_get_crl_raw</h4>
 <a name="gnutls_005fpkcs7_005fget_005fcrl_005fraw"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrl_005fraw"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crl_raw</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>, void * <var>crl</var>, size_t * <var>crl_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrl_005fraw"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crl_raw</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, unsigned <var>indx</var>, void * <var>crl</var>, size_t * <var>crl_size</var>)</em></dt>
 <dd><p><var>pkcs7</var>: The pkcs7 type
 </p>
 <p><var>indx</var>: contains the index of the crl to extract
@@ -352,7 +352,7 @@ returned.  After the last crl has been read
 <a name="gnutls_005fpkcs7_005fget_005fcrl_005fraw2-1"></a>
 <h4 class="subheading">gnutls_pkcs7_get_crl_raw2</h4>
 <a name="gnutls_005fpkcs7_005fget_005fcrl_005fraw2"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrl_005fraw2"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crl_raw2</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>, gnutls_datum_t * <var>crl</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrl_005fraw2"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crl_raw2</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, unsigned <var>indx</var>, gnutls_datum_t * <var>crl</var>)</em></dt>
 <dd><p><var>pkcs7</var>: The pkcs7 type
 </p>
 <p><var>indx</var>: contains the index of the crl to extract
@@ -384,7 +384,7 @@ negative error value.
 <a name="gnutls_005fpkcs7_005fget_005fcrt_005fraw-1"></a>
 <h4 class="subheading">gnutls_pkcs7_get_crt_raw</h4>
 <a name="gnutls_005fpkcs7_005fget_005fcrt_005fraw"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrt_005fraw"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crt_raw</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>, void * <var>certificate</var>, size_t * <var>certificate_size</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrt_005fraw"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crt_raw</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, unsigned <var>indx</var>, void * <var>certificate</var>, size_t * <var>certificate_size</var>)</em></dt>
 <dd><p><var>pkcs7</var>: should contain a gnutls_pkcs7_t type
 </p>
 <p><var>indx</var>: contains the index of the certificate to extract
@@ -409,7 +409,7 @@ then  <code>certificate_size</code> is updated and
 <a name="gnutls_005fpkcs7_005fget_005fcrt_005fraw2-1"></a>
 <h4 class="subheading">gnutls_pkcs7_get_crt_raw2</h4>
 <a name="gnutls_005fpkcs7_005fget_005fcrt_005fraw2"></a><dl>
-<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrt_005fraw2"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crt_raw2</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, int <var>indx</var>, gnutls_datum_t * <var>cert</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs7_005fget_005fcrt_005fraw2"></a>Function: <em>int</em> <strong>gnutls_pkcs7_get_crt_raw2</strong> <em>(gnutls_pkcs7_t <var>pkcs7</var>, unsigned <var>indx</var>, gnutls_datum_t * <var>cert</var>)</em></dt>
 <dd><p><var>pkcs7</var>: should contain a gnutls_pkcs7_t type
 </p>
 <p><var>indx</var>: contains the index of the certificate to extract

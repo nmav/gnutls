@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: PKCS11 Manual Initialization</title>
+<title>GnuTLS 3.5.1: PKCS11 Manual Initialization</title>
 
-<meta name="description" content="GnuTLS 3.5.0: PKCS11 Manual Initialization">
-<meta name="keywords" content="GnuTLS 3.5.0: PKCS11 Manual Initialization">
+<meta name="description" content="GnuTLS 3.5.1: PKCS11 Manual Initialization">
+<meta name="keywords" content="GnuTLS 3.5.1: PKCS11 Manual Initialization">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -178,7 +178,7 @@ flag.
 <dt><a name="index-gnutls_005fpkcs11_005fadd_005fprovider"></a>Function: <em>int</em> <strong>gnutls_pkcs11_add_provider</strong> <em>(const char * <var>name</var>, const char * <var>params</var>)</em></dt>
 <dd><p><var>name</var>: The filename of the module
 </p>
-<p><var>params</var>: should be NULL
+<p><var>params</var>: should be NULL or a known string (see description)
 </p>
 <p>This function will load and add a PKCS 11 module to the module
 list used in gnutls. After this function is called the module will

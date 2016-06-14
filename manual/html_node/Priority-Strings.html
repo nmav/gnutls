@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: Priority Strings</title>
+<title>GnuTLS 3.5.1: Priority Strings</title>
 
-<meta name="description" content="GnuTLS 3.5.0: Priority Strings">
-<meta name="keywords" content="GnuTLS 3.5.0: Priority Strings">
+<meta name="description" content="GnuTLS 3.5.1: Priority Strings">
+<meta name="keywords" content="GnuTLS 3.5.1: Priority Strings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -182,11 +182,15 @@ advances while providing compatibility with old clients and servers).
 <div class="float"><a name="tab_003aprio_002dkeywords"></a>
 <table>
 <thead><tr><th width="20%">Keyword</th><th width="70%">Description</th></tr></thead>
-<tr><td width="20%">@KEYWORD</td><td width="70%">Means that a compile-time specified system configuration file<a name="DOCF17" href="#FOOT17"><sup>17</sup></a> 
+<tr><td width="20%">@KEYWORD</td><td width="70%">Means that a compile-time specified system configuration file<a name="DOCF19" href="#FOOT19"><sup>19</sup></a> 
 will be used to expand the provided keyword. That is used to impose system-specific policies.
 It may be followed by additional options that will be appended to the
 system string (e.g., &quot;@SYSTEM:+SRP&quot;). The system file should have the
-format &rsquo;KEYWORD=VALUE&rsquo;, e.g., &rsquo;SYSTEM=NORMAL:+ARCFOUR-128&rsquo;.</td></tr>
+format &rsquo;KEYWORD=VALUE&rsquo;, e.g., &rsquo;SYSTEM=NORMAL:+ARCFOUR-128&rsquo;.
+
+<p>Since version 3.5.1 it is allowed to specify fallback keywords such
+as @KEYWORD1,@KEYWORD2, and the first valid keyword will be used.
+</p></td></tr>
 <tr><td width="20%">PERFORMANCE</td><td width="70%">All the known to be secure ciphersuites are enabled,
 limited to 128 bit ciphers and sorted by terms of speed
 performance. The message authenticity security level is of 64 bits or more,
@@ -308,7 +312,7 @@ Catch all which enables all curves from NORMAL priority is CURVE-ALL.</td></tr>
 
 <div class="float-caption"><p><strong>Table 6.4: </strong>The supported algorithm keywords in priority strings.</p></div></div>
 <p>Note that the DHE key exchange methods are generally
-slower<a name="DOCF18" href="#FOOT18"><sup>18</sup></a> than their elliptic curves counterpart
+slower<a name="DOCF20" href="#FOOT20"><sup>20</sup></a> than their elliptic curves counterpart
 (ECDHE). Moreover the plain Diffie-Hellman key exchange
 requires parameters to be generated and associated with a credentials
 structure by the server (see <a href="Parameter-generation.html#Parameter-generation">Parameter generation</a>). 
@@ -325,10 +329,11 @@ problematic clients and servers is achieved. More specifically this
 string would disable TLS record random padding, tolerate packets
 over the maximum allowed TLS record, and add a padding to TLS Client
 Hello packet to prevent it being in the 256-512 range which is known
-to be causing issues with a commonly used firewall.</td></tr>
+to be causing issues with a commonly used firewall (see the %DUMBFW option).</td></tr>
 <tr><td width="45%">%DUMBFW</td><td width="45%">will add a private extension with bogus data that make the client
 hello exceed 512 bytes. This avoids a black hole behavior in some
-firewalls. This is a non-standard TLS extension, use with care.</td></tr>
+firewalls. This is the [<em>rfc7685</em>] client hello padding extension, also enabled
+with %COMPAT.</td></tr>
 <tr><td width="45%">%NO_EXTENSIONS</td><td width="45%">will prevent the sending of any TLS extensions in client side. Note
 that TLS 1.2 requires extensions to be used, as well as safe
 renegotiation thus this option must be used with care.</td></tr>
@@ -339,7 +344,9 @@ extension.</td></tr>
 <tr><td width="45%">%SERVER_PRECEDENCE</td><td width="45%">The ciphersuite will be selected according to server priorities
 and not the client&rsquo;s.</td></tr>
 <tr><td width="45%">%SSL3_RECORD_VERSION</td><td width="45%">will use SSL3.0 record version in client hello.
-This is the default.</td></tr>
+By default GnuTLS will set the minimum supported version as the
+client hello record version (do not confuse that version with the
+proposed handshake version at the client hello).</td></tr>
 <tr><td width="45%">%LATEST_RECORD_VERSION</td><td width="45%">will use the latest TLS version record version in client hello.</td></tr>
 </table>
 
@@ -409,16 +416,16 @@ Enabling the 128-bit secure ciphers, while disabling TLS 1.0 and enabling compre
 
 Enabling the 128-bit and 192-bit secure ciphers, while disabling all TLS versions 
 except TLS 1.2:
-    &quot;SECURE128:+SECURE192:-VERS-TLS-ALL:+VERS-TLS1.2&quot;
+    &quot;SECURE128:+SECURE192:-VERS-ALL:+VERS-TLS1.2&quot;
 </pre></div>
 
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT17" href="#DOCF17">(17)</a></h3>
+<h3><a name="FOOT19" href="#DOCF19">(19)</a></h3>
 <p>The default is <code>/etc/gnutls/default-priorities</code>.</p>
-<h3><a name="FOOT18" href="#DOCF18">(18)</a></h3>
+<h3><a name="FOOT20" href="#DOCF20">(20)</a></h3>
 <p>It depends on the group used.  Primes with
 lesser bits are always faster, but also easier to break.  See <a href="Selecting-cryptographic-key-sizes.html#Selecting-cryptographic-key-sizes">Selecting cryptographic key sizes</a>
 for the acceptable security levels.</p>

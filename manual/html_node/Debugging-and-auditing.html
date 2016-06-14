@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: Debugging and auditing</title>
+<title>GnuTLS 3.5.1: Debugging and auditing</title>
 
-<meta name="description" content="GnuTLS 3.5.0: Debugging and auditing">
-<meta name="keywords" content="GnuTLS 3.5.0: Debugging and auditing">
+<meta name="description" content="GnuTLS 3.5.1: Debugging and auditing">
+<meta name="keywords" content="GnuTLS 3.5.1: Debugging and auditing">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -183,6 +183,8 @@ error. Other available environment variables are shown in <a href="#tab_003aenvi
 <table>
 <thead><tr><th width="30%">Variable</th><th width="70%">Purpose</th></tr></thead>
 <tr><td width="30%"><code>GNUTLS_DEBUG_LEVEL</code></td><td width="70%">When set to a numeric value, it sets the default debugging level for GnuTLS applications.</td></tr>
+<tr><td width="30%"><code>SSLKEYLOGFILE</code></td><td width="70%">When set to a filename, GnuTLS will append to it the session keys in the NSS Key Log
+format. That format can be read by wireshark and will allow decryption of the session for debugging.</td></tr>
 <tr><td width="30%"><code>GNUTLS_CPUID_OVERRIDE</code></td><td width="70%">That environment variable can be used to
 explicitly enable/disable the use of certain CPU capabilities. Note that CPU
 detection cannot be overridden, i.e., VIA options cannot be enabled on an Intel

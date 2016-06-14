@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: Initialization</title>
+<title>GnuTLS 3.5.1: Initialization</title>
 
-<meta name="description" content="GnuTLS 3.5.0: Initialization">
-<meta name="keywords" content="GnuTLS 3.5.0: Initialization">
+<meta name="description" content="GnuTLS 3.5.1: Initialization">
+<meta name="keywords" content="GnuTLS 3.5.1: Initialization">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -164,7 +164,7 @@ Next: <a href="Version-check.html#Version-check" accesskey="n" rel="next">Versio
 <a name="Initialization-2"></a>
 <h4 class="subsection">6.2.2 Initialization</h4>
 
-<p>The GnuTLS library is initialized on load; prior to 3.3.0 was initialized by calling <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a><a name="DOCF15" href="#FOOT15"><sup>15</sup></a>. 
+<p>The GnuTLS library is initialized on load; prior to 3.3.0 was initialized by calling <a href="Core-TLS-API.html#gnutls_005fglobal_005finit">gnutls_global_init</a><a name="DOCF17" href="#FOOT17"><sup>17</sup></a>. 
 The initialization typically enables CPU-specific acceleration, performs any required
 precalculations needed, opens any required system devices (e.g., /dev/urandom on Linux)
 and initializes subsystems that could be used later.
@@ -182,7 +182,7 @@ ensure they don&rsquo;t disrupt GnuTLS&rsquo; operation.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT15" href="#DOCF15">(15)</a></h3>
+<h3><a name="FOOT17" href="#DOCF17">(17)</a></h3>
 <p>The original behavior of requiring explicit initialization can obtained by setting the
 GNUTLS_NO_EXPLICIT_INIT environment variable to 1, or by using the macro GNUTLS_SKIP_GLOBAL_INIT
 in a global section of your program.</p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: Trusted Platform Module</title>
+<title>GnuTLS 3.5.1: Trusted Platform Module</title>
 
-<meta name="description" content="GnuTLS 3.5.0: Trusted Platform Module">
-<meta name="keywords" content="GnuTLS 3.5.0: Trusted Platform Module">
+<meta name="description" content="GnuTLS 3.5.1: Trusted Platform Module">
+<meta name="keywords" content="GnuTLS 3.5.1: Trusted Platform Module">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -167,7 +167,10 @@ Previous: <a href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" accesskey="p"
 <a name="index-TPM"></a>
 
 <p>In this section we present the Trusted Platform Module (TPM) support 
-in <acronym>GnuTLS</acronym>. 
+in <acronym>GnuTLS</acronym>. Note that we recommend against using TPM with this
+API because it is restricted to TPM 1.2. We recommend instead
+to use PKCS#11 wrappers for TPM such as CHAPS<a name="DOCF14" href="#FOOT14"><sup>14</sup></a> or opencryptoki<a name="DOCF15" href="#FOOT15"><sup>15</sup></a>.
+These will allow using the standard smart card and HSM functionality (see <a href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs">Smart cards and HSMs</a>) for TPM keys.
 </p>
 <p>There was a big hype when the TPM chip was introduced into 
 computers. Briefly it is a co-processor in your PC that allows it to perform 
@@ -198,6 +201,20 @@ that the <code>tcsd</code> daemon is running, and that TPM ownership is set
 </td></tr>
 </table>
 
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT14" href="#DOCF14">(14)</a></h3>
+<p><a href="https://github.com/google/chaps-linux">https://github.com/google/chaps-linux</a></p>
+<h3><a name="FOOT15" href="#DOCF15">(15)</a></h3>
+<p><a href="https://sourceforge.net/projects/opencryptoki/">https://sourceforge.net/projects/opencryptoki/</a></p>
+</div>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" accesskey="p" rel="prev">Smart cards and HSMs</a>, Up: <a href="Hardware-security-modules-and-abstract-key-types.html#Hardware-security-modules-and-abstract-key-types" accesskey="u" rel="up">Hardware security modules and abstract key types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

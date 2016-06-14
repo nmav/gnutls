@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: Application-specific keys</title>
+<title>GnuTLS 3.5.1: Application-specific keys</title>
 
-<meta name="description" content="GnuTLS 3.5.0: Application-specific keys">
-<meta name="keywords" content="GnuTLS 3.5.0: Application-specific keys">
+<meta name="description" content="GnuTLS 3.5.1: Application-specific keys">
+<meta name="keywords" content="GnuTLS 3.5.1: Application-specific keys">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -172,7 +172,13 @@ Next: <a href="Smart-cards-and-HSMs.html#Smart-cards-and-HSMs" accesskey="n" rel
 and private keys. For these systems GnuTLS provides the system-key API in <code>gnutls/system-keys.h</code>.
 That API provides the ability to iterate through all stored keys, add and delete keys as well
 as use these keys using a URL which starts with &quot;system:&quot;. The format of the URLs is system-specific.
+The <code>systemkey</code> tool is also provided to assist in listing keys and debugging.
 </p>
+<p>The systems supported via this API are the following.
+</p><ul>
+<li> Windows Cryptography API (CNG)
+</li></ul>
+
 
 
 
@@ -238,7 +244,8 @@ them, e.g., <code>gnutls_certificate_set_x509_key_file2()</code> .
 </p>
 <p>The provided structure and callback functions must be valid throughout
 the lifetime of the process. The registration of an existing URL type
-will fail with <code>GNUTLS_E_INVALID_REQUEST</code> .
+will fail with <code>GNUTLS_E_INVALID_REQUEST</code> . Since GnuTLS 3.5.0 this function
+can be used to override the builtin URLs.
 </p>
 <p>This function is not thread safe.
 </p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: Verifying X.509 certificate paths</title>
+<title>GnuTLS 3.5.1: Verifying X.509 certificate paths</title>
 
-<meta name="description" content="GnuTLS 3.5.0: Verifying X.509 certificate paths">
-<meta name="keywords" content="GnuTLS 3.5.0: Verifying X.509 certificate paths">
+<meta name="description" content="GnuTLS 3.5.1: Verifying X.509 certificate paths">
+<meta name="keywords" content="GnuTLS 3.5.1: Verifying X.509 certificate paths">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -235,7 +235,7 @@ negative error value.
 
 
 <dl>
-<dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fadd_005fcrls"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_add_crls</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const gnutls_x509_crl_t * <var>crl_list</var>, int <var>crl_size</var>, unsigned int <var>flags</var>, unsigned int <var>verification_flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005ftrust_005flist_005fadd_005fcrls"></a>Function: <em>int</em> <strong>gnutls_x509_trust_list_add_crls</strong> <em>(gnutls_x509_trust_list_t <var>list</var>, const gnutls_x509_crl_t * <var>crl_list</var>, unsigned <var>crl_size</var>, unsigned int <var>flags</var>, unsigned int <var>verification_flags</var>)</em></dt>
 <dd><p><var>list</var>: The list
 </p>
 <p><var>crl_list</var>: A list of CRLs
@@ -517,6 +517,12 @@ violated.
 </p></dd>
 <dt><code>GNUTLS_CERT_PURPOSE_MISMATCH</code></dt>
 <dd><p>The certificate or an intermediate does not match the intended purpose (extended key usage).
+</p></dd>
+<dt><code>GNUTLS_CERT_MISSING_OCSP_STATUS</code></dt>
+<dd><p>The certificate requires the server to send the certifiate status, but no status was received.
+</p></dd>
+<dt><code>GNUTLS_CERT_INVALID_OCSP_STATUS</code></dt>
+<dd><p>The received OCSP status response is invalid.
 </p></dd>
 </dl>
 

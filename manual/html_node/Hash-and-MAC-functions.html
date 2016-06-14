@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: Hash and MAC functions</title>
+<title>GnuTLS 3.5.1: Hash and MAC functions</title>
 
-<meta name="description" content="GnuTLS 3.5.0: Hash and MAC functions">
-<meta name="keywords" content="GnuTLS 3.5.0: Hash and MAC functions">
+<meta name="description" content="GnuTLS 3.5.1: Hash and MAC functions">
+<meta name="keywords" content="GnuTLS 3.5.1: Hash and MAC functions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -169,7 +169,8 @@ Next: <a href="Random-number-generation.html#Random-number-generation" accesskey
 
 <p>The available operations to access hash functions and hash-MAC (HMAC) algorithms
 are shown below. HMAC algorithms provided keyed hash functionality. The supported MAC and HMAC
-algorithms are listed in <a href="#gnutls_005fmac_005falgorithm_005ft">Figure 8.3</a>.
+algorithms are listed in <a href="#gnutls_005fmac_005falgorithm_005ft">Figure 8.3</a>. Note that, despite the <code>hmac</code> part 
+in the name of the MAC functions listed below, they can be used either for HMAC or MAC operations.
 </p>
 <div class="float"><a name="gnutls_005fmac_005falgorithm_005ft"></a>
 
@@ -234,7 +235,7 @@ algorithms are listed in <a href="#gnutls_005fmac_005falgorithm_005ft">Figure 8.
 <dt><code><var>int</var> <a href="Cryptographic-API.html#gnutls_005fhmac">gnutls_hmac</a> (gnutls_hmac_hd_t <var>handle</var>, const void * <var>ptext</var>, size_t <var>ptext_len</var>)</code></dt>
 <dt><code><var>void</var> <a href="Cryptographic-API.html#gnutls_005fhmac_005foutput">gnutls_hmac_output</a> (gnutls_hmac_hd_t <var>handle</var>, void * <var>digest</var>)</code></dt>
 <dt><code><var>void</var> <a href="Cryptographic-API.html#gnutls_005fhmac_005fdeinit">gnutls_hmac_deinit</a> (gnutls_hmac_hd_t <var>handle</var>, void * <var>digest</var>)</code></dt>
-<dt><code><var>int</var> <a href="Cryptographic-API.html#gnutls_005fhmac_005fget_005flen">gnutls_hmac_get_len</a> (gnutls_mac_algorithm_t <var>algorithm</var>)</code></dt>
+<dt><code><var>unsigned</var> <a href="Cryptographic-API.html#gnutls_005fhmac_005fget_005flen">gnutls_hmac_get_len</a> (gnutls_mac_algorithm_t <var>algorithm</var>)</code></dt>
 <dt><code><var>int</var> <a href="Cryptographic-API.html#gnutls_005fhmac_005ffast">gnutls_hmac_fast</a> (gnutls_mac_algorithm_t <var>algorithm</var>, const void * <var>key</var>, size_t <var>keylen</var>, const void * <var>ptext</var>, size_t <var>ptext_len</var>, void * <var>digest</var>)</code></dt>
 </dl>
 
@@ -246,7 +247,7 @@ are shown in <a href="#gnutls_005fdigest_005falgorithm_005ft">Figure 8.4</a>.
 <dt><code><var>int</var> <a href="Cryptographic-API.html#gnutls_005fhash">gnutls_hash</a> (gnutls_hash_hd_t <var>handle</var>, const void * <var>ptext</var>, size_t <var>ptext_len</var>)</code></dt>
 <dt><code><var>void</var> <a href="Cryptographic-API.html#gnutls_005fhash_005foutput">gnutls_hash_output</a> (gnutls_hash_hd_t <var>handle</var>, void * <var>digest</var>)</code></dt>
 <dt><code><var>void</var> <a href="Cryptographic-API.html#gnutls_005fhash_005fdeinit">gnutls_hash_deinit</a> (gnutls_hash_hd_t <var>handle</var>, void * <var>digest</var>)</code></dt>
-<dt><code><var>int</var> <a href="Cryptographic-API.html#gnutls_005fhash_005fget_005flen">gnutls_hash_get_len</a> (gnutls_digest_algorithm_t <var>algorithm</var>)</code></dt>
+<dt><code><var>unsigned</var> <a href="Cryptographic-API.html#gnutls_005fhash_005fget_005flen">gnutls_hash_get_len</a> (gnutls_digest_algorithm_t <var>algorithm</var>)</code></dt>
 <dt><code><var>int</var> <a href="Cryptographic-API.html#gnutls_005fhash_005ffast">gnutls_hash_fast</a> (gnutls_digest_algorithm_t <var>algorithm</var>, const void * <var>ptext</var>, size_t <var>ptext_len</var>, void * <var>digest</var>)</code></dt>
 </dl>
 <dl compact="compact">

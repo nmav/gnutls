@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: DANE API</title>
+<title>GnuTLS 3.5.1: DANE API</title>
 
-<meta name="description" content="GnuTLS 3.5.0: DANE API">
-<meta name="keywords" content="GnuTLS 3.5.0: DANE API">
+<meta name="description" content="GnuTLS 3.5.1: DANE API">
+<meta name="keywords" content="GnuTLS 3.5.1: DANE API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -357,7 +357,9 @@ negative error value.
 </p>
 <p><var>flags</var>: flags from the <code>dane_state_flags</code>  enumeration
 </p>
-<p>This function will initialize a DANE query structure.
+<p>This function will initialize the backend resolver. It is
+intended to be used in scenarios where multiple resolvings
+occur, to optimize against multiple re-initializations.
 </p>
 <p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -372,7 +374,7 @@ negative error value.
 <p><var>file</var>: The file holding the DLV keys.
 </p>
 <p>This function will set a file with trusted keys
-for DLV  (DNSSEC  Lookaside  Validation).
+for DLV (DNSSEC Lookaside Validation).
 </p></dd></dl>
 
 <a name="dane_005fstrerror-1"></a>
@@ -450,10 +452,11 @@ the <code>DANE_VFLAG_ONLY_CHECK_EE_USAGE</code>  flag should be specified;
 then the function will check whether the key of the peer matches the
 key advertized in the DANE entry.
 </p>
-<p>If the  <code>q</code> parameter is provided it will be used for caching entries.
-</p>
-<p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
+<p><strong>Returns:</strong> a negative error code on error and <code>DANE_E_SUCCESS</code>  (0)
+when the DANE entries were successfully parsed, irrespective of
+whether they were verified (see  <code>verify</code> for that information). If
+no usable entries were encountered <code>DANE_E_REQUESTED_DATA_NOT_AVAILABLE</code> 
+will be returned.
 </p></dd></dl>
 
 <a name="dane_005fverify_005fcrt_005fraw-1"></a>
@@ -476,27 +479,17 @@ negative error value.
 </p>
 <p><var>verify</var>: An OR&rsquo;ed list of <code>dane_verify_status_t</code> .
 </p>
-<p>This function will verify the given certificate chain against the
-CA constrains and/or the certificate available via DANE.
-If no information via DANE can be obtained the flag <code>DANE_VERIFY_NO_DANE_INFO</code> 
-is set. If a DNSSEC signature is not available for the DANE
-record then the verify flag <code>DANE_VERIFY_NO_DNSSEC_DATA</code>  is set.
+<p>This is the low-level function of <code>dane_verify_crt()</code> . See the
+high level function for documentation.
 </p>
-<p>Due to the many possible options of DANE, there is no single threat
-model countered. When notifying the user about DANE verification results
-it may be better to mention: DANE verification did not reject the certificate,
-rather than mentioning a successful DANE verication.
+<p>This function does not perform any resolving, it utilizes
+cached entries from  <code>r</code> .
 </p>
-<p>Note that this function is designed to be run in addition to
-PKIX - certificate chain - verification. To be run independently
-the <code>DANE_VFLAG_ONLY_CHECK_EE_USAGE</code>  flag should be specified; 
-then the function will check whether the key of the peer matches the
-key advertized in the DANE entry.
-</p>
-<p>If the  <code>q</code> parameter is provided it will be used for caching entries.
-</p>
-<p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
+<p><strong>Returns:</strong> a negative error code on error and <code>DANE_E_SUCCESS</code>  (0)
+when the DANE entries were successfully parsed, irrespective of
+whether they were verified (see  <code>verify</code> for that information). If
+no usable entries were encountered <code>DANE_E_REQUESTED_DATA_NOT_AVAILABLE</code> 
+will be returned.
 </p></dd></dl>
 
 <a name="dane_005fverify_005fsession_005fcrt-1"></a>
@@ -527,8 +520,11 @@ See <code>dane_verify_crt()</code>  for more information.
 verification is restricted to end certificates, this must be
 be performed separately using <code>gnutls_certificate_verify_peers3()</code> .
 </p>
-<p><strong>Returns:</strong> On success, <code>DANE_E_SUCCESS</code>  (0) is returned, otherwise a
-negative error value.
+<p><strong>Returns:</strong> a negative error code on error and <code>DANE_E_SUCCESS</code>  (0)
+when the DANE entries were successfully parsed, irrespective of
+whether they were verified (see  <code>verify</code> for that information). If
+no usable entries were encountered <code>DANE_E_REQUESTED_DATA_NOT_AVAILABLE</code> 
+will be returned.
 </p></dd></dl>
 
 

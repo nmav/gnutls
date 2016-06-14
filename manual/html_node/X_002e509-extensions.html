@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: X.509 extensions</title>
+<title>GnuTLS 3.5.1: X.509 extensions</title>
 
-<meta name="description" content="GnuTLS 3.5.0: X.509 extensions">
-<meta name="keywords" content="GnuTLS 3.5.0: X.509 extensions">
+<meta name="description" content="GnuTLS 3.5.1: X.509 extensions">
+<meta name="keywords" content="GnuTLS 3.5.1: X.509 extensions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -177,9 +177,9 @@ requires to retrieve the extension, and the second is the parsing part.
 <p>To enumerate and retrieve the DER-encoded extension data available in a certificate the following
 two functions are available.
 </p><dl compact="compact">
-<dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrt_005fget_005fextension_005finfo">gnutls_x509_crt_get_extension_info</a> (gnutls_x509_crt_t <var>cert</var>, int <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>, unsigned int * <var>critical</var>)</code></dt>
+<dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrt_005fget_005fextension_005finfo">gnutls_x509_crt_get_extension_info</a> (gnutls_x509_crt_t <var>cert</var>, unsigned <var>indx</var>, void * <var>oid</var>, size_t * <var>oid_size</var>, unsigned int * <var>critical</var>)</code></dt>
 <dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrt_005fget_005fextension_005fdata2">gnutls_x509_crt_get_extension_data2</a> (gnutls_x509_crt_t <var>cert</var>, unsigned <var>indx</var>, gnutls_datum_t * <var>data</var>)</code></dt>
-<dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid2">gnutls_x509_crt_get_extension_by_oid2</a> (gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, int <var>indx</var>, gnutls_datum_t * <var>output</var>, unsigned int * <var>critical</var>)</code></dt>
+<dt><code><var>int</var> <a href="X509-certificate-API.html#gnutls_005fx509_005fcrt_005fget_005fextension_005fby_005foid2">gnutls_x509_crt_get_extension_by_oid2</a> (gnutls_x509_crt_t <var>cert</var>, const char * <var>oid</var>, unsigned <var>indx</var>, gnutls_datum_t * <var>output</var>, unsigned int * <var>critical</var>)</code></dt>
 </dl>
 
 <p>After a supported DER-encoded extension is retrieved it can be parsed using the APIs in <code>x509-ext.h</code>.

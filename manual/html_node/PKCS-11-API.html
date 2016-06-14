@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: PKCS 11 API</title>
+<title>GnuTLS 3.5.1: PKCS 11 API</title>
 
-<meta name="description" content="GnuTLS 3.5.0: PKCS 11 API">
-<meta name="keywords" content="GnuTLS 3.5.0: PKCS 11 API">
+<meta name="description" content="GnuTLS 3.5.1: PKCS 11 API">
+<meta name="keywords" content="GnuTLS 3.5.1: PKCS 11 API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -174,7 +174,7 @@ Their prototypes lie in <samp>gnutls/pkcs11.h</samp>.
 <dt><a name="index-gnutls_005fpkcs11_005fadd_005fprovider-1"></a>Function: <em>int</em> <strong>gnutls_pkcs11_add_provider</strong> <em>(const char * <var>name</var>, const char * <var>params</var>)</em></dt>
 <dd><p><var>name</var>: The filename of the module
 </p>
-<p><var>params</var>: should be NULL
+<p><var>params</var>: should be NULL or a known string (see description)
 </p>
 <p>This function will load and add a PKCS 11 module to the module
 list used in gnutls. After this function is called the module will
@@ -630,7 +630,7 @@ returned, and <code>GNUTLS_E_SUCCESS</code>  (0) on success.
 </p>
 <p><var>url</var>: will contain an allocated url
 </p>
-<p>This function will export a URL identifying the given certificate.
+<p>This function will export a URL identifying the given object.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -659,15 +659,18 @@ needs to be deallocated using <code>gnutls_free()</code> .
 <dt><a name="index-gnutls_005fpkcs11_005fobj_005fget_005fexts"></a>Function: <em>int</em> <strong>gnutls_pkcs11_obj_get_exts</strong> <em>(gnutls_pkcs11_obj_t <var>obj</var>, gnutls_x509_ext_st ** <var>exts</var>, unsigned int * <var>exts_size</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>obj</var>: should contain a <code>gnutls_pkcs11_obj_t</code>  type
 </p>
-<p><var>exts</var>: an allocated list of pointers to <code>gnutls_x509_ext_st</code> 
+<p><var>exts</var>: a pointer to a <code>gnutls_x509_ext_st</code>  pointer
 </p>
-<p><var>exts_size</var>: the number of  <code>exts</code> 
+<p><var>exts_size</var>: will be updated with the number of  <code>exts</code> 
 </p>
 <p><var>flags</var>: Or sequence of <code>GNUTLS_PKCS11_OBJ_</code> * flags 
 </p>
 <p>This function will return information about attached extensions
 that associate to the provided object (which should be a certificate).
 The extensions are the attached p11-kit trust module extensions.
+</p>
+<p>Each element of  <code>exts</code> must be deinitialized using <code>gnutls_x509_ext_deinit()</code> 
+while  <code>exts</code> should be deallocated using <code>gnutls_free()</code> .
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) on success or a negative error code on error.
 </p>
@@ -743,6 +746,10 @@ to the <code>gnutls_pkcs11_obj_t</code>  type. This does not involve any
 parsing (such as X.509 or OpenPGP) since the <code>gnutls_pkcs11_obj_t</code>  is
 format agnostic. Only data are transferred.
 </p>
+<p>If the flag <code>GNUTLS_PKCS11_OBJ_FLAG_OVERWRITE_TRUSTMOD_EXT</code>  is specified
+any certificate read, will have its extensions overwritten by any
+stapled extensions in the trust module.
+</p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
 </p>
@@ -767,9 +774,9 @@ negative error value.
 <h4 class="subheading">gnutls_pkcs11_obj_list_import_url3</h4>
 <a name="gnutls_005fpkcs11_005fobj_005flist_005fimport_005furl3"></a><dl>
 <dt><a name="index-gnutls_005fpkcs11_005fobj_005flist_005fimport_005furl3"></a>Function: <em>int</em> <strong>gnutls_pkcs11_obj_list_import_url3</strong> <em>(gnutls_pkcs11_obj_t * <var>p_list</var>, unsigned int * <var>n_list</var>, const char * <var>url</var>, unsigned int <var>flags</var>)</em></dt>
-<dd><p><var>p_list</var>: An uninitialized object list (may be NULL)
+<dd><p><var>p_list</var>: An uninitialized object list (may be <code>NULL</code> )
 </p>
-<p><var>n_list</var>: initially should hold the maximum size of the list. Will contain the actual size.
+<p><var>n_list</var>: Initially should hold the maximum size of the list. Will contain the actual size.
 </p>
 <p><var>url</var>: A PKCS 11 url identifying a set of objects
 </p>
@@ -778,11 +785,23 @@ negative error value.
 <p>This function will initialize and set values to an object list
 by using all objects identified by a PKCS 11 URL.
 </p>
+<p>This function will enumerate all the objects specified by the PKCS<code>11</code>  URL
+provided. It expects an already allocated  <code>p_list</code> which has * <code>n_list</code> elements,
+and that value will be updated to the actual number of present objects. The
+ <code>p_list</code> objects will be initialized and set by this function.
+To obtain a list of all available objects use a  <code>url</code> of &rsquo;pkcs11:&rsquo;.
+</p>
+<p>All returned objects must be deinitialized using <code>gnutls_pkcs11_obj_deinit()</code> .
+</p>
 <p>The supported in this function  <code>flags</code> are <code>GNUTLS_PKCS11_OBJ_FLAG_LOGIN</code> ,
 <code>GNUTLS_PKCS11_OBJ_FLAG_LOGIN_SO</code> , <code>GNUTLS_PKCS11_OBJ_FLAG_PRESENT_IN_TRUSTED_MODULE</code> ,
 <code>GNUTLS_PKCS11_OBJ_FLAG_CRT</code> , <code>GNUTLS_PKCS11_OBJ_FLAG_PUBKEY</code> , <code>GNUTLS_PKCS11_OBJ_FLAG_PRIVKEY</code> ,
 <code>GNUTLS_PKCS11_OBJ_FLAG_WITH_PRIVKEY</code> , <code>GNUTLS_PKCS11_OBJ_FLAG_MARK_CA</code> ,
-<code>GNUTLS_PKCS11_OBJ_FLAG_MARK_TRUSTED</code> .
+<code>GNUTLS_PKCS11_OBJ_FLAG_MARK_TRUSTED</code> , and since 3.5.1 the <code>GNUTLS_PKCS11_OBJ_FLAG_OVERWRITE_TRUSTMOD_EXT</code> .
+</p>
+<p>On versions of GnuTLS prior to 3.4.0 the equivalent function was
+<code>gnutls_pkcs11_obj_list_import_url()</code> . That is also available on this version
+as a macro which maps to this function.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -802,18 +821,22 @@ negative error value.
 </p>
 <p><var>flags</var>: Or sequence of GNUTLS_PKCS11_OBJ_* flags
 </p>
-<p>This function will initialize and set values to an object list
-by using all objects identified by the PKCS 11 URL. The output
-is stored in  <code>p_list</code> , which will be initialized.
+<p>This function will enumerate all the objects specified by the PKCS<code>11</code>  URL
+provided. It will initialize and set values to the object pointer list ( <code>p_list</code> )
+provided. To obtain a list of all available objects use a  <code>url</code> of &rsquo;pkcs11:&rsquo;.
 </p>
 <p>All returned objects must be deinitialized using <code>gnutls_pkcs11_obj_deinit()</code> ,
-and  <code>p_list</code> must be free&rsquo;d using <code>gnutls_free()</code> .
+and  <code>p_list</code> must be deinitialized using <code>gnutls_free()</code> .
 </p>
 <p>The supported in this function  <code>flags</code> are <code>GNUTLS_PKCS11_OBJ_FLAG_LOGIN</code> ,
 <code>GNUTLS_PKCS11_OBJ_FLAG_LOGIN_SO</code> , <code>GNUTLS_PKCS11_OBJ_FLAG_PRESENT_IN_TRUSTED_MODULE</code> ,
 <code>GNUTLS_PKCS11_OBJ_FLAG_CRT</code> , <code>GNUTLS_PKCS11_OBJ_FLAG_PUBKEY</code> , <code>GNUTLS_PKCS11_OBJ_FLAG_PRIVKEY</code> ,
 <code>GNUTLS_PKCS11_OBJ_FLAG_WITH_PRIVKEY</code> , <code>GNUTLS_PKCS11_OBJ_FLAG_MARK_CA</code> ,
-<code>GNUTLS_PKCS11_OBJ_FLAG_MARK_TRUSTED</code> .
+<code>GNUTLS_PKCS11_OBJ_FLAG_MARK_TRUSTED</code> , and since 3.5.1 the <code>GNUTLS_PKCS11_OBJ_FLAG_OVERWRITE_TRUSTMOD_EXT</code> .
+</p>
+<p>On versions of GnuTLS prior to 3.4.0 the equivalent function was
+<code>gnutls_pkcs11_obj_list_import_url2()</code> . That is also available on this version
+as a macro which maps to this function.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.

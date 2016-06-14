@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: PKCS 12 API</title>
+<title>GnuTLS 3.5.1: PKCS 12 API</title>
 
-<meta name="description" content="GnuTLS 3.5.0: PKCS 12 API">
-<meta name="keywords" content="GnuTLS 3.5.0: PKCS 12 API">
+<meta name="description" content="GnuTLS 3.5.1: PKCS 12 API">
+<meta name="keywords" content="GnuTLS 3.5.1: PKCS 12 API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -253,7 +253,7 @@ error.
 <a name="gnutls_005fpkcs12_005fbag_005fget_005fdata-1"></a>
 <h4 class="subheading">gnutls_pkcs12_bag_get_data</h4>
 <a name="gnutls_005fpkcs12_005fbag_005fget_005fdata"></a><dl>
-<dt><a name="index-gnutls_005fpkcs12_005fbag_005fget_005fdata"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_get_data</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, int <var>indx</var>, gnutls_datum_t * <var>data</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs12_005fbag_005fget_005fdata"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_get_data</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, unsigned <var>indx</var>, gnutls_datum_t * <var>data</var>)</em></dt>
 <dd><p><var>bag</var>: The bag
 </p>
 <p><var>indx</var>: The element of the bag to get the data from
@@ -271,7 +271,7 @@ negative error value.
 <a name="gnutls_005fpkcs12_005fbag_005fget_005ffriendly_005fname-1"></a>
 <h4 class="subheading">gnutls_pkcs12_bag_get_friendly_name</h4>
 <a name="gnutls_005fpkcs12_005fbag_005fget_005ffriendly_005fname"></a><dl>
-<dt><a name="index-gnutls_005fpkcs12_005fbag_005fget_005ffriendly_005fname"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_get_friendly_name</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, int <var>indx</var>, char ** <var>name</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs12_005fbag_005fget_005ffriendly_005fname"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_get_friendly_name</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, unsigned <var>indx</var>, char ** <var>name</var>)</em></dt>
 <dd><p><var>bag</var>: The bag
 </p>
 <p><var>indx</var>: The bag&rsquo;s element to add the id
@@ -289,7 +289,7 @@ negative error value. or a negative error code on error.
 <a name="gnutls_005fpkcs12_005fbag_005fget_005fkey_005fid-1"></a>
 <h4 class="subheading">gnutls_pkcs12_bag_get_key_id</h4>
 <a name="gnutls_005fpkcs12_005fbag_005fget_005fkey_005fid"></a><dl>
-<dt><a name="index-gnutls_005fpkcs12_005fbag_005fget_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_get_key_id</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, int <var>indx</var>, gnutls_datum_t * <var>id</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs12_005fbag_005fget_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_get_key_id</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, unsigned <var>indx</var>, gnutls_datum_t * <var>id</var>)</em></dt>
 <dd><p><var>bag</var>: The bag
 </p>
 <p><var>indx</var>: The bag&rsquo;s element to add the id
@@ -307,14 +307,14 @@ negative error value. or a negative error code on error.
 <a name="gnutls_005fpkcs12_005fbag_005fget_005ftype-1"></a>
 <h4 class="subheading">gnutls_pkcs12_bag_get_type</h4>
 <a name="gnutls_005fpkcs12_005fbag_005fget_005ftype"></a><dl>
-<dt><a name="index-gnutls_005fpkcs12_005fbag_005fget_005ftype"></a>Function: <em>gnutls_pkcs12_bag_type_t</em> <strong>gnutls_pkcs12_bag_get_type</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, int <var>indx</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs12_005fbag_005fget_005ftype"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_get_type</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, unsigned <var>indx</var>)</em></dt>
 <dd><p><var>bag</var>: The bag
 </p>
 <p><var>indx</var>: The element of the bag to get the type
 </p>
 <p>This function will return the bag&rsquo;s type.
 </p>
-<p><strong>Returns:</strong> One of the <code>gnutls_pkcs12_bag_type_t</code>  enumerations.
+<p><strong>Returns:</strong> On error a negative error value or one of the <code>gnutls_pkcs12_bag_type_t</code>  enumerations.
 </p></dd></dl>
 
 <a name="gnutls_005fpkcs12_005fbag_005finit-1"></a>
@@ -381,7 +381,7 @@ value on error.
 <a name="gnutls_005fpkcs12_005fbag_005fset_005ffriendly_005fname-1"></a>
 <h4 class="subheading">gnutls_pkcs12_bag_set_friendly_name</h4>
 <a name="gnutls_005fpkcs12_005fbag_005fset_005ffriendly_005fname"></a><dl>
-<dt><a name="index-gnutls_005fpkcs12_005fbag_005fset_005ffriendly_005fname"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_set_friendly_name</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, int <var>indx</var>, const char * <var>name</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs12_005fbag_005fset_005ffriendly_005fname"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_set_friendly_name</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, unsigned <var>indx</var>, const char * <var>name</var>)</em></dt>
 <dd><p><var>bag</var>: The bag
 </p>
 <p><var>indx</var>: The bag&rsquo;s element to add the id
@@ -400,7 +400,7 @@ negative error value. or a negative error code on error.
 <a name="gnutls_005fpkcs12_005fbag_005fset_005fkey_005fid-1"></a>
 <h4 class="subheading">gnutls_pkcs12_bag_set_key_id</h4>
 <a name="gnutls_005fpkcs12_005fbag_005fset_005fkey_005fid"></a><dl>
-<dt><a name="index-gnutls_005fpkcs12_005fbag_005fset_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_set_key_id</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, int <var>indx</var>, const gnutls_datum_t * <var>id</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs12_005fbag_005fset_005fkey_005fid"></a>Function: <em>int</em> <strong>gnutls_pkcs12_bag_set_key_id</strong> <em>(gnutls_pkcs12_bag_t <var>bag</var>, unsigned <var>indx</var>, const gnutls_datum_t * <var>id</var>)</em></dt>
 <dd><p><var>bag</var>: The bag
 </p>
 <p><var>indx</var>: The bag&rsquo;s element to add the id

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.0 of GnuTLS.
+3.5.1 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.0: DTLS sessions</title>
+<title>GnuTLS 3.5.1: DTLS sessions</title>
 
-<meta name="description" content="GnuTLS 3.5.0: DTLS sessions">
-<meta name="keywords" content="GnuTLS 3.5.0: DTLS sessions">
+<meta name="description" content="GnuTLS 3.5.1: DTLS sessions">
+<meta name="keywords" content="GnuTLS 3.5.1: DTLS sessions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -167,7 +167,7 @@ Previous: <a href="Asynchronous-operation.html#Asynchronous-operation" accesskey
 <p>Because datagram TLS can operate over connections where the client
 cannot be reliably verified, functionality in the form of cookies, is available to prevent
 denial of service attacks to servers. <acronym>GnuTLS</acronym> requires a server
-to generate a secret key that is used to sign a cookie<a name="DOCF16" href="#FOOT16"><sup>16</sup></a>. 
+to generate a secret key that is used to sign a cookie<a name="DOCF18" href="#FOOT18"><sup>18</sup></a>. 
 That cookie is sent to the client using <a href="Datagram-TLS-API.html#gnutls_005fdtls_005fcookie_005fsend">gnutls_dtls_cookie_send</a>, and 
 the client must reply using the correct cookie. The server side
 should verify the initial message sent by client using <a href="Datagram-TLS-API.html#gnutls_005fdtls_005fcookie_005fverify">gnutls_dtls_cookie_verify</a>.
@@ -204,7 +204,7 @@ a path MTU discovery mechanism [<em>RFC4821</em>].
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT16" href="#DOCF16">(16)</a></h3>
+<h3><a name="FOOT18" href="#DOCF18">(18)</a></h3>
 <p>A key of 128 bits or 16 bytes should be sufficient for this purpose.</p>
 </div>
 <hr>
