@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.1 of GnuTLS.
+3.5.2 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.1</title>
+<title>GnuTLS 3.5.2</title>
 
-<meta name="description" content="GnuTLS 3.5.1">
-<meta name="keywords" content="GnuTLS 3.5.1">
+<meta name="description" content="GnuTLS 3.5.2">
+<meta name="keywords" content="GnuTLS 3.5.2">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">GnuTLS 3.5.1</h1>
+<h1 class="settitle" align="center">GnuTLS 3.5.2</h1>
 
 
 
@@ -507,7 +507,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 4 March 2015 for version
-3.5.1 of GnuTLS.
+3.5.2 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2015 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2015 Nikos Mavrogiannopoulos
@@ -8685,12 +8685,15 @@ Next: <a href="#Common-types" accesskey="n" rel="next">Common types</a>, Previou
 <a name="Error-handling-1"></a>
 <h4 class="subsection">6.1.2 Error handling</h4>
 
-<p>In <acronym>GnuTLS</acronym> most functions return an integer type as a result.
-In almost all cases a zero or a positive number means success, and a
-negative number indicates failure, or a situation that some action has
-to be taken. Thus negative error codes may be fatal or not.
+<p>There two types of <acronym>GnuTLS</acronym> functions. One type returns
+a boolean true (non-zero) or false (zero) value, which are set
+to return an unsigned integer type. The other type returns a
+signed integer type with zero indicating success and a negative
+value indicating failure. 
 </p>
-<p>Fatal errors terminate the connection immediately and further sends
+<p>For certain operations such as TLS handshake and TLS packet receive
+there is the notion of fatal and non-fatal error codes.
+Fatal errors terminate the TLS session immediately and further sends
 and receives will be disallowed.  Such an example is
 <code>GNUTLS_E_DECRYPTION_FAILED</code>. Non-fatal errors may warn about
 something, i.e., a warning alert was received, or indicate the some
@@ -8786,6 +8789,7 @@ CPU. The currently available options are:
 </li><li> 0x2: Enable AES-NI
 </li><li> 0x4: Enable SSSE3
 </li><li> 0x8: Enable PCLMUL
+</li><li> 0x10: Enable AVX
 </li><li> 0x100000: Enable VIA padlock
 </li><li> 0x200000: Enable VIA PHE
 </li><li> 0x400000: Enable VIA PHE SHA512
@@ -36369,7 +36373,7 @@ negative error value.
 <a name="gnutls_005fpkcs11_005fcrt_005fis_005fknown-1"></a>
 <h4 class="subheading">gnutls_pkcs11_crt_is_known</h4>
 <a name="gnutls_005fpkcs11_005fcrt_005fis_005fknown"></a><dl>
-<dt><a name="index-gnutls_005fpkcs11_005fcrt_005fis_005fknown"></a>Function: <em>int</em> <strong>gnutls_pkcs11_crt_is_known</strong> <em>(const char * <var>url</var>, gnutls_x509_crt_t <var>cert</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs11_005fcrt_005fis_005fknown"></a>Function: <em>unsigned</em> <strong>gnutls_pkcs11_crt_is_known</strong> <em>(const char * <var>url</var>, gnutls_x509_crt_t <var>cert</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>url</var>: A PKCS 11 url identifying a token
 </p>
 <p><var>cert</var>: is the certificate to find issuer for
