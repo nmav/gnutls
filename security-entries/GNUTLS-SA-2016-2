@@ -1,0 +1,22 @@
+    <td><!--<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1959">
+	CVE-2014-1959</a>-->
+      </td>
+    <td>Certificate verification issue</td>
+    <td><p>We discoverd a vulnerability that affects certificate verification
+when GnuTLS is used in combination with the p11-kit trust module.
+That issue affects gnutls 3.3.23, 3.4.12 and later versions.
+</p>
+
+<p>
+<b>Who is affected by this vulnerability?</b>
+<ul>
+<li>GnuTLS installations which are configured to utilize the p11-kit trust store (i.e., when compiled with --with-default-trust-store-pkcs11).</li>
+</ul>
+</p><p>
+<b>How to mitigate the vulnerability?</b>
+<ul>
+<li>Disable the trust store verification or upgrade to GnuTLS 3.3.24, 3.4.14 and later versions.</li>
+</ul>
+
+</p>
+

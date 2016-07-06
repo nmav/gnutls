@@ -3,7 +3,36 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2016-06-14T16:47:34+00:00</updated>
+<updated>2016-07-06T09:32:43+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2016-07-06</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2016-07-06'/>
+    <title>GnuTLS 3.5.2</title>
+    <updated>2016-07-06T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2016-07-06.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released <a
+href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8595">GnuTLS
+3.3.24</a>, <a
+href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8593">GnuTLS
+3.4.14</a>,
+and <a href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8594">GnuTLS
+3.5.2</a> which are bug fix releases in the old, current and next stable branches.
+</p>
+<p>
+Added the <a
+href="security.html#GNUTLS-SA-2016-2">GnuTLS-SA-2016-2</a> security advisory.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2016-06-14</id>
@@ -412,33 +441,6 @@ href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8236">Gn
 Released <a
 href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8189">GnuTLS
 3.4.2</a> which adds new features and fixes bugs in next stable branch.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2015-05-03</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2015-05-03'/>
-    <title>GnuTLS 3.4.1</title>
-    <updated>2015-05-03T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2015-05-03.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Released <a
-href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8137">GnuTLS
-3.3.15</a> and <a
-href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8138">GnuTLS
-3.4.1</a> which are bug fix releases in the current and next stable branches.
-</p>
-<p>
-Added <a
-href="security.html#GNUTLS-SA-2015-2">GnuTLS-SA-2015-2</a> security advisory.
 </p>
 
     </div>
