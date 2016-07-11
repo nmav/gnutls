@@ -43,7 +43,7 @@ EXTRA_DIST = data/ca-no-pathlen.pem data/no-ca-or-pathlen.pem data/aki-cert.pem 
 	templates/template-krb5name.tmpl \
 	data/template-krb5name.pem data/template-krb5name-full.pem data/template-test-ecc.key \
 	data/template-rsa-sha3-256.pem data/template-rsa-sha3-512.pem data/template-rsa-sha3-224.pem \
-	data/template-rsa-sha3-384.pem \
+	data/template-rsa-sha3-384.pem data/long-oids.pem \
 	data/name-constraints-ip2.pem data/chain-md5.pem data/gost-cert.pem \
 	templates/template-tlsfeature.tmpl \
 	data/template-tlsfeature.pem data/template-tlsfeature.csr \
@@ -51,7 +51,7 @@ EXTRA_DIST = data/ca-no-pathlen.pem data/no-ca-or-pathlen.pem data/aki-cert.pem 
 
 dist_check_SCRIPTS = pathlen aki certtool invalid-sig email \
 	pkcs7 pkcs7-broken-sigs privkey-import name-constraints certtool-long-cn crl provable-privkey \
-	provable-dh
+	provable-dh certtool-long-oids
 
 if !HAVE_BUGGY_LIBIDN
 dist_check_SCRIPTS += certtool-utf8
