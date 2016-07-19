@@ -51,9 +51,14 @@ _gnutls_x509_get_dn(ASN1_TYPE asn1_struct,
 
 	_gnutls_buffer_init(&out_str);
 
-	k1 = 0;
+	result = asn1_number_of_elements(asn1_struct, asn1_rdn_name, &k1);
+	if (result != ASN1_SUCCESS) {
+		gnutls_assert();
+		result = _gnutls_asn2err(result);
+		goto cleanup;
+	}
+
 	do {
-		k1++;
 		/* create a string like "tbsCertList.issuer.rdnSequence.?1"
 		 */
 		if (asn1_rdn_name[0] != 0)
@@ -62,6 +67,7 @@ _gnutls_x509_get_dn(ASN1_TYPE asn1_struct,
 		else
 			snprintf(tmpbuffer1, sizeof(tmpbuffer1), "?%u",
 				 k1);
+		k1--;
 
 		len = sizeof(value) - 1;
 		result =
@@ -159,18 +165,6 @@ _gnutls_x509_get_dn(ASN1_TYPE asn1_struct,
 			 *   by a comma character (',' ASCII 44).
 			 */
 
-			/*   Where there is a multi-valued RDN, the outputs from adjoining
-			 *   AttributeTypeAndValues are separated by a plus ('+' ASCII 43)
-			 *   character.
-			 */
-			if (k1 != 1) {	/* the first time do not append a comma */
-				if (k2 != 1) {	/* adjoining multi-value RDN */
-					STR_APPEND("+");
-				} else {
-					STR_APPEND(",");
-				}
-			}
-
 			ldap_desc =
 			    gnutls_x509_dn_oid_name(oid,
 						    GNUTLS_X509_DN_OID_RETURN_OID);
@@ -197,10 +191,22 @@ _gnutls_x509_get_dn(ASN1_TYPE asn1_struct,
 			DATA_APPEND(td.data, td.size);
 			_gnutls_free_datum(&td);
 			_gnutls_free_datum(&tvd);
+
+			/*   Where there is a multi-valued RDN, the outputs from adjoining
+			 *   AttributeTypeAndValues are separated by a plus ('+' ASCII 43)
+			 *   character.
+			 */
+			if (k1 > 0) {
+				if (k2 != 1) {
+					STR_APPEND("+");
+				} else {
+					STR_APPEND(",");
+				}
+			}
 		}
 		while (1);
 	}
-	while (1);
+	while (k1 > 0);
 
 	result = _gnutls_buffer_to_datum(&out_str, dn, 1);
 	if (result < 0)
