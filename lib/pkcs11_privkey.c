@@ -1,6 +1,7 @@
 /*
  * GnuTLS PKCS#11 support
- * Copyright (C) 2010-2012 Free Software Foundation, Inc.
+ * Copyright (C) 2010-2016 Free Software Foundation, Inc.
+ * Copyright (C) 2015-2016 Red Hat, Inc.
  * 
  * Authors: Nikos Mavrogiannopoulos, Stef Walter
  *
@@ -19,16 +20,14 @@
  */
 
 #include "gnutls_int.h"
-#include <gnutls/pkcs11.h>
 #include <stdio.h>
 #include <string.h>
 #include "errors.h"
 #include <datum.h>
-#include <pkcs11_int.h>
-#include <tls-sig.h>
 #include <pk.h>
 #include <fips.h>
 #include "urls.h"
+#include <pkcs11_int.h>
 #include <p11-kit/uri.h>
 
 /* In case of a fork, it will invalidate the open session
@@ -60,19 +59,6 @@
                 } \
                 break; \
 	} while (1);
-
-struct gnutls_pkcs11_privkey_st {
-	gnutls_pk_algorithm_t pk_algorithm;
-	unsigned int flags;
-	struct p11_kit_uri *uinfo;
-	char *url;
-
-	struct pkcs11_session_info sinfo;
-	ck_object_handle_t ref;	/* the key in the session */
-	unsigned reauth; /* whether we need to login on each operation */
-
-	struct pin_info_st pin;
-};
 
 /**
  * gnutls_pkcs11_privkey_init:

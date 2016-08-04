@@ -470,6 +470,11 @@ gnutls_pkcs11_copy_attached_extension(const char *token_url,
 
 #define gnutls_x509_crt_import_pkcs11_url gnutls_x509_crt_import_url
 
+#if defined(PKCS11_H) || defined(CRYPTOKI_GNU)
+int gnutls_pkcs11_privkey_get_handles(gnutls_pkcs11_privkey_t pkey, CK_FUNCTION_LIST_PTR *pfunclist,
+				      CK_SESSION_HANDLE *session, CK_OBJECT_HANDLE *obj);
+#endif
+
 /* *INDENT-OFF* */
 #ifdef __cplusplus
 }
