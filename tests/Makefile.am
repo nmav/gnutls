@@ -172,10 +172,14 @@ pkcs11_privkey_fork_SOURCES = pkcs11/pkcs11-privkey-fork.c
 pkcs11_privkey_fork_DEPENDENCIES = libpkcs11mock1.la libutils.la
 pkcs11_privkey_fork_LDADD = $(LDADD) $(LIBDL)
 
+pkcs11_privkey_raw_SOURCES = pkcs11/pkcs11-privkey-raw.c
+pkcs11_privkey_raw_DEPENDENCIES = libpkcs11mock1.la libutils.la
+pkcs11_privkey_raw_LDADD = $(LDADD) $(LIBDL)
+
 ctests += pkcs11-cert-import-url-exts pkcs11-get-exts pkcs11-get-raw-issuer-exts \
 	pkcs11-cert-import-url4-exts pkcs11/pkcs11-chainverify pkcs11/pkcs11-get-issuer pkcs11/pkcs11-is-known \
 	pkcs11/pkcs11-combo pkcs11/pkcs11-privkey pkcs11/pkcs11-pubkey-import-rsa pkcs11/pkcs11-pubkey-import-ecdsa \
-	pkcs11-import-url-privkey pkcs11-privkey-fork
+	pkcs11-import-url-privkey pkcs11-privkey-fork pkcs11-privkey-raw
 
 
 endif
