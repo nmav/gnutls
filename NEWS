@@ -45,6 +45,7 @@ GNUTLS_E_UNAVAILABLE_DURING_HANDSHAKE: Added
 gnutls_x509_crq_set_extension_by_oid: Added
 gnutls_x509_dn_set_str: Added
 gnutls_transport_set_fastopen: Added
+gnutls_pkcs11_privkey_get_handles: Added
 
 
 * Version 3.5.2 (released 2016-07-06)
