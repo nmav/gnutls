@@ -3,7 +3,28 @@
 <id>http://www.gnutls.org/news.atom</id>
 <link href="http://www.gnutls.org/news.atom" rel="self"/> 
 <title>GnuTLS - News</title>
-<updated>2016-07-06T09:32:43+00:00</updated>
+<updated>2016-08-09T07:51:08+00:00</updated>
+
+  <entry>
+    <id>http://www.gnutls.org/news.html#2016-08-09</id>
+    <link rel='alternate' href='http://www.gnutls.org/news.html#2016-08-09'/>
+    <title>GnuTLS 3.5.3</title>
+    <updated>2016-08-09T00:00:00+00:00</updated>
+    <author>
+      <name>Nikos Mavrogiannopoulos</name>
+      <email>nmav@gnutls.org</email>
+    </author>
+    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2016-08-09.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
+
+<p>
+Released 
+<a href="https://lists.gnupg.org/pipermail/gnutls-devel/2016-August/008126.html">GnuTLS
+3.5.3</a>, a minor enhancement and bug fix release in next stable branch.
+</p>
+
+    </div>
+    </content>
+  </entry>
 
   <entry>
     <id>http://www.gnutls.org/news.html#2016-07-06</id>
@@ -420,27 +441,6 @@ href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8235">Gn
 3.3.16</a> and <a
 href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8236">GnuTLS
 3.4.3</a> which are bug fix releases in the current and next stable branches.
-</p>
-
-    </div>
-    </content>
-  </entry>
-
-  <entry>
-    <id>http://www.gnutls.org/news.html#2015-06-16</id>
-    <link rel='alternate' href='http://www.gnutls.org/news.html#2015-06-16'/>
-    <title>GnuTLS 3.4.2</title>
-    <updated>2015-06-16T00:00:00+00:00</updated>
-    <author>
-      <name>Nikos Mavrogiannopoulos</name>
-      <email>nmav@gnutls.org</email>
-    </author>
-    <content type='xhtml' xml:base='http://www.gnutls.org/news-entries/2015-06-16.xml'><div xmlns='http://www.w3.org/1999/xhtml'>
-
-<p>
-Released <a
-href="http://permalink.gmane.org/gmane.comp.encryption.gpg.gnutls.devel/8189">GnuTLS
-3.4.2</a> which adds new features and fixes bugs in next stable branch.
 </p>
 
     </div>
