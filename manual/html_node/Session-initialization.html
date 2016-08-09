@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.2 of GnuTLS.
+3.5.3 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.2: Session initialization</title>
+<title>GnuTLS 3.5.3: Session initialization</title>
 
-<meta name="description" content="GnuTLS 3.5.2: Session initialization">
-<meta name="keywords" content="GnuTLS 3.5.2: Session initialization">
+<meta name="description" content="GnuTLS 3.5.3: Session initialization">
+<meta name="keywords" content="GnuTLS 3.5.3: Session initialization">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -182,12 +182,11 @@ and the underlying protocol type, i.e., datagram (UDP) or reliable (TCP).
 </p>
 <p><var>flags</var>: indicate if this session is to be used for server or client.
 </p>
-<p>This function initializes the current session to null. Every
-session must be initialized before use, so internal structures can
-be allocated.  This function allocates structures which can only
-be free&rsquo;d by calling <code>gnutls_deinit()</code> .  Returns <code>GNUTLS_E_SUCCESS</code>  (0) on success.
+<p>This function initializes the provided session. Every
+session must be initialized before use, and must be deinitialized
+after used by calling <code>gnutls_deinit()</code> .
 </p>
-<p><code>flags</code> can be any of <code>gnutls_init_flags_t</code> .
+<p><code>flags</code> can be any combination of flags from <code>gnutls_init_flags_t</code> .
 </p>
 <p>Note that since version 3.1.2 this function enables some common
 TLS extensions such as session tickets and OCSP certificate status

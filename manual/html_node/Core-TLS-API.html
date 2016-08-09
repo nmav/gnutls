@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.2 of GnuTLS.
+3.5.3 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.2: Core TLS API</title>
+<title>GnuTLS 3.5.3: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.5.2: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.5.2: Core TLS API">
+<meta name="description" content="GnuTLS 3.5.3: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.5.3: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -666,9 +666,12 @@ was used.
 </p>
 <p>Get the peer&rsquo;s raw certificate (chain) as sent by the peer.  These
 certificates are in raw format (DER encoded for X.509).  In case of
-a X.509 then a certificate list may be present.  The first
-certificate in the list is the peer&rsquo;s certificate, following the
-issuer&rsquo;s certificate, then the issuer&rsquo;s issuer etc.
+a X.509 then a certificate list may be present.  The list
+is provided as sent by the server; the server must send as first
+certificate in the list its own certificate, following the
+issuer&rsquo;s certificate, then the issuer&rsquo;s issuer etc. However, there
+are servers which violate this principle and thus on certain
+occasions this may be an unsorted list.
 </p>
 <p>In case of OpenPGP keys a single key will be returned in raw
 format.
@@ -1542,16 +1545,17 @@ of <code>gnutls_certificate_verify_peers2()</code>  for details in the verificat
 <p>The acceptable  <code>data</code> types are <code>GNUTLS_DT_DNS_HOSTNAME</code> , <code>GNUTLS_DT_RFC822NAME</code>  and <code>GNUTLS_DT_KEY_PURPOSE_OID</code> .
 The former two accept as data a null-terminated hostname or email address, and the latter a null-terminated
 object identifier (e.g., <code>GNUTLS_KP_TLS_WWW_SERVER</code> ).
-If a DNS hostname is provided then this function will compare
+</p>
+<p>If a DNS hostname is provided then this function will compare
 the hostname in the certificate against the given. If names do not match the 
 <code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
 If a key purpose OID is provided and the end-certificate contains the extended key
 usage PKIX extension, it will be required to be have the provided key purpose 
-or be marked for any purpose, otherwise verification will fail with <code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code>  status.
+or be marked for any purpose, otherwise verification status will have the
+<code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code>  flag set.
 </p>
-<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0)
-when the peer&rsquo;s certificate was successfully parsed, irrespective of whether
-it was verified.
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) when the validation is performed, or a negative error code otherwise.
+A sucessful error code means that the  <code>status</code> parameter must be checked to obtain the validation status.
 </p>
 <p><strong>Since:</strong> 3.3.0
 </p></dd></dl>
@@ -1583,9 +1587,8 @@ size are set. To override them use <code>gnutls_certificate_set_verify_limits()<
 the verified certificate belongs to the actual peer, see <code>gnutls_x509_crt_check_hostname()</code> ,
 or use <code>gnutls_certificate_verify_peers3()</code> .
 </p>
-<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0)
-when the peer&rsquo;s certificate was successfully parsed, irrespective of whether
-it was verified.
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) when the validation is performed, or a negative error code otherwise.
+A sucessful error code means that the  <code>status</code> parameter must be checked to obtain the validation status.
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fverify_005fpeers3-1"></a>
@@ -1607,16 +1610,15 @@ using <code>gnutls_certificate_set_verify_flags()</code> . See the documentation
 of <code>gnutls_certificate_verify_peers2()</code>  for details in the verification process.
 </p>
 <p>If the  <code>hostname</code> provided is non-NULL then this function will compare
-the hostname in the certificate against the given. The comparison will
-be accurate for ascii names; non-ascii names are compared byte-by-byte. 
-If names do not match the <code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
+the hostname in the certificate against it. The comparison will follow
+the RFC6125 recommendations. If names do not match the
+<code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
 </p>
 <p>In order to verify the purpose of the end-certificate (by checking the extended
 key usage), use <code>gnutls_certificate_verify_peers()</code> .
 </p>
-<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0)
-when the peer&rsquo;s certificate was successfully parsed, irrespective of whether
-it was verified.
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) when the validation is performed, or a negative error code otherwise.
+A sucessful error code means that the  <code>status</code> parameter must be checked to obtain the validation status.
 </p>
 <p><strong>Since:</strong> 3.1.4
 </p></dd></dl>
@@ -2650,7 +2652,7 @@ an error code is returned.
 <a name="gnutls_005ffips140_005fmode_005fenabled-1"></a>
 <h4 class="subheading">gnutls_fips140_mode_enabled</h4>
 <a name="gnutls_005ffips140_005fmode_005fenabled"></a><dl>
-<dt><a name="index-gnutls_005ffips140_005fmode_005fenabled"></a>Function: <em>int</em> <strong>gnutls_fips140_mode_enabled</strong> <em>( <var>void</var>)</em></dt>
+<dt><a name="index-gnutls_005ffips140_005fmode_005fenabled"></a>Function: <em>unsigned</em> <strong>gnutls_fips140_mode_enabled</strong> <em>( <var>void</var>)</em></dt>
 <dd>
 <p>Checks whether this library is in FIPS140 mode.
 </p>
@@ -3218,12 +3220,11 @@ the hex encoding, as used in the PSK password files.
 </p>
 <p><var>flags</var>: indicate if this session is to be used for server or client.
 </p>
-<p>This function initializes the current session to null. Every
-session must be initialized before use, so internal structures can
-be allocated.  This function allocates structures which can only
-be free&rsquo;d by calling <code>gnutls_deinit()</code> .  Returns <code>GNUTLS_E_SUCCESS</code>  (0) on success.
+<p>This function initializes the provided session. Every
+session must be initialized before use, and must be deinitialized
+after used by calling <code>gnutls_deinit()</code> .
 </p>
-<p><code>flags</code> can be any of <code>gnutls_init_flags_t</code> .
+<p><code>flags</code> can be any combination of flags from <code>gnutls_init_flags_t</code> .
 </p>
 <p>Note that since version 3.1.2 this function enables some common
 TLS extensions such as session tickets and OCSP certificate status
@@ -3832,6 +3833,9 @@ generated output is strongly connected to some additional data
 </p>
 <p>The output is placed in  <code>out</code> , which must be pre-allocated.
 </p>
+<p><strong>Note:</strong> This function produces identical output with <code>gnutls_prf_rfc5705()</code> 
+when  <code>server_random_first</code> is set to 0 and  <code>extra</code> is <code>NULL</code> .
+</p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
 </p></dd></dl>
 
@@ -3908,7 +3912,7 @@ generated output is strongly connected to some additional data
 </p>
 <p>The output is placed in  <code>out</code> , which must be pre-allocated.
 </p>
-<p>Note that, to provide the RFC5705 context, the  <code>contect</code> variable
+<p>Note that, to provide the RFC5705 context, the  <code>context</code> variable
 must be non-null.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
@@ -5180,6 +5184,10 @@ applications.
 The client should call this, and store the returned session data. A session
 may be resumed later by calling <code>gnutls_session_set_data()</code> .  
 </p>
+<p>This function will fail if called prior to handshake completion. In
+case of false start TLS, the handshake completes only after data have
+been successfully received from the peer.
+</p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
 </p></dd></dl>
@@ -5197,6 +5205,10 @@ The client should call this, and store the returned session data. A session
 may be resumed later by calling <code>gnutls_session_set_data()</code> .  
 </p>
 <p>The returned  <code>data</code> are allocated and must be released using <code>gnutls_free()</code> .
+</p>
+<p>This function will fail if called prior to handshake completion. In
+case of false start TLS, the handshake completes only after data have
+been successfully received from the peer.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
@@ -5405,6 +5417,8 @@ function unless you are implementing a custom protocol.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
+</p>
+<p><strong>Since:</strong> 3.2.1
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fset_005fpremaster-1"></a>
@@ -6579,13 +6593,17 @@ and should return the errno.
 <a name="gnutls_005ftransport_005fset_005fint-1"></a>
 <h4 class="subheading">gnutls_transport_set_int</h4>
 <a name="gnutls_005ftransport_005fset_005fint"></a><dl>
-<dt><a name="index-gnutls_005ftransport_005fset_005fint"></a>Function: <em>void</em> <strong>gnutls_transport_set_int</strong> <em>(gnutls_session_t <var>session</var>, int <var>i</var>)</em></dt>
+<dt><a name="index-gnutls_005ftransport_005fset_005fint"></a>Function: <em>void</em> <strong>gnutls_transport_set_int</strong> <em>(gnutls_session_t <var>session</var>, int <var>fd</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
-<p><var>i</var>: is the value.
+<p><var>fd</var>: is the socket descriptor for the connection.
 </p>
-<p>Used to set the first argument of the transport function (for push
-and pull callbacks) for berkeley style sockets.
+<p>This function sets the first argument of the transport function, such
+as <code>send()</code>  and <code>recv()</code>  for the default callbacks using the
+system&rsquo;s socket API.
+</p>
+<p>This function is equivalent to calling <code>gnutls_transport_set_ptr()</code> 
+with the descriptor, but requires no casts.
 </p>
 <p><strong>Since:</strong> 3.1.9
 </p></dd></dl>
@@ -6593,17 +6611,20 @@ and pull callbacks) for berkeley style sockets.
 <a name="gnutls_005ftransport_005fset_005fint2-1"></a>
 <h4 class="subheading">gnutls_transport_set_int2</h4>
 <a name="gnutls_005ftransport_005fset_005fint2"></a><dl>
-<dt><a name="index-gnutls_005ftransport_005fset_005fint2"></a>Function: <em>void</em> <strong>gnutls_transport_set_int2</strong> <em>(gnutls_session_t <var>session</var>, int <var>recv_int</var>, int <var>send_int</var>)</em></dt>
+<dt><a name="index-gnutls_005ftransport_005fset_005fint2"></a>Function: <em>void</em> <strong>gnutls_transport_set_int2</strong> <em>(gnutls_session_t <var>session</var>, int <var>recv_fd</var>, int <var>send_fd</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
-<p><var>recv_int</var>: is the value for the pull function
+<p><var>recv_fd</var>: is socket descriptor for the pull function
 </p>
-<p><var>send_int</var>: is the value for the push function
+<p><var>send_fd</var>: is socket descriptor for the push function
 </p>
-<p>Used to set the first argument of the transport function (for push
-and pull callbacks), when using the berkeley style sockets. 
-With this function you can set two different
-pointers for receiving and sending.
+<p>This function sets the first argument of the transport functions,
+such as <code>send()</code>  and <code>recv()</code>  for the default callbacks using the
+system&rsquo;s socket API. With this function you can set two different
+descriptors for receiving and sending.
+</p>
+<p>This function is equivalent to calling <code>gnutls_transport_set_ptr2()</code> 
+with the descriptors, but requires no casts.
 </p>
 <p><strong>Since:</strong> 3.1.9
 </p></dd></dl>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.2 of GnuTLS.
+3.5.3 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.2: X509 certificate API</title>
+<title>GnuTLS 3.5.3: X509 certificate API</title>
 
-<meta name="description" content="GnuTLS 3.5.2: X509 certificate API">
-<meta name="keywords" content="GnuTLS 3.5.2: X509 certificate API">
+<meta name="description" content="GnuTLS 3.5.3: X509 certificate API">
+<meta name="keywords" content="GnuTLS 3.5.3: X509 certificate API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -2243,7 +2243,8 @@ negative error value.
 <p><var>err</var>: indicates the error position (if any)
 </p>
 <p>This function will set the DN on the provided certificate.
-The input string should be plain ASCII or UTF-8 encoded.
+The input string should be plain ASCII or UTF-8 encoded. On
+DN parsing error <code>GNUTLS_E_PARSING_ERROR</code>  is returned.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -2272,6 +2273,28 @@ With this function you can only set the known OIDs.  You can test
 for known OIDs using <code>gnutls_x509_dn_oid_known()</code> .  For OIDs that are
 not known (by gnutls) you should properly DER encode your data, and
 call this function with raw_flag set.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrq_005fset_005fextension_005fby_005foid-1"></a>
+<h4 class="subheading">gnutls_x509_crq_set_extension_by_oid</h4>
+<a name="gnutls_005fx509_005fcrq_005fset_005fextension_005fby_005foid"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fset_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_set_extension_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, const void * <var>buf</var>, size_t <var>sizeof_buf</var>, unsigned int <var>critical</var>)</em></dt>
+<dd><p><var>crq</var>: a certificate of type <code>gnutls_x509_crq_t</code> 
+</p>
+<p><var>oid</var>: holds an Object Identifier in null terminated string
+</p>
+<p><var>buf</var>: a pointer to a DER encoded data
+</p>
+<p><var>sizeof_buf</var>: holds the size of  <code>buf</code> 
+</p>
+<p><var>critical</var>: should be non-zero if the extension is to be marked as critical
+</p>
+<p>This function will set an the extension, by the specified OID, in
+the certificate request.  The extension data should be binary data DER
+encoded.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -2426,7 +2449,7 @@ features will be added to the certificate
 request.
 </p>
 <p>This function will set the certificate request&rsquo;s
-X.509 TLS extention from the given structure.
+X.509 TLS extension from the given structure.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error value.
@@ -2511,7 +2534,7 @@ the given email address.
 <a name="gnutls_005fx509_005fcrt_005fcheck_005fhostname-1"></a>
 <h4 class="subheading">gnutls_x509_crt_check_hostname</h4>
 <a name="gnutls_005fx509_005fcrt_005fcheck_005fhostname"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fcheck_005fhostname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_check_hostname</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>hostname</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fcheck_005fhostname"></a>Function: <em>unsigned</em> <strong>gnutls_x509_crt_check_hostname</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>hostname</var>)</em></dt>
 <dd><p><var>cert</var>: should contain an gnutls_x509_crt_t type
 </p>
 <p><var>hostname</var>: A null terminated string that contains a DNS name
@@ -2529,7 +2552,7 @@ and the DNSName/IPAddress subject alternative name PKIX extension.
 <a name="gnutls_005fx509_005fcrt_005fcheck_005fhostname2-1"></a>
 <h4 class="subheading">gnutls_x509_crt_check_hostname2</h4>
 <a name="gnutls_005fx509_005fcrt_005fcheck_005fhostname2"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fcheck_005fhostname2"></a>Function: <em>int</em> <strong>gnutls_x509_crt_check_hostname2</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>hostname</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fcheck_005fhostname2"></a>Function: <em>unsigned</em> <strong>gnutls_x509_crt_check_hostname2</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>hostname</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>cert</var>: should contain an gnutls_x509_crt_t type
 </p>
 <p><var>hostname</var>: A null terminated string that contains a DNS name
@@ -4439,7 +4462,8 @@ negative error value.
 <p><var>err</var>: indicates the error position (if any)
 </p>
 <p>This function will set the DN on the provided certificate.
-The input string should be plain ASCII or UTF-8 encoded.
+The input string should be plain ASCII or UTF-8 encoded. On
+DN parsing error <code>GNUTLS_E_PARSING_ERROR</code>  is returned.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -4495,7 +4519,7 @@ negative error value.
 <dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_extension_by_oid</strong> <em>(gnutls_x509_crt_t <var>crt</var>, const char * <var>oid</var>, const void * <var>buf</var>, size_t <var>sizeof_buf</var>, unsigned int <var>critical</var>)</em></dt>
 <dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
 </p>
-<p><var>oid</var>: holds an Object Identified in null terminated string
+<p><var>oid</var>: holds an Object Identifier in null terminated string
 </p>
 <p><var>buf</var>: a pointer to a DER encoded data
 </p>
@@ -4572,7 +4596,8 @@ negative error value.
 <p><var>err</var>: indicates the error position (if any)
 </p>
 <p>This function will set the DN on the provided certificate.
-The input string should be plain ASCII or UTF-8 encoded.
+The input string should be plain ASCII or UTF-8 encoded. On
+DN parsing error <code>GNUTLS_E_PARSING_ERROR</code>  is returned.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -4943,7 +4968,7 @@ negative error value.
 features will be added to the certificate.
 </p>
 <p>This function will set the certificates
-X.509 TLS extention from the given structure.
+X.509 TLS extension from the given structure.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error value.
@@ -5244,6 +5269,26 @@ found.
 <p><strong>Returns:</strong> A null terminated string or NULL otherwise.
 </p>
 <p><strong>Since:</strong> 3.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fdn_005fset_005fstr-1"></a>
+<h4 class="subheading">gnutls_x509_dn_set_str</h4>
+<a name="gnutls_005fx509_005fdn_005fset_005fstr"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fdn_005fset_005fstr"></a>Function: <em>int</em> <strong>gnutls_x509_dn_set_str</strong> <em>(gnutls_x509_dn_t <var>dn</var>, const char * <var>str</var>, const char ** <var>err</var>)</em></dt>
+<dd><p><var>dn</var>: a pointer to DN
+</p>
+<p><var>str</var>: a comma separated DN string (RFC4514)
+</p>
+<p><var>err</var>: indicates the error position (if any)
+</p>
+<p>This function will set the DN on the provided DN structure.
+The input string should be plain ASCII or UTF-8 encoded. On
+DN parsing error <code>GNUTLS_E_PARSING_ERROR</code>  is returned.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.3
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fext_005fdeinit-1"></a>
@@ -6934,7 +6979,7 @@ negative error value.
 <p><var>feature</var>: The feature to add
 </p>
 <p>This function will append a feature to the X.509 TLS features
-extention structure.
+extension structure.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error value.
@@ -6965,7 +7010,7 @@ contains the features in  <code>feat</code> or a superset.
 <dt><a name="index-gnutls_005fx509_005ftlsfeatures_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_x509_tlsfeatures_deinit</strong> <em>(gnutls_x509_tlsfeatures_t <var>f</var>)</em></dt>
 <dd><p><var>f</var>: The TLS features
 </p>
-<p>This function will deinitialize a X.509 TLS features extention structure
+<p>This function will deinitialize a X.509 TLS features extension structure
 </p>
 <p><strong>Since:</strong> 3.5.1
 </p></dd></dl>
@@ -6981,7 +7026,7 @@ contains the features in  <code>feat</code> or a superset.
 <p><var>feature</var>: If the function succeeds, the feature will be stored in this variable
 </p>
 <p>This function will get a feature from the X.509 TLS features
-extention structure.
+extension structure.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error value.
@@ -6995,7 +7040,7 @@ otherwise a negative error value.
 <dt><a name="index-gnutls_005fx509_005ftlsfeatures_005finit"></a>Function: <em>int</em> <strong>gnutls_x509_tlsfeatures_init</strong> <em>(gnutls_x509_tlsfeatures_t * <var>f</var>)</em></dt>
 <dd><p><var>f</var>: The TLS features
 </p>
-<p>This function will initialize a X.509 TLS features extention structure
+<p>This function will initialize a X.509 TLS features extension structure
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error value.

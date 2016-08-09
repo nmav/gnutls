@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.2 of GnuTLS.
+3.5.3 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.2: certtool Invocation</title>
+<title>GnuTLS 3.5.3: certtool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.5.2: certtool Invocation">
-<meta name="keywords" content="GnuTLS 3.5.2: certtool Invocation">
+<meta name="description" content="GnuTLS 3.5.3: certtool Invocation">
+<meta name="keywords" content="GnuTLS 3.5.3: certtool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -1011,6 +1011,17 @@ encryption_key
 # key_purpose_oid = 2.5.29.37.0
 
 ### end of key purpose OIDs
+
+### Adding arbitrary extensions
+# This requires to provide the extension OIDs, as well as the extension data in
+# hex format. The following two options are available since GnuTLS 3.5.3.
+#add_extension = &quot;1.2.3.4 0x0AAB01ACFE&quot;
+
+# As above but encode the data as an octet string
+#add_extension = &quot;1.2.3.4 octet_string(0x0AAB01ACFE)&quot;
+
+# For portability critical extensions shouldn't be set to certificates.
+#add_critical_extension = &quot;5.6.7.8 0x1AAB01ACFE&quot;
 
 # When generating a certificate from a certificate
 # request, then honor the extensions stored in the request

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.2 of GnuTLS.
+3.5.3 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.2</title>
+<title>GnuTLS 3.5.3</title>
 
-<meta name="description" content="GnuTLS 3.5.2">
-<meta name="keywords" content="GnuTLS 3.5.2">
+<meta name="description" content="GnuTLS 3.5.3">
+<meta name="keywords" content="GnuTLS 3.5.3">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">GnuTLS 3.5.2</h1>
+<h1 class="settitle" align="center">GnuTLS 3.5.3</h1>
 
 
 
@@ -375,7 +375,9 @@ dl {
         <li><a name="toc-TLS-protocol" href="#TLS-protocol">6.5.1.1 TLS protocol</a></li>
         <li><a name="toc-Datagram-TLS-protocol" href="#Datagram-TLS-protocol">6.5.1.2 Datagram TLS protocol</a></li>
       </ul></li>
-      <li><a name="toc-DTLS-sessions-1" href="#DTLS-sessions">6.5.2 DTLS sessions</a></li>
+      <li><a name="toc-Reducing-round_002dtrips-1" href="#Reducing-round_002dtrips">6.5.2 Reducing round-trips</a></li>
+      <li><a name="toc-DTLS-sessions-1" href="#DTLS-sessions">6.5.3 DTLS sessions</a></li>
+      <li><a name="toc-DTLS-and-SCTP-1" href="#DTLS-and-SCTP">6.5.4 DTLS and SCTP</a></li>
     </ul></li>
     <li><a name="toc-TLS-handshake-1" href="#TLS-handshake">6.6 TLS handshake</a></li>
     <li><a name="toc-Data-transfer-and-termination-1" href="#Data-transfer-and-termination">6.7 Data transfer and termination</a></li>
@@ -486,9 +488,10 @@ dl {
     <li><a name="toc-Hardware-token-via-PKCS-11-API" href="#PKCS-11-API">E.8 Hardware token via PKCS 11 API</a></li>
     <li><a name="toc-TPM-API-1" href="#TPM-API">E.9 TPM API</a></li>
     <li><a name="toc-Abstract-key-API-1" href="#Abstract-key-API">E.10 Abstract key API</a></li>
-    <li><a name="toc-DANE-API-1" href="#DANE-API">E.11 DANE API</a></li>
-    <li><a name="toc-Cryptographic-API-1" href="#Cryptographic-API">E.12 Cryptographic API</a></li>
-    <li><a name="toc-Compatibility-API-1" href="#Compatibility-API">E.13 Compatibility API</a></li>
+    <li><a name="toc-Socket-specific-API-1" href="#Socket-specific-API">E.11 Socket specific API</a></li>
+    <li><a name="toc-DANE-API-1" href="#DANE-API">E.12 DANE API</a></li>
+    <li><a name="toc-Cryptographic-API-1" href="#Cryptographic-API">E.13 Cryptographic API</a></li>
+    <li><a name="toc-Compatibility-API-1" href="#Compatibility-API">E.14 Compatibility API</a></li>
   </ul></li>
   <li><a name="toc-Copying-Information-1" href="#Copying-Information">Appendix F Copying Information</a></li>
   <li><a name="toc-Bibliography-1" href="#Bibliography">Bibliography</a></li>
@@ -507,7 +510,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 4 March 2015 for version
-3.5.2 of GnuTLS.
+3.5.3 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2015 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2015 Nikos Mavrogiannopoulos
@@ -5176,6 +5179,17 @@ encryption_key
 
 ### end of key purpose OIDs
 
+### Adding arbitrary extensions
+# This requires to provide the extension OIDs, as well as the extension data in
+# hex format. The following two options are available since GnuTLS 3.5.3.
+#add_extension = &quot;1.2.3.4 0x0AAB01ACFE&quot;
+
+# As above but encode the data as an octet string
+#add_extension = &quot;1.2.3.4 octet_string(0x0AAB01ACFE)&quot;
+
+# For portability critical extensions shouldn't be set to certificates.
+#add_critical_extension = &quot;5.6.7.8 0x1AAB01ACFE&quot;
+
 # When generating a certificate from a certificate
 # request, then honor the extensions stored in the request
 # and store them in the real certificate.
@@ -9168,12 +9182,11 @@ and the underlying protocol type, i.e., datagram (UDP) or reliable (TCP).
 </p>
 <p><var>flags</var>: indicate if this session is to be used for server or client.
 </p>
-<p>This function initializes the current session to null. Every
-session must be initialized before use, so internal structures can
-be allocated.  This function allocates structures which can only
-be free&rsquo;d by calling <code>gnutls_deinit()</code> .  Returns <code>GNUTLS_E_SUCCESS</code>  (0) on success.
+<p>This function initializes the provided session. Every
+session must be initialized before use, and must be deinitialized
+after used by calling <code>gnutls_deinit()</code> .
 </p>
-<p><code>flags</code> can be any of <code>gnutls_init_flags_t</code> .
+<p><code>flags</code> can be any combination of flags from <code>gnutls_init_flags_t</code> .
 </p>
 <p>Note that since version 3.1.2 this function enables some common
 TLS extensions such as session tickets and OCSP certificate status
@@ -9810,8 +9823,8 @@ call to <a href="#gnutls_005ftransport_005fset_005fint">gnutls_transport_set_int
 specify the socket descriptor. 
 </p>
 <dl compact="compact">
-<dt><code><var>void</var> <a href="#gnutls_005ftransport_005fset_005fint">gnutls_transport_set_int</a> (gnutls_session_t <var>session</var>, int <var>i</var>)</code></dt>
-<dt><code><var>void</var> <a href="#gnutls_005ftransport_005fset_005fint2">gnutls_transport_set_int2</a> (gnutls_session_t <var>session</var>, int <var>recv_int</var>, int <var>send_int</var>)</code></dt>
+<dt><code><var>void</var> <a href="#gnutls_005ftransport_005fset_005fint">gnutls_transport_set_int</a> (gnutls_session_t <var>session</var>, int <var>fd</var>)</code></dt>
+<dt><code><var>void</var> <a href="#gnutls_005ftransport_005fset_005fint2">gnutls_transport_set_int2</a> (gnutls_session_t <var>session</var>, int <var>recv_fd</var>, int <var>send_fd</var>)</code></dt>
 </dl>
 
 <p>If however another transport layer than TCP is selected, then
@@ -10036,7 +10049,11 @@ if no packets have been received.
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Asynchronous-operation" accesskey="1">Asynchronous operation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#DTLS-sessions" accesskey="2">DTLS sessions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Reducing-round_002dtrips" accesskey="2">Reducing round-trips</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#DTLS-sessions" accesskey="3">DTLS sessions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#DTLS-and-SCTP" accesskey="4">DTLS and SCTP</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -10044,7 +10061,7 @@ if no packets have been received.
 <a name="Asynchronous-operation"></a>
 <div class="header">
 <p>
-Next: <a href="#DTLS-sessions" accesskey="n" rel="next">DTLS sessions</a>, Up: <a href="#Setting-up-the-transport-layer" accesskey="u" rel="up">Setting up the transport layer</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Reducing-round_002dtrips" accesskey="n" rel="next">Reducing round-trips</a>, Up: <a href="#Setting-up-the-transport-layer" accesskey="u" rel="up">Setting up the transport layer</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Asynchronous-operation-1"></a>
 <h4 class="subsection">6.5.1 Asynchronous operation</h4>
@@ -10132,13 +10149,82 @@ should be used to estimate when to call <a href="#gnutls_005fhandshake">gnutls_h
 no data have been received.
 </p>
 <hr>
+<a name="Reducing-round_002dtrips"></a>
+<div class="header">
+<p>
+Next: <a href="#DTLS-sessions" accesskey="n" rel="next">DTLS sessions</a>, Previous: <a href="#Asynchronous-operation" accesskey="p" rel="prev">Asynchronous operation</a>, Up: <a href="#Setting-up-the-transport-layer" accesskey="u" rel="up">Setting up the transport layer</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Reducing-round_002dtrips-1"></a>
+<h4 class="subsection">6.5.2 Reducing round-trips</h4>
+
+<p>The full TLS 1.2 handshake requires 2 round-trips to complete, and when
+combined with TCP&rsquo;s SYN and SYN-ACK negotiation it extends to 3 full
+round-trips. While, the abbreviated (resumed) TLS handshake drops that to 2.5
+round-trips, it still adds considerable latency, reducing its applicability
+to certain applications.
+</p>
+<p>In client side, it is possible to take advantage of the TCP fast open
+[<em>RFC7413</em>] mechanism on operating
+systems that support it. That can be done either by manually crafting the push and pull
+callbacks, or by utilizing <a href="#gnutls_005ftransport_005fset_005ffastopen">gnutls_transport_set_fastopen</a>. In that
+case the initial TCP handshake is eliminated, reducing the TLS handshake round-trip to 2.
+Note, that in that case any connection failures will be reported during the
+<a href="#gnutls_005fhandshake">gnutls_handshake</a> function call with error code
+<code>GNUTLS_E_PUSH_ERROR</code>.
+</p>
+
+
+
+<dl>
+<dt><a name="index-gnutls_005ftransport_005fset_005ffastopen"></a>Function: <em>void</em> <strong>gnutls_transport_set_fastopen</strong> <em>(gnutls_session_t <var>session</var>, int <var>fd</var>, struct sockaddr * <var>connect_addr</var>, socklen_t <var>connect_addrlen</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p><var>fd</var>: is the session&rsquo;s socket descriptor
+</p>
+<p><var>connect_addr</var>: is the address we want to connect to
+</p>
+<p><var>connect_addrlen</var>: is the length of  <code>connect_addr</code> 
+</p>
+<p><var>flags</var>: must be zero
+</p>
+<p>Enables TCP Fast Open (TFO) for the specified TLS client session.
+That means that TCP connection establishment and the transmission
+of the first TLS client hello packet are combined. The
+peer&rsquo;s address must be  specified in  <code>connect_addr</code> and  <code>connect_addrlen</code> ,
+and the socket specified by  <code>fd</code> should not be connected.
+</p>
+<p>TFO only works for TCP sockets of type AF_INET and AF_INET6.
+If the OS doesn&rsquo;t support TCP fast open this function will result
+to gnutls using <code>connect()</code>  transparently during the first write.
+</p>
+<p><strong>Note:</strong> This function overrides all the transport callback functions.
+If this is undesirable, TCP Fast Open must be implemented on the user
+callback functions without calling this function. When using
+this function, transport callbacks must not be set, and 
+<code>gnutls_transport_set_ptr()</code>  or <code>gnutls_transport_set_int()</code> 
+must not be called.
+</p>
+<p>On GNU/Linux TFO has to be enabled at the system layer, that is
+in /proc/sys/net/ipv4/tcp_fastopen, bit 0 has to be set.
+</p>
+<p>This function has no effect on server sessions.
+</p>
+<p><strong>Since:</strong> 3.5.3
+</p></dd></dl>
+
+<p>In non-resumed sessions it is possible to further reduce the round-trips to
+a single one by taking advantage of the <a href="#False-Start">False Start</a> TLS extension.
+This can be enabled by setting the <acronym>GNUTLS_ENABLE_FALSE_START</acronym> flag
+on <a href="#gnutls_005finit">gnutls_init</a>.
+</p>
+<hr>
 <a name="DTLS-sessions"></a>
 <div class="header">
 <p>
-Previous: <a href="#Asynchronous-operation" accesskey="p" rel="prev">Asynchronous operation</a>, Up: <a href="#Setting-up-the-transport-layer" accesskey="u" rel="up">Setting up the transport layer</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#DTLS-and-SCTP" accesskey="n" rel="next">DTLS and SCTP</a>, Previous: <a href="#Reducing-round_002dtrips" accesskey="p" rel="prev">Reducing round-trips</a>, Up: <a href="#Setting-up-the-transport-layer" accesskey="u" rel="up">Setting up the transport layer</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="DTLS-sessions-1"></a>
-<h4 class="subsection">6.5.2 DTLS sessions</h4>
+<h4 class="subsection">6.5.3 DTLS sessions</h4>
 
 <p>Because datagram TLS can operate over connections where the client
 cannot be reliably verified, functionality in the form of cookies, is available to prevent
@@ -10175,6 +10261,29 @@ a path MTU discovery mechanism [<em>RFC4821</em>].
 <dt><code><var>unsigned int</var> <a href="#gnutls_005fdtls_005fget_005fdata_005fmtu">gnutls_dtls_get_data_mtu</a> (gnutls_session_t <var>session</var>)</code></dt>
 </dl>
 
+<hr>
+<a name="DTLS-and-SCTP"></a>
+<div class="header">
+<p>
+Previous: <a href="#DTLS-sessions" accesskey="p" rel="prev">DTLS sessions</a>, Up: <a href="#Setting-up-the-transport-layer" accesskey="u" rel="up">Setting up the transport layer</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="DTLS-and-SCTP-1"></a>
+<h4 class="subsection">6.5.4 DTLS and SCTP</h4>
+
+<p>Although DTLS can run under any reliable or unreliable layer, there are
+special requirements for SCTP according to [<em>RFC6083</em>]. We summarize the
+most important below, however for a full treatment we refer to [<em>RFC6083</em>].
+</p>
+<ul>
+<li> The MTU set via <a href="#gnutls_005fdtls_005fset_005fmtu">gnutls_dtls_set_mtu</a> must be 2^14.
+</li><li> Replay detection must be disabled; use the flag <code>GNUTLS_NO_REPLAY_PROTECTION</code> with <a href="#gnutls_005finit">gnutls_init</a>.
+</li><li> Retransmission of messages must be disabled; use <a href="#gnutls_005fdtls_005fset_005ftimeouts">gnutls_dtls_set_timeouts</a>
+   with a retransmission timeout larger than the total.
+</li><li> Handshake, Alert and ChangeCipherSpec messages must be sent over stream 0 with unlimited reliability
+   and with the ordered delivery feature.
+</li><li> During a rehandshake, the caching of messages with unknown epoch is
+   not handled by GnuTLS; this must be implemented in a special pull function.
+</li></ul>
 
 <hr>
 <a name="TLS-handshake"></a>
@@ -11926,8 +12035,6 @@ int main(void)
         /* Initialize TLS session 
          */
         CHECK(gnutls_init(&amp;session, GNUTLS_CLIENT));
-
-        gnutls_session_set_ptr(session, (void *) &quot;my_host_name&quot;);
 
         CHECK(gnutls_server_name_set(session, GNUTLS_NAME_DNS, &quot;my_host_name&quot;,
                                      strlen(&quot;my_host_name&quot;)));
@@ -16463,6 +16570,7 @@ Usage:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&g
                                 - it must be in the range:
                                   0 to 17000
        --crlf                 Send CR LF instead of LF
+       --fastopen             Enable TCP Fast Open
        --x509fmtder           Use DER format for certificates to read from
    -f, --fingerprint          Send the openpgp fingerprint, instead of the key
        --print-cert           Print peer's certificate in PEM format
@@ -16492,26 +16600,26 @@ Usage:  gnutls-cli [ -&lt;flag&gt; [&lt;val&gt;] | --&lt;name&gt;[{=| }&lt;val&g
        --insecure             Don't abort program if server certificate can't be validated
        --ranges               Use length-hiding padding to prevent traffic analysis
        --benchmark-ciphers    Benchmark individual ciphers
-       --benchmark-tls-kx     Benchmark TLS key exchange methods
-   -!, --benchmark-tls-ciphers  Benchmark TLS ciphers
+   -!, --benchmark-tls-kx     Benchmark TLS key exchange methods
+   -&quot;, --benchmark-tls-ciphers  Benchmark TLS ciphers
    -l, --list                 Print a list of the supported algorithms and modes
                                 - prohibits the option 'port'
-   -&quot;, --priority-list        Print a list of the supported priority strings
-   -#, --noticket             Don't allow session tickets
-   -$, --srtp-profiles=str    Offer SRTP profiles
-   -%, --alpn=str             Application layer protocol
+   -#, --priority-list        Print a list of the supported priority strings
+   -$, --noticket             Don't allow session tickets
+   -%, --srtp-profiles=str    Offer SRTP profiles
+   -&amp;, --alpn=str             Application layer protocol
                                 - may appear multiple times
    -b, --heartbeat            Activate heartbeat support
-   -&amp;, --recordsize=num       The maximum record size to advertize
+   -', --recordsize=num       The maximum record size to advertize
                                 - it must be in the range:
                                   0 to 4096
-   -', --disable-sni          Do not send a Server Name Indication (SNI)
-   -(, --disable-extensions   Disable all the TLS extensions
-   -), --inline-commands      Inline commands of the form ^&lt;cmd&gt;^
-   -*, --inline-commands-prefix=str Change the default delimiter for inline commands.
-   -+, --provider=file        Specify the PKCS #11 provider library
+   -(, --disable-sni          Do not send a Server Name Indication (SNI)
+   -), --disable-extensions   Disable all the TLS extensions
+   -*, --inline-commands      Inline commands of the form ^&lt;cmd&gt;^
+   -+, --inline-commands-prefix=str Change the default delimiter for inline commands.
+   -,, --provider=file        Specify the PKCS #11 provider library
                                 - file must pre-exist
-   -,, --fips140-mode         Reports the status of the FIPS140-2 mode in gnutls library
+   --, --fips140-mode         Reports the status of the FIPS140-2 mode in gnutls library
    -v, --version[=arg]        output version information and exit
    -h, --help                 display extended usage information and exit
    -!, --more-help            extended usage information passed thru pager
@@ -18393,6 +18501,7 @@ expressions.
 <tr><td width="15%">-404</td><td width="40%">GNUTLS_E_IDNA_ERROR</td><td width="37%">There was an issue converting to or from UTF8.</td></tr>
 <tr><td width="15%">-406</td><td width="40%">GNUTLS_E_SESSION_USER_ID_CHANGED</td><td width="37%">Peer&rsquo;s certificate or username has changed during a rehandshake.</td></tr>
 <tr><td width="15%">-407</td><td width="40%">GNUTLS_E_HANDSHAKE_DURING_FALSE_START</td><td width="37%">Attempted handshake during false start.</td></tr>
+<tr><td width="15%">-408</td><td width="40%">GNUTLS_E_UNAVAILABLE_DURING_HANDSHAKE</td><td width="37%">Cannot obtain resumption parameters while handshake is incomplete.</td></tr>
 </table>
 
 
@@ -18758,6 +18867,8 @@ Next: <a href="#Copying-Information" accesskey="n" rel="next">Copying Informatio
 <tr><td align="left" valign="top">&bull; <a href="#TPM-API" accesskey="9">TPM API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Abstract-key-API">Abstract key API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Socket-specific-API">Socket specific API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#DANE-API">DANE API</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -19278,9 +19389,12 @@ was used.
 </p>
 <p>Get the peer&rsquo;s raw certificate (chain) as sent by the peer.  These
 certificates are in raw format (DER encoded for X.509).  In case of
-a X.509 then a certificate list may be present.  The first
-certificate in the list is the peer&rsquo;s certificate, following the
-issuer&rsquo;s certificate, then the issuer&rsquo;s issuer etc.
+a X.509 then a certificate list may be present.  The list
+is provided as sent by the server; the server must send as first
+certificate in the list its own certificate, following the
+issuer&rsquo;s certificate, then the issuer&rsquo;s issuer etc. However, there
+are servers which violate this principle and thus on certain
+occasions this may be an unsorted list.
 </p>
 <p>In case of OpenPGP keys a single key will be returned in raw
 format.
@@ -20154,16 +20268,17 @@ of <code>gnutls_certificate_verify_peers2()</code>  for details in the verificat
 <p>The acceptable  <code>data</code> types are <code>GNUTLS_DT_DNS_HOSTNAME</code> , <code>GNUTLS_DT_RFC822NAME</code>  and <code>GNUTLS_DT_KEY_PURPOSE_OID</code> .
 The former two accept as data a null-terminated hostname or email address, and the latter a null-terminated
 object identifier (e.g., <code>GNUTLS_KP_TLS_WWW_SERVER</code> ).
-If a DNS hostname is provided then this function will compare
+</p>
+<p>If a DNS hostname is provided then this function will compare
 the hostname in the certificate against the given. If names do not match the 
 <code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
 If a key purpose OID is provided and the end-certificate contains the extended key
 usage PKIX extension, it will be required to be have the provided key purpose 
-or be marked for any purpose, otherwise verification will fail with <code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code>  status.
+or be marked for any purpose, otherwise verification status will have the
+<code>GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE</code>  flag set.
 </p>
-<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0)
-when the peer&rsquo;s certificate was successfully parsed, irrespective of whether
-it was verified.
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) when the validation is performed, or a negative error code otherwise.
+A sucessful error code means that the  <code>status</code> parameter must be checked to obtain the validation status.
 </p>
 <p><strong>Since:</strong> 3.3.0
 </p></dd></dl>
@@ -20195,9 +20310,8 @@ size are set. To override them use <code>gnutls_certificate_set_verify_limits()<
 the verified certificate belongs to the actual peer, see <code>gnutls_x509_crt_check_hostname()</code> ,
 or use <code>gnutls_certificate_verify_peers3()</code> .
 </p>
-<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0)
-when the peer&rsquo;s certificate was successfully parsed, irrespective of whether
-it was verified.
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) when the validation is performed, or a negative error code otherwise.
+A sucessful error code means that the  <code>status</code> parameter must be checked to obtain the validation status.
 </p></dd></dl>
 
 <a name="gnutls_005fcertificate_005fverify_005fpeers3-1"></a>
@@ -20219,16 +20333,15 @@ using <code>gnutls_certificate_set_verify_flags()</code> . See the documentation
 of <code>gnutls_certificate_verify_peers2()</code>  for details in the verification process.
 </p>
 <p>If the  <code>hostname</code> provided is non-NULL then this function will compare
-the hostname in the certificate against the given. The comparison will
-be accurate for ascii names; non-ascii names are compared byte-by-byte. 
-If names do not match the <code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
+the hostname in the certificate against it. The comparison will follow
+the RFC6125 recommendations. If names do not match the
+<code>GNUTLS_CERT_UNEXPECTED_OWNER</code>  status flag will be set.
 </p>
 <p>In order to verify the purpose of the end-certificate (by checking the extended
 key usage), use <code>gnutls_certificate_verify_peers()</code> .
 </p>
-<p><strong>Returns:</strong> a negative error code on error and <code>GNUTLS_E_SUCCESS</code>  (0)
-when the peer&rsquo;s certificate was successfully parsed, irrespective of whether
-it was verified.
+<p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  (0) when the validation is performed, or a negative error code otherwise.
+A sucessful error code means that the  <code>status</code> parameter must be checked to obtain the validation status.
 </p>
 <p><strong>Since:</strong> 3.1.4
 </p></dd></dl>
@@ -21262,7 +21375,7 @@ an error code is returned.
 <a name="gnutls_005ffips140_005fmode_005fenabled-1"></a>
 <h4 class="subheading">gnutls_fips140_mode_enabled</h4>
 <a name="gnutls_005ffips140_005fmode_005fenabled"></a><dl>
-<dt><a name="index-gnutls_005ffips140_005fmode_005fenabled"></a>Function: <em>int</em> <strong>gnutls_fips140_mode_enabled</strong> <em>( <var>void</var>)</em></dt>
+<dt><a name="index-gnutls_005ffips140_005fmode_005fenabled"></a>Function: <em>unsigned</em> <strong>gnutls_fips140_mode_enabled</strong> <em>( <var>void</var>)</em></dt>
 <dd>
 <p>Checks whether this library is in FIPS140 mode.
 </p>
@@ -21830,12 +21943,11 @@ the hex encoding, as used in the PSK password files.
 </p>
 <p><var>flags</var>: indicate if this session is to be used for server or client.
 </p>
-<p>This function initializes the current session to null. Every
-session must be initialized before use, so internal structures can
-be allocated.  This function allocates structures which can only
-be free&rsquo;d by calling <code>gnutls_deinit()</code> .  Returns <code>GNUTLS_E_SUCCESS</code>  (0) on success.
+<p>This function initializes the provided session. Every
+session must be initialized before use, and must be deinitialized
+after used by calling <code>gnutls_deinit()</code> .
 </p>
-<p><code>flags</code> can be any of <code>gnutls_init_flags_t</code> .
+<p><code>flags</code> can be any combination of flags from <code>gnutls_init_flags_t</code> .
 </p>
 <p>Note that since version 3.1.2 this function enables some common
 TLS extensions such as session tickets and OCSP certificate status
@@ -22444,6 +22556,9 @@ generated output is strongly connected to some additional data
 </p>
 <p>The output is placed in  <code>out</code> , which must be pre-allocated.
 </p>
+<p><strong>Note:</strong> This function produces identical output with <code>gnutls_prf_rfc5705()</code> 
+when  <code>server_random_first</code> is set to 0 and  <code>extra</code> is <code>NULL</code> .
+</p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
 </p></dd></dl>
 
@@ -22520,7 +22635,7 @@ generated output is strongly connected to some additional data
 </p>
 <p>The output is placed in  <code>out</code> , which must be pre-allocated.
 </p>
-<p>Note that, to provide the RFC5705 context, the  <code>contect</code> variable
+<p>Note that, to provide the RFC5705 context, the  <code>context</code> variable
 must be non-null.
 </p>
 <p><strong>Returns:</strong> <code>GNUTLS_E_SUCCESS</code>  on success, or an error code.
@@ -23792,6 +23907,10 @@ applications.
 The client should call this, and store the returned session data. A session
 may be resumed later by calling <code>gnutls_session_set_data()</code> .  
 </p>
+<p>This function will fail if called prior to handshake completion. In
+case of false start TLS, the handshake completes only after data have
+been successfully received from the peer.
+</p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
 </p></dd></dl>
@@ -23809,6 +23928,10 @@ The client should call this, and store the returned session data. A session
 may be resumed later by calling <code>gnutls_session_set_data()</code> .  
 </p>
 <p>The returned  <code>data</code> are allocated and must be released using <code>gnutls_free()</code> .
+</p>
+<p>This function will fail if called prior to handshake completion. In
+case of false start TLS, the handshake completes only after data have
+been successfully received from the peer.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
@@ -24017,6 +24140,8 @@ function unless you are implementing a custom protocol.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise
 an error code is returned.
+</p>
+<p><strong>Since:</strong> 3.2.1
 </p></dd></dl>
 
 <a name="gnutls_005fsession_005fset_005fpremaster-1"></a>
@@ -25191,13 +25316,17 @@ and should return the errno.
 <a name="gnutls_005ftransport_005fset_005fint-1"></a>
 <h4 class="subheading">gnutls_transport_set_int</h4>
 <a name="gnutls_005ftransport_005fset_005fint"></a><dl>
-<dt><a name="index-gnutls_005ftransport_005fset_005fint"></a>Function: <em>void</em> <strong>gnutls_transport_set_int</strong> <em>(gnutls_session_t <var>session</var>, int <var>i</var>)</em></dt>
+<dt><a name="index-gnutls_005ftransport_005fset_005fint"></a>Function: <em>void</em> <strong>gnutls_transport_set_int</strong> <em>(gnutls_session_t <var>session</var>, int <var>fd</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
-<p><var>i</var>: is the value.
+<p><var>fd</var>: is the socket descriptor for the connection.
 </p>
-<p>Used to set the first argument of the transport function (for push
-and pull callbacks) for berkeley style sockets.
+<p>This function sets the first argument of the transport function, such
+as <code>send()</code>  and <code>recv()</code>  for the default callbacks using the
+system&rsquo;s socket API.
+</p>
+<p>This function is equivalent to calling <code>gnutls_transport_set_ptr()</code> 
+with the descriptor, but requires no casts.
 </p>
 <p><strong>Since:</strong> 3.1.9
 </p></dd></dl>
@@ -25205,17 +25334,20 @@ and pull callbacks) for berkeley style sockets.
 <a name="gnutls_005ftransport_005fset_005fint2-1"></a>
 <h4 class="subheading">gnutls_transport_set_int2</h4>
 <a name="gnutls_005ftransport_005fset_005fint2"></a><dl>
-<dt><a name="index-gnutls_005ftransport_005fset_005fint2"></a>Function: <em>void</em> <strong>gnutls_transport_set_int2</strong> <em>(gnutls_session_t <var>session</var>, int <var>recv_int</var>, int <var>send_int</var>)</em></dt>
+<dt><a name="index-gnutls_005ftransport_005fset_005fint2"></a>Function: <em>void</em> <strong>gnutls_transport_set_int2</strong> <em>(gnutls_session_t <var>session</var>, int <var>recv_fd</var>, int <var>send_fd</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
-<p><var>recv_int</var>: is the value for the pull function
+<p><var>recv_fd</var>: is socket descriptor for the pull function
 </p>
-<p><var>send_int</var>: is the value for the push function
+<p><var>send_fd</var>: is socket descriptor for the push function
 </p>
-<p>Used to set the first argument of the transport function (for push
-and pull callbacks), when using the berkeley style sockets. 
-With this function you can set two different
-pointers for receiving and sending.
+<p>This function sets the first argument of the transport functions,
+such as <code>send()</code>  and <code>recv()</code>  for the default callbacks using the
+system&rsquo;s socket API. With this function you can set two different
+descriptors for receiving and sending.
+</p>
+<p>This function is equivalent to calling <code>gnutls_transport_set_ptr2()</code> 
+with the descriptors, but requires no casts.
 </p>
 <p><strong>Since:</strong> 3.1.9
 </p></dd></dl>
@@ -27708,7 +27840,8 @@ negative error value.
 <p><var>err</var>: indicates the error position (if any)
 </p>
 <p>This function will set the DN on the provided certificate.
-The input string should be plain ASCII or UTF-8 encoded.
+The input string should be plain ASCII or UTF-8 encoded. On
+DN parsing error <code>GNUTLS_E_PARSING_ERROR</code>  is returned.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -27737,6 +27870,28 @@ With this function you can only set the known OIDs.  You can test
 for known OIDs using <code>gnutls_x509_dn_oid_known()</code> .  For OIDs that are
 not known (by gnutls) you should properly DER encode your data, and
 call this function with raw_flag set.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcrq_005fset_005fextension_005fby_005foid-1"></a>
+<h4 class="subheading">gnutls_x509_crq_set_extension_by_oid</h4>
+<a name="gnutls_005fx509_005fcrq_005fset_005fextension_005fby_005foid"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcrq_005fset_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crq_set_extension_by_oid</strong> <em>(gnutls_x509_crq_t <var>crq</var>, const char * <var>oid</var>, const void * <var>buf</var>, size_t <var>sizeof_buf</var>, unsigned int <var>critical</var>)</em></dt>
+<dd><p><var>crq</var>: a certificate of type <code>gnutls_x509_crq_t</code> 
+</p>
+<p><var>oid</var>: holds an Object Identifier in null terminated string
+</p>
+<p><var>buf</var>: a pointer to a DER encoded data
+</p>
+<p><var>sizeof_buf</var>: holds the size of  <code>buf</code> 
+</p>
+<p><var>critical</var>: should be non-zero if the extension is to be marked as critical
+</p>
+<p>This function will set an the extension, by the specified OID, in
+the certificate request.  The extension data should be binary data DER
+encoded.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -27891,7 +28046,7 @@ features will be added to the certificate
 request.
 </p>
 <p>This function will set the certificate request&rsquo;s
-X.509 TLS extention from the given structure.
+X.509 TLS extension from the given structure.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error value.
@@ -27976,7 +28131,7 @@ the given email address.
 <a name="gnutls_005fx509_005fcrt_005fcheck_005fhostname-1"></a>
 <h4 class="subheading">gnutls_x509_crt_check_hostname</h4>
 <a name="gnutls_005fx509_005fcrt_005fcheck_005fhostname"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fcheck_005fhostname"></a>Function: <em>int</em> <strong>gnutls_x509_crt_check_hostname</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>hostname</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fcheck_005fhostname"></a>Function: <em>unsigned</em> <strong>gnutls_x509_crt_check_hostname</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>hostname</var>)</em></dt>
 <dd><p><var>cert</var>: should contain an gnutls_x509_crt_t type
 </p>
 <p><var>hostname</var>: A null terminated string that contains a DNS name
@@ -27994,7 +28149,7 @@ and the DNSName/IPAddress subject alternative name PKIX extension.
 <a name="gnutls_005fx509_005fcrt_005fcheck_005fhostname2-1"></a>
 <h4 class="subheading">gnutls_x509_crt_check_hostname2</h4>
 <a name="gnutls_005fx509_005fcrt_005fcheck_005fhostname2"></a><dl>
-<dt><a name="index-gnutls_005fx509_005fcrt_005fcheck_005fhostname2"></a>Function: <em>int</em> <strong>gnutls_x509_crt_check_hostname2</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>hostname</var>, unsigned int <var>flags</var>)</em></dt>
+<dt><a name="index-gnutls_005fx509_005fcrt_005fcheck_005fhostname2"></a>Function: <em>unsigned</em> <strong>gnutls_x509_crt_check_hostname2</strong> <em>(gnutls_x509_crt_t <var>cert</var>, const char * <var>hostname</var>, unsigned int <var>flags</var>)</em></dt>
 <dd><p><var>cert</var>: should contain an gnutls_x509_crt_t type
 </p>
 <p><var>hostname</var>: A null terminated string that contains a DNS name
@@ -29904,7 +30059,8 @@ negative error value.
 <p><var>err</var>: indicates the error position (if any)
 </p>
 <p>This function will set the DN on the provided certificate.
-The input string should be plain ASCII or UTF-8 encoded.
+The input string should be plain ASCII or UTF-8 encoded. On
+DN parsing error <code>GNUTLS_E_PARSING_ERROR</code>  is returned.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -29960,7 +30116,7 @@ negative error value.
 <dt><a name="index-gnutls_005fx509_005fcrt_005fset_005fextension_005fby_005foid"></a>Function: <em>int</em> <strong>gnutls_x509_crt_set_extension_by_oid</strong> <em>(gnutls_x509_crt_t <var>crt</var>, const char * <var>oid</var>, const void * <var>buf</var>, size_t <var>sizeof_buf</var>, unsigned int <var>critical</var>)</em></dt>
 <dd><p><var>crt</var>: a certificate of type <code>gnutls_x509_crt_t</code> 
 </p>
-<p><var>oid</var>: holds an Object Identified in null terminated string
+<p><var>oid</var>: holds an Object Identifier in null terminated string
 </p>
 <p><var>buf</var>: a pointer to a DER encoded data
 </p>
@@ -30037,7 +30193,8 @@ negative error value.
 <p><var>err</var>: indicates the error position (if any)
 </p>
 <p>This function will set the DN on the provided certificate.
-The input string should be plain ASCII or UTF-8 encoded.
+The input string should be plain ASCII or UTF-8 encoded. On
+DN parsing error <code>GNUTLS_E_PARSING_ERROR</code>  is returned.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
 negative error value.
@@ -30408,7 +30565,7 @@ negative error value.
 features will be added to the certificate.
 </p>
 <p>This function will set the certificates
-X.509 TLS extention from the given structure.
+X.509 TLS extension from the given structure.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error value.
@@ -30709,6 +30866,26 @@ found.
 <p><strong>Returns:</strong> A null terminated string or NULL otherwise.
 </p>
 <p><strong>Since:</strong> 3.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fdn_005fset_005fstr-1"></a>
+<h4 class="subheading">gnutls_x509_dn_set_str</h4>
+<a name="gnutls_005fx509_005fdn_005fset_005fstr"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fdn_005fset_005fstr"></a>Function: <em>int</em> <strong>gnutls_x509_dn_set_str</strong> <em>(gnutls_x509_dn_t <var>dn</var>, const char * <var>str</var>, const char ** <var>err</var>)</em></dt>
+<dd><p><var>dn</var>: a pointer to DN
+</p>
+<p><var>str</var>: a comma separated DN string (RFC4514)
+</p>
+<p><var>err</var>: indicates the error position (if any)
+</p>
+<p>This function will set the DN on the provided DN structure.
+The input string should be plain ASCII or UTF-8 encoded. On
+DN parsing error <code>GNUTLS_E_PARSING_ERROR</code>  is returned.
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a
+negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.3
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fext_005fdeinit-1"></a>
@@ -32399,7 +32576,7 @@ negative error value.
 <p><var>feature</var>: The feature to add
 </p>
 <p>This function will append a feature to the X.509 TLS features
-extention structure.
+extension structure.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error value.
@@ -32430,7 +32607,7 @@ contains the features in  <code>feat</code> or a superset.
 <dt><a name="index-gnutls_005fx509_005ftlsfeatures_005fdeinit"></a>Function: <em>void</em> <strong>gnutls_x509_tlsfeatures_deinit</strong> <em>(gnutls_x509_tlsfeatures_t <var>f</var>)</em></dt>
 <dd><p><var>f</var>: The TLS features
 </p>
-<p>This function will deinitialize a X.509 TLS features extention structure
+<p>This function will deinitialize a X.509 TLS features extension structure
 </p>
 <p><strong>Since:</strong> 3.5.1
 </p></dd></dl>
@@ -32446,7 +32623,7 @@ contains the features in  <code>feat</code> or a superset.
 <p><var>feature</var>: If the function succeeds, the feature will be stored in this variable
 </p>
 <p>This function will get a feature from the X.509 TLS features
-extention structure.
+extension structure.
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error value.
@@ -32460,7 +32637,7 @@ otherwise a negative error value.
 <dt><a name="index-gnutls_005fx509_005ftlsfeatures_005finit"></a>Function: <em>int</em> <strong>gnutls_x509_tlsfeatures_init</strong> <em>(gnutls_x509_tlsfeatures_t * <var>f</var>)</em></dt>
 <dd><p><var>f</var>: The TLS features
 </p>
-<p>This function will initialize a X.509 TLS features extention structure
+<p>This function will initialize a X.509 TLS features extension structure
 </p>
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned,
 otherwise a negative error value.
@@ -37139,7 +37316,7 @@ set using <code>gnutls_pkcs11_set_pin_function()</code> .
 <a name="gnutls_005fpkcs11_005fprivkey_005fstatus-1"></a>
 <h4 class="subheading">gnutls_pkcs11_privkey_status</h4>
 <a name="gnutls_005fpkcs11_005fprivkey_005fstatus"></a><dl>
-<dt><a name="index-gnutls_005fpkcs11_005fprivkey_005fstatus"></a>Function: <em>int</em> <strong>gnutls_pkcs11_privkey_status</strong> <em>(gnutls_pkcs11_privkey_t <var>key</var>)</em></dt>
+<dt><a name="index-gnutls_005fpkcs11_005fprivkey_005fstatus"></a>Function: <em>unsigned</em> <strong>gnutls_pkcs11_privkey_status</strong> <em>(gnutls_pkcs11_privkey_t <var>key</var>)</em></dt>
 <dd><p><var>key</var>: Holds the key
 </p>
 <p>Checks the status of the private key token.
@@ -37509,7 +37686,7 @@ negative error value.
 <a name="Abstract-key-API"></a>
 <div class="header">
 <p>
-Next: <a href="#DANE-API" accesskey="n" rel="next">DANE API</a>, Previous: <a href="#TPM-API" accesskey="p" rel="prev">TPM API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Socket-specific-API" accesskey="n" rel="next">Socket specific API</a>, Previous: <a href="#TPM-API" accesskey="p" rel="prev">TPM API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Abstract-key-API-1"></a>
 <h3 class="section">E.10 Abstract key API</h3>
@@ -39618,13 +39795,65 @@ negative error value.
 
 
 <hr>
+<a name="Socket-specific-API"></a>
+<div class="header">
+<p>
+Next: <a href="#DANE-API" accesskey="n" rel="next">DANE API</a>, Previous: <a href="#Abstract-key-API" accesskey="p" rel="prev">Abstract key API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Socket-specific-API-1"></a>
+<h3 class="section">E.11 Socket specific API</h3>
+
+<p>The prototypes for the following functions lie in
+<samp>gnutls/socket.h</samp>.
+</p>
+<a name="gnutls_005ftransport_005fset_005ffastopen-1"></a>
+<h4 class="subheading">gnutls_transport_set_fastopen</h4>
+<a name="gnutls_005ftransport_005fset_005ffastopen"></a><dl>
+<dt><a name="index-gnutls_005ftransport_005fset_005ffastopen-1"></a>Function: <em>void</em> <strong>gnutls_transport_set_fastopen</strong> <em>(gnutls_session_t <var>session</var>, int <var>fd</var>, struct sockaddr * <var>connect_addr</var>, socklen_t <var>connect_addrlen</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p><var>fd</var>: is the session&rsquo;s socket descriptor
+</p>
+<p><var>connect_addr</var>: is the address we want to connect to
+</p>
+<p><var>connect_addrlen</var>: is the length of  <code>connect_addr</code> 
+</p>
+<p><var>flags</var>: must be zero
+</p>
+<p>Enables TCP Fast Open (TFO) for the specified TLS client session.
+That means that TCP connection establishment and the transmission
+of the first TLS client hello packet are combined. The
+peer&rsquo;s address must be  specified in  <code>connect_addr</code> and  <code>connect_addrlen</code> ,
+and the socket specified by  <code>fd</code> should not be connected.
+</p>
+<p>TFO only works for TCP sockets of type AF_INET and AF_INET6.
+If the OS doesn&rsquo;t support TCP fast open this function will result
+to gnutls using <code>connect()</code>  transparently during the first write.
+</p>
+<p><strong>Note:</strong> This function overrides all the transport callback functions.
+If this is undesirable, TCP Fast Open must be implemented on the user
+callback functions without calling this function. When using
+this function, transport callbacks must not be set, and 
+<code>gnutls_transport_set_ptr()</code>  or <code>gnutls_transport_set_int()</code> 
+must not be called.
+</p>
+<p>On GNU/Linux TFO has to be enabled at the system layer, that is
+in /proc/sys/net/ipv4/tcp_fastopen, bit 0 has to be set.
+</p>
+<p>This function has no effect on server sessions.
+</p>
+<p><strong>Since:</strong> 3.5.3
+</p></dd></dl>
+
+
+<hr>
 <a name="DANE-API"></a>
 <div class="header">
 <p>
-Next: <a href="#Cryptographic-API" accesskey="n" rel="next">Cryptographic API</a>, Previous: <a href="#Abstract-key-API" accesskey="p" rel="prev">Abstract key API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Cryptographic-API" accesskey="n" rel="next">Cryptographic API</a>, Previous: <a href="#Socket-specific-API" accesskey="p" rel="prev">Socket specific API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="DANE-API-1"></a>
-<h3 class="section">E.11 DANE API</h3>
+<h3 class="section">E.12 DANE API</h3>
 
 <p>The following functions are to be used for DANE certificate verification.
 Their prototypes lie in <samp>gnutls/dane.h</samp>. Note that you need to link
@@ -39997,7 +40226,7 @@ will be returned.
 Next: <a href="#Compatibility-API" accesskey="n" rel="next">Compatibility API</a>, Previous: <a href="#DANE-API" accesskey="p" rel="prev">DANE API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Cryptographic-API-1"></a>
-<h3 class="section">E.12 Cryptographic API</h3>
+<h3 class="section">E.13 Cryptographic API</h3>
 
 <p>The following functions are to be used for low-level cryptographic operations.
 Their prototypes lie in <samp>gnutls/crypto.h</samp>.
@@ -40770,7 +40999,7 @@ other values are input into its state.
 Previous: <a href="#Cryptographic-API" accesskey="p" rel="prev">Cryptographic API</a>, Up: <a href="#API-reference" accesskey="u" rel="up">API reference</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Compatibility-API-1"></a>
-<h3 class="section">E.13 Compatibility API</h3>
+<h3 class="section">E.14 Compatibility API</h3>
 
 <p>The following functions are carried over from old GnuTLS released. They might be removed at a later version.
 Their prototypes lie in <samp>gnutls/compat.h</samp>.
@@ -41426,6 +41655,12 @@ Part 1: General (Revised)&quot;, March 2007, available from
 <a href="http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57-Part1-revised2_Mar08-2007.pdf">http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57-Part1-revised2_Mar08-2007.pdf</a>.
 </p>
 </dd>
+<dt><a name="RFC7413"></a>[RFC7413]</dt>
+<dd><p>Y. Cheng and J. Chu and S. Radhakrishnan and A. Jain, &quot;TCP Fast Open&quot;,
+December 2014, Available from
+<a href="http://www.ietf.org/rfc/rfc7413.txt">http://www.ietf.org/rfc/rfc7413.txt</a>.
+</p>
+</dd>
 <dt><a name="RFC6125"></a>[RFC6125]</dt>
 <dd><p>Peter Saint-Andre and Jeff Hodges, &quot;Representation and Verification of Domain-Based Application Service Identity within Internet Public Key Infrastructure Using X.509 (PKIX) Certificates in the Context of Transport Layer Security (TLS)&quot;,
 March 2011, Available from
@@ -41442,6 +41677,12 @@ October 2015, Available from
 <dd><p>Tim Dierks and Christopher Allen, &quot;The TLS Protocol Version 1.0&quot;,
 January 1999, Available from
 <a href="http://www.ietf.org/rfc/rfc2246.txt">http://www.ietf.org/rfc/rfc2246.txt</a>.
+</p>
+</dd>
+<dt><a name="RFC6083"></a>[RFC6083]</dt>
+<dd><p>M. Tuexen and R. Seggelmann and E. Rescorla, &quot;Datagram Transport Layer Security (DTLS) for Stream Control Transmission Protocol (SCTP)&quot;,
+January 2011, Available from
+<a href="http://www.ietf.org/rfc/rfc6083.txt">http://www.ietf.org/rfc/rfc6083.txt</a>.
 </p>
 </dd>
 <dt><a name="RFC4418"></a>[RFC4418]</dt>
@@ -42527,6 +42768,8 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005ferrno"><code>gnutls_transport_set_errno</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Setting-up-the-transport-layer">Setting up the transport layer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005ferrno-1"><code>gnutls_transport_set_errno</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005ferrno_005ffunction"><code>gnutls_transport_set_errno_function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005ffastopen"><code>gnutls_transport_set_fastopen</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reducing-round_002dtrips">Reducing round-trips</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005ffastopen-1"><code>gnutls_transport_set_fastopen</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Socket-specific-API">Socket specific API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fint"><code>gnutls_transport_set_int</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fint2"><code>gnutls_transport_set_int2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005ftransport_005fset_005fptr"><code>gnutls_transport_set_ptr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
@@ -42642,6 +42885,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fchallenge_005fpassword"><code>gnutls_x509_crq_set_challenge_password</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fdn"><code>gnutls_x509_crq_set_dn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fdn_005fby_005foid"><code>gnutls_x509_crq_set_dn_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fextension_005fby_005foid"><code>gnutls_x509_crq_set_extension_by_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fkey"><code>gnutls_x509_crq_set_key</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PKCS-10-certificate-requests">PKCS 10 certificate requests</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fkey-1"><code>gnutls_x509_crq_set_key</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrq_005fset_005fkey_005fpurpose_005foid"><code>gnutls_x509_crq_set_key_purpose_oid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
@@ -42788,6 +43032,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fdn_005finit"><code>gnutls_x509_dn_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fdn_005foid_005fknown"><code>gnutls_x509_dn_oid_known</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fdn_005foid_005fname"><code>gnutls_x509_dn_oid_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fdn_005fset_005fstr"><code>gnutls_x509_dn_set_str</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fext_005fdeinit"><code>gnutls_x509_ext_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fext_005fexport_005faia"><code>gnutls_x509_ext_export_aia</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fext_005fexport_005fauthority_005fkey_005fid"><code>gnutls_x509_ext_export_authority_key_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>

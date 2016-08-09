@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.2 of GnuTLS.
+3.5.3 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.2: DTLS sessions</title>
+<title>GnuTLS 3.5.3: DTLS sessions</title>
 
-<meta name="description" content="GnuTLS 3.5.2: DTLS sessions">
-<meta name="keywords" content="GnuTLS 3.5.2: DTLS sessions">
+<meta name="description" content="GnuTLS 3.5.3: DTLS sessions">
+<meta name="keywords" content="GnuTLS 3.5.3: DTLS sessions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -26,8 +26,8 @@ Documentation License". -->
 <link href="Function-and-Data-Index.html#Function-and-Data-Index" rel="index" title="Function and Data Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Setting-up-the-transport-layer.html#Setting-up-the-transport-layer" rel="up" title="Setting up the transport layer">
-<link href="TLS-handshake.html#TLS-handshake" rel="next" title="TLS handshake">
-<link href="Asynchronous-operation.html#Asynchronous-operation" rel="prev" title="Asynchronous operation">
+<link href="DTLS-and-SCTP.html#DTLS-and-SCTP" rel="next" title="DTLS and SCTP">
+<link href="Reducing-round_002dtrips.html#Reducing-round_002dtrips" rel="prev" title="Reducing round-trips">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -158,11 +158,11 @@ dl {
 <a name="DTLS-sessions"></a>
 <div class="header">
 <p>
-Previous: <a href="Asynchronous-operation.html#Asynchronous-operation" accesskey="p" rel="prev">Asynchronous operation</a>, Up: <a href="Setting-up-the-transport-layer.html#Setting-up-the-transport-layer" accesskey="u" rel="up">Setting up the transport layer</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="DTLS-and-SCTP.html#DTLS-and-SCTP" accesskey="n" rel="next">DTLS and SCTP</a>, Previous: <a href="Reducing-round_002dtrips.html#Reducing-round_002dtrips" accesskey="p" rel="prev">Reducing round-trips</a>, Up: <a href="Setting-up-the-transport-layer.html#Setting-up-the-transport-layer" accesskey="u" rel="up">Setting up the transport layer</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="DTLS-sessions-1"></a>
-<h4 class="subsection">6.5.2 DTLS sessions</h4>
+<h4 class="subsection">6.5.3 DTLS sessions</h4>
 
 <p>Because datagram TLS can operate over connections where the client
 cannot be reliably verified, functionality in the form of cookies, is available to prevent
@@ -199,7 +199,6 @@ a path MTU discovery mechanism [<em>RFC4821</em>].
 <dt><code><var>unsigned int</var> <a href="Datagram-TLS-API.html#gnutls_005fdtls_005fget_005fdata_005fmtu">gnutls_dtls_get_data_mtu</a> (gnutls_session_t <var>session</var>)</code></dt>
 </dl>
 
-
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
@@ -210,7 +209,7 @@ a path MTU discovery mechanism [<em>RFC4821</em>].
 <hr>
 <div class="header">
 <p>
-Previous: <a href="Asynchronous-operation.html#Asynchronous-operation" accesskey="p" rel="prev">Asynchronous operation</a>, Up: <a href="Setting-up-the-transport-layer.html#Setting-up-the-transport-layer" accesskey="u" rel="up">Setting up the transport layer</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="DTLS-and-SCTP.html#DTLS-and-SCTP" accesskey="n" rel="next">DTLS and SCTP</a>, Previous: <a href="Reducing-round_002dtrips.html#Reducing-round_002dtrips" accesskey="p" rel="prev">Reducing round-trips</a>, Up: <a href="Setting-up-the-transport-layer.html#Setting-up-the-transport-layer" accesskey="u" rel="up">Setting up the transport layer</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

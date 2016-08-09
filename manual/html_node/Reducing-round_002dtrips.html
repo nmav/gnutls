@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is last updated 4 March 2015 for version
+3.5.3 of GnuTLS.
+
+Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
+Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License". -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GnuTLS 3.5.3: Reducing round-trips</title>
+
+<meta name="description" content="GnuTLS 3.5.3: Reducing round-trips">
+<meta name="keywords" content="GnuTLS 3.5.3: Reducing round-trips">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Function-and-Data-Index.html#Function-and-Data-Index" rel="index" title="Function and Data Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Setting-up-the-transport-layer.html#Setting-up-the-transport-layer" rel="up" title="Setting up the transport layer">
+<link href="DTLS-sessions.html#DTLS-sessions" rel="next" title="DTLS sessions">
+<link href="Asynchronous-operation.html#Asynchronous-operation" rel="prev" title="Asynchronous operation">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+body { 
+	margin: 2%;
+	padding: 0 5%;
+	background: #ffffff;
+}
+h1,h2,h3,h4,h5 {
+    font-weight: bold;
+    padding: 5px 5px 5px 5px;
+    background-color: #c2e0ff;
+    color: #336699;
+}
+h1 {
+    padding: 2em 2em 2em 5%;
+    color: white;
+    background: #336699;
+    text-align: center;
+    letter-spacing: 3px;
+}
+h2 { text-decoration: underline; }
+pre {
+  margin: 0 5%;
+  padding: 0.5em;
+}
+pre.example,pre.verbatim {
+  padding-bottom: 1em;
+
+  border: solid #c2e0ff;
+  background: #f0faff;
+  border-width: 1px 1px 1px 5px;
+  margin: 1em auto;
+  width: 90%;
+}
+
+div.node {
+  margin: 0 -5% 0 -2%;
+  padding: 0.5em 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+dd, li {
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+}
+div.float {
+
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+table {
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  border-spacing: 7px;
+  width: 50%;
+}
+
+th {
+  padding: 0;
+  color: #336699;
+  background-color: #c2e0ff;
+  border: solid #000000;
+  border-width: 0px;
+  margin: 1em auto;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+td {
+  padding: 0;
+  border: solid #000000;
+  background-color: #f0faff;
+  border-width: 0px;
+  margin: 1em auto;
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left: 1em;
+}
+
+dl {
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+
+  padding-left: 1em;
+  border: solid #c2e0ff;
+  background: #f0faff;
+  border-width: 5px 1px 1px 1px;
+  margin: 1em auto;
+}
+
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Reducing-round_002dtrips"></a>
+<div class="header">
+<p>
+Next: <a href="DTLS-sessions.html#DTLS-sessions" accesskey="n" rel="next">DTLS sessions</a>, Previous: <a href="Asynchronous-operation.html#Asynchronous-operation" accesskey="p" rel="prev">Asynchronous operation</a>, Up: <a href="Setting-up-the-transport-layer.html#Setting-up-the-transport-layer" accesskey="u" rel="up">Setting up the transport layer</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Reducing-round_002dtrips-1"></a>
+<h4 class="subsection">6.5.2 Reducing round-trips</h4>
+
+<p>The full TLS 1.2 handshake requires 2 round-trips to complete, and when
+combined with TCP&rsquo;s SYN and SYN-ACK negotiation it extends to 3 full
+round-trips. While, the abbreviated (resumed) TLS handshake drops that to 2.5
+round-trips, it still adds considerable latency, reducing its applicability
+to certain applications.
+</p>
+<p>In client side, it is possible to take advantage of the TCP fast open
+[<em>RFC7413</em>] mechanism on operating
+systems that support it. That can be done either by manually crafting the push and pull
+callbacks, or by utilizing <a href="Socket-specific-API.html#gnutls_005ftransport_005fset_005ffastopen">gnutls_transport_set_fastopen</a>. In that
+case the initial TCP handshake is eliminated, reducing the TLS handshake round-trip to 2.
+Note, that in that case any connection failures will be reported during the
+<a href="Core-TLS-API.html#gnutls_005fhandshake">gnutls_handshake</a> function call with error code
+<code>GNUTLS_E_PUSH_ERROR</code>.
+</p>
+
+
+
+<dl>
+<dt><a name="index-gnutls_005ftransport_005fset_005ffastopen"></a>Function: <em>void</em> <strong>gnutls_transport_set_fastopen</strong> <em>(gnutls_session_t <var>session</var>, int <var>fd</var>, struct sockaddr * <var>connect_addr</var>, socklen_t <var>connect_addrlen</var>, unsigned int <var>flags</var>)</em></dt>
+<dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
+</p>
+<p><var>fd</var>: is the session&rsquo;s socket descriptor
+</p>
+<p><var>connect_addr</var>: is the address we want to connect to
+</p>
+<p><var>connect_addrlen</var>: is the length of  <code>connect_addr</code> 
+</p>
+<p><var>flags</var>: must be zero
+</p>
+<p>Enables TCP Fast Open (TFO) for the specified TLS client session.
+That means that TCP connection establishment and the transmission
+of the first TLS client hello packet are combined. The
+peer&rsquo;s address must be  specified in  <code>connect_addr</code> and  <code>connect_addrlen</code> ,
+and the socket specified by  <code>fd</code> should not be connected.
+</p>
+<p>TFO only works for TCP sockets of type AF_INET and AF_INET6.
+If the OS doesn&rsquo;t support TCP fast open this function will result
+to gnutls using <code>connect()</code>  transparently during the first write.
+</p>
+<p><strong>Note:</strong> This function overrides all the transport callback functions.
+If this is undesirable, TCP Fast Open must be implemented on the user
+callback functions without calling this function. When using
+this function, transport callbacks must not be set, and 
+<code>gnutls_transport_set_ptr()</code>  or <code>gnutls_transport_set_int()</code> 
+must not be called.
+</p>
+<p>On GNU/Linux TFO has to be enabled at the system layer, that is
+in /proc/sys/net/ipv4/tcp_fastopen, bit 0 has to be set.
+</p>
+<p>This function has no effect on server sessions.
+</p>
+<p><strong>Since:</strong> 3.5.3
+</p></dd></dl>
+
+<p>In non-resumed sessions it is possible to further reduce the round-trips to
+a single one by taking advantage of the <a href="False-Start.html#False-Start">False Start</a> TLS extension.
+This can be enabled by setting the <acronym>GNUTLS_ENABLE_FALSE_START</acronym> flag
+on <a href="Core-TLS-API.html#gnutls_005finit">gnutls_init</a>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="DTLS-sessions.html#DTLS-sessions" accesskey="n" rel="next">DTLS sessions</a>, Previous: <a href="Asynchronous-operation.html#Asynchronous-operation" accesskey="p" rel="prev">Asynchronous operation</a>, Up: <a href="Setting-up-the-transport-layer.html#Setting-up-the-transport-layer" accesskey="u" rel="up">Setting up the transport layer</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Function-and-Data-Index.html#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

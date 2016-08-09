@@ -2020,6 +2020,14 @@
 </tr>
 <tr>
 <td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="gnutls-gnutls.html#GNUTLS-CLIENT:CAPS" title="GNUTLS_CLIENT">GNUTLS_CLIENT</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="gnutls-gnutls.html#GNUTLS-DATAGRAM:CAPS" title="GNUTLS_DATAGRAM">GNUTLS_DATAGRAM</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
 <td class="function_name"><a class="link" href="gnutls-gnutls.html#GNUTLS-DEFAULT-HANDSHAKE-TIMEOUT:CAPS" title="GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT">GNUTLS_DEFAULT_HANDSHAKE_TIMEOUT</a></td>
 </tr>
 <tr>
@@ -2712,6 +2720,14 @@
 </tr>
 <tr>
 <td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="gnutls-gnutls.html#GNUTLS-NONBLOCK:CAPS" title="GNUTLS_NONBLOCK">GNUTLS_NONBLOCK</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="gnutls-gnutls.html#GNUTLS-NO-EXTENSIONS:CAPS" title="GNUTLS_NO_EXTENSIONS">GNUTLS_NO_EXTENSIONS</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
 <td class="function_name"><a class="link" href="gnutls-gnutls.html#GNUTLS-PKCS11-PIN-CONTEXT-SPECIFIC:CAPS" title="GNUTLS_PKCS11_PIN_CONTEXT_SPECIFIC">GNUTLS_PKCS11_PIN_CONTEXT_SPECIFIC</a></td>
 </tr>
 <tr>
@@ -2737,6 +2753,10 @@
 <tr>
 <td class="define_keyword">#define</td>
 <td class="function_name"><a class="link" href="gnutls-gnutls.html#GNUTLS-PK-ECC:CAPS" title="GNUTLS_PK_ECC">GNUTLS_PK_ECC</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="gnutls-gnutls.html#GNUTLS-SERVER:CAPS" title="GNUTLS_SERVER">GNUTLS_SERVER</a></td>
 </tr>
 <tr>
 <td class="define_keyword">#define</td>
@@ -3820,9 +3840,12 @@ gnutls_certificate_get_peers (<em class="parameter"><code><a class="link" href="
                               <em class="parameter"><code>unsigned <span class="type">int</span> *list_size</code></em>);</pre>
 <p>Get the peer's raw certificate (chain) as sent by the peer.  These
 certificates are in raw format (DER encoded for X.509).  In case of
-a X.509 then a certificate list may be present.  The first
-certificate in the list is the peer's certificate, following the
-issuer's certificate, then the issuer's issuer etc.</p>
+a X.509 then a certificate list may be present.  The list
+is provided as sent by the server; the server must send as first
+certificate in the list its own certificate, following the
+issuer's certificate, then the issuer's issuer etc. However, there
+are servers which violate this principle and thus on certain
+occasions this may be an unsorted list.</p>
 <p>In case of OpenPGP keys a single key will be returned in raw
 format.</p>
 <div class="refsect3">
@@ -5058,9 +5081,9 @@ or use <a class="link" href="gnutls-gnutls.html#gnutls-certificate-verify-peers3
 </div>
 <div class="refsect3">
 <a name="gnutls-certificate-verify-peers2.returns"></a><h4>Returns</h4>
-<p> a negative error code on error and <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0)
-when the peer's certificate was successfully parsed, irrespective of whether
-it was verified.</p>
+<p> <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) when the validation is performed, or a negative error code otherwise.
+A sucessful error code means that the <em class="parameter"><code>status</code></em>
+parameter must be checked to obtain the validation status.</p>
 </div>
 </div>
 <hr>
@@ -5082,9 +5105,9 @@ using <a class="link" href="gnutls-gnutls.html#gnutls-certificate-set-verify-fla
 of <a class="link" href="gnutls-gnutls.html#gnutls-certificate-verify-peers2" title="gnutls_certificate_verify_peers2 ()"><code class="function">gnutls_certificate_verify_peers2()</code></a> for details in the verification process.</p>
 <p>If the <em class="parameter"><code>hostname</code></em>
  provided is non-NULL then this function will compare
-the hostname in the certificate against the given. The comparison will
-be accurate for ascii names; non-ascii names are compared byte-by-byte. 
-If names do not match the <a class="link" href="gnutls-gnutls.html#GNUTLS-CERT-UNEXPECTED-OWNER:CAPS"><code class="literal">GNUTLS_CERT_UNEXPECTED_OWNER</code></a> status flag will be set.</p>
+the hostname in the certificate against it. The comparison will follow
+the RFC6125 recommendations. If names do not match the
+<a class="link" href="gnutls-gnutls.html#GNUTLS-CERT-UNEXPECTED-OWNER:CAPS"><code class="literal">GNUTLS_CERT_UNEXPECTED_OWNER</code></a> status flag will be set.</p>
 <p>In order to verify the purpose of the end-certificate (by checking the extended
 key usage), use <code class="function">gnutls_certificate_verify_peers()</code>.</p>
 <div class="refsect3">
@@ -5116,9 +5139,9 @@ key usage), use <code class="function">gnutls_certificate_verify_peers()</code>.
 </div>
 <div class="refsect3">
 <a name="gnutls-certificate-verify-peers3.returns"></a><h4>Returns</h4>
-<p> a negative error code on error and <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0)
-when the peer's certificate was successfully parsed, irrespective of whether
-it was verified.</p>
+<p> <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) when the validation is performed, or a negative error code otherwise.
+A sucessful error code means that the <em class="parameter"><code>status</code></em>
+parameter must be checked to obtain the validation status.</p>
 </div>
 <p class="since">Since: 3.1.4</p>
 </div>
@@ -7147,15 +7170,14 @@ long enough, or 0 on success.</p>
 <pre class="programlisting"><span class="returnvalue">int</span>
 gnutls_init (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> *session</code></em>,
              <em class="parameter"><code>unsigned <span class="type">int</span> flags</code></em>);</pre>
-<p>This function initializes the current session to null. Every
-session must be initialized before use, so internal structures can
-be allocated.  This function allocates structures which can only
-be free'd by calling <a class="link" href="gnutls-gnutls.html#gnutls-deinit" title="gnutls_deinit ()"><code class="function">gnutls_deinit()</code></a>.  Returns <a class="link" href="gnutls-gnutls.html#GNUTLS-E-SUCCESS:CAPS" title="GNUTLS_E_SUCCESS"><code class="literal">GNUTLS_E_SUCCESS</code></a> (0) on success.</p>
+<p>This function initializes the provided session. Every
+session must be initialized before use, and must be deinitialized
+after used by calling <a class="link" href="gnutls-gnutls.html#gnutls-deinit" title="gnutls_deinit ()"><code class="function">gnutls_deinit()</code></a>.</p>
 <p><em class="parameter"><code>flags</code></em>
- can be any of <code class="literal">gnutls_init_flags_t</code>.</p>
+ can be any combination of flags from <code class="literal">gnutls_init_flags_t</code>.</p>
 <p>Note that since version 3.1.2 this function enables some common
 TLS extensions such as session tickets and OCSP certificate status
-request in client side by default. To prevent that use the <a href="/usr/share/gtk-doc/html/gnutlsgnutls-gnutls.html#GNUTLS-NO-EXTENSIONS:CAPS"><code class="literal">GNUTLS_NO_EXTENSIONS</code></a>
+request in client side by default. To prevent that use the <a class="link" href="gnutls-gnutls.html#GNUTLS-NO-EXTENSIONS:CAPS" title="GNUTLS_NO_EXTENSIONS"><code class="literal">GNUTLS_NO_EXTENSIONS</code></a>
 flag.</p>
 <div class="refsect3">
 <a name="gnutls-init.parameters"></a><h4>Parameters</h4>
@@ -7805,6 +7827,10 @@ generated output is strongly connected to some additional data
 (e.g., a string used in user authentication).</p>
 <p>The output is placed in <em class="parameter"><code>out</code></em>
 , which must be pre-allocated.</p>
+<p>Note: This function produces identical output with <code class="function">gnutls_prf_rfc5705()</code>
+when <em class="parameter"><code>server_random_first</code></em>
+ is set to 0 and <em class="parameter"><code>extra</code></em>
+ is <code class="literal">NULL</code>.</p>
 <div class="refsect3">
 <a name="gnutls-prf.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
@@ -9562,7 +9588,10 @@ gnutls_session_get_data (<em class="parameter"><code><a class="link" href="gnutl
                          <em class="parameter"><code><span class="type">size_t</span> *session_data_size</code></em>);</pre>
 <p>Returns all session parameters needed to be stored to support resumption.
 The client should call this, and store the returned session data. A session
-may be resumed later by calling <a href="/usr/share/gtk-doc/html/gnutlsgnutls-gnutls.html#gnutls-session-set-data"><code class="function">gnutls_session_set_data()</code></a>.</p>
+may be resumed later by calling <a href="/usr/share/gtk-doc/html/gnutlsgnutls-gnutls.html#gnutls-session-set-data"><code class="function">gnutls_session_set_data()</code></a>.  </p>
+<p>This function will fail if called prior to handshake completion. In
+case of false start TLS, the handshake completes only after data have
+been successfully received from the peer.</p>
 <div class="refsect3">
 <a name="gnutls-session-get-data.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
@@ -9607,6 +9636,9 @@ The client should call this, and store the returned session data. A session
 may be resumed later by calling <a href="/usr/share/gtk-doc/html/gnutlsgnutls-gnutls.html#gnutls-session-set-data"><code class="function">gnutls_session_set_data()</code></a>.  </p>
 <p>The returned <em class="parameter"><code>data</code></em>
  are allocated and must be released using <code class="function">gnutls_free()</code>.</p>
+<p>This function will fail if called prior to handshake completion. In
+case of false start TLS, the handshake completes only after data have
+been successfully received from the peer.</p>
 <div class="refsect3">
 <a name="gnutls-session-get-data2.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
@@ -11602,7 +11634,7 @@ int (*gnutls_pull_timeout_func)(gnutls_transport_ptr_t, unsigned int ms);</p>
 <p>This callback is necessary when <a class="link" href="gnutls-gnutls.html#gnutls-handshake-set-timeout" title="gnutls_handshake_set_timeout ()"><code class="function">gnutls_handshake_set_timeout()</code></a> or 
 <code class="function">gnutls_record_set_timeout()</code> are set. It will not be used when 
 non-blocking sockets are in use. That is, this function will
-not operate when <a href="/usr/share/gtk-doc/html/gnutlsgnutls-gnutls.html#GNUTLS-NONBLOCK:CAPS"><code class="literal">GNUTLS_NONBLOCK</code></a> is specified in <a class="link" href="gnutls-gnutls.html#gnutls-init" title="gnutls_init ()"><code class="function">gnutls_init()</code></a>, 
+not operate when <a class="link" href="gnutls-gnutls.html#GNUTLS-NONBLOCK:CAPS" title="GNUTLS_NONBLOCK"><code class="literal">GNUTLS_NONBLOCK</code></a> is specified in <a class="link" href="gnutls-gnutls.html#gnutls-init" title="gnutls_init ()"><code class="function">gnutls_init()</code></a>, 
 or a custom pull function is registered without updating the 
 pull timeout function.</p>
 <p>The helper function <code class="function">gnutls_system_recv_timeout()</code> is provided to
@@ -11893,6 +11925,22 @@ or a negative error value on other errors.</p>
 <div class="refsect2">
 <a name="GNUTLS-CIPHER-RIJNDAEL-CBC:CAPS"></a><h3>GNUTLS_CIPHER_RIJNDAEL_CBC</h3>
 <pre class="programlisting">#define GNUTLS_CIPHER_RIJNDAEL_CBC GNUTLS_CIPHER_AES_128_CBC
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GNUTLS-CLIENT:CAPS"></a><h3>GNUTLS_CLIENT</h3>
+<pre class="programlisting">#define GNUTLS_CLIENT (1&lt;&lt;1)
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GNUTLS-DATAGRAM:CAPS"></a><h3>GNUTLS_DATAGRAM</h3>
+<pre class="programlisting">#define GNUTLS_DATAGRAM (1&lt;&lt;2)
 </pre>
 <p>
 </p>
@@ -13283,6 +13331,22 @@ or a negative error value on other errors.</p>
 </div>
 <hr>
 <div class="refsect2">
+<a name="GNUTLS-NONBLOCK:CAPS"></a><h3>GNUTLS_NONBLOCK</h3>
+<pre class="programlisting">#define GNUTLS_NONBLOCK (1&lt;&lt;3)
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GNUTLS-NO-EXTENSIONS:CAPS"></a><h3>GNUTLS_NO_EXTENSIONS</h3>
+<pre class="programlisting">#define GNUTLS_NO_EXTENSIONS (1&lt;&lt;4)
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
 <a name="GNUTLS-PKCS11-PIN-CONTEXT-SPECIFIC:CAPS"></a><h3>GNUTLS_PKCS11_PIN_CONTEXT_SPECIFIC</h3>
 <pre class="programlisting">#define GNUTLS_PKCS11_PIN_CONTEXT_SPECIFIC GNUTLS_PIN_CONTEXT_SPECIFIC
 </pre>
@@ -13339,8 +13403,16 @@ or a negative error value on other errors.</p>
 </div>
 <hr>
 <div class="refsect2">
+<a name="GNUTLS-SERVER:CAPS"></a><h3>GNUTLS_SERVER</h3>
+<pre class="programlisting">#define GNUTLS_SERVER (1)
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.5.2"
+<pre class="programlisting">#define GNUTLS_VERSION "3.5.3"
 </pre>
 <p>
 </p>
@@ -13364,7 +13436,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030502
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030503
 </pre>
 <p>
 </p>
@@ -13372,7 +13444,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 2
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 3
 </pre>
 <p>
 </p>
@@ -16156,6 +16228,11 @@ algorithms.</p>
 <td class="enum_member_description">
 <p>DN SAN.</p>
 </td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GNUTLS-SAN-MAX:CAPS"></a>GNUTLS_SAN_MAX</p></td>
+<td class="enum_member_description"> </td>
 <td class="enum_member_annotations"> </td>
 </tr>
 <tr>
