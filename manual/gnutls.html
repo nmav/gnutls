@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.3 of GnuTLS.
+3.5.4 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.3</title>
+<title>GnuTLS 3.5.4</title>
 
-<meta name="description" content="GnuTLS 3.5.3">
-<meta name="keywords" content="GnuTLS 3.5.3">
+<meta name="description" content="GnuTLS 3.5.4">
+<meta name="keywords" content="GnuTLS 3.5.4">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -153,7 +153,7 @@ dl {
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">GnuTLS 3.5.3</h1>
+<h1 class="settitle" align="center">GnuTLS 3.5.4</h1>
 
 
 
@@ -510,7 +510,7 @@ Next: <a href="#Preface" accesskey="n" rel="next">Preface</a>, Up: <a href="dir.
 <h1 class="top">GnuTLS</h1>
 
 <p>This manual is last updated 4 March 2015 for version
-3.5.3 of GnuTLS.
+3.5.4 of GnuTLS.
 </p>
 <p>Copyright &copy; 2001-2015 Free Software Foundation, Inc.\\
 Copyright &copy; 2001-2015 Nikos Mavrogiannopoulos
@@ -4174,6 +4174,9 @@ be decrypted.
 <dt><code>GNUTLS_PKCS_PBES2_DES</code></dt>
 <dd><p>PBES2 single DES.
 </p></dd>
+<dt><code>GNUTLS_PKCS_PBES1_DES_MD5</code></dt>
+<dd><p>&ndash; undescribed &ndash;
+</p></dd>
 </dl>
 
 <div class="float-caption"><p><strong>Figure 4.6: </strong>Encryption flags</p></div></div>
@@ -7688,11 +7691,9 @@ Writing objects:
                                 - disabled as '--no-mark-ca'
    -#, --mark-private         Marks the object to be written as private
                                 - disabled as '--no-mark-private'
-                                - enabled by default
    -$, --trusted              an alias for the 'mark-trusted' option
    -%, --ca                   an alias for the 'mark-ca' option
    -&amp;, --private              an alias for the 'mark-private' option
-                                - enabled by default
    -', --secret-key=str       Provide a hex encoded secret key
    -(, --load-privkey=file    Private key file to use
                                 - file must pre-exist
@@ -7934,7 +7935,6 @@ Sets the CKA_ID to be set by the write operation. The ID should be specified in 
 <p>This option has some usage constraints.  It:
 </p><ul>
 <li> can be disabled with &ndash;no-mark-private.
-</li><li> It is enabled by default.
 </li></ul>
 
 <p>Marks the object to be generated/written with the CKA_PRIVATE flag. The written object will require a PIN to be used.
@@ -10454,7 +10454,7 @@ of a client, this message may be simply ignored, replied with an alert
 depending on the client&rsquo;s will. A server receiving this error code
 can only initiate a new handshake or terminate the session.
 </p>
-<p>If <code>EINTR</code>  is returned by the internal push function (the default
+<p>If <code>EINTR</code>  is returned by the internal pull function (the default
 is <code>recv()</code> ) then <code>GNUTLS_E_INTERRUPTED</code>  will be returned.  If
 <code>GNUTLS_E_INTERRUPTED</code>  or <code>GNUTLS_E_AGAIN</code>  is returned, you must
 call this function again to get the data.  See also
@@ -11613,7 +11613,7 @@ which ensures that the server remains the same as the initial.
 
 
 <dl>
-<dt><a name="index-gnutls_005fsafe_005frenegotiation_005fstatus"></a>Function: <em>int</em> <strong>gnutls_safe_renegotiation_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dt><a name="index-gnutls_005fsafe_005frenegotiation_005fstatus"></a>Function: <em>unsigned</em> <strong>gnutls_safe_renegotiation_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Can be used to check whether safe renegotiation is being used
@@ -18427,6 +18427,7 @@ expressions.
 <tr><td width="15%">-108</td><td width="40%">GNUTLS_E_UNSAFE_RENEGOTIATION_DENIED</td><td width="37%">Unsafe renegotiation denied.</td></tr>
 <tr><td width="15%">-109</td><td width="40%">GNUTLS_E_UNKNOWN_SRP_USERNAME</td><td width="37%">The SRP username supplied is unknown.</td></tr>
 <tr><td width="15%">-110</td><td width="40%">GNUTLS_E_PREMATURE_TERMINATION</td><td width="37%">The TLS connection was non-properly terminated.</td></tr>
+<tr><td width="15%">-111</td><td width="40%">GNUTLS_E_MALFORMED_CIDR</td><td width="37%">CIDR name constraint is malformed in size or structure.</td></tr>
 <tr><td width="15%">-201</td><td width="40%">GNUTLS_E_BASE64_ENCODING_ERROR</td><td width="37%">Base64 encoding error.</td></tr>
 <tr><td width="15%">-202</td><td width="40%">GNUTLS_E_INCOMPATIBLE_GCRYPT_LIBRARY</td><td width="37%">The crypto library version is too old.</td></tr>
 <tr><td width="15%">-203</td><td width="40%">GNUTLS_E_INCOMPATIBLE_LIBTASN1_LIBRARY</td><td width="37%">The tasn1 library version is too old.</td></tr>
@@ -21391,6 +21392,10 @@ an error code is returned.
 <dd>
 <p>This function deinitializes the global data, that were initialized
 using <code>gnutls_global_init()</code> .
+</p>
+<p>Since GnuTLS 3.3.0 this function is no longer necessary to be explicitly
+called. GnuTLS will automatically deinitialize on library destructor. See
+<code>gnutls_global_init()</code>  for disabling the implicit initialization/deinitialization.
 </p></dd></dl>
 
 <a name="gnutls_005fglobal_005finit-1"></a>
@@ -21398,6 +21403,10 @@ using <code>gnutls_global_init()</code> .
 <a name="gnutls_005fglobal_005finit"></a><dl>
 <dt><a name="index-gnutls_005fglobal_005finit"></a>Function: <em>int</em> <strong>gnutls_global_init</strong> <em>( <var>void</var>)</em></dt>
 <dd>
+<p>Since GnuTLS 3.3.0 this function is no longer necessary to be explicitly
+called. To disable the implicit call (in a library constructor) of this
+function set the environment variable <code>GNUTLS_NO_EXPLICIT_INIT</code>  to 1.
+</p>
 <p>This function performs any required precalculations, detects
 the supported CPU capabilities and initializes the underlying
 cryptographic backend. In order to free any resources 
@@ -21410,11 +21419,6 @@ called as many times as <code>gnutls_global_init()</code> .  This is useful when
 GnuTLS is used by more than one library in an application.  This
 function can be called many times, but will only do something the
 first time.
-</p>
-<p>Since GnuTLS 3.3.0 this function is automatically called on library
-constructor. Since the same version this function is also thread safe.
-The automatic initialization can be avoided if the environment variable
-<code>GNUTLS_NO_EXPLICIT_INIT</code>  is set to be 1.
 </p>
 <p>A subsequent call of this function if the initial has failed will
 return the same error code.
@@ -22235,6 +22239,20 @@ algorithm, or <code>GNUTLS_DIG_UNKNOWN</code>  on failure.
 the specified OID, or <code>GNUTLS_ECC_CURVE_INVALID</code>  on error.
 </p>
 <p><strong>Since:</strong> 3.4.3
+</p></dd></dl>
+
+<a name="gnutls_005foid_005fto_005fmac-1"></a>
+<h4 class="subheading">gnutls_oid_to_mac</h4>
+<a name="gnutls_005foid_005fto_005fmac"></a><dl>
+<dt><a name="index-gnutls_005foid_005fto_005fmac"></a>Function: <em>gnutls_mac_algorithm_t</em> <strong>gnutls_oid_to_mac</strong> <em>(const char * <var>oid</var>)</em></dt>
+<dd><p><var>oid</var>: is an object identifier
+</p>
+<p>Converts a textual object identifier typically from PKCS<code>5</code>  values to a <code>gnutls_mac_algorithm_t</code>  value.
+</p>
+<p><strong>Returns:</strong> a <code>gnutls_mac_algorithm_t</code>  id of the specified digest
+algorithm, or <code>GNUTLS_MAC_UNKNOWN</code>  on failure.
+</p>
+<p><strong>Since:</strong> 3.5.4
 </p></dd></dl>
 
 <a name="gnutls_005foid_005fto_005fpk-1"></a>
@@ -23444,7 +23462,7 @@ of a client, this message may be simply ignored, replied with an alert
 depending on the client&rsquo;s will. A server receiving this error code
 can only initiate a new handshake or terminate the session.
 </p>
-<p>If <code>EINTR</code>  is returned by the internal push function (the default
+<p>If <code>EINTR</code>  is returned by the internal pull function (the default
 is <code>recv()</code> ) then <code>GNUTLS_E_INTERRUPTED</code>  will be returned.  If
 <code>GNUTLS_E_INTERRUPTED</code>  or <code>GNUTLS_E_AGAIN</code>  is returned, you must
 call this function again to get the data.  See also
@@ -23693,7 +23711,7 @@ this message.
 <a name="gnutls_005fsafe_005frenegotiation_005fstatus-1"></a>
 <h4 class="subheading">gnutls_safe_renegotiation_status</h4>
 <a name="gnutls_005fsafe_005frenegotiation_005fstatus"></a><dl>
-<dt><a name="index-gnutls_005fsafe_005frenegotiation_005fstatus-1"></a>Function: <em>int</em> <strong>gnutls_safe_renegotiation_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dt><a name="index-gnutls_005fsafe_005frenegotiation_005fstatus-1"></a>Function: <em>unsigned</em> <strong>gnutls_safe_renegotiation_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Can be used to check whether safe renegotiation is being used
@@ -26109,6 +26127,29 @@ should be set on the first call, and subsequent calls should use a <code>NULL</c
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a negative error value.
 </p>
 <p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcidr_005fto_005frfc5280-1"></a>
+<h4 class="subheading">gnutls_x509_cidr_to_rfc5280</h4>
+<a name="gnutls_005fx509_005fcidr_005fto_005frfc5280"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcidr_005fto_005frfc5280"></a>Function: <em>int</em> <strong>gnutls_x509_cidr_to_rfc5280</strong> <em>(const char * <var>cidr</var>, gnutls_datum_t * <var>cidr_rfc5280</var>)</em></dt>
+<dd><p><var>cidr</var>: CIDR in RFC4632 format (IP/prefix), null-terminated
+</p>
+<p><var>cidr_rfc5280</var>: CIDR range converted to RFC5280 format
+</p>
+<p>This function will convert text CIDR range with prefix (such as &rsquo;10.0.0.0/8&rsquo;)
+to RFC5280 (IP address in network byte order followed by its network mask).
+Works for both IPv4 and IPv6.
+</p>
+<p>The resulting object is directly usable for IP name constraints usage,
+for example in functions <code>gnutls_x509_name_constraints_add_permitted</code> 
+or <code>gnutls_x509_name_constraints_add_excluded</code> .
+</p>
+<p>The data in datum needs to be deallocated using <code>gnutls_free()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.4
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrl_005fcheck_005fissuer-1"></a>
@@ -31552,7 +31593,8 @@ in network byte order is expected, followed by its network mask.
 </p>
 <p>This function will check the provided name against the constraints in
  <code>nc</code> using the RFC5280 rules. Currently this function is limited to DNS
-names and emails (of type <code>GNUTLS_SAN_DNSNAME</code>  and <code>GNUTLS_SAN_RFC822NAME</code> ).
+names, emails and IP addresses (of type <code>GNUTLS_SAN_DNSNAME</code> ,
+<code>GNUTLS_SAN_RFC822NAME</code>  and <code>GNUTLS_SAN_IPADDRESS</code> ).
 </p>
 <p><strong>Returns:</strong> zero if the provided name is not acceptable, and non-zero otherwise.
 </p>
@@ -42272,6 +42314,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005focsp_005fstatus_005frequest_005fis_005fchecked"><code>gnutls_ocsp_status_request_is_checked</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005foid_005fto_005fdigest"><code>gnutls_oid_to_digest</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005foid_005fto_005fecc_005fcurve"><code>gnutls_oid_to_ecc_curve</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005foid_005fto_005fmac"><code>gnutls_oid_to_mac</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005foid_005fto_005fpk"><code>gnutls_oid_to_pk</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005foid_005fto_005fsign"><code>gnutls_oid_to_sign</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fopenpgp_005fcrt_005fcheck_005femail"><code>gnutls_openpgp_crt_check_email</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#OpenPGP-API">OpenPGP API</a></td></tr>
@@ -42797,6 +42840,7 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005faki_005finit"><code>gnutls_x509_aki_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005faki_005fset_005fcert_005fissuer"><code>gnutls_x509_aki_set_cert_issuer</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005faki_005fset_005fid"><code>gnutls_x509_aki_set_id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcidr_005fto_005frfc5280"><code>gnutls_x509_cidr_to_rfc5280</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrl_005fcheck_005fissuer"><code>gnutls_x509_crl_check_issuer</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrl_005fdeinit"><code>gnutls_x509_crl_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnutls_005fx509_005fcrl_005fdist_005fpoints_005fdeinit"><code>gnutls_x509_crl_dist_points_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#X509-certificate-API">X509 certificate API</a></td></tr>

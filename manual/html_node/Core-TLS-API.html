@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.3 of GnuTLS.
+3.5.4 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.3: Core TLS API</title>
+<title>GnuTLS 3.5.4: Core TLS API</title>
 
-<meta name="description" content="GnuTLS 3.5.3: Core TLS API">
-<meta name="keywords" content="GnuTLS 3.5.3: Core TLS API">
+<meta name="description" content="GnuTLS 3.5.4: Core TLS API">
+<meta name="keywords" content="GnuTLS 3.5.4: Core TLS API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -2668,6 +2668,10 @@ an error code is returned.
 <dd>
 <p>This function deinitializes the global data, that were initialized
 using <code>gnutls_global_init()</code> .
+</p>
+<p>Since GnuTLS 3.3.0 this function is no longer necessary to be explicitly
+called. GnuTLS will automatically deinitialize on library destructor. See
+<code>gnutls_global_init()</code>  for disabling the implicit initialization/deinitialization.
 </p></dd></dl>
 
 <a name="gnutls_005fglobal_005finit-1"></a>
@@ -2675,6 +2679,10 @@ using <code>gnutls_global_init()</code> .
 <a name="gnutls_005fglobal_005finit"></a><dl>
 <dt><a name="index-gnutls_005fglobal_005finit"></a>Function: <em>int</em> <strong>gnutls_global_init</strong> <em>( <var>void</var>)</em></dt>
 <dd>
+<p>Since GnuTLS 3.3.0 this function is no longer necessary to be explicitly
+called. To disable the implicit call (in a library constructor) of this
+function set the environment variable <code>GNUTLS_NO_EXPLICIT_INIT</code>  to 1.
+</p>
 <p>This function performs any required precalculations, detects
 the supported CPU capabilities and initializes the underlying
 cryptographic backend. In order to free any resources 
@@ -2687,11 +2695,6 @@ called as many times as <code>gnutls_global_init()</code> .  This is useful when
 GnuTLS is used by more than one library in an application.  This
 function can be called many times, but will only do something the
 first time.
-</p>
-<p>Since GnuTLS 3.3.0 this function is automatically called on library
-constructor. Since the same version this function is also thread safe.
-The automatic initialization can be avoided if the environment variable
-<code>GNUTLS_NO_EXPLICIT_INIT</code>  is set to be 1.
 </p>
 <p>A subsequent call of this function if the initial has failed will
 return the same error code.
@@ -3512,6 +3515,20 @@ algorithm, or <code>GNUTLS_DIG_UNKNOWN</code>  on failure.
 the specified OID, or <code>GNUTLS_ECC_CURVE_INVALID</code>  on error.
 </p>
 <p><strong>Since:</strong> 3.4.3
+</p></dd></dl>
+
+<a name="gnutls_005foid_005fto_005fmac-1"></a>
+<h4 class="subheading">gnutls_oid_to_mac</h4>
+<a name="gnutls_005foid_005fto_005fmac"></a><dl>
+<dt><a name="index-gnutls_005foid_005fto_005fmac"></a>Function: <em>gnutls_mac_algorithm_t</em> <strong>gnutls_oid_to_mac</strong> <em>(const char * <var>oid</var>)</em></dt>
+<dd><p><var>oid</var>: is an object identifier
+</p>
+<p>Converts a textual object identifier typically from PKCS<code>5</code>  values to a <code>gnutls_mac_algorithm_t</code>  value.
+</p>
+<p><strong>Returns:</strong> a <code>gnutls_mac_algorithm_t</code>  id of the specified digest
+algorithm, or <code>GNUTLS_MAC_UNKNOWN</code>  on failure.
+</p>
+<p><strong>Since:</strong> 3.5.4
 </p></dd></dl>
 
 <a name="gnutls_005foid_005fto_005fpk-1"></a>
@@ -4721,7 +4738,7 @@ of a client, this message may be simply ignored, replied with an alert
 depending on the client&rsquo;s will. A server receiving this error code
 can only initiate a new handshake or terminate the session.
 </p>
-<p>If <code>EINTR</code>  is returned by the internal push function (the default
+<p>If <code>EINTR</code>  is returned by the internal pull function (the default
 is <code>recv()</code> ) then <code>GNUTLS_E_INTERRUPTED</code>  will be returned.  If
 <code>GNUTLS_E_INTERRUPTED</code>  or <code>GNUTLS_E_AGAIN</code>  is returned, you must
 call this function again to get the data.  See also
@@ -4970,7 +4987,7 @@ this message.
 <a name="gnutls_005fsafe_005frenegotiation_005fstatus-1"></a>
 <h4 class="subheading">gnutls_safe_renegotiation_status</h4>
 <a name="gnutls_005fsafe_005frenegotiation_005fstatus"></a><dl>
-<dt><a name="index-gnutls_005fsafe_005frenegotiation_005fstatus-1"></a>Function: <em>int</em> <strong>gnutls_safe_renegotiation_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
+<dt><a name="index-gnutls_005fsafe_005frenegotiation_005fstatus-1"></a>Function: <em>unsigned</em> <strong>gnutls_safe_renegotiation_status</strong> <em>(gnutls_session_t <var>session</var>)</em></dt>
 <dd><p><var>session</var>: is a <code>gnutls_session_t</code>  type.
 </p>
 <p>Can be used to check whether safe renegotiation is being used

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.3 of GnuTLS.
+3.5.4 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.3: X509 certificate API</title>
+<title>GnuTLS 3.5.4: X509 certificate API</title>
 
-<meta name="description" content="GnuTLS 3.5.3: X509 certificate API">
-<meta name="keywords" content="GnuTLS 3.5.3: X509 certificate API">
+<meta name="description" content="GnuTLS 3.5.4: X509 certificate API">
+<meta name="keywords" content="GnuTLS 3.5.4: X509 certificate API">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -512,6 +512,29 @@ should be set on the first call, and subsequent calls should use a <code>NULL</c
 <p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a negative error value.
 </p>
 <p><strong>Since:</strong> 3.3.0
+</p></dd></dl>
+
+<a name="gnutls_005fx509_005fcidr_005fto_005frfc5280-1"></a>
+<h4 class="subheading">gnutls_x509_cidr_to_rfc5280</h4>
+<a name="gnutls_005fx509_005fcidr_005fto_005frfc5280"></a><dl>
+<dt><a name="index-gnutls_005fx509_005fcidr_005fto_005frfc5280"></a>Function: <em>int</em> <strong>gnutls_x509_cidr_to_rfc5280</strong> <em>(const char * <var>cidr</var>, gnutls_datum_t * <var>cidr_rfc5280</var>)</em></dt>
+<dd><p><var>cidr</var>: CIDR in RFC4632 format (IP/prefix), null-terminated
+</p>
+<p><var>cidr_rfc5280</var>: CIDR range converted to RFC5280 format
+</p>
+<p>This function will convert text CIDR range with prefix (such as &rsquo;10.0.0.0/8&rsquo;)
+to RFC5280 (IP address in network byte order followed by its network mask).
+Works for both IPv4 and IPv6.
+</p>
+<p>The resulting object is directly usable for IP name constraints usage,
+for example in functions <code>gnutls_x509_name_constraints_add_permitted</code> 
+or <code>gnutls_x509_name_constraints_add_excluded</code> .
+</p>
+<p>The data in datum needs to be deallocated using <code>gnutls_free()</code> .
+</p>
+<p><strong>Returns:</strong> On success, <code>GNUTLS_E_SUCCESS</code>  (0) is returned, otherwise a negative error value.
+</p>
+<p><strong>Since:</strong> 3.5.4
 </p></dd></dl>
 
 <a name="gnutls_005fx509_005fcrl_005fcheck_005fissuer-1"></a>
@@ -5955,7 +5978,8 @@ in network byte order is expected, followed by its network mask.
 </p>
 <p>This function will check the provided name against the constraints in
  <code>nc</code> using the RFC5280 rules. Currently this function is limited to DNS
-names and emails (of type <code>GNUTLS_SAN_DNSNAME</code>  and <code>GNUTLS_SAN_RFC822NAME</code> ).
+names, emails and IP addresses (of type <code>GNUTLS_SAN_DNSNAME</code> ,
+<code>GNUTLS_SAN_RFC822NAME</code>  and <code>GNUTLS_SAN_IPADDRESS</code> ).
 </p>
 <p><strong>Returns:</strong> zero if the provided name is not acceptable, and non-zero otherwise.
 </p>

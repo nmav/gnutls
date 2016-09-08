@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is last updated 4 March 2015 for version
-3.5.3 of GnuTLS.
+3.5.4 of GnuTLS.
 
 Copyright (C) 2001-2015 Free Software Foundation, Inc.\\
 Copyright (C) 2001-2015 Nikos Mavrogiannopoulos
@@ -14,10 +14,10 @@ copy of the license is included in the section entitled "GNU Free
 Documentation License". -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>GnuTLS 3.5.3: p11tool Invocation</title>
+<title>GnuTLS 3.5.4: p11tool Invocation</title>
 
-<meta name="description" content="GnuTLS 3.5.3: p11tool Invocation">
-<meta name="keywords" content="GnuTLS 3.5.3: p11tool Invocation">
+<meta name="description" content="GnuTLS 3.5.4: p11tool Invocation">
+<meta name="keywords" content="GnuTLS 3.5.4: p11tool Invocation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -258,11 +258,9 @@ Writing objects:
                                 - disabled as '--no-mark-ca'
    -#, --mark-private         Marks the object to be written as private
                                 - disabled as '--no-mark-private'
-                                - enabled by default
    -$, --trusted              an alias for the 'mark-trusted' option
    -%, --ca                   an alias for the 'mark-ca' option
    -&amp;, --private              an alias for the 'mark-private' option
-                                - enabled by default
    -', --secret-key=str       Provide a hex encoded secret key
    -(, --load-privkey=file    Private key file to use
                                 - file must pre-exist
@@ -504,7 +502,6 @@ Sets the CKA_ID to be set by the write operation. The ID should be specified in 
 <p>This option has some usage constraints.  It:
 </p><ul>
 <li> can be disabled with &ndash;no-mark-private.
-</li><li> It is enabled by default.
 </li></ul>
 
 <p>Marks the object to be generated/written with the CKA_PRIVATE flag. The written object will require a PIN to be used.
