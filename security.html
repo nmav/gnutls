@@ -77,7 +77,22 @@
 <p>
 <div align="center">
   <table class="news" width="90%" summary="">
-<tr><th>Tag</th><th>Other identifiers</th><th>Severity</th><th>Information</th>
+<tr><th>Tag</th><th>Other identifiers</th><th>Description</th><th>Information</th>
+<tr>
+<td><div class="emph-box" id="GNUTLS-SA-2016-3">GNUTLS-SA-2016-3</div></td>
+    <td><!--<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1959">
+	CVE-2014-1959</a>-->
+      </td>
+    <td>OCSP validation issue</td>
+    <td><p>Stefan Bühler discoverd an issue that affects validation
+of certificates using OCSP responses, which can falsely report a certificate
+as valid under certain circumstances.
+That issue affects gnutls 3.3.24, 3.4.14, 3.5.3 and previous versions.
+<a href="http://lists.gnutls.org/pipermail/gnutls-devel/2016-September/008146.html">
+	Write-up by Stefan Bühler</a><br>
+      <b>Recommendation:</b> Upgrade to GnuTLS versions 3.4.15, 3.5.4 or apply the patch referenced in the mail above.</td>
+</p>
+</tr>
 <tr>
 <td><div class="emph-box" id="GNUTLS-SA-2016-2">GNUTLS-SA-2016-2</div></td>
     <td><!--<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1959">

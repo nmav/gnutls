@@ -1421,7 +1421,7 @@
 </tr>
 <tr>
 <td class="function_type">
-<span class="returnvalue">int</span>
+<span class="returnvalue">unsigned</span>
 </td>
 <td class="function_name">
 <a class="link" href="gnutls-gnutls.html#gnutls-safe-renegotiation-status" title="gnutls_safe_renegotiation_status ()">gnutls_safe_renegotiation_status</a> <span class="c_punctuation">()</span>
@@ -6309,12 +6309,18 @@ an error code is returned.</p>
 gnutls_global_deinit (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
 <p>This function deinitializes the global data, that were initialized
 using <a class="link" href="gnutls-gnutls.html#gnutls-global-init" title="gnutls_global_init ()"><code class="function">gnutls_global_init()</code></a>.</p>
+<p>Since GnuTLS 3.3.0 this function is no longer necessary to be explicitly
+called. GnuTLS will automatically deinitialize on library destructor. See
+<a class="link" href="gnutls-gnutls.html#gnutls-global-init" title="gnutls_global_init ()"><code class="function">gnutls_global_init()</code></a> for disabling the implicit initialization/deinitialization.</p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="gnutls-global-init"></a><h3>gnutls_global_init ()</h3>
 <pre class="programlisting"><span class="returnvalue">int</span>
 gnutls_global_init (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Since GnuTLS 3.3.0 this function is no longer necessary to be explicitly
+called. To disable the implicit call (in a library constructor) of this
+function set the environment variable <code class="literal">GNUTLS_NO_EXPLICIT_INIT</code> to 1.</p>
 <p>This function performs any required precalculations, detects
 the supported CPU capabilities and initializes the underlying
 cryptographic backend. In order to free any resources 
@@ -6326,10 +6332,6 @@ called as many times as <a class="link" href="gnutls-gnutls.html#gnutls-global-i
 GnuTLS is used by more than one library in an application.  This
 function can be called many times, but will only do something the
 first time.</p>
-<p>Since GnuTLS 3.3.0 this function is automatically called on library
-constructor. Since the same version this function is also thread safe.
-The automatic initialization can be avoided if the environment variable
-<code class="literal">GNUTLS_NO_EXPLICIT_INIT</code> is set to be 1.</p>
 <p>A subsequent call of this function if the initial has failed will
 return the same error code.</p>
 <div class="refsect3">
@@ -9086,7 +9088,7 @@ of a client, this message may be simply ignored, replied with an alert
 <a class="link" href="gnutls-gnutls.html#GNUTLS-A-NO-RENEGOTIATION:CAPS"><code class="literal">GNUTLS_A_NO_RENEGOTIATION</code></a>, or replied with a new handshake,
 depending on the client's will. A server receiving this error code
 can only initiate a new handshake or terminate the session.</p>
-<p>If <code class="literal">EINTR</code> is returned by the internal push function (the default
+<p>If <code class="literal">EINTR</code> is returned by the internal pull function (the default
 is <code class="function">recv()</code>) then <a class="link" href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS" title="GNUTLS_E_INTERRUPTED"><code class="literal">GNUTLS_E_INTERRUPTED</code></a> will be returned.  If
 <a class="link" href="gnutls-gnutls.html#GNUTLS-E-INTERRUPTED:CAPS" title="GNUTLS_E_INTERRUPTED"><code class="literal">GNUTLS_E_INTERRUPTED</code></a> or <a class="link" href="gnutls-gnutls.html#GNUTLS-E-AGAIN:CAPS" title="GNUTLS_E_AGAIN"><code class="literal">GNUTLS_E_AGAIN</code></a> is returned, you must
 call this function again to get the data.  See also
@@ -9333,7 +9335,7 @@ this message.</p>
 <hr>
 <div class="refsect2">
 <a name="gnutls-safe-renegotiation-status"></a><h3>gnutls_safe_renegotiation_status ()</h3>
-<pre class="programlisting"><span class="returnvalue">int</span>
+<pre class="programlisting"><span class="returnvalue">unsigned</span>
 gnutls_safe_renegotiation_status (<em class="parameter"><code><a class="link" href="gnutls-gnutls.html#gnutls-session-t" title="gnutls_session_t"><span class="type">gnutls_session_t</span></a> session</code></em>);</pre>
 <p>Can be used to check whether safe renegotiation is being used
 in the current session.</p>
@@ -13412,7 +13414,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION:CAPS"></a><h3>GNUTLS_VERSION</h3>
-<pre class="programlisting">#define GNUTLS_VERSION "3.5.3"
+<pre class="programlisting">#define GNUTLS_VERSION "3.5.4"
 </pre>
 <p>
 </p>
@@ -13436,7 +13438,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-NUMBER:CAPS"></a><h3>GNUTLS_VERSION_NUMBER</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030503
+<pre class="programlisting">#define GNUTLS_VERSION_NUMBER 0x030504
 </pre>
 <p>
 </p>
@@ -13444,7 +13446,7 @@ or a negative error value on other errors.</p>
 <hr>
 <div class="refsect2">
 <a name="GNUTLS-VERSION-PATCH:CAPS"></a><h3>GNUTLS_VERSION_PATCH</h3>
-<pre class="programlisting">#define GNUTLS_VERSION_PATCH 3
+<pre class="programlisting">#define GNUTLS_VERSION_PATCH 4
 </pre>
 <p>
 </p>

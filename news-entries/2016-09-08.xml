@@ -1,0 +1,12 @@
+<title>GnuTLS 3.5.4</title>
+<p>
+Released <a
+href="https://lists.gnupg.org/pipermail/gnutls-devel/2016-September/008153.html">GnuTLS
+3.4.15</a>,
+and <a href="https://lists.gnupg.org/pipermail/gnutls-devel/2016-September/008152.html">GnuTLS
+3.5.4</a> which are bug fix releases in the current and next stable branches.
+</p>
+<p>
+Added the <a
+href="security.html#GNUTLS-SA-2016-3">GnuTLS-SA-2016-3</a> security advisory.
+</p>
