@@ -2,7 +2,7 @@
 	CVE-2014-1959</a>-->
       </td>
     <td>OCSP validation issue</td>
-    <td><p>Stefan Bühler discoverd an issue that affects validation
+    <td><p>Stefan Bühler discovered an issue that affects validation
 of certificates using OCSP responses, which can falsely report a certificate
 as valid under certain circumstances.
 That issue affects gnutls 3.3.24, 3.4.14, 3.5.3 and previous versions.
