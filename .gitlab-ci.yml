@@ -9,6 +9,8 @@ pages:
   - make
   tags:
   - shared
+  only:
+  - web-pages
   artifacts:
     paths:
     - public
