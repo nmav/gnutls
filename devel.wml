@@ -14,12 +14,8 @@ That would help us to address your issue.
 <p>
 Our goal is to deliver a stable API and ABI for the library, but on certain
 major releases we have decided to break the ABI in order to deprecate old APIs and avoid clutter.
-To ensure API and ABI stability we rely on abi-compliance-checker and other tools, and we maintain
-an <a href="abi-tracker/timeline/gnutls/index.html">ABI tracker page for gnutls</a> which visualises
-the output of these tools.
-<ul>
-<li><a href="abi-tracker/timeline/gnutls/index.html">ABI tracker report</a></li>
-</ul>
+To ensure API and ABI stability we rely on abi-compliance-checker and other
+tools.
 </p>
 
 

@@ -4,6 +4,8 @@
 #  3. Type 'make'
 #  4. Type 'make tweet'
 
+#DOC_TAG=gnutls_3_5_4
+DOC_TAG=master
 WML=wml
 WMLFLAGS=-DTABLE_BGCOLOR="\#e5e5e5" -DTABLE_HDCOLOR="\#ccbcbc" \
 	-DTABLE_BGCOLOR2="\#e0d7d7" -DWHITE="\#ffffff" -DEMAIL=\"bugs@gnutls.org\" \
@@ -11,52 +13,65 @@ WMLFLAGS=-DTABLE_BGCOLOR="\#e5e5e5" -DTABLE_HDCOLOR="\#ccbcbc" \
 	-DSTABLE_NEXT_VER="3.5" -DSTABLE_NEXT_ABI="3.5.0" 
 
 COMMON=common.wml bottom.wml head.wml rawnews.wml
-OUTPUT=index.html contrib.html devel.html support.html	\
- download.html gnutls-logo.html news.html future.html	\
- documentation.html help.html openpgp.html \
- security.html commercial.html soc.html faq.html \
- comparison.html admin/bugs.html manual/index.html css/layout.css
+OUTPUT=public/index.html public/contrib.html public/devel.html public/support.html	\
+ public/download.html public/gnutls-logo.html public/news.html \
+ public/documentation.html public/help.html public/openpgp.html \
+ public/security.html public/commercial.html public/faq.html \
+ public/manual/index.html public/css/layout.css
 
-all: $(OUTPUT) news.atom
-	@for i in news-entries/*.xml;do X=0; if ! test -e $$i.tweet;then X=1;fi;done;if test "$$X" = "1";then echo "There are unsubmitted news. Use 'make tweet'.";fi
+all: stamp_pages
 
-release: all
-	cd abi-tracker && perl ../../abi-monitor/abi-monitor.pl -get --limit=2 gnutls.json
-	cd abi-tracker && perl ../../abi-monitor/abi-monitor.pl -build --limit=2 gnutls.json
-	cd abi-tracker && abi-tracker -build gnutls.json
+stamp_layout:
+	rm -rf public
+	mkdir -p public/css
+	mkdir -p public/manual
+	mkdir -p public/reference
+	cp -ar graphics public/
+	cp css/*.css public/css
+	touch $@
 
-.PHONY: clean manual/index.html tweet security.html
+stamp_pages: stamp_layout $(OUTPUT) public/news.atom stamp_manual
+	touch $@
 
-manual/index.html: manual/index.html.bak
-	@cp -f manual/index.html.bak $@
+stamp_manual: stamp_layout
+	rm -rf gnutls-git
+	git clone --branch $(DOC_TAG) . gnutls-git
+	cd gnutls-git && \
+	git submodule update --init && make autoreconf && \
+	./configure --disable-tests --disable-manpages --enable-gtk-doc && \
+	make -j4 && make htmldir=../public/ web
+	touch $@
+
+.PHONY: clean public/manual/index.html public/security.html
+
+public/manual/index.html: stamp_layout manual-index.html.bak
+	@cp -f manual-index.html.bak $@
 
 NEWS_FILES=$(shell ls news-entries/*.xml)
 
-news.atom: $(NEWS_FILES) scripts/atom.pl
+public/news.atom: stamp_layout $(NEWS_FILES) scripts/atom.pl
 	perl scripts/atom.pl >$@
 
-tweet: $(NEWS_FILES)
-	perl scripts/tweet.pl
-
-security.html: security.wml rawsecurity.wml $(COMMON)
+public/security.html: security.wml rawsecurity.wml stamp_layout $(COMMON)
 	$(WML) $(WMLFLAGS) $< > $@.tmp
 	mv $@.tmp $@
 
-news.html: news.wml $(COMMON) $(NEWS_FILES)
+public/news.html: news.wml $(COMMON) $(NEWS_FILES) stamp_layout
 	$(WML) $(WMLFLAGS) $< > $@.tmp
 	mv $@.tmp $@
 
-index.html: gnutls.wml $(COMMON) $(NEWS_FILES)
+public/index.html: gnutls.wml $(COMMON) $(NEWS_FILES) stamp_layout
 	$(WML) $(WMLFLAGS) $< > $@.tmp
 	mv $@.tmp $@
 
-%.html: %.wml $(COMMON)
+public/%.html: %.wml $(COMMON) stamp_layout
 	$(WML) $(WMLFLAGS) $< > $@.tmp
 	mv $@.tmp $@
 
-%.css: %.cwml $(COMMON)
+public/css/%.css: css/%.cwml $(COMMON) stamp_layout
 	$(WML) $(WMLFLAGS) $< > $@.tmp
 	mv $@.tmp $@
 
 clean:
-	rm -f *~ $(OUTPUT)
+	rm -f *~ stamp_pages stamp_layout
+	rm -rf public

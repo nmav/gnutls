@@ -1,0 +1,15 @@
+image: debian:stretch
+before_script:
+  - apt-get update
+  - apt-get install -y git-core make autoconf automake autogen libtool gettext autopoint libp11-kit-dev nettle-dev libtspi-dev libtasn1-6-dev libidn11-dev gawk gperf git2cl libunbound-dev dns-root-data bison help2man gtk-doc-tools
+  - apt-get install -y wml make perl texinfo texlive texlive-generic-recommended texlive-extra-utils help2man gtk-doc-tools texlive-latex-extra
+
+pages:
+  script:
+  - make
+  tags:
+  - shared
+  artifacts:
+    paths:
+    - public
+

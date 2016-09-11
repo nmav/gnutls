@@ -1,8 +1,0 @@
-{
-  "Affected": "89.1",
-  "Added": 0,
-  "Removed": 20,
-  "TotalProblems": 1,
-  "Object1": "lib/libgnutls-extra.so.26.22.6",
-  "Object2": "lib/libgnutls-extra.so.28.0.1"
-}
