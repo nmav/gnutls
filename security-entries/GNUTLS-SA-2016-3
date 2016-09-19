@@ -1,5 +1,5 @@
-    <td><!--<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1959">
-	CVE-2014-1959</a>-->
+    <td><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-7444">
+	CVE-2016-7444</a>
       </td>
     <td>OCSP validation issue</td>
     <td><p>Stefan Bühler discovered an issue that affects validation
