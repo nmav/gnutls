@@ -50,26 +50,26 @@ public/manual/index.html: stamp_layout manual-index.html.bak
 NEWS_FILES=$(shell ls news-entries/*.xml)
 
 public/news.atom: stamp_layout $(NEWS_FILES) scripts/atom.pl
-	perl scripts/atom.pl >$@
+	PERL5LIB=$$(pwd) perl scripts/atom.pl >$@
 
 public/security.html: security.wml rawsecurity.wml stamp_layout $(COMMON)
-	$(WML) $(WMLFLAGS) $< > $@.tmp
+	PERL5LIB=$$(pwd) $(WML) $(WMLFLAGS) $< > $@.tmp
 	mv $@.tmp $@
 
 public/news.html: news.wml $(COMMON) $(NEWS_FILES) stamp_layout
-	$(WML) $(WMLFLAGS) $< > $@.tmp
+	PERL5LIB=$$(pwd) $(WML) $(WMLFLAGS) $< > $@.tmp
 	mv $@.tmp $@
 
 public/index.html: gnutls.wml $(COMMON) $(NEWS_FILES) stamp_layout
-	$(WML) $(WMLFLAGS) $< > $@.tmp
+	PERL5LIB=$$(pwd) $(WML) $(WMLFLAGS) $< > $@.tmp
 	mv $@.tmp $@
 
 public/%.html: %.wml $(COMMON) stamp_layout
-	$(WML) $(WMLFLAGS) $< > $@.tmp
+	PERL5LIB=$$(pwd) $(WML) $(WMLFLAGS) $< > $@.tmp
 	mv $@.tmp $@
 
 public/css/%.css: css/%.cwml $(COMMON) stamp_layout
-	$(WML) $(WMLFLAGS) $< > $@.tmp
+	PERL5LIB=$$(pwd) $(WML) $(WMLFLAGS) $< > $@.tmp
 	mv $@.tmp $@
 
 clean:
