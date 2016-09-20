@@ -10,7 +10,7 @@ WML=wml
 WMLFLAGS=-DTABLE_BGCOLOR="\#e5e5e5" -DTABLE_HDCOLOR="\#ccbcbc" \
 	-DTABLE_BGCOLOR2="\#e0d7d7" -DWHITE="\#ffffff" -DEMAIL=\"bugs@gnutls.org\" \
 	-DSTABLE_VER="3.4" -DSTABLE_OLD_VER="3.3" -DSTABLE_ABI="3.4.0" -DSTABLE_OLD_ABI="3.0.0" \
-	-DSTABLE_NEXT_VER="3.5" -DSTABLE_NEXT_ABI="3.5.0" 
+	-DSTABLE_NEXT_VER="3.5" -DSTABLE_NEXT_ABI="3.4.0"
 
 COMMON=common.wml bottom.wml head.wml rawnews.wml
 OUTPUT=public/index.html public/contrib.html public/devel.html public/support.html	\
