@@ -1641,6 +1641,25 @@ void gnutls_certificate_free_crls(gnutls_certificate_credentials_t sc);
 
 void gnutls_certificate_set_dh_params(gnutls_certificate_credentials_t res,
 				      gnutls_dh_params_t dh_params);
+
+  /**
+   * gnutls_known_dh_params_t:
+   * @GNUTLS_FFDHE_2048: The ffdhe2048 prime/generator
+   * @GNUTLS_FFDHE_3072: The ffdhe3072 prime/generator
+   * @GNUTLS_FFDHE_4096: The ffdhe4096 prime/generator
+   * @GNUTLS_FFDHE_8192: The ffdhe8192 prime/generator
+   *
+   * Enumeration of the known (RFC7919) DH parameters.
+   */
+typedef enum gnutls_known_dh_params {
+	GNUTLS_FFDHE_2048 = 1,
+	GNUTLS_FFDHE_3072 = 5,
+	GNUTLS_FFDHE_4096 = 10,
+	GNUTLS_FFDHE_8192 = 15
+} gnutls_known_dh_params_t;
+
+int gnutls_certificate_set_known_dh_params(gnutls_certificate_credentials_t res,
+					   gnutls_known_dh_params_t id);
 void gnutls_certificate_set_verify_flags(gnutls_certificate_credentials_t
 					 res, unsigned int flags);
 unsigned int
@@ -2011,6 +2030,7 @@ extern _SYM_EXPORT const gnutls_datum_t gnutls_srp_1024_group_generator;
 
 /* The static parameters defined in rfc7919
  */
+
 extern _SYM_EXPORT const gnutls_datum_t gnutls_ffdhe_8192_group_prime;
 extern _SYM_EXPORT const gnutls_datum_t gnutls_ffdhe_8192_group_generator;
 extern _SYM_EXPORT const unsigned int gnutls_ffdhe_8192_key_bits;

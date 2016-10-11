@@ -205,6 +205,9 @@ gnutls_certificate_free_credentials(gnutls_certificate_credentials_t sc)
 #ifdef ENABLE_OPENPGP
 	gnutls_openpgp_keyring_deinit(sc->keyring);
 #endif
+	if (sc->deinit_dh_params) {
+		gnutls_dh_params_deinit(sc->dh_params);
+	}
 
 	gnutls_free(sc);
 }
@@ -237,6 +240,7 @@ gnutls_certificate_allocate_credentials(gnutls_certificate_credentials_t *
 	}
 	(*res)->verify_bits = DEFAULT_MAX_VERIFY_BITS;
 	(*res)->verify_depth = DEFAULT_MAX_VERIFY_DEPTH;
+
 
 	return 0;
 }
@@ -1016,7 +1020,82 @@ void
 gnutls_certificate_set_dh_params(gnutls_certificate_credentials_t res,
 				 gnutls_dh_params_t dh_params)
 {
+	if (res->deinit_dh_params) {
+		res->deinit_dh_params = 0;
+		gnutls_dh_params_deinit(res->dh_params);
+	}
+
 	res->dh_params = dh_params;
+}
+
+/**
+ * gnutls_certificate_set_known_dh_params:
+ * @res: is a gnutls_certificate_credentials_t type
+ * @id: is an option of the %gnutls_known_dh_params_t enumeration
+ *
+ * This function will set the Diffie-Hellman parameters for a
+ * certificate server to use. These parameters will be used in
+ * Ephemeral Diffie-Hellman cipher suites.
+ *
+ * Returns: On success, %GNUTLS_E_SUCCESS (0) is returned, otherwise a
+ *   negative error value.
+ *
+ * Since: 3.5.6
+ **/
+int
+gnutls_certificate_set_known_dh_params(gnutls_certificate_credentials_t res,
+				       gnutls_known_dh_params_t id)
+{
+	gnutls_dh_params_t tmp_params;
+	const gnutls_datum_t *p, *g;
+	unsigned key_size;
+	int ret;
+
+	switch(id) {
+		case GNUTLS_FFDHE_2048:
+			p = &gnutls_ffdhe_2048_group_prime;
+			g = &gnutls_ffdhe_2048_group_generator;
+			key_size = gnutls_ffdhe_2048_key_bits;
+			break;
+		case GNUTLS_FFDHE_3072:
+			p = &gnutls_ffdhe_3072_group_prime;
+			g = &gnutls_ffdhe_3072_group_generator;
+			key_size = gnutls_ffdhe_3072_key_bits;
+			break;
+		case GNUTLS_FFDHE_4096:
+			p = &gnutls_ffdhe_4096_group_prime;
+			g = &gnutls_ffdhe_4096_group_generator;
+			key_size = gnutls_ffdhe_4096_key_bits;
+			break;
+		case GNUTLS_FFDHE_8192:
+			p = &gnutls_ffdhe_8192_group_prime;
+			g = &gnutls_ffdhe_8192_group_generator;
+			key_size = gnutls_ffdhe_8192_key_bits;
+			break;
+		default:
+			return gnutls_assert_val(GNUTLS_E_INVALID_REQUEST);
+	
+	}
+
+	ret = gnutls_dh_params_init(&tmp_params);
+	if (ret < 0)
+		return gnutls_assert_val(ret);
+
+	ret = gnutls_dh_params_import_raw2(tmp_params, p, g, key_size);
+	if (ret >= 0) {
+		res->dh_params = tmp_params;
+	} else {
+		gnutls_dh_params_deinit(tmp_params);
+		return gnutls_assert_val(ret);
+	}
+
+	if (res->deinit_dh_params) {
+		gnutls_dh_params_deinit(res->dh_params);
+	}
+	res->deinit_dh_params = 1;
+	res->dh_params = tmp_params;
+
+	return 0;
 }
 
 #endif				/* DH */
